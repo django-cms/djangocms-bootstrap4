@@ -20,8 +20,6 @@ class Breakpoint(with_metaclass(
         super(Breakpoint, self).__init__(*args, **kwargs)
 
     def formfield(self, **kwargs):
-        # This is a fairly standard way to set up some defaults
-        # while letting the caller override them.
         defaults = {
             'form_class': self.default_form_class,
         }
@@ -50,4 +48,62 @@ class Breakpoint(with_metaclass(
         field_class = "django.db.models.fields.CharField"
         args, kwargs = introspector(self)
         # That's our definition!
-        return (field_class, args, kwargs)
+        return field_class, args, kwargs
+
+
+class ButtonType(django.db.models.CharField):
+    default_form_class = fields.ButtonType
+
+    def __init__(self, *args, **kwargs):
+        if 'max_length' not in kwargs:
+            kwargs['max_length'] = 255
+        if 'blank' not in kwargs:
+            kwargs['blank'] = False
+        if 'default' not in kwargs:
+            kwargs['default'] = self.default_form_class.widget.DEFAULT
+        super(ButtonType, self).__init__(*args, **kwargs)
+
+    def formfield(self, **kwargs):
+        defaults = {
+            'form_class': self.default_form_class,
+        }
+        defaults.update(kwargs)
+        return super(ButtonType, self).formfield(**defaults)
+
+    def south_field_triple(self):
+        """Returns a suitable description of this field for South."""
+        # We'll just introspect ourselves, since we inherit.
+        from south.modelsinspector import introspector
+        field_class = "django.db.models.fields.CharField"
+        args, kwargs = introspector(self)
+        # That's our definition!
+        return field_class, args, kwargs
+
+
+class ButtonSize(django.db.models.CharField):
+    default_form_class = fields.ButtonSize
+
+    def __init__(self, *args, **kwargs):
+        if 'max_length' not in kwargs:
+            kwargs['max_length'] = 255
+        if 'blank' not in kwargs:
+            kwargs['blank'] = True
+        if 'default' not in kwargs:
+            kwargs['default'] = self.default_form_class.widget.DEFAULT
+        super(ButtonSize, self).__init__(*args, **kwargs)
+
+    def formfield(self, **kwargs):
+        defaults = {
+            'form_class': self.default_form_class,
+        }
+        defaults.update(kwargs)
+        return super(ButtonSize, self).formfield(**defaults)
+
+    def south_field_triple(self):
+        """Returns a suitable description of this field for South."""
+        # We'll just introspect ourselves, since we inherit.
+        from south.modelsinspector import introspector
+        field_class = "django.db.models.fields.CharField"
+        args, kwargs = introspector(self)
+        # That's our definition!
+        return field_class, args, kwargs

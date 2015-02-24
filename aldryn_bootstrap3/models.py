@@ -29,9 +29,10 @@ class Boostrap3BlockquotePlugin(CMSPlugin):
 class Boostrap3ButtonPlugin(CMSPlugin):
     cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)  # I saw this in aldryn-style
 
-    # breakpoints = models.CharField(max_length=255, blank=True, default='')
+    button_type = model_fields.ButtonType()
+    button_size = model_fields.ButtonSize()
+
     breakpoints = model_fields.Breakpoint()
-    context = models.CharField(max_length=255, blank=True, default='')
 
     label = models.CharField(_("label"), max_length=256, blank=True, default='')
     url = models.URLField(_("link"), blank=True, default='')

@@ -33,9 +33,6 @@ class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
         context.update({'instance': instance})
         return context
 
-    class Media:
-        css = {'all': ('//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css',)}
-
 plugin_pool.register_plugin(Bootstrap3ButtonCMSPlugin)
 
 

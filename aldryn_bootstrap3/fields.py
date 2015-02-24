@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals, absolute_import
-from django.core.exceptions import ValidationError
 import django.forms.fields
 from django.utils.translation import ugettext_lazy as _
 from . import widgets
@@ -17,7 +16,6 @@ class Breakpoint(django.forms.fields.MultipleChoiceField):
     )
     INITIAL = ('lg', 'md', 'sm', 'xs',)
 
-
     def __init__(self, *args, **kwargs):
         if 'choices' not in kwargs:
             kwargs['choices'] = self.CHOICES
@@ -26,3 +24,29 @@ class Breakpoint(django.forms.fields.MultipleChoiceField):
         kwargs.pop('max_length', None)
         kwargs.pop('widget', None)
         super(Breakpoint, self).__init__(*args, **kwargs)
+
+
+class ButtonType(django.forms.fields.ChoiceField):
+    widget = widgets.ButtonType
+
+    def __init__(self, *args, **kwargs):
+        if 'choices' not in kwargs:
+            kwargs['choices'] = self.widget.renderer.BUTTON_TYPES.items()
+        if 'initial' not in kwargs:
+            kwargs['initial'] = self.widget.DEFAULT
+        kwargs.pop('max_length', None)
+        kwargs.pop('widget', None)
+        super(ButtonType, self).__init__(*args, **kwargs)
+
+
+class ButtonSize(django.forms.fields.ChoiceField):
+    widget = widgets.ButtonSize
+
+    def __init__(self, *args, **kwargs):
+        if 'choices' not in kwargs:
+            kwargs['choices'] = self.widget.renderer.BUTTON_SIZES.items()
+        if 'initial' not in kwargs:
+            kwargs['initial'] = self.widget.DEFAULT
+        kwargs.pop('max_length', None)
+        kwargs.pop('widget', None)
+        super(ButtonSize, self).__init__(*args, **kwargs)
