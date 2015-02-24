@@ -1,0 +1,19 @@
+{% load cms_tags %}
+
+{% if instance.child_plugin_instances %}
+    <span class="plugin_link">
+{% endif %}
+    <a href="{{ instance.url }}"
+       class="btn btn-default"
+       role="button"
+    >
+        {% for plugin in instance.child_plugin_instances %}
+            {% render_plugin plugin %}
+        {% empty %}
+
+        {% endfor %}
+        {{ instance.label }}
+    </a>
+{% if instance.child_plugin_instances %}
+    </span>
+{% endif %}

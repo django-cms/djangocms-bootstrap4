@@ -1,0 +1,8 @@
+{% load cms_tags %}
+{% spaceless %}
+<blockquote class="{{ instance.css_classes }}">
+{% for plugin in instance.child_plugin_instances %}
+	{% render_plugin plugin %}
+{% endfor %}
+</blockquote>
+{% endspaceless %}
