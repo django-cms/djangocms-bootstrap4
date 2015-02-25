@@ -12,3 +12,4 @@ class AldrynSitesConf(AppConf):
         'sm': (768, 'tablet', _("tablets"), 750),
         'xs': (768, 'mobile-phone', _("mobile phones"), 750),
     }
+    GRID_COLUMNS = 24

@@ -11,16 +11,6 @@ from .conf import settings
 
 
 @python_2_unicode_compatible
-class Boostrap3BlockquotePlugin(CMSPlugin):
-    cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)  # I saw this in aldryn-style
-
-    classes = model_fields.Classes()
-
-    def __str__(self):
-        return 'Blockquote: '
-
-
-@python_2_unicode_compatible
 class Boostrap3ButtonPlugin(CMSPlugin):
     cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
 
@@ -39,6 +29,18 @@ class Boostrap3ButtonPlugin(CMSPlugin):
 
     def __str__(self):
         return self.label
+
+
+@python_2_unicode_compatible
+class Boostrap3BlockquotePlugin(CMSPlugin):
+    cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)  # I saw this in aldryn-style
+
+    reverse = models.BooleanField(default=False, blank=True)
+
+    classes = model_fields.Classes()
+
+    def __str__(self):
+        return 'Blockquote: '
 
 
 # @python_2_unicode_compatible

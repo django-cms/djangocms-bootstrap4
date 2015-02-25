@@ -21,36 +21,27 @@ class BootstrapMediaMixin(object):
         }
 
 
-# class BreakpointsRenderer(django.forms.widgets.CheckboxFieldRenderer):
-#     def render(self):
-#         return format_html(
-#             '<div class="form-row">{0}</div>',
-#             format_html_join(
-#                 '',
-#                 '<div class="field-box">'
-#                 '<div class="container-thumbnail">'
-#                 '<i style="font-size: 60px;" class="icon-{1}"></i>'
-#                 '<div class="label">{0}</div>'
-#                 '</div>'
-#                 '</div>',
-#                 (
-#                     (
-#                         force_text(w),
-#                         settings.ALDRYN_BOOTSTRAP3_BREAKPOINTS[w.choice_value][1]
-#                     ) for w in self
-#                 )
-#             )
-#         )
-#
-#
-# class Breakpoint(BootstrapMediaMixin, django.forms.widgets.CheckboxSelectMultiple):
-#     renderer = BreakpointsRenderer
+class BreakpointsRenderer(django.forms.widgets.CheckboxFieldRenderer):
+    def render(self):
+        from django.template.loader import render_to_string
+        rendered = render_to_string(
+            'aldryn_bootstrap3/widgets/breakpoints.html',
+            {'selects': self},
+        )
+        return rendered
+
+
+class Breakpoints(BootstrapMediaMixin, django.forms.widgets.CheckboxSelectMultiple):
+    renderer = BreakpointsRenderer
 
 
 class ContextRenderer(django.forms.widgets.RadioFieldRenderer):
     def render(self):
         from django.template.loader import render_to_string
-        rendered = render_to_string('aldryn_bootstrap3/widgets/context.html', {'selects': self})
+        rendered = render_to_string(
+            'aldryn_bootstrap3/widgets/context.html',
+            {'selects': self},
+        )
         return rendered
 
 
@@ -61,13 +52,12 @@ class Context(BootstrapMediaMixin, django.forms.widgets.RadioSelect):
 class SizeRenderer(django.forms.widgets.RadioFieldRenderer):
     def render(self):
         from django.template.loader import render_to_string
-        rendered = render_to_string('aldryn_bootstrap3/widgets/size.html', {'selects': self})
+        rendered = render_to_string(
+            'aldryn_bootstrap3/widgets/size.html',
+            {'selects': self},
+        )
         return rendered
 
 
 class Size(django.forms.widgets.RadioSelect):
     renderer = SizeRenderer
-
-
-# class Classes(django.forms.widgets.Textarea):
-#     renderer
