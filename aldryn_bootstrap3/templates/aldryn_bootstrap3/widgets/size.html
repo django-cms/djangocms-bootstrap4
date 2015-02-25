@@ -148,18 +148,23 @@
 
 
         // Init defaults
-        var currentContextTriggerValue = 'default';
-        var currentSizesTriggerValue = 'md';
+        var currentContextTriggerValue;
+        var currentSizesTriggerValue;
 
         contextTriggers.each(function( index, item ) {
-            var context = $(item).find('input[checked="checked"]').val();
-            $('.js-btn-preview .btn').addClass('btn-' + context);
+            if ($(item).find('input').attr('checked') == 'checked') {
+                var context = $(item).find('input[checked="checked"]').val();
+                $('.js-btn-preview .btn').addClass('btn-' + context);
+                currentContextTriggerValue = context;
+            }
         });
 
         sizesTriggers.each(function( index, item ) {
-            var size = $(item).find('input[checked="checked"]').val();
-            console.log(size);
-            $('.js-btn-preview .btn').addClass('btn-' + size);
+            if ($(item).find('input').attr('checked') == 'checked') {
+                var size = $(item).find('input[checked="checked"]').val();
+                $('.js-btn-preview .btn').addClass('btn-' + size);
+                currentSizesTriggerValue = size;
+            }
         });
 
         // Set context of elements for preview
