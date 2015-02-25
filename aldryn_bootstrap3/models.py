@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals, absolute_import
+from functools import partial
+
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ungettext
 
 from cms.models.pluginmodel import CMSPlugin
 
@@ -54,25 +57,90 @@ class Boostrap3BlockquotePlugin(CMSPlugin):
         return 'Blockquote: '
 
 
-# @python_2_unicode_compatible
-# class Boostrap3ContainerPlugin(CMSPlugin):
-#     breakpoints = models.CharField()
-#     # context = ...  default/muted/primary/success
-#
-#     def __str__(self):
-#         return u'Desktop: %s, Tablets: %s, Phones: %s' % (self.desktop, self.tablet, self.phone)
-#
-#     def get_class(self):
-#         classes = {
-#             # Phone, Tablet, Desktop: class
-#             '100': 'visible-phone',
-#             '010': 'visible-tablet',
-#             '001': 'visible-desktop',
-#             '011': 'hidden-phone',
-#             '101': 'hidden-tablet',
-#             '110': 'hidden-desktop',
-#             '000': '',
-#             '111': '',
-#         }
-#
-#         return classes['%i%i%i' % (self.phone, self.tablet, self.desktop)]
+########
+# Grid #
+########
+
+ColumnSizeField = partial(
+    models.IntegerField,
+    null=True,
+    blank=True,
+    default=1,
+)
+
+OffsetSizeField = partial(
+    models.IntegerField,
+    null=True,
+    blank=True,
+    default=0,
+)
+
+
+@python_2_unicode_compatible
+class Bootstrap3RowPlugin(CMSPlugin):
+    classes = model_fields.Classes()
+
+    def __str__(self):
+        column_count = self.cmsplugin_set.all().count()
+        column_count_str = ungettext(
+            "1 column",
+            "%(count)i columns",
+            column_count
+        ) % (
+            {'count': column_count}
+        )
+        if self.classes:
+            return "{} ({})".format(
+                self.classes,
+                column_count_str
+            )
+        else:
+            return column_count_str
+
+
+@python_2_unicode_compatible
+class Bootstrap3ColumnPlugin(CMSPlugin):
+    DEVICE_CHOICES = constants.DEVICE_CHOICES
+    DEVICE_SIZES = constants.DEVICE_SIZES
+
+    classes = model_fields.Classes()
+
+    def __str__(self):
+        return ' '.join([self.get_column_classes(), self.classes])
+
+    def get_column_size_class(self, size):
+        # get column_size (a number) configured for this device_size
+        column_size = getattr(self, '{}_size'.format(size))
+        if column_size:
+            return 'col-{}-{}'.format(size, column_size)
+        return ''
+
+    def get_column_offset_class(self, size):
+        # get column_size (a number) configured for this device_size
+        column_size = getattr(self, '{}_offset'.format(size))
+        if column_size:
+            return 'col-{}-{}-offset'.format(size, column_size)
+        return ''
+
+    def get_column_classes(self):
+        size_classes = [
+            self.get_column_size_class(size)
+            for size in self.DEVICE_SIZES
+        ]
+        offset_classes = [
+            self.get_column_offset_class(size)
+            for size in self.DEVICE_SIZES
+        ]
+        classes = size_classes + offset_classes
+        return ' '.join(html_class for html_class in classes if html_class)
+
+for size, name in constants.DEVICE_CHOICES:
+    Bootstrap3ColumnPlugin.add_to_class(
+        '{}_size'.format(size),
+        ColumnSizeField(verbose_name=_('{} size'.format(name))),
+    )
+    Bootstrap3ColumnPlugin.add_to_class(
+        '{}_offset'.format(size),
+        OffsetSizeField(verbose_name=_('{} offset'.format(name))),
+    )
+

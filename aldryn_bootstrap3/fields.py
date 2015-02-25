@@ -23,21 +23,21 @@ class Context(django.forms.fields.ChoiceField):
         super(Context, self).__init__(*args, **kwargs)
 
 
-class Breakpoints(django.forms.fields.MultipleChoiceField):
-    widget = widgets.Breakpoints
-    CHOICES = constants.BREAKPOINTS_CHOICES
-    DEFAULT = constants.BREAKPOINTS_DEFAULT
-
-    def __init__(self, *args, **kwargs):
-        if 'choices' not in kwargs:
-            kwargs['choices'] = self.CHOICES
-        if 'initial' not in kwargs:
-            kwargs['initial'] = self.DEFAULT
-        kwargs.pop('coerce', None)
-        kwargs.pop('max_length', None)
-        kwargs.pop('widget', None)
-        kwargs['widget'] = self.widget
-        super(Breakpoints, self).__init__(*args, **kwargs)
+# class Breakpoints(django.forms.fields.MultipleChoiceField):
+#     widget = widgets.Breakpoints
+#     CHOICES = constants.BREAKPOINTS_CHOICES
+#     DEFAULT = constants.BREAKPOINTS_DEFAULT
+#
+#     def __init__(self, *args, **kwargs):
+#         if 'choices' not in kwargs:
+#             kwargs['choices'] = self.CHOICES
+#         if 'initial' not in kwargs:
+#             kwargs['initial'] = self.DEFAULT
+#         kwargs.pop('coerce', None)
+#         kwargs.pop('max_length', None)
+#         kwargs.pop('widget', None)
+#         kwargs['widget'] = self.widget
+#         super(Breakpoints, self).__init__(*args, **kwargs)
 
 
 class Size(django.forms.fields.ChoiceField):

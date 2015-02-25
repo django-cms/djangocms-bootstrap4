@@ -20,18 +20,31 @@ BUTTON_CONTEXT_DEFAULT = 'default'
 
 SIZE_CHOICES = (
     ('lg', 'Large',),
-    ('', 'Default',),
+    ('md', 'Medium',),
     ('sm', 'Small',),
     ('xs', 'Extra Small',),
 )
 
-SIZE_DEFAULT = ''
+SIZES = tuple([size for size, name in SIZE_CHOICES])
+
+SIZE_DEFAULT = 'md'
 
 
-BREAKPOINTS_CHOICES = (
-    ('xs', _("Tiny (<{sm[0]}px)".format(**settings.ALDRYN_BOOTSTRAP3_BREAKPOINTS))),
-    ('sm', _("Small (≥{sm[0]}px and <{md[0]}px)".format(**settings.ALDRYN_BOOTSTRAP3_BREAKPOINTS))),
-    ('md', _("Medium (≥{md[0]}px and <{lg[0]}px)".format(**settings.ALDRYN_BOOTSTRAP3_BREAKPOINTS))),
-    ('lg', _("Large (≥{lg[0]}px)".format(**settings.ALDRYN_BOOTSTRAP3_BREAKPOINTS))),
+BREAKPOINTS = {
+    'lg': (1200, 'desktop', _("large desktops"), 1170),
+    'md': (992, 'laptop', _("laptops"), 970),
+    'sm': (768, 'tablet', _("tablets"), 750),
+    'xs': (768, 'mobile-phone', _("mobile phones"), 750),
+}
+
+
+# WARNING: changing DEVICE_CHOICES will cause model creation to change and requires database migrations!
+DEVICE_CHOICES = (
+    ('xs', _("Tiny (<{sm[0]}px)".format(**BREAKPOINTS))),
+    ('sm', _("Small (≥{sm[0]}px and <{md[0]}px)".format(**BREAKPOINTS))),
+    ('md', _("Medium (≥{md[0]}px and <{lg[0]}px)".format(**BREAKPOINTS))),
+    ('lg', _("Large (≥{lg[0]}px)".format(**BREAKPOINTS))),
 )
-BREAKPOINTS_DEFAULT = 'xs,sm,md,lg'
+DEVICE_SIZES = tuple([size for size, name in DEVICE_CHOICES])
+
+GRID_SIZE = settings.ALDRYN_BOOTSTRAP3_GRID_SIZE
