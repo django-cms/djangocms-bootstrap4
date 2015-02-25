@@ -6,8 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from cms.models.pluginmodel import CMSPlugin
 
-from . import model_fields
-
+from . import model_fields, constants
 from .conf import settings
 
 
@@ -15,24 +14,25 @@ from .conf import settings
 class Boostrap3BlockquotePlugin(CMSPlugin):
     cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)  # I saw this in aldryn-style
 
-    breakpoints = models.CharField(max_length=255, blank=True, default='')
-    context = models.CharField(max_length=255, blank=True, default='')
+    classes = model_fields.Classes()
 
     def __str__(self):
         return 'Blockquote: '
 
-    def get_css_classes(self):
-        return ['an-example-class']
-
 
 @python_2_unicode_compatible
 class Boostrap3ButtonPlugin(CMSPlugin):
-    cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)  # I saw this in aldryn-style
+    cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
 
-    button_type = model_fields.ButtonType()
-    button_size = model_fields.ButtonSize()
+    context = model_fields.Context(
+        choices=constants.BUTTON_CONTEXT_CHOICES,
+        default=constants.BUTTON_CONTEXT_DEFAULT,
+    )
+    size = model_fields.Size()
 
-    breakpoints = model_fields.Breakpoint()
+    classes = model_fields.Classes()
+
+    # breakpoints = model_fields.Breakpoint()
 
     label = models.CharField(_("label"), max_length=256, blank=True, default='')
     url = models.URLField(_("link"), blank=True, default='')

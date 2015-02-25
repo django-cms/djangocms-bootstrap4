@@ -4,7 +4,7 @@
     <span class="plugin_link">
 {% endif %}
     <a href="{{ instance.url }}"
-       class="btn {{ instance.button_type }} {{ instance.button_size }}
+       class="btn {{ instance.button_type }} {{ instance.button_size }} {{ instance.pull }} {{ instance.clearfix }}
         {% for breakpoint in instance.breakpoints %} visible-{{ breakpoint }}-inline{% endfor %}
         "
        role="button"
