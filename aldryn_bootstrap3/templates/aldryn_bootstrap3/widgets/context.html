@@ -1,8 +1,40 @@
-<div class="form-row">
-{% for item in selects %}
+<div class="btn-group btn-group-context js-btn-group-context" data-toggle="buttons">
+    {% for item in selects %}
     {{ item }}
-    {{ item.choice_value }}: {{ item.choice_label }}
-{% endfor %}
-
-<strong>selected: {{ selects.value }}</strong>
+    {% endfor %}
 </div>
+
+{# Styling definitions #}
+<style>
+    .btn-group-context label { padding: 0; border-width: 1px; width: 5.5em; }
+    .btn-group-context label.active { border-width: 3px; margin-top: -2px; }
+    .btn-group-context label.btn-link { border-color: #ccc; }
+</style>
+
+{# Javascript #}
+<script>
+    if (!$) {
+        $ = django.jQuery;
+    }
+
+    $( document ).ready(function() {
+        var contextInputs = $('.js-btn-group-context label input');
+
+        contextInputs.each(function( index, item ) {
+            var label = $(item).parent();
+            var input = $(item);
+
+            label.addClass('btn btn-xs btn-' + item.value);
+            input.attr('name', 'options');
+
+            if (input.prop('checked')) {
+                label.addClass('active');
+            }
+        });
+
+    })
+</script>
+
+{# Available Variables #}
+{# {{ item.choice_value }}: {{ item.choice_label }} #}
+{# selected: {{ selects.value }}  #}

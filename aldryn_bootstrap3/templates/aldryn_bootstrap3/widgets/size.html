@@ -1,8 +1,115 @@
-<div class="form-row">
+<div class="btn-group btn-group-sizes js-btn-group-sizes" data-toggle="buttons">
 {% for item in selects %}
     {{ item }}
-    {{ item.choice_value }}: {{ item.choice_label }}
 {% endfor %}
-
-<strong>selected: {{ selects.value }}</strong>
 </div>
+
+{# Styling definitions #}
+<style>
+    .btn-group-sizes label { padding: 5px 10px; width: auto; }
+    .btn-group-sizes .btn-default { min-height: 36px; }
+    .btn-group-sizes .text-xs { font-size: 10px; padding-top: 9px; }
+    .btn-group-sizes .text-sm { font-size: 12px; padding-top: 8px; }
+    .btn-group-sizes .text- { font-size: 14px; padding-top: 6px;}
+    .btn-group-sizes .text-lg { font-size: 16px; padding-top: 5px; }
+
+    .btn-group-sizes .glyphicon { margin-right: 5px; }
+    .btn-group-sizes .text-xs .glyphicon { font-size: 9px; }
+    .btn-group-sizes .text-sm .glyphicon { font-size: 10px; }
+    .btn-group-sizes .text- .glyphicon { font-size: 12px;  margin-top: 2px; }
+    .btn-group-sizes .text-lg .glyphicon { font-size: 14px; margin-top: 3px; }
+</style>
+
+{# Javascript #}
+<script>
+    if (!$) {
+        $ = django.jQuery;
+    }
+
+    $( document ).ready(function() {
+        var sizesInputs = $('.js-btn-group-sizes label input');
+
+        sizesInputs.each(function( index, item ) {
+            var label = $(item).parent();
+            var input = $(item);
+
+            label.addClass('btn btn-default text-' + item.value);
+            input.attr('name', 'options');
+
+            $( "<span class='glyphicon glyphicon-record'></span>" ).insertAfter( input );
+
+
+            if (input.prop('checked')) {
+                label.addClass('active');
+            }
+        });
+
+    })
+</script>
+
+
+{# {{ item.choice_value }}: {{ item.choice_label }} #}
+{# selected: {{ selects.value }} #}
+
+
+{# ############# MOVE TO PLUGINS/BUTTON_ADMIN_PREVIEW.html ################# #}
+<div class="well btn-preview js-btn-preview text-center">
+    <a class="btn" role="button">Example Button</a>
+</div>
+
+{# Styling definitions #}
+<style>
+   .btn-preview.well { margin-left: 96px; overflow: scroll; }
+</style>
+
+{# Javascript #}
+<script>
+    if (!$) {
+        $ = django.jQuery;
+    }
+    $( document ).ready(function() {
+        var contextTriggers = $('.js-btn-group-context .btn');
+        var sizesTriggers = $('.js-btn-group-sizes .btn');
+
+        var previewButtonText = $('.js-btn-preview .btn').text();
+
+
+        // Init defaults
+        var currentContextTriggerValue = 'default';
+        var currentSizesTriggerValue = 'md';
+
+        // Set context of elements for preview
+        contextTriggers.on('click', function(e) {
+            var context = $(this).find('input').val();
+
+            $('.js-btn-preview .btn').removeClass('btn-'+ currentContextTriggerValue);
+            $('.js-btn-preview .btn').addClass('btn-'+ context);
+
+            currentContextTriggerValue = context;
+        });
+
+
+        // Set sizes of elements for preview
+        sizesTriggers.on('click', function(e) {
+            var size = $(this).find('input').val();
+
+            $('.js-btn-preview .btn').removeClass('btn-'+ currentSizesTriggerValue);
+            $('.js-btn-preview .btn').addClass('btn-'+ size);
+
+            currentSizesTriggerValue = size;
+        });
+
+        // Update text in button for preview
+        $( "#id_label" ).on('input', function() {
+            if ($(this).val()) {
+                $('.js-btn-preview .btn').text($(this).val());
+            } else {
+                $('.js-btn-preview .btn').text(previewButtonText);
+            }
+        });
+
+    });
+</script>
+
+{# ############# END MOVE TO PLUGINS/BUTTON_ADMIN_PREVIEW.html ################# #}
+

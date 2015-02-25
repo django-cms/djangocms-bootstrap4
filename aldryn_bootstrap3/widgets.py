@@ -19,6 +19,10 @@ class BootstrapMediaMixin(object):
                 '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css',
             )
         }
+        js = (
+                'https://code.jquery.com/jquery-1.9.1.min.js',
+                '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js',
+        )
 
 
 class BreakpointsRenderer(django.forms.widgets.CheckboxFieldRenderer):

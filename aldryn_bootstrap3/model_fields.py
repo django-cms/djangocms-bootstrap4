@@ -17,7 +17,7 @@ class Classes(django.db.models.TextField):
         if 'default' not in kwargs:
             kwargs['default'] = ''
         if 'help_text' not in kwargs:
-            kwargs['help_text'] = 'space separated classes that are added to the class. see <a href="http://getbootstrap.com/css/">bootstrap docs</a>'
+            kwargs['help_text'] = 'space separated classes that are added to the class. see <a href="http://getbootstrap.com/css/" target="_blank">bootstrap docs</a>'
         super(Classes, self).__init__(*args, **kwargs)
 
     def formfield(self, **kwargs):
