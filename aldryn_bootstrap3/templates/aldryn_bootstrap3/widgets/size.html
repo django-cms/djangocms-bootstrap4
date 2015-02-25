@@ -16,7 +16,7 @@
     .btn-group-sizes .glyphicon { margin-right: 5px; }
     .btn-group-sizes .text-xs .glyphicon { font-size: 9px; }
     .btn-group-sizes .text-sm .glyphicon { font-size: 10px; }
-    .btn-group-sizes .text- .glyphicon { font-size: 12px;  margin-top: 2px; }
+    .btn-group-sizes .text-md .glyphicon { font-size: 12px;  margin-top: 2px; }
     .btn-group-sizes .text-lg .glyphicon { font-size: 14px; margin-top: 3px; }
 </style>
 
@@ -28,29 +28,102 @@
 
     $( document ).ready(function() {
         var sizesInputs = $('.js-btn-group-sizes label input');
+        var selectedSizesInput;
 
         sizesInputs.each(function( index, item ) {
             var label = $(item).parent();
             var input = $(item);
 
-            label.addClass('btn btn-default text-' + item.value);
-            input.attr('name', 'options');
-
-            $( "<span class='glyphicon glyphicon-record'></span>" ).insertAfter( input );
-
-
+            // Initial active state
             if (input.prop('checked')) {
+                selectedSizesInput = input;
                 label.addClass('active');
             }
+
+            // Set sizes
+            label.addClass('btn btn-default text-' + item.value);
+
+            // Add icon
+            $( "<span class='glyphicon glyphicon-record'></span>" ).insertAfter( input );
+
+            // Set active states
+            label.on('click', function(e) {
+                var input = $(this).find('input');
+
+                selectedSizesInput.attr('checked', false);
+                input.attr('checked', true);
+
+                selectedSizesInput = input;
+            });
+
         });
 
     })
 </script>
 
-
-{# {{ item.choice_value }}: {{ item.choice_label }} #}
 {# selected: {{ selects.value }} #}
 
+{# ############# MOVE TO WIDGETS/icons.html ################# #}
+{# Icon settings #}
+<div class="icon js-icon form-inline">
+    <select class="form-control">
+        <option>Glyphicons</option>
+        <option>Fontawesome</option>
+    </select>
+    <span class="iconpicker js-icon-picker">
+        <button class="btn btn-default form-control"></button>
+    </span>
+    <span class="btn-icon-positions" class="btn-group">
+        <button class="btn btn-default form-control" value="left" type="button"><span class="glyphicon glyphicon-arrow-left"></span> Left</button>
+        <button class="btn btn-default form-control" value="right" type="button">Right <span class="glyphicon glyphicon-arrow-right"></span></button>
+    </span>
+</div>
+
+{# Styling definitions #}
+
+<!-- overriding django cms admin style -->
+<style>
+    {# TODO: Find a way to move this into a scss file #}
+   .icon select { width: auto; }
+   .iconpicker button.btn-default, .iconpicker-popover button.btn-default, .btn-icon-positions button.btn-default {
+       background-image: none !important;
+       box-shadow: none !important;
+       border: 1px solid #ccc !important;
+   }
+   .iconpicker button.btn-default:hover, .iconpicker-popover button.btn-default:hover, .btn-icon-positions button.btn-default:hover {
+       color: #333 !important;
+       background-color: #e6e6e6 !important;
+       border-color: #adadad !important;
+   }
+   .iconpicker-popover table {
+       margin: 0 !important;
+       padding: 0 !important;
+   }
+   .iconpicker-popover table tr td, .iconpicker-popover table tr th {
+       border-bottom: none;
+       padding: 0;
+   }
+   .iconpicker-popover table tfoot tr td {
+       padding-top: 5px;
+       border-top: 0;
+       background: none;
+   }
+
+</style>
+
+{# Javascript #}
+<script>
+    if (!$) {
+        $ = django.jQuery;
+    }
+    $( document ).ready(function() {
+        $('.js-icon-picker button').iconpicker({
+            arrowClass: 'btn-default'
+        });
+    });
+</script>
+
+{# ############# END MOVE TO WIDGETS/icons.html ################# #}
 
 {# ############# MOVE TO PLUGINS/BUTTON_ADMIN_PREVIEW.html ################# #}
 <div class="well btn-preview js-btn-preview text-center">
@@ -77,6 +150,17 @@
         // Init defaults
         var currentContextTriggerValue = 'default';
         var currentSizesTriggerValue = 'md';
+
+        contextTriggers.each(function( index, item ) {
+            var context = $(item).find('input[checked="checked"]').val();
+            $('.js-btn-preview .btn').addClass('btn-' + context);
+        });
+
+        sizesTriggers.each(function( index, item ) {
+            var size = $(item).find('input[checked="checked"]').val();
+            console.log(size);
+            $('.js-btn-preview .btn').addClass('btn-' + size);
+        });
 
         // Set context of elements for preview
         contextTriggers.on('click', function(e) {

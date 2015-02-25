@@ -19,17 +19,35 @@
 
     $( document ).ready(function() {
         var contextInputs = $('.js-btn-group-context label input');
+        var selectedContextInput;
 
         contextInputs.each(function( index, item ) {
             var label = $(item).parent();
             var input = $(item);
 
-            label.addClass('btn btn-xs btn-' + item.value);
-            input.attr('name', 'options');
-
+            // Initial active state
             if (input.prop('checked')) {
+                selectedContextInput = input;
                 label.addClass('active');
             }
+
+            if (selectedContextInput == undefined) {
+                selectedContextInput = $('.js-btn-group-context label input[value="default"]');
+            }
+
+            // Set context
+            label.addClass('btn btn-' + item.value);
+
+             // Set active states
+            label.on('click', function(e) {
+                var input = $(this).find('input');
+
+                selectedContextInput.attr('checked', false);
+                input.attr('checked', true);
+
+                selectedContextInput = input;
+            });
+
         });
 
     })
