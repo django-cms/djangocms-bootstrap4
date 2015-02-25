@@ -7,6 +7,36 @@ from django.utils.encoding import smart_text
 from . import fields
 
 
+class Classes(django.db.models.TextField):
+    # TODO: validate
+    default_field_class = fields.Classes
+
+    def __init__(self, *args, **kwargs):
+        if 'blank' not in kwargs:
+            kwargs['blank'] = True
+        if 'default' not in kwargs:
+            kwargs['default'] = ''
+        if 'help_text' not in kwargs:
+            kwargs['help_text'] = 'space separated classes that are added to the class. see <a href="http://getbootstrap.com/css/">bootstrap docs</a>'
+        super(Classes, self).__init__(*args, **kwargs)
+
+    def formfield(self, **kwargs):
+        defaults = {
+            'form_class': self.default_field_class,
+        }
+        defaults.update(kwargs)
+        return super(Classes, self).formfield(**defaults)
+
+    def south_field_triple(self):
+        """Returns a suitable description of this field for South."""
+        # We'll just introspect ourselves, since we inherit.
+        from south.modelsinspector import introspector
+        field_class = "django.db.models.fields.TextField"
+        args, kwargs = introspector(self)
+        # That's our definition!
+        return field_class, args, kwargs
+    
+
 # class Breakpoint(with_metaclass(
 #                     django.db.models.SubfieldBase,
 #                     django.db.models.CharField)):
@@ -110,35 +140,6 @@ class Size(django.db.models.CharField):
         # That's our definition!
         return field_class, args, kwargs
 
-
-class Classes(django.db.models.TextField):
-    # TODO: validate
-    default_field_class = fields.Classes
-
-    def __init__(self, *args, **kwargs):
-        if 'blank' not in kwargs:
-            kwargs['blank'] = True
-        if 'default' not in kwargs:
-            kwargs['default'] = ''
-        if 'help_text' not in kwargs:
-            kwargs['help_text'] = 'space separated classes that are added to the class. see <a href="http://getbootstrap.com/css/">bootstrap docs</a>'
-        super(Classes, self).__init__(*args, **kwargs)
-
-    def formfield(self, **kwargs):
-        defaults = {
-            'form_class': self.default_field_class,
-        }
-        defaults.update(kwargs)
-        return super(Classes, self).formfield(**defaults)
-
-    def south_field_triple(self):
-        """Returns a suitable description of this field for South."""
-        # We'll just introspect ourselves, since we inherit.
-        from south.modelsinspector import introspector
-        field_class = "django.db.models.fields.TextField"
-        args, kwargs = introspector(self)
-        # That's our definition!
-        return field_class, args, kwargs
 
 #TODO:
 #   * btn-block, disabled
