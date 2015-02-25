@@ -10,6 +10,10 @@ from . import model_fields, constants
 from .conf import settings
 
 
+#################
+# Basic Plugins #
+#################
+
 @python_2_unicode_compatible
 class Boostrap3ButtonPlugin(CMSPlugin):
     cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
@@ -19,10 +23,7 @@ class Boostrap3ButtonPlugin(CMSPlugin):
         default=constants.BUTTON_CONTEXT_DEFAULT,
     )
     size = model_fields.Size()
-
     classes = model_fields.Classes()
-
-    # breakpoints = model_fields.Breakpoint()
 
     label = models.CharField(_("label"), max_length=256, blank=True, default='')
     url = models.URLField(_("link"), blank=True, default='')
@@ -33,10 +34,20 @@ class Boostrap3ButtonPlugin(CMSPlugin):
 
 @python_2_unicode_compatible
 class Boostrap3BlockquotePlugin(CMSPlugin):
-    cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)  # I saw this in aldryn-style
+    cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
 
     reverse = models.BooleanField(default=False, blank=True)
+    classes = model_fields.Classes()
 
+    def __str__(self):
+        return 'Blockquote: '
+
+
+@python_2_unicode_compatible
+class Boostrap3BlockquotePlugin(CMSPlugin):
+    cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
+
+    reverse = models.BooleanField(default=False, blank=True)
     classes = model_fields.Classes()
 
     def __str__(self):
