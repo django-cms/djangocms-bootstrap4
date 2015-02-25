@@ -189,6 +189,8 @@
         });
 
         // Update text in button for preview
+        $('.js-btn-preview .btn').text($( "#id_label" ).val());
+
         $( "#id_label" ).on('input', function() {
             if ($(this).val()) {
                 $('.js-btn-preview .btn').text($(this).val());
