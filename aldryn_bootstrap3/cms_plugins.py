@@ -25,21 +25,13 @@ plugin_pool.register_plugin(Bootstrap3BlockquoteCMSPlugin)
 class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
     model = models.Boostrap3ButtonPlugin
     name = _("Button")
+    change_form_template = 'admin/aldryn_bootstrap3/plugins/button/change_form.html'
     render_template = 'aldryn_bootstrap3/plugins/button.html'
     allow_children = True
-    readonly_fields = (
-        'preview',
-    )
 
     def render(self, context, instance, placeholder):
         context.update({'instance': instance})
         return context
-
-    def preview(self, **kwargs):
-        from django.template.loader import render_to_string
-        rendered = render_to_string('aldryn_bootstrap3/plugins/button_admin_preview.html', {})
-        return rendered
-    preview.allow_tags = True
 
 plugin_pool.register_plugin(Bootstrap3ButtonCMSPlugin)
 
