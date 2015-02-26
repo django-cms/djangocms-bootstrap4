@@ -122,14 +122,15 @@
         $ = django.jQuery;
     }
     $( document ).ready(function() {
-        var iconPicker = $('.js-icon-picker');
+        window.iconPicker = $('.js-icon-picker');
+        window.iconSet = $('.js-iconset');
         window.iconPositionBtns = $( '.js-btn-icon-positions .btn' );
         window.iconPosition = 'left';
 
         $('.js-icon-picker button').iconpicker({
             arrowClass: 'btn-default'
         });
-        $('.js-iconset').on('change', function(){
+        iconSet.on('change', function(){
             var fontset = $(this).val();
             $('.js-icon-picker button').iconpicker('setIconset', fontset);
             iconSelected = iconPicker.find('i').attr('class');
@@ -231,25 +232,35 @@
 
         // Set Icon of button
 
-
         iconPositionBtns.on('click', function() {
             iconPositionBtns.removeClass('active');
             $(this).addClass('active');
 
+            $('.js-icon-position').remove()
+
             if (iconPosition == 'right') {
-                $('.js-icon-right').remove();
-                $('.js-icon-left').remove();
-                previewButton.append(' <span class="js-icon-right ' + iconSelected + '"></span>');
+                previewButton.append(' <i class="js-icon-position ' + iconSelected + '"></i>');
             }
             if (iconPosition == 'left') {
-                $('.js-icon-left').remove();
-                $('.js-icon-right').remove();
-                previewButton.prepend('<span class="js-icon-left ' + iconSelected + '"></span> ');
+                previewButton.prepend('<i class="js-icon-position ' + iconSelected + '"></i> ');
             }
-            if (iconPosition == 'remove') {
-                $('.js-icon-right').remove();
-                $('.js-icon-left').remove();
+
+        });
+
+        iconPicker.on('change', function(e) {
+            $('.js-icon-position').remove();
+            
+            if (iconPosition == 'right') {
+                previewButton.append(' <i class="js-icon-position ' + iconSelected + '"></i>');
             }
+            if (iconPosition == 'left') {
+                previewButton.prepend('<i class="js-icon-position ' + iconSelected + '"></i> ');
+            }
+        });
+
+        iconSet.on('change', function(e) {
+            $('.js-icon-position').remove();
+            iconPositionBtns.removeClass('active');
         });
 
     });
