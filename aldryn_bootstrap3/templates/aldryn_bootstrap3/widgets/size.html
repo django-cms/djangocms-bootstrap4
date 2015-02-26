@@ -66,16 +66,17 @@
 {# ############# MOVE TO WIDGETS/icons.html ################# #}
 {# Icon settings #}
 <div class="icon js-icon form-inline">
-    <select class="form-control">
-        <option>Glyphicons</option>
-        <option>Fontawesome</option>
+    <select class="form-control js-iconset">
+        <option value="glyphicons">Glyphicons</option>
+        <option value="fontawesome">Fontawesome</option>
     </select>
     <span class="iconpicker js-icon-picker">
         <button class="btn btn-default form-control"></button>
     </span>
-    <span class="btn-icon-positions" class="btn-group">
+    <span class="btn-icon-positions js-btn-icon-positions btn-group">
         <button class="btn btn-default form-control" value="left" type="button"><span class="glyphicon glyphicon-arrow-left"></span> Left</button>
         <button class="btn btn-default form-control" value="right" type="button">Right <span class="glyphicon glyphicon-arrow-right"></span></button>
+        <button class="btn btn-default form-control" value="remove" type="button"><span class="glyphicon glyphicon-remove"></span> Remove</button>
     </span>
 </div>
 
@@ -108,6 +109,10 @@
        border-top: 0;
        background: none;
    }
+   .btn-icon-positions button.btn.active {
+       background: #e6e6e6 !important;
+       box-shadow: inset 0 3px 5px rgba(0,0,0,.125) !important;
+   }
 
 </style>
 
@@ -117,9 +122,33 @@
         $ = django.jQuery;
     }
     $( document ).ready(function() {
+        var iconPicker = $('.js-icon-picker');
+        window.iconPositionBtns = $( '.js-btn-icon-positions .btn' );
+        window.iconPosition = 'left';
+
         $('.js-icon-picker button').iconpicker({
             arrowClass: 'btn-default'
         });
+        $('.js-iconset').on('change', function(){
+            var fontset = $(this).val();
+            $('.js-icon-picker button').iconpicker('setIconset', fontset);
+            iconSelected = iconPicker.find('i').attr('class');
+            console.log(iconSelected);
+        });
+
+        iconPicker.on('change', function(e) {
+            iconSelected = $(this).find('i').attr('class');
+            console.log(iconSelected);
+        });
+
+        iconPositionBtns.on('click', function() {
+            iconPosition = $(this).val();
+            console.log(iconPosition);
+        });
+
+        // Init active icon
+        window.iconSelected = iconPicker.find('i').attr('class');
+
     });
 </script>
 
@@ -144,7 +173,8 @@
         var contextTriggers = $('.js-btn-group-context .btn');
         var sizesTriggers = $('.js-btn-group-sizes .btn');
 
-        var previewButtonText = $('.js-btn-preview .btn').text();
+        var previewButton = $('.js-btn-preview .btn');
+        var previewButtonText = previewButton.text();
 
 
         // Init defaults
@@ -171,8 +201,8 @@
         contextTriggers.on('click', function(e) {
             var context = $(this).find('input').val();
 
-            $('.js-btn-preview .btn').removeClass('btn-'+ currentContextTriggerValue);
-            $('.js-btn-preview .btn').addClass('btn-'+ context);
+            previewButton.removeClass('btn-'+ currentContextTriggerValue);
+            previewButton.addClass('btn-'+ context);
 
             currentContextTriggerValue = context;
         });
@@ -182,20 +212,43 @@
         sizesTriggers.on('click', function(e) {
             var size = $(this).find('input').val();
 
-            $('.js-btn-preview .btn').removeClass('btn-'+ currentSizesTriggerValue);
-            $('.js-btn-preview .btn').addClass('btn-'+ size);
+            previewButton.removeClass('btn-'+ currentSizesTriggerValue);
+            previewButton.addClass('btn-'+ size);
 
             currentSizesTriggerValue = size;
         });
 
         // Update text in button for preview
-        $('.js-btn-preview .btn').text($( "#id_label" ).val());
+        previewButton.text($( "#id_label" ).val());
 
         $( "#id_label" ).on('input', function() {
             if ($(this).val()) {
                 $('.js-btn-preview .btn').text($(this).val());
             } else {
                 $('.js-btn-preview .btn').text(previewButtonText);
+            }
+        });
+
+        // Set Icon of button
+
+
+        iconPositionBtns.on('click', function() {
+            iconPositionBtns.removeClass('active');
+            $(this).addClass('active');
+
+            if (iconPosition == 'right') {
+                $('.js-icon-right').remove();
+                $('.js-icon-left').remove();
+                previewButton.append(' <span class="js-icon-right ' + iconSelected + '"></span>');
+            }
+            if (iconPosition == 'left') {
+                $('.js-icon-left').remove();
+                $('.js-icon-right').remove();
+                previewButton.prepend('<span class="js-icon-left ' + iconSelected + '"></span> ');
+            }
+            if (iconPosition == 'remove') {
+                $('.js-icon-right').remove();
+                $('.js-icon-left').remove();
             }
         });
 

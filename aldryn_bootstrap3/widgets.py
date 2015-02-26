@@ -17,13 +17,14 @@ class BootstrapMediaMixin(object):
             'all': (
                 '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css',
                     'https://static.dev.aldryn.net/cdn/bootstrap-iconpicker.min.css',
-                '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css',
+                '//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css',
             )
         }
         js = (
                 'https://code.jquery.com/jquery-1.10.2.min.js',
                 '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js',
                 'https://static.dev.aldryn.net/cdn/iconset/iconset-glyphicon.min.js',
+                'https://static.dev.aldryn.net/cdn/iconset/iconset-fontawesome-4.2.0.min.js',
                 'https://static.dev.aldryn.net/cdn/bootstrap-iconpicker.min.js',
         )
 
