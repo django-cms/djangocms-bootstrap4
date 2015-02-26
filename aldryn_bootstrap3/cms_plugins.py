@@ -40,6 +40,7 @@ class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
             )
         }),
         ('Advanced', {
+            'classes': ('collapse',),
             'fields': (
                 'classes',
             )

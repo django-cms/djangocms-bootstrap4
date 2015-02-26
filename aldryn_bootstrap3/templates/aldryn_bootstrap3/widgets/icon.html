@@ -1,6 +1,6 @@
 {# Icon settings #}
 <div class="icon js-icon js-icon-{{ name }} form-inline">
-    <input class="form-control js-icon-enable" name="icons-enabled-{{ name }}" type="checkbox"{% if value %} checked="checked"{% endif %} />
+    <input class="checkbox js-icon-enable" name="icons-enabled-{{ name }}" type="checkbox"{% if value %} checked="checked"{% endif %} />
     <span class="js-icon-widgets hidden">
         <select class="form-control js-iconset">
             <option value="glyphicons" data-prefix="glyphicon"{% if iconset == 'glyphicon' %} selected="selected"{% endif %}>Glyphicons</option>
@@ -45,6 +45,7 @@
        background: #e6e6e6 !important;
        box-shadow: inset 0 3px 5px rgba(0,0,0,.125) !important;
    }
+   .field-icon_left, .field-icon_right { min-height: 55px; }
 
 </style>
 
