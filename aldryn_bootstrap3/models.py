@@ -26,6 +26,10 @@ class Boostrap3ButtonPlugin(CMSPlugin):
         default=constants.BUTTON_CONTEXT_DEFAULT,
     )
     size = model_fields.Size()
+
+    icon_left = model_fields.Icon()
+    icon_right = model_fields.Icon()
+
     classes = model_fields.Classes()
 
     label = models.CharField(_("label"), max_length=256, blank=True, default='')

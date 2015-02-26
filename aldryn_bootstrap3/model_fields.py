@@ -7,7 +7,30 @@ from django.utils.encoding import smart_text
 from . import fields
 
 
-class Classes(django.db.models.TextField):
+class SouthMixinBase(object):
+    south_field_class = ''
+
+    def south_field_triple(self):
+        """Returns a suitable description of this field for South."""
+        if not self.south_field_class:
+            raise NotImplementedError('please set south_field_class when using the south field mixin')
+        # We'll just introspect ourselves, since we inherit.
+        from south.modelsinspector import introspector
+        field_class = self.south_field_class
+        args, kwargs = introspector(self)
+        # That's our definition!
+        return field_class, args, kwargs
+
+
+class SouthCharFieldMixin(SouthMixinBase):
+    south_field_class = "django.db.models.fields.CharField"
+
+
+class SouthTextFieldMixin(SouthMixinBase):
+    south_field_class = "django.db.models.fields.TextField"
+
+
+class Classes(django.db.models.TextField, SouthTextFieldMixin):
     # TODO: validate
     default_field_class = fields.Classes
 
@@ -26,15 +49,6 @@ class Classes(django.db.models.TextField):
         }
         defaults.update(kwargs)
         return super(Classes, self).formfield(**defaults)
-
-    def south_field_triple(self):
-        """Returns a suitable description of this field for South."""
-        # We'll just introspect ourselves, since we inherit.
-        from south.modelsinspector import introspector
-        field_class = "django.db.models.fields.TextField"
-        args, kwargs = introspector(self)
-        # That's our definition!
-        return field_class, args, kwargs
 
 
 # class Breakpoints(with_metaclass(
@@ -82,7 +96,7 @@ class Classes(django.db.models.TextField):
 #         return field_class, args, kwargs
 
 
-class Context(django.db.models.fields.CharField):
+class Context(django.db.models.fields.CharField, SouthCharFieldMixin):
     default_field_class = fields.Context
 
     def __init__(self, *args, **kwargs):
@@ -102,17 +116,8 @@ class Context(django.db.models.fields.CharField):
         defaults.update(kwargs)
         return super(Context, self).formfield(**defaults)
 
-    def south_field_triple(self):
-        """Returns a suitable description of this field for South."""
-        # We'll just introspect ourselves, since we inherit.
-        from south.modelsinspector import introspector
-        field_class = "django.db.models.fields.CharField"
-        args, kwargs = introspector(self)
-        # That's our definition!
-        return field_class, args, kwargs
 
-
-class Size(django.db.models.CharField):
+class Size(django.db.models.CharField, SouthCharFieldMixin):
     default_field_class = fields.Size
 
     def __init__(self, *args, **kwargs):
@@ -132,14 +137,26 @@ class Size(django.db.models.CharField):
         defaults.update(kwargs)
         return super(Size, self).formfield(**defaults)
 
-    def south_field_triple(self):
-        """Returns a suitable description of this field for South."""
-        # We'll just introspect ourselves, since we inherit.
-        from south.modelsinspector import introspector
-        field_class = "django.db.models.fields.CharField"
-        args, kwargs = introspector(self)
-        # That's our definition!
-        return field_class, args, kwargs
+
+class Icon(django.db.models.CharField, SouthCharFieldMixin):
+    default_field_class = fields.Icon
+
+    def __init__(self, *args, **kwargs):
+        if 'max_length' not in kwargs:
+            kwargs['max_length'] = 255
+        if 'blank' not in kwargs:
+            kwargs['blank'] = True
+        if 'default' not in kwargs:
+            kwargs['default'] = self.default_field_class.DEFAULT
+        super(Icon, self).__init__(*args, **kwargs)
+
+    def formfield(self, **kwargs):
+        defaults = {
+            'form_class': self.default_field_class,
+        }
+        defaults.update(kwargs)
+        return super(Icon, self).formfield(**defaults)
+
 
 
 #TODO:

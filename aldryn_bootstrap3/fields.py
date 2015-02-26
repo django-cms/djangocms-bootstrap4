@@ -58,13 +58,18 @@ class Size(django.forms.fields.ChoiceField):
 
 
 class Classes(django.forms.fields.CharField):
-    # widget = widgets.Classes
-    # DEFAULT = ''
+    pass
+
+
+class Icon(django.forms.fields.CharField):
+    widget = widgets.Icon
+    DEFAULT = ''
 
     def __init__(self, *args, **kwargs):
-        # if 'initial' not in kwargs:
-        #     kwargs['initial'] = self.DEFAULT
-        # kwargs.pop('max_length', None)
-        # kwargs.pop('widget', None)
-        # kwargs['widget'] = self.widget
-        super(Classes, self).__init__(*args, **kwargs)
+        if 'initial' not in kwargs:
+            kwargs['initial'] = self.DEFAULT
+        kwargs.pop('coerce', None)
+        kwargs.pop('max_length', None)
+        kwargs.pop('widget', None)
+        kwargs['widget'] = self.widget
+        super(Icon, self).__init__(*args, **kwargs)
