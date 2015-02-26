@@ -3,7 +3,7 @@
 {% block field_sets %}
 
 <div class="well btn-preview js-btn-preview text-center">
-    <a class="btn" role="button">Example Button</a>
+    <a class="btn test test2" role="button">Example Button</a>
 </div>
 
 <style>
@@ -112,5 +112,46 @@
 
     });
 </script>
+
+<script>
+ if (!$) {
+        $ = django.jQuery;
+    }
+    $( document ).ready(function() {
+        // Update class of preview button based on classes
+        var previewButton = $('.js-btn-preview .btn');
+
+        var extraClasses = $( "#id_classes" );
+        var extraClassesArray =  extraClasses.attr('class').split(" ");
+        var extraClassesLength = extraClassesArray.length;
+
+        var currentClasses =  $('.js-btn-preview .btn').attr('class');
+        var currentClassesArray = currentClasses.split(" ");
+        var currentClassesLength = currentClassesArray.length;
+
+        var extraClassesValues = '';
+
+        extraClasses.on('focusout', function(){
+            extraClassesArray = $(this).val().split(" ");
+            $.each(extraClassesArray, function(index, item) {
+                currentClassesArray.push(item);
+            });
+            console.log(currentClassesLength);
+
+            extraClassesArray = currentClassesArray.slice(currentClassesLength, currentClassesArray.length);
+
+            $.each(extraClassesArray, function(index, item) {
+                extraClassesValues += ' ' + item;
+            });
+
+            console.log('Array: ' + extraClassesValues);
+
+            previewButton.addClass(extraClassesValues);
+        });
+
+    });
+
+</script>
+
 
 {% endblock %}

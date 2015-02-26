@@ -134,17 +134,14 @@
             var fontset = $(this).val();
             $('.js-icon-picker button').iconpicker('setIconset', fontset);
             iconSelected = iconPicker.find('i').attr('class');
-            console.log(iconSelected);
         });
 
         iconPicker.on('change', function(e) {
             iconSelected = $(this).find('i').attr('class');
-            console.log(iconSelected);
         });
 
         iconPositionBtns.on('click', function() {
             iconPosition = $(this).val();
-            console.log(iconPosition);
         });
 
         // Init active icon
@@ -154,6 +151,7 @@
 </script>
 
 {# ############# END MOVE TO WIDGETS/icons.html ################# #}
+
 
 
 
