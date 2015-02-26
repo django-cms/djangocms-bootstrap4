@@ -1,0 +1,109 @@
+{# Icon settings #}
+<div class="icon js-icon js-icon-{{ name }} form-inline">
+    <input class="form-control js-icon-enable" name="icons-enabled-{{ name }}" type="checkbox"{% if value %} checked="checked"{% endif %} />
+    <span class="js-icon-widgets hidden">
+        <select class="form-control js-iconset">
+            <option value="glyphicons" data-prefix="glyphicon"{% if iconset == 'glyphicon' %} selected="selected"{% endif %}>Glyphicons</option>
+            <option value="fontawesome" data-prefix="fa"{% if iconset == 'fa' %} selected="selected"{% endif %}>Fontawesome</option>
+        </select>
+        <span class="iconpicker js-icon-picker">
+            <button class="btn btn-default form-control" name="{{ name }}" data-icon="{{ value }}"></button>
+        </span>
+    </span>
+</div>
+
+{# Styling definitions #}
+
+<!-- overriding django cms admin style -->
+<style>
+    {# TODO: Find a way to move this into a scss file #}
+   .icon select { width: auto; }
+   .iconpicker button.btn-default, .iconpicker-popover button.btn-default, .btn-icon-positions button.btn-default {
+       background-image: none !important;
+       box-shadow: none !important;
+       border: 1px solid #ccc !important;
+   }
+   .iconpicker button.btn-default:hover, .iconpicker-popover button.btn-default:hover, .btn-icon-positions button.btn-default:hover {
+       color: #333 !important;
+       background-color: #e6e6e6 !important;
+       border-color: #adadad !important;
+   }
+   .iconpicker-popover table {
+       margin: 0 !important;
+       padding: 0 !important;
+   }
+   .iconpicker-popover table tr td, .iconpicker-popover table tr th {
+       border-bottom: none;
+       padding: 0;
+   }
+   .iconpicker-popover table tfoot tr td {
+       padding-top: 5px;
+       border-top: 0;
+       background: none;
+   }
+   .btn-icon-positions button.btn.active {
+       background: #e6e6e6 !important;
+       box-shadow: inset 0 3px 5px rgba(0,0,0,.125) !important;
+   }
+
+</style>
+
+{# Javascript #}
+<script>
+    if (!$) {
+        $ = django.jQuery;
+    }
+    $( document ).ready(function() {
+        var name = '{{ name }}'
+        var iconPicker = $('.js-icon-' + name + ' .js-icon-picker');
+        var iconSet = $('.js-icon-' + name + ' .js-iconset');
+        var enableIconCheckbox = $('.js-icon-' + name + ' .js-icon-enable');
+        var widgets = $('.js-icon-' + name + ' .js-icon-widgets');
+
+        window['iconPicker_' + name] = iconPicker;
+        window['iconSet_' + name] = iconSet;
+        window['enableIconCheckbox_' + name] = enableIconCheckbox;
+
+        var iconPickerButton = iconPicker.find('button');
+        var initialValue = iconPickerButton.data('icon');
+        var initialIconsetPrefix = initialValue.split('-')[0];
+        var initialIconset = iconSet.find('option[data-prefix=' + initialIconsetPrefix + ']').attr('value');
+
+        iconPickerButton.iconpicker({
+            arrowClass: 'btn-default',
+            icon: initialValue,
+            iconset: initialIconset
+        });
+        iconSet.on('change', function(){
+            var newIconset = $(this).val();
+            iconPickerButton.iconpicker('setIconset', newIconset);
+            window['iconsetSelected_' + name] = newIconset;
+        });
+
+        iconPicker.on('change', function(e) {
+            var iconSelected = iconPickerButton.find('input').attr('value');
+            var iconSelectedCss = $(this).find('i').attr('class');
+            window['iconSelected_' + name] = iconSelected;
+            window['iconSelectedCss_' + name] = iconSelectedCss;
+        });
+
+        enableIconCheckbox.on('change', function(e) {
+            if ($(this).prop('checked')) {
+                widgets.removeClass('hidden');
+                iconPicker.trigger('change');
+            } else {
+                widgets.addClass('hidden');
+                window['iconSelected_' + name] = '';
+                window['iconSelectedCss_' + name] = '';
+                iconPickerButton.find('input').val('');
+                console.log('remove icon');
+            }
+        });
+        enableIconCheckbox.trigger('change');
+
+        // Init active icon
+        window['iconSelected_' + name] = initialValue;
+        window['iconsetSelected_' + name] = initialIconset;
+        window['iconsetSelectedCss_' + name] = iconPicker.find('i').attr('class');
+    });
+</script>

@@ -7,7 +7,7 @@
 </div>
 
 <style>
-   /*.btn-preview.well { margin-left: 96px; overflow: scroll; }*/
+   /*.btn-preview.well { overflow: scroll; }*/
 </style>
 
 {{ block.super }}
@@ -78,37 +78,32 @@
         });
 
         // Set Icon of button
+        $.each( ['icon_left', 'icon_right'], function( index, name) {
+            var iconPicker = window['iconPicker_' + name];
+            var enableIconCheckbox = window['enableIconCheckbox_' + name];
 
-        iconPositionBtns.on('click', function() {
-            iconPositionBtns.removeClass('active');
-            $(this).addClass('active');
+            // update code
+            var updateIconPreview = function() {
+                var iconSelected = window['iconSelected_' + name];
+                var iconSelectedCss = window['iconSelectedCss_' + name];
+                previewButton.find('.js-icon-position-' + name).remove();
+                var iconHtml = '<i class="js-icon-position-' + name + ' ' + iconSelectedCss + '"></i> '
+                if (name === 'icon_left') {
+                    previewButton.prepend(iconHtml);
+                };
+                if (name === 'icon_right') {
+                    previewButton.append(iconHtml);
+                };
+            };
 
-            $('.js-icon-position').remove()
+            // on change
+            iconPicker.on('change', updateIconPreview);
+            enableIconCheckbox.on('change', updateIconPreview);
 
-            if (iconPosition == 'right') {
-                previewButton.append(' <i class="js-icon-position ' + iconSelected + '"></i>');
-            }
-            if (iconPosition == 'left') {
-                previewButton.prepend('<i class="js-icon-position ' + iconSelected + '"></i> ');
-            }
-
+            // initial
+            enableIconCheckbox.trigger('change');
         });
 
-        iconPicker.on('change', function(e) {
-            $('.js-icon-position').remove();
-
-            if (iconPosition == 'right') {
-                previewButton.append(' <i class="js-icon-position ' + iconSelected + '"></i>');
-            }
-            if (iconPosition == 'left') {
-                previewButton.prepend('<i class="js-icon-position ' + iconSelected + '"></i> ');
-            }
-        });
-
-        iconSet.on('change', function(e) {
-            $('.js-icon-position').remove();
-            iconPositionBtns.removeClass('active');
-        });
 
     });
 </script>

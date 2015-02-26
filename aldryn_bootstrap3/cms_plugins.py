@@ -29,6 +29,23 @@ class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
     render_template = 'aldryn_bootstrap3/plugins/button.html'
     allow_children = True
 
+    fieldsets = (
+        (None, {
+            'fields': (
+                ('label', 'url',),
+                'context',
+                'size',
+                'icon_left',
+                'icon_right',
+            )
+        }),
+        ('Advanced', {
+            'fields': (
+                'classes',
+            )
+        }),
+    )
+
     def render(self, context, instance, placeholder):
         context.update({'instance': instance})
         return context

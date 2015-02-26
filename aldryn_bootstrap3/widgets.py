@@ -16,7 +16,7 @@ class BootstrapMediaMixin(object):
         css = {
             'all': (
                 '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css',
-                    'https://static.dev.aldryn.net/cdn/bootstrap-iconpicker.min.css',
+                'https://static.dev.aldryn.net/cdn/bootstrap-iconpicker.min.css',
                 '//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css',
             )
         }
@@ -69,3 +69,22 @@ class SizeRenderer(django.forms.widgets.RadioFieldRenderer):
 
 class Size(django.forms.widgets.RadioSelect):
     renderer = SizeRenderer
+
+
+class Icon(django.forms.widgets.TextInput):
+    def render(self, name, value, attrs=None, **kwargs):
+        input_html = super(Icon, self).render(name, value, attrs=attrs, **kwargs)
+        if value is None:
+            value = ''
+        iconset = value.split('-')[0] if value and '-' in value else ''
+        from django.template.loader import render_to_string
+        rendered = render_to_string(
+            'aldryn_bootstrap3/widgets/icon.html',
+            {
+                'input_html': input_html,
+                'value': value,
+                'name': name,
+                'iconset': iconset,
+            },
+        )
+        return rendered
