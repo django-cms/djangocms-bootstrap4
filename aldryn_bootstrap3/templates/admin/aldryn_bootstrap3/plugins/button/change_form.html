@@ -28,7 +28,6 @@
         var currentContextTriggerValue;
         var currentSizesTriggerValue;
 
-
         contextTriggers.each(function( index, item ) {
             if ($(item).find('input').attr('checked') == 'checked') {
                 var context = $(item).find('input[checked="checked"]').val();
@@ -53,9 +52,6 @@
             previewButton.addClass('btn-'+ context);
 
             currentContextTriggerValue = context;
-
-            // Get current classes
-            setCurrentClasses();
         });
 
 
@@ -116,7 +112,6 @@
         });
 
     });
-
 </script>
 
 
