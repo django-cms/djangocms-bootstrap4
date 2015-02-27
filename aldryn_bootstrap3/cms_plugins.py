@@ -69,7 +69,6 @@ class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
 
     def render(self, context, instance, placeholder):
         context.update({'instance': instance})
-        print instance.get_url()
         return context
 
 plugin_pool.register_plugin(Bootstrap3ButtonCMSPlugin)
@@ -141,6 +140,26 @@ class Bootstrap3ColumnCMSPlugin(CMSPluginBase):
     change_form_template = 'admin/aldryn_bootstrap3/plugins/column/change_form.html'
     render_template = 'aldryn_bootstrap3/plugins/column.html'
     allow_children = True
+
+    fieldsets = [
+        (None, {
+            'fields': tuple([
+                (
+                    '{}_col'.format(size),
+                    '{}_offset'.format(size),
+                    '{}_push'.format(size),
+                    '{}_pull'.format(size),
+                ) for size in constants.DEVICE_SIZES
+            ])
+        }),
+        ("Advanced", {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+                'tag',
+            )
+        }),
+    ]
 
 
 plugin_pool.register_plugin(Bootstrap3RowCMSPlugin)

@@ -55,7 +55,6 @@ class LinkMixin(models.Model):
         abstract = True
 
     def get_url(self):
-        print "I AM THE LINK"
         if self.phone:
             link = u"tel://{}".format(self.phone)
         elif self.mailto:
@@ -68,7 +67,6 @@ class LinkMixin(models.Model):
             link = ""
         if self.anchor:
             link += '#{}'.format(self.anchor)
-        print "LINK: ", link
         return link
 
 
@@ -114,31 +112,39 @@ class Boostrap3BlockquotePlugin(CMSPlugin):
 ########
 
 ColSizeField = partial(
-    models.IntegerField,
+    model_fields.IntegerField,
     null=True,
     blank=True,
     default=1,
+    min_value=1,
+    max_value=constants.GRID_SIZE
 )
 
 OffsetSizeField = partial(
-    models.IntegerField,
+    model_fields.IntegerField,
     null=True,
     blank=True,
     default=0,
+    min_value=1,
+    max_value=constants.GRID_SIZE
 )
 
 PushSizeField = partial(
-    models.IntegerField,
+    model_fields.IntegerField,
     null=True,
     blank=True,
     default=0,
+    min_value=1,
+    max_value=constants.GRID_SIZE
 )
 
 PullSizeField = partial(
-    models.IntegerField,
+    model_fields.IntegerField,
     null=True,
     blank=True,
     default=0,
+    min_value=1,
+    max_value=constants.GRID_SIZE
 )
 
 
@@ -170,53 +176,26 @@ class Bootstrap3ColumnPlugin(CMSPlugin):
     DEVICE_SIZES = constants.DEVICE_SIZES
 
     classes = model_fields.Classes()
+    tag = models.SlugField(default='div')
 
     def __str__(self):
-        return ' '.join([self.get_column_classes(), self.classes])
+        txt = ' '.join([self.get_column_classes(), self.classes])
+        if self.tag != 'div':
+            txt = '{} ({})'.format(txt, self.tag)
+        return txt
 
-    def get_col_class(self, device):
-        col = getattr(self, '{}_col'.format(device))
-        if col:
-            return 'col-{}-{}'.format(device, col)
-        return ''
-
-    def get_offset_class(self, device):
-        offset = getattr(self, '{}_offset'.format(device))
-        if offset:
-            return 'offset-{}-{}'.format(device, offset)
-        return ''
-
-    def get_push_class(self, device):
-        push = getattr(self, '{}_offset'.format(device))
-        if push:
-            return 'push-{}-{}'.format(device, push)
-        return ''
-
-    def get_pull_class(self, device):
-        pull = getattr(self, '{}_offset'.format(device))
-        if pull:
-            return 'pull-{}-{}'.format(device, pull)
+    def get_class(self, device, element):
+        size = getattr(self, '{}_{}'.format(device, element))
+        if size:
+            return '{}-{}-{}'.format(element, device, size)
         return ''
 
     def get_column_classes(self):
-        size_classes = [
-            self.get_col_class(device)
-            for device in self.DEVICE_SIZES
-        ]
-        offset_classes = [
-            self.get_offset_class(device)
-            for device in self.DEVICE_SIZES
-        ]
-        push_classes = [
-            self.get_push_class(device)
-            for device in self.DEVICE_SIZES
-        ]
-        pull_classes = [
-            self.get_offset_class(device)
-            for device in self.DEVICE_SIZES
-        ]
-        classes = size_classes + offset_classes + push_classes + pull_classes
-        return ' '.join(html_class for html_class in classes if html_class)
+        classes = []
+        for device in self.DEVICE_SIZES:
+            for element in ('col', 'offset', 'push', 'pull'):
+                classes.append(self.get_class(device, element))
+        return ' '.join(cls for cls in classes if cls)
 
 for size, name in constants.DEVICE_CHOICES:
     Bootstrap3ColumnPlugin.add_to_class(

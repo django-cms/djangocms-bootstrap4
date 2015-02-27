@@ -73,3 +73,14 @@ class Icon(django.forms.fields.CharField):
         kwargs.pop('widget', None)
         kwargs['widget'] = self.widget
         super(Icon, self).__init__(*args, **kwargs)
+
+
+class Integer(django.forms.fields.IntegerField):
+    widget = django.forms.NumberInput
+
+    def __init__(self, *args, **kwargs):
+        kwargs.pop('coerce', None)
+        kwargs.pop('max_length', None)
+        kwargs.pop('widget', None)
+        kwargs['widget'] = self.widget
+        super(Integer, self).__init__(*args, **kwargs)

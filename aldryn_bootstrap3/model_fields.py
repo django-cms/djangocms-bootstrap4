@@ -3,6 +3,7 @@ from __future__ import unicode_literals, absolute_import
 from six import with_metaclass
 import django.core.exceptions
 import django.db.models
+import django.forms
 from django.utils.encoding import smart_text
 from . import fields
 
@@ -28,6 +29,10 @@ class SouthCharFieldMixin(SouthMixinBase):
 
 class SouthTextFieldMixin(SouthMixinBase):
     south_field_class = "django.db.models.fields.TextField"
+
+
+class SouthIntegerFieldMixin(SouthMixinBase):
+    south_field_class = "django.db.models.fields.IntegerField"
 
 
 class Classes(django.db.models.TextField, SouthTextFieldMixin):
@@ -157,6 +162,22 @@ class Icon(django.db.models.CharField, SouthCharFieldMixin):
         defaults.update(kwargs)
         return super(Icon, self).formfield(**defaults)
 
+
+class IntegerField(django.db.models.IntegerField, SouthIntegerFieldMixin):
+    default_field_class = fields.Integer
+
+    def __init__(self, verbose_name=None, name=None, min_value=None, max_value=None, **kwargs):
+        self.min_value, self.max_value = min_value, max_value
+        django.db.models.IntegerField.__init__(self, verbose_name, name, **kwargs)
+
+    def formfield(self, **kwargs):
+        defaults = {
+            'form_class': self.default_field_class,
+            'min_value': self.min_value,
+            'max_value': self.max_value,
+        }
+        defaults.update(kwargs)
+        return super(IntegerField, self).formfield(**defaults)
 
 
 #TODO:
