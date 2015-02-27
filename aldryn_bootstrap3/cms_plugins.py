@@ -138,7 +138,7 @@ class Bootstrap3RowCMSPlugin(widgets.BootstrapMediaMixin, CMSPluginBase):
         return response
 
 
-class Bootstrap3ColumnCMSPlugin(CMSPluginBase):
+class Bootstrap3ColumnCMSPlugin(CMSPluginBase, widgets.BootstrapMediaMixin):
     model = models.Bootstrap3ColumnPlugin
     name = _('Column')
     module = _('Bootstrap3')
