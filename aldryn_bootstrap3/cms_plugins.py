@@ -9,6 +9,21 @@ from . import models, forms, constants
 from cms.models import CMSPlugin
 
 
+link_fieldset = (
+    ('Link', {
+        'fields': (
+            'page_link', 'url', 'mailto', 'phone',
+        ),
+        'description': 'Choose one of the link types below.',
+    }),
+    ('Link options', {
+        'fields': (
+            ('target', 'anchor',),
+        ),
+    }),
+)
+
+
 class Bootstrap3BlockquoteCMSPlugin(CMSPluginBase):
     model = models.Boostrap3BlockquotePlugin
     name = _("Blockquote")
@@ -27,6 +42,7 @@ class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
     model = models.Boostrap3ButtonPlugin
     name = _("Link/Button")
     module = _('Bootstrap3')
+    form = forms.LinkForm
     change_form_template = 'admin/aldryn_bootstrap3/plugins/button/change_form.html'
     render_template = 'aldryn_bootstrap3/plugins/button.html'
     allow_children = True
@@ -34,13 +50,14 @@ class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
     fieldsets = (
         (None, {
             'fields': (
-                ('label', 'url',),
+                'label',
                 'context',
                 'size',
                 'icon_left',
                 'icon_right',
             )
         }),
+    ) + link_fieldset + (
         ('Advanced', {
             'classes': ('collapse',),
             'fields': (
@@ -51,6 +68,7 @@ class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
 
     def render(self, context, instance, placeholder):
         context.update({'instance': instance})
+        print instance.get_url()
         return context
 
 plugin_pool.register_plugin(Bootstrap3ButtonCMSPlugin)

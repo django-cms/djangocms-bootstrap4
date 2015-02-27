@@ -8,9 +8,68 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext
 
 from cms.models.pluginmodel import CMSPlugin
+import cms.models
 
 from . import model_fields, constants
 from .conf import settings
+
+
+##########
+# Mixins #  do NOT use outside of this package!
+##########  Because changes here might require Database migrations!
+
+
+class LinkMixin(models.Model):
+    url = models.URLField(_("link"), blank=True, default='')
+    page_link = models.ForeignKey(
+        cms.models.Page,
+        verbose_name=_("page"),
+        blank=True,
+        null=True,
+        # help_text=_("A link to a page has priority over a text link."),
+        on_delete=models.SET_NULL
+    )
+    anchor = models.CharField(
+        _("anchor"), max_length=128, blank=True,
+        help_text=_("Adds this value as an anchor (#my-anchor) to the link."),
+    )
+    mailto = models.EmailField(
+        _("mailto"), blank=True, null=True,
+        # help_text=_("An email address has priority over a text link."),
+    )
+    phone = models.CharField(
+        _('Phone'), blank=True, null=True, max_length=40,
+        # help_text=_('A phone number has priority over a mailto link.'),
+    )
+    target = models.CharField(
+        _("target"), blank=True, max_length=100,
+        choices=((
+            ("", _("same window")),
+            ("_blank", _("new window")),
+            ("_parent", _("parent window")),
+            ("_top", _("topmost frame")),
+        ))
+    )
+
+    class Meta:
+        abstract = True
+
+    def get_url(self):
+        print "I AM THE LINK"
+        if self.phone:
+            link = u"tel://{}".format(self.phone)
+        elif self.mailto:
+            link = u"mailto:{}".format(self.mailto)
+        elif self.url:
+            link = self.url
+        elif self.page_link_id:
+            link = self.page_link.get_absolute_url()
+        else:
+            link = ""
+        if self.anchor:
+            link += '#{}'.format(self.anchor)
+        print "LINK: ", link
+        return link
 
 
 #################
@@ -18,7 +77,7 @@ from .conf import settings
 #################
 
 @python_2_unicode_compatible
-class Boostrap3ButtonPlugin(CMSPlugin):
+class Boostrap3ButtonPlugin(CMSPlugin, LinkMixin):
     cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
 
     context = model_fields.Context(
@@ -33,7 +92,6 @@ class Boostrap3ButtonPlugin(CMSPlugin):
     classes = model_fields.Classes()
 
     label = models.CharField(_("label"), max_length=256, blank=True, default='')
-    url = models.URLField(_("link"), blank=True, default='')
 
     def __str__(self):
         return self.label
@@ -49,16 +107,6 @@ class Boostrap3BlockquotePlugin(CMSPlugin):
     def __str__(self):
         return 'Blockquote: '
 
-
-@python_2_unicode_compatible
-class Boostrap3BlockquotePlugin(CMSPlugin):
-    cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
-
-    reverse = models.BooleanField(default=False, blank=True)
-    classes = model_fields.Classes()
-
-    def __str__(self):
-        return 'Blockquote: '
 
 
 ########

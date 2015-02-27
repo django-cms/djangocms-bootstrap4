@@ -3,7 +3,7 @@
 {% if instance.child_plugin_instances %}
     <span class="plugin_link">
 {% endif %}
-    <a href="{{ instance.url }}"
+    <a href="{{ instance.get_url }}"
        class="btn btn-{{ instance.context }}{% if instance.size %} btn-{{ instance.size }}{% endif %} {{ instance.pull }} {{ instance.clearfix }}"
        role="button"
     >
