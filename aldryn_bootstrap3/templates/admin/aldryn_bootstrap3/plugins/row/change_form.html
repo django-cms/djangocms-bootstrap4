@@ -4,17 +4,16 @@
 
 <div class="bootstrap3-column">
     {{ block.super }}
-
-    <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tooltip on right">Tooltip on right</button>
 </div>
 
 {# Styling #}
 <style>
-    .collapse { visibility: visible !important; display: block; };
-    .bootstrap3-column input[type="number"] { min-width: 40px; width: 0; }
+    .collapse { visibility: visible !important; display: block; }
+    .bootstrap3-column input[type="number"] { min-width: 50px; width: 0; margin-right: 10px; }
+    .bootstrap3-column p.help { display: none; }
+    .bootstrap3-column .aligned label { width: 110px; line-height: 35px; }
+    .bootstrap3-column .form-row-icon { float: left; font-size: 35px; margin-right: 10px; line-height: 40px; }
 </style>
-
-{{ block.super }}
 
 {# Javascript for preview (must be after the rest of the fields, because we rely on global variables set there. #}
 <script>
@@ -22,6 +21,42 @@
         $ = django.jQuery;
     }
     $( document ).ready(function() {
+        var formRows = $( '.bootstrap3-column .form-row' );
+        var fieldBoxes = $( '.bootstrap3-column .field-box' );
+
+        $.each(fieldBoxes, function(index, item) {
+            // Set tooltip from help texts
+            var tooltipText = $(item).find('p.help').text();
+            var label = $(item).find('label').text();
+
+            $(item).append('<span class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="' + tooltipText + '"></span>');
+            console.log(label.length);
+            label.substr(0, label.length-1)
+        });
+
+        $.each(formRows, function(index, item) {
+            // Set fieldbox icons
+            if ($(item).hasClass('field-create_xs_size')) {
+                $(this).prepend('<span class="form-row-icon fa fa-fw fa-mobile"></span>')
+            }
+
+            if ($(item).hasClass('field-create_sm_size')) {
+                $(this).prepend('<span class="form-row-icon fa fa-fw fa-tablet"></span>')
+            }
+
+            if ($(item).hasClass('field-create_md_size')) {
+                $(this).prepend('<span class="form-row-icon fa fa-fw fa-laptop"></span>')
+            }
+
+            if ($(item).hasClass('field-create_lg_size')) {
+                $(this).prepend('<span class="form-row-icon fa fa-fw fa-desktop"></span>')
+            }
+
+            if ($(item).hasClass('field-create')) {
+                $(this).prepend('<span class="text-primary form-row-icon fa fa-fw fa-columns"></span>')
+            }
+        });
+
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
         });
