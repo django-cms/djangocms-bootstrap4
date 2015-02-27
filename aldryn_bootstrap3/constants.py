@@ -38,6 +38,18 @@ BREAKPOINTS = {
     'xs': (768, 'mobile-phone', _("mobile phones"), 750),
 }
 
+# DEVICES = {
+#     'xs': {
+#         'name': _("Tiny"),
+#         'width': 768,
+#         'width_gutter': 750,
+#         'device_type': 'mobile-phone',
+#     }
+# }
+# for identifier, device in DEVICES.items():
+#     DEVICES[identifier]['identifier'] = identifier
+#     DEVICES[identifier]['long_description'] = "{name} (<{width}px)".format(**DEVICES[identifier])
+
 
 # DEVICES = {
 #     'xs': {

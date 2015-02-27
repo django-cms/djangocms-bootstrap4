@@ -115,6 +115,26 @@ class Boostrap3BlockquotePlugin(CMSPlugin):
         return 'Blockquote: '
 
 
+# @python_2_unicode_compatible
+# class Boostrap3ImagePlugin(CMSPlugin, LinkMixin):
+#     cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
+#
+#     context = model_fields.Context(
+#         choices=constants.BUTTON_CONTEXT_CHOICES,
+#         default=constants.BUTTON_CONTEXT_DEFAULT,
+#     )
+#     size = model_fields.Size()
+#
+#     icon_left = model_fields.Icon()
+#     icon_right = model_fields.Icon()
+#
+#     classes = model_fields.Classes()
+#
+#     label = models.CharField(_("label"), max_length=256, blank=True, default='')
+#
+#     def __str__(self):
+#         return self.label
+
 
 ########
 # Grid #
