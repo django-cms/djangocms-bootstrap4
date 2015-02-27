@@ -27,11 +27,14 @@
         $.each(fieldBoxes, function(index, item) {
             // Set tooltip from help texts
             var tooltipText = $(item).find('p.help').text();
-            var label = $(item).find('label').text();
 
             $(item).append('<span class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="' + tooltipText + '"></span>');
-            console.log(label.length);
-            label.substr(0, label.length-1)
+
+            // Remove colon from label
+            var label = $(item).find('label');
+            var labelText = label.text();
+
+            label.html(labelText.substr(0, labelText.length-1));
         });
 
         $.each(formRows, function(index, item) {
