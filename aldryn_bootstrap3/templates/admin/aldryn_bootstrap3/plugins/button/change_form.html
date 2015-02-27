@@ -74,6 +74,7 @@
             } else {
                 $('.js-btn-preview .btn').text(previewButtonText);
             }
+            refreshIcons();
         });
 
         // Set Icon of button
@@ -102,6 +103,13 @@
             // initial
             enableIconCheckbox.trigger('change');
         });
+
+        var refreshIcons = function() {
+            $.each( ['icon_left', 'icon_right'], function( index, name) {
+                var enableIconCheckbox = window['enableIconCheckbox_' + name];
+                enableIconCheckbox.trigger('change');
+            });
+        };
 
         // Update class of preview button based on classes
         var extraClasses = $( "#id_classes");
