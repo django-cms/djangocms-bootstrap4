@@ -27,7 +27,7 @@ class RowPluginBaseForm(django.forms.models.ModelForm):
 
 extra_fields = {}
 for size, name in constants.DEVICE_CHOICES:
-    extra_fields["create_{}_size".format(size)] = django.forms.IntegerField(
+    extra_fields["create_{}_col".format(size)] = django.forms.IntegerField(
         label=_('col-{}-'.format(size)),
         help_text=('Width of created columns. You can still change the width of the column afterwards.'),
         required=False,

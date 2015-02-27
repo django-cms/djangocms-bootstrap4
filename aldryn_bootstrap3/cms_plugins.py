@@ -99,7 +99,7 @@ class Bootstrap3RowCMSPlugin(widgets.BootstrapMediaMixin, CMSPluginBase):
                 'create',
             ) + tuple([
                 (
-                    'create_{}_size'.format(size),
+                    'create_{}_col'.format(size),
                     'create_{}_offset'.format(size),
                     'create_{}_push'.format(size),
                     'create_{}_pull'.format(size),
@@ -124,8 +124,9 @@ class Bootstrap3RowCMSPlugin(widgets.BootstrapMediaMixin, CMSPluginBase):
         for x in xrange(int(data['create']) if data['create'] is not None else 0):
             extra = {}
             for size in constants.DEVICE_SIZES:
-                extra['{}_size'.format(size)] = data.get('create_{}_size'.format(size)) or None
-                extra['{}_offset'.format(size)] = data.get('create_{}_offset'.format(size)) or None
+                for element in ['col', 'offset', 'push', 'pull']:
+                    extra['{}_{}'.format(size, element)] = data.get(
+                        'create_{}_{}'.format(size, element)) or None
             col = models.Bootstrap3ColumnPlugin(
                 parent=obj,
                 placeholder=obj.placeholder,
