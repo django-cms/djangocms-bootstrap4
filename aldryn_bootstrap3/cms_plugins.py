@@ -141,6 +141,26 @@ class Bootstrap3ColumnCMSPlugin(CMSPluginBase):
     render_template = 'aldryn_bootstrap3/plugins/column.html'
     allow_children = True
 
+    fieldsets = [
+        (None, {
+            'fields': tuple([
+                (
+                    '{}_col'.format(size),
+                    '{}_offset'.format(size),
+                    '{}_push'.format(size),
+                    '{}_pull'.format(size),
+                ) for size in constants.DEVICE_SIZES
+            ])
+        }),
+        ("Advanced", {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+                'tag',
+            )
+        }),
+    ]
+
 
 plugin_pool.register_plugin(Bootstrap3RowCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3ColumnCMSPlugin)
