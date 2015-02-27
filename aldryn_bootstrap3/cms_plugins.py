@@ -28,6 +28,7 @@ class Bootstrap3BlockquoteCMSPlugin(CMSPluginBase):
     model = models.Boostrap3BlockquotePlugin
     name = _("Blockquote")
     module = _('Bootstrap3')
+    change_form_template = 'admin/aldryn_bootstrap3/plugins/blockquote/change_form.html'
     render_template = 'aldryn_bootstrap3/plugins/blockquote.html'
     allow_children = True
 
@@ -83,6 +84,7 @@ class Bootstrap3RowCMSPlugin(CMSPluginBase):
     model = models.Bootstrap3RowPlugin
     name = _('Row')
     module = _('Bootstrap3')
+    change_form_template = 'admin/aldryn_bootstrap3/plugins/row/change_form.html'
     render_template = 'aldryn_bootstrap3/plugins/row.html'
     allow_children = True
     # child_classes = ['Bootstrap3Column']
@@ -134,6 +136,7 @@ class Bootstrap3ColumnCMSPlugin(CMSPluginBase):
     model = models.Bootstrap3ColumnPlugin
     name = _('Column')
     module = _('Bootstrap3')
+    change_form_template = 'admin/aldryn_bootstrap3/plugins/column/change_form.html'
     render_template = 'aldryn_bootstrap3/plugins/column.html'
     allow_children = True
 
