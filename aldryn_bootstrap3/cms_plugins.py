@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 
-from . import models, forms, constants
+from . import models, forms, constants, widgets
 from cms.models import CMSPlugin
 
 
@@ -80,7 +80,7 @@ plugin_pool.register_plugin(Bootstrap3ButtonCMSPlugin)
 ########
 
 
-class Bootstrap3RowCMSPlugin(CMSPluginBase):
+class Bootstrap3RowCMSPlugin(widgets.BootstrapMediaMixin, CMSPluginBase):
     model = models.Bootstrap3RowPlugin
     name = _('Row')
     module = _('Bootstrap3')

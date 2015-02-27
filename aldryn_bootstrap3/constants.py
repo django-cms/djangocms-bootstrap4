@@ -40,11 +40,17 @@ BREAKPOINTS = {
 
 
 # WARNING: changing DEVICE_CHOICES will cause model creation to change and requires database migrations!
+# DEVICE_CHOICES = (
+#     ('xs', _("Tiny (<{sm[0]}px)".format(**BREAKPOINTS))),
+#     ('sm', _("Small (≥{sm[0]}px and <{md[0]}px)".format(**BREAKPOINTS))),
+#     ('md', _("Medium (≥{md[0]}px and <{lg[0]}px)".format(**BREAKPOINTS))),
+#     ('lg', _("Large (≥{lg[0]}px)".format(**BREAKPOINTS))),
+# )
 DEVICE_CHOICES = (
-    ('xs', _("Tiny (<{sm[0]}px)".format(**BREAKPOINTS))),
-    ('sm', _("Small (≥{sm[0]}px and <{md[0]}px)".format(**BREAKPOINTS))),
-    ('md', _("Medium (≥{md[0]}px and <{lg[0]}px)".format(**BREAKPOINTS))),
-    ('lg', _("Large (≥{lg[0]}px)".format(**BREAKPOINTS))),
+    ('xs', _("Tiny")),
+    ('sm', _("Small")),
+    ('md', _("Medium")),
+    ('lg', _("Large")),
 )
 DEVICE_SIZES = tuple([size for size, name in DEVICE_CHOICES])
 
