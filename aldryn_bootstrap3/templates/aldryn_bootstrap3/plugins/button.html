@@ -4,17 +4,17 @@
     <span class="plugin_link">
 {% endif %}
     <a href="{{ instance.url }}"
-       class="btn {{ instance.button_type }} {{ instance.button_size }} {{ instance.pull }} {{ instance.clearfix }}
-        {% for breakpoint in instance.breakpoints %} visible-{{ breakpoint }}-inline{% endfor %}
-        "
+       class="btn btn-{{ instance.context }}{% if instance.size %} btn-{{ instance.size }}{% endif %} {{ instance.pull }} {{ instance.clearfix }}"
        role="button"
     >
+        {% if instance.icon_left %}{% with icon_class=instance.icon_left %}{% include 'aldryn_bootstrap3/plugins/includes/icon.html' %}{% endwith %}{% endif %}
+        {{ instance.label }}
         {% for plugin in instance.child_plugin_instances %}
             {% render_plugin plugin %}
         {% empty %}
 
         {% endfor %}
-        {{ instance.label }}
+        {% if instance.icon_right %}{% with icon_class=instance.icon_right %}{% include 'aldryn_bootstrap3/plugins/includes/icon.html' %}{% endwith %}{% endif %}
     </a>
 {% if instance.child_plugin_instances %}
     </span>
