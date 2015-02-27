@@ -96,7 +96,9 @@ class Bootstrap3RowCMSPlugin(widgets.BootstrapMediaMixin, CMSPluginBase):
             ) + tuple([
                 (
                     'create_{}_size'.format(size),
-                    'create_{}_offset'.format(size)
+                    'create_{}_offset'.format(size),
+                    'create_{}_push'.format(size),
+                    'create_{}_pull'.format(size),
                 ) for size in constants.DEVICE_SIZES
             ])
         }),
