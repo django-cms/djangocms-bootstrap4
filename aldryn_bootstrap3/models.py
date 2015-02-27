@@ -113,7 +113,7 @@ class Boostrap3BlockquotePlugin(CMSPlugin):
 # Grid #
 ########
 
-ColumnSizeField = partial(
+ColSizeField = partial(
     models.IntegerField,
     null=True,
     blank=True,
@@ -121,6 +121,20 @@ ColumnSizeField = partial(
 )
 
 OffsetSizeField = partial(
+    models.IntegerField,
+    null=True,
+    blank=True,
+    default=0,
+)
+
+PushSizeField = partial(
+    models.IntegerField,
+    null=True,
+    blank=True,
+    default=0,
+)
+
+PullSizeField = partial(
     models.IntegerField,
     null=True,
     blank=True,
@@ -160,39 +174,65 @@ class Bootstrap3ColumnPlugin(CMSPlugin):
     def __str__(self):
         return ' '.join([self.get_column_classes(), self.classes])
 
-    def get_column_size_class(self, size):
-        # get column_size (a number) configured for this device_size
-        column_size = getattr(self, '{}_size'.format(size))
-        if column_size:
-            return 'col-{}-{}'.format(size, column_size)
+    def get_col_class(self, device):
+        col = getattr(self, '{}_col'.format(device))
+        if col:
+            return 'col-{}-{}'.format(device, col)
         return ''
 
-    def get_column_offset_class(self, size):
-        # get column_size (a number) configured for this device_size
-        column_size = getattr(self, '{}_offset'.format(size))
-        if column_size:
-            return 'col-{}-{}-offset'.format(size, column_size)
+    def get_offset_class(self, device):
+        offset = getattr(self, '{}_offset'.format(device))
+        if offset:
+            return 'offset-{}-{}'.format(device, offset)
+        return ''
+
+    def get_push_class(self, device):
+        push = getattr(self, '{}_offset'.format(device))
+        if push:
+            return 'push-{}-{}'.format(device, push)
+        return ''
+
+    def get_pull_class(self, device):
+        pull = getattr(self, '{}_offset'.format(device))
+        if pull:
+            return 'pull-{}-{}'.format(device, pull)
         return ''
 
     def get_column_classes(self):
         size_classes = [
-            self.get_column_size_class(size)
-            for size in self.DEVICE_SIZES
+            self.get_col_class(device)
+            for device in self.DEVICE_SIZES
         ]
         offset_classes = [
-            self.get_column_offset_class(size)
-            for size in self.DEVICE_SIZES
+            self.get_offset_class(device)
+            for device in self.DEVICE_SIZES
         ]
-        classes = size_classes + offset_classes
+        push_classes = [
+            self.get_push_class(device)
+            for device in self.DEVICE_SIZES
+        ]
+        pull_classes = [
+            self.get_offset_class(device)
+            for device in self.DEVICE_SIZES
+        ]
+        classes = size_classes + offset_classes + push_classes + pull_classes
         return ' '.join(html_class for html_class in classes if html_class)
 
 for size, name in constants.DEVICE_CHOICES:
     Bootstrap3ColumnPlugin.add_to_class(
-        '{}_size'.format(size),
-        ColumnSizeField(verbose_name=_('{} size'.format(name))),
+        '{}_col'.format(size),
+        ColSizeField(verbose_name=_('col-{}-'.format(size))),
     )
     Bootstrap3ColumnPlugin.add_to_class(
         '{}_offset'.format(size),
-        OffsetSizeField(verbose_name=_('{} offset'.format(name))),
+        OffsetSizeField(verbose_name=_('offset-{}-'.format(size))),
+    )
+    Bootstrap3ColumnPlugin.add_to_class(
+        '{}_push'.format(size),
+        PushSizeField(verbose_name=_('push-{}-'.format(size))),
+    )
+    Bootstrap3ColumnPlugin.add_to_class(
+        '{}_pull'.format(size),
+        PullSizeField(verbose_name=_('pull-{}-'.format(size))),
     )
 
