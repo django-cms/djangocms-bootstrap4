@@ -2,6 +2,30 @@
 
 {% block field_sets %}
 
+<div class="bootstrap3-column">
+    {{ block.super }}
+
+    <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tooltip on right">Tooltip on right</button>
+</div>
+
+{# Styling #}
+<style>
+    .bootstrap3-column input[type="number"] { min-width: 40px; width: 0; }
+</style>
+
 {{ block.super }}
+
+{# Javascript for preview (must be after the rest of the fields, because we rely on global variables set there. #}
+<script>
+    if (!$) {
+        $ = django.jQuery;
+    }
+    $( document ).ready(function() {
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
+
+    });
+</script>
 
 {% endblock %}
