@@ -1,14 +1,19 @@
 {% extends "admin/cms/page/plugin/change_form.html" %}
 
 {% block field_sets %}
-
-<div class="well btn-preview js-btn-preview text-center clearfix">
-    <a class="btn" role="button">Example Button</a>
+<div class="well-wrapper">
+    <div class="well btn-preview js-btn-preview text-center clearfix">
+        <p class="text-center text-muted"><span class="fa fa-fw fa-eye"></span> Preview</p>
+        <a class="btn" role="button">Example Button</a>
+    </div>
 </div>
 
 {# Styling #}
 <style>
-    .collapse { visibility: visible !important; display: block; };
+  .collapse { visibility: visible !important; display: block; }
+  {#  TODO make width dynamic #}
+  .well { position: fixed; text-align: center; z-index: 1000; width:inherit; border-radius: 0; top: 0; left: 0; }
+  .well-wrapper { height: 90px; float: left; position: relative; margin: 0%; width: 100%; }
 </style>
 
 {{ block.super }}
@@ -54,7 +59,6 @@
 
             currentContextTriggerValue = context;
         });
-
 
         // Set sizes of elements for preview
         sizesTriggers.on('click', function(e) {
@@ -119,7 +123,6 @@
         extraClasses.on('input', function(){
             previewButton.attr('class', 'btn btn-' + currentContextTriggerValue + ' btn-' + currentSizesTriggerValue + ' ' + $(this).val());
         });
-
     });
 </script>
 

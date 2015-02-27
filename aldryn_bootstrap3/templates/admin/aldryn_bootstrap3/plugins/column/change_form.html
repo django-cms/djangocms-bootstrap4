@@ -27,9 +27,9 @@
 
         $.each(fieldBoxes, function(index, item) {
             // Set tooltip from help texts
-            var tooltipText = $(item).find('p.help').text();
+            //var tooltipText = $(item).find('p.help').text();
 
-            $(item).append('<span class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="' + tooltipText + '"></span>');
+            //$(item).append('<span class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="' + tooltipText + '"></span>');
 
             // Remove colon from label
             var label = $(item).find('label');
@@ -40,19 +40,19 @@
 
         $.each(formRows, function(index, item) {
             // Set fieldbox icons
-            if ($(item).hasClass('field-create_xs_size')) {
+            if ($(item).hasClass('field-xs_col')) {
                 $(this).prepend('<span class="form-row-icon fa fa-fw fa-mobile"></span>')
             }
 
-            if ($(item).hasClass('field-create_sm_size')) {
+            if ($(item).hasClass('field-sm_col')) {
                 $(this).prepend('<span class="form-row-icon fa fa-fw fa-tablet"></span>')
             }
 
-            if ($(item).hasClass('field-create_md_size')) {
+            if ($(item).hasClass('field-md_col')) {
                 $(this).prepend('<span class="form-row-icon fa fa-fw fa-laptop"></span>')
             }
 
-            if ($(item).hasClass('field-create_lg_size')) {
+            if ($(item).hasClass('field-lg_col')) {
                 $(this).prepend('<span class="form-row-icon fa fa-fw fa-desktop"></span>')
             }
         });
