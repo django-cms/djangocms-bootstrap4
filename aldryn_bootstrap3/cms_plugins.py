@@ -89,7 +89,6 @@ class Bootstrap3RowCMSPlugin(CMSPluginBase):
     form = forms.RowPluginForm
     fieldsets = [
         ("Create Columns", {
-            'classes': ('collapse',),
             'fields': (
                 'create',
             ) + tuple([
@@ -100,6 +99,7 @@ class Bootstrap3RowCMSPlugin(CMSPluginBase):
             ])
         }),
         ("Advanced", {
+            'classes': ('collapse',),
             'fields': (
                 'classes',
             )
