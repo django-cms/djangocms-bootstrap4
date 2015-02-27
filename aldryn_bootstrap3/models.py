@@ -55,7 +55,6 @@ class LinkMixin(models.Model):
         abstract = True
 
     def get_url(self):
-        print "I AM THE LINK"
         if self.phone:
             link = u"tel://{}".format(self.phone)
         elif self.mailto:
@@ -68,7 +67,6 @@ class LinkMixin(models.Model):
             link = ""
         if self.anchor:
             link += '#{}'.format(self.anchor)
-        print "LINK: ", link
         return link
 
 

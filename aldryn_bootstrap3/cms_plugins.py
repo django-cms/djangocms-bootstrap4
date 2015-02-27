@@ -69,7 +69,6 @@ class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
 
     def render(self, context, instance, placeholder):
         context.update({'instance': instance})
-        print instance.get_url()
         return context
 
 plugin_pool.register_plugin(Bootstrap3ButtonCMSPlugin)
