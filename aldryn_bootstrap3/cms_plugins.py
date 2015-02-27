@@ -12,7 +12,7 @@ from cms.models import CMSPlugin
 link_fieldset = (
     ('Link', {
         'fields': (
-            'page_link', 'url', 'mailto', 'phone',
+            'page_link', 'file', 'url', 'mailto', 'phone',
         ),
         'description': 'Choose one of the link types below.',
     }),
@@ -46,6 +46,7 @@ class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
     form = forms.LinkForm
     change_form_template = 'admin/aldryn_bootstrap3/plugins/button/change_form.html'
     render_template = 'aldryn_bootstrap3/plugins/button.html'
+    text_enabled = True
     allow_children = True
 
     fieldsets = (
@@ -70,6 +71,10 @@ class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
     def render(self, context, instance, placeholder):
         context.update({'instance': instance})
         return context
+
+    def icon_src(self, instance):
+        from django.contrib.staticfiles.templatetags.staticfiles import static
+        return static("cms/img/icons/plugins/link.png")
 
 plugin_pool.register_plugin(Bootstrap3ButtonCMSPlugin)
 
@@ -133,7 +138,7 @@ class Bootstrap3RowCMSPlugin(widgets.BootstrapMediaMixin, CMSPluginBase):
         return response
 
 
-class Bootstrap3ColumnCMSPlugin(CMSPluginBase):
+class Bootstrap3ColumnCMSPlugin(CMSPluginBase, widgets.BootstrapMediaMixin):
     model = models.Bootstrap3ColumnPlugin
     name = _('Column')
     module = _('Bootstrap3')

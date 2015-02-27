@@ -39,6 +39,20 @@ BREAKPOINTS = {
 }
 
 
+# DEVICES = {
+#     'xs': {
+#         'name': _("Tiny"),
+#         'icon': 'mobile-phone',
+#         'width': 768,
+#         'width_gutter': 750,
+#         'device_type': 'mobile-phone',
+#     },
+# }
+# for identifier, device in DEVICES.items():
+#     DEVICES[identifier]['identifier'] = identifier
+#     DEVICES[identifier]['verbose_name'] = "{name} (<{width}px)".format(**DEVICES[identifier])
+
+
 # WARNING: changing DEVICE_CHOICES will cause model creation to change and requires database migrations!
 # DEVICE_CHOICES = (
 #     ('xs', _("Tiny (<{sm[0]}px)".format(**BREAKPOINTS))),

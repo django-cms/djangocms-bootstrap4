@@ -74,7 +74,9 @@ class LinkForm(django.forms.models.ModelForm):
 
     class Meta:
         model = models.Boostrap3ButtonPlugin
-        exclude = ('page', 'position', 'placeholder', 'language', 'plugin_type')
+        exclude = (
+            'page', 'position', 'placeholder', 'language', 'plugin_type',
+        )
 
     def _get_media(self):
         """
@@ -92,10 +94,11 @@ class LinkForm(django.forms.models.ModelForm):
         link_fields = {
             'url': cleaned_data.get("url"),
             'page_link': cleaned_data.get("page_link"),
+            'file': cleaned_data.get("file"),
             'mailto': cleaned_data.get("mailto"),
             'phone': cleaned_data.get("phone"),
         }
-        error_msg = _("Only one of Page, Link, Email address or Phone is allowed.")
+        error_msg = _("Only one of Page, File, Link, Email address or Phone is allowed.")
         if len([i for i in link_fields.values() if i]) > 1:
             for field, value in link_fields.items():
                 if value:

@@ -9,6 +9,9 @@ from django.utils.translation import ungettext
 
 from cms.models.pluginmodel import CMSPlugin
 import cms.models
+import cms.models.fields
+
+import filer.fields.file
 
 from . import model_fields, constants
 from .conf import settings
@@ -21,13 +24,17 @@ from .conf import settings
 
 class LinkMixin(models.Model):
     url = models.URLField(_("link"), blank=True, default='')
-    page_link = models.ForeignKey(
-        cms.models.Page,
+    page_link = cms.models.fields.PageField(
         verbose_name=_("page"),
         blank=True,
         null=True,
-        # help_text=_("A link to a page has priority over a text link."),
         on_delete=models.SET_NULL
+    )
+    file = filer.fields.file.FilerFileField(
+        verbose_name=_("file"),
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
     )
     anchor = models.CharField(
         _("anchor"), max_length=128, blank=True,
@@ -63,6 +70,8 @@ class LinkMixin(models.Model):
             link = self.url
         elif self.page_link_id:
             link = self.page_link.get_absolute_url()
+        elif self.file:
+            link = self.file.url
         else:
             link = ""
         if self.anchor:
