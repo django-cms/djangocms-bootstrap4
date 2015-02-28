@@ -124,7 +124,7 @@ ColSizeField = partial(
     model_fields.IntegerField,
     null=True,
     blank=True,
-    default=1,
+    default='',
     min_value=1,
     max_value=constants.GRID_SIZE
 )
@@ -133,7 +133,7 @@ OffsetSizeField = partial(
     model_fields.IntegerField,
     null=True,
     blank=True,
-    default=0,
+    default='',
     min_value=1,
     max_value=constants.GRID_SIZE
 )
@@ -142,7 +142,7 @@ PushSizeField = partial(
     model_fields.IntegerField,
     null=True,
     blank=True,
-    default=0,
+    default='',
     min_value=1,
     max_value=constants.GRID_SIZE
 )
@@ -151,7 +151,7 @@ PullSizeField = partial(
     model_fields.IntegerField,
     null=True,
     blank=True,
-    default=0,
+    default='',
     min_value=1,
     max_value=constants.GRID_SIZE
 )
@@ -213,14 +213,14 @@ for size, name in constants.DEVICE_CHOICES:
     )
     Bootstrap3ColumnPlugin.add_to_class(
         '{}_offset'.format(size),
-        OffsetSizeField(verbose_name=_('offset-{}-'.format(size))),
+        OffsetSizeField(verbose_name=_('col-{}-offset-'.format(size))),
     )
     Bootstrap3ColumnPlugin.add_to_class(
         '{}_push'.format(size),
-        PushSizeField(verbose_name=_('push-{}-'.format(size))),
+        PushSizeField(verbose_name=_('col-{}-push-'.format(size))),
     )
     Bootstrap3ColumnPlugin.add_to_class(
         '{}_pull'.format(size),
-        PullSizeField(verbose_name=_('pull-{}-'.format(size))),
+        PullSizeField(verbose_name=_('col-{}-pull-'.format(size))),
     )
 
