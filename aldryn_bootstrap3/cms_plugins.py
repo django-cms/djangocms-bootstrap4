@@ -80,14 +80,14 @@ class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
 plugin_pool.register_plugin(Bootstrap3ButtonCMSPlugin)
 
 
-# class Bootstrap3ImageCMSPlugin(CMSPluginBase):
-#     model = models.Boostrap3ImagePlugin
-#     name = _("Image")
-#     module = _('Bootstrap3')
-#     form = forms.LinkForm
-#     change_form_template = 'admin/aldryn_bootstrap3/plugins/image/change_form.html'
-#     render_template = 'aldryn_bootstrap3/plugins/image.html'
-#     allow_children = True
+class Bootstrap3ImageCMSPlugin(CMSPluginBase):
+    model = models.Boostrap3ImagePlugin
+    name = _("Image")
+    module = _('Bootstrap3')
+    change_form_template = 'admin/aldryn_bootstrap3/plugins/image/change_form.html'
+    render_template = 'aldryn_bootstrap3/plugins/image.html'
+    allow_children = True
+    cache = False
 
     # fieldsets = (
     #     (None, {
@@ -108,11 +108,11 @@ plugin_pool.register_plugin(Bootstrap3ButtonCMSPlugin)
     #     }),
     # )
 
-    # def render(self, context, instance, placeholder):
-    #     context.update({'instance': instance})
-    #     return context
+    def render(self, context, instance, placeholder):
+        context.update({'instance': instance})
+        return context
 
-# plugin_pool.register_plugin(Bootstrap3ButtonCMSPlugin)
+plugin_pool.register_plugin(Bootstrap3ImageCMSPlugin)
 
 
 ########

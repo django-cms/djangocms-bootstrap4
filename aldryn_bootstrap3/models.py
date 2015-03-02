@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals, absolute_import
 from functools import partial
+import collections
 
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
@@ -12,6 +13,7 @@ import cms.models
 import cms.models.fields
 
 import filer.fields.file
+import filer.fields.image
 
 from . import model_fields, constants
 from .conf import settings
@@ -115,25 +117,77 @@ class Boostrap3BlockquotePlugin(CMSPlugin):
         return 'Blockquote: '
 
 
-# @python_2_unicode_compatible
-# class Boostrap3ImagePlugin(CMSPlugin, LinkMixin):
-#     cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
-#
-#     context = model_fields.Context(
-#         choices=constants.BUTTON_CONTEXT_CHOICES,
-#         default=constants.BUTTON_CONTEXT_DEFAULT,
-#     )
-#     size = model_fields.Size()
-#
-#     icon_left = model_fields.Icon()
-#     icon_right = model_fields.Icon()
-#
-#     classes = model_fields.Classes()
-#
-#     label = models.CharField(_("label"), max_length=256, blank=True, default='')
-#
-#     def __str__(self):
-#         return self.label
+@python_2_unicode_compatible
+class Boostrap3ImagePlugin(CMSPlugin):
+    cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
+
+    file = filer.fields.image.FilerImageField(
+        verbose_name=_("file"),
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+    )
+    alt = models.TextField(
+        _("alt"),
+        blank=True,
+        default='',
+    )
+    title = models.TextField(
+        _("title"),
+        blank=True,
+        default='',
+    )
+    aspect_ratio = models.CharField(
+        _("aspect ratio"),
+        max_length=10,
+        blank=True,
+        default='',
+        choices=constants.ASPECT_RATIO_CHOICES
+    )
+    thumbnail = models.BooleanField(
+        _("thumbnail"),
+        default=False,
+        blank=True,
+        help_text="add the 'thumbnail' border",
+    )
+    shape = models.CharField(
+        _('shape'),
+        max_length=64,
+        blank=True,
+        default='',
+        choices=(
+            ('rounded', 'rounded'),
+            ('circle', 'rounded'),
+        )
+    )
+
+    classes = model_fields.Classes()
+
+    def __str__(self):
+        txt = 'Image'
+        if self.title:
+            txt = self.title
+        elif self.alt:
+            txt = self.alt
+        if self.file:
+            txt += ' ({})'.format(self.file.url)
+        return txt
+
+    def srcset(self):
+        if not self.file:
+            return []
+        items = collections.OrderedDict()
+        for device in constants.DEVICES:
+            items[device['identifier']] = {
+                'size': (device['width_gutter'], 0),
+                'size_str': "{}x{}".format(device['width_gutter'], 0),
+                'width_str': "{}w".format(device['width_gutter']),
+                'subject_location': self.file.subject_location,
+                'upscale': True,
+                'crop': False,
+            }
+        return items
 
 
 ########

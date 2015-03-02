@@ -31,47 +31,46 @@ SIZES = tuple([size for size, name in SIZE_CHOICES])
 SIZE_DEFAULT = 'md'
 
 
-BREAKPOINTS = {
-    'lg': (1200, 'desktop', _("large desktops"), 1170),
-    'md': (992, 'laptop', _("laptops"), 970),
-    'sm': (768, 'tablet', _("tablets"), 750),
-    'xs': (768, 'mobile-phone', _("mobile phones"), 750),
-}
+# WARNING: changing DEVICE_CHOICES identifier will cause model creation to change and
+#          requires database migrations!
+DEVICES = (
+    {
+        'identifier': 'xs',
+        'name': _("mobile phones"),
+        'width': 768,
+        'width_gutter': 750,
+        'icon': 'mobile-phone',
+    },
+    {
+        'identifier': 'sm',
+        'name': _("tablets"),
+        'width': 768,
+        'width_gutter': 750,
+        'icon': 'tablet',
+    },
+    {
+        'identifier': 'md',
+        'name': _("laptops"),
+        'width': 992,
+        'width_gutter': 970,
+        'icon': 'laptop',
+    },
+    {
+        'identifier': 'lg',
+        'name': _("large desktops"),
+        'width': 1200,
+        'width_gutter': 1170,
+        'icon': 'desktop',
+    },
+)
+for device in DEVICES:
+    identifier = device['identifier']
+    device['long_description'] = "{name} (<{width}px)".format(**device)
+    device['size_name'] = dict(SIZE_CHOICES).get(identifier)
 
-# DEVICES = {
-#     'xs': {
-#         'name': _("Tiny"),
-#         'width': 768,
-#         'width_gutter': 750,
-#         'device_type': 'mobile-phone',
-#     }
-# }
-# for identifier, device in DEVICES.items():
-#     DEVICES[identifier]['identifier'] = identifier
-#     DEVICES[identifier]['long_description'] = "{name} (<{width}px)".format(**DEVICES[identifier])
+DEVICE_DICT = {device['identifier']: device for device in DEVICES}
+import pprint; pprint.pprint(DEVICES)
 
-
-# DEVICES = {
-#     'xs': {
-#         'name': _("Tiny"),
-#         'icon': 'mobile-phone',
-#         'width': 768,
-#         'width_gutter': 750,
-#         'device_type': 'mobile-phone',
-#     },
-# }
-# for identifier, device in DEVICES.items():
-#     DEVICES[identifier]['identifier'] = identifier
-#     DEVICES[identifier]['verbose_name'] = "{name} (<{width}px)".format(**DEVICES[identifier])
-
-
-# WARNING: changing DEVICE_CHOICES will cause model creation to change and requires database migrations!
-# DEVICE_CHOICES = (
-#     ('xs', _("Tiny (<{sm[0]}px)".format(**BREAKPOINTS))),
-#     ('sm', _("Small (≥{sm[0]}px and <{md[0]}px)".format(**BREAKPOINTS))),
-#     ('md', _("Medium (≥{md[0]}px and <{lg[0]}px)".format(**BREAKPOINTS))),
-#     ('lg', _("Large (≥{lg[0]}px)".format(**BREAKPOINTS))),
-# )
 DEVICE_CHOICES = (
     ('xs', _("Tiny")),
     ('sm', _("Small")),
@@ -81,3 +80,22 @@ DEVICE_CHOICES = (
 DEVICE_SIZES = tuple([size for size, name in DEVICE_CHOICES])
 
 GRID_SIZE = settings.ALDRYN_BOOTSTRAP3_GRID_SIZE
+
+
+ASPECT_RATIOS = (
+    (1, 1),
+    (4, 3),
+    (16, 9),
+    (16, 10),
+    (21, 9),
+)
+ASPECT_RATIOS_REVERSED = tuple([(y, x) for x, y in ASPECT_RATIOS])
+
+ASPECT_RATIO_CHOICES = \
+    tuple([
+        ('{}x{}'.format(x, y), '{}x{}'.format(x, y))
+        for x, y in ASPECT_RATIOS
+    ]) + tuple([
+        ('{}x{}'.format(x, y), '{}x{}'.format(x, y))
+        for x, y in ASPECT_RATIOS_REVERSED
+    ])
