@@ -24,6 +24,7 @@
     $( document ).ready(function() {
         var formRows = $( '.bootstrap3-column .form-row' );
         var fieldBoxes = $( '.bootstrap3-column .field-box' );
+        var form = $( '#bootstrap3rowplugin_form' );
 
         $.each(fieldBoxes, function(index, item) {
             // Set tooltip from help texts
@@ -64,6 +65,9 @@
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
         });
+
+        // browser validation gets in the way of the ajax form submission from django-cms
+        form.attr('novalidate', 'novalidate');
 
     });
 </script>

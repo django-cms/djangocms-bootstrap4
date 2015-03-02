@@ -124,7 +124,7 @@ ColSizeField = partial(
     model_fields.IntegerField,
     null=True,
     blank=True,
-    default='',
+    default=None,
     min_value=1,
     max_value=constants.GRID_SIZE
 )
@@ -133,7 +133,7 @@ OffsetSizeField = partial(
     model_fields.IntegerField,
     null=True,
     blank=True,
-    default='',
+    default=None,
     min_value=1,
     max_value=constants.GRID_SIZE
 )
@@ -142,7 +142,7 @@ PushSizeField = partial(
     model_fields.IntegerField,
     null=True,
     blank=True,
-    default='',
+    default=None,
     min_value=1,
     max_value=constants.GRID_SIZE
 )
@@ -151,7 +151,7 @@ PullSizeField = partial(
     model_fields.IntegerField,
     null=True,
     blank=True,
-    default='',
+    default=None,
     min_value=1,
     max_value=constants.GRID_SIZE
 )
@@ -196,7 +196,10 @@ class Bootstrap3ColumnPlugin(CMSPlugin):
     def get_class(self, device, element):
         size = getattr(self, '{}_{}'.format(device, element))
         if size:
-            return '{}-{}-{}'.format(element, device, size)
+            if element == 'col':
+                return 'col-{}-{}'.format(device, size)
+            else:
+                return 'col-{}-{}-{}'.format(device, element, size)
         return ''
 
     def get_column_classes(self):
@@ -206,6 +209,7 @@ class Bootstrap3ColumnPlugin(CMSPlugin):
                 classes.append(self.get_class(device, element))
         return ' '.join(cls for cls in classes if cls)
 
+
 for size, name in constants.DEVICE_CHOICES:
     Bootstrap3ColumnPlugin.add_to_class(
         '{}_col'.format(size),
@@ -213,14 +217,14 @@ for size, name in constants.DEVICE_CHOICES:
     )
     Bootstrap3ColumnPlugin.add_to_class(
         '{}_offset'.format(size),
-        OffsetSizeField(verbose_name=_('col-{}-offset-'.format(size))),
+        OffsetSizeField(verbose_name=_('offset-'.format(size))),
     )
     Bootstrap3ColumnPlugin.add_to_class(
         '{}_push'.format(size),
-        PushSizeField(verbose_name=_('col-{}-push-'.format(size))),
+        PushSizeField(verbose_name=_('push-'.format(size))),
     )
     Bootstrap3ColumnPlugin.add_to_class(
         '{}_pull'.format(size),
-        PullSizeField(verbose_name=_('col-{}-pull-'.format(size))),
+        PullSizeField(verbose_name=_('pull-'.format(size))),
     )
 
