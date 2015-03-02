@@ -35,21 +35,21 @@ for size, name in constants.DEVICE_CHOICES:
         max_value=constants.GRID_SIZE,
     )
     extra_fields["create_{}_offset".format(size)] = django.forms.IntegerField(
-        label=_('offset-{}-'.format(size)),
+        label=_('offset-'.format(size)),
         help_text=('Offset of created columns. You can still change the width of the column afterwards.'),
         required=False,
         min_value=1,
         max_value=constants.GRID_SIZE,
     )
     extra_fields["create_{}_push".format(size)] = django.forms.IntegerField(
-        label=_('push-{}-'.format(size)),
+        label=_('push-'.format(size)),
         help_text=('Push of created columns. You can still change the width of the column afterwards.'),
         required=False,
         min_value=1,
         max_value=constants.GRID_SIZE,
     )
     extra_fields["create_{}_pull".format(size)] = django.forms.IntegerField(
-        label=_('pull-{}-'.format(size)),
+        label=_('pull-'.format(size)),
         help_text=('Pull of created columns. You can still change the width of the column afterwards.'),
         required=False,
         min_value=1,
