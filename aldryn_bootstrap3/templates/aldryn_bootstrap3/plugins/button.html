@@ -4,7 +4,7 @@
     <span class="plugin_link">
 {% endif %}
     <a href="{{ instance.get_url }}"
-       class="btn btn-{{ instance.context }}{% if instance.size %} btn-{{ instance.size }}{% endif %} {% if instance.size %} {{ instance.classes }}{% endif %}"
+       class="btn btn-{{ instance.context }}{% if instance.size %} btn-{{ instance.size }}{% endif %} {% if instance.classes %} {{ instance.classes }}{% endif %}"
        role="button"
     >
         {% if instance.icon_left %}{% with icon_class=instance.icon_left %}{% include 'aldryn_bootstrap3/plugins/includes/icon.html' %}{% endwith %}{% endif %}
