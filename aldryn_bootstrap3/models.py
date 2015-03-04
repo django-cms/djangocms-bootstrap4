@@ -119,7 +119,12 @@ class Boostrap3ButtonPlugin(CMSPlugin, LinkMixin):
 
     classes = model_fields.Classes()
 
-    label = models.CharField(_("label"), max_length=256, blank=True, default='')
+    label = models.CharField(
+        _("label"),
+        max_length=256,
+        blank=True,
+        default='',
+    )
 
     def __str__(self):
         return self.label
@@ -146,6 +151,28 @@ class Boostrap3IconPlugin(CMSPlugin):
 
     def __str__(self):
         return self.icon
+
+
+@python_2_unicode_compatible
+class Boostrap3LabelPlugin(CMSPlugin):
+    cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
+
+    label = models.CharField(
+        _("label"),
+        max_length=256,
+        blank=True,
+        default='',
+    )
+    context = model_fields.Context(
+        choices=constants.LABEL_CONTEXT_CHOICES,
+        default=constants.LABEL_CONTEXT_DEFAULT,
+        blank=False,
+    )
+
+    classes = model_fields.Classes()
+
+    def __str__(self):
+        return self.label
 
 
 def compute_aspect_ratio(image):

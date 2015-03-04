@@ -68,6 +68,35 @@ class Bootstrap3IconCMSPlugin(CMSPluginBase):
 plugin_pool.register_plugin(Bootstrap3IconCMSPlugin)
 
 
+class Bootstrap3LabelCMSPlugin(CMSPluginBase):
+    model = models.Boostrap3LabelPlugin
+    name = _("Label")
+    module = _('Bootstrap3')
+    change_form_template = 'admin/aldryn_bootstrap3/plugins/label/change_form.html'
+    render_template = 'aldryn_bootstrap3/plugins/label.html'
+    text_enabled = True
+    allow_children = True
+
+    fieldsets = (
+        (None, {'fields': (
+            'label',
+            'context',
+        )}),
+        ('Advanced', {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+            ),
+        }),
+    )
+
+    def render(self, context, instance, placeholder):
+        context.update({'instance': instance})
+        return context
+
+plugin_pool.register_plugin(Bootstrap3LabelCMSPlugin)
+
+
 class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
     model = models.Boostrap3ButtonPlugin
     name = _("Link/Button")

@@ -28,6 +28,13 @@ TXT_LINK_CONTEXT_CHOICES = (
 )
 TXT_LINK_CONTEXT_DEFAULT = ''
 
+LABEL_CONTEXT_CHOICES = (
+    ('default', 'Default',),
+) + CONTEXT_CHOICES + (
+    # ('', 'Custom',),
+)
+LABEL_CONTEXT_DEFAULT = 'default'
+
 SIZE_CHOICES = (
     ('lg', 'Large',),
     ('md', 'Medium',),
