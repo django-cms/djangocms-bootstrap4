@@ -1,130 +1,255 @@
 {% extends "admin/cms/page/plugin/change_form.html" %}
 
 {% block field_sets %}
-<div class="well-wrapper">
-    <div class="well btn-preview js-btn-preview text-center clearfix">
-        <p class="text-center text-muted"><span class="fa fa-fw fa-eye"></span> Preview</p>
-        <a class="btn" role="button">Example Button</a>
+    <div class="well-wrapper">
+        <div class="well btn-preview js-btn-preview text-center clearfix">
+            <p class="text-center text-muted"><span class="fa fa-fw fa-eye"></span> Preview</p>
+            <a>Example Button</a>
+        </div>
     </div>
-</div>
 
-{# Styling #}
-<style>
-  .collapse { visibility: visible !important; display: block; }
-  {#  TODO make width dynamic #}
-  .well { position: fixed; text-align: center; z-index: 1000; width:inherit; border-radius: 0; top: 0; left: 0; }
-  .well-wrapper { height: 90px; float: left; position: relative; margin: 0%; width: 100%; }
-</style>
+    {# Styling #}
+    <style>
+        .collapse {
+            visibility: visible !important;
+            display: block;
+        }
 
-{{ block.super }}
+        .well {
+            position: fixed;
+            text-align: center;
+            z-index: 1000;
+            width: inherit;
+            border-radius: 0;
+            top: 0;
+            left: 0;
+        }
 
-{# Javascript for preview (must be after the rest of the fields, because we rely on global variables set there. #}
-<script>
-    if (!$) {
-        $ = django.jQuery;
-    }
-    $( document ).ready(function() {
-        var contextTriggers = $('.js-btn-group-context .btn');
-        var sizesTriggers = $('.js-btn-group-sizes .btn');
+        .well-wrapper {
+            height: 90px;
+            float: left;
+            position: relative;
+            margin: 0%;
+            width: 100%;
+        }
 
-        var previewButton = $('.js-btn-preview .btn');
-        var previewButtonText = previewButton.text();
+        input[type=checkbox], input[type=radio] {
+            margin: 0 0 2px 0;
+        }
 
-        // Init defaults
-        var currentContextTriggerValue;
-        var currentSizesTriggerValue;
+        .form-row.field-btn_block > .checkbox-row {
+            padding-left: 96px;
+        }
+    </style>
 
-        contextTriggers.each(function( index, item ) {
-            if ($(item).find('input').attr('checked') == 'checked') {
-                var context = $(item).find('input[checked="checked"]').val();
-                $('.js-btn-preview .btn').addClass('btn-' + context);
-                currentContextTriggerValue = context;
-            }
-        });
+    {{ block.super }}
 
-        sizesTriggers.each(function( index, item ) {
-            if ($(item).find('input').attr('checked') == 'checked') {
-                var size = $(item).find('input[checked="checked"]').val();
-                $('.js-btn-preview .btn').addClass('btn-' + size);
-                currentSizesTriggerValue = size;
-            }
-        });
+    {# Javascript for preview (must be after the rest of the fields, because we rely on global variables set there. #}
+    <script>
+        if (!$) {
+            $ = django.jQuery;
+        }
+        $(document).ready(function () {
+            var buttonContextTriggers = $('.js-btn-group-context-btn_context .btn');
+            var textLinkContextTriggers = $('.js-btn-group-context-txt_context .btn');
+            var sizesTriggers = $('.js-btn-group-sizes .btn');
 
-        // Set context of elements for preview
-        contextTriggers.on('click', function(e) {
-            var context = $(this).find('input').val();
+            var previewButton = $('.js-btn-preview a');
+            var previewButtonText = previewButton.text();
 
-            previewButton.removeClass('btn-'+ currentContextTriggerValue);
-            previewButton.addClass('btn-'+ context);
+            // Init defaults
+            var currentButtonContextTriggerValue;
+            var currentTextLinkContextTriggerValue;
+            var currentSizesTriggerValue;
+            var currentBlockTriggerValue;
+            var currentTypeSwitch;
 
-            currentContextTriggerValue = context;
-        });
+            // Init text/button switch
+            var typeSwitch = $('#id_type');
+            var buttonElements = $('.field-btn_context, .field-btn_size, .field-btn_block');
+            var textElements = $('.field-txt_context');
 
-        // Set sizes of elements for preview
-        sizesTriggers.on('click', function(e) {
-            var size = $(this).find('input').val();
+            // Set btn-block
+            var btnBlock = $('#id_btn_block');
 
-            previewButton.removeClass('btn-'+ currentSizesTriggerValue);
-            previewButton.addClass('btn-'+ size);
-
-            currentSizesTriggerValue = size;
-        });
-
-        // Update text in button for preview
-        previewButton.text($( "#id_label" ).val());
-
-        $( "#id_label" ).on('input', function() {
-            if ($(this).val()) {
-                $('.js-btn-preview .btn').text($(this).val());
-            } else {
-                $('.js-btn-preview .btn').text(previewButtonText);
-            }
-            refreshIcons();
-        });
-
-        // Set Icon of button
-        $.each( ['icon_left', 'icon_right'], function( index, name) {
-            var iconPicker = window['iconPicker_' + name];
-            var enableIconCheckbox = window['enableIconCheckbox_' + name];
-
-            // update code
-            var updateIconPreview = function() {
-                var iconSelected = window['iconSelected_' + name];
-                var iconSelectedCss = window['iconSelectedCss_' + name];
-                previewButton.find('.js-icon-position-' + name).remove();
-                var iconHtml = '<i class="js-icon-position-' + name + ' ' + iconSelectedCss + '"></i> '
-                if (name === 'icon_left') {
-                    previewButton.prepend(iconHtml);
-                };
-                if (name === 'icon_right') {
-                    previewButton.append(iconHtml);
-                };
+            var setBtnBlock = function () {
+                if ($('#id_btn_block:checkbox:checked').length == 1) {
+                    previewButton.addClass('btn-block');
+                    currentBlockTriggerValue = 'btn-block';
+                } else {
+                    previewButton.removeClass('btn-block');
+                    currentBlockTriggerValue = '';
+                }
             };
 
-            // on change
-            iconPicker.on('change', updateIconPreview);
-            enableIconCheckbox.on('change', updateIconPreview);
+            btnBlock.on('click', function () {
+                setBtnBlock();
+            });
 
-            // initial
-            enableIconCheckbox.trigger('change');
-        });
+            // Set button context
+            buttonContextTriggers.each(function (index, item) {
+                if ($(item).find('input').attr('checked') == 'checked') {
+                    var context = $(item).find('input[checked="checked"]').val();
+                    currentButtonContextTriggerValue = context;
+                    if (typeSwitch.val() == 'btn') {
+                        $('.js-btn-preview a').addClass('btn-' + context);
+                    }
+                }
+            });
 
-        var refreshIcons = function() {
-            $.each( ['icon_left', 'icon_right'], function( index, name) {
+            // Set textlink context
+            textLinkContextTriggers.each(function (index, item) {
+                if ($(item).find('input').attr('checked') == 'checked') {
+                    var context = $(item).find('input[checked="checked"]').val();
+                    currentTextLinkContextTriggerValue = context;
+                    if (typeSwitch.val() == 'lnk') {
+                        $('.js-btn-preview .btn').addClass('text-' + context);
+                    }
+                }
+            });
+
+
+            // Set sizes
+            sizesTriggers.each(function (index, item) {
+                if ($(item).find('input').attr('checked') == 'checked') {
+                    var size = $(item).find('input[checked="checked"]').val();
+                    $('.js-btn-preview .btn').addClass('btn-' + size);
+                    currentSizesTriggerValue = size;
+                }
+            });
+
+            // Set button context of elements for preview
+            buttonContextTriggers.on('click', function (e) {
+                var context = $(this).find('input').val();
+
+                previewButton.removeClass('btn-' + currentButtonContextTriggerValue);
+                previewButton.addClass('btn-' + context);
+
+                currentButtonContextTriggerValue = context;
+            });
+
+            // Set text link context of elements for preview
+            textLinkContextTriggers.on('click', function (e) {
+                var context = $(this).find('input').val();
+
+                previewButton.removeClass('text-' + currentTextLinkContextTriggerValue);
+                previewButton.addClass('text-' + context);
+
+                currentTextLinkContextTriggerValue = context;
+            });
+
+            // Set sizes of elements for preview
+            sizesTriggers.on('click', function (e) {
+                var size = $(this).find('input').val();
+
+                previewButton.removeClass('btn-' + currentSizesTriggerValue);
+                previewButton.addClass('btn-' + size);
+
+                currentSizesTriggerValue = size;
+            });
+
+            // Update text in button for preview
+            previewButton.text($("#id_label").val());
+
+            $("#id_label").on('input', function () {
+                if ($(this).val()) {
+                    $('.js-btn-preview .btn').text($(this).val());
+                } else {
+                    $('.js-btn-preview .btn').text(previewButtonText);
+                }
+                refreshIcons();
+            });
+
+            // Set Icon of button
+            $.each(['icon_left', 'icon_right'], function (index, name) {
+                var iconPicker = window['iconPicker_' + name];
                 var enableIconCheckbox = window['enableIconCheckbox_' + name];
+
+                // update code
+                var updateIconPreview = function () {
+                    var iconSelected = window['iconSelected_' + name];
+                    var iconSelectedCss = window['iconSelectedCss_' + name];
+                    previewButton.find('.js-icon-position-' + name).remove();
+                    var iconHtml = '<i class="js-icon-position-' + name + ' ' + iconSelectedCss + '"></i> '
+                    if (name === 'icon_left') {
+                        previewButton.prepend(iconHtml);
+                    }
+                    ;
+                    if (name === 'icon_right') {
+                        previewButton.append(iconHtml);
+                    }
+                    ;
+                };
+
+                // on change
+                iconPicker.on('change', updateIconPreview);
+                enableIconCheckbox.on('change', updateIconPreview);
+
+                // initial
                 enableIconCheckbox.trigger('change');
             });
-        };
 
-        // Update class of preview button based on classes
-        var extraClasses = $( "#id_classes");
-        previewButton.addClass(extraClasses.val());
+            var refreshIcons = function () {
+                $.each(['icon_left', 'icon_right'], function (index, name) {
+                    var enableIconCheckbox = window['enableIconCheckbox_' + name];
+                    enableIconCheckbox.trigger('change');
+                });
+            };
 
-        extraClasses.on('input', function(){
-            previewButton.attr('class', 'btn btn-' + currentContextTriggerValue + ' btn-' + currentSizesTriggerValue + ' ' + $(this).val());
+            // Update class of preview button based on classes
+            var extraClasses = $("#id_classes");
+            previewButton.addClass(extraClasses.val());
+
+            extraClasses.on('input', function () {
+                if (currentTypeSwitch == 'btn') {
+                    previewButton.attr('class', 'btn ' + currentBlockTriggerValue + ' btn-' + currentButtonContextTriggerValue + ' btn-' + currentSizesTriggerValue + ' ' + $(this).val());
+                }
+                if (currentTypeSwitch == 'lnk') {
+                    previewButton.attr('class', 'text-' + currentTextLinkContextTriggerValue + ' ' + $(this).val());
+                }
+            });
+
+            var setButton = function () {
+                previewButton.addClass('btn');
+                previewButton.addClass('btn-' + currentButtonContextTriggerValue);
+                previewButton.addClass('btn-' + currentSizesTriggerValue);
+                previewButton.removeClass('text-' + currentTextLinkContextTriggerValue);
+                textElements.hide();
+                buttonElements.show();
+                currentTypeSwitch = 'btn';
+            };
+
+            var setTextLink = function () {
+                previewButton.removeClass('btn');
+                previewButton.removeClass('btn-' + currentButtonContextTriggerValue);
+                previewButton.removeClass('btn-' + currentSizesTriggerValue);
+                previewButton.removeClass('btn-block');
+                previewButton.addClass('text-' + currentTextLinkContextTriggerValue);
+                textElements.show();
+                buttonElements.hide();
+                currentTypeSwitch = 'lnk';
+            };
+
+            // Show elements based on selection
+            if (typeSwitch.val() == 'btn') {
+                setButton();
+                setBtnBlock();
+            }
+            if (typeSwitch.val() == 'lnk') {
+                setTextLink();
+            }
+
+            typeSwitch.on('change', function () {
+                if ($(this).val() == 'btn') {
+                    setButton();
+                    setBtnBlock();
+                }
+                if ($(this).val() == 'lnk') {
+                    setTextLink();
+                }
+            });
         });
-    });
-</script>
+    </script>
 
 
 {% endblock %}
