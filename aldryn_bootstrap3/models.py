@@ -136,6 +136,18 @@ class Boostrap3BlockquotePlugin(CMSPlugin):
         return 'Blockquote: '
 
 
+@python_2_unicode_compatible
+class Boostrap3IconPlugin(CMSPlugin):
+    cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
+
+    icon = model_fields.Icon(blank=False)
+
+    classes = model_fields.Classes()
+
+    def __str__(self):
+        return self.icon
+
+
 def compute_aspect_ratio(image):
     if image.exif.get('Orientation', 1) > 4:
         # image is rotated by 90 degrees, while keeping width and height

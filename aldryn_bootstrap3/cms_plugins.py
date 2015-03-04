@@ -40,6 +40,34 @@ class Bootstrap3BlockquoteCMSPlugin(CMSPluginBase):
 plugin_pool.register_plugin(Bootstrap3BlockquoteCMSPlugin)
 
 
+class Bootstrap3IconCMSPlugin(CMSPluginBase):
+    model = models.Boostrap3IconPlugin
+    name = _("Icon")
+    module = _('Bootstrap3')
+    change_form_template = 'admin/aldryn_bootstrap3/plugins/icon/change_form.html'
+    render_template = 'aldryn_bootstrap3/plugins/icon.html'
+    text_enabled = True
+    allow_children = True
+
+    fieldsets = (
+        (None, {'fields': (
+            'icon',
+        )}),
+        ('Advanced', {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+            ),
+        }),
+    )
+
+    def render(self, context, instance, placeholder):
+        context.update({'instance': instance})
+        return context
+
+plugin_pool.register_plugin(Bootstrap3IconCMSPlugin)
+
+
 class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
     model = models.Boostrap3ButtonPlugin
     name = _("Link/Button")
