@@ -309,7 +309,7 @@ class Boostrap3PanelHeadingPlugin(CMSPlugin):
 
 
 @python_2_unicode_compatible
-class Boostrap3PabelBodyPlugin(CMSPlugin):
+class Boostrap3PanelBodyPlugin(CMSPlugin):
     cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
 
     classes = model_fields.Classes()

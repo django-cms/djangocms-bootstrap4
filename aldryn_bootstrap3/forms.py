@@ -105,3 +105,14 @@ class LinkForm(django.forms.models.ModelForm):
                     self._errors[field] = self.error_class([error_msg])
             raise django.core.exceptions.ValidationError(error_msg)
         return cleaned_data
+
+
+class PanelPluginBaseForm(django.forms.models.ModelForm):
+    create_heading = django.forms.BooleanField(required=False, initial=False)
+    create_body = django.forms.BooleanField(required=False, initial=False)
+    create_footer = django.forms.BooleanField(required=False, initial=False)
+
+    class Meta:
+        model = models.Boostrap3PanelPlugin
+        # fields = ('classes',)
+        exclude = ('page', 'position', 'placeholder', 'language', 'plugin_type')

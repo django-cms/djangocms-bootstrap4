@@ -186,9 +186,15 @@ class Bootstrap3PanelCMSPlugin(CMSPluginBase):
     module = _('Bootstrap3')
     change_form_template = 'admin/aldryn_bootstrap3/plugins/panel/change_form.html'
     render_template = 'aldryn_bootstrap3/plugins/panel.html'
+    form = forms.PanelPluginBaseForm
     allow_children = True
 
     fieldsets = (
+        ('Create', {
+            'fields': (
+                ('create_heading', 'create_body', 'create_footer'),
+            )
+        }),
         (None, {'fields': (
             'context',
         )}),
@@ -203,6 +209,33 @@ class Bootstrap3PanelCMSPlugin(CMSPluginBase):
     def render(self, context, instance, placeholder):
         context.update({'instance': instance})
         return context
+
+    def save_model(self, request, obj, form, change):
+        response = super(Bootstrap3PanelCMSPlugin, self).save_model(request, obj, form, change)
+        data = form.cleaned_data
+        extra = {}
+        subplugins = (
+            ('create_heading', models.Boostrap3PanelHeadingPlugin, Bootstrap3PanelHeadingCMSPlugin),
+            ('create_body', models.Boostrap3PanelBodyPlugin, Bootstrap3PanelBodyCMSPlugin),
+            ('create_footer', models.Boostrap3PanelFooterPlugin, Bootstrap3PanelFooterCMSPlugin),
+        )
+        existing_plugins = [p.plugin_type for p in obj.get_children()]
+        for field, model_class, plugin_class in subplugins:
+            if not data.get(field):
+                # TODO: delete?
+                continue
+            if plugin_class.__name__ in existing_plugins:
+                continue
+            plugin = model_class(
+                parent=obj,
+                placeholder=obj.placeholder,
+                language=obj.language,
+                position=CMSPlugin.objects.filter(parent=obj).count(),
+                plugin_type=plugin_class.__name__,
+                **extra
+            )
+            plugin.save()
+        return response
 
 plugin_pool.register_plugin(Bootstrap3PanelCMSPlugin)
 
@@ -236,7 +269,7 @@ plugin_pool.register_plugin(Bootstrap3PanelHeadingCMSPlugin)
 
 
 class Bootstrap3PanelBodyCMSPlugin(CMSPluginBase):
-    model = models.Boostrap3PabelBodyPlugin
+    model = models.Boostrap3PanelBodyPlugin
     name = _("Panel Body")
     module = _('Bootstrap3')
     change_form_template = 'admin/aldryn_bootstrap3/plugins/panel_body/change_form.html'
@@ -383,49 +416,3 @@ class Bootstrap3ColumnCMSPlugin(CMSPluginBase, widgets.BootstrapMediaMixin):
 
 plugin_pool.register_plugin(Bootstrap3RowCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3ColumnCMSPlugin)
-
-
-
-
-# Boostrap3AppdataPluginMultiform = app_data.multiform_factory(forms.Bootstrap3AppDataForm)
-
-
-# class Bootstrap3AppdataCMSPlugin(app_data.admin.AppDataAdminMixin, CMSPluginBase):
-#     model = Bootstrap3AppdataPlugin
-#     name = _("My Appdata Plugin")
-#     render_template = 'aldryn_bootstrap3/plugins/button.html'
-#     allow_children = True
-#     # multiform = Boostrap3AppdataPluginMultiform
-#
-#     declared_fieldsets = [
-#         (None, {'fields': ['label', 'url',]}),
-#         ('Bootstrap', {'fields': [('bootstrap3.breakpoints', 'bootstrap3.button_size', 'bootstrap3.button_types')]})
-#     ]
-#
-#     def render(self, context, instance, placeholder):
-#         context.update({'instance': instance})
-#         return context
-#
-#     def get_form(self, request, obj=None, **kwargs):
-#         """
-#         Returns a Form class for use in the admin add view. This is used by
-#         add_view and change_view.
-#         """
-#         if self.multiform is None:
-#             return super(Bootstrap3AppdataCMSPlugin, self).get_form(request, obj=obj, **kwargs)
-#         return app_data.forms.multiform_factory(self.model, **self._get_form_factory_opts(request, obj, **kwargs))
-#
-# plugin_pool.register_plugin(Bootstrap3AppdataCMSPlugin)
-
-
-# class BootstrapContainerCMSPlugin(CMSPluginBase):
-#     model = BootstrapContainerPlugin
-#     name = _("Responsive Wrapper")
-#     render_template = 'aldryn_responsive/plugins/wrapper.html'
-#     allow_children = True
-#
-#     def render(self, context, instance, placeholder):
-#         context.update({'instance': instance})
-#         return context
-#
-# plugin_pool.register_plugin(ResponsiveWrapperCMSPlugin)
