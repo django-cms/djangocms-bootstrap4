@@ -71,7 +71,7 @@ class Size(django.forms.widgets.RadioSelect):
     renderer = SizeRenderer
 
 
-class Icon(django.forms.widgets.TextInput):
+class Icon(BootstrapMediaMixin, django.forms.widgets.TextInput):
     def render(self, name, value, attrs=None, **kwargs):
         input_html = super(Icon, self).render(name, value, attrs=attrs, **kwargs)
         if value is None:
@@ -85,6 +85,7 @@ class Icon(django.forms.widgets.TextInput):
                 'value': value,
                 'name': name,
                 'iconset': iconset,
+                'is_required': self.is_required,
             },
         )
         return rendered

@@ -83,7 +83,6 @@ for device in DEVICES:
     device['size_name'] = dict(SIZE_CHOICES).get(identifier)
 
 DEVICE_DICT = {device['identifier']: device for device in DEVICES}
-import pprint; pprint.pprint(DEVICES)
 
 DEVICE_CHOICES = (
     ('xs', _("Tiny")),
