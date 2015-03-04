@@ -1,0 +1,9 @@
+{% load cms_tags %}
+
+<div class="panel-footer{% if instance.classes %} {{ instance.classes }}{% endif %}">
+    {% for plugin in instance.child_plugin_instances %}
+        {% render_plugin plugin %}
+    {% empty %}
+
+    {% endfor %}
+</div>

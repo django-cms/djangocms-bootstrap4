@@ -35,6 +35,13 @@ LABEL_CONTEXT_CHOICES = (
 )
 LABEL_CONTEXT_DEFAULT = 'default'
 
+PANEL_CONTEXT_CHOICES = (
+    ('default', 'Default',),
+) + CONTEXT_CHOICES + (
+    # ('', 'Custom',),
+)
+PANEL_CONTEXT_DEFAULT = 'default'
+
 SIZE_CHOICES = (
     ('lg', 'Large',),
     ('md', 'Medium',),

@@ -271,6 +271,62 @@ class Boostrap3ImagePlugin(CMSPlugin):
 
         return items
 
+#########
+# Panel #
+#########
+
+
+@python_2_unicode_compatible
+class Boostrap3PanelPlugin(CMSPlugin):
+    cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
+
+    context = model_fields.Context(
+        choices=constants.PANEL_CONTEXT_CHOICES,
+        default=constants.PANEL_CONTEXT_DEFAULT,
+        blank=False,
+    )
+
+    classes = model_fields.Classes()
+
+    def __str__(self):
+        return self.context
+
+
+@python_2_unicode_compatible
+class Boostrap3PanelHeadingPlugin(CMSPlugin):
+    cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
+
+    title = models.TextField(
+        _("label"),
+        blank=True,
+        default='',
+    )
+
+    classes = model_fields.Classes()
+
+    def __str__(self):
+        return self.title
+
+
+@python_2_unicode_compatible
+class Boostrap3PabelBodyPlugin(CMSPlugin):
+    cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
+
+    classes = model_fields.Classes()
+
+    def __str__(self):
+        return self.classes
+
+
+@python_2_unicode_compatible
+class Boostrap3PanelFooterPlugin(CMSPlugin):
+    cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
+
+    classes = model_fields.Classes()
+
+    def __str__(self):
+        return self.classes
+
 
 ########
 # Grid #

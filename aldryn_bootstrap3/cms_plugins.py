@@ -175,6 +175,122 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
 plugin_pool.register_plugin(Bootstrap3ImageCMSPlugin)
 
 
+#########
+# Panel #
+#########
+
+
+class Bootstrap3PanelCMSPlugin(CMSPluginBase):
+    model = models.Boostrap3PanelPlugin
+    name = _("Panel")
+    module = _('Bootstrap3')
+    change_form_template = 'admin/aldryn_bootstrap3/plugins/panel/change_form.html'
+    render_template = 'aldryn_bootstrap3/plugins/panel.html'
+    allow_children = True
+
+    fieldsets = (
+        (None, {'fields': (
+            'context',
+        )}),
+        ('Advanced', {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+            ),
+        }),
+    )
+
+    def render(self, context, instance, placeholder):
+        context.update({'instance': instance})
+        return context
+
+plugin_pool.register_plugin(Bootstrap3PanelCMSPlugin)
+
+
+class Bootstrap3PanelHeadingCMSPlugin(CMSPluginBase):
+    model = models.Boostrap3PanelHeadingPlugin
+    name = _("Panel Heading")
+    module = _('Bootstrap3')
+    change_form_template = 'admin/aldryn_bootstrap3/plugins/panel_heading/change_form.html'
+    render_template = 'aldryn_bootstrap3/plugins/panel_heading.html'
+    allow_children = True
+    parent_classes = ['Bootstrap3PanelCMSPlugin']
+
+    fieldsets = (
+        (None, {'fields': (
+            'title',
+        )}),
+        ('Advanced', {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+            ),
+        }),
+    )
+
+    def render(self, context, instance, placeholder):
+        context.update({'instance': instance})
+        return context
+
+plugin_pool.register_plugin(Bootstrap3PanelHeadingCMSPlugin)
+
+
+class Bootstrap3PanelBodyCMSPlugin(CMSPluginBase):
+    model = models.Boostrap3PabelBodyPlugin
+    name = _("Panel Body")
+    module = _('Bootstrap3')
+    change_form_template = 'admin/aldryn_bootstrap3/plugins/panel_body/change_form.html'
+    render_template = 'aldryn_bootstrap3/plugins/panel_body.html'
+    allow_children = True
+    parent_classes = ['Bootstrap3PanelCMSPlugin']
+
+    fieldsets = (
+        # (None, {'fields': (
+        #     'title',
+        # )}),
+        ('Advanced', {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+            ),
+        }),
+    )
+
+    def render(self, context, instance, placeholder):
+        context.update({'instance': instance})
+        return context
+
+plugin_pool.register_plugin(Bootstrap3PanelBodyCMSPlugin)
+
+
+class Bootstrap3PanelFooterCMSPlugin(CMSPluginBase):
+    model = models.Boostrap3PanelFooterPlugin
+    name = _("Panel Footer")
+    module = _('Bootstrap3')
+    change_form_template = 'admin/aldryn_bootstrap3/plugins/panel_footer/change_form.html'
+    render_template = 'aldryn_bootstrap3/plugins/panel_footer.html'
+    allow_children = True
+    parent_classes = ['Bootstrap3PanelCMSPlugin']
+
+    fieldsets = (
+        # (None, {'fields': (
+        #     'title',
+        # )}),
+        ('Advanced', {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+            ),
+        }),
+    )
+
+    def render(self, context, instance, placeholder):
+        context.update({'instance': instance})
+        return context
+
+plugin_pool.register_plugin(Bootstrap3PanelFooterCMSPlugin)
+
+
 ########
 # Grid #
 ########
