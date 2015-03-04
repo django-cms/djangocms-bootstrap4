@@ -121,6 +121,13 @@ class Context(django.db.models.fields.CharField, SouthCharFieldMixin):
         defaults.update(kwargs)
         return super(Context, self).formfield(**defaults)
 
+    def get_choices(self, **kwargs):
+        # if there already is a "blank" choice, don't add another
+        # default blank choice
+        if '' in dict(self.choices).keys():
+            kwargs['include_blank'] = False
+        return super(Context, self).get_choices(**kwargs)
+
 
 class Size(django.db.models.CharField, SouthCharFieldMixin):
     default_field_class = fields.Size
@@ -141,6 +148,13 @@ class Size(django.db.models.CharField, SouthCharFieldMixin):
         }
         defaults.update(kwargs)
         return super(Size, self).formfield(**defaults)
+
+    def get_choices(self, **kwargs):
+        # if there already is a "blank" choice, don't add another
+        # default blank choice
+        if '' in dict(self.choices).keys():
+            kwargs['include_blank'] = False
+        return super(Size, self).get_choices(**kwargs)
 
 
 class Icon(django.db.models.CharField, SouthCharFieldMixin):

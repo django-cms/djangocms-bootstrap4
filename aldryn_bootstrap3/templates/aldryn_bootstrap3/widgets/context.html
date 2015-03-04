@@ -1,4 +1,4 @@
-<div class="btn-group btn-group-context js-btn-group-context" data-toggle="buttons">
+<div class="btn-group btn-group-context js-btn-group-context-{{ selects.name }}" data-toggle="buttons">
     {% for item in selects %}
     {{ item }}
     {% endfor %}
@@ -18,7 +18,8 @@
     }
 
     $( document ).ready(function() {
-        var contextInputs = $('.js-btn-group-context label input');
+        var fieldName = '{{ selects.name }}';
+        var contextInputs = $('.js-btn-group-context-' + fieldName + ' label input');
         var selectedContextInput;
 
         contextInputs.each(function( index, item ) {
@@ -32,11 +33,16 @@
             }
 
             if (selectedContextInput == undefined) {
-                selectedContextInput = $('.js-btn-group-context label input[value="default"]');
+                selectedContextInput = $('.js-btn-group-context-' + fieldName + ' label input[value="default"]');
             }
 
             // Set context
-            label.addClass('btn btn-' + item.value);
+            if (item.value && item.value !== 'muted') {
+                label.addClass('btn btn-' + item.value);
+            } else {
+                label.addClass('btn btn-default');
+            }
+
 
              // Set active states
             label.on('click', function(e) {

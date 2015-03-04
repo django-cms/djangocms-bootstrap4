@@ -4,7 +4,6 @@ from django.utils.translation import ugettext_lazy as _
 from .conf import settings
 
 CONTEXT_CHOICES = (
-    ('default', 'Default',),
     ('primary', 'Primary',),
     ('success', 'Success',),
     ('info', 'Info',),
@@ -14,10 +13,20 @@ CONTEXT_CHOICES = (
 CONTEXT_DEFAULT = 'default'
 
 BUTTON_CONTEXT_CHOICES = (
-    ('link', 'Link',),
-) + CONTEXT_CHOICES
+    ('default', 'Default',),
+) + CONTEXT_CHOICES + (
+    ('link', 'Link Button',),
+    ('', 'Custom',),
+)
+BUTTON_CONTEXT_DEFAULT = 'default'
 
-BUTTON_CONTEXT_DEFAULT = 'link'
+TXT_LINK_CONTEXT_CHOICES = (
+    ('', 'None',),
+) + CONTEXT_CHOICES + (
+    # ('alert-link', 'Alert Link',),
+    ('muted', 'Muted',),
+)
+TXT_LINK_CONTEXT_DEFAULT = ''
 
 SIZE_CHOICES = (
     ('lg', 'Large',),
@@ -25,6 +34,11 @@ SIZE_CHOICES = (
     ('sm', 'Small',),
     ('xs', 'Extra Small',),
 )
+
+SIZE_WIDGET_CHOICES = (
+    # ('', 'Default'),
+) + SIZE_CHOICES
+SIZE_WIDGET_DEFAULT = 'md'
 
 SIZES = tuple([size for size, name in SIZE_CHOICES])
 

@@ -54,11 +54,14 @@ class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
         (None, {
             'fields': (
                 'label',
-                'context',
-                'size',
+                'type',
+                'btn_context',
+                'btn_size',
+                'btn_block',
+                'txt_context',
                 'icon_left',
                 'icon_right',
-            )
+            ),
         }),
     ) + link_fieldset + (
         ('Advanced', {

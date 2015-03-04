@@ -89,12 +89,31 @@ class LinkMixin(models.Model):
 class Boostrap3ButtonPlugin(CMSPlugin, LinkMixin):
     cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
 
-    context = model_fields.Context(
+    type = models.CharField(
+        max_length=10,
+        default='lnk',
+        choices=(
+            ('lnk', 'link'),
+            ('btn', 'button'),
+        )
+    )
+    # button specific fields
+    btn_context = model_fields.Context(
+        verbose_name='context',
         choices=constants.BUTTON_CONTEXT_CHOICES,
         default=constants.BUTTON_CONTEXT_DEFAULT,
+        blank=True,
     )
-    size = model_fields.Size()
-
+    btn_size = model_fields.Size(verbose_name='size')
+    btn_block = models.BooleanField(default=False, verbose_name='block')
+    # text link specific fields
+    txt_context = model_fields.Context(
+        verbose_name='context',
+        choices=constants.TXT_LINK_CONTEXT_CHOICES,
+        default=constants.TXT_LINK_CONTEXT_DEFAULT,
+        blank=True,
+    )
+    # common fields
     icon_left = model_fields.Icon()
     icon_right = model_fields.Icon()
 
