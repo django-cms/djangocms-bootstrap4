@@ -97,6 +97,34 @@ class Bootstrap3LabelCMSPlugin(CMSPluginBase):
 plugin_pool.register_plugin(Bootstrap3LabelCMSPlugin)
 
 
+class Bootstrap3WellCMSPlugin(CMSPluginBase):
+    model = models.Boostrap3WellPlugin
+    name = _("Well")
+    module = _('Bootstrap3')
+    change_form_template = 'admin/aldryn_bootstrap3/plugins/well/change_form.html'
+    render_template = 'aldryn_bootstrap3/plugins/well.html'
+    text_enabled = True
+    allow_children = True
+
+    fieldsets = (
+        (None, {'fields': (
+            'size',
+        )}),
+        ('Advanced', {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+            ),
+        }),
+    )
+
+    def render(self, context, instance, placeholder):
+        context.update({'instance': instance})
+        return context
+
+plugin_pool.register_plugin(Bootstrap3WellCMSPlugin)
+
+
 class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
     model = models.Boostrap3ButtonPlugin
     name = _("Link/Button")

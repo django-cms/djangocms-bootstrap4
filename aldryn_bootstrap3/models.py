@@ -175,6 +175,20 @@ class Boostrap3LabelPlugin(CMSPlugin):
         return self.label
 
 
+@python_2_unicode_compatible
+class Boostrap3WellPlugin(CMSPlugin):
+    cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
+
+    size = model_fields.Size()
+
+    classes = model_fields.Classes()
+
+    def __str__(self):
+        return self.classes
+
+
+
+
 def compute_aspect_ratio(image):
     if image.exif.get('Orientation', 1) > 4:
         # image is rotated by 90 degrees, while keeping width and height
@@ -270,6 +284,7 @@ class Boostrap3ImagePlugin(CMSPlugin):
             }
 
         return items
+
 
 #########
 # Panel #

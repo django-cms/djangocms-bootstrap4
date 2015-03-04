@@ -57,7 +57,7 @@ class Context(BootstrapMediaMixin, django.forms.widgets.RadioSelect):
     renderer = ContextRenderer
 
 
-class SizeRenderer(django.forms.widgets.RadioFieldRenderer):
+class SizeRenderer(BootstrapMediaMixin, django.forms.widgets.RadioFieldRenderer):
     def render(self):
         from django.template.loader import render_to_string
         rendered = render_to_string(
@@ -67,7 +67,7 @@ class SizeRenderer(django.forms.widgets.RadioFieldRenderer):
         return rendered
 
 
-class Size(django.forms.widgets.RadioSelect):
+class Size(BootstrapMediaMixin, django.forms.widgets.RadioSelect):
     renderer = SizeRenderer
 
 
