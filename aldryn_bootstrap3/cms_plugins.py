@@ -127,7 +127,7 @@ class Bootstrap3RowCMSPlugin(widgets.BootstrapMediaMixin, CMSPluginBase):
     change_form_template = 'admin/aldryn_bootstrap3/plugins/row/change_form.html'
     render_template = 'aldryn_bootstrap3/plugins/row.html'
     allow_children = True
-    # child_classes = ['Bootstrap3Column']
+    child_classes = ['Bootstrap3ColumnCMSPlugin']
     form = forms.RowPluginForm
     fieldsets = [
         ("Create Columns", {
@@ -182,6 +182,7 @@ class Bootstrap3ColumnCMSPlugin(CMSPluginBase, widgets.BootstrapMediaMixin):
     change_form_template = 'admin/aldryn_bootstrap3/plugins/column/change_form.html'
     render_template = 'aldryn_bootstrap3/plugins/column.html'
     allow_children = True
+    parent_classes = ['Bootstrap3RowCMSPlugin']
 
     fieldsets = [
         (None, {
