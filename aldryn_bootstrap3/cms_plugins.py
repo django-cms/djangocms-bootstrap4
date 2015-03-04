@@ -103,7 +103,6 @@ class Bootstrap3WellCMSPlugin(CMSPluginBase):
     module = _('Bootstrap3')
     change_form_template = 'admin/aldryn_bootstrap3/plugins/well/change_form.html'
     render_template = 'aldryn_bootstrap3/plugins/well.html'
-    text_enabled = True
     allow_children = True
 
     fieldsets = (
@@ -123,6 +122,34 @@ class Bootstrap3WellCMSPlugin(CMSPluginBase):
         return context
 
 plugin_pool.register_plugin(Bootstrap3WellCMSPlugin)
+
+
+class Bootstrap3AlertCMSPlugin(CMSPluginBase):
+    model = models.Boostrap3AlertPlugin
+    name = _("Alert")
+    module = _('Bootstrap3')
+    change_form_template = 'admin/aldryn_bootstrap3/plugins/alert/change_form.html'
+    render_template = 'aldryn_bootstrap3/plugins/alert.html'
+    allow_children = True
+
+    fieldsets = (
+        (None, {'fields': (
+            'context',
+            'icon',
+        )}),
+        ('Advanced', {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+            ),
+        }),
+    )
+
+    def render(self, context, instance, placeholder):
+        context.update({'instance': instance})
+        return context
+
+plugin_pool.register_plugin(Bootstrap3AlertCMSPlugin)
 
 
 class Bootstrap3ButtonCMSPlugin(CMSPluginBase):

@@ -187,6 +187,17 @@ class Boostrap3WellPlugin(CMSPlugin):
         return self.classes
 
 
+@python_2_unicode_compatible
+class Boostrap3AlertPlugin(CMSPlugin):
+    cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
+
+    context = model_fields.Context()
+    icon = model_fields.Icon()
+
+    classes = model_fields.Classes()
+
+    def __str__(self):
+        return self.classes
 
 
 def compute_aspect_ratio(image):
