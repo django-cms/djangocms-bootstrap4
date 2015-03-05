@@ -1,7 +1,8 @@
 {% extends "admin/cms/page/plugin/change_form.html" %}
+{% load staticfiles %}
 
 {% block field_sets %}
-
+<img src="{% static 'aldryn_bootstrap3/img/img-placeholder.png' %}">
 {{ block.super }}
 
 {% endblock %}
