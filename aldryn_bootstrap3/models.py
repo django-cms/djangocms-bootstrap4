@@ -252,7 +252,6 @@ class Boostrap3ImagePlugin(CMSPlugin):
         choices=(
             ('rounded', 'rounded'),
             ('circle', 'circle'),
-            ('polaroid', 'polaroid'),
         )
     )
 

@@ -37,6 +37,7 @@ class Bootstrap3BlockquoteCMSPlugin(CMSPluginBase):
         context.update({'instance': instance})
         return context
 
+
 plugin_pool.register_plugin(Bootstrap3BlockquoteCMSPlugin)
 
 
@@ -64,6 +65,7 @@ class Bootstrap3IconCMSPlugin(CMSPluginBase):
     def render(self, context, instance, placeholder):
         context.update({'instance': instance})
         return context
+
 
 plugin_pool.register_plugin(Bootstrap3IconCMSPlugin)
 
@@ -94,6 +96,7 @@ class Bootstrap3LabelCMSPlugin(CMSPluginBase):
         context.update({'instance': instance})
         return context
 
+
 plugin_pool.register_plugin(Bootstrap3LabelCMSPlugin)
 
 
@@ -120,6 +123,7 @@ class Bootstrap3WellCMSPlugin(CMSPluginBase):
     def render(self, context, instance, placeholder):
         context.update({'instance': instance})
         return context
+
 
 plugin_pool.register_plugin(Bootstrap3WellCMSPlugin)
 
@@ -149,6 +153,7 @@ class Bootstrap3AlertCMSPlugin(CMSPluginBase):
         context.update({'instance': instance})
         return context
 
+
 plugin_pool.register_plugin(Bootstrap3AlertCMSPlugin)
 
 
@@ -163,26 +168,26 @@ class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
     allow_children = True
 
     fieldsets = (
-        (None, {
-            'fields': (
-                'label',
-                'type',
-                'btn_context',
-                'btn_size',
-                'btn_block',
-                'txt_context',
-                'icon_left',
-                'icon_right',
-            ),
-        }),
-    ) + link_fieldset + (
-        ('Advanced', {
-            'classes': ('collapse',),
-            'fields': (
-                'classes',
-            )
-        }),
-    )
+                    (None, {
+                        'fields': (
+                            'label',
+                            'type',
+                            'btn_context',
+                            'btn_size',
+                            'btn_block',
+                            'txt_context',
+                            'icon_left',
+                            'icon_right',
+                        ),
+                    }),
+                ) + link_fieldset + (
+                    ('Advanced', {
+                        'classes': ('collapse',),
+                        'fields': (
+                            'classes',
+                        )
+                    }),
+                )
 
     def render(self, context, instance, placeholder):
         context.update({'instance': instance})
@@ -190,12 +195,14 @@ class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
 
     def icon_src(self, instance):
         from django.contrib.staticfiles.templatetags.staticfiles import static
+
         return static("cms/img/icons/plugins/link.png")
+
 
 plugin_pool.register_plugin(Bootstrap3ButtonCMSPlugin)
 
 
-class Bootstrap3ImageCMSPlugin(CMSPluginBase):
+class Bootstrap3ImageCMSPlugin(widgets.BootstrapMediaMixin, CMSPluginBase):
     model = models.Boostrap3ImagePlugin
     name = _("Image")
     module = _('Bootstrap3')
@@ -204,35 +211,36 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
     allow_children = True
     cache = False
 
-    # fieldsets = (
-    #     (None, {
-    #         'fields': (
-    #             'label',
-    #             'context',
-    #             'size',
-    #             'icon_left',
-    #             'icon_right',
-    #         )
-    #     }),
-    # ) + link_fieldset + (
-    #     ('Advanced', {
-    #         'classes': ('collapse',),
-    #         'fields': (
-    #             'classes',
-    #         )
-    #     }),
-    # )
+    fieldsets = (
+        (None, {'fields': (
+                'file',
+                'aspect_ratio',
+                'shape',
+                'thumbnail',
+                'alt',
+
+        )}),
+
+        ('Advanced', {
+            'classes': ('collapse',),
+            'fields': (
+                'title',
+                'classes',
+            ),
+        }),
+    )
 
     def render(self, context, instance, placeholder):
         context.update({'instance': instance})
         return context
 
+
 plugin_pool.register_plugin(Bootstrap3ImageCMSPlugin)
 
 
-#########
+# ########
 # Panel #
-#########
+# ########
 
 
 class Bootstrap3PanelCMSPlugin(CMSPluginBase):
@@ -292,6 +300,7 @@ class Bootstrap3PanelCMSPlugin(CMSPluginBase):
             plugin.save()
         return response
 
+
 plugin_pool.register_plugin(Bootstrap3PanelCMSPlugin)
 
 
@@ -320,6 +329,7 @@ class Bootstrap3PanelHeadingCMSPlugin(CMSPluginBase):
         context.update({'instance': instance})
         return context
 
+
 plugin_pool.register_plugin(Bootstrap3PanelHeadingCMSPlugin)
 
 
@@ -334,7 +344,7 @@ class Bootstrap3PanelBodyCMSPlugin(CMSPluginBase):
 
     fieldsets = (
         # (None, {'fields': (
-        #     'title',
+        # 'title',
         # )}),
         ('Advanced', {
             'classes': ('collapse',),
@@ -347,6 +357,7 @@ class Bootstrap3PanelBodyCMSPlugin(CMSPluginBase):
     def render(self, context, instance, placeholder):
         context.update({'instance': instance})
         return context
+
 
 plugin_pool.register_plugin(Bootstrap3PanelBodyCMSPlugin)
 
@@ -362,7 +373,7 @@ class Bootstrap3PanelFooterCMSPlugin(CMSPluginBase):
 
     fieldsets = (
         # (None, {'fields': (
-        #     'title',
+        # 'title',
         # )}),
         ('Advanced', {
             'classes': ('collapse',),
@@ -376,12 +387,13 @@ class Bootstrap3PanelFooterCMSPlugin(CMSPluginBase):
         context.update({'instance': instance})
         return context
 
+
 plugin_pool.register_plugin(Bootstrap3PanelFooterCMSPlugin)
 
 
-########
+# #######
 # Grid #
-########
+# #######
 
 
 class Bootstrap3RowCMSPlugin(widgets.BootstrapMediaMixin, CMSPluginBase):
@@ -397,8 +409,8 @@ class Bootstrap3RowCMSPlugin(widgets.BootstrapMediaMixin, CMSPluginBase):
         ("Create Columns", {
             # 'classes': ('collapse',),
             'fields': (
-                'create',
-            ) + tuple([
+                          'create',
+                      ) + tuple([
                 (
                     'create_{}_col'.format(size),
                     'create_{}_offset'.format(size),
