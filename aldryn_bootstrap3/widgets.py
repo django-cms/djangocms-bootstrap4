@@ -98,3 +98,17 @@ class MiniTextarea(django.forms.widgets.Textarea):
         attrs['cols'] = '120'
         attrs['rows'] = '1'
         super(MiniTextarea, self).__init__(attrs)
+
+
+class LinkOrButtonRenderer(django.forms.widgets.RadioFieldRenderer):
+    def render(self):
+        from django.template.loader import render_to_string
+        rendered = render_to_string(
+            'aldryn_bootstrap3/widgets/link_or_button.html',
+            {'selects': self},
+        )
+        return rendered
+
+
+class LinkOrButton(BootstrapMediaMixin, django.forms.widgets.RadioSelect):
+    renderer = LinkOrButtonRenderer

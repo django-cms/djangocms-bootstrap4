@@ -99,3 +99,23 @@ class MiniText(django.forms.fields.CharField):
         kwargs.pop('widget', None)
         kwargs['widget'] = self.widget
         super(MiniText, self).__init__(*args, **kwargs)
+
+
+class LinkOrButton(django.forms.fields.ChoiceField):
+    widget = widgets.LinkOrButton
+    CHOICES = (
+        ('lnk', 'link'),
+        ('btn', 'button'),
+    )
+    DEFAULT = 'lnk'
+
+    def __init__(self, *args, **kwargs):
+        if 'choices' not in kwargs:
+            kwargs['choices'] = self.CHOICES
+        if 'initial' not in kwargs:
+            kwargs['initial'] = self.DEFAULT
+        kwargs.pop('coerce', None)
+        kwargs.pop('max_length', None)
+        kwargs.pop('widget', None)
+        kwargs['widget'] = self.widget
+        super(LinkOrButton, self).__init__(*args, **kwargs)

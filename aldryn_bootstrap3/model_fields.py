@@ -212,6 +212,34 @@ class MiniText(django.db.models.TextField, SouthTextFieldMixin):
         return super(MiniText, self).formfield(**defaults)
 
 
+class LinkOrButton(django.db.models.fields.CharField, SouthCharFieldMixin):
+    default_field_class = fields.LinkOrButton
+
+    def __init__(self, *args, **kwargs):
+        if 'max_length' not in kwargs:
+            kwargs['max_length'] = 10
+        if 'blank' not in kwargs:
+            kwargs['blank'] = False
+        if 'default' not in kwargs:
+            kwargs['default'] = self.default_field_class.DEFAULT
+        super(LinkOrButton, self).__init__(*args, **kwargs)
+
+    def formfield(self, **kwargs):
+        defaults = {
+            'form_class': self.default_field_class,
+            'choices_form_class': self.default_field_class,
+        }
+        defaults.update(kwargs)
+        return super(LinkOrButton, self).formfield(**defaults)
+
+    def get_choices(self, **kwargs):
+        # if there already is a "blank" choice, don't add another
+        # default blank choice
+        if '' in dict(self.choices).keys():
+            kwargs['include_blank'] = False
+        return super(LinkOrButton, self).get_choices(**kwargs)
+
+
 #TODO:
 #   * btn-block, disabled
 #   * pull-left, pull-right

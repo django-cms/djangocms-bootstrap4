@@ -97,6 +97,8 @@ class Boostrap3ButtonPlugin(CMSPlugin, LinkMixin):
             ('btn', 'button'),
         )
     )
+    # type = model_fields.LinkOrButton()
+
     # button specific fields
     btn_context = model_fields.Context(
         verbose_name='context',
