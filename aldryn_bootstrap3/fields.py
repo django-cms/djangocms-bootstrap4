@@ -84,3 +84,18 @@ class Integer(django.forms.fields.IntegerField):
         kwargs.pop('widget', None)
         kwargs['widget'] = self.widget
         super(Integer, self).__init__(*args, **kwargs)
+
+
+class Classes(django.forms.fields.CharField):
+    widget = django.forms.widgets.Textarea
+
+
+class MiniText(django.forms.fields.CharField):
+    widget = widgets.MiniTextarea
+
+    def __init__(self, *args, **kwargs):
+        kwargs.pop('coerce', None)
+        kwargs.pop('max_length', None)
+        kwargs.pop('widget', None)
+        kwargs['widget'] = self.widget
+        super(MiniText, self).__init__(*args, **kwargs)

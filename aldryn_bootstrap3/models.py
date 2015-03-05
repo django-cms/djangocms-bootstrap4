@@ -219,12 +219,12 @@ class Boostrap3ImagePlugin(CMSPlugin):
         on_delete=models.SET_NULL,
         related_name='+',
     )
-    alt = models.TextField(
+    alt = model_fields.MiniText(
         _("alt"),
         blank=True,
         default='',
     )
-    title = models.TextField(
+    title = model_fields.MiniText(
         _("title"),
         blank=True,
         default='',
@@ -322,10 +322,11 @@ class Boostrap3PanelPlugin(CMSPlugin):
 class Boostrap3PanelHeadingPlugin(CMSPlugin):
     cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
 
-    title = models.TextField(
-        _("label"),
+    title = model_fields.MiniText(
+        _("title"),
         blank=True,
         default='',
+        help_text='Alternatively you can add plugins'
     )
 
     classes = model_fields.Classes()

@@ -194,6 +194,24 @@ class IntegerField(django.db.models.IntegerField, SouthIntegerFieldMixin):
         return super(IntegerField, self).formfield(**defaults)
 
 
+class MiniText(django.db.models.TextField, SouthTextFieldMixin):
+    default_field_class = fields.MiniText
+
+    def __init__(self, *args, **kwargs):
+        if 'blank' not in kwargs:
+            kwargs['blank'] = True
+        if 'default' not in kwargs:
+            kwargs['default'] = ''
+        super(MiniText, self).__init__(*args, **kwargs)
+
+    def formfield(self, **kwargs):
+        defaults = {
+            'form_class': self.default_field_class,
+        }
+        defaults.update(kwargs)
+        return super(MiniText, self).formfield(**defaults)
+
+
 #TODO:
 #   * btn-block, disabled
 #   * pull-left, pull-right

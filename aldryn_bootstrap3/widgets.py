@@ -89,3 +89,12 @@ class Icon(BootstrapMediaMixin, django.forms.widgets.TextInput):
             },
         )
         return rendered
+
+
+class MiniTextarea(django.forms.widgets.Textarea):
+    def __init__(self, attrs=None):
+        if attrs is None:
+            attrs = {}
+        attrs['cols'] = '120'
+        attrs['rows'] = '1'
+        super(MiniTextarea, self).__init__(attrs)
