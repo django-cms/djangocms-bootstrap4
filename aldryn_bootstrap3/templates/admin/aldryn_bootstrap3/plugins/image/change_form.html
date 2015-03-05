@@ -114,10 +114,6 @@
             var currentShape;
             var currentThumbnail;
 
-            var setAspectRatio = function () {
-
-            };
-
             // Title
             var title = $('#id_title');
             previewImageWrapper.attr('title', title.val());
@@ -131,7 +127,7 @@
             });
 
             var setImage = function () {
-                console.log(currentAspectRatio + '/' + currentShape + '/' + currentThumbnail);
+                //console.log(currentAspectRatio + '/' + currentShape + '/' + currentThumbnail);
                 previewImageWrapper.addClass(currentAspectRatio);
                 previewImageWrapper.addClass(currentShape);
                 previewImageWrapper.addClass(currentThumbnail);
