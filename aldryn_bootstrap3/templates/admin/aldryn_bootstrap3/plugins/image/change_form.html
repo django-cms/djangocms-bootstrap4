@@ -6,6 +6,7 @@
     <div class="well-wrapper">
         <div class="well img-preview js-img-preview text-center clearfix">
             <p class="text-center text-muted"><span class="fa fa-fw fa-eye"></span> Preview</p>
+
             <div class="img-wrapper js-img-wrapper" style="background-image: url('{% static 'aldryn_bootstrap3/img/img-placeholder.png' %}');"></div>
         </div>
     </div>
@@ -74,17 +75,59 @@
             display: none;
         }
 
-        .img-1x1 { width: 180px !important; height: 180px !important; margin-top: 0 !important; }
+        .img-1x1 {
+            width: 180px !important;
+            height: 180px !important;
+            margin-top: 0 !important;
+        }
 
-        .img-4x3 { width: 180px !important; height: 135px !important; margin-top: 22px !important; }
-        .img-16x9 { width: 180px !important; height: 101px !important; margin-top: 40px !important; }
-        .img-16x10 { width: 180px !important; height: 112px !important; margin-top: 34px !important; }
-        .img-21x9 { width: 180px !important; height: 77px !important; margin-top: 51px !important;}
+        .img-4x3 {
+            width: 180px !important;
+            height: 135px !important;
+            margin-top: 22px !important;
+        }
 
-        .img-3x4 { height: 180px !important; width: 135px !important; margin-top: 0 !important; }
-        .img-9x16 { height: 180px !important; width: 101px !important; margin-top: 0 !important; }
-        .img-10x16 { height: 180px !important; width: 112px !important; margin-top: 0 !important; }
-        .img-9x21 { height: 180px !important; width: 77px !important; margin-top: 0 !important; }
+        .img-16x9 {
+            width: 180px !important;
+            height: 101px !important;
+            margin-top: 40px !important;
+        }
+
+        .img-16x10 {
+            width: 180px !important;
+            height: 112px !important;
+            margin-top: 34px !important;
+        }
+
+        .img-21x9 {
+            width: 180px !important;
+            height: 77px !important;
+            margin-top: 51px !important;
+        }
+
+        .img-3x4 {
+            height: 180px !important;
+            width: 135px !important;
+            margin-top: 0 !important;
+        }
+
+        .img-9x16 {
+            height: 180px !important;
+            width: 101px !important;
+            margin-top: 0 !important;
+        }
+
+        .img-10x16 {
+            height: 180px !important;
+            width: 112px !important;
+            margin-top: 0 !important;
+        }
+
+        .img-9x21 {
+            height: 180px !important;
+            width: 77px !important;
+            margin-top: 0 !important;
+        }
 
 
     </style>
@@ -161,17 +204,17 @@
 
             // Set Thumbnail option
             thumbnail.on('change', function () {
-               previewImageWrapper.removeClass(currentThumbnail);
-               if ($(this).is(':checked')) {
-                  currentThumbnail = 'img-thumbnail';
-               } else {
-                   currentThumbnail = '';
-               }
-               setImage();
+                previewImageWrapper.removeClass(currentThumbnail);
+                if ($(this).is(':checked')) {
+                    currentThumbnail = 'img-thumbnail';
+                } else {
+                    currentThumbnail = '';
+                }
+                setImage();
             });
 
             // Set title
-            title.on('input', function() {
+            title.on('input', function () {
                 previewImageWrapper.attr('title', $(this).val());
             });
 
