@@ -45,6 +45,7 @@
     {{ block.super }}
 
     {# Javascript for preview (must be after the rest of the fields, because we rely on global variables set there. #}
+
     <script>
         if (!$) {
             $ = django.jQuery;
@@ -62,15 +63,16 @@
             var currentTextLinkContextTriggerValue;
             var currentSizesTriggerValue;
             var currentBlockTriggerValue;
-            var currentTypeSwitch;
+            var currentTypeSwitch ;
 
             // Init text/button switch
-            var typeSwitch = $('#id_type');
+            var typeSwitch = $('#id_type_0, #id_type_1');
             var buttonElements = $('.field-btn_context, .field-btn_size, .field-btn_block');
             var textElements = $('.field-txt_context');
 
             // Set btn-block
             var btnBlock = $('#id_btn_block');
+
 
             var setBtnBlock = function () {
                 if ($('#id_btn_block:checkbox:checked').length == 1) {
@@ -174,11 +176,9 @@
                     if (name === 'icon_left') {
                         previewButton.prepend(iconHtml);
                     }
-                    ;
                     if (name === 'icon_right') {
                         previewButton.append(iconHtml);
                     }
-                    ;
                 };
 
                 // on change
@@ -209,47 +209,47 @@
                 }
             });
 
-            var setButton = function () {
-                previewButton.addClass('btn');
-                previewButton.addClass('btn-' + currentButtonContextTriggerValue);
-                previewButton.addClass('btn-' + currentSizesTriggerValue);
-                previewButton.removeClass('text-' + currentTextLinkContextTriggerValue);
-                textElements.hide();
-                buttonElements.show();
-                currentTypeSwitch = 'btn';
+            // Init current type
+            setCurrentType = function () {
+                typeSwitch.each(function (index, name) {
+                    if ($(this).is(':checked')) {
+                        currentTypeSwitch = $(this).val();
+                    }
+                });
+
+                if (currentTypeSwitch == 'btn') {
+                    previewButton.addClass('btn');
+                    previewButton.addClass('btn-' + currentButtonContextTriggerValue);
+                    previewButton.addClass('btn-' + currentSizesTriggerValue);
+                    previewButton.removeClass('text-' + currentTextLinkContextTriggerValue);
+                    textElements.hide();
+                    buttonElements.show();
+                }
+
+                if (currentTypeSwitch == 'lnk') {
+                    previewButton.removeClass('btn');
+                    previewButton.removeClass('btn-' + currentButtonContextTriggerValue);
+                    previewButton.removeClass('btn-' + currentSizesTriggerValue);
+                    previewButton.removeClass('btn-block');
+                    previewButton.addClass('text-' + currentTextLinkContextTriggerValue);
+                    textElements.show();
+                    buttonElements.hide();
+                }
+
             };
 
-            var setTextLink = function () {
-                previewButton.removeClass('btn');
-                previewButton.removeClass('btn-' + currentButtonContextTriggerValue);
-                previewButton.removeClass('btn-' + currentSizesTriggerValue);
-                previewButton.removeClass('btn-block');
-                previewButton.addClass('text-' + currentTextLinkContextTriggerValue);
-                textElements.show();
-                buttonElements.hide();
-                currentTypeSwitch = 'lnk';
-            };
-
-            // Show elements based on selection
-            if (typeSwitch.val() == 'btn') {
-                setButton();
-                setBtnBlock();
-            }
-            if (typeSwitch.val() == 'lnk') {
-                setTextLink();
-            }
+            setCurrentType();
 
             typeSwitch.on('change', function () {
-                if ($(this).val() == 'btn') {
-                    setButton();
-                    setBtnBlock();
-                }
-                if ($(this).val() == 'lnk') {
-                    setTextLink();
-                }
+                setCurrentType();
+                console.log(currentTypeSwitch);
             });
+
+
         });
     </script>
+
+
 
 
 {% endblock %}
