@@ -1,10 +1,12 @@
 {% extends "admin/cms/page/plugin/change_form.html" %}
+{% load staticfiles %}
+
 
 {% block field_sets %}
     <div class="well-wrapper">
         <div class="well img-preview js-img-preview text-center clearfix">
             <p class="text-center text-muted"><span class="fa fa-fw fa-eye"></span> Preview</p>
-            <div class="img-wrapper js-img-wrapper" style="background-image: url('https://s3-eu-west-1.amazonaws.com/uploads-eu.hipchat.com/37894/1647767/RbFYvfLVggr5wIG/img-placeholder.png');"></div>
+            <div class="img-wrapper js-img-wrapper" style="background-image: url('{% static 'aldryn_bootstrap3/img/img-placeholder.png' %}');"></div>
         </div>
     </div>
 
