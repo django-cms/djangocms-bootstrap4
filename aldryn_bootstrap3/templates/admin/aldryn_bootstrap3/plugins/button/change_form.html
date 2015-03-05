@@ -153,9 +153,9 @@
 
             $("#id_label").on('input', function () {
                 if ($(this).val()) {
-                    $('.js-btn-preview .btn').text($(this).val());
+                    $('.js-btn-preview a').text($(this).val());
                 } else {
-                    $('.js-btn-preview .btn').text(previewButtonText);
+                    $('.js-btn-preview a').text(previewButtonText);
                 }
                 refreshIcons();
             });
