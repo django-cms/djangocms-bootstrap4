@@ -7,6 +7,10 @@ from django.db import models
 
 class Migration(SchemaMigration):
 
+    depends_on = (
+        ('cms', '0064_staticplaceholder_site_change'),
+    )
+
     def forwards(self, orm):
         # Adding model 'Boostrap3BlockquotePlugin'
         db.create_table(u'aldryn_bootstrap3_boostrap3blockquoteplugin', (

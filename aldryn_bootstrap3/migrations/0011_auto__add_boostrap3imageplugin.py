@@ -7,6 +7,10 @@ from django.db import models
 
 class Migration(SchemaMigration):
 
+    depends_on = (
+        ('filer', '0014_auto__add_field_image_related_url__chg_field_file_name'),
+    )
+
     def forwards(self, orm):
         # Adding model 'Boostrap3ImagePlugin'
         db.create_table(u'aldryn_bootstrap3_boostrap3imageplugin', (
