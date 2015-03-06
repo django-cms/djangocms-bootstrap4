@@ -86,6 +86,7 @@ class Icon(BootstrapMediaMixin, django.forms.widgets.TextInput):
                 'name': name,
                 'iconset': iconset,
                 'is_required': self.is_required,
+                'iconsets': settings.ALDRYN_BOOTSTRAP3_ICONSETS,
             },
         )
         return rendered

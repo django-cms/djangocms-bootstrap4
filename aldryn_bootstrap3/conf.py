@@ -7,3 +7,8 @@ from appconf import AppConf
 
 class AldrynSitesConf(AppConf):
     GRID_SIZE = 24
+    ICONSETS = (
+        # http://victor-valencia.github.io/bootstrap-iconpicker/
+        ('glyphicons', 'glyphicons', 'Glyphicons'),
+        ('fontawesome', 'fa', 'Fontawesome'),
+    )

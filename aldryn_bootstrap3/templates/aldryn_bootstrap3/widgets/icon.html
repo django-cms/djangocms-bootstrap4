@@ -3,8 +3,9 @@
     <input class="checkbox js-icon-enable{% if is_required %} hidden{% endif %}" name="icons-enabled-{{ name }}" type="checkbox"{% if value or is_required %} checked="checked"{% endif %} />
     <span class="js-icon-widgets hidden">
         <select class="form-control js-iconset">
-            <option value="glyphicons" data-prefix="glyphicon"{% if iconset == 'glyphicon' %} selected="selected"{% endif %}>Glyphicons</option>
-            <option value="fontawesome" data-prefix="fa"{% if iconset == 'fa' %} selected="selected"{% endif %}>Fontawesome</option>
+            {% for iconpicker_iconset, prefix, verbose_name in iconsets %}
+                <option value="{{ iconpicker_iconset }}" data-prefix="{{ prefix }}"{% if iconset == prefix %} selected="selected"{% endif %}>{{ verbose_name }}</option>
+            {% endfor %}
         </select>
         <span class="iconpicker js-icon-picker">
             <button id="id_{{ name }}" class="btn btn-default form-control" name="{{ name }}" data-icon="{{ value }}"></button>
