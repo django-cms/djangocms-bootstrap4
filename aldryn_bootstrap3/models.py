@@ -468,3 +468,38 @@ for size, name in constants.DEVICE_CHOICES:
         PullSizeField(verbose_name=_('pull-'.format(size))),
     )
 
+
+
+#############
+# Accordion #
+#############
+
+@python_2_unicode_compatible
+class Bootstrap3AccordionPlugin(CMSPlugin):
+    index = models.PositiveIntegerField(
+        _('index'), null=True, blank=True,
+        help_text=_('index of element that should be opened on page load '
+                    '(leave it empty if none of the items should be opened)'))
+    classes = model_fields.Classes()
+
+    def __str__(self):
+        return _("%s items") % self.cmsplugin_set.all().count()
+
+
+@python_2_unicode_compatible
+class Bootstrap3AccordionItemPlugin(CMSPlugin):
+    title = model_fields.MiniText(
+        _("title"),
+        blank=True,
+        default='',
+    )
+    context = model_fields.Context(
+        choices=constants.ACCORDION_ITEM_CONTEXT_CHOICES,
+        default=constants.ACCORDION_ITEM_CONTEXT_DEFAULT,
+        blank=False,
+    )
+
+    classes = model_fields.Classes()
+
+    def __str__(self):
+        return self.title

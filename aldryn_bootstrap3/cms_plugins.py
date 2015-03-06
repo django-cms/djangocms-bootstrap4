@@ -483,3 +483,74 @@ class Bootstrap3ColumnCMSPlugin(CMSPluginBase, widgets.BootstrapMediaMixin):
 
 plugin_pool.register_plugin(Bootstrap3RowCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3ColumnCMSPlugin)
+
+
+#############
+# Accordion #
+#############
+
+
+class Bootstrap3AccordionCMSPlugin(CMSPluginBase, widgets.BootstrapMediaMixin):
+    model = models.Bootstrap3AccordionPlugin
+    name = _('Accordion')
+    module = _('Bootstrap3')
+    change_form_template = 'admin/aldryn_bootstrap3/plugins/accordion/change_form.html'
+    render_template = 'aldryn_bootstrap3/plugins/accordion.html'
+    allow_children = True
+    child_classes = ['Bootstrap3AccordionItemCMSPlugin']
+
+    fieldsets = (
+        (None, {
+            'fields': (
+                'index',
+            )
+        }),        ('Advanced', {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+            ),
+        }),
+    )
+
+    def render(self, context, instance, placeholder):
+        context = super(Bootstrap3AccordionCMSPlugin, self).render(context, instance, placeholder)
+        context['instance'] = instance
+        context['accordion'] = instance
+        context['accordion_id'] = "plugin-bootstrap3-accordion-%s" % instance.pk
+        return context
+
+
+class Bootstrap3AccordionItemCMSPlugin(CMSPluginBase, widgets.BootstrapMediaMixin):
+    model = models.Bootstrap3AccordionItemPlugin
+    name = _('Accordion item')
+    module = _('Accordion')
+    change_form_template = 'admin/aldryn_bootstrap3/plugins/accordion_item/change_form.html'
+    render_template = 'aldryn_bootstrap3/plugins/accordion_item.html'
+    allow_children = True
+    parent_classes = ['Bootstrap3AccordionCMSPlugin']
+    cache = False
+
+    fieldsets = (
+        (None, {
+            'fields': (
+                'title',
+                'context',
+            )
+        }),
+        ('Advanced', {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+            ),
+        }),
+    )
+
+    def render(self, context, instance, placeholder):
+        context = super(Bootstrap3AccordionItemCMSPlugin, self).render(context, instance, placeholder)
+        context['instance'] = instance
+        context['item'] = instance
+        return context
+
+
+plugin_pool.register_plugin(Bootstrap3AccordionCMSPlugin)
+plugin_pool.register_plugin(Bootstrap3AccordionItemCMSPlugin)
