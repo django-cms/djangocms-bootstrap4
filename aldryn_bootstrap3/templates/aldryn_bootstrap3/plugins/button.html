@@ -13,7 +13,9 @@
                 {% if instance.txt_context %}txt-{{ instance.txt_context }}{% endif %}
             {% endif %}
             {% if instance.classes %} {{ instance.classes }}{% endif %}"
-       role="button"
+        {% if instance.type == 'btn' %}
+            role="button"
+        {% endif %}
     >
         {% if instance.icon_left %}{% with icon_class=instance.icon_left %}{% include 'aldryn_bootstrap3/plugins/includes/icon.html' %}{% endwith %}{% endif %}
         {{ instance.label }}
