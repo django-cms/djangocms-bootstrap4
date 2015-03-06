@@ -15,7 +15,7 @@
     "text": "!literal-include LICENSE.txt"
   },
   "protected": [
-    "aldryn_bootstrap3/templates/*",
-    "aldryn_bootstrap3/static/*"
+    "templates/*",
+    "static/*"
   ]
 }
