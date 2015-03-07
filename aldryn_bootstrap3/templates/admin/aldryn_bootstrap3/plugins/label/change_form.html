@@ -1,8 +1,139 @@
 {% extends "admin/cms/page/plugin/change_form.html" %}
+{% load staticfiles %}
+
 
 {% block field_sets %}
-{{ block.super }}
-<style>
-    .collapse { visibility: visible !important; display: block; }
-</style>
+    <div class="well-wrapper">
+        <div class="well label-preview js-label-preview text-center clearfix">
+            <p class="text-center text-muted"><i class="fa fa-fw fa-eye"></i> Preview</p>
+
+            <p><span class="label">Example Label</span></p>
+
+            <p class="text-center text-muted">
+                <small><i class="fa fa-fw fa-search"></i> <a href="#" class="js-magnifiying-x1">x1</a>&nbsp;
+                    <a href="#" class="js-magnifiying-x2 active">x2</a>
+                </small>
+            </p>
+        </div>
+    </div>
+
+    {# Styling #}
+    <style>
+        .collapse {
+            visibility: visible !important;
+            display: block;
+        }
+
+        .well {
+            position: fixed;
+            text-align: center;
+            z-index: 1000;
+            width: inherit;
+            border-radius: 0;
+            top: 0;
+            left: 0;
+        }
+
+        .well-wrapper {
+            height: 60px;
+            float: left;
+            position: relative;
+            margin: 0%;
+            width: 100%;
+        }
+
+        .label {
+            font-size: 150%;
+        }
+
+        .label-preview small {
+            margin-left: 0;
+        }
+
+        .label-preview small a {
+            color: #999;
+        }
+
+        .label-preview small a.active {
+            color: #000;
+        }
+
+        input[type=checkbox], input[type=radio] {
+            margin: 0 0 2px 0;
+        }
+
+
+    </style>
+
+    {{ block.super }}
+
+    {# Javascript for preview (must be after the rest of the fields, because we rely on global variables set there. #}
+    <script>
+        if (!$) {
+            $ = django.jQuery;
+        }
+        $(document).ready(function () {
+            var previewLabel = $('.js-label-preview span');
+            var contextSwitch = $('.js-btn-group-context-context .btn');
+
+            // Init defaults
+            var currentContext;
+
+            // Initial values
+            currentContext = 'label-' + contextSwitch.val();
+
+            contextSwitch.each(function (index, item) {
+                if ($(item).find('input').prop('checked')) {
+                    currentContext = 'label-' + $(item).find('input').val();
+                }
+            });
+
+            // Set Label, text
+            var label = $('#id_label');
+
+            previewLabel.text(label.val());
+
+            label.on('input', function () {
+                previewLabel.text($(this).val());
+            });
+
+            // Update class of preview button based on classes
+            var extraClasses = $("#id_classes");
+            previewLabel.addClass(extraClasses.val());
+
+            extraClasses.on('input', function () {
+                previewLabel.attr('class', 'label ' + currentContext + ' ' + $(this).val());
+            });
+
+            var setLabel = function () {
+                previewLabel.addClass(currentContext);
+                console.log(currentContext);
+            };
+
+            setLabel();
+
+            // Set Context on click
+            contextSwitch.on('click', function () {
+                previewLabel.removeClass(currentContext);
+                currentContext = 'label-' + $(this).find('input').val();
+                setLabel();
+            });
+
+            // Set magnification
+            $('.js-magnifiying-x1').on('click', function() {
+                $(this).toggleClass('active');
+                $('.js-magnifiying-x2').toggleClass('active');
+                previewLabel.css('font-size','75%');
+            });
+
+            $('.js-magnifiying-x2').on('click', function() {
+                $(this).toggleClass('active');
+                $('.js-magnifiying-x1').toggleClass('active');
+                previewLabel.css('font-size','150%');
+            });
+
+        });
+    </script>
+
+
 {% endblock %}
