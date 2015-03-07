@@ -25,6 +25,7 @@
         }
 
         .well {
+            height: 140px;
             position: fixed;
             text-align: center;
             z-index: 1000;
@@ -35,7 +36,7 @@
         }
 
         .well-wrapper {
-            height: 60px;
+            height: 120px;
             float: left;
             position: relative;
             margin: 0%;
@@ -90,11 +91,18 @@
 
             // Set Label, text
             var label = $('#id_label');
+            var exampleLabelText = previewLabel.text();
 
-            previewLabel.text(label.val());
+            if (label.val() != '') {
+                previewLabel.text(label.val());
+            }
 
             label.on('input', function () {
-                previewLabel.text($(this).val());
+                if (label.val() == "") {
+                   previewLabel.text(exampleLabelText);
+                } else {
+                   previewLabel.text($(this).val());
+                }
             });
 
             // Update class of preview button based on classes
@@ -107,7 +115,6 @@
 
             var setLabel = function () {
                 previewLabel.addClass(currentContext);
-                console.log(currentContext);
             };
 
             setLabel();
