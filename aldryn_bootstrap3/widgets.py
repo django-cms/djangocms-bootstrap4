@@ -25,20 +25,6 @@ class BootstrapMediaMixin(object):
         )
 
 
-# class BreakpointsRenderer(django.forms.widgets.CheckboxFieldRenderer):
-#     def render(self):
-#         from django.template.loader import render_to_string
-#         rendered = render_to_string(
-#             'aldryn_bootstrap3/widgets/breakpoints.html',
-#             {'selects': self},
-#         )
-#         return rendered
-#
-#
-# class Breakpoints(BootstrapMediaMixin, django.forms.widgets.CheckboxSelectMultiple):
-#     renderer = BreakpointsRenderer
-
-
 class ContextRenderer(django.forms.widgets.RadioFieldRenderer):
     def render(self):
         from django.template.loader import render_to_string
