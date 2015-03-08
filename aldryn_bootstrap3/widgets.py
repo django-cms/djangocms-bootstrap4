@@ -29,7 +29,7 @@ class ContextRenderer(django.forms.widgets.RadioFieldRenderer):
     def render(self):
         from django.template.loader import render_to_string
         rendered = render_to_string(
-            'aldryn_bootstrap3/widgets/context.html',
+            'admin/aldryn_bootstrap3/widgets/context.html',
             {'selects': self},
         )
         return rendered
@@ -43,7 +43,7 @@ class SizeRenderer(BootstrapMediaMixin, django.forms.widgets.RadioFieldRenderer)
     def render(self):
         from django.template.loader import render_to_string
         rendered = render_to_string(
-            'aldryn_bootstrap3/widgets/size.html',
+            'admin/aldryn_bootstrap3/widgets/size.html',
             {'selects': self},
         )
         return rendered
@@ -61,7 +61,7 @@ class Icon(BootstrapMediaMixin, django.forms.widgets.TextInput):
         iconset = value.split('-')[0] if value and '-' in value else ''
         from django.template.loader import render_to_string
         rendered = render_to_string(
-            'aldryn_bootstrap3/widgets/icon.html',
+            'admin/aldryn_bootstrap3/widgets/icon.html',
             {
                 'input_html': input_html,
                 'value': value,
@@ -87,7 +87,7 @@ class LinkOrButtonRenderer(django.forms.widgets.RadioFieldRenderer):
     def render(self):
         from django.template.loader import render_to_string
         rendered = render_to_string(
-            'aldryn_bootstrap3/widgets/link_or_button.html',
+            'admin/aldryn_bootstrap3/widgets/link_or_button.html',
             {'selects': self},
         )
         return rendered
@@ -122,7 +122,7 @@ class Responsive(BootstrapMediaMixin, django.forms.widgets.Textarea):
 
 
         rendered = render_to_string(
-            'aldryn_bootstrap3/widgets/responsive.html',
+            'admin/aldryn_bootstrap3/widgets/responsive.html',
             {
                 'widget_html': widget_html,
                 'widget': self,
@@ -149,7 +149,7 @@ class ResponsivePrint(BootstrapMediaMixin, django.forms.widgets.Textarea):
             ('hidden-print', 'Pretty visible-print-inline-block'),
         ]
         rendered = render_to_string(
-            'aldryn_bootstrap3/widgets/responsive_print.html',
+            'admin/aldryn_bootstrap3/widgets/responsive_print.html',
             {
                 'widget_html': widget_html,
                 'widget': self,
