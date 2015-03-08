@@ -73,7 +73,6 @@
             // Set btn-block
             var btnBlock = $('#id_btn_block');
 
-
             var setBtnBlock = function () {
                 if ($('#id_btn_block:checkbox:checked').length == 1) {
                     previewButton.addClass('btn-block');
@@ -83,6 +82,8 @@
                     currentBlockTriggerValue = '';
                 }
             };
+
+            setBtnBlock();
 
             btnBlock.on('click', function () {
                 setBtnBlock();
