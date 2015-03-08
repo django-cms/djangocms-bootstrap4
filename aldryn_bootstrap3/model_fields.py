@@ -240,6 +240,46 @@ class LinkOrButton(django.db.models.fields.CharField, SouthCharFieldMixin):
         return super(LinkOrButton, self).get_choices(**kwargs)
 
 
+# class JSONField(json_field.JSONField, SouthTextFieldMixin):
+#     pass
+
+
+class Responsive(MiniText):
+    default_field_class = fields.Responsive
+
+    def __init__(self, *args, **kwargs):
+        if 'blank' not in kwargs:
+            kwargs['blank'] = True
+        if 'default' not in kwargs:
+            kwargs['default'] = ''
+        super(Responsive, self).__init__(*args, **kwargs)
+
+    def formfield(self, **kwargs):
+        defaults = {
+            'form_class': self.default_field_class,
+        }
+        defaults.update(kwargs)
+        return super(Responsive, self).formfield(**defaults)
+
+
+class ResponsivePrint(MiniText):
+    default_field_class = fields.ResponsivePrint
+
+    def __init__(self, *args, **kwargs):
+        if 'blank' not in kwargs:
+            kwargs['blank'] = True
+        if 'default' not in kwargs:
+            kwargs['default'] = ''
+        super(ResponsivePrint, self).__init__(*args, **kwargs)
+
+    def formfield(self, **kwargs):
+        defaults = {
+            'form_class': self.default_field_class,
+        }
+        defaults.update(kwargs)
+        return super(ResponsivePrint, self).formfield(**defaults)
+
+
 #TODO:
 #   * btn-block, disabled
 #   * pull-left, pull-right

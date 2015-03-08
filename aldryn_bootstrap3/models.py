@@ -120,7 +120,14 @@ class Boostrap3ButtonPlugin(CMSPlugin, LinkMixin):
     icon_right = model_fields.Icon()
 
     classes = model_fields.Classes()
-
+    responsive = model_fields.Responsive(
+        blank=True,
+        default='',
+    )
+    responsive_print = model_fields.ResponsivePrint(
+        blank=True,
+        default='',
+    )
     label = models.CharField(
         _("label"),
         max_length=256,

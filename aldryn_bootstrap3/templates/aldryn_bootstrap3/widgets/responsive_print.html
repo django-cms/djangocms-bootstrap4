@@ -1,0 +1,30 @@
+<div>
+    Data structure that can be used to build the UI (only use it if it is helpful. Might be easier to just
+    hardcode all in the template).
+    Make sure to prefix the name of any <code>input</code> created here, so the names don't clash with real fields in
+    the form.
+    <ul>
+        {% for value, verbose_name in choices %}
+            <li>{{ verbose_name }} (<code>{{ value }}</code>)</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div>
+Save the resulting selection as a class name into the textarea with
+<code>name={{ name }}</code>. It expects something like:
+<pre>
+visible-print-block
+</pre>
+
+</div>
+{{ widget_html }}
+
+<div>
+Other Template variables:
+<pre>
+    id: {{ id }} (css id of the textarea)
+    name: {{ name }}
+    value: {{ value }}
+</pre>
+</div>

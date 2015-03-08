@@ -119,3 +119,11 @@ class LinkOrButton(django.forms.fields.ChoiceField):
         kwargs.pop('widget', None)
         kwargs['widget'] = self.widget
         super(LinkOrButton, self).__init__(*args, **kwargs)
+
+
+class Responsive(MiniText):
+    widget = widgets.Responsive
+
+
+class ResponsivePrint(MiniText):
+    widget = widgets.ResponsivePrint

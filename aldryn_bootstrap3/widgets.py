@@ -1,14 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals, absolute_import
-import string
-import itertools
 from django.utils.translation import ugettext_lazy as _
 import django.forms.widgets
-from django.utils.datastructures import SortedDict
-from django.utils.encoding import force_text
-from django.utils.html import format_html, format_html_join
 
 from .conf import settings
+from . import constants
 
 
 class BootstrapMediaMixin(object):
@@ -113,3 +109,69 @@ class LinkOrButtonRenderer(django.forms.widgets.RadioFieldRenderer):
 
 class LinkOrButton(BootstrapMediaMixin, django.forms.widgets.RadioSelect):
     renderer = LinkOrButtonRenderer
+
+
+class Responsive(BootstrapMediaMixin, django.forms.widgets.Textarea):
+    def render(self, name, value, attrs=None):
+        from django.template.loader import render_to_string
+        widget_html = super(Responsive, self).render(name=name, value=value, attrs=attrs)
+
+        choices = []
+        options = (
+            ('', 'Pretty None'),
+            ('visible-{device}-block', 'Pretty visible-{device}-block'),
+            ('visible-{device}-inline', 'Pretty visible-{device}-inline'),
+            ('visible-{device}-inline-block', 'Pretty visible-{device}-inline-block'),
+            ('hidden-{device}', 'Pretty hidden-{device}'),
+        )
+        for device in constants.DEVICE_SIZES:
+            choices.append((
+                device,
+                tuple([
+                    (option.format(device=device), option_verbose.format(device=device))
+                    for option, option_verbose in options
+                ])
+            ))
+        choices = tuple(choices)
+
+
+        rendered = render_to_string(
+            'aldryn_bootstrap3/widgets/responsive.html',
+            {
+                'widget_html': widget_html,
+                'widget': self,
+                'value': value,
+                'name': name,
+                'id': attrs.get('id', None),
+                'attrs': attrs,
+                'choices': choices,
+            },
+        )
+        return rendered
+
+
+class ResponsivePrint(BootstrapMediaMixin, django.forms.widgets.Textarea):
+    def render(self, name, value, attrs=None):
+        from django.template.loader import render_to_string
+        widget_html = super(ResponsivePrint, self).render(
+            name=name, value=value, attrs=attrs)
+
+        choices = [
+            ('visible-print-block', 'Pretty visible-print-block'),
+            ('visible-print-inline', 'Pretty visible-print-inline'),
+            ('visible-print-inline-block', 'Pretty visible-print-inline-block'),
+            ('hidden-print', 'Pretty visible-print-inline-block'),
+        ]
+        rendered = render_to_string(
+            'aldryn_bootstrap3/widgets/responsive_print.html',
+            {
+                'widget_html': widget_html,
+                'widget': self,
+                'value': value,
+                'name': name,
+                'id': attrs.get('id', None),
+                'attrs': attrs,
+                'choices': choices,
+            },
+        )
+        return rendered

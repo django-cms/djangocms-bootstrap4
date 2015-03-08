@@ -168,26 +168,28 @@ class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
     allow_children = True
 
     fieldsets = (
-                    (None, {
-                        'fields': (
-                            'label',
-                            'type',
-                            'btn_context',
-                            'btn_size',
-                            'btn_block',
-                            'txt_context',
-                            'icon_left',
-                            'icon_right',
-                        ),
-                    }),
-                ) + link_fieldset + (
-                    ('Advanced', {
-                        'classes': ('collapse',),
-                        'fields': (
-                            'classes',
-                        )
-                    }),
-                )
+        (None, {
+            'fields': (
+                'label',
+                'type',
+                'btn_context',
+                'btn_size',
+                'btn_block',
+                'txt_context',
+                'icon_left',
+                'icon_right',
+            ),
+        }),
+    ) + link_fieldset + (
+        ('Advanced', {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+                'responsive',
+                'responsive_print',
+            )
+        }),
+    )
 
     def render(self, context, instance, placeholder):
         context.update({'instance': instance})
