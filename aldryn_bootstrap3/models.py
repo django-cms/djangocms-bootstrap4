@@ -89,6 +89,12 @@ class LinkMixin(models.Model):
 class Boostrap3ButtonPlugin(CMSPlugin, LinkMixin):
     cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
 
+    label = models.CharField(
+        _("label"),
+        max_length=256,
+        blank=True,
+        default='',
+    )
     type = model_fields.LinkOrButton()
 
     # button specific fields
@@ -117,12 +123,6 @@ class Boostrap3ButtonPlugin(CMSPlugin, LinkMixin):
         default='',
     )
     responsive_print = model_fields.ResponsivePrint(
-        blank=True,
-        default='',
-    )
-    label = models.CharField(
-        _("label"),
-        max_length=256,
         blank=True,
         default='',
     )
