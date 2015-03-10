@@ -228,6 +228,7 @@ class Bootstrap3ImageCMSPlugin(widgets.BootstrapMediaMixin, CMSPluginBase):
             'fields': (
                 'title',
                 'classes',
+                'img_responsive',
             ),
         }),
     )

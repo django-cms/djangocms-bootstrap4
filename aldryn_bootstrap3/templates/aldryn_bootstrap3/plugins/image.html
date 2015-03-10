@@ -15,7 +15,7 @@ TODO: currently we're always upscaling the image physically.
     {% endwith %}
     alt="{{ instance.alt }}"
     title="{{ instance.title }}"
-    class="img-responsive{% if instance.shape %} img-{{ instance.shape }}{% endif %}{% if instance.thumbnail %} img-thumbnail{% endif %}"
+    class="{% if instance.img_responsive %}img-responsive{% endif %}{% if instance.shape %} img-{{ instance.shape }}{% endif %}{% if instance.thumbnail %} img-thumbnail{% endif %}"
     srcset="{% for device, src in instance.srcset.items %}
     {% thumbnail instance.file src.size crop=src.crop upscale=src.upscale subject_location=src.subject_location as thumb %}{{ thumb.url }} {{ src.width_str }}{% if not forloop.last %},{% endif %}
     {% endfor %}"

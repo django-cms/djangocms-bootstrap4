@@ -255,6 +255,13 @@ class Boostrap3ImagePlugin(CMSPlugin):
     )
 
     classes = model_fields.Classes()
+    img_responsive = models.BooleanField(
+        verbose_name='img-responsive',
+        default=True,
+        blank=True,
+        help_text='whether to treat the image as using 100% width of the '
+                  'parent container (sets the img-responsive class).'
+    )
 
     def __str__(self):
         txt = 'Image'
