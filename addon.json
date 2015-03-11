@@ -1,21 +1,21 @@
 {
-  "name": "Aldryn Bootstrap3",
-  "description": "Integration with Bootstrap3 (CMS Plugins)",
-  "url": "https://github.com/aldryn/aldryn-bootstrap3",
-  "package-name": "aldryn-bootstrap3",
-  "installed-apps": [
-    "aldryn_bootstrap3"
-  ],
-  "author": {
-    "name": "Divio AG",
-    "url": "divio.ch"
-  },
-  "license": {
-    "name": "BSD",
-    "text": "!literal-include LICENSE.txt"
-  },
-  "protected": [
-    "templates/*",
-    "static/*"
-  ]
+    "name": "Aldryn Bootstrap3",
+    "description": "Integration with Bootstrap3 (CMS Plugins)",
+    "url": "https://github.com/aldryn/aldryn-bootstrap3",
+    "package-name": "aldryn-bootstrap3",
+    "installed-apps": [
+        "aldryn_bootstrap3"
+    ],
+    "author": {
+        "name": "Divio AG",
+        "url": "divio.ch"
+    },
+        "license": {
+        "name": "BSD",
+        "text": "!literal-include LICENSE.txt"
+    },
+    "protected": [
+        "templates/*",
+        "static/*"
+    ]
 }
