@@ -1,7 +1,7 @@
 {% load cms_tags %}
 
 <div
-    class="list-group
+    class="{% if instance.add_list_group_class %}list-group{% endif %}
         {% if instance.classes %} {{ instance.classes }}{% endif %}"
 >
     {% for plugin in instance.child_plugin_instances %}

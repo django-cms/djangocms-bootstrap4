@@ -256,7 +256,7 @@ class Boostrap3ImagePlugin(CMSPlugin):
 
     classes = model_fields.Classes()
     img_responsive = models.BooleanField(
-        verbose_name='img-responsive',
+        verbose_name='class: img-responsive',
         default=True,
         blank=True,
         help_text='whether to treat the image as using 100% width of the '
@@ -518,6 +518,12 @@ class Bootstrap3AccordionItemPlugin(CMSPlugin):
 @python_2_unicode_compatible
 class Bootstrap3ListGroupPlugin(CMSPlugin):
     classes = model_fields.Classes()
+    add_list_group_class = models.BooleanField(
+        verbose_name='class: list-group',
+        default=True,
+        blank=True,
+        help_text='whether to add the list-group and list-group-item classes'
+    )
 
     def __str__(self):
         return _("%s items") % self.cmsplugin_set.all().count()
@@ -533,6 +539,15 @@ class Bootstrap3ListGroupItemPlugin(CMSPlugin):
     context = model_fields.Context(
         choices=constants.LIST_GROUP_ITEM_CONTEXT_CHOICES,
         default=constants.LIST_GROUP_ITEM_CONTEXT_DEFAULT,
+        blank=True,
+    )
+    state = models.CharField(
+        verbose_name='state',
+        choices=(
+            ('active', 'active'),
+            ('disabled', 'disabled'),
+        ),
+        max_length=255,
         blank=True,
     )
 

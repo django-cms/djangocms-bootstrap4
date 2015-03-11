@@ -584,6 +584,7 @@ class Bootstrap3ListGroupCMSPlugin(CMSPluginBase, widgets.BootstrapMediaMixin):
             'classes': ('collapse',),
             'fields': (
                 'classes',
+                'add_list_group_class',
             ),
         }),
     )
@@ -601,7 +602,10 @@ class Bootstrap3ListGroupItemCMSPlugin(CMSPluginBase, widgets.BootstrapMediaMixi
     change_form_template = 'admin/aldryn_bootstrap3/plugins/list_group_item/change_form.html'
     render_template = 'aldryn_bootstrap3/plugins/list_group_item.html'
     allow_children = True
-    parent_classes = ['Bootstrap3ListGroupCMSPlugin']
+    parent_classes = [
+        'Bootstrap3ListGroupCMSPlugin',
+        'Bootstrap3PanelCMSPlugin',
+    ]
     cache = False
 
     fieldsets = (
@@ -609,6 +613,7 @@ class Bootstrap3ListGroupItemCMSPlugin(CMSPluginBase, widgets.BootstrapMediaMixi
             'fields': (
                 'title',
                 'context',
+                'state',
             )
         }),
         ('Advanced', {
