@@ -1,0 +1,16 @@
+{% load cms_tags %}
+
+<div
+   class="list-group-item
+        {% if instance.context %} list-group-item-{{ instance.context }}{% endif %}
+        {% if instance.classes %} {{ instance.classes }}{% endif %}"
+>
+    {% if instance.title %}
+        <h4 class="list-group-item-heading">{{ instance.title }}</h4>
+    {% endif %}
+    {% for plugin in item.child_plugin_instances %}
+        {% render_plugin plugin %}
+    {% empty %}
+
+    {% endfor %}
+</div>

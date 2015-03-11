@@ -558,3 +558,73 @@ class Bootstrap3AccordionItemCMSPlugin(CMSPluginBase, widgets.BootstrapMediaMixi
 
 plugin_pool.register_plugin(Bootstrap3AccordionCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3AccordionItemCMSPlugin)
+
+
+#############
+# ListGroup #
+#############
+
+
+class Bootstrap3ListGroupCMSPlugin(CMSPluginBase, widgets.BootstrapMediaMixin):
+    model = models.Bootstrap3ListGroupPlugin
+    name = _('List Group')
+    module = _('Bootstrap3')
+    change_form_template = 'admin/aldryn_bootstrap3/plugins/list_group/change_form.html'
+    render_template = 'aldryn_bootstrap3/plugins/list_group.html'
+    allow_children = True
+    child_classes = ['Bootstrap3ListGroupItemCMSPlugin']
+
+    fieldsets = (
+        # (None, {
+        #     'fields': (
+        #         'index',
+        #     )
+        # }),
+        ('Advanced', {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+            ),
+        }),
+    )
+
+    def render(self, context, instance, placeholder):
+        context = super(Bootstrap3ListGroupCMSPlugin, self).render(context, instance, placeholder)
+        context['instance'] = instance
+        return context
+
+
+class Bootstrap3ListGroupItemCMSPlugin(CMSPluginBase, widgets.BootstrapMediaMixin):
+    model = models.Bootstrap3ListGroupItemPlugin
+    name = _('List Group Item')
+    module = _('Bootstrap3')
+    change_form_template = 'admin/aldryn_bootstrap3/plugins/list_group_item/change_form.html'
+    render_template = 'aldryn_bootstrap3/plugins/list_group_item.html'
+    allow_children = True
+    parent_classes = ['Bootstrap3ListGroupCMSPlugin']
+    cache = False
+
+    fieldsets = (
+        (None, {
+            'fields': (
+                'title',
+                'context',
+            )
+        }),
+        ('Advanced', {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+            ),
+        }),
+    )
+
+    def render(self, context, instance, placeholder):
+        context = super(Bootstrap3ListGroupItemCMSPlugin, self).render(context, instance, placeholder)
+        context['instance'] = instance
+        context['item'] = instance
+        return context
+
+
+plugin_pool.register_plugin(Bootstrap3ListGroupCMSPlugin)
+plugin_pool.register_plugin(Bootstrap3ListGroupItemCMSPlugin)

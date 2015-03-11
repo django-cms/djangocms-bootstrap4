@@ -509,3 +509,34 @@ class Bootstrap3AccordionItemPlugin(CMSPlugin):
 
     def __str__(self):
         return self.title
+
+
+#############
+# ListGroup #
+#############
+
+@python_2_unicode_compatible
+class Bootstrap3ListGroupPlugin(CMSPlugin):
+    classes = model_fields.Classes()
+
+    def __str__(self):
+        return _("%s items") % self.cmsplugin_set.all().count()
+
+
+@python_2_unicode_compatible
+class Bootstrap3ListGroupItemPlugin(CMSPlugin):
+    title = model_fields.MiniText(
+        _("title"),
+        blank=True,
+        default='',
+    )
+    context = model_fields.Context(
+        choices=constants.LIST_GROUP_ITEM_CONTEXT_CHOICES,
+        default=constants.LIST_GROUP_ITEM_CONTEXT_DEFAULT,
+        blank=True,
+    )
+
+    classes = model_fields.Classes()
+
+    def __str__(self):
+        return self.title
