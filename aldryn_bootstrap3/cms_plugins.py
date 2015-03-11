@@ -507,7 +507,8 @@ class Bootstrap3AccordionCMSPlugin(CMSPluginBase, widgets.BootstrapMediaMixin):
             'fields': (
                 'index',
             )
-        }),        ('Advanced', {
+        }),
+        ('Advanced', {
             'classes': ('collapse',),
             'fields': (
                 'classes',
