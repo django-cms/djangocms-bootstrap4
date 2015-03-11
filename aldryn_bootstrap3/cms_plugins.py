@@ -185,8 +185,8 @@ class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
             'classes': ('collapse',),
             'fields': (
                 'classes',
-                'responsive',
-                'responsive_print',
+                # 'responsive',
+                # 'responsive_print',
             )
         }),
     )
