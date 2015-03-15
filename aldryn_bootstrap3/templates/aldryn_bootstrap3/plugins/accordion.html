@@ -1,15 +1,15 @@
 {% load cms_tags %}
 
-<div
-    id="{{ accordion_id }}"
-    class="panel-group
+<div class="accordion panel-group
         {% if instance.context %} panel-{{ instance.context }}{% endif %}
         {% if instance.classes %} {{ instance.classes }}{% endif %}"
-    role="tablist"
-    aria-multiselectable="true"
->
+    id="{{ accordion_id }}"
+    role="tablist" aria-multiselectable="true">
+
     {% for plugin in instance.child_plugin_instances %}
-        {% with parentloop=forloop index=instance.index %}{% render_plugin plugin %}{% endwith %}
+        {% with parentloop=forloop index=instance.index %}
+            {% render_plugin plugin %}
+        {% endwith %}
     {% empty %}
 
     {% endfor %}
