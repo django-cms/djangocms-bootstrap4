@@ -1,8 +1,8 @@
 {% load cms_tags %}
 
 <div class="accordion panel-group
-        {% if instance.context %} panel-{{ instance.context }}{% endif %}
-        {% if instance.classes %} {{ instance.classes }}{% endif %}"
+    {% if instance.context %} panel-{{ instance.context }}{% endif %}
+    {% if instance.classes %} {{ instance.classes }}{% endif %}"
     id="{{ accordion_id }}"
     role="tablist" aria-multiselectable="true">
 
