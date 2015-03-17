@@ -1,13 +1,10 @@
 {% load cms_tags %}
 
-<div
-   class="panel
-        {% if instance.context %} panel-{{ instance.context }}{% endif %}
-        {% if instance.classes %} {{ instance.classes }}{% endif %}"
->
+<div class="panel
+    {% if instance.context %} panel-{{ instance.context }}{% endif %}
+    {% if instance.classes %} {{ instance.classes }}{% endif %}">
+
     {% for plugin in instance.child_plugin_instances %}
         {% render_plugin plugin %}
-    {% empty %}
-
     {% endfor %}
 </div>
