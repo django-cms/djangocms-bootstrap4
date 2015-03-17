@@ -16,8 +16,8 @@ TODO: currently we're always upscaling the image physically.
     {% endwith %}
     alt="{{ instance.alt }}"
     {% if instance.title %}title="{{ instance.title }}"{% endif %}
-    {% if instance.img_responsive or instance.shape or instance.thumbnail %}
-        class="{% if instance.img_responsive %}img-responsive{% endif %}{% if instance.shape %} img-{{ instance.shape }}{% endif %}{% if instance.thumbnail %} img-thumbnail{% endif %}"
+    {% if instance.img_responsive or instance.shape or instance.thumbnail or instance.classes %}
+        class="{% if instance.img_responsive %}img-responsive{% endif %}{% if instance.shape %} img-{{ instance.shape }}{% endif %}{% if instance.thumbnail %} img-thumbnail{% endif %}{% if instance.classes %} {{ instance.classes }}{% endif %}"
     {% endif %}
     srcset="{% for device, src in instance.srcset.items %}
         {% if not forloop.first %}
