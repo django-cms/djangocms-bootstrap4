@@ -1,6 +1,6 @@
 {% load cms_tags %}
 
-<div class="{% if list_group_instance.add_list_group_class %}list-group-item{% endif %}
+<div class="{% if list_group_instance.add_list_group_class %}list-group-item{% else %}list-item{% endif %}
     {% if instance.context %} list-group-item-{{ instance.context }}{% endif %}
     {% if instance.classes %} {{ instance.classes }}{% endif %}
     {% if instance.state %} {{ instance.state }}{% endif %}">
