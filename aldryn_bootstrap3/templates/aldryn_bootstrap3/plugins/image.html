@@ -1,5 +1,6 @@
 {% load cms_tags thumbnail %}
 {% comment %}
+DOCS: https://html.spec.whatwg.org/multipage/embedded-content.html#introduction-3:viewport-based-selection-2
 the browser assumes size="100vw" by default, which means
 "assume this image will be displayed at full width on the
 current viewport and pick an image from srcset accordingly".
@@ -14,10 +15,14 @@ TODO: currently we're always upscaling the image physically.
         src="{{ main_thumb.url }}"
     {% endwith %}
     alt="{{ instance.alt }}"
-    title="{{ instance.title }}"
-    class="{% if instance.img_responsive %}img-responsive{% endif %}{% if instance.shape %} img-{{ instance.shape }}{% endif %}{% if instance.thumbnail %} img-thumbnail{% endif %}"
+    {% if instance.title %}title="{{ instance.title }}"{% endif %}
+    {% if instance.img_responsive or instance.shape or instance.thumbnail %}
+        class="{% if instance.img_responsive %}img-responsive{% endif %}{% if instance.shape %} img-{{ instance.shape }}{% endif %}{% if instance.thumbnail %} img-thumbnail{% endif %}"
+    {% endif %}
     srcset="{% for device, src in instance.srcset.items %}
-    {% thumbnail instance.file src.size crop=src.crop upscale=src.upscale subject_location=src.subject_location as thumb %}{{ thumb.url }} {{ src.width_str }}{% if not forloop.last %},{% endif %}
+        {% if not forloop.first %}
+            {% thumbnail instance.file src.size crop=src.crop upscale=src.upscale subject_location=src.subject_location as thumb %}{{ thumb.url }} {{ src.width_str }}{% if not forloop.last %},{% endif %}
+        {% endif %}
     {% endfor %}"
 >
 {% if 0 %}
