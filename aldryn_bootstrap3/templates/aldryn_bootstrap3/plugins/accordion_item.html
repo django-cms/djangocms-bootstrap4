@@ -24,8 +24,6 @@
         <div class="panel-body">
             {% for plugin in item.child_plugin_instances %}
                 {% render_plugin plugin %}
-            {% empty %}
-
             {% endfor %}
         </div>
     </div>

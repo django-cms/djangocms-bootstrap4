@@ -5,12 +5,10 @@
     {% if instance.classes %} {{ instance.classes }}{% endif %}">
 
     {% if instance.icon %}
-        {% with icon_class=instance.icon extra_css_classes="pull-left" %}{% include "aldryn_bootstrap3/plugins/includes/icon.html" %}{% endwith %}
+        {% with icon_class=instance.icon extra_css_classes="pull-left" %}{% include 'aldryn_bootstrap3/plugins/includes/icon.html' %}{% endwith %}
     {% endif %}
 
     {% for plugin in instance.child_plugin_instances %}
         {% render_plugin plugin %}
-    {% empty %}
-
     {% endfor %}
 </div>
