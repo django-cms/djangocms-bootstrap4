@@ -10,7 +10,7 @@
                 class="{% if index == forloop.counter %}{% else %}collapsed{% endif %}"
                 data-toggle="collapse"
                 data-parent="#{{ accordion_id }}"
-                aria-expanded="{% if index == forloop.counter %}true{% endif %}"
+                aria-expanded="{% if index == forloop.counter %}true{% else %}false{% endif %}"
                 aria-controls="collapse-{{ item.title|slugify }}-{{ item.pk }}">
                 {{ item.title }}
             </a>
