@@ -1,8 +1,7 @@
 {% load cms_tags %}
-{% spaceless %}
-<blockquote class="{{ instance.classes }}{% if instance.reverse %} blockquote-reverse{% endif %}">
-{% for plugin in instance.child_plugin_instances %}
-	{% render_plugin plugin %}
-{% endfor %}
+
+<blockquote{% if instance.classes or instance.reverse %} class="{{ instance.classes }}{% if instance.reverse %} blockquote-reverse{% endif %}"{% endif %}>
+    {% for plugin in instance.child_plugin_instances %}
+        {% render_plugin plugin %}
+    {% endfor %}
 </blockquote>
-{% endspaceless %}

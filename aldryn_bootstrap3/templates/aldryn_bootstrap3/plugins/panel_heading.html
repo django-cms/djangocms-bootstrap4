@@ -4,9 +4,8 @@
     {% if instance.title %}
         <h3 class="panel-title">{{ instance.title }}</h3>
     {% endif %}
+
     {% for plugin in instance.child_plugin_instances %}
         {% render_plugin plugin %}
-    {% empty %}
-
     {% endfor %}
 </div>
