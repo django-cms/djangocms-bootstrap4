@@ -25,32 +25,32 @@ from .conf import settings
 
 
 class LinkMixin(models.Model):
-    url = models.URLField(_("link"), blank=True, default='')
-    page_link = cms.models.fields.PageField(
+    link_url = models.URLField(_("link"), blank=True, default='')
+    link_page = cms.models.fields.PageField(
         verbose_name=_("page"),
         blank=True,
         null=True,
         on_delete=models.SET_NULL
     )
-    file = filer.fields.file.FilerFileField(
+    link_file = filer.fields.file.FilerFileField(
         verbose_name=_("file"),
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
     )
-    anchor = models.CharField(
+    link_anchor = models.CharField(
         _("anchor"), max_length=128, blank=True,
         help_text=_("Adds this value as an anchor (#my-anchor) to the link."),
     )
-    mailto = models.EmailField(
+    link_mailto = models.EmailField(
         _("mailto"), blank=True, null=True,
         # help_text=_("An email address has priority over a text link."),
     )
-    phone = models.CharField(
+    link_phone = models.CharField(
         _('Phone'), blank=True, null=True, max_length=40,
         # help_text=_('A phone number has priority over a mailto link.'),
     )
-    target = models.CharField(
+    link_target = models.CharField(
         _("target"), blank=True, max_length=100,
         choices=((
             ("", _("same window")),
@@ -63,21 +63,21 @@ class LinkMixin(models.Model):
     class Meta:
         abstract = True
 
-    def get_url(self):
-        if self.phone:
-            link = u"tel://{}".format(self.phone)
-        elif self.mailto:
-            link = u"mailto:{}".format(self.mailto)
-        elif self.url:
-            link = self.url
-        elif self.page_link_id:
-            link = self.page_link.get_absolute_url()
-        elif self.file:
-            link = self.file.url
+    def get_link_url(self):
+        if self.link_phone:
+            link = u"tel://{}".format(self.link_phone)
+        elif self.link_mailto:
+            link = u"mailto:{}".format(self.link_mailto)
+        elif self.link_url:
+            link = self.link_url
+        elif self.link_page_id:
+            link = self.link_page.get_absolute_url()
+        elif self.link_file:
+            link = self.link_file.url
         else:
             link = ""
-        if self.anchor:
-            link += '#{}'.format(self.anchor)
+        if self.link_anchor:
+            link += '#{}'.format(self.link_anchor)
         return link
 
 

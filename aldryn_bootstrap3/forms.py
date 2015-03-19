@@ -61,7 +61,7 @@ RowPluginForm = type(str('RowPluginBaseForm'), (RowPluginBaseForm,), extra_field
 
 
 class LinkForm(django.forms.models.ModelForm):
-    page_link = cms.forms.fields.PageSelectFormField(
+    link_page = cms.forms.fields.PageSelectFormField(
         queryset=cms.models.Page.objects.drafts(),
         label=_("Page"),
         required=False,
@@ -70,7 +70,7 @@ class LinkForm(django.forms.models.ModelForm):
     def for_site(self, site):
         # override the page_link fields queryset to containt just pages for
         # current site
-        self.fields['page_link'].queryset = cms.models.Page.objects.drafts().on_site(site)
+        self.fields['link_page'].queryset = cms.models.Page.objects.drafts().on_site(site)
 
     class Meta:
         model = models.Boostrap3ButtonPlugin
@@ -92,11 +92,11 @@ class LinkForm(django.forms.models.ModelForm):
     def clean(self):
         cleaned_data = super(LinkForm, self).clean()
         link_fields = {
-            'url': cleaned_data.get("url"),
-            'page_link': cleaned_data.get("page_link"),
-            'file': cleaned_data.get("file"),
-            'mailto': cleaned_data.get("mailto"),
-            'phone': cleaned_data.get("phone"),
+            'link_url': cleaned_data.get("link_url"),
+            'link_page': cleaned_data.get("link_page"),
+            'link_file': cleaned_data.get("link_file"),
+            'link_mailto': cleaned_data.get("link_mailto"),
+            'link_phone': cleaned_data.get("link_phone"),
         }
         error_msg = _("Only one of Page, File, Link, Email address or Phone is allowed.")
         if len([i for i in link_fields.values() if i]) > 1:

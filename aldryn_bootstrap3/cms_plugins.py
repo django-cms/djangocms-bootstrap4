@@ -13,13 +13,13 @@ from cms.models import CMSPlugin
 link_fieldset = (
     ('Link', {
         'fields': (
-            'page_link', 'file', 'url', 'mailto', 'phone',
+            'link_page', 'link_file', 'link_url', 'link_mailto', 'link_phone',
         ),
         'description': 'Choose one of the link types below.',
     }),
     ('Link options', {
         'fields': (
-            ('target', 'anchor',),
+            ('link_target', 'link_anchor',),
         ),
     }),
 )
