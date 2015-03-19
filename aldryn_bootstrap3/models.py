@@ -2,11 +2,15 @@
 from __future__ import unicode_literals, absolute_import
 from functools import partial
 import collections
+import datetime
 
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
+from django.utils.html import strip_tags
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext
+
+import django.forms.models
 
 from cms.models.pluginmodel import CMSPlugin
 import cms.models
@@ -15,13 +19,15 @@ import cms.models.fields
 import filer.fields.file
 import filer.fields.image
 
-from . import model_fields, constants
-from .conf import settings
+import djangocms_text_ckeditor.fields
+
+from . import model_fields, constants, utils
 
 
 ##########
 # Mixins #  do NOT use outside of this package!
 ##########  Because changes here might require Database migrations!
+import os
 
 
 class LinkMixin(models.Model):
@@ -44,11 +50,9 @@ class LinkMixin(models.Model):
     )
     link_mailto = models.EmailField(
         _("mailto"), blank=True, null=True,
-        # help_text=_("An email address has priority over a text link."),
     )
     link_phone = models.CharField(
         _('Phone'), blank=True, null=True, max_length=40,
-        # help_text=_('A phone number has priority over a mailto link.'),
     )
     link_target = models.CharField(
         _("target"), blank=True, max_length=100,
@@ -567,3 +571,135 @@ class Bootstrap3ListGroupItemPlugin(CMSPlugin):
 
     def __str__(self):
         return self.title
+
+
+############
+# Carousel #  derived from https://github.com/aldryn/aldryn-gallery/tree/0.2.6
+############
+
+@python_2_unicode_compatible
+class Bootstrap3CarouselPlugin(CMSPlugin):
+    STYLE_DEFAULT = 'standard'
+
+    STYLE_CHOICES = [
+        (STYLE_DEFAULT, _('Standard')),
+    ]
+
+    TRANSITION_EFFECT_CHOICES = (
+        ('slide', _('Slide')),
+    )
+
+    style = models.CharField(
+        _('Style'),
+        choices=STYLE_CHOICES + utils.get_additional_styles(),
+        default=STYLE_DEFAULT,
+        max_length=50,
+    )
+    # wrap
+
+    # keyboard
+    # pause
+
+
+    # =====
+    transition_effect = models.CharField(
+        _('Transition Effect'),
+        choices=TRANSITION_EFFECT_CHOICES,
+        default='',
+        max_length=50,
+        blank=True,
+    )
+    ride = models.BooleanField(
+        _('Ride'),
+        default=True,
+        help_text=_('Whether to mark the carousel as animating '
+                    'starting at page load.'),
+    )
+    interval = models.IntegerField(
+        _('Interval'),
+        default=5000,
+        help_text=_("The amount of time to delay between automatically "
+                    "cycling an item."),
+    )
+    wrap = models.BooleanField(
+        default=True,
+        blank=True,
+        help_text=_('Whether the carousel should cycle continuously or '
+                    'have hard stops.')
+    )
+    pause = models.BooleanField(
+        default=True,
+        blank=True,
+        help_text=_('Pauses the cycling of the carousel on mouseenter and '
+                    'resumes the cycling of the carousel on mouseleave.')
+    )
+    classes = model_fields.Classes()
+
+    def __str__(self):
+        data = django.forms.models.model_to_dict(self)
+        data.update(dict(
+            style_label=_('Style'),
+            transition_effect_label=_('Transition Effect'),
+            ride_label=_('Ride'),
+            interval_label=_('Interval'),
+        ))
+        fields = [
+            'style',
+            'transition_effect',
+            'ride',
+            'interval',
+        ]
+        if not data['ride']:
+            fields.remove('interval')
+        return ', '.join([
+            '{key}: {value}'.format(
+                key=data['{}_label'.format(field)],
+                value=data[field]
+            ) for field in fields
+        ])
+
+
+@python_2_unicode_compatible
+class Bootstrap3CarouselSlidePlugin(CMSPlugin, LinkMixin):
+    image = filer.fields.image.FilerImageField(
+        verbose_name=_('image'),
+        blank=True,
+        null=True,
+        related_name='+',
+        on_delete=models.SET_NULL,
+    )
+    link_text = models.CharField(
+        verbose_name=_('link text'),
+        max_length=200,
+        blank=True
+    )
+    content = djangocms_text_ckeditor.fields.HTMLField(
+        _("Content"),
+        blank=True,
+        default='',
+        help_text=_('alternatively add sub plugins as content'),
+    )
+    classes = model_fields.Classes()
+
+    def __str__(self):
+        image_text = content_text = ''
+
+        if self.image_id:
+            if self.image.name:
+                image_text = self.image.name
+            elif self.image.original_filename \
+                    and os.path.split(self.image.original_filename)[1]:
+                image_text = os.path.split(self.image.original_filename)[1]
+            else:
+                image_text = 'Image'
+        if self.content:
+            text = strip_tags(self.content).strip()
+            if len(text) > 100:
+                content_text = '{}...'.format(text[:100])
+            else:
+                content_text = '{}'.format(text)
+
+        if image_text and content_text:
+            return '{} ({})'.format(image_text, content_text)
+        else:
+            return image_text or content_text

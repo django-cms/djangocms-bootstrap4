@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 from aldryn_bootstrap3 import __version__
 
 REQUIREMENTS = [
-
+    'django-durationfield>=0.5.1',
 ]
 
 CLASSIFIERS = [

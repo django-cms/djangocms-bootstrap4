@@ -1,0 +1,18 @@
+{% load static sekizai_tags %}
+
+{# DOCS: http://getbootstrap.com/javascript/#carousel #}
+<div id="js-carousel-id-{{ instance.pk }}" class="carousel-style-{{ instance.style }}
+    carousel{% if instance.transition_effect %} {{ instance.transition_effect }}{% endif %}"
+    {% if instance.ride %}
+        data-ride="carousel"
+        data-interval="{{ instance.interval }}"
+    {% endif %}
+    {% if not instance.pause %}
+        data-pause=""
+    {% endif %}
+    {% if not instance.wrap %}
+        data-wrap=""
+    {% endif %}
+    >
+    {% block content_carousel %}{% endblock %}
+</div>

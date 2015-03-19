@@ -1,0 +1,4 @@
+{# Slide for a filer.Image instance #}
+<div class="item{% if forloop.first %} active{% endif %}">
+    <img src="{{ image.url }}" alt="{{ image.default_alt_text|default:image.label }}" />
+</div>

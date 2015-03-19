@@ -3,6 +3,8 @@ from __future__ import unicode_literals, absolute_import
 import django.forms
 import django.forms.models
 import django.core.exceptions
+import django.template
+import django.template.loader
 from django.utils.translation import ugettext_lazy as _
 import cms.forms.fields
 import cms.models
@@ -116,3 +118,29 @@ class PanelPluginBaseForm(django.forms.models.ModelForm):
         model = models.Boostrap3PanelPlugin
         # fields = ('classes',)
         exclude = ('page', 'position', 'placeholder', 'language', 'plugin_type')
+
+
+class CarouselPluginForm(django.forms.ModelForm):
+
+    class Meta:
+        fields = [
+            'style',
+            'transition_effect',
+            'ride',
+            'interval',
+        ]
+        model = models.Bootstrap3CarouselPlugin
+
+    def clean_style(self):
+        style = self.cleaned_data.get('style')
+        template = 'aldryn_bootstrap3/plugins/carousel/{}/carousel.html'.format(
+            style)
+        print style
+        # Check if template for style exists:
+        try:
+            django.template.loader.select_template([template])
+        except django.template.TemplateDoesNotExist:
+            raise django.forms.ValidationError(
+                _("Not a valid style (Template %s does not exist)") % template
+            )
+        return style
