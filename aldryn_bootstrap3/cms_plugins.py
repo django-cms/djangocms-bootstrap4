@@ -112,6 +112,7 @@ class Bootstrap3WellCMSPlugin(CMSPluginBase):
         (None, {'fields': (
             'size',
         )}),
+
         ('Advanced', {
             'classes': ('collapse',),
             'fields': (
@@ -220,7 +221,6 @@ class Bootstrap3ImageCMSPlugin(widgets.BootstrapMediaMixin, CMSPluginBase):
                 'shape',
                 'thumbnail',
                 'alt',
-
         )}),
 
         ('Advanced', {
@@ -239,6 +239,34 @@ class Bootstrap3ImageCMSPlugin(widgets.BootstrapMediaMixin, CMSPluginBase):
 
 
 plugin_pool.register_plugin(Bootstrap3ImageCMSPlugin)
+
+
+class Bootstrap3SpacerCMSPlugin(CMSPluginBase):
+    model = models.Boostrap3SpacerPlugin
+    name = _("Spacer")
+    module = _('Bootstrap3')
+    change_form_template = 'admin/aldryn_bootstrap3/plugins/spacer/change_form.html'
+    render_template = 'aldryn_bootstrap3/plugins/spacer.html'
+
+    fieldsets = (
+        (None, {'fields': (
+            'size',
+        )}),
+
+        ('Advanced', {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+            ),
+        }),
+    )
+
+    def render(self, context, instance, placeholder):
+        context.update({'instance': instance})
+        return context
+
+
+plugin_pool.register_plugin(Bootstrap3SpacerCMSPlugin)
 
 
 # ########
