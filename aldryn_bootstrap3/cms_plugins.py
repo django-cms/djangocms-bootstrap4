@@ -252,7 +252,6 @@ class Bootstrap3SpacerCMSPlugin(CMSPluginBase):
         (None, {'fields': (
             'size',
         )}),
-
         ('Advanced', {
             'classes': ('collapse',),
             'fields': (
