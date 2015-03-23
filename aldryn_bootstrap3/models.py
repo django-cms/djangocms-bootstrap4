@@ -362,6 +362,18 @@ class Boostrap3PanelFooterPlugin(CMSPlugin):
         return self.classes
 
 
+@python_2_unicode_compatible
+class Boostrap3SpacerPlugin(CMSPlugin):
+    cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
+
+    size = model_fields.Size()
+
+    classes = model_fields.Classes()
+
+    def __str__(self):
+        return 'size-' + self.size + ' ' + self.classes
+
+
 ########
 # Grid #
 ########
