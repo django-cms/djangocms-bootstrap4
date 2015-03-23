@@ -660,3 +660,122 @@ class Bootstrap3ListGroupItemCMSPlugin(CMSPluginBase, widgets.BootstrapMediaMixi
 
 plugin_pool.register_plugin(Bootstrap3ListGroupCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3ListGroupItemCMSPlugin)
+
+
+############
+# Carousel #
+############
+
+
+# Base Classes
+class CarouselBase(CMSPluginBase, widgets.BootstrapMediaMixin):
+    module = _('Bootstrap3')
+
+
+class CarouselSlideBase(CarouselBase, widgets.BootstrapMediaMixin):
+    require_parent = True
+    parent_classes = ['Bootstrap3CarouselCMSPlugin']
+
+    def render(self, context, instance, placeholder):
+        # get style from parent plugin, render chosen template
+        context['instance'] = instance
+        context['image'] = instance.image
+        return context
+
+    def get_slide_template(self, instance, name='slide'):
+        if instance.parent is None:
+            style = models.Bootstrap3CarouselPlugin.STYLE_DEFAULT
+        else:
+            style = getattr(
+                instance.parent.get_plugin_instance()[0],
+                'style',
+                models.Bootstrap3CarouselPlugin.STYLE_DEFAULT,
+            )
+        return 'aldryn_bootstrap3/plugins/carousel/{}/{}.html'.format(
+            style, name)
+
+    def get_render_template(self, context, instance, placeholder):
+        return self.get_slide_template(instance=instance)
+
+
+# Plugins
+class Bootstrap3CarouselCMSPlugin(CarouselBase):
+    name = _('Carousel')
+    model = models.Bootstrap3CarouselPlugin
+    change_form_template = 'admin/aldryn_bootstrap3/plugins/carousel/change_form.html'
+    render_template = False
+    form = forms.CarouselPluginForm
+    allow_children = True
+    child_classes = [
+        'Bootstrap3CarouselSlideCMSPlugin',
+    ]
+    fieldsets = (
+        (None, {
+            'fields': (
+                'style',
+                'transition_effect',
+                ('ride', 'interval'),
+            )
+        }),
+        ('Advanced', {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+                'pause',
+                'wrap',
+            ),
+        }),
+    )
+
+    def render(self, context, instance, placeholder):
+        context['instance'] = instance
+        if instance.child_plugin_instances:
+            number_of_slides = sum([
+                plugin.folder.file_count
+                if isinstance(plugin, Bootstrap3CarouselCMSPlugin) else 1
+                for plugin in instance.child_plugin_instances
+            ])
+        else:
+            number_of_slides = 0
+        context['slides'] = range(number_of_slides)
+        return context
+
+    def get_render_template(self, context, instance, placeholder):
+        return 'aldryn_bootstrap3/plugins/carousel/{}/carousel.html'.format(
+            instance.style)
+
+
+carousel_link_fieldset = link_fieldset
+
+
+class Bootstrap3CarouselSlideCMSPlugin(CarouselSlideBase):
+    model = models.Bootstrap3CarouselSlidePlugin
+    name = _('Carousel Slide')
+    change_form_template = 'admin/aldryn_bootstrap3/plugins/carousel_slide/change_form.html'
+    allow_children = True
+
+    fieldsets = (
+        (None, {
+            'fields': (
+                'image',
+                'content',
+            )
+        }),
+    ) + link_fieldset + (
+        (_('Link Text'), {
+            'fields': (
+                'link_text',
+            )
+        }),
+        ('Advanced', {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+            ),
+        }),
+    )
+
+
+
+plugin_pool.register_plugin(Bootstrap3CarouselCMSPlugin)
+plugin_pool.register_plugin(Bootstrap3CarouselSlideCMSPlugin)

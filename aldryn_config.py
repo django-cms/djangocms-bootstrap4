@@ -17,6 +17,8 @@ class Form(forms.BaseForm):
         help_text='If you disable this, remember to also update your sass config to not load the font.',
     )
 
+    carousel_styles = forms.CharField('List of additional carousel styles (comma separated)', required=False)
+
     def to_settings(self, data, settings):
         choices = []
         if data['enable_glyphicons']:
@@ -28,4 +30,5 @@ class Form(forms.BaseForm):
                 ('fontawesome', 'fa', 'Fontawesome')
             )
         settings['ALDRYN_BOOTSTRAP3_ICONSETS'] = choices
+        settings['ALDRYN_BOOTSTRAP3_CAROUSEL_STYLES'] = data['carousel_styles']
         return settings
