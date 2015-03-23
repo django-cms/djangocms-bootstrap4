@@ -2,7 +2,7 @@
 {% load i18n cms_tags %}
 
 {% block content_carousel %}
-{# Indicators #}
+{# INFO: indicators #}
 <ol class="carousel-indicators">
     {% for slide in slides %}
         <li data-target="#js-carousel-id-{{ instance.pk }}" data-slide-to="{{ forloop.counter0 }}"{% if forloop.first %} class="active"{% endif %}></li>
@@ -16,13 +16,13 @@
     {% endfor %}
 </div>
 
-{# Controls #}
+{# INFO: controls #}
 <a class="left carousel-control" href="#js-carousel-id-{{ instance.pk }}" role="button" data-slide="prev">
-    <span class="icon icon-chevron-left glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="fa fa-chevron-left glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
     <span class="sr-only">{% trans "Previous" %}</span>
 </a>
 <a class="right carousel-control" href="#js-carousel-id-{{ instance.pk }}" role="button" data-slide="next">
-    <span class="icon icon-chevron-right glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="fa fa-chevron-right glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     <span class="sr-only">{% trans "Next" %}</span>
 </a>
 {% endblock content_carousel %}
