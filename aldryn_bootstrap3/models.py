@@ -18,6 +18,7 @@ import cms.models.fields
 
 import filer.fields.file
 import filer.fields.image
+import filer.fields.folder
 
 import djangocms_text_ckeditor.fields
 
@@ -703,3 +704,16 @@ class Bootstrap3CarouselSlidePlugin(CMSPlugin, LinkMixin):
             return '{} ({})'.format(image_text, content_text)
         else:
             return image_text or content_text
+
+@python_2_unicode_compatible
+class Bootstrap3CarouselSlideFolderPlugin(CMSPlugin):
+    folder = filer.fields.folder.FilerFolderField(
+        verbose_name=_('folder'),
+    )
+    classes = model_fields.Classes()
+
+    def __str__(self):
+        if self.folder:
+            return self.folder.pretty_logical_path
+        else:
+            return _('not selected yet')

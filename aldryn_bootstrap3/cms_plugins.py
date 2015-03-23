@@ -708,6 +708,7 @@ class Bootstrap3CarouselCMSPlugin(CarouselBase):
     allow_children = True
     child_classes = [
         'Bootstrap3CarouselSlideCMSPlugin',
+        'Bootstrap3CarouselSlideFolderCMSPlugin',
     ]
     fieldsets = (
         (None, {
@@ -776,6 +777,25 @@ class Bootstrap3CarouselSlideCMSPlugin(CarouselSlideBase):
     )
 
 
+class Bootstrap3CarouselSlideFolderCMSPlugin(CarouselSlideBase):
+    """
+    Slide Plugin that renders a slide for each image in the linked folder.
+    """
+    name = _('Carousel Slides Folder')
+    model = models.Bootstrap3CarouselSlideFolderPlugin
+
+    def render(self, context, instance, placeholder):
+        context['instance'] = instance
+        context['slide_template'] = self.get_slide_template(
+            instance=instance,
+            name='image_slide',
+        )
+        return context
+
+    def get_render_template(self, context, instance, placeholder):
+        return self.get_slide_template(instance=instance, name='slide_folder')
+
 
 plugin_pool.register_plugin(Bootstrap3CarouselCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3CarouselSlideCMSPlugin)
+plugin_pool.register_plugin(Bootstrap3CarouselSlideFolderCMSPlugin)
