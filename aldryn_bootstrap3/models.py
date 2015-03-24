@@ -70,9 +70,9 @@ class LinkMixin(models.Model):
 
     def get_link_url(self):
         if self.link_phone:
-            link = u"tel://{}".format(self.link_phone)
+            link = u"tel://{0}".format(self.link_phone).replace(' ', '')
         elif self.link_mailto:
-            link = u"mailto:{}".format(self.link_mailto)
+            link = u"mailto:{0}".format(self.link_mailto)
         elif self.link_url:
             link = self.link_url
         elif self.link_page_id:
@@ -82,7 +82,7 @@ class LinkMixin(models.Model):
         else:
             link = ""
         if self.link_anchor:
-            link += '#{}'.format(self.link_anchor)
+            link += '#{0}'.format(self.link_anchor)
         return link
 
 
