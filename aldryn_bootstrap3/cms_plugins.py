@@ -709,7 +709,7 @@ class Bootstrap3CarouselCMSPlugin(CarouselBase):
     cache = False
     child_classes = [
         'Bootstrap3CarouselSlideCMSPlugin',
-        'Bootstrap3CarouselSlideFolderCMSPlugin',
+        # 'Bootstrap3CarouselSlideFolderCMSPlugin',
     ]
     fieldsets = (
         (None, {
@@ -802,4 +802,4 @@ class Bootstrap3CarouselSlideFolderCMSPlugin(CarouselSlideBase):
 
 plugin_pool.register_plugin(Bootstrap3CarouselCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3CarouselSlideCMSPlugin)
-plugin_pool.register_plugin(Bootstrap3CarouselSlideFolderCMSPlugin)
+# plugin_pool.register_plugin(Bootstrap3CarouselSlideFolderCMSPlugin)
