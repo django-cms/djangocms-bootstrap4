@@ -1,4 +1,11 @@
 {# Icon settings #}
+{% if not iconsets %}
+    <div class="form-inline">
+        <div class="alert alert-danger">
+            No Iconsets configured! Please configure at least on Iconset before using this widget.
+        </div>
+    </div>
+{% else %}
 <div class="icon js-icon js-icon-{{ name }} form-inline">
     <input class="checkbox js-icon-enable{% if is_required %} hidden{% endif %}" name="icons-enabled-{{ name }}" type="checkbox"{% if value or is_required %} checked="checked"{% endif %} />
     <span class="js-icon-widgets hidden">
@@ -60,6 +67,7 @@
     }
     $( document ).ready(function() {
         var name = '{{ name }}';
+        var initialIconsetPrefix = '{{ iconset }}';
         var isRequired = Boolean('{% if is_required %}true{% endif %}');
         var iconPicker = $('.js-icon-' + name + ' .js-icon-picker');
         var iconSet = $('.js-icon-' + name + ' .js-iconset');
@@ -72,7 +80,8 @@
 
         var iconPickerButton = iconPicker.find('button');
         var initialValue = iconPickerButton.data('icon');
-        var initialIconsetPrefix = initialValue.split('-')[0];
+        // var initialIconsetPrefix = initialValue.split('-')[0];
+
         var initialIconset = iconSet.find('option[data-prefix=' + initialIconsetPrefix + ']').attr('value');
 
         if ( iconSet.find('option').length == 1 ) {
@@ -119,3 +128,4 @@
         window['iconsetSelectedCss_' + name] = iconPicker.find('i').attr('class');
     });
 </script>
+{% endif %}

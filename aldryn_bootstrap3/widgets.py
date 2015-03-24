@@ -59,6 +59,11 @@ class Icon(BootstrapMediaMixin, django.forms.widgets.TextInput):
         if value is None:
             value = ''
         iconset = value.split('-')[0] if value and '-' in value else ''
+        iconset_prefexes = [s[1] for s in settings.ALDRYN_BOOTSTRAP3_ICONSETS]
+        if len(settings.ALDRYN_BOOTSTRAP3_ICONSETS) and iconset not in iconset_prefexes:
+            # invalid iconset! maybe because the iconset was removed from
+            # the project. set it to the first in the list.
+            iconset = settings.ALDRYN_BOOTSTRAP3_ICONSETS[0][1]
         from django.template.loader import render_to_string
         rendered = render_to_string(
             'admin/aldryn_bootstrap3/widgets/icon.html',
