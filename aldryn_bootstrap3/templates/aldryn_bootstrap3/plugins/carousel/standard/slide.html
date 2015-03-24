@@ -6,13 +6,13 @@
         {% if link %}
             <a href="{{ link }}"{% if instance.link_target %} target="{{ instance.link_target }}"{% endif %}>
                 {% if image %}
-                    <img src="{{ image.url }}" alt="{{ image.default_alt_text|default:image.label }}" />
+                    {% with image=instance.image srcset=carousel.srcset %}{% include 'aldryn_bootstrap3/plugins/carousel/standard/includes/image.html' %}{% endwith %}
                 {% else %}
                     {{ instance.link_text }}
                 {% endif %}
             </a>
         {% elif image %}
-            <img src="{{ image.url }}" alt="{{ image.default_alt_text|default:image.label }}" />
+            {% with image=instance.image srcset=carousel.srcset %}{% include 'aldryn_bootstrap3/plugins/carousel/standard/includes/image.html' %}{% endwith %}
         {% endif %}
     {% endwith %}
 

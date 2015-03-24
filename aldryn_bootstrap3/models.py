@@ -643,12 +643,14 @@ class Bootstrap3CarouselPlugin(CMSPlugin):
             transition_effect_label=_('Transition Effect'),
             ride_label=_('Ride'),
             interval_label=_('Interval'),
+            aspect_ratio_label=_('Aspect Ratio'),
         ))
         fields = [
             'style',
             'transition_effect',
             'ride',
             'interval',
+            'aspect_ratio',
         ]
         if not data['ride']:
             fields.remove('interval')
@@ -659,6 +661,35 @@ class Bootstrap3CarouselPlugin(CMSPlugin):
             ) for field in fields
         ])
 
+    def srcset(self):
+        # more or less copied from image plugin.
+        # TODO: replace with generic sizes/srcset solution
+        items = collections.OrderedDict()
+        if self.aspect_ratio:
+            aspect_width, aspect_height = tuple([int(i) for i in self.aspect_ratio.split('x')])
+        else:
+            aspect_width, aspect_height = None, None
+        for device in constants.DEVICES:
+            width = device['width_gutter']  # TODO: should this should be based on the containing col size?
+            width_tag = str(width)
+            if aspect_width is not None and aspect_height is not None:
+                height = int(float(width)*float(aspect_height)/float(aspect_width))
+                crop = True
+            else:
+                height = 0
+                crop = False
+            items[device['identifier']] = {
+                'size': (width, height),
+                'size_str': "{}x{}".format(width, height),
+                'width_str': "{}w".format(width),
+                # 'subject_location': self.file.subject_location,
+                'upscale': True,
+                'crop': crop,
+                'aspect_ratio': (aspect_width, aspect_height),
+                'width_tag': width_tag,
+            }
+
+        return items
 
 @python_2_unicode_compatible
 class Bootstrap3CarouselSlidePlugin(CMSPlugin, LinkMixin):

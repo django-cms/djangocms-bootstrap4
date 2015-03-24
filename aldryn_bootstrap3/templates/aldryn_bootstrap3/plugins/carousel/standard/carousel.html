@@ -2,6 +2,7 @@
 {% load i18n cms_tags %}
 
 {% block content_carousel %}
+{% with carousel=instance %}
 {# INFO: indicators #}
 <ol class="carousel-indicators">
     {% for slide in slides %}
@@ -25,4 +26,5 @@
     <span class="fa fa-chevron-right glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     <span class="sr-only">{% trans "Next" %}</span>
 </a>
+{% endwith %}
 {% endblock content_carousel %}
