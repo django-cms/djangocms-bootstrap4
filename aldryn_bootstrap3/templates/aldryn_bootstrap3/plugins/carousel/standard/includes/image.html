@@ -5,9 +5,12 @@
         src="{{ main_thumb.url }}"
     {% endwith %}
     alt="{{ image.default_alt_text|default:'' }}"
+    {% comment %}
+    {# INFO: needs proper attributes for validation #}
     srcset="{% for device, src in srcset.items %}
         {% if not forloop.first %}
             {% thumbnail image.file src.size crop=src.crop upscale=src.upscale subject_location=image.subject_location as thumb %}{{ thumb.url }} {{ src.width_str }}{% if not forloop.last %},{% endif %}
         {% endif %}
     {% endfor %}"
+    {% endcomment %}
 >

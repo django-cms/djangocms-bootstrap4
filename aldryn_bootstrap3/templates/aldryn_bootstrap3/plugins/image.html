@@ -19,11 +19,14 @@ TODO: currently we're always upscaling the image physically.
     {% if instance.img_responsive or instance.shape or instance.thumbnail or instance.classes %}
         class="{% if instance.img_responsive %}img-responsive{% endif %}{% if instance.shape %} img-{{ instance.shape }}{% endif %}{% if instance.thumbnail %} img-thumbnail{% endif %}{% if instance.classes %} {{ instance.classes }}{% endif %}"
     {% endif %}
+    {% comment %}
+    {# INFO: needs proper attributes for validation #}
     srcset="{% for device, src in instance.srcset.items %}
         {% if not forloop.first %}
             {% thumbnail instance.file src.size crop=src.crop upscale=src.upscale subject_location=src.subject_location as thumb %}{{ thumb.url }} {{ src.width_str }}{% if not forloop.last %},{% endif %}
         {% endif %}
     {% endfor %}"
+    {% endcomment %}
 >
 {% if 0 %}
 <pre>
