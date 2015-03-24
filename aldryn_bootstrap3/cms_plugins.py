@@ -716,6 +716,8 @@ class Bootstrap3CarouselCMSPlugin(CarouselBase):
                 'style',
                 'transition_effect',
                 ('ride', 'interval'),
+                'aspect_ratio',
+
             )
         }),
         ('Advanced', {

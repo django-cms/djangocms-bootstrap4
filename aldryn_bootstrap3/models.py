@@ -596,13 +596,13 @@ class Bootstrap3CarouselPlugin(CMSPlugin):
         default=STYLE_DEFAULT,
         max_length=50,
     )
-    # wrap
-
-    # keyboard
-    # pause
-
-
-    # =====
+    aspect_ratio = models.CharField(
+        _("aspect ratio"),
+        max_length=10,
+        blank=True,
+        default='',
+        choices=constants.ASPECT_RATIO_CHOICES
+    )
     transition_effect = models.CharField(
         _('Transition Effect'),
         choices=TRANSITION_EFFECT_CHOICES,
