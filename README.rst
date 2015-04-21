@@ -4,7 +4,7 @@ Aldryn Bootstrap3
 
 |PyPI Version| |Build Status| |Coverage Status|
 
-Aldryn Bootstrap3 is a unique bundle provided specificaly for aldryn. Aldryn bootstrap3 extends the most used components of the `Bootstrap <http://getbootstrap.com/>`_ framework. It uses a variety of components for rapid frontend development and implements various best practices from within the front-end community.
+Aldryn Bootstrap3 is a plugin bundle provided specifically for aldryn. Aldryn bootstrap3 extends the most used components of the `Bootstrap <http://getbootstrap.com/>`_ framework. It uses a variety of components for rapid frontend development and implements various best practices from within the front-end community.
 
 following plugins are available:
 
