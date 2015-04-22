@@ -17,7 +17,7 @@ following plugins are available:
 * `Well <http://getbootstrap.com/components/#wells>`_
 * `Alert <http://getbootstrap.com/components/#alerts>`_
 * `Panel (Heading, Body and Footer) <http://getbootstrap.com/components/#panels>`_
-* `Accordion <http://getbootstrap.com/javascript/#collapse>`_
+* `Accordion <http://getbootstrap.com/javascript/#collapse-example-accordion>`_
 * `ListGroup <http://getbootstrap.com/components/#list-group>`_
 * `Carousel <http://getbootstrap.com/javascript/#carousel>`_
 
