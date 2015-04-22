@@ -25,7 +25,7 @@ following plugins are available:
 Documentation
 *************
 
-For further information about usage `read the Docs <https://github.com/aldryn/aldryn-bootstrap3/wiki>`_.
+For further information about usage `read the docs <https://github.com/aldryn/aldryn-bootstrap3/wiki>`_.
 
 ************
 Contribution
