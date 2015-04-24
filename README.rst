@@ -20,7 +20,7 @@ following plugins are available:
 * `Accordion <http://getbootstrap.com/javascript/#collapse-example-accordion>`_
 * `ListGroup <http://getbootstrap.com/components/#list-group>`_
 * `Carousel <http://getbootstrap.com/javascript/#carousel>`_
-
+* Spacer
 *************
 Documentation
 *************
