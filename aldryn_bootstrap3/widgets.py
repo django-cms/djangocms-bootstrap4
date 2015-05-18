@@ -19,9 +19,9 @@ class BootstrapMediaMixin(object):
         js = (
                 'https://code.jquery.com/jquery-1.10.2.min.js',
                 '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js',
-                'https://static.dev.aldryn.net/cdn/iconset/iconset-glyphicon.min.js',
-                'https://static.dev.aldryn.net/cdn/iconset/iconset-fontawesome-4.2.0.min.js',
-                'https://static.dev.aldryn.net/cdn/bootstrap-iconpicker.min.js',
+                'https://static.aldryn.com/cdn/iconset/iconset-glyphicon.min.js',
+                'https://static.aldryn.com/cdn/iconset/iconset-fontawesome-4.2.0.min.js',
+                'https://static.aldryn.com/cdn/bootstrap-iconpicker.min.js',
         )
 
 
