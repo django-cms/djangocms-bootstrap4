@@ -12,7 +12,7 @@ class BootstrapMediaMixin(object):
         css = {
             'all': (
                 '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css',
-                'https://static.dev.aldryn.net/cdn/bootstrap-iconpicker.min.css',
+                'https://static.aldryn.com/cdn/bootstrap-iconpicker.min.css',
                 '//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css',
             )
         }
