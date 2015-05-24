@@ -457,8 +457,8 @@ class Bootstrap3ColumnPlugin(CMSPlugin):
         return txt
 
     def get_class(self, device, element):
-        size = getattr(self, '{}_{}'.format(device, element))
-        if size:
+        size = getattr(self, '{}_{}'.format(device, element), None)
+        if size is not None:
             if element == 'col':
                 return 'col-{}-{}'.format(device, size)
             else:
