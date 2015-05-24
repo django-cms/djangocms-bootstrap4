@@ -397,7 +397,7 @@ OffsetSizeField = partial(
     null=True,
     blank=True,
     default=None,
-    min_value=1,
+    min_value=0,
     max_value=constants.GRID_SIZE
 )
 
@@ -406,7 +406,7 @@ PushSizeField = partial(
     null=True,
     blank=True,
     default=None,
-    min_value=1,
+    min_value=0,
     max_value=constants.GRID_SIZE
 )
 
@@ -415,7 +415,7 @@ PullSizeField = partial(
     null=True,
     blank=True,
     default=None,
-    min_value=1,
+    min_value=0,
     max_value=constants.GRID_SIZE
 )
 
