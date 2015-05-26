@@ -397,7 +397,7 @@ OffsetSizeField = partial(
     null=True,
     blank=True,
     default=None,
-    min_value=1,
+    min_value=0,
     max_value=constants.GRID_SIZE
 )
 
@@ -406,7 +406,7 @@ PushSizeField = partial(
     null=True,
     blank=True,
     default=None,
-    min_value=1,
+    min_value=0,
     max_value=constants.GRID_SIZE
 )
 
@@ -415,7 +415,7 @@ PullSizeField = partial(
     null=True,
     blank=True,
     default=None,
-    min_value=1,
+    min_value=0,
     max_value=constants.GRID_SIZE
 )
 
@@ -457,8 +457,8 @@ class Bootstrap3ColumnPlugin(CMSPlugin):
         return txt
 
     def get_class(self, device, element):
-        size = getattr(self, '{}_{}'.format(device, element))
-        if size:
+        size = getattr(self, '{}_{}'.format(device, element), None)
+        if size is not None:
             if element == 'col':
                 return 'col-{}-{}'.format(device, size)
             else:
