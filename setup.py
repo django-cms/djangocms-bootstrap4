@@ -3,7 +3,9 @@ from setuptools import setup, find_packages
 from aldryn_bootstrap3 import __version__
 
 REQUIREMENTS = [
+    'django-appconf>=1.0.0',
     'django-durationfield>=0.5.1',
+    'django-filer>=0.9',
 ]
 
 CLASSIFIERS = [
