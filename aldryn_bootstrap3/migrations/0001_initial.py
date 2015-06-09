@@ -15,6 +15,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('cms', '0011_auto_20150419_1006'),
+        ('filer', '0002_auto_20150606_2003'),
     ]
 
     operations = [
