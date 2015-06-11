@@ -21,6 +21,8 @@ following plugins are available:
 * `ListGroup <http://getbootstrap.com/components/#list-group>`_
 * `Carousel <http://getbootstrap.com/javascript/#carousel>`_
 * `Spacer <https://github.com/aldryn/aldryn-bootstrap3/wiki/13-spacer>`_
+* `File <https://github.com/aldryn/aldryn-bootstrap3/wiki/14-file>`_
+
 *************
 Documentation
 *************
