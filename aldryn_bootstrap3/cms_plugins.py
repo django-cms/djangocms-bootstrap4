@@ -273,6 +273,19 @@ class Bootstrap3SpacerCMSPlugin(CMSPluginBase):
 plugin_pool.register_plugin(Bootstrap3SpacerCMSPlugin)
 
 
+class Bootstrap3FilerCMSPlugin(CMSPlugin):
+    model = models.Bootstrap3FilerPlugin
+    name = _("File")
+    module = _('Bootstrap3')
+    render_template = 'aldryn_bootstrap3/plugins/filer.html'
+
+    def render(self, context, instance):
+        context.update({'instance': instance})
+        return context
+
+plugin_pool.register_plugin(Bootstrap3FilerCMSPlugin)
+
+
 #########
 # Panel #
 #########
