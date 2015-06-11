@@ -25,6 +25,11 @@ link_fieldset = (
 )
 
 
+#################
+# Basic Plugins #
+#################
+
+
 class Bootstrap3BlockquoteCMSPlugin(CMSPluginBase):
     model = models.Boostrap3BlockquotePlugin
     name = _("Blockquote")
@@ -268,9 +273,9 @@ class Bootstrap3SpacerCMSPlugin(CMSPluginBase):
 plugin_pool.register_plugin(Bootstrap3SpacerCMSPlugin)
 
 
-# ########
+#########
 # Panel #
-# ########
+#########
 
 
 class Bootstrap3PanelCMSPlugin(CMSPluginBase):
@@ -421,9 +426,9 @@ class Bootstrap3PanelFooterCMSPlugin(CMSPluginBase):
 plugin_pool.register_plugin(Bootstrap3PanelFooterCMSPlugin)
 
 
-# #######
+########
 # Grid #
-# #######
+########
 
 
 class Bootstrap3RowCMSPlugin(widgets.BootstrapMediaMixin, CMSPluginBase):
