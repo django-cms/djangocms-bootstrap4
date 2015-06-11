@@ -321,6 +321,35 @@ class Boostrap3SpacerPlugin(CMSPlugin):
         return 'size-' + self.size + ' ' + self.classes
 
 
+@python_2_unicode_compatible
+class Bootstrap3FilePlugin(CMSPlugin):
+    cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
+
+    file = filer.fields.file.FilerFileField(
+        verbose_name=_("file"),
+        null=True,
+        blank=False,
+        on_delete=models.SET_NULL,
+        related_name='+',
+    )
+    name = model_fields.MiniText(
+        _("name"),
+        blank=True,
+        default='',
+    )
+    open_new_window = models.BooleanField(default=False)
+    show_file_size = models.BooleanField(default=False)
+
+    # common fields
+    icon_left = model_fields.Icon()
+    icon_right = model_fields.Icon()
+
+    classes = model_fields.Classes()
+
+    def __str__(self):
+        return self.file + self.name
+
+
 #########
 # Panel #
 #########
