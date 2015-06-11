@@ -25,6 +25,11 @@ link_fieldset = (
 )
 
 
+#################
+# Basic Plugins #
+#################
+
+
 class Bootstrap3BlockquoteCMSPlugin(CMSPluginBase):
     model = models.Boostrap3BlockquotePlugin
     name = _("Blockquote")
@@ -268,9 +273,40 @@ class Bootstrap3SpacerCMSPlugin(CMSPluginBase):
 plugin_pool.register_plugin(Bootstrap3SpacerCMSPlugin)
 
 
-# ########
+class Bootstrap3FileCMSPlugin(CMSPluginBase):
+    model = models.Bootstrap3FilePlugin
+    name = _("File")
+    module = _('Bootstrap3')
+    change_form_template = 'admin/aldryn_bootstrap3/plugins/file/change_form.html'
+    render_template = 'aldryn_bootstrap3/plugins/file.html'
+
+    fieldsets = (
+        (None, {'fields': (
+            'file',
+            'name',
+            'icon_left',
+            'icon_right',
+        )}),
+        ('Advanced', {
+            'classes': ('collapse',),
+            'fields': (
+                'open_new_window',
+                'show_file_size',
+                'classes',
+            ),
+        }),
+    )
+
+    def render(self, context, instance, placeholder):
+        context.update({'instance': instance})
+        return context
+
+plugin_pool.register_plugin(Bootstrap3FileCMSPlugin)
+
+
+#########
 # Panel #
-# ########
+#########
 
 
 class Bootstrap3PanelCMSPlugin(CMSPluginBase):
@@ -421,9 +457,9 @@ class Bootstrap3PanelFooterCMSPlugin(CMSPluginBase):
 plugin_pool.register_plugin(Bootstrap3PanelFooterCMSPlugin)
 
 
-# #######
+########
 # Grid #
-# #######
+########
 
 
 class Bootstrap3RowCMSPlugin(widgets.BootstrapMediaMixin, CMSPluginBase):
