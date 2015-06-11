@@ -347,7 +347,7 @@ class Bootstrap3FilePlugin(CMSPlugin):
     classes = model_fields.Classes()
 
     def __str__(self):
-        return self.file + self.name
+        return self.name if self.name else self.file.label
 
 
 #########
