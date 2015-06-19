@@ -2,7 +2,7 @@
 
 {% block field_sets %}
     <div class="well-wrapper">
-        <div class="well btn-preview js-btn-preview text-center clearfix">
+        <div class="well btn-preview js-btn-preview text-center">
             <p class="text-center text-muted"><span class="fa fa-fw fa-eye"></span> Preview</p>
             <a>Example Button</a>
         </div>
@@ -16,20 +16,17 @@
         }
 
         .well {
-            position: fixed;
             text-align: center;
-            z-index: 1000;
             width: inherit;
-            border-radius: 0;
-            top: 0;
-            left: 0;
+            height: 120px;
+            overflow: hidden;
+            border-radius: 3px 3px 0 0;
+            margin: 0;
         }
 
         .well-wrapper {
-            height: 90px;
-            float: left;
+            display: block;
             position: relative;
-            margin: 0%;
             width: 100%;
         }
 
