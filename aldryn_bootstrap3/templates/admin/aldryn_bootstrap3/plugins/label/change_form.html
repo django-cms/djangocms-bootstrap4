@@ -4,7 +4,7 @@
 
 {% block field_sets %}
     <div class="well-wrapper">
-        <div class="well label-preview js-label-preview text-center clearfix">
+        <div class="well label-preview js-label-preview text-center">
             <p class="text-center text-muted"><i class="fa fa-fw fa-eye"></i> Preview</p>
 
             <p><span class="label">Example Label</span></p>
@@ -25,21 +25,16 @@
         }
 
         .well {
-            height: 140px;
-            position: fixed;
             text-align: center;
-            z-index: 1000;
             width: inherit;
-            border-radius: 0;
-            top: 0;
-            left: 0;
+            height: 120px;
+            overflow: hidden;
+            border-radius: 3px 3px 0 0;
+            margin: 0;
         }
 
         .well-wrapper {
-            height: 120px;
-            float: left;
-            position: relative;
-            margin: 0%;
+            display: block;
             width: 100%;
         }
 
