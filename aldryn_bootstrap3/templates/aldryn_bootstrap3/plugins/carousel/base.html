@@ -2,7 +2,8 @@
 
 {# DOCS: http://getbootstrap.com/javascript/#carousel #}
 <div id="js-carousel-id-{{ instance.pk }}" class="carousel-style-{{ instance.style }}
-    carousel{% if instance.transition_effect %} {{ instance.transition_effect }}{% endif %}"
+    carousel{% if instance.transition_effect %} {{ instance.transition_effect }}{% endif %}
+    {{ instance.classes }}"
     {% if instance.ride %}
         data-ride="carousel"
         data-interval="{{ instance.interval }}"
