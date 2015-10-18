@@ -135,7 +135,6 @@ class CarouselPluginForm(django.forms.ModelForm):
         style = self.cleaned_data.get('style')
         template = 'aldryn_bootstrap3/plugins/carousel/{}/carousel.html'.format(
             style)
-        print(style)
         # Check if template for style exists:
         try:
             django.template.loader.select_template([template])
