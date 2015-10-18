@@ -8,7 +8,11 @@ def get_additional_styles():
     Get additional styles choices from settings
     """
     choices = []
-    raw = getattr(settings, 'GALLERY_STYLES', False)
+    raw = getattr(
+        settings,
+        'ALDRYN_BOOTSTRAP3_CAROUSEL_STYLES',
+        getattr(settings, 'GALLERY_STYLES', False)
+    )
     if raw:
         if isinstance(raw, basestring):
             raw = raw.split(',')
