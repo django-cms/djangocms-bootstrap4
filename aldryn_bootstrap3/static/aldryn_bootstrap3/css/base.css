@@ -15,12 +15,17 @@
 /*##############################################################################
 // CONTEXT WIDGET */
 /* used in aldryn_bootstrap3/widgets/context.html */
-.aldryn-bootstrap3-context .btn-group {
-    background: #dedede;
-    border-radius: 4px;
+.aldryn-bootstrap3-context {
+    margin-left: 3px;
+}
+.aldryn-bootstrap3-context label {
+    position: relative !important;
+    z-index: 1 !important;
 }
 .aldryn-bootstrap3-context label.active {
-    border-bottom-width: 4px;
+    z-index: 10 !important;
+    outline: 3px solid #000;
+    border-radius: 0;
 }
 .aldryn-bootstrap3-context label.btn-link {
     border-color: #ccc;
