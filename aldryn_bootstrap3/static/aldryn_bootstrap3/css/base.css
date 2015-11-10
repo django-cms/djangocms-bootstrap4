@@ -43,9 +43,13 @@
     width: 100% !important;
 }
 .iconpicker-popover table tfoot tr td {
-   padding-top: 5px;
+   padding-top: 10px;
    border-top: 0;
    background: none;
+}
+.iconpicker-popover .page-count {
+    display: inline-block;
+    padding-top: 8px;
 }
 /* the first entry uses ".glyphicon-" to deselect any icons */
 .iconpicker-popover .glyphicon- {
