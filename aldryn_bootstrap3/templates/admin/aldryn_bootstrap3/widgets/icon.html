@@ -16,8 +16,9 @@
                         <option value="{{ iconpicker_iconset }}" data-prefix="{{ prefix }}"{% if iconset == prefix %} selected="selected"{% endif %}>{{ verbose_name }}</option>
                     {% endfor %}
                 </select>
+
                 <span class="iconpicker js-icon-picker">
-                    <button id="id_{{ name }}" class="btn btn-default form-control" name="{{ name }}" data-icon="{{ value }}"></button>
+                    <button id="id_{{ name }}" role="iconpicker" name="{{ name }}" data-iconset="{{ iconset }}" data-icon="{{ value }}"></button>
                 </span>
             </span>
         </div>
