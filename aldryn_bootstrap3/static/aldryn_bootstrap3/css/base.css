@@ -1,0 +1,25 @@
+@charset "utf-8";
+/*!
+ * @copyright: https://github.com/divio/django-cms
+ */
+
+/*##############################################################################
+// BASE */
+
+/* set visibility of "Advanced (Show)" button */
+.collapse {
+    visibility: visible !important;
+    display: block;
+}
+
+/* used in aldryn_bootstrap3/widgets/context.html */
+.aldryn-bootstrap3-context .btn-group {
+    background: #dedede;
+    border-radius: 4px;
+}
+.aldryn-bootstrap3-context label.active {
+    border-bottom-width: 4px;
+}
+.aldryn-bootstrap3-context label.btn-link {
+    border-color: #ccc;
+}

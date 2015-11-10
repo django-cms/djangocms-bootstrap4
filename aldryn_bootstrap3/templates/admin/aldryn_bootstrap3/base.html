@@ -1,0 +1,7 @@
+{% extends "admin/cms/page/plugin/change_form.html" %}
+{% load static %}
+
+{% block field_sets %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'aldryn_bootstrap3/css/base.css' %}">
+{% endblock %}
