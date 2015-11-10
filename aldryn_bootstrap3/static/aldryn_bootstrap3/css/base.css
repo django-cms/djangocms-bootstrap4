@@ -42,6 +42,7 @@
    border-top: 0;
    background: none;
 }
+/* the first entry uses ".glyphicon-" to deselect any icons */
 .iconpicker-popover .glyphicon- {
     width: 14px;
 }

@@ -12,8 +12,7 @@
         /**
          * Handles all reauired JavaScript for the aldryn-bootstrap3 addon.
          *
-         * @class Bootstrap3
-         * @namespace CMS
+         * @class bootstrap3
          */
         var bootstrap3 = {
 
@@ -31,8 +30,8 @@
                 var selectedContextInput;
 
                 contextInputs.each(function (index, item) {
-                    var label = $(item).parent();
                     var input = $(item);
+                    var label = input.parent();
                     var element = $('.js-btn-group-context-' + fieldName + ' label input[value="default"]');
 
                     // initial active state
@@ -56,8 +55,8 @@
                     label.on('click', function () {
                         var input = $(this).find('input');
 
-                        selectedContextInput.attr('checked', false);
-                        input.attr('checked', true);
+                        selectedContextInput.prop('checked', false);
+                        input.prop('checked', true);
 
                         selectedContextInput = input;
                     });
