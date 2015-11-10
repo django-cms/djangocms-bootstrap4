@@ -40,7 +40,7 @@
                         label.addClass('active');
                     }
 
-                    if (selectedContextInput == undefined) {
+                    if (!selectedContextInput) {
                         selectedContextInput = element;
                     }
 
