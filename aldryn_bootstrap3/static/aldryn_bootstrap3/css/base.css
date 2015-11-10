@@ -12,6 +12,8 @@
     display: block;
 }
 
+/*##############################################################################
+// CONTEXT WIDGET */
 /* used in aldryn_bootstrap3/widgets/context.html */
 .aldryn-bootstrap3-context .btn-group {
     background: #dedede;
@@ -23,3 +25,39 @@
 .aldryn-bootstrap3-context label.btn-link {
     border-color: #ccc;
 }
+
+/*##############################################################################
+// ICON WIDGET */
+.icon select {
+    width: auto;
+}
+.iconpicker button.btn-default, .iconpicker-popover button.btn-default, .btn-icon-positions button.btn-default {
+   background-image: none !important;
+   box-shadow: none !important;
+   border: 1px solid #ccc !important;
+   margin-top: 0;
+}
+.iconpicker button.btn-default:hover, .iconpicker-popover button.btn-default:hover, .btn-icon-positions button.btn-default:hover {
+   color: #333 !important;
+   background-color: #e6e6e6 !important;
+   border-color: #adadad !important;
+}
+.iconpicker-popover table {
+   margin: 0 !important;
+   padding: 0 !important;
+}
+.iconpicker-popover table tr td, .iconpicker-popover table tr th {
+   border-bottom: none;
+   padding: 0;
+}
+.iconpicker-popover table tfoot tr td {
+   padding-top: 5px;
+   border-top: 0;
+   background: none;
+}
+.btn-icon-positions button.btn.active {
+   background: #e6e6e6 !important;
+   box-shadow: inset 0 3px 5px rgba(0,0,0,.125) !important;
+}
+.field-icon_left, .field-icon_right { min-height: 55px; }
+.form-control-static { float: none !important; margin-left: 0 !important; padding: 0 !important; }

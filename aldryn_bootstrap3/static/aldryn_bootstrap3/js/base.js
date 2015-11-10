@@ -25,8 +25,8 @@
              * @method contextWidget
              */
             contextWidget: function contextWidget() {
-                var data = $('script[data-bootstrap3]').data();
-                var fieldName = data.bootstrap3;
+                var data = $('.aldryn-bootstrap3-context').data();
+                var fieldName = data.context;
                 var contextInputs = $('.js-btn-group-context-' + fieldName + ' label input');
                 var selectedContextInput;
 
@@ -35,7 +35,7 @@
                     var input = $(item);
                     var element = $('.js-btn-group-context-' + fieldName + ' label input[value="default"]');
 
-                    // Initial active state
+                    // initial active state
                     if (input.prop('checked')) {
                         selectedContextInput = input;
                         label.addClass('active');
@@ -45,15 +45,14 @@
                         selectedContextInput = element;
                     }
 
-                    // Set context
+                    // set color context
                     if (item.value && item.value !== 'muted') {
                         label.addClass('btn btn-' + item.value);
                     } else {
                         label.addClass('btn btn-default');
                     }
 
-
-                     // Set active states
+                    // set active states
                     label.on('click', function () {
                         var input = $(this).find('input');
 

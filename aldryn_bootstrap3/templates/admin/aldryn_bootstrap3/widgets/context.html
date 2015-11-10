@@ -1,16 +1,12 @@
 {% load static %}
 
-<div class="aldryn-bootstrap3 aldryn-bootstrap3-context">
+<div class="aldryn-bootstrap3 aldryn-bootstrap3-context" data-context="{{ selects.name }}">
     <div class="btn-group js-btn-group-context-{{ selects.name }}" data-toggle="buttons">
         {% for item in selects %}
             {{ item }}
         {% endfor %}
     </div>
 </div>
-
-{# NOTE: no sekizai available here #}
-<link rel="stylesheet" href="{% static 'aldryn_bootstrap3/css/base.css' %}">
-<script src="{% static 'aldryn_bootstrap3/js/base.js' %}" data-bootstrap3="{{ selects.name }}"></script>
 
 {# Available Variables #}
 {# {{ item.choice_value }}: {{ item.choice_label }} #}

@@ -210,7 +210,7 @@ class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
 plugin_pool.register_plugin(Bootstrap3ButtonCMSPlugin)
 
 
-class Bootstrap3ImageCMSPlugin(widgets.BootstrapMediaMixin, CMSPluginBase):
+class Bootstrap3ImageCMSPlugin(CMSPluginBase):
     model = models.Boostrap3ImagePlugin
     name = _("Image")
     module = _('Bootstrap3')
@@ -462,7 +462,7 @@ plugin_pool.register_plugin(Bootstrap3PanelFooterCMSPlugin)
 ########
 
 
-class Bootstrap3RowCMSPlugin(widgets.BootstrapMediaMixin, CMSPluginBase):
+class Bootstrap3RowCMSPlugin(CMSPluginBase):
     model = models.Bootstrap3RowPlugin
     name = _('Row')
     module = _('Bootstrap3')
@@ -517,7 +517,7 @@ class Bootstrap3RowCMSPlugin(widgets.BootstrapMediaMixin, CMSPluginBase):
         return response
 
 
-class Bootstrap3ColumnCMSPlugin(CMSPluginBase, widgets.BootstrapMediaMixin):
+class Bootstrap3ColumnCMSPlugin(CMSPluginBase):
     model = models.Bootstrap3ColumnPlugin
     name = _('Column')
     module = _('Bootstrap3')
@@ -556,7 +556,7 @@ plugin_pool.register_plugin(Bootstrap3ColumnCMSPlugin)
 #############
 
 
-class Bootstrap3AccordionCMSPlugin(CMSPluginBase, widgets.BootstrapMediaMixin):
+class Bootstrap3AccordionCMSPlugin(CMSPluginBase):
     model = models.Bootstrap3AccordionPlugin
     name = _('Accordion')
     module = _('Bootstrap3')
@@ -587,7 +587,7 @@ class Bootstrap3AccordionCMSPlugin(CMSPluginBase, widgets.BootstrapMediaMixin):
         return context
 
 
-class Bootstrap3AccordionItemCMSPlugin(CMSPluginBase, widgets.BootstrapMediaMixin):
+class Bootstrap3AccordionItemCMSPlugin(CMSPluginBase):
     model = models.Bootstrap3AccordionItemPlugin
     name = _('Accordion item')
     module = _('Accordion')
@@ -628,7 +628,7 @@ plugin_pool.register_plugin(Bootstrap3AccordionItemCMSPlugin)
 #############
 
 
-class Bootstrap3ListGroupCMSPlugin(CMSPluginBase, widgets.BootstrapMediaMixin):
+class Bootstrap3ListGroupCMSPlugin(CMSPluginBase):
     model = models.Bootstrap3ListGroupPlugin
     name = _('List Group')
     module = _('Bootstrap3')
@@ -658,7 +658,7 @@ class Bootstrap3ListGroupCMSPlugin(CMSPluginBase, widgets.BootstrapMediaMixin):
         return context
 
 
-class Bootstrap3ListGroupItemCMSPlugin(CMSPluginBase, widgets.BootstrapMediaMixin):
+class Bootstrap3ListGroupItemCMSPlugin(CMSPluginBase):
     model = models.Bootstrap3ListGroupItemPlugin
     name = _('List Group Item')
     module = _('Bootstrap3')
@@ -704,11 +704,11 @@ plugin_pool.register_plugin(Bootstrap3ListGroupItemCMSPlugin)
 
 
 # Base Classes
-class CarouselBase(CMSPluginBase, widgets.BootstrapMediaMixin):
+class CarouselBase(CMSPluginBase):
     module = _('Bootstrap3')
 
 
-class CarouselSlideBase(CarouselBase, widgets.BootstrapMediaMixin):
+class CarouselSlideBase(CarouselBase):
     require_parent = True
     parent_classes = ['Bootstrap3CarouselCMSPlugin']
 
