@@ -1,0 +1,57 @@
+@charset "utf-8";
+/*!
+ * @copyright: https://github.com/divio/django-cms
+ */
+
+/*##############################################################################
+// BASE */
+
+/* set visibility of "Advanced (Show)" button */
+.collapse {
+    visibility: visible !important;
+    display: block;
+}
+
+/*##############################################################################
+// CONTEXT WIDGET */
+/* used in aldryn_bootstrap3/widgets/context.html */
+.aldryn-bootstrap3-context {
+    margin-left: 3px;
+}
+.aldryn-bootstrap3-context label {
+    position: relative !important;
+    z-index: 1 !important;
+}
+.aldryn-bootstrap3-context label.active {
+    z-index: 10 !important;
+    outline: 3px solid #000;
+    border-radius: 0;
+}
+.aldryn-bootstrap3-context label.btn-link {
+    border-color: #ccc;
+}
+
+/*##############################################################################
+// ICON WIDGET */
+.aldryn-bootstrap3-icon select.form-control {
+    width: auto !important;
+}
+.aldryn-bootstrap3-icon .search-control {
+}
+
+.iconpicker-popover .search-control {
+    width: 100% !important;
+}
+.iconpicker-popover table tfoot tr td {
+   padding-top: 10px;
+   border-top: 0;
+   background: none;
+}
+.iconpicker-popover .page-count {
+    display: inline-block;
+    padding-top: 8px;
+}
+/* the first entry uses ".glyphicon-" to deselect any icons */
+.iconpicker-popover .glyphicon- {
+    width: 14px;
+}

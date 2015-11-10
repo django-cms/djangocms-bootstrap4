@@ -1,64 +1,29 @@
-{# Icon settings #}
-{% if not iconsets %}
-    <div class="form-inline">
+{% load i18n static %}
+
+<div class="aldryn-bootstrap3 aldryn-bootstrap3-icon">
+    {% if not iconsets %}
         <div class="alert alert-danger">
-            No Iconsets configured! Please configure at least on Iconset before using this widget.
+            {% trans "No Iconsets configured! Please configure at least on Iconset before using this widget." %}
         </div>
-    </div>
-{% else %}
-<div class="icon js-icon js-icon-{{ name }} form-inline">
-    <input class="checkbox js-icon-enable{% if is_required %} hidden{% endif %}" name="icons-enabled-{{ name }}" type="checkbox"{% if value or is_required %} checked="checked"{% endif %} />
-    <span class="js-icon-widgets hidden">
-        <select class="form-control js-iconset">
-            {% for iconpicker_iconset, prefix, verbose_name in iconsets %}
-                <option value="{{ iconpicker_iconset }}" data-prefix="{{ prefix }}"{% if iconset == prefix %} selected="selected"{% endif %}>{{ verbose_name }}</option>
-            {% endfor %}
-        </select>
-        <span class="iconpicker js-icon-picker">
-            <button id="id_{{ name }}" class="btn btn-default form-control" name="{{ name }}" data-icon="{{ value }}"></button>
-        </span>
-    </span>
+    {% else %}
+        <div class="icon js-icon js-icon-{{ name }} form-inline">
+
+            <input class="checkbox js-icon-enable{% if is_required %} hidden{% endif %}" name="icons-enabled-{{ name }}" type="checkbox"{% if value or is_required %} checked="checked"{% endif %} />
+
+            <span class="js-icon-widgets hidden">
+                <select class="form-control js-iconset">
+                    {% for iconpicker_iconset, prefix, verbose_name in iconsets %}
+                        <option value="{{ iconpicker_iconset }}" data-prefix="{{ prefix }}"{% if iconset == prefix %} selected="selected"{% endif %}>{{ verbose_name }}</option>
+                    {% endfor %}
+                </select>
+
+                <span class="iconpicker js-icon-picker">
+                    <button id="id_{{ name }}" role="iconpicker" name="{{ name }}" data-iconset="{{ iconset }}" data-icon="{{ value }}"></button>
+                </span>
+            </span>
+        </div>
+    {% endif %}
 </div>
-
-{# Styling definitions #}
-
-<!-- overriding django cms admin style -->
-<style>
-    {# TODO: Find a way to move this into a scss file #}
-   .icon select { width: auto; }
-   .iconpicker button.btn-default, .iconpicker-popover button.btn-default, .btn-icon-positions button.btn-default {
-       background-image: none !important;
-       box-shadow: none !important;
-       border: 1px solid #ccc !important;
-       margin-top: 0;
-   }
-   .iconpicker button.btn-default:hover, .iconpicker-popover button.btn-default:hover, .btn-icon-positions button.btn-default:hover {
-       color: #333 !important;
-       background-color: #e6e6e6 !important;
-       border-color: #adadad !important;
-   }
-   .iconpicker-popover table {
-       margin: 0 !important;
-       padding: 0 !important;
-   }
-   .iconpicker-popover table tr td, .iconpicker-popover table tr th {
-       border-bottom: none;
-       padding: 0;
-   }
-   .iconpicker-popover table tfoot tr td {
-       padding-top: 5px;
-       border-top: 0;
-       background: none;
-   }
-   .btn-icon-positions button.btn.active {
-       background: #e6e6e6 !important;
-       box-shadow: inset 0 3px 5px rgba(0,0,0,.125) !important;
-   }
-   .field-icon_left, .field-icon_right { min-height: 55px; }
-   .form-control-static { float: none !important; margin-left: 0 !important; padding: 0 !important; }
-
-
-</style>
 
 {# Javascript #}
 <script>
@@ -128,4 +93,3 @@
         window['iconsetSelectedCss_' + name] = iconPicker.find('i').attr('class');
     });
 </script>
-{% endif %}
