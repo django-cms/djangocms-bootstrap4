@@ -33,10 +33,19 @@
 
 /*##############################################################################
 // ICON WIDGET */
+/* used in aldryn_bootstrap3/widgets/icon.html */
 .aldryn-bootstrap3-icon select.form-control {
     width: auto !important;
 }
-.aldryn-bootstrap3-icon .search-control {
+.aldryn-bootstrap3-icon .icon-widgets label {
+    display: inline !important;
+}
+.aldryn-bootstrap3-icon select {
+    margin: 0;
+}
+.aldryn-bootstrap3-icon button.iconpicker {
+    padding-right: 10px !important;
+    padding-left: 10px !important;
 }
 
 .iconpicker-popover .search-control {
@@ -52,6 +61,7 @@
     padding-top: 8px;
 }
 /* the first entry uses ".glyphicon-" to deselect any icons */
-.iconpicker-popover .glyphicon- {
+.iconpicker-popover .glyphicon-,
+.iconpicker-popover .fa- {
     width: 14px;
 }
