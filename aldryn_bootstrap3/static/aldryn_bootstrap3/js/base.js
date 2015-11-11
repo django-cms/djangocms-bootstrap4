@@ -304,6 +304,48 @@
                     return cls;
                 }
 
+            },
+
+            /**
+             * Widget used in aldryn_bootstrap3/widgets/size.html.
+             * Provides the choice to select the size of the element.
+             * It can large, medium, small or extra small
+             *
+             * @method sizeWidget
+             * @param {jQuery} element context element to render
+             */
+            sizeWidget: function sizeWidget(element) {
+                var sizesInputs = element.find('label input');
+                var selectedSizesInput;
+
+                sizesInputs.each(function (index, item) {
+                    var label = $(item).parent();
+                    var input = $(item);
+
+                    // Initial active state
+                    if (input.prop('checked')) {
+                        selectedSizesInput = input;
+                        label.addClass('active');
+                    }
+
+                    // Set sizes
+                    label.addClass('btn btn-default text-' + item.value);
+
+                    // Add icon
+                    $('<span class="glyphicon glyphicon-record"></span>')
+                        .insertAfter(input);
+
+                    // Set active states
+                    label.on('click', function () {
+                        var input = $(this).find('input');
+
+                        selectedSizesInput.prop('checked', false);
+                        input.prop('checked', true);
+
+                        selectedSizesInput = input;
+                    });
+
+                });
             }
 
         };
@@ -321,6 +363,11 @@
         }
         if ($('.aldryn-bootstrap3-button').length) {
             bootstrap3.buttonPreviewPreview();
+        }
+        if ($('.js-btn-group-sizes').length) {
+            $('.js-btn-group-sizes').each(function () {
+                bootstrap3.sizeWidget($(this));
+            });
         }
     });
 })(window.jQuery || django.jQuery);

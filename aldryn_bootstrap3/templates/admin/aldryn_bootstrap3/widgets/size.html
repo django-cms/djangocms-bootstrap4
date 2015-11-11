@@ -1,65 +1,7 @@
-{# TODO: namespace with field name (selects.name) #}
 <div class="btn-group btn-group-sizes js-btn-group-sizes" data-toggle="buttons">
-{% for item in selects %}
-    {{ item }}
-{% endfor %}
+    {% for item in selects %}
+        {{ item }}
+    {% endfor %}
 </div>
-
-{# Styling definitions #}
-<style>
-    .btn-group-sizes label { padding: 5px 10px; width: auto; }
-    .btn-group-sizes .btn-default { min-height: 36px; }
-    .btn-group-sizes .text-xs { font-size: 10px; padding-top: 9px; }
-    .btn-group-sizes .text-sm { font-size: 12px; padding-top: 8px; }
-    .btn-group-sizes .text-md { font-size: 14px; padding-top: 6px;}
-    .btn-group-sizes .text-lg { font-size: 18px; padding-top: 3px; }
-
-    .btn-group-sizes .glyphicon { margin-right: 5px; }
-    .btn-group-sizes .text-xs .glyphicon { font-size: 9px; }
-    .btn-group-sizes .text-sm .glyphicon { font-size: 10px; }
-    .btn-group-sizes .text-md .glyphicon { font-size: 12px;  margin-top: 2px; }
-    .btn-group-sizes .text-lg .glyphicon { font-size: 14px; margin-top: 3px; }
-</style>
-
-{# Javascript #}
-<script>
-    if (!$) {
-        $ = django.jQuery;
-    }
-
-    $( document ).ready(function() {
-        var sizesInputs = $('.js-btn-group-sizes label input');
-        var selectedSizesInput;
-
-        sizesInputs.each(function( index, item ) {
-            var label = $(item).parent();
-            var input = $(item);
-
-            // Initial active state
-            if (input.prop('checked')) {
-                selectedSizesInput = input;
-                label.addClass('active');
-            }
-
-            // Set sizes
-            label.addClass('btn btn-default text-' + item.value);
-
-            // Add icon
-            $( "<span class='glyphicon glyphicon-record'></span>" ).insertAfter( input );
-
-            // Set active states
-            label.on('click', function(e) {
-                var input = $(this).find('input');
-
-                selectedSizesInput.attr('checked', false);
-                input.attr('checked', true);
-
-                selectedSizesInput = input;
-            });
-
-        });
-
-    })
-</script>
 
 {# selected: {{ selects.value }} #}
