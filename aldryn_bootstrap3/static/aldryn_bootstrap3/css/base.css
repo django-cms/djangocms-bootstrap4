@@ -37,16 +37,11 @@
 .aldryn-bootstrap3-icon select.form-control {
     width: auto !important;
 }
-.aldryn-bootstrap3-icon .search-control {
-}
-.aldryn-bootstrap3-icon .icon-widgets {
+.aldryn-bootstrap3-icon .icon-widgets label {
     display: inline !important;
 }
 .aldryn-bootstrap3-icon select {
     margin: 0;
-}
-.aldryn-bootstrap3-icon .form-control-static {
-    padding-right: 10px !important;
 }
 .aldryn-bootstrap3-icon button.iconpicker {
     padding-right: 10px !important;

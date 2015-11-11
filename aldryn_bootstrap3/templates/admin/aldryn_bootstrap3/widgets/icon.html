@@ -14,23 +14,23 @@
                 <input id="id_{{ name }}" class="checkbox js-icon-enable{% if is_required %} hidden{% endif %}" name="icons-enabled-{{ name }}" type="checkbox"{% if value or is_required %} checked="checked"{% endif %}>
             {% endif %}
 
-            <label class="icon-widgets js-icon-widgets{% if not is_required %} hidden{% endif %}">
-                <select class="form-control js-iconset">
-                    {% for iconpicker_iconset, prefix, verbose_name in iconsets %}
-                        {% if forloop.first %}
-                        <option value="{{ iconpicker_iconset }}" data-prefix="{{ prefix }}"{% if iconset == prefix %} selected="selected"{% endif %}>{{ verbose_name }}</option>
-                        {% endif %}
-                    {% endfor %}
-                </select>
+            <span class="icon-widgets js-icon-widgets{% if not is_required %} hidden{% endif %}">
+                <label>
+                    <select class="form-control js-iconset">
+                        {% for iconpicker_iconset, prefix, verbose_name in iconsets %}
+                            <option value="{{ iconpicker_iconset }}" data-prefix="{{ prefix }}"{% if iconset == prefix %} selected="selected"{% endif %}>{{ verbose_name }}</option>
+                        {% endfor %}
+                    </select>
+                </label>
 
-                <span class="iconpicker iconpicker-wrapper js-icon-picker">
-                    <button{% if not is_required %} id="id_{{ name }}"{% endif %}
-                        role="iconpicker" name="{{ name }}"
+                <label class="iconpicker iconpicker-wrapper js-icon-picker">
+                    <button{% if is_required %} id="id_{{ name }}"{% endif %}
+                        name="{{ name }}"
                         data-iconset="{{ iconset }}"
                         data-icon="{{ value }}">
                     </button>
-                </span>
-            </label>
+                </label>
+            </span>
         </div>
     {% endif %}
 </div>
