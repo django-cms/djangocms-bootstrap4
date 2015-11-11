@@ -65,3 +65,14 @@
 .iconpicker-popover .fa- {
     width: 14px;
 }
+
+/*##############################################################################
+// BUTTON WIDGET */
+/* used in aldryn_bootstrap3/widgets/link_or_button.html */
+.aldryn-bootstrap3-button .preview-btn {
+    margin: 0;
+}
+.field-btn_block .checkbox-row {
+    padding-top: 0 !important;
+    border: none !important;
+}

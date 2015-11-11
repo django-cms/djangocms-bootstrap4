@@ -116,6 +116,194 @@
                         iconPickerButton.find('input').val('');
                     }
                 }).trigger('change');
+            },
+
+            /**
+             * Renders the preview on top of the button/ling widget page.
+             * Only one button widget allowed per page.
+             *
+             * @method buttonPreviewPreview
+             */
+            buttonPreviewPreview: function buttonPreviewPreview() {
+                var container = $('.aldryn-bootstrap3-button');
+                var previewBtn = container.find('.js-preview-btn .button');
+                var previewBtnText = previewBtn.find('span');
+                var defaultBtnText = previewBtn.text();
+                var typeState = '';
+                var blockClass = '';
+                var sizeClass = '';
+                var timer = function () {};
+                var timeout = 50;
+
+                // helper references
+                var labelContext = $('#id_label');
+                var typeContext = $('#id_type_0, #id_type_1');
+                var sizeContext = $('.field-btn_size');
+                var btnContext = $('.field-btn_context');
+                var colorContext = $('.field-txt_context');
+                var blockContext = $('.field-btn_block');
+                var iconContext = $('.js-icon-picker button');
+
+                // attach event to the label
+                labelContext.on('keydown', function () {
+                    clearTimeout(timer);
+                    timer = setTimeout(function () {
+                        updatePreview({
+                            type: 'text',
+                            text: labelContext.val()
+                        });
+                    }, timeout);
+                }).trigger('keydown');
+
+                // attach event to the link/button switch
+                typeContext.on('change', function () {
+                    updatePreview({
+                        type: 'markup',
+                        context: $(this).val()
+                    });
+                });
+
+                // handle button context selection
+                // autotrigger will be handled by link/button switcher
+                btnContext.find('label').on('click', function () {
+                    updatePreview({
+                        type: 'context',
+                        cls: cleanClass($(this).attr('class'))
+                    });
+                });
+
+                // handle text color button context selection
+                colorContext.find('label').on('click', function () {
+                    updatePreview({
+                        type: 'context',
+                        cls: cleanClass($(this).attr('class'))
+                    });
+                });
+
+                // handle block checkbox
+                blockContext.find('input').on('change', function () {
+                    updatePreview({
+                        type: 'block',
+                        state: $(this).prop('checked')
+                    });
+                });
+
+                // handle size selection
+                sizeContext.find('label').on('click', function () {
+                    updatePreview({
+                        type: 'size',
+                        cls: cleanClass($(this).attr('class'))
+                    });
+                });
+
+                // handle icon picker
+                iconContext.on('change', function () {
+                    var el = $(this);
+                    if (el.attr('name') === 'icon_left') {
+                        // icon left alignment
+                        previewBtn.find('.pre').attr('class', 'pre ' + el.find('i').attr('class'));
+                    } else {
+                        // icon right alignment
+                        previewBtn.find('.post').attr('class', 'post ' + el.find('i').attr('class'));
+                    }
+                }).trigger('change');
+
+                // control visibility of icons
+                $('#id_icon_left').on('change', function () {
+                    if ($(this).is(':checked')) {
+                        previewBtn.find('.pre').show();
+                    } else {
+                        previewBtn.find('.pre').hide();
+                    }
+                });
+                $('#id_icon_right').on('change', function () {
+                    if ($(this).is(':checked')) {
+                        previewBtn.find('.post').show();
+                    } else {
+                        previewBtn.find('.post').hide();
+                    }
+                });
+
+                // certain elements can only be loaded after a timeout
+                setTimeout(function () {
+                    blockContext.find('input:checked').trigger('change');
+                    typeContext.filter(':checked').trigger('change');
+                    sizeContext.find('input:checked').parent().trigger('click');
+                }, 0);
+
+                // every event fires updatePreview passing in arguments what
+                // has to be done
+                function updatePreview(obj) {
+                    // handle "label" inputs
+                    if (obj.type === 'text') {
+                        if (obj.text !== '') {
+                            previewBtnText.text(obj.text);
+                        } else {
+                            previewBtnText.text(defaultBtnText);
+                        }
+                    }
+
+                    // handle link/button selection which hides/shows text context
+                    if (obj.type === 'markup') {
+                        if (obj.context === 'lnk') {
+                            typeState = obj.context;
+                            blockContext.hide();
+                            btnContext.hide();
+                            colorContext.show();
+                            colorContext.find('label.active').trigger('click');
+                        } else {
+                            typeState = obj.context;
+                            blockContext.show();
+                            colorContext.hide();
+                            btnContext.show();
+                            btnContext.find('label.active').trigger('click');
+                        }
+                    }
+
+                    // update context
+                    if (obj.type === 'context') {
+                        if (typeState === 'lnk') {
+                            previewBtn.attr('class', 'text text-' + obj.cls + blockClass + sizeClass);
+                        } else {
+                            previewBtn.attr('class', 'btn btn-' + obj.cls + blockClass + sizeClass);
+                        }
+                    }
+
+                    // change block type
+                    if (obj.type === 'block') {
+                        if (obj.state) {
+                            blockClass = ' btn-block';
+                            previewBtn.addClass(blockClass);
+                        } else {
+                            blockClass = '';
+                            previewBtn.removeClass('btn-block');
+                        }
+                    }
+
+                    // change text size
+                    if (obj.type === 'size') {
+                        if ($('#id_type_0').is('checked')) {
+                            sizeClass = ' text-' + obj.cls;
+                        } else {
+                            sizeClass = ' btn-' + obj.cls;
+                        }
+                        previewBtn.removeClass('text-lg text-md text-sm text-xs');
+                        previewBtn.removeClass('btn-lg btn-md btn-sm btn-xs');
+                        previewBtn.addClass(sizeClass);
+                    }
+                }
+
+                // make sure we only pass the required class argument
+                function cleanClass(cls) {
+                    cls = cls
+                        .replace('btn btn-', '')
+                        .replace('active', '')
+                        .replace('default ', '')
+                        .replace('text-', '')
+                        .replace(' ', '');
+                    return cls;
+                }
+
             }
 
         };
@@ -130,6 +318,9 @@
             $('.aldryn-bootstrap3-icon').each(function () {
                 bootstrap3.iconWidget($(this));
             });
+        }
+        if ($('.aldryn-bootstrap3-button').length) {
+            bootstrap3.buttonPreviewPreview();
         }
     });
 })(window.jQuery || django.jQuery);
