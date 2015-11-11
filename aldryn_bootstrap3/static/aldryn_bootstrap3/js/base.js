@@ -346,11 +346,72 @@
                     });
 
                 });
+            },
+
+            /**
+             * Plugin used in aldryn_bootstrap3/plugins/column and
+             * aldryn_bootstrap3/plugins/row.
+             *
+             * @method rowColumnPlugin
+             */
+            rowColumnPlugin: function rowColumnPlugin() {
+                var container = $('.aldryn-bootstrap3-grid');
+                var formRows = container.find('.form-row');
+                var fieldBoxes = container.find('.field-box');
+                var form = $('#bootstrap3rowplugin_form');
+                var tpl = $('<span class="form-row-icon fa fa-fw"></span>');
+
+                // set tooltips and labels
+                $.each(fieldBoxes, function(index, item) {
+                    var el = $(item);
+                    var tooltip = el.find('.help');
+                    var label = el.find('label');
+                    var labelText = label.text();
+
+                    label.html(labelText.replace(':', ''));
+
+                    // only create tooltip if one is present
+                    if (tooltip.length) {
+                        el.append('' +
+                            '<span class="fa fa-question-circle" ' +
+                            '   data-toggle="tooltip" ' +
+                            '   data-placement="right" ' +
+                            '   title="' + tooltip.text() + '">' +
+                            '</span>');
+                    }
+                });
+
+                $.each(formRows, function(index, item) {
+                    var el = $(item);
+                    // set fieldbox icons
+                    if (el.hasClass('field-create_xs_col')) {
+                        el.prepend(tpl.clone().addClass('fa-mobile'));
+                    }
+                    if (el.hasClass('field-create_sm_col')) {
+                        el.prepend(tpl.clone().addClass('fa-tablet'));
+                    }
+                    if (el.hasClass('field-create_md_col')) {
+                        el.prepend(tpl.clone().addClass('fa-laptop'));
+                    }
+                    if (el.hasClass('field-create_lg_col')) {
+                        el.prepend(tpl.clone().addClass('fa-desktop'));
+                    }
+                    if (el.hasClass('field-create')) {
+                        el.prepend(tpl.clone().addClass('fa-columns text-primary'));
+                    }
+                });
+
+                // initialize tooltip
+                $('[data-toggle="tooltip"]').tooltip();
+
+                // browser validation gets in the way of the ajax
+                // form submission from django-cms
+                form.attr('novalidate', 'novalidate');
             }
 
         };
 
-        // auto initialization
+        // auto initialize widgets
         if ($('.aldryn-bootstrap3-context').length) {
             $('.aldryn-bootstrap3-context').each(function () {
                 bootstrap3.contextWidget($(this));
@@ -368,6 +429,10 @@
             $('.js-btn-group-sizes').each(function () {
                 bootstrap3.sizeWidget($(this));
             });
+        }
+        // auto initialize plugins
+        if ($('.aldryn-bootstrap3-grid').length) {
+            bootstrap3.rowColumnPlugin();
         }
     });
 })(window.jQuery || django.jQuery);
