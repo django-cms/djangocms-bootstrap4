@@ -319,8 +319,8 @@
                 var selectedSizesInput;
 
                 sizesInputs.each(function (index, item) {
-                    var label = $(item).parent();
                     var input = $(item);
+                    var label = input.parent();
 
                     // Initial active state
                     if (input.prop('checked')) {
