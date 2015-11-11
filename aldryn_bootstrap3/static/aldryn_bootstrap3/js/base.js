@@ -22,7 +22,7 @@
              * to select one of the choices.
              *
              * @method contextWidget
-             * @param {jQuery} context element to render
+             * @param {jQuery} element context element to render
              */
             contextWidget: function contextWidget(element) {
                 var data = element.data();
@@ -71,15 +71,15 @@
              * from font-awesome or glyphicons depending on your settings.
              *
              * @method iconWidget
-             * @param {jQuery} context element to render
+             * @param {jQuery} element context element to render
              */
             iconWidget: function iconWidget(element) {
                 var data = element.data();
                 var name = data.name;
-                var iconPicker = $('.js-icon-' + name + ' .js-icon-picker');
-                var iconSet = $('.js-icon-' + name + ' .js-iconset');
-                var enableIconCheckbox = $('.js-icon-' + name + ' .js-icon-enable');
-                var widgets = $('.js-icon-' + name + ' .js-icon-widgets');
+                var iconPicker = element.find('.js-icon-' + name + ' .js-icon-picker');
+                var iconSet = element.find('.js-icon-' + name + ' .js-iconset');
+                var enableIconCheckbox = element.find('.js-icon-' + name + ' .js-icon-enable');
+                var widgets = element.find('.js-icon-' + name + ' .js-icon-widgets');
                 var iconPickerButton = iconPicker.find('button');
                 var initialValue = iconPickerButton.data('icon');
                 var initialIconset = iconSet.find('option[data-prefix=' + data.iconset + ']').attr('value');
@@ -117,6 +117,7 @@
                     }
                 }).trigger('change');
             }
+
         };
 
         // auto initialization
