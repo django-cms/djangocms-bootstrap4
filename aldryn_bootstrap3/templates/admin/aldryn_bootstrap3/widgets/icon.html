@@ -1,95 +1,35 @@
 {% load i18n static %}
 
-<div class="aldryn-bootstrap3 aldryn-bootstrap3-icon">
+<div class="aldryn-bootstrap3 aldryn-bootstrap3-icon"
+    data-name="{{ name }}" data-iconset="{{ iconset }}" data-required="{% if is_required %}true{% else %}false{% endif %}">
     {% if not iconsets %}
         <div class="alert alert-danger">
             {% trans "No Iconsets configured! Please configure at least on Iconset before using this widget." %}
         </div>
     {% else %}
         <div class="icon js-icon js-icon-{{ name }} form-inline">
+            {# label "icon" relates to elements ID #}
+            {% if not is_required %}
+                <input id="id_{{ name }}" class="checkbox js-icon-enable{% if is_required %} hidden{% endif %}" name="icons-enabled-{{ name }}" type="checkbox"{% if value or is_required %} checked="checked"{% endif %}>
+            {% endif %}
 
-            <input class="checkbox js-icon-enable{% if is_required %} hidden{% endif %}" name="icons-enabled-{{ name }}" type="checkbox"{% if value or is_required %} checked="checked"{% endif %} />
-
-            <span class="js-icon-widgets hidden">
+            <label class="icon-widgets js-icon-widgets{% if not is_required %} hidden{% endif %}">
                 <select class="form-control js-iconset">
                     {% for iconpicker_iconset, prefix, verbose_name in iconsets %}
+                        {% if forloop.first %}
                         <option value="{{ iconpicker_iconset }}" data-prefix="{{ prefix }}"{% if iconset == prefix %} selected="selected"{% endif %}>{{ verbose_name }}</option>
+                        {% endif %}
                     {% endfor %}
                 </select>
 
-                <span class="iconpicker js-icon-picker">
-                    <button id="id_{{ name }}" role="iconpicker" name="{{ name }}" data-iconset="{{ iconset }}" data-icon="{{ value }}"></button>
+                <span class="iconpicker iconpicker-wrapper js-icon-picker">
+                    <button{% if not is_required %} id="id_{{ name }}"{% endif %}
+                        role="iconpicker" name="{{ name }}"
+                        data-iconset="{{ iconset }}"
+                        data-icon="{{ value }}">
+                    </button>
                 </span>
-            </span>
+            </label>
         </div>
     {% endif %}
 </div>
-
-{# Javascript #}
-<script>
-    if (!$) {
-        $ = django.jQuery;
-    }
-    $( document ).ready(function() {
-        var name = '{{ name }}';
-        var initialIconsetPrefix = '{{ iconset }}';
-        var isRequired = Boolean('{% if is_required %}true{% endif %}');
-        var iconPicker = $('.js-icon-' + name + ' .js-icon-picker');
-        var iconSet = $('.js-icon-' + name + ' .js-iconset');
-        var enableIconCheckbox = $('.js-icon-' + name + ' .js-icon-enable');
-        var widgets = $('.js-icon-' + name + ' .js-icon-widgets');
-
-        window['iconPicker_' + name] = iconPicker;
-        window['iconSet_' + name] = iconSet;
-        window['enableIconCheckbox_' + name] = enableIconCheckbox;
-
-        var iconPickerButton = iconPicker.find('button');
-        var initialValue = iconPickerButton.data('icon');
-        // var initialIconsetPrefix = initialValue.split('-')[0];
-
-        var initialIconset = iconSet.find('option[data-prefix=' + initialIconsetPrefix + ']').attr('value');
-
-        if ( iconSet.find('option').length == 1 ) {
-            iconSet.hide();
-            iconSet.parent().prepend('<label class="form-control-static">' + iconSet.find('option').text() + '</label>');
-        }
-
-
-        iconPickerButton.iconpicker({
-            arrowClass: 'btn-default',
-            icon: initialValue,
-            iconset: initialIconset
-        });
-        iconSet.on('change', function(){
-            var newIconset = $(this).val();
-            iconPickerButton.iconpicker('setIconset', newIconset);
-            window['iconsetSelected_' + name] = newIconset;
-        });
-
-        iconPicker.on('change', function(e) {
-            var iconSelected = iconPickerButton.find('input').attr('value');
-            var iconSelectedCss = $(this).find('i').attr('class');
-            window['iconSelected_' + name] = iconSelected;
-            window['iconSelectedCss_' + name] = iconSelectedCss;
-        });
-
-        enableIconCheckbox.on('change', function(e) {
-            if ($(this).prop('checked')) {
-                widgets.removeClass('hidden');
-                iconPicker.trigger('change');
-            } else {
-                widgets.addClass('hidden');
-                window['iconSelected_' + name] = '';
-                window['iconSelectedCss_' + name] = '';
-                iconPickerButton.find('input').val('');
-                console.log('remove icon');
-            }
-        });
-        enableIconCheckbox.trigger('change');
-
-        // Init active icon
-        window['iconSelected_' + name] = initialValue;
-        window['iconsetSelected_' + name] = initialIconset;
-        window['iconsetSelectedCss_' + name] = iconPicker.find('i').attr('class');
-    });
-</script>
