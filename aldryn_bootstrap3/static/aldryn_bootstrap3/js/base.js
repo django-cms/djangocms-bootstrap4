@@ -147,11 +147,10 @@
                 // attach event to the label
                 labelContext.on('keydown', function () {
                     clearTimeout(timer);
-                    var el = $(this);
                     timer = setTimeout(function () {
                         updatePreview({
                             type: 'text',
-                            text: el.val()
+                            text: labelContext.val()
                         });
                     }, timeout);
                 }).trigger('keydown');
@@ -236,26 +235,29 @@
                 // has to be done
                 function updatePreview(obj) {
                     // handle "label" inputs
-                    if (obj.type === 'text' && obj.text !== '') {
-                        previewBtnText.text(obj.text);
-                    } else if (obj.type === 'text') {
-                        previewBtnText.text(defaultBtnText);
+                    if (obj.type === 'text') {
+                        if (obj.text !== '') {
+                            previewBtnText.text(obj.text);
+                        } else {
+                            previewBtnText.text(defaultBtnText);
+                        }
                     }
 
                     // handle link/button selection which hides/shows text context
-                    if (obj.type === 'markup' && obj.context === 'lnk') {
-                        typeState = obj.context;
-                        blockContext.hide();
-                        btnContext.hide();
-                        colorContext.show();
-                        colorContext.find('label.active').trigger('click');
-                    }
-                    if (obj.type === 'markup' && obj.context === 'btn') {
-                        typeState = obj.context;
-                        blockContext.show();
-                        colorContext.hide();
-                        btnContext.show();
-                        btnContext.find('label.active').trigger('click');
+                    if (obj.type === 'markup') {
+                        if (obj.context === 'lnk') {
+                            typeState = obj.context;
+                            blockContext.hide();
+                            btnContext.hide();
+                            colorContext.show();
+                            colorContext.find('label.active').trigger('click');
+                        } else {
+                            typeState = obj.context;
+                            blockContext.show();
+                            colorContext.hide();
+                            btnContext.show();
+                            btnContext.find('label.active').trigger('click');
+                        }
                     }
 
                     // update context
@@ -268,12 +270,14 @@
                     }
 
                     // change block type
-                    if (obj.type === 'block' && obj.state) {
-                        blockClass = ' btn-block';
-                        previewBtn.addClass(blockClass);
-                    } else if (obj.type === 'block') {
-                        blockClass = '';
-                        previewBtn.removeClass('btn-block');
+                    if (obj.type === 'block') {
+                        if (obj.state) {
+                            blockClass = ' btn-block';
+                            previewBtn.addClass(blockClass);
+                        } else {
+                            blockClass = '';
+                            previewBtn.removeClass('btn-block');
+                        }
                     }
 
                     // change text size
