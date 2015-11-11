@@ -1,7 +1,8 @@
-{% load i18n static %}
+{% load i18n %}
 
 <div class="aldryn-bootstrap3 aldryn-bootstrap3-icon"
-    data-name="{{ name }}" data-iconset="{{ iconset }}" data-required="{% if is_required %}true{% else %}false{% endif %}">
+    data-name="{{ name }}"
+    data-iconset="{{ iconset }}">
     {% if not iconsets %}
         <div class="alert alert-danger">
             {% trans "No Iconsets configured! Please configure at least on Iconset before using this widget." %}

@@ -33,6 +33,7 @@
 
 /*##############################################################################
 // ICON WIDGET */
+/* used in aldryn_bootstrap3/widgets/icon.html */
 .aldryn-bootstrap3-icon select.form-control {
     width: auto !important;
 }
