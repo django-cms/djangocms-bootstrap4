@@ -126,21 +126,26 @@
              */
             buttonPreviewPreview: function buttonPreviewPreview() {
                 var container = $('.aldryn-bootstrap3-button');
-                var previewBtn = container.find('.js-preview-btn span');
+                var previewBtn = container.find('.js-preview-btn .button');
+                var previewBtnText = previewBtn.find('span');
                 var defaultBtnText = previewBtn.text();
                 var typeState = '';
                 var blockClass = '';
+                var sizeClass = '';
                 var timer = function () {};
                 var timeout = 50;
 
                 // helper references
+                var labelContext = $('#id_label');
+                var typeContext = $('#id_type_0, #id_type_1');
                 var sizeContext = $('.field-btn_size');
                 var btnContext = $('.field-btn_context');
                 var colorContext = $('.field-txt_context');
                 var blockContext = $('.field-btn_block');
+                var iconContext = $('.js-icon-picker button');
 
                 // attach event to the label
-                $('#id_label').on('keydown', function () {
+                labelContext.on('keydown', function () {
                     clearTimeout(timer);
                     var el = $(this);
                     timer = setTimeout(function () {
@@ -152,12 +157,12 @@
                 }).trigger('keydown');
 
                 // attach event to the link/button switch
-                $('#id_type_0, #id_type_1').on('change', function () {
+                typeContext.on('change', function () {
                     updatePreview({
                         type: 'markup',
                         context: $(this).val()
                     });
-                }).filter(':checked').trigger('change');
+                });
 
                 // handle button context selection
                 // autotrigger will be handled by link/button switcher
@@ -177,27 +182,69 @@
                 });
 
                 // handle block checkbox
-                $('#id_btn_block').on('change', function () {
+                blockContext.find('input').on('change', function () {
                     updatePreview({
                         type: 'block',
                         state: $(this).prop('checked')
                     });
+                });
+
+                // handle size selection
+                sizeContext.find('label').on('click', function () {
+                    updatePreview({
+                        type: 'size',
+                        cls: cleanClass($(this).attr('class'))
+                    });
+                });
+
+                // handle icon picker
+                iconContext.on('change', function () {
+                    var el = $(this);
+                    if (el.attr('name') === 'icon_left') {
+                        // icon left alignment
+                        previewBtn.find('.pre').attr('class', 'pre ' + el.find('i').attr('class'));
+                    } else {
+                        // icon right alignment
+                        previewBtn.find('.post').attr('class', 'post ' + el.find('i').attr('class'));
+                    }
                 }).trigger('change');
+
+                // control visibility of icons
+                $('#id_icon_left').on('change', function () {
+                    if ($(this).is(':checked')) {
+                        previewBtn.find('.pre').show();
+                    } else {
+                        previewBtn.find('.pre').hide();
+                    }
+                });
+                $('#id_icon_right').on('change', function () {
+                    if ($(this).is(':checked')) {
+                        previewBtn.find('.post').show();
+                    } else {
+                        previewBtn.find('.post').hide();
+                    }
+                });
+
+                // certain elements can only be loaded after a timeout
+                setTimeout(function () {
+                    blockContext.find('input:checked').trigger('change');
+                    typeContext.filter(':checked').trigger('change');
+                    sizeContext.find('input:checked').parent().trigger('click');
+                }, 0);
 
                 // every event fires updatePreview passing in arguments what
                 // has to be done
                 function updatePreview(obj) {
                     // handle "label" inputs
                     if (obj.type === 'text' && obj.text !== '') {
-                        previewBtn.text(obj.text);
+                        previewBtnText.text(obj.text);
                     } else if (obj.type === 'text') {
-                        previewBtn.text(defaultBtnText);
+                        previewBtnText.text(defaultBtnText);
                     }
 
                     // handle link/button selection which hides/shows text context
                     if (obj.type === 'markup' && obj.context === 'lnk') {
                         typeState = obj.context;
-                        sizeContext.hide();
                         blockContext.hide();
                         btnContext.hide();
                         colorContext.show();
@@ -205,7 +252,6 @@
                     }
                     if (obj.type === 'markup' && obj.context === 'btn') {
                         typeState = obj.context;
-                        sizeContext.show();
                         blockContext.show();
                         colorContext.hide();
                         btnContext.show();
@@ -215,9 +261,9 @@
                     // update context
                     if (obj.type === 'context') {
                         if (typeState === 'lnk') {
-                            previewBtn.attr('class', 'text text-' + obj.cls + blockClass);
+                            previewBtn.attr('class', 'text text-' + obj.cls + blockClass + sizeClass);
                         } else {
-                            previewBtn.attr('class', 'btn btn-' + obj.cls + blockClass);
+                            previewBtn.attr('class', 'btn btn-' + obj.cls + blockClass + sizeClass);
                         }
                     }
 
@@ -229,215 +275,31 @@
                         blockClass = '';
                         previewBtn.removeClass('btn-block');
                     }
+
+                    // change text size
+                    if (obj.type === 'size') {
+                        if ($('#id_type_0').is('checked')) {
+                            sizeClass = ' text-' + obj.cls;
+                        } else {
+                            sizeClass = ' btn-' + obj.cls;
+                        }
+                        previewBtn.removeClass('text-lg text-md text-sm text-xs');
+                        previewBtn.removeClass('btn-lg btn-md btn-sm btn-xs');
+                        previewBtn.addClass(sizeClass);
+                    }
                 }
 
                 // make sure we only pass the required class argument
                 function cleanClass(cls) {
                     cls = cls
                         .replace('btn btn-', '')
-                        .replace('active', '');
+                        .replace('active', '')
+                        .replace('default ', '')
+                        .replace('text-', '')
+                        .replace(' ', '');
                     return cls;
                 }
 
-
-
-                /*
-                var buttonContextTriggers = $('.js-btn-group-context-btn_context .btn');
-                var textLinkContextTriggers = $('.js-btn-group-context-txt_context .btn');
-                var sizesTriggers = $('.js-btn-group-sizes .btn');
-
-                var previewButton = $('.js-btn-preview a');
-                var previewButtonText = previewButton.text();
-
-                // Init defaults
-                var currentButtonContextTriggerValue;
-                var currentTextLinkContextTriggerValue;
-                var currentSizesTriggerValue;
-                var currentBlockTriggerValue;
-                var currentTypeSwitch ;
-
-                // Init text/button switch
-                var typeSwitch = $('#id_type_0, #id_type_1');
-                var buttonElements = $('.field-btn_context, .field-btn_size, .field-btn_block');
-                var textElements = $('.field-txt_context');
-
-                // Set btn-block
-                var btnBlock = $('#id_btn_block');
-
-                var setBtnBlock = function () {
-                    if ($('#id_btn_block:checkbox:checked').length == 1) {
-                        previewButton.addClass('btn-block');
-                        currentBlockTriggerValue = 'btn-block';
-                    } else {
-                        previewButton.removeClass('btn-block');
-                        currentBlockTriggerValue = '';
-                    }
-                };
-
-                setBtnBlock();
-
-                btnBlock.on('click', function () {
-                    setBtnBlock();
-                });
-
-                // Set button context
-                buttonContextTriggers.each(function (index, item) {
-                    if ($(item).find('input').attr('checked') == 'checked') {
-                        var context = $(item).find('input[checked="checked"]').val();
-                        currentButtonContextTriggerValue = context;
-                        if (typeSwitch.val() == 'btn') {
-                            $('.js-btn-preview a').addClass('btn-' + context);
-                        }
-                    }
-                });
-
-                // Set textlink context
-                textLinkContextTriggers.each(function (index, item) {
-                    if ($(item).find('input').attr('checked') == 'checked') {
-                        var context = $(item).find('input[checked="checked"]').val();
-                        currentTextLinkContextTriggerValue = context;
-                        if (typeSwitch.val() == 'lnk') {
-                            $('.js-btn-preview .btn').addClass('text-' + context);
-                        }
-                    }
-                });
-
-
-                // Set sizes
-                sizesTriggers.each(function (index, item) {
-                    if ($(item).find('input').attr('checked') == 'checked') {
-                        var size = $(item).find('input[checked="checked"]').val();
-                        $('.js-btn-preview .btn').addClass('btn-' + size);
-                        currentSizesTriggerValue = size;
-                    }
-                });
-
-                // Set button context of elements for preview
-                buttonContextTriggers.on('click', function (e) {
-                    var context = $(this).find('input').val();
-
-                    previewButton.removeClass('btn-' + currentButtonContextTriggerValue);
-                    previewButton.addClass('btn-' + context);
-
-                    currentButtonContextTriggerValue = context;
-                });
-
-                // Set text link context of elements for preview
-                textLinkContextTriggers.on('click', function (e) {
-                    var context = $(this).find('input').val();
-
-                    previewButton.removeClass('text-' + currentTextLinkContextTriggerValue);
-                    previewButton.addClass('text-' + context);
-
-                    currentTextLinkContextTriggerValue = context;
-                });
-
-                // Set sizes of elements for preview
-                sizesTriggers.on('click', function (e) {
-                    var size = $(this).find('input').val();
-
-                    previewButton.removeClass('btn-' + currentSizesTriggerValue);
-                    previewButton.addClass('btn-' + size);
-
-                    currentSizesTriggerValue = size;
-                });
-
-                // Update text in button for preview
-                previewButton.text($("#id_label").val());
-
-                $("#id_label").on('input', function () {
-                    if ($(this).val()) {
-                        $('.js-btn-preview a').text($(this).val());
-                    } else {
-                        $('.js-btn-preview a').text(previewButtonText);
-                    }
-                    refreshIcons();
-                });
-
-                // Set Icon of button
-                $.each(['icon_left', 'icon_right'], function (index, name) {
-                    var enableIconCheckbox = $('#id_' + name);
-                    console.log('enableIconCheckbox: ', enableIconCheckbox);
-                    var iconPicker = enableIconCheckbox.parent().find('button');
-
-                    // update code
-                    var updateIconPreview = function () {
-                        var iconSelectedCss = iconPicker.find('i').attr('class');
-                        console.log('iconSelectedCss: ', iconSelectedCss);
-                        previewButton.find('.js-icon-position-' + name).remove();
-                        var iconHtml = '<i class="js-icon-position-' + name + ' ' + iconSelectedCss + '"></i> '
-                        if (name === 'icon_left') {
-                            previewButton.prepend(iconHtml);
-                        }
-                        if (name === 'icon_right') {
-                            previewButton.append(iconHtml);
-                        }
-                    };
-
-                    // on change
-                    iconPicker.on('change', updateIconPreview);
-                    enableIconCheckbox.on('change', updateIconPreview);
-
-                    // initial
-                    enableIconCheckbox.trigger('change');
-                });
-
-                var refreshIcons = function () {
-                    $.each(['icon_left', 'icon_right'], function (index, name) {
-                        var enableIconCheckbox = $('.js-icon-' + name + ' .js-icon-enable');
-                        console.log('enableIconCheckbox: ', enableIconCheckbox);
-                        enableIconCheckbox.trigger('change');
-                    });
-                };
-
-                // Update class of preview button based on classes
-                var extraClasses = $("#id_classes");
-                previewButton.addClass(extraClasses.val());
-
-                extraClasses.on('input', function () {
-                    if (currentTypeSwitch == 'btn') {
-                        previewButton.attr('class', 'btn ' + currentBlockTriggerValue + ' btn-' + currentButtonContextTriggerValue + ' btn-' + currentSizesTriggerValue + ' ' + $(this).val());
-                    }
-                    if (currentTypeSwitch == 'lnk') {
-                        previewButton.attr('class', 'text-' + currentTextLinkContextTriggerValue + ' ' + $(this).val());
-                    }
-                });
-
-                // Init current type
-                var setCurrentType = function () {
-                    typeSwitch.each(function (index, name) {
-                        if ($(this).is(':checked')) {
-                            currentTypeSwitch = $(this).val();
-                        }
-                    });
-
-                    if (currentTypeSwitch == 'btn') {
-                        previewButton.addClass('btn');
-                        previewButton.addClass('btn-' + currentButtonContextTriggerValue);
-                        previewButton.addClass('btn-' + currentSizesTriggerValue);
-                        previewButton.removeClass('text-' + currentTextLinkContextTriggerValue);
-                        textElements.hide();
-                        buttonElements.show();
-                    }
-
-                    if (currentTypeSwitch == 'lnk') {
-                        previewButton.removeClass('btn');
-                        previewButton.removeClass('btn-' + currentButtonContextTriggerValue);
-                        previewButton.removeClass('btn-' + currentSizesTriggerValue);
-                        previewButton.removeClass('btn-block');
-                        previewButton.addClass('text-' + currentTextLinkContextTriggerValue);
-                        textElements.show();
-                        buttonElements.hide();
-                    }
-
-                };
-
-                setCurrentType();
-
-                typeSwitch.on('change', function () {
-                    setCurrentType();
-                });
-                */
             }
 
         };
