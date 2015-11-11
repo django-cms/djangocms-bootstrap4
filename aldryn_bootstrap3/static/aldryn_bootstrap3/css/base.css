@@ -76,3 +76,35 @@
     padding-top: 0 !important;
     border: none !important;
 }
+.field-txt_context .btn-muted {
+    color: #ccc !important;
+    border: 1px solid #ccc !important;
+}
+.field-btn_context .btn-link {
+    border-radius: 0 3px 3px 0;
+}
+
+/*##############################################################################
+// BUTTON WIDGET */
+/* used in aldryn_bootstrap3/widgets/size.html */
+.btn-group-sizes label {
+    line-height: 20px;
+}
+.btn-group-sizes .text-lg {
+    font-size: 18px;
+}
+.btn-group-sizes .text-md {
+    font-size: 14px;
+}
+.btn-group-sizes .text-sm {
+    font-size: 12px;
+}
+.btn-group-sizes .text-sm .glyphicon {
+    top: 2px;
+}
+.btn-group-sizes .text-xs {
+    font-size: 10px;
+}
+.btn-group-sizes .text-xs .glyphicon {
+    top: 3px;
+}

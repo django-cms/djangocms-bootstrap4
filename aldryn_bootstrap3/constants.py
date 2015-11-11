@@ -15,16 +15,14 @@ CONTEXT_DEFAULT = 'default'
 BUTTON_CONTEXT_CHOICES = (
     ('default', 'Default',),
 ) + CONTEXT_CHOICES + (
-    ('link', 'Link Button',),
-    ('', 'Custom',),
+    ('link', 'Link',),
 )
 BUTTON_CONTEXT_DEFAULT = 'default'
 
 TXT_LINK_CONTEXT_CHOICES = (
-    ('', 'None',),
+    ('', 'Default',),
 ) + CONTEXT_CHOICES + (
-    # ('alert-link', 'Alert Link',),
-    ('muted', 'Muted',),
+    ('muted ', 'Muted',),
 )
 TXT_LINK_CONTEXT_DEFAULT = ''
 
@@ -46,7 +44,7 @@ ACCORDION_ITEM_CONTEXT_CHOICES = PANEL_CONTEXT_CHOICES
 ACCORDION_ITEM_CONTEXT_DEFAULT = PANEL_CONTEXT_DEFAULT
 
 LIST_GROUP_ITEM_CONTEXT_CHOICES = (
-    ('', 'None',),
+    ('', 'Default',),
 ) + CONTEXT_CHOICES
 LIST_GROUP_ITEM_CONTEXT_DEFAULT = ''
 

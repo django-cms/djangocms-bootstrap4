@@ -107,7 +107,6 @@ class Boostrap3ButtonPlugin(CMSPlugin, LinkMixin):
         verbose_name='context',
         choices=constants.BUTTON_CONTEXT_CHOICES,
         default=constants.BUTTON_CONTEXT_DEFAULT,
-        blank=True,
     )
     btn_size = model_fields.Size(verbose_name='size')
     btn_block = models.BooleanField(default=False, verbose_name='block')
