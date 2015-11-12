@@ -178,3 +178,11 @@
 #boostrap3imageplugin_form .field-thumbnail span {
     margin-top: 3px;
 }
+
+/*##############################################################################
+// IMAGE PLUGIN */
+/* used in aldryn_bootstrap3/plugins/label/change_form.html */
+.aldryn-bootstrap3-label .label-preview {
+    font-size: 18px !important;
+    margin: 0;
+}

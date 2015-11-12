@@ -122,11 +122,11 @@
              * Renders the preview on top of the button/ling widget page.
              * Only one button widget allowed per page.
              *
-             * @method buttonPreviewPreview
+             * @method buttonPreview
              */
-            buttonPreviewPreview: function buttonPreviewPreview() {
+            buttonPreview: function buttonPreview() {
                 var container = $('.aldryn-bootstrap3-button');
-                var previewBtn = container.find('.js-preview-btn .button');
+                var previewBtn = container.find('.js-preview-btn .js-button');
                 var previewBtnText = previewBtn.find('span');
                 var defaultBtnText = previewBtn.text();
                 var typeState = '';
@@ -427,6 +427,74 @@
 
                 // initialize tooltip
                 $('[data-toggle="tooltip"]').tooltip();
+            },
+
+            /**
+             * Plugin used in aldryn_bootstrap3/plugins/label.
+             *
+             * @method labelPlugin
+             */
+            labelPlugin: function labelPlugin() {
+                var container = $('.aldryn-bootstrap3-label');
+                var previewBtn = container.find('.js-label-preview span');
+                var defaultBtnText = previewBtn.text();
+                var timer = function () {};
+                var timeout = 50;
+
+                // helper references
+                var labelContext = $('#id_label');
+                var btnContext = $('.field-context');
+
+                // attach event to the label
+                labelContext.on('keydown', function () {
+                    clearTimeout(timer);
+                    timer = setTimeout(function () {
+                        updatePreview({
+                            type: 'text',
+                            text: labelContext.val()
+                        });
+                    }, timeout);
+                }).trigger('keydown');
+
+                // handle button context selection
+                // autotrigger will be handled by link/button switcher
+                btnContext.find('label').on('click', function () {
+                    updatePreview({
+                        type: 'context',
+                        cls: cleanClass($(this).attr('class'))
+                    });
+                });
+
+                // initial state
+                btnContext.find('label.active').trigger('click');
+
+                // every event fires updatePreview passing in arguments what
+                // has to be done
+                function updatePreview(obj) {
+                    // handle "label" inputs
+                    if (obj.type === 'text') {
+                        if (obj.text !== '') {
+                            previewBtn.text(obj.text);
+                        } else {
+                            previewBtn.text(defaultBtnText);
+                        }
+                    }
+
+                    // update context
+                    if (obj.type === 'context') {
+                        previewBtn.attr('class', 'label label-' + obj.cls);
+                    }
+                }
+
+                // make sure we only pass the required class argument
+                function cleanClass(cls) {
+                    cls = cls
+                        .replace('btn btn-', '')
+                        .replace('active', '')
+                        .replace('text-', '')
+                        .replace(' ', '');
+                    return cls;
+                }
             }
 
         };
@@ -443,7 +511,7 @@
             });
         }
         if ($('.aldryn-bootstrap3-button').length) {
-            bootstrap3.buttonPreviewPreview();
+            bootstrap3.buttonPreview();
         }
         if ($('.js-btn-group-sizes').length) {
             $('.js-btn-group-sizes').each(function () {
@@ -454,8 +522,11 @@
         if ($('.aldryn-bootstrap3-grid').length) {
             bootstrap3.rowColumnPlugin();
         }
+        if ($('.aldryn-bootstrap3-label').length) {
+            bootstrap3.labelPlugin();
+        }
 
         // TODO need to filter
-        bootstrap3.imagePlugin();
+        // bootstrap3.imagePlugin();
     });
 })(window.jQuery || django.jQuery);
