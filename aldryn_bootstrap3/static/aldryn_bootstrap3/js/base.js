@@ -525,8 +525,8 @@
         if ($('.aldryn-bootstrap3-label').length) {
             bootstrap3.labelPlugin();
         }
-
-        // TODO need to filter
-        // bootstrap3.imagePlugin();
+        if ($('#boostrap3imageplugin_form').length) {
+            bootstrap3.imagePlugin();
+        }
     });
 })(window.jQuery || django.jQuery);
