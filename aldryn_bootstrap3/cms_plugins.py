@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals, absolute_import
 from django.utils.translation import ugettext_lazy as _
-import django.forms.widgets
+from django.templatetags.static import static
 
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 
-from . import models, forms, constants, widgets
+from . import models, forms, constants
 from cms.models import CMSPlugin
 
 
@@ -70,6 +70,8 @@ class Bootstrap3IconCMSPlugin(CMSPluginBase):
         context.update({'instance': instance})
         return context
 
+    def icon_src(self, instance):
+        return static("aldryn_bootstrap3/img/type/icon.png")
 
 plugin_pool.register_plugin(Bootstrap3IconCMSPlugin)
 
@@ -98,6 +100,9 @@ class Bootstrap3LabelCMSPlugin(CMSPluginBase):
     def render(self, context, instance, placeholder):
         context.update({'instance': instance})
         return context
+
+    def icon_src(self, instance):
+        return static("aldryn_bootstrap3/img/type/label.png")
 
 
 plugin_pool.register_plugin(Bootstrap3LabelCMSPlugin)
@@ -199,9 +204,7 @@ class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
         return context
 
     def icon_src(self, instance):
-        from django.contrib.staticfiles.templatetags.staticfiles import static
-
-        return static("cms/img/icons/plugins/link.png")
+        return static("aldryn_bootstrap3/img/type/button.png")
 
 
 plugin_pool.register_plugin(Bootstrap3ButtonCMSPlugin)
@@ -239,6 +242,18 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
         context.update({'instance': instance})
         return context
 
+    def get_thumbnail(self, context, instance):
+        return instance.file.file.get_thumbnail({
+            'size': (80, 80),
+            'crop': True,
+            'upscale': True,
+            'subject_location': instance.file.subject_location,
+        })
+
+    def icon_src(self, instance):
+        thumbnail = self.get_thumbnail({'width': 200}, instance)
+        return thumbnail.url
+
 
 plugin_pool.register_plugin(Bootstrap3ImageCMSPlugin)
 
@@ -266,6 +281,9 @@ class Bootstrap3SpacerCMSPlugin(CMSPluginBase):
     def render(self, context, instance, placeholder):
         context.update({'instance': instance})
         return context
+
+    def icon_src(self, instance):
+        return static("aldryn_bootstrap3/img/type/spacer.png")
 
 
 plugin_pool.register_plugin(Bootstrap3SpacerCMSPlugin)
@@ -299,6 +317,10 @@ class Bootstrap3FileCMSPlugin(CMSPluginBase):
     def render(self, context, instance, placeholder):
         context.update({'instance': instance})
         return context
+
+    def icon_src(self, instance):
+        return static("aldryn_bootstrap3/img/type/file.png")
+
 
 plugin_pool.register_plugin(Bootstrap3FileCMSPlugin)
 
