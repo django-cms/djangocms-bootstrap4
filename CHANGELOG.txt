@@ -1,0 +1,14 @@
+CHANGELOG
+=========
+
+1.0.1 (2015-11-12)
+------------------
+
+* Fixes preview display for all plugins and widgets
+* Implement icons for text_enabled plugins
+* Code cleanup
+
+1.0.0 (2015-11-03)
+------------------
+
+* Initial release
