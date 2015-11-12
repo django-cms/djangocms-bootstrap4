@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals, absolute_import
 from django.utils.translation import ugettext_lazy as _
-import django.forms.widgets
+from django.templatetags.static import static
 
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 
-from . import models, forms, constants, widgets
+from . import models, forms, constants
 from cms.models import CMSPlugin
 
 
@@ -53,7 +53,6 @@ class Bootstrap3IconCMSPlugin(CMSPluginBase):
     change_form_template = 'admin/aldryn_bootstrap3/base.html'
     render_template = 'aldryn_bootstrap3/plugins/icon.html'
     text_enabled = True
-    allow_children = True
 
     fieldsets = (
         (None, {'fields': (
@@ -71,6 +70,8 @@ class Bootstrap3IconCMSPlugin(CMSPluginBase):
         context.update({'instance': instance})
         return context
 
+    def icon_src(self, instance):
+        return static('aldryn_bootstrap3/img/type/icon.png')
 
 plugin_pool.register_plugin(Bootstrap3IconCMSPlugin)
 
@@ -82,7 +83,6 @@ class Bootstrap3LabelCMSPlugin(CMSPluginBase):
     change_form_template = 'admin/aldryn_bootstrap3/plugins/label/change_form.html'
     render_template = 'aldryn_bootstrap3/plugins/label.html'
     text_enabled = True
-    allow_children = True
 
     fieldsets = (
         (None, {'fields': (
@@ -100,6 +100,9 @@ class Bootstrap3LabelCMSPlugin(CMSPluginBase):
     def render(self, context, instance, placeholder):
         context.update({'instance': instance})
         return context
+
+    def icon_src(self, instance):
+        return static('aldryn_bootstrap3/img/type/label.png')
 
 
 plugin_pool.register_plugin(Bootstrap3LabelCMSPlugin)
@@ -171,7 +174,6 @@ class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
     change_form_template = 'admin/aldryn_bootstrap3/plugins/button/change_form.html'
     render_template = 'aldryn_bootstrap3/plugins/button.html'
     text_enabled = True
-    allow_children = True
 
     fieldsets = (
         (None, {
@@ -202,9 +204,7 @@ class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
         return context
 
     def icon_src(self, instance):
-        from django.contrib.staticfiles.templatetags.staticfiles import static
-
-        return static("cms/img/icons/plugins/link.png")
+        return static('aldryn_bootstrap3/img/type/button.png')
 
 
 plugin_pool.register_plugin(Bootstrap3ButtonCMSPlugin)
@@ -216,7 +216,7 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
     module = _('Bootstrap3')
     change_form_template = 'admin/aldryn_bootstrap3/plugins/image/change_form.html'
     render_template = 'aldryn_bootstrap3/plugins/image.html'
-    allow_children = True
+    text_enabled = True
     cache = False
 
     fieldsets = (
@@ -242,6 +242,18 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
         context.update({'instance': instance})
         return context
 
+    def get_thumbnail(self, instance):
+        return instance.file.file.get_thumbnail({
+            'size': (40, 40),
+            'crop': True,
+            'upscale': True,
+            'subject_location': instance.file.subject_location,
+        })
+
+    def icon_src(self, instance):
+        thumbnail = self.get_thumbnail(instance)
+        return thumbnail.url
+
 
 plugin_pool.register_plugin(Bootstrap3ImageCMSPlugin)
 
@@ -252,6 +264,7 @@ class Bootstrap3SpacerCMSPlugin(CMSPluginBase):
     module = _('Bootstrap3')
     change_form_template = 'admin/aldryn_bootstrap3/base.html'
     render_template = 'aldryn_bootstrap3/plugins/spacer.html'
+    text_enabled = True
 
     fieldsets = (
         (None, {'fields': (
@@ -269,6 +282,9 @@ class Bootstrap3SpacerCMSPlugin(CMSPluginBase):
         context.update({'instance': instance})
         return context
 
+    def icon_src(self, instance):
+        return static('aldryn_bootstrap3/img/type/spacer.png')
+
 
 plugin_pool.register_plugin(Bootstrap3SpacerCMSPlugin)
 
@@ -279,6 +295,7 @@ class Bootstrap3FileCMSPlugin(CMSPluginBase):
     module = _('Bootstrap3')
     change_form_template = 'admin/aldryn_bootstrap3/base.html'
     render_template = 'aldryn_bootstrap3/plugins/file.html'
+    text_enabled = True
 
     fieldsets = (
         (None, {'fields': (
@@ -300,6 +317,10 @@ class Bootstrap3FileCMSPlugin(CMSPluginBase):
     def render(self, context, instance, placeholder):
         context.update({'instance': instance})
         return context
+
+    def icon_src(self, instance):
+        return static('aldryn_bootstrap3/img/type/file.png')
+
 
 plugin_pool.register_plugin(Bootstrap3FileCMSPlugin)
 
@@ -476,7 +497,7 @@ class Bootstrap3RowCMSPlugin(CMSPluginBase):
         ("Create Columns", {
             # 'classes': ('collapse',),
             'fields': (
-                'create',
+                    'create',
                 ) + tuple([
                 (
                     'create_{}_col'.format(size),
