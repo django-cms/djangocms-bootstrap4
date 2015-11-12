@@ -242,16 +242,16 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
         context.update({'instance': instance})
         return context
 
-    def get_thumbnail(self, context, instance):
+    def get_thumbnail(self, instance):
         return instance.file.file.get_thumbnail({
-            'size': (80, 80),
+            'size': (40, 40),
             'crop': True,
             'upscale': True,
             'subject_location': instance.file.subject_location,
         })
 
     def icon_src(self, instance):
-        thumbnail = self.get_thumbnail({'width': 200}, instance)
+        thumbnail = self.get_thumbnail(instance)
         return thumbnail.url
 
 
