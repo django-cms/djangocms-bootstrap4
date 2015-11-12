@@ -53,7 +53,6 @@ class Bootstrap3IconCMSPlugin(CMSPluginBase):
     change_form_template = 'admin/aldryn_bootstrap3/base.html'
     render_template = 'aldryn_bootstrap3/plugins/icon.html'
     text_enabled = True
-    allow_children = True
 
     fieldsets = (
         (None, {'fields': (
@@ -82,7 +81,6 @@ class Bootstrap3LabelCMSPlugin(CMSPluginBase):
     change_form_template = 'admin/aldryn_bootstrap3/plugins/label/change_form.html'
     render_template = 'aldryn_bootstrap3/plugins/label.html'
     text_enabled = True
-    allow_children = True
 
     fieldsets = (
         (None, {'fields': (
@@ -171,7 +169,6 @@ class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
     change_form_template = 'admin/aldryn_bootstrap3/plugins/button/change_form.html'
     render_template = 'aldryn_bootstrap3/plugins/button.html'
     text_enabled = True
-    allow_children = True
 
     fieldsets = (
         (None, {
@@ -216,7 +213,7 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
     module = _('Bootstrap3')
     change_form_template = 'admin/aldryn_bootstrap3/plugins/image/change_form.html'
     render_template = 'aldryn_bootstrap3/plugins/image.html'
-    allow_children = True
+    text_enabled = True
     cache = False
 
     fieldsets = (
@@ -252,6 +249,7 @@ class Bootstrap3SpacerCMSPlugin(CMSPluginBase):
     module = _('Bootstrap3')
     change_form_template = 'admin/aldryn_bootstrap3/base.html'
     render_template = 'aldryn_bootstrap3/plugins/spacer.html'
+    text_enabled = True
 
     fieldsets = (
         (None, {'fields': (
@@ -279,6 +277,7 @@ class Bootstrap3FileCMSPlugin(CMSPluginBase):
     module = _('Bootstrap3')
     change_form_template = 'admin/aldryn_bootstrap3/base.html'
     render_template = 'aldryn_bootstrap3/plugins/file.html'
+    text_enabled = True
 
     fieldsets = (
         (None, {'fields': (
@@ -471,13 +470,12 @@ class Bootstrap3RowCMSPlugin(CMSPluginBase):
     allow_children = True
     child_classes = ['Bootstrap3ColumnCMSPlugin']
     form = forms.RowPluginForm
-
     fieldsets = [
         ("Create Columns", {
             # 'classes': ('collapse',),
             'fields': (
-                'create',
-                ) + tuple([
+                          'create',
+                      ) + tuple([
                 (
                     'create_{}_col'.format(size),
                     'create_{}_offset'.format(size),
@@ -487,7 +485,6 @@ class Bootstrap3RowCMSPlugin(CMSPluginBase):
             ])
         }),
         ("Advanced", {
-            'classes': ('collapse',),
             'fields': (
                 'classes',
             )
@@ -527,10 +524,9 @@ class Bootstrap3ColumnCMSPlugin(CMSPluginBase):
     render_template = 'aldryn_bootstrap3/plugins/column.html'
     allow_children = True
     parent_classes = ['Bootstrap3RowCMSPlugin']
-    form = forms.ColumnPluginForm
 
     fieldsets = [
-        ("Adapt Columns", {
+        (None, {
             'fields': tuple([
                 (
                     '{}_col'.format(size),
@@ -548,10 +544,6 @@ class Bootstrap3ColumnCMSPlugin(CMSPluginBase):
             )
         }),
     ]
-
-    def render(self, context, instance, placeholder):
-        context = super(Bootstrap3ColumnCMSPlugin, self).render(context, instance, placeholder)
-        return context
 
 
 plugin_pool.register_plugin(Bootstrap3RowCMSPlugin)

@@ -196,3 +196,11 @@
     font-size: 18px !important;
     margin: 0;
 }
+
+/*##############################################################################
+// BLOCKQUOTE PLUGIN */
+/* used in aldryn_bootstrap3/plugins/blockquote/change_form.html */
+#boostrap3blockquoteplugin_form .checkbox-row {
+    padding-top: 0 !important;
+    border: none !important;
+}
