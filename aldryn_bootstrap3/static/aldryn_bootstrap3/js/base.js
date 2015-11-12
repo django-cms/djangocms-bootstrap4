@@ -415,10 +415,52 @@
              * @method imagePlugin
              */
             imagePlugin: function imagePlugin() {
-                var thumbnail = $('#id_thumbnail');
-                var thumbnailTooltipText = thumbnail.parent().find('.help').text();
+                var image = $('#id_file_thumbnail_img');
+                var imagePreview = $('.js-image-preview .image');
+                var aspectRatio;
+                var aspectRatioBase = 80;
+                var url;
 
-                thumbnail.parent().append('' +
+                var aspectRatioContext = $('#id_aspect_ratio');
+                var shapeContext = $('#id_shape');
+                var thumbnailContext = $('#id_thumbnail');
+                var thumbnailTooltipText = thumbnailContext.parent().find('.help').text();
+                var previewContainer = imagePreview.parent();
+
+                // change image
+                image.on('load', function () {
+                    url = parseImage($(this).attr('src'));
+                    imagePreview.css('background-image', 'url(' + url + ')');
+                }).trigger('load');
+
+                // attach aspect ratio handler
+                aspectRatioContext.on('change', function () {
+                    aspectRatio = aspectRatioContext.val().split('x');
+                    imagePreview.css('height', aspectRatioBase * aspectRatio[1] / aspectRatio[0]);
+                }).trigger('change');
+
+                // attach shape handler
+                shapeContext.on('change', function () {
+                    imagePreview.removeClass('img-rounded img-circle');
+                    previewContainer.removeClass('img-rounded img-circle');
+                    imagePreview.addClass('img-' + $(this).val());
+                    previewContainer.addClass('img-' + $(this).val());
+                    // remove empty "img-" when selection is "-----"
+                    imagePreview.removeClass('img-');
+                    previewContainer.removeClass('img-');
+                }).trigger('change');
+
+                // attach shape handler
+                thumbnailContext.on('change', function () {
+                    if (thumbnailContext.is(':checked')) {
+                        previewContainer.addClass('img-thumbnail');
+                    } else {
+                        previewContainer.removeClass('img-thumbnail');
+                    }
+                }).trigger('change');
+
+                // tooltip handling
+                thumbnailContext.parent().append('' +
                     '<span class="fa fa-question-circle" ' +
                     '   data-toggle="tooltip" ' +
                     '   data-placement="right" ' +
@@ -427,6 +469,18 @@
 
                 // initialize tooltip
                 $('[data-toggle="tooltip"]').tooltip();
+
+                // image processing
+                // /media/filer_public_thumbnails/filer_public/2d/2a/2d2a4d96-8a07-44b7-948b-dd1e7353342e/4855487.jpeg__48x48_q85_crop_subsampling-2_upscale.jpg
+                // /media/filer_public/2d/2a/2d2a4d96-8a07-44b7-948b-dd1e7353342e/4855487.jpeg
+                function parseImage(url) {
+                    // trying to get the large size image with default filer options
+                    if (url.indexOf('filer_public_thumbnails/') > -1) {
+                        url = url.split('__')[0];
+                        url = url.replace('filer_public_thumbnails/', '');
+                    }
+                    return url;
+                }
             },
 
             /**

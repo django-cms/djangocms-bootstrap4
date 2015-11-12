@@ -116,7 +116,6 @@ GRID_SIZE = settings.ALDRYN_BOOTSTRAP3_GRID_SIZE
 
 
 ASPECT_RATIOS = (
-    (1, 1),
     (4, 3),
     (16, 9),
     (16, 10),
@@ -124,11 +123,13 @@ ASPECT_RATIOS = (
 )
 ASPECT_RATIOS_REVERSED = tuple([(y, x) for x, y in ASPECT_RATIOS])
 
-ASPECT_RATIO_CHOICES = \
+ASPECT_RATIO_CHOICES = (
     tuple([
-        ('{}x{}'.format(x, y), '{}x{}'.format(x, y))
+        ('{0}x{1}'.format(1, 1), '{0}x{1}'.format(1, 1))
+    ]) + tuple([
+        ('{0}x{1}'.format(x, y), '{0}x{1}'.format(x, y))
         for x, y in ASPECT_RATIOS
     ]) + tuple([
-        ('{}x{}'.format(x, y), '{}x{}'.format(x, y))
+        ('{0}x{1}'.format(x, y), '{0}x{1}'.format(x, y))
         for x, y in ASPECT_RATIOS_REVERSED
-    ])
+    ]))

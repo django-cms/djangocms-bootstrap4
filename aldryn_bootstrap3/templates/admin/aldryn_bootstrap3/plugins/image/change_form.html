@@ -1,2 +1,20 @@
 {% extends "admin/aldryn_bootstrap3/base.html" %}
 {% load i18n staticfiles %}
+
+{% block field_sets %}
+    <div class="aldryn-bootstrap3 aldryn-bootstrap3-image">
+        <div class="well text-center">
+            <p class="text-muted">
+                <span class="fa fa-fw fa-eye"></span>
+                {% trans "Preview" %}
+            </p>
+            <div class="image-preview js-image-preview">
+                <div class="image-outer">
+                    <div class="image" style="background-image: url('{% static 'filer/icons/nofile_48x48.png' %}')"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{ block.super }}
+{% endblock %}
