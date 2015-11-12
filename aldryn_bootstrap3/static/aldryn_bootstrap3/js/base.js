@@ -425,6 +425,7 @@
                 var shapeContext = $('#id_shape');
                 var thumbnailContext = $('#id_thumbnail');
                 var thumbnailTooltipText = thumbnailContext.parent().find('.help').text();
+                var previewContainer = imagePreview.parent();
 
                 // change image
                 image.on('load', function () {
@@ -441,17 +442,20 @@
                 // attach shape handler
                 shapeContext.on('change', function () {
                     imagePreview.removeClass('img-rounded img-circle');
+                    previewContainer.removeClass('img-rounded img-circle');
                     imagePreview.addClass('img-' + $(this).val());
+                    previewContainer.addClass('img-' + $(this).val());
                     // remove empty "img-" when selection is "-----"
                     imagePreview.removeClass('img-');
+                    previewContainer.removeClass('img-');
                 }).trigger('change');
 
                 // attach shape handler
                 thumbnailContext.on('change', function () {
                     if (thumbnailContext.is(':checked')) {
-                        imagePreview.parent().addClass('img-thumbnail');
+                        previewContainer.addClass('img-thumbnail');
                     } else {
-                        imagePreview.parent().removeClass('img-thumbnail');
+                        previewContainer.removeClass('img-thumbnail');
                     }
                 }).trigger('change');
 
