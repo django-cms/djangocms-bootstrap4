@@ -497,7 +497,7 @@ class Bootstrap3RowCMSPlugin(CMSPluginBase):
         ("Create Columns", {
             # 'classes': ('collapse',),
             'fields': (
-                  'create',
+                    'create',
                 ) + tuple([
                 (
                     'create_{}_col'.format(size),
