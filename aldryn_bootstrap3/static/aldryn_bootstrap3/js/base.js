@@ -381,7 +381,7 @@
                     }
                 });
 
-                $.each(formRows, function(index, item) {
+                formRows.each(function(index, item) {
                     var el = $(item);
                     // set fieldbox icons
                     if (el.hasClass('field-create_xs_col')) {

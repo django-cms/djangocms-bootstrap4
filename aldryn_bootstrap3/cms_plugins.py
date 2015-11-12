@@ -471,12 +471,13 @@ class Bootstrap3RowCMSPlugin(CMSPluginBase):
     allow_children = True
     child_classes = ['Bootstrap3ColumnCMSPlugin']
     form = forms.RowPluginForm
+
     fieldsets = [
         ("Create Columns", {
             # 'classes': ('collapse',),
             'fields': (
-                          'create',
-                      ) + tuple([
+                'create',
+                ) + tuple([
                 (
                     'create_{}_col'.format(size),
                     'create_{}_offset'.format(size),
@@ -486,6 +487,7 @@ class Bootstrap3RowCMSPlugin(CMSPluginBase):
             ])
         }),
         ("Advanced", {
+            'classes': ('collapse',),
             'fields': (
                 'classes',
             )
@@ -525,9 +527,10 @@ class Bootstrap3ColumnCMSPlugin(CMSPluginBase):
     render_template = 'aldryn_bootstrap3/plugins/column.html'
     allow_children = True
     parent_classes = ['Bootstrap3RowCMSPlugin']
+    form = forms.ColumnPluginForm
 
     fieldsets = [
-        (None, {
+        ("Adapt Columns", {
             'fields': tuple([
                 (
                     '{}_col'.format(size),
@@ -545,6 +548,10 @@ class Bootstrap3ColumnCMSPlugin(CMSPluginBase):
             )
         }),
     ]
+
+    def render(self, context, instance, placeholder):
+        context = super(Bootstrap3ColumnCMSPlugin, self).render(context, instance, placeholder)
+        return context
 
 
 plugin_pool.register_plugin(Bootstrap3RowCMSPlugin)
