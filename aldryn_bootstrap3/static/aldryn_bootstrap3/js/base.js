@@ -434,9 +434,6 @@
 
                 // attach aspect ratio handler
                 aspectRatioContext.on('change', function () {
-                    // 16 /  9
-                    // 16 = 80
-                    //  9 =  ?
                     aspectRatio = aspectRatioContext.val().split('x');
 
                     imagePreview.css('height', aspectRatioBase * aspectRatio[1] / aspectRatio[0]);
