@@ -492,9 +492,10 @@ class Bootstrap3RowCMSPlugin(CMSPluginBase):
     allow_children = True
     child_classes = ['Bootstrap3ColumnCMSPlugin']
     form = forms.RowPluginForm
+
     fieldsets = [
         ("Create Columns", {
-            'classes': ('collapse',),
+            # 'classes': ('collapse',),
             'fields': (
                   'create',
                 ) + tuple([
@@ -548,6 +549,7 @@ class Bootstrap3ColumnCMSPlugin(CMSPluginBase):
     allow_children = True
     parent_classes = ['Bootstrap3RowCMSPlugin']
     form = forms.ColumnPluginForm
+
     fieldsets = [
         ("Adapt Columns", {
             'fields': tuple([
