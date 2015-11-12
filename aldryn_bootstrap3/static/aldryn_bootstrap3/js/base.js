@@ -362,7 +362,7 @@
                 var tpl = $('<span class="form-row-icon fa fa-fw"></span>');
 
                 // set tooltips and labels
-                $.each(fieldBoxes, function(index, item) {
+                fieldBoxes.each(function(index, item) {
                     var el = $(item);
                     var tooltip = el.find('.help');
                     var label = el.find('label');
