@@ -71,7 +71,7 @@ class Bootstrap3IconCMSPlugin(CMSPluginBase):
         return context
 
     def icon_src(self, instance):
-        return static("aldryn_bootstrap3/img/type/icon.png")
+        return static('aldryn_bootstrap3/img/type/icon.png')
 
 plugin_pool.register_plugin(Bootstrap3IconCMSPlugin)
 
@@ -102,7 +102,7 @@ class Bootstrap3LabelCMSPlugin(CMSPluginBase):
         return context
 
     def icon_src(self, instance):
-        return static("aldryn_bootstrap3/img/type/label.png")
+        return static('aldryn_bootstrap3/img/type/label.png')
 
 
 plugin_pool.register_plugin(Bootstrap3LabelCMSPlugin)
@@ -204,7 +204,7 @@ class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
         return context
 
     def icon_src(self, instance):
-        return static("aldryn_bootstrap3/img/type/button.png")
+        return static('aldryn_bootstrap3/img/type/button.png')
 
 
 plugin_pool.register_plugin(Bootstrap3ButtonCMSPlugin)
@@ -283,7 +283,7 @@ class Bootstrap3SpacerCMSPlugin(CMSPluginBase):
         return context
 
     def icon_src(self, instance):
-        return static("aldryn_bootstrap3/img/type/spacer.png")
+        return static('aldryn_bootstrap3/img/type/spacer.png')
 
 
 plugin_pool.register_plugin(Bootstrap3SpacerCMSPlugin)
@@ -319,7 +319,7 @@ class Bootstrap3FileCMSPlugin(CMSPluginBase):
         return context
 
     def icon_src(self, instance):
-        return static("aldryn_bootstrap3/img/type/file.png")
+        return static('aldryn_bootstrap3/img/type/file.png')
 
 
 plugin_pool.register_plugin(Bootstrap3FileCMSPlugin)
