@@ -435,7 +435,6 @@
                 // attach aspect ratio handler
                 aspectRatioContext.on('change', function () {
                     aspectRatio = aspectRatioContext.val().split('x');
-
                     imagePreview.css('height', aspectRatioBase * aspectRatio[1] / aspectRatio[0]);
                 }).trigger('change');
 
@@ -443,6 +442,7 @@
                 shapeContext.on('change', function () {
                     imagePreview.removeClass('img-rounded img-circle');
                     imagePreview.addClass('img-' + $(this).val());
+                    // remove empty "img-" when selection is "-----"
                     imagePreview.removeClass('img-');
                 }).trigger('change');
 
@@ -472,7 +472,6 @@
                 function parseImage(url) {
                     url = url.split('__')[0];
                     url = url.replace('filer_public_thumbnails/', '');
-
                     return url;
                 }
             },
