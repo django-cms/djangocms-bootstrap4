@@ -407,6 +407,26 @@
                 // browser validation gets in the way of the ajax
                 // form submission from django-cms
                 form.attr('novalidate', 'novalidate');
+            },
+
+            /**
+             * Plugin used in aldryn_bootstrap3/plugins/image.
+             *
+             * @method imagePlugin
+             */
+            imagePlugin: function imagePlugin() {
+                var thumbnail = $('#id_thumbnail');
+                var thumbnailTooltipText = thumbnail.parent().find('.help').text();
+
+                thumbnail.parent().append('' +
+                    '<span class="fa fa-question-circle" ' +
+                    '   data-toggle="tooltip" ' +
+                    '   data-placement="right" ' +
+                    '   title="' + thumbnailTooltipText + '">' +
+                    '</span>');
+
+                // initialize tooltip
+                $('[data-toggle="tooltip"]').tooltip();
             }
 
         };
@@ -434,5 +454,8 @@
         if ($('.aldryn-bootstrap3-grid').length) {
             bootstrap3.rowColumnPlugin();
         }
+
+        // TODO need to filter
+        bootstrap3.imagePlugin();
     });
 })(window.jQuery || django.jQuery);

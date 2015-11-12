@@ -155,3 +155,26 @@
 .aldryn-bootstrap3-grid .field-box input {
     width: auto !important;
 }
+
+/*##############################################################################
+// IMAGE PLUGIN */
+/* used in aldryn_bootstrap3/plugins/image/change_form.html */
+#boostrap3imageplugin_form .checkbox-row {
+    clear: both;
+    overflow: hidden;
+}
+#boostrap3imageplugin_form .field-thumbnail input,
+#boostrap3imageplugin_form .field-thumbnail label,
+#boostrap3imageplugin_form .field-thumbnail p,
+#boostrap3imageplugin_form .field-thumbnail span {
+    float: left !important;
+    width: auto !important;
+    margin: 0 10px 0 0;
+    clear: none;
+}
+#boostrap3imageplugin_form .field-thumbnail input {
+    margin-top: 5px;
+}
+#boostrap3imageplugin_form .field-thumbnail span {
+    margin-top: 3px;
+}
