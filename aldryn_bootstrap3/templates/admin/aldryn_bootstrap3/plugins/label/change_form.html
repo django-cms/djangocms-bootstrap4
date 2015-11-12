@@ -1,13 +1,12 @@
-{% extends "admin/cms/page/plugin/change_form.html" %}
-{% load staticfiles %}
-
+{% extends "admin/aldryn_bootstrap3/base.html" %}
+{% load i18n staticfiles %}
 
 {% block field_sets %}
     <div class="well-wrapper">
         <div class="well label-preview js-label-preview text-center">
-            <p class="text-center text-muted"><i class="fa fa-fw fa-eye"></i> Preview</p>
+            <p class="text-center text-muted"><i class="fa fa-fw fa-eye"></i> {% trans "Preview" %}</p>
 
-            <p><span class="label">Example Label</span></p>
+            <p><span class="label">{% trans "Example Label" %}</span></p>
 
             <p class="text-center text-muted">
                 <small><i class="fa fa-fw fa-search"></i> <a href="#" class="js-magnifiying-x1">x1</a>&nbsp;
