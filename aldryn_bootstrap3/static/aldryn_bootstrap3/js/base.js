@@ -474,8 +474,11 @@
                 // /media/filer_public_thumbnails/filer_public/2d/2a/2d2a4d96-8a07-44b7-948b-dd1e7353342e/4855487.jpeg__48x48_q85_crop_subsampling-2_upscale.jpg
                 // /media/filer_public/2d/2a/2d2a4d96-8a07-44b7-948b-dd1e7353342e/4855487.jpeg
                 function parseImage(url) {
-                    url = url.split('__')[0];
-                    url = url.replace('filer_public_thumbnails/', '');
+                    // trying to get the large size image with default filer options
+                    if (url.indexOf('filer_public_thumbnails/') > -1) {
+                        url = url.split('__')[0];
+                        url = url.replace('filer_public_thumbnails/', '');
+                    }
                     return url;
                 }
             },
