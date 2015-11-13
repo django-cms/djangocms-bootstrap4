@@ -239,8 +239,7 @@ class Boostrap3ImagePlugin(CMSPlugin):
         blank=True,
         null=True,
         help_text=_(
-            'if this field is provided - it would be used across all devices '
-            'instead of default for devices types.'
+            'if this field is provided it will be used to scale image.'
         )
     )
     override_height = models.IntegerField(
@@ -248,9 +247,9 @@ class Boostrap3ImagePlugin(CMSPlugin):
         blank=True,
         null=True,
         help_text=_(
-            'if this field is provided - it would be used across all devices '
-            'instead of default for devices types. If aspect ration is '
-            'selected - height will be calculated based on that.'
+            'if this field is provided it will be used to scale image. '
+            'If aspect ration is selected - height will be calculated '
+            'based on that.'
         )
     )
     aspect_ratio = models.CharField(
