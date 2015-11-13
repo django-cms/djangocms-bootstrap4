@@ -234,6 +234,24 @@ class Boostrap3ImagePlugin(CMSPlugin):
         blank=True,
         default='',
     )
+    override_width = models.IntegerField(
+        _("override width"),
+        blank=True,
+        null=True,
+        help_text=_(
+            'if this field is provided it will be used to scale image.'
+        )
+    )
+    override_height = models.IntegerField(
+        _("override height"),
+        blank=True,
+        null=True,
+        help_text=_(
+            'if this field is provided it will be used to scale image. '
+            'If aspect ration is selected - height will be calculated '
+            'based on that.'
+        )
+    )
     aspect_ratio = models.CharField(
         _("aspect ratio"),
         max_length=10,
@@ -286,13 +304,20 @@ class Boostrap3ImagePlugin(CMSPlugin):
         else:
             aspect_width, aspect_height = None, None
         for device in constants.DEVICES:
-            width = device['width_gutter']  # TODO: should this should be based on the containing col size?
+            if self.override_width:
+                width = self.override_width
+            else:
+                # TODO: should this should be based on the containing col size?
+                width = device['width_gutter']
             width_tag = str(width)
             if aspect_width is not None and aspect_height is not None:
                 height = int(float(width)*float(aspect_height)/float(aspect_width))
                 crop = True
             else:
-                height = 0
+                if self.override_height:
+                    height = self.override_height
+                else:
+                    height = 0
                 crop = False
             items[device['identifier']] = {
                 'size': (width, height),
