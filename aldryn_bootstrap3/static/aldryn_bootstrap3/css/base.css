@@ -178,7 +178,7 @@
 #boostrap3imageplugin_form .field-thumbnail span {
     margin-top: 3px;
 }
-#boostrap3imageplugin_form .help {
+#boostrap3imageplugin_form .field-thumbnail .help {
     display: none;
 }
 .aldryn-bootstrap3-image .image {
