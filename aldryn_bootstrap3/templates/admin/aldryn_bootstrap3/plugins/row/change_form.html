@@ -1,75 +1,7 @@
-{% extends "admin/cms/page/plugin/change_form.html" %}
+{% extends "admin/aldryn_bootstrap3/base.html" %}
 
 {% block field_sets %}
-
-<div class="bootstrap3-column">
-    {{ block.super }}
-</div>
-
-{# Styling #}
-<style>
-    .collapse { visibility: visible !important; display: block; }
-    .bootstrap3-column input[type="number"] { min-width: 42px; width: 0; margin-right: 10px; }
-    .bootstrap3-column p.help { display: none; }
-    .bootstrap3-column .field-create label { width: 150px; line-height: 35px; }
-    .bootstrap3-column .field-box label { width: 70px; line-height: 35px; text-transform: lowercase; text-align: right; }
-    .bootstrap3-column .form-row-icon { float: left; font-size: 35px; margin-right: 10px; line-height: 40px; }
-</style>
-
-{# Javascript for preview (must be after the rest of the fields, because we rely on global variables set there. #}
-<script>
-    if (!$) {
-        $ = django.jQuery;
-    }
-    $( document ).ready(function() {
-        var formRows = $( '.bootstrap3-column .form-row' );
-        var fieldBoxes = $( '.bootstrap3-column .field-box' );
-        var form = $( '#bootstrap3rowplugin_form' );
-
-        $.each(fieldBoxes, function(index, item) {
-            // Set tooltip from help texts
-            var tooltipText = $(item).find('p.help').text();
-
-            $(item).append('<span class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="' + tooltipText + '"></span>');
-
-            // Remove colon from label
-            var label = $(item).find('label');
-            var labelText = label.text();
-
-            label.html(labelText.substr(0, labelText.length-1));
-        });
-
-        $.each(formRows, function(index, item) {
-            // Set fieldbox icons
-            if ($(item).hasClass('field-create_xs_col')) {
-                $(this).prepend('<span class="form-row-icon fa fa-fw fa-mobile"></span>')
-            }
-
-            if ($(item).hasClass('field-create_sm_col')) {
-                $(this).prepend('<span class="form-row-icon fa fa-fw fa-tablet"></span>')
-            }
-
-            if ($(item).hasClass('field-create_md_col')) {
-                $(this).prepend('<span class="form-row-icon fa fa-fw fa-laptop"></span>')
-            }
-
-            if ($(item).hasClass('field-create_lg_col')) {
-                $(this).prepend('<span class="form-row-icon fa fa-fw fa-desktop"></span>')
-            }
-
-            if ($(item).hasClass('field-create')) {
-                $(this).prepend('<span class="text-primary form-row-icon fa fa-fw fa-columns"></span>')
-            }
-        });
-
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
-        });
-
-        // browser validation gets in the way of the ajax form submission from django-cms
-        form.attr('novalidate', 'novalidate');
-
-    });
-</script>
-
+    <div class="aldryn-bootstrap3 aldryn-bootstrap3-grid">
+        {{ block.super }}
+    </div>
 {% endblock %}

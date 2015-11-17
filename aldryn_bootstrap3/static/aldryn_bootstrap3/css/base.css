@@ -1,0 +1,206 @@
+@charset "utf-8";
+/*!
+ * @copyright: https://github.com/divio/django-cms
+ */
+
+/*##############################################################################
+// BASE */
+
+/* set visibility of "Advanced (Show)" button */
+.collapse {
+    visibility: visible !important;
+    display: block;
+}
+
+/*##############################################################################
+// CONTEXT WIDGET */
+/* used in aldryn_bootstrap3/widgets/context.html */
+.aldryn-bootstrap3-context {
+    margin-left: 3px;
+}
+.aldryn-bootstrap3-context label {
+    position: relative !important;
+    z-index: 1 !important;
+}
+.aldryn-bootstrap3-context label.active {
+    z-index: 10 !important;
+    outline: 3px solid #000;
+    border-radius: 0;
+}
+.aldryn-bootstrap3-context label.btn-link {
+    border-color: #ccc;
+}
+
+/*##############################################################################
+// ICON WIDGET */
+/* used in aldryn_bootstrap3/widgets/icon.html */
+.aldryn-bootstrap3-icon select.form-control {
+    width: auto !important;
+}
+.aldryn-bootstrap3-icon .icon-widgets label {
+    display: inline !important;
+}
+.aldryn-bootstrap3-icon select {
+    margin: 0;
+}
+.aldryn-bootstrap3-icon button.iconpicker {
+    padding-right: 10px !important;
+    padding-left: 10px !important;
+}
+
+.iconpicker-popover .search-control {
+    width: 100% !important;
+}
+.iconpicker-popover table tfoot tr td {
+   padding-top: 10px;
+   border-top: 0;
+   background: none;
+}
+.iconpicker-popover .page-count {
+    display: inline-block;
+    padding-top: 8px;
+}
+/* the first entry uses ".glyphicon-" to deselect any icons */
+.iconpicker-popover .glyphicon-,
+.iconpicker-popover .fa- {
+    width: 14px;
+}
+
+/*##############################################################################
+// BUTTON WIDGET */
+/* used in aldryn_bootstrap3/widgets/link_or_button.html */
+.aldryn-bootstrap3-button .preview-btn {
+    margin: 0;
+}
+.field-btn_block .checkbox-row {
+    padding-top: 0 !important;
+    border: none !important;
+}
+.field-txt_context .btn-muted {
+    color: #ccc !important;
+    border: 1px solid #ccc !important;
+}
+.field-btn_context .btn-link {
+    border-radius: 0 3px 3px 0;
+}
+
+/*##############################################################################
+// BUTTON WIDGET */
+/* used in aldryn_bootstrap3/widgets/size.html */
+.btn-group-sizes label {
+    line-height: 20px;
+}
+.btn-group-sizes .text-lg {
+    font-size: 18px;
+}
+.btn-group-sizes .text-md {
+    font-size: 14px;
+}
+.btn-group-sizes .text-sm {
+    font-size: 12px;
+}
+.btn-group-sizes .text-sm .glyphicon {
+    top: 2px;
+}
+.btn-group-sizes .text-xs {
+    font-size: 10px;
+}
+.btn-group-sizes .text-xs .glyphicon {
+    top: 3px;
+}
+
+/*##############################################################################
+// GRID PLUGIN */
+/* used in aldryn_bootstrap3/plugins/column/change_form.html */
+/* used in aldryn_bootstrap3/plugins/row/change_form.html */
+.aldryn-bootstrap3-grid input[type="number"] {
+    margin-right: 10px;
+}
+.aldryn-bootstrap3-grid .module {
+    margin-bottom: 20px;
+}
+.aldryn-bootstrap3-grid .form-row {
+    overflow: hidden;
+    padding: 14px 0 10px;
+}
+.aldryn-bootstrap3-grid fieldset:first-child .form-row {
+    border-bottom: 1px solid #ddd !important;
+}
+.aldryn-bootstrap3-grid .help {
+    display: none;
+}
+.aldryn-bootstrap3-grid .form-row-icon {
+    float: left;
+    font-size: 35px;
+    line-height: 40px;
+    margin-right: 10px;
+}
+
+.aldryn-bootstrap3-grid .field-create label {
+    float: left;
+    display: inline-block;
+    width: 150px !important;
+}
+.aldryn-bootstrap3-grid .field-create input {
+    width: 70px !important;
+}
+
+.aldryn-bootstrap3-grid .field-box label {
+    float: left;
+    display: inline-block;
+    text-transform: lowercase;
+    text-align: right;
+    width: 70px !important;
+}
+.aldryn-bootstrap3-grid .field-box input {
+    width: auto !important;
+}
+
+/*##############################################################################
+// IMAGE PLUGIN */
+/* used in aldryn_bootstrap3/plugins/image/change_form.html */
+#boostrap3imageplugin_form .checkbox-row {
+    clear: both;
+    overflow: hidden;
+}
+#boostrap3imageplugin_form .field-thumbnail input,
+#boostrap3imageplugin_form .field-thumbnail label,
+#boostrap3imageplugin_form .field-thumbnail p,
+#boostrap3imageplugin_form .field-thumbnail span {
+    float: left !important;
+    width: auto !important;
+    margin: 0 10px 0 0;
+    clear: none;
+}
+#boostrap3imageplugin_form .field-thumbnail input {
+    margin-top: 5px;
+}
+#boostrap3imageplugin_form .field-thumbnail span {
+    margin-top: 3px;
+}
+#boostrap3imageplugin_form .field-thumbnail .help {
+    display: none;
+}
+.aldryn-bootstrap3-image .image {
+    background: no-repeat center center;
+    background-size: 80px;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+}
+
+/*##############################################################################
+// LABEL PLUGIN */
+/* used in aldryn_bootstrap3/plugins/label/change_form.html */
+.aldryn-bootstrap3-label .label-preview {
+    font-size: 18px !important;
+    margin: 0;
+}
+
+/*##############################################################################
+// BLOCKQUOTE PLUGIN */
+/* used in aldryn_bootstrap3/plugins/blockquote/change_form.html */
+#boostrap3blockquoteplugin_form .checkbox-row {
+    padding-top: 0 !important;
+    border: none !important;
+}

@@ -1,63 +1,12 @@
-<div class="btn-group btn-group-context js-btn-group-context-{{ selects.name }}" data-toggle="buttons">
-    {% for item in selects %}
-    {{ item }}
-    {% endfor %}
+{% load static %}
+
+<div class="aldryn-bootstrap3 aldryn-bootstrap3-context" data-context="{{ selects.name }}">
+    <div class="btn-group js-btn-group-context-{{ selects.name }}" data-toggle="buttons">
+        {% for item in selects %}
+            {{ item }}
+        {% endfor %}
+    </div>
 </div>
-
-{# Styling definitions #}
-<style>
-    .btn-group-context label { padding: 0; border-width: 1px; width: 5.5em; }
-    .btn-group-context label.active { border-width: 2px; margin-top: -1px; }
-    .btn-group-context label.btn-link { border-color: #ccc; }
-</style>
-
-{# Javascript #}
-<script>
-    if (!$) {
-        $ = django.jQuery;
-    }
-
-    $( document ).ready(function() {
-        var fieldName = '{{ selects.name }}';
-        var contextInputs = $('.js-btn-group-context-' + fieldName + ' label input');
-        var selectedContextInput;
-
-        contextInputs.each(function( index, item ) {
-            var label = $(item).parent();
-            var input = $(item);
-
-            // Initial active state
-            if (input.prop('checked')) {
-                selectedContextInput = input;
-                label.addClass('active');
-            }
-
-            if (selectedContextInput == undefined) {
-                selectedContextInput = $('.js-btn-group-context-' + fieldName + ' label input[value="default"]');
-            }
-
-            // Set context
-            if (item.value && item.value !== 'muted') {
-                label.addClass('btn btn-' + item.value);
-            } else {
-                label.addClass('btn btn-default');
-            }
-
-
-             // Set active states
-            label.on('click', function(e) {
-                var input = $(this).find('input');
-
-                selectedContextInput.attr('checked', false);
-                input.attr('checked', true);
-
-                selectedContextInput = input;
-            });
-
-        });
-
-    })
-</script>
 
 {# Available Variables #}
 {# {{ item.choice_value }}: {{ item.choice_label }} #}

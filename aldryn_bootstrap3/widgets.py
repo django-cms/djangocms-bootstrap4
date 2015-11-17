@@ -7,24 +7,6 @@ from .conf import settings
 from . import constants
 
 
-class BootstrapMediaMixin(object):
-    class Media:
-        css = {
-            'all': (
-                '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css',
-                'https://static.aldryn.com/cdn/bootstrap-iconpicker.min.css',
-                '//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css',
-            )
-        }
-        js = (
-                'https://code.jquery.com/jquery-1.10.2.min.js',
-                '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js',
-                'https://static.aldryn.com/cdn/iconset/iconset-glyphicon.min.js',
-                'https://static.aldryn.com/cdn/iconset/iconset-fontawesome-4.2.0.min.js',
-                'https://static.aldryn.com/cdn/bootstrap-iconpicker.min.js',
-        )
-
-
 class ContextRenderer(django.forms.widgets.RadioFieldRenderer):
     def render(self):
         from django.template.loader import render_to_string
@@ -35,11 +17,11 @@ class ContextRenderer(django.forms.widgets.RadioFieldRenderer):
         return rendered
 
 
-class Context(BootstrapMediaMixin, django.forms.widgets.RadioSelect):
+class Context(django.forms.widgets.RadioSelect):
     renderer = ContextRenderer
 
 
-class SizeRenderer(BootstrapMediaMixin, django.forms.widgets.RadioFieldRenderer):
+class SizeRenderer(django.forms.widgets.RadioFieldRenderer):
     def render(self):
         from django.template.loader import render_to_string
         rendered = render_to_string(
@@ -49,11 +31,11 @@ class SizeRenderer(BootstrapMediaMixin, django.forms.widgets.RadioFieldRenderer)
         return rendered
 
 
-class Size(BootstrapMediaMixin, django.forms.widgets.RadioSelect):
+class Size(django.forms.widgets.RadioSelect):
     renderer = SizeRenderer
 
 
-class Icon(BootstrapMediaMixin, django.forms.widgets.TextInput):
+class Icon(django.forms.widgets.TextInput):
     def render(self, name, value, attrs=None, **kwargs):
         input_html = super(Icon, self).render(name, value, attrs=attrs, **kwargs)
         if value is None:
@@ -98,11 +80,11 @@ class LinkOrButtonRenderer(django.forms.widgets.RadioFieldRenderer):
         return rendered
 
 
-class LinkOrButton(BootstrapMediaMixin, django.forms.widgets.RadioSelect):
+class LinkOrButton(django.forms.widgets.RadioSelect):
     renderer = LinkOrButtonRenderer
 
 
-class Responsive(BootstrapMediaMixin, django.forms.widgets.Textarea):
+class Responsive(django.forms.widgets.Textarea):
     def render(self, name, value, attrs=None):
         from django.template.loader import render_to_string
         widget_html = super(Responsive, self).render(name=name, value=value, attrs=attrs)
@@ -141,7 +123,7 @@ class Responsive(BootstrapMediaMixin, django.forms.widgets.Textarea):
         return rendered
 
 
-class ResponsivePrint(BootstrapMediaMixin, django.forms.widgets.Textarea):
+class ResponsivePrint(django.forms.widgets.Textarea):
     def render(self, name, value, attrs=None):
         from django.template.loader import render_to_string
         widget_html = super(ResponsivePrint, self).render(

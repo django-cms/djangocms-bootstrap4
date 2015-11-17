@@ -23,34 +23,46 @@ class RowPluginBaseForm(django.forms.models.ModelForm):
 
     class Meta:
         model = models.Bootstrap3RowPlugin
-        # fields = ('classes',)
         exclude = ('page', 'position', 'placeholder', 'language', 'plugin_type')
 
 
-extra_fields = {}
+class ColumnPluginBaseForm(django.forms.models.ModelForm):
+    create = django.forms.IntegerField(
+        label=_('Adapt Columns'),
+        help_text=_('Adapt this column'),
+        required=False,
+        min_value=0,
+    )
+
+    class Meta:
+        model = models.Bootstrap3ColumnPlugin
+        exclude = ('page', 'position', 'placeholder', 'language', 'plugin_type')
+
+
+extra_fields_row = {}
 for size, name in constants.DEVICE_CHOICES:
-    extra_fields["create_{}_col".format(size)] = django.forms.IntegerField(
+    extra_fields_row["create_{}_col".format(size)] = django.forms.IntegerField(
         label=_('col-{}-'.format(size)),
         help_text=('Width of created columns. You can still change the width of the column afterwards.'),
         required=False,
         min_value=1,
         max_value=constants.GRID_SIZE,
     )
-    extra_fields["create_{}_offset".format(size)] = django.forms.IntegerField(
+    extra_fields_row["create_{}_offset".format(size)] = django.forms.IntegerField(
         label=_('offset-'.format(size)),
         help_text=('Offset of created columns. You can still change the width of the column afterwards.'),
         required=False,
         min_value=1,
         max_value=constants.GRID_SIZE,
     )
-    extra_fields["create_{}_push".format(size)] = django.forms.IntegerField(
+    extra_fields_row["create_{}_push".format(size)] = django.forms.IntegerField(
         label=_('push-'.format(size)),
         help_text=('Push of created columns. You can still change the width of the column afterwards.'),
         required=False,
         min_value=1,
         max_value=constants.GRID_SIZE,
     )
-    extra_fields["create_{}_pull".format(size)] = django.forms.IntegerField(
+    extra_fields_row["create_{}_pull".format(size)] = django.forms.IntegerField(
         label=_('pull-'.format(size)),
         help_text=('Pull of created columns. You can still change the width of the column afterwards.'),
         required=False,
@@ -58,8 +70,39 @@ for size, name in constants.DEVICE_CHOICES:
         max_value=constants.GRID_SIZE,
     )
 
+extra_fields_column = {}
+for size, name in constants.DEVICE_CHOICES:
+    extra_fields_column["{}_col".format(size)] = django.forms.IntegerField(
+        label=_('col-{}-'.format(size)),
+        help_text=('Width of created columns. You can still change the width of the column afterwards.'),
+        required=False,
+        min_value=1,
+        max_value=constants.GRID_SIZE,
+    )
+    extra_fields_column["{}_offset".format(size)] = django.forms.IntegerField(
+        label=_('offset-'.format(size)),
+        help_text=('Offset of created columns. You can still change the width of the column afterwards.'),
+        required=False,
+        min_value=1,
+        max_value=constants.GRID_SIZE,
+    )
+    extra_fields_column["{}_push".format(size)] = django.forms.IntegerField(
+        label=_('push-'.format(size)),
+        help_text=('Push of created columns. You can still change the width of the column afterwards.'),
+        required=False,
+        min_value=1,
+        max_value=constants.GRID_SIZE,
+    )
+    extra_fields_column["{}_pull".format(size)] = django.forms.IntegerField(
+        label=_('pull-'.format(size)),
+        help_text=('Pull of created columns. You can still change the width of the column afterwards.'),
+        required=False,
+        min_value=1,
+        max_value=constants.GRID_SIZE,
+    )
 
-RowPluginForm = type(str('RowPluginBaseForm'), (RowPluginBaseForm,), extra_fields)
+RowPluginForm = type(str('RowPluginBaseForm'), (RowPluginBaseForm,), extra_fields_row)
+ColumnPluginForm = type(str('ColumnPluginBaseForm'), (ColumnPluginBaseForm,), extra_fields_column)
 
 
 class LinkForm(django.forms.models.ModelForm):
