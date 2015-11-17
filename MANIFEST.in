@@ -1,1 +1,2 @@
 recursive-include aldryn_bootstrap3/templates *
+recursive-include aldryn_bootstrap3/static *
