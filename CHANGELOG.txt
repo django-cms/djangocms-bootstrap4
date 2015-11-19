@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+1.0.3 (UNRELEASED)
+------------------
+
+* Fixed an issue with links not rendering target
+* Fixed an issue with links rendering empty class attribute
+* Enhance display of image name in structure board
+
 1.0.2 (2015-11-17)
 ------------------
 
