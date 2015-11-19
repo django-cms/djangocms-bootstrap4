@@ -1,14 +1,19 @@
 CHANGELOG
 =========
 
-1.0.2 (UNRELEASED)
+1.0.3 (UNRELEASED)
 ------------------
 
 * Fixed an issue with links not rendering target
 * Fixed an issue with links rendering empty class attribute
 * Enhance display of image name in structure board
 
-1.0.1 (2015-11-12)
+1.0.2 (2015-11-17)
+------------------
+
+* Adds static folder to include in MANIFEST.in
+
+1.0.1 (2015-11-17)
 ------------------
 
 * Fixes preview display for all plugins and widgets
