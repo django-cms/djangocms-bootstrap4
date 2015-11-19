@@ -293,8 +293,6 @@ class Boostrap3ImagePlugin(CMSPlugin):
             txt = self.alt
         elif self.file.label:
             txt = self.file.label
-        if self.file:
-            txt += ' ({})'.format(self.file.url)
         return txt
 
     def srcset(self):
