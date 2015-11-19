@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-1.0.3 (UNRELEASED)
+1.0.3 (2015-11-19)
 ------------------
 
 * Fixed an issue with links not rendering target
