@@ -222,8 +222,6 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
     fieldsets = (
         (None, {'fields': (
                 'file',
-                'override_width',
-                'override_height',
                 'aspect_ratio',
                 'shape',
                 'thumbnail',
@@ -234,6 +232,8 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
             'classes': ('collapse',),
             'fields': (
                 'title',
+                'override_width',
+                'override_height',
                 'classes',
                 'img_responsive',
             ),
