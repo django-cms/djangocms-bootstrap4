@@ -5,6 +5,7 @@ CHANGELOG
 ------------------
 
 * Move extra width and height for image to advanced section
+* Change how image label is retrieved (fixes nonexistent image issue)
 
 1.0.3 (2015-11-19)
 ------------------
