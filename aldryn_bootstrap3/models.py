@@ -286,7 +286,10 @@ class Boostrap3ImagePlugin(CMSPlugin):
     )
 
     def __str__(self):
-        return self.file.label
+        txt = 'Image'
+        if self.file and self.file.label:
+            txt = self.file.label
+        return txt
 
     def srcset(self):
         if not self.file:
