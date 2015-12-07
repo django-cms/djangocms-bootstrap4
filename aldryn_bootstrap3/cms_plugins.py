@@ -524,7 +524,7 @@ class Bootstrap3RowCMSPlugin(CMSPluginBase):
     def save_model(self, request, obj, form, change):
         response = super(Bootstrap3RowCMSPlugin, self).save_model(request, obj, form, change)
         data = form.cleaned_data
-        for x in xrange(int(data['create']) if data['create'] is not None else 0):
+        for x in range(int(data['create']) if data['create'] is not None else 0):
             extra = {}
             for size in constants.DEVICE_SIZES:
                 for element in ['col', 'offset', 'push', 'pull']:
