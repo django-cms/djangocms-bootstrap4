@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+Unreleased
+----------
+
+* Allow children in link plugin
+
 1.0.4 (2015-11-24)
 ------------------
 
