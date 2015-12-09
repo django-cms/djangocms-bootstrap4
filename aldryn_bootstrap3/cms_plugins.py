@@ -174,6 +174,7 @@ class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
     change_form_template = 'admin/aldryn_bootstrap3/plugins/button/change_form.html'
     render_template = 'aldryn_bootstrap3/plugins/button.html'
     text_enabled = True
+    allow_children = True
 
     fieldsets = (
         (None, {

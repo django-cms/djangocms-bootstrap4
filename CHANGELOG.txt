@@ -1,7 +1,12 @@
 CHANGELOG
 =========
 
-1.0.4 (2015-11-26)
+Unreleased
+----------
+
+* Allow children in link plugin
+
+1.0.5 (2015-11-26)
 ------------------
 
 * Upload correct version
