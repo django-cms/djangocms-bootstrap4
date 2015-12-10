@@ -254,8 +254,10 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
         })
 
     def icon_src(self, instance):
-        thumbnail = self.get_thumbnail(instance)
-        return thumbnail.url
+        if instance.file_id:
+            thumbnail = self.get_thumbnail(instance)
+            return thumbnail.url
+        return ''
 
 
 plugin_pool.register_plugin(Bootstrap3ImageCMSPlugin)
