@@ -50,7 +50,7 @@ class LinkMixin(models.Model):
         help_text=_("Adds this value as an anchor (#my-anchor) to the link."),
     )
     link_mailto = models.EmailField(
-        _("mailto"), blank=True, null=True,
+        _("mailto"), blank=True, null=True, max_length=254
     )
     link_phone = models.CharField(
         _('Phone'), blank=True, null=True, max_length=40,
