@@ -50,7 +50,7 @@ class LinkMixin(models.Model):
         help_text=_("Adds this value as an anchor (#my-anchor) to the link."),
     )
     link_mailto = models.EmailField(
-        _("mailto"), blank=True, null=True,
+        _("mailto"), blank=True, null=True, max_length=254
     )
     link_phone = models.CharField(
         _('Phone'), blank=True, null=True, max_length=40,
@@ -219,8 +219,8 @@ class Boostrap3ImagePlugin(CMSPlugin):
 
     file = filer.fields.image.FilerImageField(
         verbose_name=_("file"),
+        blank=False,
         null=True,
-        blank=True,
         on_delete=models.SET_NULL,
         related_name='+',
     )
@@ -745,7 +745,7 @@ class Bootstrap3CarouselPlugin(CMSPlugin):
 class Bootstrap3CarouselSlidePlugin(CMSPlugin, LinkMixin):
     image = filer.fields.image.FilerImageField(
         verbose_name=_('image'),
-        blank=True,
+        blank=False,
         null=True,
         related_name='+',
         on_delete=models.SET_NULL,

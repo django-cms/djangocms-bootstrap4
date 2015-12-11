@@ -1,10 +1,13 @@
 CHANGELOG
 =========
 
-Unreleased
-----------
+1.0.6 (2015-12-11)
+------------------
 
 * Allow children in link plugin
+* Make image in carousel slide plugin mandatory
+* Make image in image plugin mandatory
+* Replace `xrange` with `range`
 
 1.0.5 (2015-11-26)
 ------------------
