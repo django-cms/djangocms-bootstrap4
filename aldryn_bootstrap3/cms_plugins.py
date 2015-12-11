@@ -215,7 +215,7 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
     model = models.Boostrap3ImagePlugin
     name = _("Image")
     module = _('Bootstrap3')
-    change_form_template = 'admin/aldryn_bootstrap3/plugins/image/change_form.html'
+    change_form_template = 'admin/aldryn_bootstrap3/base.html'
     render_template = 'aldryn_bootstrap3/plugins/image.html'
     text_enabled = True
     cache = False

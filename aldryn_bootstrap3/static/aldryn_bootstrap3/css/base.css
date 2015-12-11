@@ -157,39 +157,6 @@
 }
 
 /*##############################################################################
-// IMAGE PLUGIN */
-/* used in aldryn_bootstrap3/plugins/image/change_form.html */
-#boostrap3imageplugin_form .checkbox-row {
-    clear: both;
-    overflow: hidden;
-}
-#boostrap3imageplugin_form .field-thumbnail input,
-#boostrap3imageplugin_form .field-thumbnail label,
-#boostrap3imageplugin_form .field-thumbnail p,
-#boostrap3imageplugin_form .field-thumbnail span {
-    float: left !important;
-    width: auto !important;
-    margin: 0 10px 0 0;
-    clear: none;
-}
-#boostrap3imageplugin_form .field-thumbnail input {
-    margin-top: 5px;
-}
-#boostrap3imageplugin_form .field-thumbnail span {
-    margin-top: 3px;
-}
-#boostrap3imageplugin_form .field-thumbnail .help {
-    display: none;
-}
-.aldryn-bootstrap3-image .image {
-    background: no-repeat center center;
-    background-size: 80px;
-    width: 80px;
-    height: 80px;
-    margin: 0 auto;
-}
-
-/*##############################################################################
 // LABEL PLUGIN */
 /* used in aldryn_bootstrap3/plugins/label/change_form.html */
 .aldryn-bootstrap3-label .label-preview {
