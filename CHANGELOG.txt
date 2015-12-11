@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-1.0.6 (2015-12-11)
+1.0.6 (2015-11-14)
 ------------------
 
 * Allow children in link plugin
