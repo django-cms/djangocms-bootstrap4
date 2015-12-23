@@ -505,8 +505,5 @@
         if ($('.aldryn-bootstrap3-label').length) {
             bootstrap3.labelPlugin();
         }
-        if ($('#boostrap3imageplugin_form').length) {
-            bootstrap3.imagePlugin();
-        }
     });
 })(window.jQuery || django.jQuery);
