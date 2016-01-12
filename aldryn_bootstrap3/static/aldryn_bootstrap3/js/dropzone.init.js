@@ -92,10 +92,12 @@
                         console.log(response.label);
                         if (file && file.status === 'success' && response) {
                             console.log(originalImage);
-                            originalImage.attr('src', dropzoneUrl + response.label)
+                            if (response.thumbnail_180) {
+                                originalImage.attr('src', response.thumbnail_180)
+                            }
                         }
                     },
-                    queuecomplete: function (file, response) {
+                    queuecomplete: function () {
                         infoMessage.addClass(hiddenClass);
                     },
                     error: function (file) {
