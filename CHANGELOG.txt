@@ -5,6 +5,7 @@ CHANGELOG
 ------------------
 
 * Remove imagePlugin reference
+* Add drag and drop for image plugin on content mode
 
 1.0.6 (2015-12-14)
 ------------------
