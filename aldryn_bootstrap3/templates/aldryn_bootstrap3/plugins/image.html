@@ -1,4 +1,4 @@
-{% load cms_tags thumbnail %}
+{% load cms_tags thumbnail staticfiles %}
 {% comment %}
 DOCS: https://html.spec.whatwg.org/multipage/embedded-content.html#introduction-3:viewport-based-selection-2
 the browser assumes size="100vw" by default, which means
@@ -9,25 +9,51 @@ TODO: currently we're always upscaling the image physically.
       would it be better to upscale it with css? img-response
       does not seem to do that yet.
 {% endcomment %}
-<img
-    {% with main_src=instance.srcset.lg %}
-        {% thumbnail instance.file main_src.size crop=main_src.crop upscale=main_src.upscale subject_location=main_src.subject_location as main_thumb %}
-        src="{{ main_thumb.url }}"
-    {% endwith %}
-    alt="{{ instance.alt }}"
-    {% if instance.title %}title="{{ instance.title }}"{% endif %}
-    {% if instance.img_responsive or instance.shape or instance.thumbnail or instance.classes %}
-        class="{% if instance.img_responsive %}img-responsive{% endif %}{% if instance.shape %} img-{{ instance.shape }}{% endif %}{% if instance.thumbnail %} img-thumbnail{% endif %}{% if instance.classes %} {{ instance.classes }}{% endif %}"
-    {% endif %}
-    {% comment %}
-    {# INFO: needs proper attributes for validation #}
-    srcset="{% for device, src in instance.srcset.items %}
-        {% if not forloop.first %}
-            {% thumbnail instance.file src.size crop=src.crop upscale=src.upscale subject_location=src.subject_location as thumb %}{{ thumb.url }} {{ src.width_str }}{% if not forloop.last %},{% endif %}
+<link rel="stylesheet" href="{% static 'aldryn_bootstrap3/css/base.css' %}">
+<script src="{% static 'aldryn_bootstrap3/js/jquery.min.js' %}"></script>
+<script src="{% static 'aldryn_bootstrap3/js/dropzone.min.js' %}"></script>
+<script src="{% static 'aldryn_bootstrap3/js/dropzone.init.js' %}"></script>
+
+<div class="js-dropzone" data-url="{% url 'admin:filer-ajax_upload' %}">
+    <img class="js-original-image"
+        {% with main_src=instance.srcset.lg %}
+            {% thumbnail instance.file main_src.size crop=main_src.crop upscale=main_src.upscale subject_location=main_src.subject_location as main_thumb %}
+            src="{{ main_thumb.url }}"
+        {% endwith %}
+        alt="{{ instance.alt }}"
+        {% if instance.title %}title="{{ instance.title }}"{% endif %}
+        {% if instance.img_responsive or instance.shape or instance.thumbnail or instance.classes %}
+            class="{% if instance.img_responsive %}img-responsive{% endif %}{% if instance.shape %} img-{{ instance.shape }}{% endif %}{% if instance.thumbnail %} img-thumbnail{% endif %}{% if instance.classes %} {{ instance.classes }}{% endif %}"
         {% endif %}
-    {% endfor %}"
-    {% endcomment %}
->
+        {% comment %}
+        {# INFO: needs proper attributes for validation #}
+        srcset="{% for device, src in instance.srcset.items %}
+            {% if not forloop.first %}
+                {% thumbnail instance.file src.size crop=src.crop upscale=src.upscale subject_location=src.subject_location as thumb %}{{ thumb.url }} {{ src.width_str }}{% if not forloop.last %},{% endif %}
+            {% endif %}
+        {% endfor %}"
+        {% endcomment %}
+    >
+</div>
+
+ <div class="dropzone-info-message js-dropzone js-dropzone-info-message hidden" data-url="{% url 'admin:filer-ajax_upload' %}">
+        <div class="icon"><span class="fa fa-cloud-upload"></span></div>
+
+        <div class="dropzone-upload-welcome js-dropzone-upload-welcome">
+            <div class="text">Drop your file to change image:</div>
+        </div>
+
+        <div class="dropzone-upload-info js-dropzone-upload-info hidden">
+            <div class="js-dropzone-upload-number"></div>
+            <div class="js-dropzone-file-name dropzone-file-name"></div>
+            <div class="dropzone-progress js-dropzone-progress"></div>
+        </div>
+
+        <div class="js-dropzone-upload-success hidden">
+            Upload success!
+        </div>
+    </div>
+
 {% if 0 %}
 <pre>
 {% with main_src=instance.srcset.lg %}
