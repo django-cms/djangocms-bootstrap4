@@ -77,21 +77,12 @@
                         uploadProgress.width(progress + '%');
                         uploadNumber.text(maxSubmitNum - submitNum + 1 + '/' + maxSubmitNum);
                     },
-                    //complete: function () {
-                    //    submitNum--;
-                    //    uploadInfo.addClass(hiddenClass);
-                    //    uploadSuccess.removeClass(hiddenClass);
-                    //    console.log('complete');
-                    //},
                     success: function (file, response) {
-                        console.log('success');
                         maxSubmitNum = 1;
 
                         uploadInfo.addClass(hiddenClass);
                         uploadSuccess.removeClass(hiddenClass);
-                        console.log(response.label);
                         if (file && file.status === 'success' && response) {
-                            console.log(originalImage);
                             if (response.thumbnail_180) {
                                 originalImage.attr('src', response.thumbnail_180)
                             }
