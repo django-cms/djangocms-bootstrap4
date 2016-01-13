@@ -5,7 +5,8 @@ CHANGELOG
 ------------------
 
 * Remove imagePlugin reference
-* Add drag and drop for image plugin on content mode
+* Add drag and drop support for image plugin in content mode
+  (if supported by Django Filer).
 
 1.0.6 (2015-12-14)
 ------------------

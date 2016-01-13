@@ -4,6 +4,7 @@ from __future__ import unicode_literals, absolute_import
 import json
 
 from django.conf.urls import patterns, url
+from django.core.exceptions import ImproperlyConfigured
 from django.templatetags.static import static
 from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.csrf import csrf_exempt
@@ -12,7 +13,11 @@ from cms.models import CMSPlugin
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 
-from filer.admin.clipboardadmin import ajax_upload
+try:
+    from filer.admin.clipboardadmin import ajax_upload as filer_ajax_upload
+except ImportError:
+    filer_ajax_upload = None
+
 
 from . import models, forms, constants
 
@@ -224,6 +229,13 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
         }),
     )
 
+    def render(self, context, instance, placeholder):
+        context.update({'instance': instance})
+        if callable(filer_ajax_upload):
+            # Use this in template to conditionally enable drag-n-drop.
+            context.update({'has_dnd_support': True})
+        return context
+
     def get_thumbnail(self, instance):
         return instance.file.file.get_thumbnail({
             'size': (40, 40),
@@ -248,7 +260,18 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
 
     @csrf_exempt
     def ajax_upload(self, request, pk):
-        filer_response = ajax_upload(request, folder_id=None)
+        """
+        Handle drag-n-drop uploads.
+
+        Call original 'ajax_upload' Filer view, parse response and update
+        plugin instance file_id from it. Send original response back.
+        """
+        if not callable(filer_ajax_upload):
+            # Do not try to handle request if we were unable to
+            # import Filer view. This should work with django-filer>=1.0.8.
+            raise ImproperlyConfigured(
+                "Please, use django-filer>=1.0.8 to get drag-n-drop support")
+        filer_response = filer_ajax_upload(request, folder_id=None)
         file_id = json.loads(filer_response.content)['file_id']
         instance = self.model.objects.get(pk=pk)
         instance.file_id = file_id
