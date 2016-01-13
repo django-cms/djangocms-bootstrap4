@@ -14,8 +14,8 @@ TODO: currently we're always upscaling the image physically.
 <script src="{% static 'aldryn_bootstrap3/js/dropzone.min.js' %}"></script>
 <script src="{% static 'aldryn_bootstrap3/js/dropzone.init.js' %}"></script>
 
-<div class="js-dropzone" data-url="{% url 'admin:bootstrap3_image_ajax_upload' pk=instance.pk %}">
-    <img class="js-original-image"
+<div class="js-dropzone js-original-image" data-url="{% url 'admin:bootstrap3_image_ajax_upload' pk=instance.pk %}">
+    <img
         {% with main_src=instance.srcset.lg %}
             {% thumbnail instance.file main_src.size crop=main_src.crop upscale=main_src.upscale subject_location=main_src.subject_location as main_thumb %}
             src="{{ main_thumb.url }}"
@@ -44,7 +44,6 @@ TODO: currently we're always upscaling the image physically.
         </div>
 
         <div class="dropzone-upload-info js-dropzone-upload-info hidden">
-            <div class="js-dropzone-upload-number"></div>
             <div class="js-dropzone-file-name dropzone-file-name"></div>
             <div class="dropzone-progress js-dropzone-progress"></div>
         </div>
