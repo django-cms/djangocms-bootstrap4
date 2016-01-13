@@ -4,6 +4,7 @@ from aldryn_bootstrap3 import __version__
 
 REQUIREMENTS = [
     'django-appconf>=1.0.0',
+    'django-cms>=3.0.10',
     'django-durationfield>=0.5.1',
     'django-filer>=0.9.11',
 ]
