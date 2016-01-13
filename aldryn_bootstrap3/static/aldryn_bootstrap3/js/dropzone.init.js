@@ -14,6 +14,7 @@
         var uploadFileName = $('.js-dropzone-file-name');
         var uploadProgress = $('.js-dropzone-progress');
         var uploadSuccess = $('.js-dropzone-upload-success');
+        var uploadAccept = $('.js-dropzone-upload-accept');
         var dragHoverClass = 'dz-drag-hover';
         var originalImage = $('.js-original-image').find('img');
         var hiddenClass = 'hidden';
@@ -33,6 +34,7 @@
                     previewTemplate: '<div></div>',
                     clickable: false,
                     addRemoveLinks: false,
+                    acceptedFiles: 'image/*',
                     maxfilesexceeded: function (file) {
                         this.removeAllFiles();
                         this.addFile(file);
@@ -80,9 +82,15 @@
                         uploadSuccess.addClass(hiddenClass);
                         uploadWelcome.removeClass(hiddenClass);
                     },
-                    error: function (file) {
+                    accept: function (file, done) {
                         hasErrors = true;
-                        window.showError(file.name + ': ' + file.xhr.statusText);
+                        if (file.type != 'image/*') {
+                            console.log(file.type);
+                            infoMessage.removeClass(hiddenClass);
+                            uploadAccept.removeClass(hiddenClass);
+                            uploadWelcome.addClass(hiddenClass);
+                        }
+                        else { done(); }
                     }
                 });
             });
