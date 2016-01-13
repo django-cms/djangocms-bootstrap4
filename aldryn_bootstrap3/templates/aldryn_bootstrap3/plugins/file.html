@@ -10,7 +10,7 @@
     {% if instance.name %}
         {{ instance.name }}
     {% else %}
-        {{ instance.file.get_file_name }}
+        {{ instance.file }}
     {% endif %}
     {% if instance.show_file_size %}
         <span class="label label-default">{{ instance.file.size|filesizeformat }}</span>
