@@ -83,8 +83,8 @@
                         uploadInfo.addClass(hiddenClass);
                         uploadSuccess.removeClass(hiddenClass);
                         if (file && file.status === 'success' && response) {
-                            if (response.thumbnail_180) {
-                                originalImage.attr('src', response.thumbnail_180)
+                            if (response.original_image) {
+                                originalImage.attr('src', response.original_image)
                             }
                         }
                     },
