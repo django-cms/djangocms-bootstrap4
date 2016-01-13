@@ -1,14 +1,20 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals, absolute_import
-from django.utils.translation import ugettext_lazy as _
-from django.templatetags.static import static
 
+import json
+
+from django.conf.urls import patterns, url
+from django.templatetags.static import static
+from django.utils.translation import ugettext_lazy as _
+from django.views.decorators.csrf import csrf_exempt
+
+from cms.models import CMSPlugin
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 
-from . import models, forms, constants
-from cms.models import CMSPlugin
+from filer.admin.clipboardadmin import ajax_upload
 
+from . import models, forms, constants
 
 link_fieldset = (
     ('Link', {
@@ -232,6 +238,22 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
             return thumbnail.url
         return ''
 
+    def get_plugin_urls(self):
+        urlpatterns = patterns(
+            '',
+            url(r'^ajax_upload/(?P<pk>[0-9]+)/$', self.ajax_upload,
+                name='bootstrap3_image_ajax_upload'),
+        )
+        return urlpatterns
+
+    @csrf_exempt
+    def ajax_upload(self, request, pk):
+        filer_response = ajax_upload(request, folder_id=None)
+        file_id = json.loads(filer_response.content)['file_id']
+        instance = self.model.objects.get(pk=pk)
+        instance.file_id = file_id
+        instance.save()
+        return filer_response
 
 plugin_pool.register_plugin(Bootstrap3ImageCMSPlugin)
 
