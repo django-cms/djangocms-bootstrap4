@@ -5,16 +5,16 @@
 /* globals Dropzone */
 (function ($) {
     $(function () {
-        var dropzoneSelector = '.js-dropzone';
+        var dropzoneSelector = '.js-filer-dropzone';
         var dropzones;
-        var infoMessageClass = 'js-dropzone-info-message';
+        var infoMessageClass = 'js-filer-dropzone-info-message';
         var infoMessage = $('.' + infoMessageClass);
-        var uploadInfo = $('.js-dropzone-upload-info');
-        var uploadWelcome = $('.js-dropzone-upload-welcome');
-        var uploadFileName = $('.js-dropzone-file-name');
-        var uploadProgress = $('.js-dropzone-progress');
-        var uploadSuccess = $('.js-dropzone-upload-success');
-        var uploadAccept = $('.js-dropzone-upload-accept');
+        var uploadInfo = $('.js-filer-dropzone-upload-info');
+        var uploadWelcome = $('.js-filer-dropzone-upload-welcome');
+        var uploadFileName = $('.js-filer-dropzone-file-name');
+        var uploadProgress = $('.js-filer-dropzone-progress');
+        var uploadSuccess = $('.js-filer-dropzone-upload-success');
+        var uploadAccept = $('.js-filer-dropzone-upload-accept');
         var dragHoverClass = 'dz-drag-hover';
         var originalImage = $('.js-original-image').find('img');
         var hiddenClass = 'hidden';

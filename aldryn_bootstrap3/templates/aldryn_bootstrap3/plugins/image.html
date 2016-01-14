@@ -14,7 +14,7 @@ TODO: currently we're always upscaling the image physically.
 <script src="{% static 'aldryn_bootstrap3/js/dropzone.min.js' %}"></script>
 <script src="{% static 'aldryn_bootstrap3/js/dropzone.init.js' %}"></script>
 
-<div class="js-dropzone js-original-image" data-url="{% url 'admin:bootstrap3_image_ajax_upload' pk=instance.pk %}">
+<div class="js-filer-dropzone filer-dropzone js-original-image" data-url="{% url 'admin:bootstrap3_image_ajax_upload' pk=instance.pk %}">
     <img
         {% with main_src=instance.srcset.lg %}
             {% thumbnail instance.file main_src.size crop=main_src.crop upscale=main_src.upscale subject_location=main_src.subject_location as main_thumb %}
@@ -36,22 +36,22 @@ TODO: currently we're always upscaling the image physically.
     >
 </div>
 
- <div class="dropzone-info-message js-dropzone js-dropzone-info-message hidden" data-url="{% url 'admin:bootstrap3_image_ajax_upload' pk=instance.pk %}">
+ <div class="filer-dropzone-info-message filer-dropzone js-filer-dropzone js-filer-dropzone-info-message hidden" data-url="{% url 'admin:bootstrap3_image_ajax_upload' pk=instance.pk %}">
         <div class="icon"><span class="fa fa-cloud-upload"></span></div>
 
-        <div class="dropzone-upload-welcome js-dropzone-upload-welcome">
+        <div class="filer-dropzone-upload-welcome js-filer-dropzone-upload-welcome">
             <div class="text">Drop your file to change image:</div>
         </div>
 
-        <div class="dropzone-upload-info js-dropzone-upload-info hidden">
-            <div class="js-dropzone-file-name dropzone-file-name"></div>
-            <div class="dropzone-progress js-dropzone-progress"></div>
+        <div class="filer-dropzone-upload-info js-filer-dropzone-upload-info hidden">
+            <div class="js-filer-dropzone-file-name filer-dropzone-file-name"></div>
+            <div class="filer-dropzone-progress js-filer-dropzone-progress"></div>
         </div>
 
-        <div class="js-dropzone-upload-success hidden">
+        <div class="js-filer-dropzone-upload-success hidden">
             Upload success!
         </div>
-        <div class="js-dropzone-upload-accept hidden">
+        <div class="js-filer-dropzone-upload-accept hidden">
             Error! Files of this type are not accepted
         </div>
     </div>

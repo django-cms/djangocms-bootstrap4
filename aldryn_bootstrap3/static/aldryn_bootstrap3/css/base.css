@@ -177,7 +177,7 @@
 .dz-drag-hover img {
   opacity: 0.5;
 }
-.dropzone-info-message {
+.filer-dropzone-info-message {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -194,22 +194,22 @@
     background: #fff;
     box-shadow: 0 0 5px 0 rgba(0 0 0, 0.2);;
 }
-.dropzone-info-message .icon {
+.filer-dropzone-info-message .icon {
     font-size: 30px;
 }
-.dropzone-info-message .text {
+.filer-dropzone-info-message .text {
     margin: 15px 0 10px 0;
 }
-.dropzone-upload-info {
+.filer-dropzone-upload-info {
     margin-top: 10px;
 
 }
-.dropzone-upload-info  .dropzone-file-name {
+.filer-dropzone-upload-info  .filer-dropzone-file-name {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-.dropzone-progress {
+.filer-dropzone-progress {
     height: 5px;
     margin-top: 5px;
     background-color: #0bf;
