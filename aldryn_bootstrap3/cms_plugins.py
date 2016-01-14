@@ -4,6 +4,10 @@ from __future__ import unicode_literals, absolute_import
 import json
 
 from django.conf.urls import patterns, url
+<<<<<<< HEAD
+=======
+from django.core.exceptions import ImproperlyConfigured
+>>>>>>> 104ea9bdbf97fd07b636ef75c0b3a6b9a275c499
 from django.templatetags.static import static
 from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.csrf import csrf_exempt
@@ -12,7 +16,16 @@ from cms.models import CMSPlugin
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 
+<<<<<<< HEAD
 from filer.admin.clipboardadmin import ajax_upload
+=======
+try:
+    from filer.admin.clipboardadmin import ajax_upload as filer_ajax_upload
+except ImportError:
+    filer_ajax_upload = None
+>>>>>>> 104ea9bdbf97fd07b636ef75c0b3a6b9a275c499
+
+from . import models, forms, constants
 
 from . import models, forms, constants
 
@@ -44,10 +57,6 @@ class Bootstrap3BlockquoteCMSPlugin(CMSPluginBase):
     render_template = 'aldryn_bootstrap3/plugins/blockquote.html'
     allow_children = True
 
-    def render(self, context, instance, placeholder):
-        context.update({'instance': instance})
-        return context
-
 
 plugin_pool.register_plugin(Bootstrap3BlockquoteCMSPlugin)
 
@@ -72,12 +81,9 @@ class Bootstrap3IconCMSPlugin(CMSPluginBase):
         }),
     )
 
-    def render(self, context, instance, placeholder):
-        context.update({'instance': instance})
-        return context
-
     def icon_src(self, instance):
         return static('aldryn_bootstrap3/img/type/icon.png')
+
 
 plugin_pool.register_plugin(Bootstrap3IconCMSPlugin)
 
@@ -102,10 +108,6 @@ class Bootstrap3LabelCMSPlugin(CMSPluginBase):
             ),
         }),
     )
-
-    def render(self, context, instance, placeholder):
-        context.update({'instance': instance})
-        return context
 
     def icon_src(self, instance):
         return static('aldryn_bootstrap3/img/type/label.png')
@@ -135,10 +137,6 @@ class Bootstrap3WellCMSPlugin(CMSPluginBase):
         }),
     )
 
-    def render(self, context, instance, placeholder):
-        context.update({'instance': instance})
-        return context
-
 
 plugin_pool.register_plugin(Bootstrap3WellCMSPlugin)
 
@@ -163,10 +161,6 @@ class Bootstrap3AlertCMSPlugin(CMSPluginBase):
             ),
         }),
     )
-
-    def render(self, context, instance, placeholder):
-        context.update({'instance': instance})
-        return context
 
 
 plugin_pool.register_plugin(Bootstrap3AlertCMSPlugin)
@@ -205,10 +199,6 @@ class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
             )
         }),
     )
-
-    def render(self, context, instance, placeholder):
-        context.update({'instance': instance})
-        return context
 
     def icon_src(self, instance):
         return static('aldryn_bootstrap3/img/type/button.png')
@@ -249,6 +239,9 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
 
     def render(self, context, instance, placeholder):
         context.update({'instance': instance})
+        if callable(filer_ajax_upload):
+            # Use this in template to conditionally enable drag-n-drop.
+            context.update({'has_dnd_support': True})
         return context
 
     def get_thumbnail(self, instance):
@@ -275,7 +268,22 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
 
     @csrf_exempt
     def ajax_upload(self, request, pk):
+<<<<<<< HEAD
         filer_response = ajax_upload(request, folder_id=None)
+=======
+        """
+        Handle drag-n-drop uploads.
+
+        Call original 'ajax_upload' Filer view, parse response and update
+        plugin instance file_id from it. Send original response back.
+        """
+        if not callable(filer_ajax_upload):
+            # Do not try to handle request if we were unable to
+            # import Filer view. This should work with django-filer>=1.0.8.
+            raise ImproperlyConfigured(
+                "Please, use django-filer>=1.0.8 to get drag-n-drop support")
+        filer_response = filer_ajax_upload(request, folder_id=None)
+>>>>>>> 104ea9bdbf97fd07b636ef75c0b3a6b9a275c499
         file_id = json.loads(filer_response.content)['file_id']
         instance = self.model.objects.get(pk=pk)
         instance.file_id = file_id
@@ -304,10 +312,6 @@ class Bootstrap3SpacerCMSPlugin(CMSPluginBase):
             ),
         }),
     )
-
-    def render(self, context, instance, placeholder):
-        context.update({'instance': instance})
-        return context
 
     def icon_src(self, instance):
         return static('aldryn_bootstrap3/img/type/spacer.png')
@@ -340,10 +344,6 @@ class Bootstrap3FileCMSPlugin(CMSPluginBase):
             ),
         }),
     )
-
-    def render(self, context, instance, placeholder):
-        context.update({'instance': instance})
-        return context
 
     def icon_src(self, instance):
         return static('aldryn_bootstrap3/img/type/file.png')
@@ -382,10 +382,6 @@ class Bootstrap3PanelCMSPlugin(CMSPluginBase):
             ),
         }),
     )
-
-    def render(self, context, instance, placeholder):
-        context.update({'instance': instance})
-        return context
 
     def save_model(self, request, obj, form, change):
         response = super(Bootstrap3PanelCMSPlugin, self).save_model(request, obj, form, change)
@@ -439,10 +435,6 @@ class Bootstrap3PanelHeadingCMSPlugin(CMSPluginBase):
         }),
     )
 
-    def render(self, context, instance, placeholder):
-        context.update({'instance': instance})
-        return context
-
 
 plugin_pool.register_plugin(Bootstrap3PanelHeadingCMSPlugin)
 
@@ -468,10 +460,6 @@ class Bootstrap3PanelBodyCMSPlugin(CMSPluginBase):
         }),
     )
 
-    def render(self, context, instance, placeholder):
-        context.update({'instance': instance})
-        return context
-
 
 plugin_pool.register_plugin(Bootstrap3PanelBodyCMSPlugin)
 
@@ -496,10 +484,6 @@ class Bootstrap3PanelFooterCMSPlugin(CMSPluginBase):
             ),
         }),
     )
-
-    def render(self, context, instance, placeholder):
-        context.update({'instance': instance})
-        return context
 
 
 plugin_pool.register_plugin(Bootstrap3PanelFooterCMSPlugin)
@@ -541,10 +525,6 @@ class Bootstrap3RowCMSPlugin(CMSPluginBase):
             )
         }),
     ]
-
-    def render(self, context, instance, placeholder):
-        context = super(Bootstrap3RowCMSPlugin, self).render(context, instance, placeholder)
-        return context
 
     def save_model(self, request, obj, form, change):
         response = super(Bootstrap3RowCMSPlugin, self).save_model(request, obj, form, change)
@@ -597,10 +577,6 @@ class Bootstrap3ColumnCMSPlugin(CMSPluginBase):
         }),
     ]
 
-    def render(self, context, instance, placeholder):
-        context = super(Bootstrap3ColumnCMSPlugin, self).render(context, instance, placeholder)
-        return context
-
 
 plugin_pool.register_plugin(Bootstrap3RowCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3ColumnCMSPlugin)
@@ -636,7 +612,6 @@ class Bootstrap3AccordionCMSPlugin(CMSPluginBase):
 
     def render(self, context, instance, placeholder):
         context = super(Bootstrap3AccordionCMSPlugin, self).render(context, instance, placeholder)
-        context['instance'] = instance
         context['accordion'] = instance
         context['accordion_id'] = "plugin-bootstrap3-accordion-%s" % instance.pk
         return context
@@ -669,7 +644,6 @@ class Bootstrap3AccordionItemCMSPlugin(CMSPluginBase):
 
     def render(self, context, instance, placeholder):
         context = super(Bootstrap3AccordionItemCMSPlugin, self).render(context, instance, placeholder)
-        context['instance'] = instance
         context['item'] = instance
         return context
 
@@ -707,11 +681,6 @@ class Bootstrap3ListGroupCMSPlugin(CMSPluginBase):
         }),
     )
 
-    def render(self, context, instance, placeholder):
-        context = super(Bootstrap3ListGroupCMSPlugin, self).render(context, instance, placeholder)
-        context['instance'] = instance
-        return context
-
 
 class Bootstrap3ListGroupItemCMSPlugin(CMSPluginBase):
     model = models.Bootstrap3ListGroupItemPlugin
@@ -744,7 +713,6 @@ class Bootstrap3ListGroupItemCMSPlugin(CMSPluginBase):
 
     def render(self, context, instance, placeholder):
         context = super(Bootstrap3ListGroupItemCMSPlugin, self).render(context, instance, placeholder)
-        context['instance'] = instance
         context['item'] = instance
         return context
 
