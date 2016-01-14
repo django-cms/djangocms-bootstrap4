@@ -174,7 +174,7 @@
 
 /*##############################################################################
 // IMAGE PLUGIN WITH DRAG AND DROP FEATURE */
-.dz-drag-hover img {
+.filer-dropzone.dz-drag-hover img {
   opacity: 0.5;
 }
 .filer-dropzone-info-message {
