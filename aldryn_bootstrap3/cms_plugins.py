@@ -4,10 +4,7 @@ from __future__ import unicode_literals, absolute_import
 import json
 
 from django.conf.urls import patterns, url
-<<<<<<< HEAD
-=======
 from django.core.exceptions import ImproperlyConfigured
->>>>>>> 104ea9bdbf97fd07b636ef75c0b3a6b9a275c499
 from django.templatetags.static import static
 from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.csrf import csrf_exempt
@@ -16,14 +13,11 @@ from cms.models import CMSPlugin
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 
-<<<<<<< HEAD
-from filer.admin.clipboardadmin import ajax_upload
-=======
+
 try:
     from filer.admin.clipboardadmin import ajax_upload as filer_ajax_upload
 except ImportError:
     filer_ajax_upload = None
->>>>>>> 104ea9bdbf97fd07b636ef75c0b3a6b9a275c499
 
 from . import models, forms, constants
 
@@ -268,9 +262,7 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
 
     @csrf_exempt
     def ajax_upload(self, request, pk):
-<<<<<<< HEAD
-        filer_response = ajax_upload(request, folder_id=None)
-=======
+
         """
         Handle drag-n-drop uploads.
 
@@ -283,7 +275,6 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
             raise ImproperlyConfigured(
                 "Please, use django-filer>=1.0.8 to get drag-n-drop support")
         filer_response = filer_ajax_upload(request, folder_id=None)
->>>>>>> 104ea9bdbf97fd07b636ef75c0b3a6b9a275c499
         file_id = json.loads(filer_response.content)['file_id']
         instance = self.model.objects.get(pk=pk)
         instance.file_id = file_id
