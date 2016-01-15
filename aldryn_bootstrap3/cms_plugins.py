@@ -234,7 +234,6 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
     )
 
     def render(self, context, instance, placeholder):
-        context.update({'instance': instance})
         if callable(filer_ajax_upload):
             # Use this in template to conditionally enable drag-n-drop.
             context.update({'has_dnd_support': True})
