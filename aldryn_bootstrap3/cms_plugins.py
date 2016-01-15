@@ -277,6 +277,10 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
             raise ImproperlyConfigured(
                 "Please, use django-filer>=1.0.8 to get drag-n-drop support")
         filer_response = filer_ajax_upload(request, folder_id=None)
+
+        if filer_response.status_code != 200:
+            return filer_response
+
         try:
             file_id = json.loads(filer_response.content)['file_id']
         except ValueError:
