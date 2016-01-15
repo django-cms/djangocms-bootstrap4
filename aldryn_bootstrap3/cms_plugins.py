@@ -264,6 +264,7 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
 
     @csrf_exempt
     def ajax_upload(self, request, pk):
+
         """
         Handle drag-n-drop uploads.
 
