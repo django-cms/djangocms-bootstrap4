@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='boostrap3imageplugin',
             name='use_original_image',
-            field=models.BooleanField(default=False, help_text='use original image in templates instead of generated thumbnails.', verbose_name='use original image'),
+            field=models.BooleanField(default=False, help_text='use the original full-resolution image (no resizing).', verbose_name='use original image'),
         ),
     ]
