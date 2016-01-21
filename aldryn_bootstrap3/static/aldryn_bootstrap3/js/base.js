@@ -362,7 +362,7 @@
                 var tpl = $('<span class="form-row-icon fa fa-fw"></span>');
 
                 // set tooltips and labels
-                fieldBoxes.each(function(index, item) {
+                fieldBoxes.each(function (index, item) {
                     var el = $(item);
                     var tooltip = el.find('.help');
                     var label = el.find('label');
@@ -381,7 +381,7 @@
                     }
                 });
 
-                formRows.each(function(index, item) {
+                formRows.each(function (index, item) {
                     var el = $(item);
                     // set fieldbox icons
                     if (el.hasClass('field-create_xs_col')) {
@@ -475,8 +475,26 @@
                         .replace(' ', '');
                     return cls;
                 }
-            }
+            },
 
+            imagePlugin: function imagePlugin() {
+                var useOriginalImageCheckbox = $('#id_use_original_image');
+                var fieldsToToggle = $([
+                    '.field-aspect_ratio',
+                    '.field-shape',
+                    '.field-thumbnail',
+                    '.field-override_width',
+                    '.field-override_height'
+                ].join(', '));
+
+                useOriginalImageCheckbox.on('change', function () {
+                    if (this.checked) {
+                        fieldsToToggle.hide();
+                    } else {
+                        fieldsToToggle.show();
+                    }
+                }).trigger('change');
+            }
         };
 
         // auto initialize widgets
@@ -504,6 +522,10 @@
         }
         if ($('.aldryn-bootstrap3-label').length) {
             bootstrap3.labelPlugin();
+        }
+
+        if ($('.model-boostrap3imageplugin').length) {
+            bootstrap3.imagePlugin();
         }
     });
 })(window.jQuery || django.jQuery);
