@@ -239,8 +239,7 @@ class Boostrap3ImagePlugin(CMSPlugin):
         blank=True,
         default=False,
         help_text=_(
-            "use original image in templates instead of generated "
-            "thumbnails."
+            "use the original full-resolution image (no resizing)."
         )
     )
     override_width = models.IntegerField(
