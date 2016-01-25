@@ -87,7 +87,6 @@
                         }
                     },
                     queuecomplete: function () {
-                        console.log('complete');
                         dropzone.find(infoMessage).addClass(hiddenClass);
                         dropzone.find(uploadSuccess).addClass(hiddenClass);
                         dropzone.find(uploadWelcome).removeClass(hiddenClass);
