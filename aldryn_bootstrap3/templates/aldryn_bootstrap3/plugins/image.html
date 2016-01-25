@@ -43,7 +43,7 @@ TODO: currently we're always upscaling the image physically.
             <div class="icon"><span class="fa fa-cloud-upload"></span></div>
 
             <div class="filer-dropzone-upload-welcome js-filer-dropzone-upload-welcome">
-                <div class="text">Drop your file to change image:</div>
+                <div class="text">{% trans 'Drop your file to change image:' %}</div>
             </div>
 
             <div class="filer-dropzone-upload-info js-filer-dropzone-upload-info hidden">
@@ -52,13 +52,13 @@ TODO: currently we're always upscaling the image physically.
             </div>
 
             <div class="js-filer-dropzone-upload-success hidden">
-                Upload success!
+                {% trans 'Upload success!' %}
             </div>
         </div>
         <div class="filer-dropzone-error-message js-filer-dropzone-error-message hidden">
             <div class="icon"><span class="fa fa-cloud-upload"></span></div>
             <div class="js-filer-dropzone-upload-accept">
-                Error! Files of this type are not accepted.
+                {% trans 'Error! Files of this type are not accepted.' %}
             </div>
         </div>
     </div>
