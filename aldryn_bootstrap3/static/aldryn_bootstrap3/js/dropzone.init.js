@@ -7,16 +7,15 @@
     $(function () {
         var dropzoneSelector = '.js-filer-dropzone';
         var dropzones;
-        var infoMessageClass = 'js-filer-dropzone-info-message';
-        var infoMessage = '.' + infoMessageClass;
+        var infoMessage = '.js-filer-dropzone-info-message';
+        var errorMessage = '.js-filer-dropzone-error-message';
         var uploadInfo = '.js-filer-dropzone-upload-info';
         var uploadWelcome = '.js-filer-dropzone-upload-welcome';
         var uploadFileName = '.js-filer-dropzone-file-name';
         var uploadProgress = '.js-filer-dropzone-progress';
         var uploadSuccess = '.js-filer-dropzone-upload-success';
-        var uploadAccept = '.js-filer-dropzone-upload-accept';
         var dragHoverClass = 'dz-drag-hover';
-        var originalImage = '.js-original-image img';
+        var originalImage = '.js-original-image';
         var hiddenClass = 'hidden';
         var hideMessageTimeout;
 
@@ -25,7 +24,7 @@
             Dropzone.autoDiscover = false;
             dropzones.each(function () {
                 var dropzone = $(this);
-                var dropzoneUrl = $(this).data('url');
+                var dropzoneUrl = $(this).data('filer-url');
                 new Dropzone(this, {
                     url: dropzoneUrl,
                     paramName: 'file',
@@ -33,16 +32,17 @@
                     previewTemplate: '<div></div>',
                     clickable: false,
                     addRemoveLinks: false,
-                    //acceptedFiles: 'image/*',
                     accept: function (file, done) {
-                        console.log(file.type);
                         if (!file.type.match('image.*')) {
-                            console.log('no image');
-                            console.log(dropzone.find(infoMessage).removeClass(hiddenClass));
-                            dropzone.find(infoMessage).removeClass(hiddenClass);
-                            dropzone.find(uploadAccept).removeClass(hiddenClass);
-                            dropzone.find(uploadWelcome).addClass(hiddenClass);
-                            done('Error');
+                            dropzone.find(errorMessage).removeClass(hiddenClass);
+                            clearTimeout(hideMessageTimeout);
+                            hideMessageTimeout = setTimeout(function () {
+                                dropzone.find(errorMessage).addClass(hiddenClass);
+                            }, 2000);
+                            done('Error')
+                        } else {
+                            dropzone.find(errorMessage).addClass(hiddenClass);
+                            done();
                         }
                     },
                     maxfilesexceeded: function (file) {
@@ -82,12 +82,12 @@
                         dropzone.find(uploadSuccess).removeClass(hiddenClass);
                         if (file && file.status === 'success' && response) {
                             if (response.original_image) {
-                                console.log(dropzone.find(originalImage));
-                                dropzone.find(originalImage).attr('src', response.original_image)
+                                dropzone.find(originalImage).find('>img').attr('src', response.original_image)
                             }
                         }
                     },
                     queuecomplete: function () {
+                        console.log('complete');
                         dropzone.find(infoMessage).addClass(hiddenClass);
                         dropzone.find(uploadSuccess).addClass(hiddenClass);
                         dropzone.find(uploadWelcome).removeClass(hiddenClass);

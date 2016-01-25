@@ -180,7 +180,8 @@
 .filer-dropzone.dz-drag-hover img {
   opacity: 0.5;
 }
-.filer-dropzone-info-message {
+.filer-dropzone-info-message,
+.filer-dropzone-error-message {
     position: absolute;
     top: 50%;
     left: 50%;
