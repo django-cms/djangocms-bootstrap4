@@ -215,6 +215,7 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
     fieldsets = (
         (None, {'fields': (
                 'file',
+                'use_original_image',
                 'aspect_ratio',
                 'shape',
                 'thumbnail',

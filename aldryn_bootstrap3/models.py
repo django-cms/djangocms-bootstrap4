@@ -234,6 +234,14 @@ class Boostrap3ImagePlugin(CMSPlugin):
         blank=True,
         default='',
     )
+    use_original_image = models.BooleanField(
+        _("use original image"),
+        blank=True,
+        default=False,
+        help_text=_(
+            "use the original full-resolution image (no resizing)."
+        )
+    )
     override_width = models.IntegerField(
         _("override width"),
         blank=True,
@@ -368,7 +376,13 @@ class Bootstrap3FilePlugin(CMSPlugin):
     classes = model_fields.Classes()
 
     def __str__(self):
-        return self.name if self.name else self.file.label
+        label = self.name
+        if not label:
+            if self.file_id:
+                label = self.file.label
+            else:
+                label = 'File'
+        return label
 
 
 #########
