@@ -2,9 +2,11 @@
 from __future__ import unicode_literals, absolute_import
 
 import json
+import warnings
 
 from django.conf.urls import patterns, url
 from django.core.exceptions import ImproperlyConfigured
+from django.http import HttpResponse
 from django.templatetags.static import static
 from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.csrf import csrf_exempt
@@ -13,13 +15,13 @@ from cms.models import CMSPlugin
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 
-
 try:
     from filer.admin.clipboardadmin import ajax_upload as filer_ajax_upload
 except ImportError:
     filer_ajax_upload = None
-
-from . import models, forms, constants
+    warnings.warn("Drag and drop functionality is not avalable. "
+                  "Please update django-filer to version >=1.0.8.",
+                  Warning)
 
 from . import models, forms, constants
 
@@ -275,7 +277,18 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
             raise ImproperlyConfigured(
                 "Please, use django-filer>=1.0.8 to get drag-n-drop support")
         filer_response = filer_ajax_upload(request, folder_id=None)
-        file_id = json.loads(filer_response.content)['file_id']
+
+        if filer_response.status_code != 200:
+            return filer_response
+
+        try:
+            file_id = json.loads(filer_response.content)['file_id']
+        except ValueError:
+            return HttpResponse(
+                json.dumps(
+                    {'error': 'received non-JSON response from Filer'}),
+                status=500,
+                content_type='application/json')
         instance = self.model.objects.get(pk=pk)
         instance.file_id = file_id
         instance.save()
