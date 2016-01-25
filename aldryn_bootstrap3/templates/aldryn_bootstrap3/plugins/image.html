@@ -10,14 +10,14 @@ TODO: currently we're always upscaling the image physically.
       does not seem to do that yet.
 {% endcomment %}
 {% addtoblock "css" %}
-    <link rel="stylesheet" href="{% static 'aldryn_bootstrap3/css/base.css' %}">
+<link rel="stylesheet" href="{% static 'aldryn_bootstrap3/css/base.css' %}">
 {% endaddtoblock %}
 {% addtoblock "js" %}
-    <script src="{% static 'aldryn_bootstrap3/js/jquery.min.js' %}"></script>
-    <script src="{% static 'aldryn_bootstrap3/js/dropzone.min.js' %}"></script>
-    <script src="{% static 'aldryn_bootstrap3/js/dropzone.init.js' %}"></script>
+<script src="{% static 'aldryn_bootstrap3/js/dropzone.min.js' %}"></script>
 {% endaddtoblock %}
-
+{% addtoblock "js" %}
+<script src="{% static 'aldryn_bootstrap3/js/dropzone.init.js' %}"></script>
+{% endaddtoblock %}
 {% if has_dnd_support %}
     <div class="js-filer-dropzone filer-dropzone" data-filer-url="{% url 'admin:bootstrap3_image_ajax_upload' pk=instance.pk %}">
 {% endif %}
