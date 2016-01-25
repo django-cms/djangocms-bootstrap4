@@ -8,6 +8,7 @@ CHANGELOG
 * Add drag and drop support for image plugin in content mode
   (if supported by Django Filer).
 * Fix name display for file plugin
+* Add original image checkbox
 
 1.0.6 (2015-12-14)
 ------------------
