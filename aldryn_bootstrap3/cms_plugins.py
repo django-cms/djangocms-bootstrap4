@@ -20,7 +20,7 @@ try:
 except ImportError:
     filer_ajax_upload = None
     warnings.warn("Drag and drop functionality is not avalable. "
-                  "Please update django-filer to version >=1.0.8.",
+                  "Please update to django-filer>=1.1.1",
                   Warning)
 
 from . import models, forms, constants
@@ -273,9 +273,9 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
         """
         if not callable(filer_ajax_upload):
             # Do not try to handle request if we were unable to
-            # import Filer view. This should work with django-filer>=1.0.8.
+            # import Filer view.
             raise ImproperlyConfigured(
-                "Please, use django-filer>=1.0.8 to get drag-n-drop support")
+                "Please, use django-filer>=1.1.1 to get drag-n-drop support")
         filer_response = filer_ajax_upload(request, folder_id=None)
 
         if filer_response.status_code != 200:
