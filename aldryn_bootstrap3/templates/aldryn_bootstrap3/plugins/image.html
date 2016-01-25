@@ -37,9 +37,7 @@ TODO: currently we're always upscaling the image physically.
         {% endcomment %}
     >
 {% if has_dnd_support %}
-</div>
-
- <div class="filer-dropzone-info-message filer-dropzone js-filer-dropzone js-filer-dropzone-info-message hidden" data-url="{% url 'admin:bootstrap3_image_ajax_upload' pk=instance.pk %}">
+    <div class="filer-dropzone-info-message filer-dropzone js-filer-dropzone js-filer-dropzone-info-message hidden" data-url="{% url 'admin:bootstrap3_image_ajax_upload' pk=instance.pk %}">
         <div class="icon"><span class="fa fa-cloud-upload"></span></div>
 
         <div class="filer-dropzone-upload-welcome js-filer-dropzone-upload-welcome">
@@ -55,9 +53,10 @@ TODO: currently we're always upscaling the image physically.
             Upload success!
         </div>
         <div class="js-filer-dropzone-upload-accept hidden">
-            Error! Files of this type are not accepted
+            Error! Files of this type are not accepted.
         </div>
-    </div>
+</div>
+</div>
 {% endif %}
 {% if 0 %}
 <pre>

@@ -174,11 +174,14 @@
 
 /*##############################################################################
 // IMAGE PLUGIN WITH DRAG AND DROP FEATURE */
+.filer-dropzone {
+    position: relative;
+}
 .filer-dropzone.dz-drag-hover img {
   opacity: 0.5;
 }
 .filer-dropzone-info-message {
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 50%;
     overflow: hidden;
@@ -192,7 +195,7 @@
     padding: 15px;
     border-radius: 3px;
     background: #fff;
-    box-shadow: 0 0 5px 0 rgba(0 0 0, 0.2);;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);;
 }
 .filer-dropzone-info-message .icon {
     font-size: 30px;
