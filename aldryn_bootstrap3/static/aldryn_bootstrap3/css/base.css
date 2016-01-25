@@ -178,7 +178,7 @@
     position: relative;
 }
 .filer-dropzone.dz-drag-hover img {
-  opacity: 0.5;
+    opacity: 0.5;
 }
 .filer-dropzone-info-message,
 .filer-dropzone-error-message {
