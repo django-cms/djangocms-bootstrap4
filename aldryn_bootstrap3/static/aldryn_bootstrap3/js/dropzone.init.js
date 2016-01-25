@@ -18,6 +18,7 @@
         var originalImage = '.js-original-image';
         var hiddenClass = 'hidden';
         var hideMessageTimeout;
+        var errorMessageTimeout = 2;
 
         dropzones = $(dropzoneSelector);
         if (dropzones.length && Dropzone) {
@@ -38,7 +39,7 @@
                             clearTimeout(hideMessageTimeout);
                             hideMessageTimeout = setTimeout(function () {
                                 dropzone.find(errorMessage).addClass(hiddenClass);
-                            }, 2000);
+                            }, errorMessageTimeout * 1000);
                             done('Error')
                         } else {
                             dropzone.find(errorMessage).addClass(hiddenClass);

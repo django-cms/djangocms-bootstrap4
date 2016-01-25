@@ -1,4 +1,4 @@
-{% load cms_tags thumbnail staticfiles %}
+{% load i18n cms_tags thumbnail staticfiles %}
 {% comment %}
 DOCS: https://html.spec.whatwg.org/multipage/embedded-content.html#introduction-3:viewport-based-selection-2
 the browser assumes size="100vw" by default, which means
@@ -64,22 +64,22 @@ TODO: currently we're always upscaling the image physically.
     </div>
 {% endif %}
 {% if 0 %}
-<pre>
-{% with main_src=instance.srcset.lg %}
-    {% thumbnail instance.file main_src.size crop=main_src.crop upscale=main_src.upscale subject_location=main_src.subject_location as main_thumb %}
-    src="{{ main_thumb.url }}"
-{% endwith %}
-alt="{{ instance.alt }}"
-title="{{ instance.title }}"
-class="img-responsive{% if instance.shape %} img-{{ instance.shape }}{% endif %}{% if instance.thumbnail %} img-thumbnail{% endif %}"
-srcset="{% for device, src in instance.srcset.items %}
-{% thumbnail instance.file src.size crop=src.crop upscale=src.upscale subject_location=src.subject_location as thumb %}{{ thumb.url }} {{ src.width_str }}{% if not forloop.last %},{% endif %}
-{% endfor %}"
-</pre>
+    <pre>
+        {% with main_src=instance.srcset.lg %}
+            {% thumbnail instance.file main_src.size crop=main_src.crop upscale=main_src.upscale subject_location=main_src.subject_location as main_thumb %}
+            src="{{ main_thumb.url }}"
+        {% endwith %}
+        alt="{{ instance.alt }}"
+        title="{{ instance.title }}"
+        class="img-responsive{% if instance.shape %} img-{{ instance.shape }}{% endif %}{% if instance.thumbnail %} img-thumbnail{% endif %}"
+        srcset="{% for device, src in instance.srcset.items %}
+            {% thumbnail instance.file src.size crop=src.crop upscale=src.upscale subject_location=src.subject_location as thumb %}{{ thumb.url }} {{ src.width_str }}{% if not forloop.last %},{% endif %}
+        {% endfor %}"
+    </pre>
 
-<pre>
-{% for device, src in instance.srcset.items %}
-{{ src|pprint }}
-{% endfor %}
-</pre>
+    <pre>
+        {% for device, src in instance.srcset.items %}
+            {{ src|pprint }}
+        {% endfor %}
+    </pre>
 {% endif %}
