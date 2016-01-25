@@ -1,14 +1,29 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals, absolute_import
-from django.utils.translation import ugettext_lazy as _
-from django.templatetags.static import static
 
+import json
+import warnings
+
+from django.conf.urls import patterns, url
+from django.core.exceptions import ImproperlyConfigured
+from django.http import HttpResponse
+from django.templatetags.static import static
+from django.utils.translation import ugettext_lazy as _
+from django.views.decorators.csrf import csrf_exempt
+
+from cms.models import CMSPlugin
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 
-from . import models, forms, constants
-from cms.models import CMSPlugin
+try:
+    from filer.admin.clipboardadmin import ajax_upload as filer_ajax_upload
+except ImportError:
+    filer_ajax_upload = None
+    warnings.warn("Drag and drop functionality is not avalable. "
+                  "Please update django-filer to version >=1.0.8.",
+                  Warning)
 
+from . import models, forms, constants
 
 link_fieldset = (
     ('Link', {
@@ -218,6 +233,13 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
         }),
     )
 
+    def render(self, context, instance, placeholder):
+        context.update({'instance': instance})
+        if callable(filer_ajax_upload):
+            # Use this in template to conditionally enable drag-n-drop.
+            context.update({'has_dnd_support': True})
+        return context
+
     def get_thumbnail(self, instance):
         return instance.file.file.get_thumbnail({
             'size': (40, 40),
@@ -232,6 +254,45 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
             return thumbnail.url
         return ''
 
+    def get_plugin_urls(self):
+        urlpatterns = patterns(
+            '',
+            url(r'^ajax_upload/(?P<pk>[0-9]+)/$', self.ajax_upload,
+                name='bootstrap3_image_ajax_upload'),
+        )
+        return urlpatterns
+
+    @csrf_exempt
+    def ajax_upload(self, request, pk):
+
+        """
+        Handle drag-n-drop uploads.
+
+        Call original 'ajax_upload' Filer view, parse response and update
+        plugin instance file_id from it. Send original response back.
+        """
+        if not callable(filer_ajax_upload):
+            # Do not try to handle request if we were unable to
+            # import Filer view. This should work with django-filer>=1.0.8.
+            raise ImproperlyConfigured(
+                "Please, use django-filer>=1.0.8 to get drag-n-drop support")
+        filer_response = filer_ajax_upload(request, folder_id=None)
+
+        if filer_response.status_code != 200:
+            return filer_response
+
+        try:
+            file_id = json.loads(filer_response.content)['file_id']
+        except ValueError:
+            return HttpResponse(
+                json.dumps(
+                    {'error': 'received non-JSON response from Filer'}),
+                status=500,
+                content_type='application/json')
+        instance = self.model.objects.get(pk=pk)
+        instance.file_id = file_id
+        instance.save()
+        return filer_response
 
 plugin_pool.register_plugin(Bootstrap3ImageCMSPlugin)
 

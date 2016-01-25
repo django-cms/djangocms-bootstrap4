@@ -171,3 +171,49 @@
     padding-top: 0 !important;
     border: none !important;
 }
+
+/*##############################################################################
+// IMAGE PLUGIN WITH DRAG AND DROP FEATURE */
+.filer-dropzone {
+    position: relative;
+}
+.filer-dropzone.dz-drag-hover img {
+    opacity: 0.5;
+}
+.filer-dropzone-info-message,
+.filer-dropzone-error-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    overflow: hidden;
+    z-index: 2;
+    color: #000;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    width: 270px;
+    margin: -50px 0 0 -150px;
+    padding: 15px;
+    border-radius: 3px;
+    background: #fff;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+}
+.filer-dropzone-info-message .icon {
+    font-size: 30px;
+}
+.filer-dropzone-info-message .text {
+    margin: 15px 0 10px 0;
+}
+.filer-dropzone-upload-info {
+    margin-top: 10px;
+}
+.filer-dropzone-upload-info  .filer-dropzone-file-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.filer-dropzone-progress {
+    height: 5px;
+    margin-top: 5px;
+    background-color: #0bf;
+}
