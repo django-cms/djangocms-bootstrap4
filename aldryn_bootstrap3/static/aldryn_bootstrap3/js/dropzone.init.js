@@ -83,7 +83,7 @@
                         dropzone.find(uploadSuccess).removeClass(hiddenClass);
                         if (file && file.status === 'success' && response) {
                             if (response.original_image) {
-                                dropzone.find(originalImage).find('>img').attr('src', response.original_image)
+                                dropzone.find(originalImage).attr('src', response.original_image)
                             }
                         }
                     },
