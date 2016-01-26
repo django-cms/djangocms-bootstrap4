@@ -83,7 +83,14 @@
                         dropzone.find(uploadSuccess).removeClass(hiddenClass);
                         if (file && file.status === 'success' && response) {
                             if (response.original_image) {
-                                dropzone.find(originalImage).find('>img').attr('src', response.original_image)
+                                dropzone.find(originalImage).attr('src', response.original_image)
+                                // TODO this should be CMS.API call
+                                // FIXME only works on 3.2
+                                $('.cms-btn-publish').addClass('cms-btn-publish-active')
+                                    .removeClass('cms-btn-disabled')
+                                    .parent().show();
+                                $('.cms-toolbar-revert').removeClass('cms-toolbar-item-navigation-disabled');
+                                $(window).trigger('resize');
                             }
                         }
                     },
