@@ -179,7 +179,7 @@
 }
 .filer-dropzone.dz-drag-hover {
     background: #E5F8FF;
-    box-shadow: 0 0 0 1px #00BAFF;
+    box-shadow: 0 0 0 2px #00BAFF;
 }
 .popup .filer-dropzone.dz-drag-hover {
     box-shadow: none;
