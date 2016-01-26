@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+1.0.8 (Unreleased)
+------------------
+
+* Add drag-n-drop for image plugin in content mode
+
 1.0.7 (2015-01-13)
 ------------------
 
