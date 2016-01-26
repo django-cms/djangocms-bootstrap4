@@ -10,63 +10,70 @@ TODO: currently we're always upscaling the image physically.
       does not seem to do that yet.
 {% endcomment %}
 
-{% addtoblock "css" %}<link rel="stylesheet" href="{% static 'aldryn_bootstrap3/css/base.css' %}">{% endaddtoblock %}
-{% addtoblock "js" %}<script src="{% static 'aldryn_bootstrap3/js/dropzone.min.js' %}"></script>{% endaddtoblock %}
-{% addtoblock "js" %}<script src="{% static 'aldryn_bootstrap3/js/dropzone.init.js' %}"></script>{% endaddtoblock %}
-
-{% if has_dnd_support %}
-    <div class="js-filer-dropzone filer-dropzone" data-filer-url="{% url 'admin:bootstrap3_image_ajax_upload' pk=instance.pk %}">
+{# only load js and css required for dnd upload if toolbar is available #}
+{% if request.toolbar and request.toolbar.show_toolbar and request.toolbar.edit_mode %}
+    {% addtoblock "css" %}<link rel="stylesheet" href="{% static 'aldryn_bootstrap3/css/base.css' %}">{% endaddtoblock %}
+    {% addtoblock "js" %}<script src="{% static 'aldryn_bootstrap3/js/dropzone.min.js' %}"></script>{% endaddtoblock %}
+    {% addtoblock "js" %}<script src="{% static 'aldryn_bootstrap3/js/dropzone.init.js' %}"></script>{% endaddtoblock %}
 {% endif %}
-    <div class="js-original-image">
-        <img
-            {% if instance.use_original_image %}
-                src="{{ instance.file.url }}"
-            {% else %}
-                {% with main_src=instance.srcset.lg %}
-                    {% thumbnail instance.file main_src.size crop=main_src.crop upscale=main_src.upscale subject_location=main_src.subject_location as main_thumb %}
-                    src="{{ main_thumb.url }}"
-                {% endwith %}
-            {% endif %}
-            alt="{{ instance.alt }}"
-            {% if instance.title %}title="{{ instance.title }}"{% endif %}
-            {% if instance.img_responsive or instance.shape or instance.thumbnail or instance.classes %}
-                class="{% if instance.img_responsive %}img-responsive{% endif %}{% if instance.shape %} img-{{ instance.shape }}{% endif %}{% if instance.thumbnail %} img-thumbnail{% endif %}{% if instance.classes %} {{ instance.classes }}{% endif %}"
-            {% endif %}
-            {% comment %}
-            {# INFO: needs proper attributes for validation #}
-            srcset="{% for device, src in instance.srcset.items %}
-                {% if not forloop.first %}
-                    {% thumbnail instance.file src.size crop=src.crop upscale=src.upscale subject_location=src.subject_location as thumb %}{{ thumb.url }} {{ src.width_str }}{% if not forloop.last %},{% endif %}
-                {% endif %}
-            {% endfor %}"
-            {% endcomment %}
-        >
-    </div>
-{% if has_dnd_support %}
-        <div class="filer-dropzone-info-message js-filer-dropzone-info-message hidden">
-            <div class="icon"><span class="fa fa-cloud-upload"></span></div>
 
-            <div class="filer-dropzone-upload-welcome js-filer-dropzone-upload-welcome">
-                <div class="text">{% trans 'Drop your file to change image:' %}</div>
-            </div>
+{% spaceless %}
+    {% if request.toolbar and request.toolbar.show_toolbar and request.toolbar.edit_mode %}
+        {% if has_dnd_support %}
+            <div class="js-filer-dropzone filer-dropzone" data-filer-url="{% url 'admin:bootstrap3_image_ajax_upload' pk=instance.pk %}">
+        {% endif %}
+    {% endif %}
+                <img
+                    {% if instance.use_original_image %}
+                        src="{{ instance.file.url }}"
+                    {% else %}
+                        {% with main_src=instance.srcset.lg %}
+                            {% thumbnail instance.file main_src.size crop=main_src.crop upscale=main_src.upscale subject_location=main_src.subject_location as main_thumb %}
+                            src="{{ main_thumb.url }}"
+                        {% endwith %}
+                    {% endif %}
+                    alt="{{ instance.alt }}"
+                    {% if instance.title %}title="{{ instance.title }}"{% endif %}
+                    {% if instance.img_responsive or instance.shape or instance.thumbnail or instance.classes or request.toolbar %}
+                        class="{% if request.toolbar and request.toolbar.show_toolbar and request.toolbar.edit_mode %}js-original-image {% endif %}{% if instance.img_responsive %}img-responsive{% endif %}{% if instance.shape %} img-{{ instance.shape }}{% endif %}{% if instance.thumbnail %} img-thumbnail{% endif %}{% if instance.classes %} {{ instance.classes }}{% endif %}"
+                    {% endif %}
+                    {% comment %}
+                    {# INFO: needs proper attributes for validation #}
+                    srcset="{% for device, src in instance.srcset.items %}
+                        {% if not forloop.first %}
+                            {% thumbnail instance.file src.size crop=src.crop upscale=src.upscale subject_location=src.subject_location as thumb %}{{ thumb.url }} {{ src.width_str }}{% if not forloop.last %},{% endif %}
+                        {% endif %}
+                    {% endfor %}"
+                    {% endcomment %}
+                >
+    {% if request.toolbar and request.toolbar.show_toolbar and request.toolbar.edit_mode %}
+        {% if has_dnd_support %}
+                <div class="filer-dropzone-info-message js-filer-dropzone-info-message hidden">
+                    <div class="icon"><span class="fa fa-cloud-upload"></span></div>
 
-            <div class="filer-dropzone-upload-info js-filer-dropzone-upload-info hidden">
-                <div class="js-filer-dropzone-file-name filer-dropzone-file-name"></div>
-                <div class="filer-dropzone-progress js-filer-dropzone-progress"></div>
-            </div>
+                    <div class="filer-dropzone-upload-welcome js-filer-dropzone-upload-welcome">
+                        <div class="text">{% trans 'Drop your file to change image:' %}</div>
+                    </div>
 
-            <div class="js-filer-dropzone-upload-success hidden">
-                {% trans 'Upload success!' %}
+                    <div class="filer-dropzone-upload-info js-filer-dropzone-upload-info hidden">
+                        <div class="js-filer-dropzone-file-name filer-dropzone-file-name"></div>
+                        <div class="filer-dropzone-progress js-filer-dropzone-progress"></div>
+                    </div>
+
+                    <div class="js-filer-dropzone-upload-success hidden">
+                        {% trans 'Upload success!' %}
+                    </div>
+                </div>
+                <div class="filer-dropzone-error-message js-filer-dropzone-error-message hidden">
+                    <div class="icon"><span class="fa fa-cloud-upload"></span></div>
+                    <div class="js-filer-dropzone-upload-accept">
+                        {% trans 'Error! Files of this type are not accepted.' %}
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="filer-dropzone-error-message js-filer-dropzone-error-message hidden">
-            <div class="icon"><span class="fa fa-cloud-upload"></span></div>
-            <div class="js-filer-dropzone-upload-accept">
-                {% trans 'Error! Files of this type are not accepted.' %}
-            </div>
-        </div>
-    </div>
-{% endif %}
+        {% endif %}{# has_dnd_support #}
+    {% endif %}{# toolbar #}
+{% endspaceless %}
 {% if 0 %}
     <pre>
         {% with main_src=instance.srcset.lg %}
