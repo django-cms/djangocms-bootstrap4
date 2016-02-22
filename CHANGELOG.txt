@@ -1,12 +1,12 @@
 CHANGELOG
 =========
 
-1.0.8 (Unreleased)
+1.0.8 (2016-02-22)
 ------------------
 
 * Add drag-n-drop for image plugin in content mode
 
-1.0.7 (2015-01-13)
+1.0.7 (2016-01-13)
 ------------------
 
 * Remove imagePlugin reference
