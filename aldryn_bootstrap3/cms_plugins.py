@@ -210,7 +210,6 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
     change_form_template = 'admin/aldryn_bootstrap3/base.html'
     render_template = 'aldryn_bootstrap3/plugins/image.html'
     text_enabled = True
-    cache = False
 
     fieldsets = (
         (None, {'fields': (
@@ -630,7 +629,6 @@ class Bootstrap3AccordionItemCMSPlugin(CMSPluginBase):
     render_template = 'aldryn_bootstrap3/plugins/accordion_item.html'
     allow_children = True
     parent_classes = ['Bootstrap3AccordionCMSPlugin']
-    cache = False
 
     fieldsets = (
         (None, {
@@ -698,7 +696,6 @@ class Bootstrap3ListGroupItemCMSPlugin(CMSPluginBase):
         'Bootstrap3ListGroupCMSPlugin',
         'Bootstrap3PanelCMSPlugin',
     ]
-    cache = False
 
     fieldsets = (
         (None, {
@@ -770,7 +767,6 @@ class Bootstrap3CarouselCMSPlugin(CarouselBase):
     render_template = False
     form = forms.CarouselPluginForm
     allow_children = True
-    cache = False
     child_classes = [
         'Bootstrap3CarouselSlideCMSPlugin',
         # 'Bootstrap3CarouselSlideFolderCMSPlugin',
@@ -821,7 +817,6 @@ class Bootstrap3CarouselSlideCMSPlugin(CarouselSlideBase):
     name = _('Carousel Slide')
     change_form_template = 'admin/aldryn_bootstrap3/base.html'
     allow_children = True
-    cache = False
     fieldsets = (
         (None, {
             'fields': (
@@ -850,7 +845,6 @@ class Bootstrap3CarouselSlideFolderCMSPlugin(CarouselSlideBase):
     """
     name = _('Carousel Slides Folder')
     model = models.Bootstrap3CarouselSlideFolderPlugin
-    cache = False
 
     def render(self, context, instance, placeholder):
         context['instance'] = instance
