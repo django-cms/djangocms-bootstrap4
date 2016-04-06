@@ -1,11 +1,15 @@
 CHANGELOG
 =========
 
+1.1.0 (2016-xx-xx)
+------------------
+
+* Removes spaces before and after link
+
 1.0.9 (2016-03-16)
 ------------------
 
 * Removes unnecessary `cache = False` from plugins
-
 
 1.0.8 (2016-02-22)
 ------------------
