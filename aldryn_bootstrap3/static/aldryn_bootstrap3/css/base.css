@@ -203,13 +203,13 @@
     background: #fff;
     box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
 }
-.filer-dropzone-info-message .icon,
-.filer-dropzone-error-message .icon {
+.filer-dropzone-info-message .filer-dropzone-icon,
+.filer-dropzone-error-message .filer-dropzone-icon {
     font-size: 35px;
     color: #0bf;
 }
-.filer-dropzone-info-message .text,
-.filer-dropzone-error-message .text {
+.filer-dropzone-info-message .filer-dropzone-text,
+.filer-dropzone-error-message .filer-dropzone-text {
     margin: 5px 0 10px 0;
 }
 .filer-dropzone-upload-info {
