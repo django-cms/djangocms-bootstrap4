@@ -1,6 +1,4 @@
-{% load cms_tags %}
-
-<a href="{{ instance.get_link_url }}"
+{% load cms_tags %}<a href="{{ instance.get_link_url }}"
    {% if instance.type == 'btn' or instance.txt_context or instance.classes %}
    class="
         {% if instance.type == 'btn' %}
