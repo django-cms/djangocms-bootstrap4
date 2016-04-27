@@ -1,8 +1,8 @@
 CHANGELOG
 =========
 
-1.0.10 (2016-xx-xx)
-------------------
+1.0.10 (2016-04-27)
+-------------------
 
 * Removes spaces before and after link
 * Fixes drag and drop image view in edit mode for xplorer
