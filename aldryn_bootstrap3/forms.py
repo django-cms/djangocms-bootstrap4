@@ -52,21 +52,21 @@ for size, name in constants.DEVICE_CHOICES:
         label=_('offset-'.format(size)),
         help_text=('Offset of created columns. You can still change the width of the column afterwards.'),
         required=False,
-        min_value=1,
+        min_value=0,
         max_value=constants.GRID_SIZE,
     )
     extra_fields_row["create_{}_push".format(size)] = django.forms.IntegerField(
         label=_('push-'.format(size)),
         help_text=('Push of created columns. You can still change the width of the column afterwards.'),
         required=False,
-        min_value=1,
+        min_value=0,
         max_value=constants.GRID_SIZE,
     )
     extra_fields_row["create_{}_pull".format(size)] = django.forms.IntegerField(
         label=_('pull-'.format(size)),
         help_text=('Pull of created columns. You can still change the width of the column afterwards.'),
         required=False,
-        min_value=1,
+        min_value=0,
         max_value=constants.GRID_SIZE,
     )
 
@@ -83,21 +83,21 @@ for size, name in constants.DEVICE_CHOICES:
         label=_('offset-'.format(size)),
         help_text=('Offset of created columns. You can still change the width of the column afterwards.'),
         required=False,
-        min_value=1,
+        min_value=0,
         max_value=constants.GRID_SIZE,
     )
     extra_fields_column["{}_push".format(size)] = django.forms.IntegerField(
         label=_('push-'.format(size)),
         help_text=('Push of created columns. You can still change the width of the column afterwards.'),
         required=False,
-        min_value=1,
+        min_value=0,
         max_value=constants.GRID_SIZE,
     )
     extra_fields_column["{}_pull".format(size)] = django.forms.IntegerField(
         label=_('pull-'.format(size)),
         help_text=('Pull of created columns. You can still change the width of the column afterwards.'),
         required=False,
-        min_value=1,
+        min_value=0,
         max_value=constants.GRID_SIZE,
     )
 
