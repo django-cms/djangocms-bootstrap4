@@ -5,6 +5,8 @@ CHANGELOG
 -------------------
 
 * Allow zero values for column push, pull and offset in admin forms
+* Added a "change" event trigger when changing bootstrap style for multiple
+  plugins
 
 1.0.10 (2016-04-27)
 -------------------

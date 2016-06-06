@@ -57,7 +57,7 @@
                         var input = $(this).find('input');
 
                         selectedContextInput.prop('checked', false);
-                        input.prop('checked', true);
+                        input.prop('checked', true).trigger('change');
 
                         selectedContextInput = input;
                     });
