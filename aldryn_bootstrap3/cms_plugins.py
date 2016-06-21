@@ -190,6 +190,7 @@ class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
             'classes': ('collapse',),
             'fields': (
                 'classes',
+                'link_attributes',
                 # 'responsive',
                 # 'responsive_print',
             )
@@ -813,6 +814,7 @@ carousel_link_fieldset = link_fieldset
 
 
 class Bootstrap3CarouselSlideCMSPlugin(CarouselSlideBase):
+    form = forms.CarouselSlidePluginForm
     model = models.Bootstrap3CarouselSlidePlugin
     name = _('Carousel Slide')
     change_form_template = 'admin/aldryn_bootstrap3/base.html'
@@ -834,6 +836,7 @@ class Bootstrap3CarouselSlideCMSPlugin(CarouselSlideBase):
             'classes': ('collapse',),
             'fields': (
                 'classes',
+                'link_attributes',
             ),
         }),
     )

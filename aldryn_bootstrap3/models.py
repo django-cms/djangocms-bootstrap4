@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals, absolute_import
+
 from functools import partial
 import collections
-import datetime
 
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.html import strip_tags
-from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import ungettext
+from django.utils.translation import ugettext_lazy as _, ungettext
 
 import django.forms.models
 
@@ -16,11 +15,11 @@ from cms.models.pluginmodel import CMSPlugin
 import cms.models
 import cms.models.fields
 
+from djangocms_attributes_field.fields import AttributesField
+import djangocms_text_ckeditor.fields
 import filer.fields.file
 import filer.fields.image
 import filer.fields.folder
-
-import djangocms_text_ckeditor.fields
 
 from . import model_fields, constants, utils
 
@@ -64,6 +63,9 @@ class LinkMixin(models.Model):
             ("_top", _("topmost frame")),
         ))
     )
+    # Override this property in concrete classes as required.
+    excluded_attr_keys = ['href', 'target', ]
+    link_attributes = AttributesField(_('Link Attributes'), excluded_keys=excluded_attr_keys)
 
     class Meta:
         abstract = True
@@ -93,6 +95,7 @@ class LinkMixin(models.Model):
 @python_2_unicode_compatible
 class Boostrap3ButtonPlugin(CMSPlugin, LinkMixin):
     cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
+    excluded_attr_keys = ['class', 'href', 'target', ]
 
     label = models.CharField(
         _("label"),
@@ -757,6 +760,7 @@ class Bootstrap3CarouselPlugin(CMSPlugin):
 
 @python_2_unicode_compatible
 class Bootstrap3CarouselSlidePlugin(CMSPlugin, LinkMixin):
+    excluded_attr_keys = ['class', 'href', 'target', ]
     image = filer.fields.image.FilerImageField(
         verbose_name=_('image'),
         blank=False,

@@ -1,14 +1,19 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals, absolute_import
+
+import django.core.exceptions
 import django.forms
 import django.forms.models
-import django.core.exceptions
 import django.template
 import django.template.loader
+
+from django.forms.widgets import Media
 from django.utils.translation import ugettext_lazy as _
+
 import cms.forms.fields
 import cms.models
-from django.forms.widgets import Media
+
+from djangocms_attributes_field.widgets import AttributesWidget
 
 from . import models, constants
 
@@ -123,6 +128,10 @@ class LinkForm(django.forms.models.ModelForm):
             'page', 'position', 'placeholder', 'language', 'plugin_type',
         )
 
+    def __init__(self, *args, **kwargs):
+        super(LinkForm, self).__init__(*args, **kwargs)
+        self.fields['link_attributes'].widget = AttributesWidget(val_attrs={'style': 'width:500px!important'})
+
     def _get_media(self):
         """
         Provide a description of all media required to render the widgets on this form
@@ -186,3 +195,15 @@ class CarouselPluginForm(django.forms.ModelForm):
                 _("Not a valid style (Template %s does not exist)") % template
             )
         return style
+
+
+class CarouselSlidePluginForm(django.forms.ModelForm):
+
+    class Meta:
+        fields = ['image', 'content', 'link_text', 'classes', 'link_attributes', ]
+        model = models.Bootstrap3CarouselSlidePlugin
+
+    def __init__(self, *args, **kwargs):
+        super(CarouselSlidePluginForm, self).__init__(*args, **kwargs)
+        self.fields['link_attributes'].widget = AttributesWidget(val_attrs={'style': 'width:500px!important'})
+
