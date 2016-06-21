@@ -1,9 +1,11 @@
 CHANGELOG
 =========
 
-1.0.11 (UNRELEASED)
--------------------
+1.1.0 (2016-06-20)
+------------------
 
+* Added support for arbitrary attributes on link tags
+* Fixed a Python 3 incompatibility
 * Allow zero values for column push, pull and offset in admin forms
 * Added a "change" event trigger when changing bootstrap style for multiple
   plugins
