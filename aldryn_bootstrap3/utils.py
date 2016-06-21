@@ -14,7 +14,7 @@ def get_additional_styles():
         getattr(settings, 'GALLERY_STYLES', False)
     )
     if raw:
-        if isinstance(raw, basestring):
+        if isinstance(raw, str):
             raw = raw.split(',')
         for choice in raw:
             clean = choice.strip()
