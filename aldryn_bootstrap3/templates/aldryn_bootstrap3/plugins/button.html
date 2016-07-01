@@ -17,7 +17,7 @@
     {% if instance.link_target %}
         target="{{ instance.link_target }}"
     {% endif %}
-    {{ instance.attributes_str }}
+    {{ instance.link_attributes_str }}
     >{% spaceless %}
     {% if instance.icon_left %}{% with icon_class=instance.icon_left %}{% include 'aldryn_bootstrap3/plugins/includes/icon.html' %}{% endwith %}{% endif %}
 
