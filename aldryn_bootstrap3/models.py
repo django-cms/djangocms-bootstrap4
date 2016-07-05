@@ -65,7 +65,8 @@ class LinkMixin(models.Model):
     )
     # Override this property in concrete classes as required.
     excluded_attr_keys = ['href', 'target', ]
-    link_attributes = AttributesField(_('Link Attributes'), excluded_keys=excluded_attr_keys)
+    link_attributes = AttributesField(
+        _('Link Attributes'), excluded_keys=excluded_attr_keys, blank=True)
 
     class Meta:
         abstract = True
