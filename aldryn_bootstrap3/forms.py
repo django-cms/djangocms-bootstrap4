@@ -130,7 +130,7 @@ class LinkForm(django.forms.models.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(LinkForm, self).__init__(*args, **kwargs)
-        self.fields['link_attributes'].widget = AttributesWidget(val_attrs={'style': 'width:500px!important'})
+        self.fields['link_attributes'].widget = AttributesWidget()
 
     def _get_media(self):
         """
@@ -205,5 +205,5 @@ class CarouselSlidePluginForm(django.forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(CarouselSlidePluginForm, self).__init__(*args, **kwargs)
-        self.fields['link_attributes'].widget = AttributesWidget(val_attrs={'style': 'width:500px!important'})
+        self.fields['link_attributes'].widget = AttributesWidget()
 
