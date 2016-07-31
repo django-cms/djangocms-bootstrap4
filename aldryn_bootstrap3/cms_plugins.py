@@ -305,6 +305,7 @@ class Bootstrap3SpacerCMSPlugin(CMSPluginBase):
     change_form_template = 'admin/aldryn_bootstrap3/base.html'
     render_template = 'aldryn_bootstrap3/plugins/spacer.html'
     text_enabled = True
+    text_editor_preview = False
 
     fieldsets = (
         (None, {'fields': (
