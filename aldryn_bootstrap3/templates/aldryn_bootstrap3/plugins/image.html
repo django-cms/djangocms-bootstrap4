@@ -20,7 +20,7 @@ TODO: currently we're always upscaling the image physically.
 {% spaceless %}
     {% if request.toolbar and request.toolbar.show_toolbar and request.toolbar.edit_mode %}
         {% if has_dnd_support %}
-            <div class="js-filer-dropzone filer-dropzone" data-filer-url="{% url 'admin:bootstrap3_image_ajax_upload' pk=instance.pk %}">
+            <span class="js-filer-dropzone filer-dropzone filer-dropzone-image-plugin" data-filer-url="{% url 'admin:bootstrap3_image_ajax_upload' pk=instance.pk %}">
         {% endif %}
     {% endif %}
                 <img
@@ -48,29 +48,29 @@ TODO: currently we're always upscaling the image physically.
                 >
     {% if request.toolbar and request.toolbar.show_toolbar and request.toolbar.edit_mode %}
         {% if has_dnd_support %}
-                <div class="filer-dropzone-info-message js-filer-dropzone-info-message hidden">
-                    <div class="filer-dropzone-icon"><span class="fa fa-cloud-upload"></span></div>
+                <span class="filer-dropzone-info-message js-filer-dropzone-info-message hidden">
+                    <span class="filer-dropzone-icon"><span class="fa fa-cloud-upload"></span></span>
 
-                    <div class="filer-dropzone-upload-welcome js-filer-dropzone-upload-welcome">
-                        <div class="text">{% trans 'Drop your file to change image:' %}</div>
-                    </div>
+                    <span class="filer-dropzone-upload-welcome js-filer-dropzone-upload-welcome">
+                        <span class="text">{% trans 'Drop your file to change image:' %}</span>
+                    </span>
 
-                    <div class="filer-dropzone-upload-info js-filer-dropzone-upload-info hidden">
-                        <div class="js-filer-dropzone-file-name filer-dropzone-file-name"></div>
-                        <div class="filer-dropzone-progress js-filer-dropzone-progress"></div>
-                    </div>
+                    <span class="filer-dropzone-upload-info js-filer-dropzone-upload-info hidden">
+                        <span class="js-filer-dropzone-file-name filer-dropzone-file-name"></span>
+                        <span class="filer-dropzone-progress js-filer-dropzone-progress"></span>
+                    </span>
 
-                    <div class="js-filer-dropzone-upload-success hidden">
+                    <span class="js-filer-dropzone-upload-success hidden">
                         {% trans 'Upload success!' %}
-                    </div>
-                </div>
-                <div class="filer-dropzone-error-message js-filer-dropzone-error-message hidden">
-                    <div class="icon"><span class="fa fa-cloud-upload"></span></div>
-                    <div class="js-filer-dropzone-upload-accept filer-dropzone-text">
+                    </span>
+                </span>
+                <span class="filer-dropzone-error-message js-filer-dropzone-error-message hidden">
+                    <span class="icon"><span class="fa fa-cloud-upload"></span></span>
+                    <span class="js-filer-dropzone-upload-accept filer-dropzone-text">
                         {% trans 'Error! Files of this type are not accepted.' %}
-                    </div>
-                </div>
-            </div>
+                    </span>
+                </span>
+            </span>
         {% endif %}{# has_dnd_support #}
     {% endif %}{# toolbar #}
 {% endspaceless %}
