@@ -174,6 +174,9 @@
 
 /*##############################################################################
 // IMAGE PLUGIN WITH DRAG AND DROP FEATURE */
+.filer-dropzone-image-plugin {
+    display: inline-block;
+}
 .filer-dropzone.dz-drag-hover {
     background: #E5F8FF;
     box-shadow: 0 0 0 2px #00BAFF;
@@ -187,6 +190,7 @@
 .filer-dropzone-info-message,
 .filer-dropzone-error-message {
     position: fixed;
+    display: block;
     left: 50%;
     bottom: 0;
     overflow: hidden;
@@ -205,22 +209,27 @@
 }
 .filer-dropzone-info-message .filer-dropzone-icon,
 .filer-dropzone-error-message .filer-dropzone-icon {
+    display: block;
     font-size: 35px;
     color: #0bf;
 }
 .filer-dropzone-info-message .filer-dropzone-text,
 .filer-dropzone-error-message .filer-dropzone-text {
+    display: block;
     margin: 5px 0 10px 0;
 }
 .filer-dropzone-upload-info {
+    display: block;
     margin-top: 10px;
 }
 .filer-dropzone-upload-info  .filer-dropzone-file-name {
+    display: block;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 .filer-dropzone-progress {
+    display: block;
     height: 5px;
     margin-top: 5px;
     background-color: #0bf;
