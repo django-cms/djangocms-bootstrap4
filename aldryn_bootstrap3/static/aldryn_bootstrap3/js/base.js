@@ -84,6 +84,12 @@
                 var initialValue = iconPickerButton.data('icon');
                 var initialIconset = iconSet.find('option[data-prefix=' + data.iconset + ']').attr('value');
 
+                try {
+                    // in case custom iconset is used
+                    initialIconset = JSON.parse(initialIconset);
+                } catch (e) {
+                }
+
                 // initialize bootstrap iconpicker functionality
                 iconPickerButton.iconpicker({
                     arrowClass: 'btn-default',
