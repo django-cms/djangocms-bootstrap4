@@ -221,14 +221,15 @@
                     } else {
                         previewBtn.find('.pre').hide();
                     }
-                });
+                }).trigger('change');
+
                 $('#id_icon_right').on('change', function () {
                     if ($(this).is(':checked')) {
                         previewBtn.find('.post').show();
                     } else {
                         previewBtn.find('.post').hide();
                     }
-                });
+                }).trigger('change');
 
                 // certain elements can only be loaded after a timeout
                 setTimeout(function () {
