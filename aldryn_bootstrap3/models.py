@@ -30,6 +30,14 @@ from . import model_fields, constants, utils
 import os
 
 
+CMSPluginField = partial(
+    models.OneToOneField,
+    to=CMSPlugin,
+    related_name='+',
+    parent_link=True,
+)
+
+
 class LinkMixin(models.Model):
     link_url = models.URLField(_("link"), blank=True, default='')
     link_page = cms.models.fields.PageField(
@@ -95,7 +103,7 @@ class LinkMixin(models.Model):
 
 @python_2_unicode_compatible
 class Boostrap3ButtonPlugin(CMSPlugin, LinkMixin):
-    cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
+    cmsplugin_ptr = CMSPluginField()
     excluded_attr_keys = ['class', 'href', 'target', ]
 
     label = models.CharField(
@@ -141,7 +149,7 @@ class Boostrap3ButtonPlugin(CMSPlugin, LinkMixin):
 
 @python_2_unicode_compatible
 class Boostrap3BlockquotePlugin(CMSPlugin):
-    cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
+    cmsplugin_ptr = CMSPluginField()
 
     reverse = models.BooleanField(default=False, blank=True)
     classes = model_fields.Classes()
@@ -152,7 +160,7 @@ class Boostrap3BlockquotePlugin(CMSPlugin):
 
 @python_2_unicode_compatible
 class Boostrap3IconPlugin(CMSPlugin):
-    cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
+    cmsplugin_ptr = CMSPluginField()
 
     icon = model_fields.Icon(blank=False)
 
@@ -164,7 +172,7 @@ class Boostrap3IconPlugin(CMSPlugin):
 
 @python_2_unicode_compatible
 class Boostrap3LabelPlugin(CMSPlugin):
-    cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
+    cmsplugin_ptr = CMSPluginField()
 
     label = models.CharField(
         _("label"),
@@ -186,7 +194,7 @@ class Boostrap3LabelPlugin(CMSPlugin):
 
 @python_2_unicode_compatible
 class Boostrap3WellPlugin(CMSPlugin):
-    cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
+    cmsplugin_ptr = CMSPluginField()
 
     size = model_fields.Size()
 
@@ -198,7 +206,7 @@ class Boostrap3WellPlugin(CMSPlugin):
 
 @python_2_unicode_compatible
 class Boostrap3AlertPlugin(CMSPlugin):
-    cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
+    cmsplugin_ptr = CMSPluginField()
 
     context = model_fields.Context()
     icon = model_fields.Icon()
@@ -219,7 +227,7 @@ def compute_aspect_ratio(image):
 
 @python_2_unicode_compatible
 class Boostrap3ImagePlugin(CMSPlugin):
-    cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
+    cmsplugin_ptr = CMSPluginField()
 
     file = filer.fields.image.FilerImageField(
         verbose_name=_("file"),
@@ -344,7 +352,7 @@ class Boostrap3ImagePlugin(CMSPlugin):
 
 @python_2_unicode_compatible
 class Boostrap3SpacerPlugin(CMSPlugin):
-    cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
+    cmsplugin_ptr = CMSPluginField()
 
     size = model_fields.Size()
 
@@ -356,7 +364,7 @@ class Boostrap3SpacerPlugin(CMSPlugin):
 
 @python_2_unicode_compatible
 class Bootstrap3FilePlugin(CMSPlugin):
-    cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
+    cmsplugin_ptr = CMSPluginField()
 
     file = filer.fields.file.FilerFileField(
         verbose_name=_("file"),
@@ -396,7 +404,7 @@ class Bootstrap3FilePlugin(CMSPlugin):
 
 @python_2_unicode_compatible
 class Boostrap3PanelPlugin(CMSPlugin):
-    cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
+    cmsplugin_ptr = CMSPluginField()
 
     context = model_fields.Context(
         choices=constants.PANEL_CONTEXT_CHOICES,
@@ -412,7 +420,7 @@ class Boostrap3PanelPlugin(CMSPlugin):
 
 @python_2_unicode_compatible
 class Boostrap3PanelHeadingPlugin(CMSPlugin):
-    cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
+    cmsplugin_ptr = CMSPluginField()
 
     title = model_fields.MiniText(
         _("title"),
@@ -429,7 +437,7 @@ class Boostrap3PanelHeadingPlugin(CMSPlugin):
 
 @python_2_unicode_compatible
 class Boostrap3PanelBodyPlugin(CMSPlugin):
-    cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
+    cmsplugin_ptr = CMSPluginField()
 
     classes = model_fields.Classes()
 
@@ -439,7 +447,7 @@ class Boostrap3PanelBodyPlugin(CMSPlugin):
 
 @python_2_unicode_compatible
 class Boostrap3PanelFooterPlugin(CMSPlugin):
-    cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
+    cmsplugin_ptr = CMSPluginField()
 
     classes = model_fields.Classes()
 
@@ -490,6 +498,7 @@ PullSizeField = partial(
 
 @python_2_unicode_compatible
 class Bootstrap3RowPlugin(CMSPlugin):
+    cmsplugin_ptr = CMSPluginField()
     classes = model_fields.Classes()
 
     def __str__(self):
@@ -515,6 +524,7 @@ class Bootstrap3ColumnPlugin(CMSPlugin):
     DEVICE_CHOICES = constants.DEVICE_CHOICES
     DEVICE_SIZES = constants.DEVICE_SIZES
 
+    cmsplugin_ptr = CMSPluginField()
     classes = model_fields.Classes()
     tag = models.SlugField(default='div')
 
@@ -567,6 +577,7 @@ for size, name in constants.DEVICE_CHOICES:
 
 @python_2_unicode_compatible
 class Bootstrap3AccordionPlugin(CMSPlugin):
+    cmsplugin_ptr = CMSPluginField()
     index = models.PositiveIntegerField(
         _('index'), null=True, blank=True,
         help_text=_('index of element that should be opened on page load '
@@ -579,6 +590,7 @@ class Bootstrap3AccordionPlugin(CMSPlugin):
 
 @python_2_unicode_compatible
 class Bootstrap3AccordionItemPlugin(CMSPlugin):
+    cmsplugin_ptr = CMSPluginField()
     title = model_fields.MiniText(
         _("title"),
         blank=True,
@@ -602,6 +614,7 @@ class Bootstrap3AccordionItemPlugin(CMSPlugin):
 
 @python_2_unicode_compatible
 class Bootstrap3ListGroupPlugin(CMSPlugin):
+    cmsplugin_ptr = CMSPluginField()
     classes = model_fields.Classes()
     add_list_group_class = models.BooleanField(
         verbose_name='class: list-group',
@@ -616,6 +629,7 @@ class Bootstrap3ListGroupPlugin(CMSPlugin):
 
 @python_2_unicode_compatible
 class Bootstrap3ListGroupItemPlugin(CMSPlugin):
+    cmsplugin_ptr = CMSPluginField()
     title = model_fields.MiniText(
         _("title"),
         blank=True,
@@ -658,6 +672,7 @@ class Bootstrap3CarouselPlugin(CMSPlugin):
         ('slide', _('Slide')),
     )
 
+    cmsplugin_ptr = CMSPluginField()
     style = models.CharField(
         _('Style'),
         choices=STYLE_CHOICES + utils.get_additional_styles(),
@@ -762,6 +777,7 @@ class Bootstrap3CarouselPlugin(CMSPlugin):
 @python_2_unicode_compatible
 class Bootstrap3CarouselSlidePlugin(CMSPlugin, LinkMixin):
     excluded_attr_keys = ['class', 'href', 'target', ]
+    cmsplugin_ptr = CMSPluginField()
     image = filer.fields.image.FilerImageField(
         verbose_name=_('image'),
         blank=False,
@@ -807,6 +823,7 @@ class Bootstrap3CarouselSlidePlugin(CMSPlugin, LinkMixin):
 
 @python_2_unicode_compatible
 class Bootstrap3CarouselSlideFolderPlugin(CMSPlugin):
+    cmsplugin_ptr = CMSPluginField()
     folder = filer.fields.folder.FilerFolderField(
         verbose_name=_('folder'),
     )
