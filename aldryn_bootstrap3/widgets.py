@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals, absolute_import
-from django.utils.translation import ugettext_lazy as _
+
 import django.forms.widgets
 
-from .conf import settings
 from . import constants
+from .conf import settings
 
 
 class ContextRenderer(django.forms.widgets.RadioFieldRenderer):

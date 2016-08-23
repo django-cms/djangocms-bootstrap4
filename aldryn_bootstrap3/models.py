@@ -7,7 +7,7 @@ import collections
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.html import strip_tags
-from django.utils.translation import ugettext_lazy as _, ungettext
+from django.utils.translation import ugettext, ugettext_lazy as _, ungettext
 
 import django.forms.models
 
@@ -496,27 +496,29 @@ PullSizeField = partial(
 )
 
 
-@python_2_unicode_compatible
 class Bootstrap3RowPlugin(CMSPlugin):
     cmsplugin_ptr = CMSPluginField()
     classes = model_fields.Classes()
 
-    def __str__(self):
-        column_count = self.cmsplugin_set.all().count()
+    def get_short_description(self):
+        instance = self.get_plugin_instance()[0]
+
+        if not instance:
+            return ugettext("<Empty>")
+
+        column_count = len(self.child_plugin_instances or [])
         column_count_str = ungettext(
             "1 column",
             "%(count)i columns",
             column_count
-        ) % (
-            {'count': column_count}
-        )
+        ) % {'count': column_count}
+
         if self.classes:
             return "{} ({})".format(
                 self.classes,
                 column_count_str
             )
-        else:
-            return column_count_str
+        return column_count_str
 
 
 @python_2_unicode_compatible
@@ -575,7 +577,6 @@ for size, name in constants.DEVICE_CHOICES:
 # Accordion #
 #############
 
-@python_2_unicode_compatible
 class Bootstrap3AccordionPlugin(CMSPlugin):
     cmsplugin_ptr = CMSPluginField()
     index = models.PositiveIntegerField(
@@ -584,8 +585,19 @@ class Bootstrap3AccordionPlugin(CMSPlugin):
                     '(leave it empty if none of the items should be opened)'))
     classes = model_fields.Classes()
 
-    def __str__(self):
-        return _("%s items") % self.cmsplugin_set.all().count()
+    def get_short_description(self):
+        instance = self.get_plugin_instance()[0]
+
+        if not instance:
+            return ugettext("<Empty>")
+
+        column_count = len(self.child_plugin_instances or [])
+        column_count_str = ungettext(
+            "1 item",
+            "%(count)i items",
+            column_count
+        ) % {'count': column_count}
+        return column_count_str
 
 
 @python_2_unicode_compatible
@@ -612,7 +624,6 @@ class Bootstrap3AccordionItemPlugin(CMSPlugin):
 # ListGroup #
 #############
 
-@python_2_unicode_compatible
 class Bootstrap3ListGroupPlugin(CMSPlugin):
     cmsplugin_ptr = CMSPluginField()
     classes = model_fields.Classes()
@@ -623,8 +634,19 @@ class Bootstrap3ListGroupPlugin(CMSPlugin):
         help_text='whether to add the list-group and list-group-item classes'
     )
 
-    def __str__(self):
-        return _("%s items") % self.cmsplugin_set.all().count()
+    def get_short_description(self):
+        instance = self.get_plugin_instance()[0]
+
+        if not instance:
+            return ugettext("<Empty>")
+
+        column_count = len(self.child_plugin_instances or [])
+        column_count_str = ungettext(
+            "1 item",
+            "%(count)i items",
+            column_count
+        ) % {'count': column_count}
+        return column_count_str
 
 
 @python_2_unicode_compatible
@@ -821,6 +843,7 @@ class Bootstrap3CarouselSlidePlugin(CMSPlugin, LinkMixin):
         else:
             return image_text or content_text
 
+
 @python_2_unicode_compatible
 class Bootstrap3CarouselSlideFolderPlugin(CMSPlugin):
     cmsplugin_ptr = CMSPluginField()
@@ -830,7 +853,7 @@ class Bootstrap3CarouselSlideFolderPlugin(CMSPlugin):
     classes = model_fields.Classes()
 
     def __str__(self):
-        if self.folder:
+        if self.folder_id:
             return self.folder.pretty_logical_path
         else:
             return _('not selected yet')
