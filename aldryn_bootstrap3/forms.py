@@ -7,7 +7,7 @@ import django.forms.models
 import django.template
 import django.template.loader
 
-from django.forms.widgets import Media
+from django.forms.widgets import Media, TextInput
 from django.utils.translation import ugettext_lazy as _
 
 import cms.forms.fields
@@ -127,6 +127,11 @@ class LinkForm(django.forms.models.ModelForm):
         exclude = (
             'page', 'position', 'placeholder', 'language', 'plugin_type',
         )
+        # When used inside djangocms-text-ckeditor
+        # this causes the label field to be prefilled with the selected text.
+        widgets = {
+            'label': TextInput(attrs={'class': 'js-ckeditor-use-selected-text'}),
+        }
 
     def __init__(self, *args, **kwargs):
         super(LinkForm, self).__init__(*args, **kwargs)
