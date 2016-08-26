@@ -18,6 +18,18 @@ from djangocms_attributes_field.widgets import AttributesWidget
 from . import models, constants
 
 
+class Boostrap3LabelPluginForm(django.forms.models.ModelForm):
+
+    class Meta:
+        model = models.Boostrap3LabelPlugin
+        exclude = ('page', 'position', 'placeholder', 'language', 'plugin_type')
+        # When used inside djangocms-text-ckeditor
+        # this causes the label field to be prefilled with the selected text.
+        widgets = {
+            'label': TextInput(attrs={'class': 'js-ckeditor-use-selected-text'}),
+        }
+
+
 class RowPluginBaseForm(django.forms.models.ModelForm):
     create = django.forms.IntegerField(
         label=_('Create Columns'),

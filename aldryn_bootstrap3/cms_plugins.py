@@ -86,6 +86,7 @@ plugin_pool.register_plugin(Bootstrap3IconCMSPlugin)
 
 class Bootstrap3LabelCMSPlugin(CMSPluginBase):
     model = models.Boostrap3LabelPlugin
+    form = forms.Boostrap3LabelPluginForm
     name = _("Label")
     module = _('Bootstrap3')
     change_form_template = 'admin/aldryn_bootstrap3/plugins/label/change_form.html'
