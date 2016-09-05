@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-1.1.2 (unreleased)
+1.1.2 (2016-09-05)
 ------------------
 
 * Let attributes field be optional
