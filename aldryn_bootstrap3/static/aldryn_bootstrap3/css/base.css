@@ -4,15 +4,6 @@
  */
 
 /*##############################################################################
-// BASE */
-
-/* set visibility of "Advanced (Show)" button */
-.collapse {
-    visibility: visible !important;
-    display: block;
-}
-
-/*##############################################################################
 // CONTEXT WIDGET */
 /* used in aldryn_bootstrap3/widgets/context.html */
 .aldryn-bootstrap3-context {
