@@ -16,7 +16,6 @@
         var uploadSuccess = '.js-filer-dropzone-upload-success';
         var dragHoverClass = 'dz-drag-hover';
         var originalImage = '.js-original-image';
-        var hiddenClass = 'hidden';
         var hideMessageTimeout;
         var errorMessageTimeout = 2;
 
@@ -35,14 +34,14 @@
                     addRemoveLinks: false,
                     accept: function (file, done) {
                         if (!file.type.match('image.*')) {
-                            dropzone.find(errorMessage).removeClass(hiddenClass);
+                            dropzone.find(errorMessage).show();
                             clearTimeout(hideMessageTimeout);
                             hideMessageTimeout = setTimeout(function () {
-                                dropzone.find(errorMessage).addClass(hiddenClass);
+                                dropzone.find(errorMessage).hide();
                             }, errorMessageTimeout * 1000);
                             done('Error')
                         } else {
-                            dropzone.find(errorMessage).addClass(hiddenClass);
+                            dropzone.find(errorMessage).hide();
                             done();
                         }
                     },
@@ -51,36 +50,36 @@
                         this.addFile(file);
                     },
                     dragover: function () {
-                        dropzone.find(uploadSuccess).addClass(hiddenClass);
-                        dropzone.find(infoMessage).removeClass(hiddenClass);
+                        dropzone.find(uploadSuccess).hide();
+                        dropzone.find(infoMessage).show();
                         dropzone.addClass(dragHoverClass);
                     },
                     dragleave: function () {
                         clearTimeout(hideMessageTimeout);
                         hideMessageTimeout = setTimeout(function () {
-                            dropzone.find(infoMessage).addClass(hiddenClass);
+                            dropzone.find(infoMessage).hide();
                         }, 100);
 
-                        dropzone.find(infoMessage).removeClass(hiddenClass);
+                        dropzone.find(infoMessage).show();
                         dropzone.removeClass(dragHoverClass);
                     },
                     drop: function () {
                         clearTimeout(hideMessageTimeout);
-                        dropzone.find(infoMessage).removeClass(hiddenClass);
+                        dropzone.find(infoMessage).show();
                         dropzone.removeClass(dragHoverClass);
                     },
                     sending: function (file) {
-                        dropzone.find(uploadWelcome).addClass(hiddenClass);
+                        dropzone.find(uploadWelcome).hide();
                         dropzone.find(uploadFileName).text(file.name);
                         dropzone.find(uploadProgress).width(0);
-                        dropzone.find(uploadInfo).removeClass(hiddenClass);
+                        dropzone.find(uploadInfo).show();
                     },
                     uploadprogress: function (file, progress) {
                         dropzone.find(uploadProgress).width(progress + '%');
                     },
                     success: function (file, response) {
-                        dropzone.find(uploadInfo).addClass(hiddenClass);
-                        dropzone.find(uploadSuccess).removeClass(hiddenClass);
+                        dropzone.find(uploadInfo).hide();
+                        dropzone.find(uploadSuccess).show();
                         if (file && file.status === 'success' && response) {
                             if (response.original_image) {
                                 dropzone.find(originalImage).attr('src', response.original_image)
@@ -95,9 +94,9 @@
                         }
                     },
                     queuecomplete: function () {
-                        dropzone.find(infoMessage).addClass(hiddenClass);
-                        dropzone.find(uploadSuccess).addClass(hiddenClass);
-                        dropzone.find(uploadWelcome).removeClass(hiddenClass);
+                        dropzone.find(infoMessage).hide();
+                        dropzone.find(uploadSuccess).hide();
+                        dropzone.find(uploadWelcome).show();
                     }
                 });
             });
