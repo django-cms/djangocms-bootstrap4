@@ -48,23 +48,23 @@ TODO: currently we're always upscaling the image physically.
                 >
     {% if request.toolbar and request.toolbar.show_toolbar and request.toolbar.edit_mode %}
         {% if has_dnd_support %}
-                <span class="filer-dropzone-info-message js-filer-dropzone-info-message hidden">
+                <span class="filer-dropzone-info-message js-filer-dropzone-info-message" style="display: none">
                     <span class="filer-dropzone-icon"><span class="fa fa-cloud-upload"></span></span>
 
                     <span class="filer-dropzone-upload-welcome js-filer-dropzone-upload-welcome">
                         <span class="text">{% trans 'Drop your file to change image:' %}</span>
                     </span>
 
-                    <span class="filer-dropzone-upload-info js-filer-dropzone-upload-info hidden">
+                    <span class="filer-dropzone-upload-info js-filer-dropzone-upload-info" style="display: none">
                         <span class="js-filer-dropzone-file-name filer-dropzone-file-name"></span>
                         <span class="filer-dropzone-progress js-filer-dropzone-progress"></span>
                     </span>
 
-                    <span class="js-filer-dropzone-upload-success hidden">
+                    <span class="js-filer-dropzone-upload-success" style="display: none">
                         {% trans 'Upload success!' %}
                     </span>
                 </span>
-                <span class="filer-dropzone-error-message js-filer-dropzone-error-message hidden">
+                <span class="filer-dropzone-error-message js-filer-dropzone-error-message" style="display: none">
                     <span class="icon"><span class="fa fa-cloud-upload"></span></span>
                     <span class="js-filer-dropzone-upload-accept filer-dropzone-text">
                         {% trans 'Error! Files of this type are not accepted.' %}
