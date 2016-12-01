@@ -10,6 +10,9 @@ Changelog
   styles already on the page
 * Fixed an issue with dropzone strings visible inside djangocms-text-ckeditor
   image preview under certain circumstances
+* Added test framework
+* Adapted root files such as ``README``, ``CHANGELOG``, ``setup.py`` and others
+  to conform with other core addons such as django CMS Picture
 
 
 1.1.2 (2016-09-05)
