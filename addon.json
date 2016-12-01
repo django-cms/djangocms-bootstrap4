@@ -2,9 +2,5 @@
     "package-name": "aldryn-bootstrap3",
     "installed-apps": [
         "aldryn_bootstrap3"
-    ],
-    "protected": [
-        "templates/*",
-        "static/*"
     ]
 }

@@ -1,16 +1,19 @@
-CHANGELOG
+=========
+Changelog
 =========
 
-1.1.3 (Unreleased)
-------------------
+
+1.1.3 (unreleased)
+==================
 
 * Fixed an issue with collapse styles from image plugin overriding bootstrap
   styles already on the page
 * Fixed an issue with dropzone strings visible inside djangocms-text-ckeditor
   image preview under certain circumstances
 
+
 1.1.2 (2016-09-05)
-------------------
+==================
 
 * Let attributes field be optional
 * Fixed styling issues with attributes field
@@ -28,14 +31,14 @@ CHANGELOG
 
 
 1.1.1 (2016-07-05)
-------------------
+==================
 
 * Pinned djangocms-attributes-field v0.1.0
 * Fixed issue with template
 
 
 1.1.0 (2016-06-20)
-------------------
+==================
 
 * Added support for arbitrary attributes on link tags
 * Fixed a Python 3 incompatibility
@@ -43,25 +46,29 @@ CHANGELOG
 * Added a "change" event trigger when changing bootstrap style for multiple
   plugins
 
+
 1.0.10 (2016-04-27)
--------------------
+===================
 
 * Removes spaces before and after link
 * Fixes drag and drop image view in edit mode for xplorer
 * Updates upload info box styles
 
+
 1.0.9 (2016-03-16)
-------------------
+==================
 
 * Removes unnecessary `cache = False` from plugins
 
+
 1.0.8 (2016-02-22)
-------------------
+==================
 
 * Add drag-n-drop for image plugin in content mode
 
+
 1.0.7 (2016-01-13)
-------------------
+==================
 
 * Remove imagePlugin reference
 * Add drag and drop support for image plugin in content mode
@@ -69,8 +76,9 @@ CHANGELOG
 * Fix name display for file plugin
 * Add original image checkbox
 
+
 1.0.6 (2015-12-14)
-------------------
+==================
 
 * Allow children in link plugin
 * Make image in carousel slide plugin mandatory
@@ -78,38 +86,44 @@ CHANGELOG
 * Replace `xrange` with `range`
 * Remove preview for image
 
+
 1.0.5 (2015-11-26)
-------------------
+==================
 
 * Upload correct version
 
+
 1.0.4 (2015-11-24)
-------------------
+==================
 
 * Move extra width and height for image to advanced section
 * Change how image label is retrieved (fixes nonexistent image issue)
 
+
 1.0.3 (2015-11-19)
-------------------
+==================
 
 * Fixed an issue with links not rendering target
 * Fixed an issue with links rendering empty class attribute
 * Enhance display of image name in structure board
 
+
 1.0.2 (2015-11-17)
-------------------
+==================
 
 * Adds static folder to include in MANIFEST.in
 
+
 1.0.1 (2015-11-17)
-------------------
+==================
 
 * Fixes preview display for all plugins and widgets
 * Implement icons for text_enabled plugins
 * Add width and height configuration to image plugin
 * Code cleanup
 
+
 1.0.0 (2015-11-03)
-------------------
+==================
 
 * Initial release
