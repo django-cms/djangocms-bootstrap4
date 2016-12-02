@@ -1,0 +1,8 @@
+[main]
+host = https://www.transifex.com
+
+[aldryn-bootstrap3.aldryn_bootstrap3]
+file_filter = aldryn_bootstrap3/locale/<lang>/LC_MESSAGES/django.po
+source_file = aldryn_bootstrap3/locale/en/LC_MESSAGES/django.po
+source_lang = en
+type = PO

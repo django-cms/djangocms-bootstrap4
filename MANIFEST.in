@@ -1,2 +1,6 @@
-recursive-include aldryn_bootstrap3/templates *
+include LICENSE.txt
+include README.rst
+recursive-include aldryn_bootstrap3/locale *
 recursive-include aldryn_bootstrap3/static *
+recursive-include aldryn_bootstrap3/templates *
+recursive-exclude * *.py[co]

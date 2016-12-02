@@ -1,0 +1,6 @@
+# requirements from setup.py
+djangocms-text-ckeditor
+# other requirements
+djangocms-helper>=0.9.2,<0.10
+tox
+coverage
