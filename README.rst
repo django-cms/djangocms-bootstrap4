@@ -109,7 +109,7 @@ You can run tests by executing::
 
 .. |pypi| image:: https://badge.fury.io/py/aldryn-bootstrap3.svg
     :target: http://badge.fury.io/py/aldryn-bootstrap3
-.. |build| image:: https://travis-ci.org/divio/aldryn-bootstrap3.svg?branch=master
-    :target: https://travis-ci.org/divio/aldryn-bootstrap3
-.. |coverage| image:: https://codecov.io/gh/divio/aldryn-bootstrap3/branch/master/graph/badge.svg
-    :target: https://codecov.io/gh/divio/aldryn-bootstrap3
+.. |build| image:: https://travis-ci.org/aldryn/aldryn-bootstrap3.svg?branch=master
+    :target: https://travis-ci.org/aldryn/aldryn-bootstrap3
+.. |coverage| image:: https://codecov.io/gh/aldryn/aldryn-bootstrap3/branch/master/graph/badge.svg
+    :target: https://codecov.io/gh/aldryn/aldryn-bootstrap3
