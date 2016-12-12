@@ -1,9 +1,34 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals, absolute_import
+
 from django.utils.translation import ugettext_lazy as _
+
 from .conf import settings
 
-CONTEXT_CHOICES = (
+
+"""
+Changable constants, overriden through settings
+"""
+# TODO make sure they are covered by README / Divio Cloud
+GRID_SIZE = settings.ALDRYN_BOOTSTRAP3_GRID_SIZE
+
+
+"""
+Fixed constants, not influenced by settings
+"""
+DEVICE_CHOICES = (
+    ('xs', _('Tiny')),
+    ('sm', _('Small')),
+    ('md', _('Medium')),
+    ('lg', _('Large')),
+)
+
+DEVICE_SIZES = tuple([size for size, name in DEVICE_CHOICES])
+
+
+
+
+CHOICES = (
     ('primary', 'Primary',),
     ('success', 'Success',),
     ('info', 'Info',),
@@ -103,16 +128,6 @@ for device in DEVICES:
     device['size_name'] = dict(SIZE_CHOICES).get(identifier)
 
 DEVICE_DICT = {device['identifier']: device for device in DEVICES}
-
-DEVICE_CHOICES = (
-    ('xs', _("Tiny")),
-    ('sm', _("Small")),
-    ('md', _("Medium")),
-    ('lg', _("Large")),
-)
-DEVICE_SIZES = tuple([size for size, name in DEVICE_CHOICES])
-
-GRID_SIZE = settings.ALDRYN_BOOTSTRAP3_GRID_SIZE
 
 
 ASPECT_RATIOS = (

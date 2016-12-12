@@ -1,11 +1,83 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals, absolute_import
+
 from six import with_metaclass
+from functools import partial
+
 import django.core.exceptions
 import django.db.models
 import django.forms
+
+from django.db import models
+from django.utils.translation import ugettext, ugettext_lazy as _
 from django.utils.encoding import smart_text
+
+from cms.models.pluginmodel import CMSPlugin
+
 from . import fields
+
+
+# Fieldset setup used specifically for the link
+link_fieldset = (
+    ('Link', {
+        'fields': (
+            'link_page',
+            'link_file',
+            'link_url',
+            'link_mailto',
+            'link_phone',
+        ),
+        'description': 'Choose one of the link types below.',
+    }),
+    ('Link options', {
+        'fields': (
+            ('link_target', 'link_anchor',),
+        ),
+    }),
+)
+
+
+# Add an app namespace to related_name to avoid field name clashes
+# with any other plugins that have a field with the same name as the
+# lowercase of the class name of this model.
+# https://github.com/divio/django-cms/issues/5030
+CMSPluginField = partial(
+    models.OneToOneField,
+    to=CMSPlugin,
+    related_name='%(app_label)s_%(class)s',
+    parent_link=True,
+)
+
+
+"""
+Used in:
+- Bootstrap3RowPlugin, Bootstrap3ColumnPlugin
+"""
+class Classes(django.db.models.TextField):
+    default_field_class = fields.Classes
+    south_field_class = 'django.db.models.fields.TextField'
+
+    def __init__(self, *args, **kwargs):
+        if 'verbose_name' not in kwargs:
+            kwargs['verbose_name'] = _('Classes')
+        if 'blank' not in kwargs:
+            kwargs['blank'] = True
+        if 'default' not in kwargs:
+            kwargs['default'] = ''
+        if 'help_text' not in kwargs:
+            kwargs['help_text'] = _('Space separated classes that are added to '
+                'the class. See <a href="http://getbootstrap.com/css/" '
+                'target="_blank">Bootstrap 3 documentation</a>.')
+        super(Classes, self).__init__(*args, **kwargs)
+
+    def formfield(self, **kwargs):
+        defaults = {
+            'form_class': self.default_field_class,
+        }
+        defaults.update(kwargs)
+        return super(Classes, self).formfield(**defaults)
+
+
 
 
 class SouthMixinBase(object):
@@ -27,33 +99,8 @@ class SouthCharFieldMixin(SouthMixinBase):
     south_field_class = "django.db.models.fields.CharField"
 
 
-class SouthTextFieldMixin(SouthMixinBase):
-    south_field_class = "django.db.models.fields.TextField"
-
-
 class SouthIntegerFieldMixin(SouthMixinBase):
     south_field_class = "django.db.models.fields.IntegerField"
-
-
-class Classes(django.db.models.TextField, SouthTextFieldMixin):
-    # TODO: validate
-    default_field_class = fields.Classes
-
-    def __init__(self, *args, **kwargs):
-        if 'blank' not in kwargs:
-            kwargs['blank'] = True
-        if 'default' not in kwargs:
-            kwargs['default'] = ''
-        if 'help_text' not in kwargs:
-            kwargs['help_text'] = 'space separated classes that are added to the class. see <a href="http://getbootstrap.com/css/" target="_blank">bootstrap docs</a>'
-        super(Classes, self).__init__(*args, **kwargs)
-
-    def formfield(self, **kwargs):
-        defaults = {
-            'form_class': self.default_field_class,
-        }
-        defaults.update(kwargs)
-        return super(Classes, self).formfield(**defaults)
 
 
 class Context(django.db.models.fields.CharField, SouthCharFieldMixin):
@@ -149,8 +196,9 @@ class IntegerField(django.db.models.IntegerField, SouthIntegerFieldMixin):
         return super(IntegerField, self).formfield(**defaults)
 
 
-class MiniText(django.db.models.TextField, SouthTextFieldMixin):
+class MiniText(django.db.models.TextField):
     default_field_class = fields.MiniText
+    south_field_class = "django.db.models.fields.TextField"
 
     def __init__(self, *args, **kwargs):
         if 'blank' not in kwargs:
@@ -193,10 +241,6 @@ class LinkOrButton(django.db.models.fields.CharField, SouthCharFieldMixin):
         if '' in dict(self.choices).keys():
             kwargs['include_blank'] = False
         return super(LinkOrButton, self).get_choices(**kwargs)
-
-
-# class JSONField(json_field.JSONField, SouthTextFieldMixin):
-#     pass
 
 
 class Responsive(MiniText):

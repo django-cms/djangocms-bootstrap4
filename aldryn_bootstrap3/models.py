@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals, absolute_import
 
-from functools import partial
+import os
 import collections
+
+from functools import partial
 
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
@@ -24,18 +26,185 @@ import filer.fields.folder
 from . import model_fields, constants, utils
 
 
-##########
-# Mixins #  do NOT use outside of this package!
-##########  Because changes here might require Database migrations!
-import os
+"""
+CSS - Grid system: "Row" Plugin
+http://getbootstrap.com/css/#grid
+"""
+@python_2_unicode_compatible
+class Bootstrap3RowPlugin(CMSPlugin):
+    classes = model_fields.Classes()
+    attributes = AttributesField(
+        verbose_name=_('Attributes'),
+        blank=True,
+    )
+
+    cmsplugin_ptr = model_fields.CMSPluginField()
+
+    def __str__(self):
+        return str(self.pk)
+
+    def get_short_description(self):
+        instance = self.get_plugin_instance()[0]
+
+        if not instance:
+            return ugettext('<empty>')
+
+        column_count = len(self.child_plugin_instances or [])
+        column_count_str = ungettext(
+            '1 column',
+            '%(count)i columns',
+            column_count
+        ) % {'count': column_count}
+
+        if self.classes:
+            return '{} ({})'.format(
+                self.classes,
+                column_count_str
+            )
+        return column_count_str
 
 
-CMSPluginField = partial(
-    models.OneToOneField,
-    to=CMSPlugin,
-    related_name='+',
-    parent_link=True,
+"""
+CSS - Grid system: "Column" Plugin
+http://getbootstrap.com/css/#grid
+"""
+@python_2_unicode_compatible
+class Bootstrap3ColumnPlugin(CMSPlugin):
+    classes = model_fields.Classes()
+    attributes = AttributesField(
+        verbose_name=_('Attributes'),
+        blank=True,
+    )
+    tag = models.SlugField(
+        verbose_name=_('Tag'),
+        default='div',
+    )
+
+    cmsplugin_ptr = model_fields.CMSPluginField()
+
+    def __str__(self):
+        txt = ' '.join([self.get_column_classes(), self.classes])
+        if self.tag != 'div':
+            txt = '{} ({})'.format(txt, self.tag)
+        return txt
+
+    def get_class(self, device, element):
+        size = getattr(self, '{}_{}'.format(device, element), None)
+        if size is not None:
+            if element == 'col':
+                return 'col-{}-{}'.format(device, size)
+            else:
+                return 'col-{}-{}-{}'.format(device, element, size)
+        return ''
+
+    def get_column_classes(self):
+        classes = []
+        for device in constants.DEVICE_SIZES:
+            for element in ('col', 'offset', 'push', 'pull'):
+                classes.append(self.get_class(device, element))
+        return ' '.join(cls for cls in classes if cls)
+
+
+ColSizeField = partial(
+    model_fields.IntegerField,
+    null=True,
+    blank=True,
+    default=None,
+    min_value=1,
+    max_value=constants.GRID_SIZE
 )
+
+OffsetSizeField = partial(
+    model_fields.IntegerField,
+    null=True,
+    blank=True,
+    default=None,
+    min_value=0,
+    max_value=constants.GRID_SIZE
+)
+
+PushSizeField = partial(
+    model_fields.IntegerField,
+    null=True,
+    blank=True,
+    default=None,
+    min_value=0,
+    max_value=constants.GRID_SIZE
+)
+
+PullSizeField = partial(
+    model_fields.IntegerField,
+    null=True,
+    blank=True,
+    default=None,
+    min_value=0,
+    max_value=constants.GRID_SIZE
+)
+
+for size, name in constants.DEVICE_CHOICES:
+    Bootstrap3ColumnPlugin.add_to_class(
+        '{}_col'.format(size),
+        ColSizeField(verbose_name=_('col-{}-'.format(size))),
+    )
+    Bootstrap3ColumnPlugin.add_to_class(
+        '{}_offset'.format(size),
+        OffsetSizeField(verbose_name=_('offset-'.format(size))),
+    )
+    Bootstrap3ColumnPlugin.add_to_class(
+        '{}_push'.format(size),
+        PushSizeField(verbose_name=_('push-'.format(size))),
+    )
+    Bootstrap3ColumnPlugin.add_to_class(
+        '{}_pull'.format(size),
+        PullSizeField(verbose_name=_('pull-'.format(size))),
+    )
+
+
+"""
+CSS - Typography: Blockquote Plugin
+http://getbootstrap.com/css/#type-blockquotes
+"""
+@python_2_unicode_compatible
+class Boostrap3BlockquotePlugin(CMSPlugin):
+    reverse = models.BooleanField(
+        verbose_name=_('Reverse quote'),
+        default=False,
+        blank=True,
+        help_text=_('Reversing the position by adding the Bootstrap 3 '
+                    '"blockquote-reverse" class.'),
+    )
+    classes = model_fields.Classes()
+    attributes = AttributesField(
+        verbose_name=_('Attributes'),
+        blank=True,
+    )
+
+    cmsplugin_ptr = model_fields.CMSPluginField()
+
+    def __str__(self):
+        if self.reverse:
+            return '.blockquote-reverse'
+        return ''
+
+
+"""
+CSS - Typography: Cite Plugin
+http://getbootstrap.com/css/#type-blockquotes
+"""
+@python_2_unicode_compatible
+class Boostrap3CitePlugin(CMSPlugin):
+    classes = model_fields.Classes()
+    attributes = AttributesField(
+        verbose_name=_('Attributes'),
+        blank=True,
+    )
+
+    cmsplugin_ptr = model_fields.CMSPluginField()
+
+    def __str__(self):
+        return ''
+
+
 
 
 class LinkMixin(models.Model):
@@ -103,7 +272,7 @@ class LinkMixin(models.Model):
 
 @python_2_unicode_compatible
 class Boostrap3ButtonPlugin(CMSPlugin, LinkMixin):
-    cmsplugin_ptr = CMSPluginField()
+    cmsplugin_ptr = model_fields.CMSPluginField()
     excluded_attr_keys = ['class', 'href', 'target', ]
 
     label = models.CharField(
@@ -147,20 +316,11 @@ class Boostrap3ButtonPlugin(CMSPlugin, LinkMixin):
         return self.label
 
 
-@python_2_unicode_compatible
-class Boostrap3BlockquotePlugin(CMSPlugin):
-    cmsplugin_ptr = CMSPluginField()
-
-    reverse = models.BooleanField(default=False, blank=True)
-    classes = model_fields.Classes()
-
-    def __str__(self):
-        return 'Blockquote: '
 
 
 @python_2_unicode_compatible
 class Boostrap3IconPlugin(CMSPlugin):
-    cmsplugin_ptr = CMSPluginField()
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     icon = model_fields.Icon(blank=False)
 
@@ -172,7 +332,7 @@ class Boostrap3IconPlugin(CMSPlugin):
 
 @python_2_unicode_compatible
 class Boostrap3LabelPlugin(CMSPlugin):
-    cmsplugin_ptr = CMSPluginField()
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     label = models.CharField(
         _("label"),
@@ -194,7 +354,7 @@ class Boostrap3LabelPlugin(CMSPlugin):
 
 @python_2_unicode_compatible
 class Boostrap3WellPlugin(CMSPlugin):
-    cmsplugin_ptr = CMSPluginField()
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     size = model_fields.Size()
 
@@ -206,7 +366,7 @@ class Boostrap3WellPlugin(CMSPlugin):
 
 @python_2_unicode_compatible
 class Boostrap3AlertPlugin(CMSPlugin):
-    cmsplugin_ptr = CMSPluginField()
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     context = model_fields.Context()
     icon = model_fields.Icon()
@@ -227,7 +387,7 @@ def compute_aspect_ratio(image):
 
 @python_2_unicode_compatible
 class Boostrap3ImagePlugin(CMSPlugin):
-    cmsplugin_ptr = CMSPluginField()
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     file = filer.fields.image.FilerImageField(
         verbose_name=_("file"),
@@ -352,7 +512,7 @@ class Boostrap3ImagePlugin(CMSPlugin):
 
 @python_2_unicode_compatible
 class Boostrap3SpacerPlugin(CMSPlugin):
-    cmsplugin_ptr = CMSPluginField()
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     size = model_fields.Size()
 
@@ -364,7 +524,7 @@ class Boostrap3SpacerPlugin(CMSPlugin):
 
 @python_2_unicode_compatible
 class Bootstrap3FilePlugin(CMSPlugin):
-    cmsplugin_ptr = CMSPluginField()
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     file = filer.fields.file.FilerFileField(
         verbose_name=_("file"),
@@ -404,7 +564,7 @@ class Bootstrap3FilePlugin(CMSPlugin):
 
 @python_2_unicode_compatible
 class Boostrap3PanelPlugin(CMSPlugin):
-    cmsplugin_ptr = CMSPluginField()
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     context = model_fields.Context(
         choices=constants.PANEL_CONTEXT_CHOICES,
@@ -420,7 +580,7 @@ class Boostrap3PanelPlugin(CMSPlugin):
 
 @python_2_unicode_compatible
 class Boostrap3PanelHeadingPlugin(CMSPlugin):
-    cmsplugin_ptr = CMSPluginField()
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     title = model_fields.MiniText(
         _("title"),
@@ -437,7 +597,7 @@ class Boostrap3PanelHeadingPlugin(CMSPlugin):
 
 @python_2_unicode_compatible
 class Boostrap3PanelBodyPlugin(CMSPlugin):
-    cmsplugin_ptr = CMSPluginField()
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     classes = model_fields.Classes()
 
@@ -447,7 +607,7 @@ class Boostrap3PanelBodyPlugin(CMSPlugin):
 
 @python_2_unicode_compatible
 class Boostrap3PanelFooterPlugin(CMSPlugin):
-    cmsplugin_ptr = CMSPluginField()
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     classes = model_fields.Classes()
 
@@ -459,117 +619,6 @@ class Boostrap3PanelFooterPlugin(CMSPlugin):
 # Grid #
 ########
 
-ColSizeField = partial(
-    model_fields.IntegerField,
-    null=True,
-    blank=True,
-    default=None,
-    min_value=1,
-    max_value=constants.GRID_SIZE
-)
-
-OffsetSizeField = partial(
-    model_fields.IntegerField,
-    null=True,
-    blank=True,
-    default=None,
-    min_value=0,
-    max_value=constants.GRID_SIZE
-)
-
-PushSizeField = partial(
-    model_fields.IntegerField,
-    null=True,
-    blank=True,
-    default=None,
-    min_value=0,
-    max_value=constants.GRID_SIZE
-)
-
-PullSizeField = partial(
-    model_fields.IntegerField,
-    null=True,
-    blank=True,
-    default=None,
-    min_value=0,
-    max_value=constants.GRID_SIZE
-)
-
-
-class Bootstrap3RowPlugin(CMSPlugin):
-    cmsplugin_ptr = CMSPluginField()
-    classes = model_fields.Classes()
-
-    def get_short_description(self):
-        instance = self.get_plugin_instance()[0]
-
-        if not instance:
-            return ugettext("<Empty>")
-
-        column_count = len(self.child_plugin_instances or [])
-        column_count_str = ungettext(
-            "1 column",
-            "%(count)i columns",
-            column_count
-        ) % {'count': column_count}
-
-        if self.classes:
-            return "{} ({})".format(
-                self.classes,
-                column_count_str
-            )
-        return column_count_str
-
-
-@python_2_unicode_compatible
-class Bootstrap3ColumnPlugin(CMSPlugin):
-    DEVICE_CHOICES = constants.DEVICE_CHOICES
-    DEVICE_SIZES = constants.DEVICE_SIZES
-
-    cmsplugin_ptr = CMSPluginField()
-    classes = model_fields.Classes()
-    tag = models.SlugField(default='div')
-
-    def __str__(self):
-        txt = ' '.join([self.get_column_classes(), self.classes])
-        if self.tag != 'div':
-            txt = '{} ({})'.format(txt, self.tag)
-        return txt
-
-    def get_class(self, device, element):
-        size = getattr(self, '{}_{}'.format(device, element), None)
-        if size is not None:
-            if element == 'col':
-                return 'col-{}-{}'.format(device, size)
-            else:
-                return 'col-{}-{}-{}'.format(device, element, size)
-        return ''
-
-    def get_column_classes(self):
-        classes = []
-        for device in self.DEVICE_SIZES:
-            for element in ('col', 'offset', 'push', 'pull'):
-                classes.append(self.get_class(device, element))
-        return ' '.join(cls for cls in classes if cls)
-
-
-for size, name in constants.DEVICE_CHOICES:
-    Bootstrap3ColumnPlugin.add_to_class(
-        '{}_col'.format(size),
-        ColSizeField(verbose_name=_('col-{}-'.format(size))),
-    )
-    Bootstrap3ColumnPlugin.add_to_class(
-        '{}_offset'.format(size),
-        OffsetSizeField(verbose_name=_('offset-'.format(size))),
-    )
-    Bootstrap3ColumnPlugin.add_to_class(
-        '{}_push'.format(size),
-        PushSizeField(verbose_name=_('push-'.format(size))),
-    )
-    Bootstrap3ColumnPlugin.add_to_class(
-        '{}_pull'.format(size),
-        PullSizeField(verbose_name=_('pull-'.format(size))),
-    )
 
 
 
@@ -578,7 +627,7 @@ for size, name in constants.DEVICE_CHOICES:
 #############
 
 class Bootstrap3AccordionPlugin(CMSPlugin):
-    cmsplugin_ptr = CMSPluginField()
+    cmsplugin_ptr = model_fields.CMSPluginField()
     index = models.PositiveIntegerField(
         _('index'), null=True, blank=True,
         help_text=_('index of element that should be opened on page load '
@@ -602,7 +651,7 @@ class Bootstrap3AccordionPlugin(CMSPlugin):
 
 @python_2_unicode_compatible
 class Bootstrap3AccordionItemPlugin(CMSPlugin):
-    cmsplugin_ptr = CMSPluginField()
+    cmsplugin_ptr = model_fields.CMSPluginField()
     title = model_fields.MiniText(
         _("title"),
         blank=True,
@@ -625,7 +674,7 @@ class Bootstrap3AccordionItemPlugin(CMSPlugin):
 #############
 
 class Bootstrap3ListGroupPlugin(CMSPlugin):
-    cmsplugin_ptr = CMSPluginField()
+    cmsplugin_ptr = model_fields.CMSPluginField()
     classes = model_fields.Classes()
     add_list_group_class = models.BooleanField(
         verbose_name='class: list-group',
@@ -651,7 +700,7 @@ class Bootstrap3ListGroupPlugin(CMSPlugin):
 
 @python_2_unicode_compatible
 class Bootstrap3ListGroupItemPlugin(CMSPlugin):
-    cmsplugin_ptr = CMSPluginField()
+    cmsplugin_ptr = model_fields.CMSPluginField()
     title = model_fields.MiniText(
         _("title"),
         blank=True,
@@ -694,7 +743,7 @@ class Bootstrap3CarouselPlugin(CMSPlugin):
         ('slide', _('Slide')),
     )
 
-    cmsplugin_ptr = CMSPluginField()
+    cmsplugin_ptr = model_fields.CMSPluginField()
     style = models.CharField(
         _('Style'),
         choices=STYLE_CHOICES + utils.get_additional_styles(),
@@ -799,7 +848,7 @@ class Bootstrap3CarouselPlugin(CMSPlugin):
 @python_2_unicode_compatible
 class Bootstrap3CarouselSlidePlugin(CMSPlugin, LinkMixin):
     excluded_attr_keys = ['class', 'href', 'target', ]
-    cmsplugin_ptr = CMSPluginField()
+    cmsplugin_ptr = model_fields.CMSPluginField()
     image = filer.fields.image.FilerImageField(
         verbose_name=_('image'),
         blank=False,
@@ -846,7 +895,7 @@ class Bootstrap3CarouselSlidePlugin(CMSPlugin, LinkMixin):
 
 @python_2_unicode_compatible
 class Bootstrap3CarouselSlideFolderPlugin(CMSPlugin):
-    cmsplugin_ptr = CMSPluginField()
+    cmsplugin_ptr = model_fields.CMSPluginField()
     folder = filer.fields.folder.FilerFolderField(
         verbose_name=_('folder'),
     )

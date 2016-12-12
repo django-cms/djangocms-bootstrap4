@@ -19,154 +19,247 @@ try:
     from filer.admin.clipboardadmin import ajax_upload as filer_ajax_upload
 except ImportError:
     filer_ajax_upload = None
-    warnings.warn("Drag and drop functionality is not avalable. "
-                  "Please update to django-filer>=1.1.1",
+    warnings.warn('Drag and drop functionality is not avalable. '
+                  'Please update to django-filer>=1.1.1',
                   Warning)
 
+from .model_fields import link_fieldset
 from . import models, forms, constants
 
-link_fieldset = (
-    ('Link', {
-        'fields': (
-            'link_page', 'link_file', 'link_url', 'link_mailto', 'link_phone',
-        ),
-        'description': 'Choose one of the link types below.',
-    }),
-    ('Link options', {
-        'fields': (
-            ('link_target', 'link_anchor',),
-        ),
-    }),
-)
+
+"""
+CSS - http://getbootstrap.com/css/
+Global CSS settings, fundamental HTML elements styled and enhanced with
+extensible classes, and an advanced grid system.
+
+The following components are implemented:
+
+[✓] Grid
+[✓] Typography
+    [✓] Blockquote and Cite
+    [✓] CKEditor styles (js/ckeditor.js)
+    [✓] Forms (use aldryn-forms)
+    [x] Buttons
+    [x] Image
+    [ ] Responsive utilities
+[ ] Code (plugin) Code Inline/User input/Basic block/Variables/Sample output
+[ ] Forms
+[ ] Buttons
+[ ] Images
+[ ] Helper classes
+[ ] Responsive utilities
+"""
 
 
-#################
-# Basic Plugins #
-#################
+"""
+CSS - Grid system: "Row" Plugin
+http://getbootstrap.com/css/#grid
+"""
+class Bootstrap3RowCMSPlugin(CMSPluginBase):
+    model = models.Bootstrap3RowPlugin
+    name = _('Row')
+    module = _('Bootstrap 3')
+    form = forms.RowPluginForm
+    change_form_template = 'admin/aldryn_bootstrap3/plugins/row/change_form.html'
+    render_template = 'aldryn_bootstrap3/plugins/row.html'
+    allow_children = True
+    child_classes = ['Bootstrap3ColumnCMSPlugin']
+
+    fieldsets = [
+        (_('Create columns'), {
+            'fields': (
+                    'create',
+                ) + tuple([
+                (
+                    'create_{}_col'.format(size),
+                    'create_{}_offset'.format(size),
+                    'create_{}_push'.format(size),
+                    'create_{}_pull'.format(size),
+                ) for size in constants.DEVICE_SIZES
+            ])
+        }),
+        (_('Advanced settings'), {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+                'attributes',
+            )
+        }),
+    ]
+
+    def save_model(self, request, obj, form, change):
+        response = super(Bootstrap3RowCMSPlugin, self).save_model(request, obj, form, change)
+        data = form.cleaned_data
+        for x in range(int(data['create']) if data['create'] is not None else 0):
+            extra = {}
+            for size in constants.DEVICE_SIZES:
+                for element in ['col', 'offset', 'push', 'pull']:
+                    extra['{}_{}'.format(size, element)] = data.get(
+                        'create_{}_{}'.format(size, element)) or None
+            col = models.Bootstrap3ColumnPlugin(
+                parent=obj,
+                placeholder=obj.placeholder,
+                language=obj.language,
+                position=CMSPlugin.objects.filter(parent=obj).count(),
+                plugin_type=Bootstrap3ColumnCMSPlugin.__name__,
+                **extra
+            )
+            col.save()
+        return response
 
 
+"""
+CSS - Grid system: "Column" Plugin
+http://getbootstrap.com/css/#grid
+"""
+class Bootstrap3ColumnCMSPlugin(CMSPluginBase):
+    model = models.Bootstrap3ColumnPlugin
+    name = _('Column')
+    module = _('Bootstrap 3')
+    form = forms.ColumnPluginForm
+    change_form_template = 'admin/aldryn_bootstrap3/plugins/column/change_form.html'
+    render_template = 'aldryn_bootstrap3/plugins/column.html'
+    allow_children = True
+    parent_classes = ['Bootstrap3RowCMSPlugin']
+
+    fieldsets = [
+        (_('Adapt columns'), {
+            'fields': tuple([
+                (
+                    '{}_col'.format(size),
+                    '{}_offset'.format(size),
+                    '{}_push'.format(size),
+                    '{}_pull'.format(size),
+                ) for size in constants.DEVICE_SIZES
+            ])
+        }),
+        (_('Advanced settings'), {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+                'attributes',
+                'tag',
+            )
+        }),
+    ]
+
+
+plugin_pool.register_plugin(Bootstrap3RowCMSPlugin)
+plugin_pool.register_plugin(Bootstrap3ColumnCMSPlugin)
+
+
+"""
+CSS - Typography: Blockquote Plugin
+http://getbootstrap.com/css/#type-blockquotes
+"""
 class Bootstrap3BlockquoteCMSPlugin(CMSPluginBase):
     model = models.Boostrap3BlockquotePlugin
-    name = _("Blockquote")
-    module = _('Bootstrap3')
-    change_form_template = 'admin/aldryn_bootstrap3/base.html'
+    name = _('Blockquote')
+    module = _('Bootstrap 3')
     render_template = 'aldryn_bootstrap3/plugins/blockquote.html'
     allow_children = True
 
+    fieldsets = [
+        (None, {
+            'fields': (
+                'reverse',
+            )
+        }),
+        (_('Advanced settings'), {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+                'attributes',
+            )
+        }),
+    ]
+
+
+"""
+CSS - Typography: Cite Plugin
+http://getbootstrap.com/css/#type-blockquotes
+"""
+class Bootstrap3CiteCMSPlugin(CMSPluginBase):
+    model = models.Boostrap3CitePlugin
+    name = _('Cite')
+    module = _('Bootstrap 3')
+    render_template = 'aldryn_bootstrap3/plugins/cite.html'
+    allow_children = True
+    # even though we can make this accessible by all means, we only want
+    # to restrict it to the blockquote plugin for now
+    require_parent = True
+    parent_classes = ['Bootstrap3BlockquoteCMSPlugin']
+
+    fieldsets = [
+        (None, {
+            'fields': ()
+        }),
+        (_('Advanced settings'), {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+                'attributes',
+            )
+        }),
+    ]
+
 
 plugin_pool.register_plugin(Bootstrap3BlockquoteCMSPlugin)
+plugin_pool.register_plugin(Bootstrap3CiteCMSPlugin)
 
 
-class Bootstrap3IconCMSPlugin(CMSPluginBase):
-    model = models.Boostrap3IconPlugin
-    name = _("Icon")
-    module = _('Bootstrap3')
-    change_form_template = 'admin/aldryn_bootstrap3/base.html'
-    render_template = 'aldryn_bootstrap3/plugins/icon.html'
-    text_enabled = True
+"""
+CSS Section
 
-    fieldsets = (
-        (None, {'fields': (
-            'icon',
-        )}),
-        ('Advanced', {
-            'classes': ('collapse',),
-            'fields': (
-                'classes',
-            ),
-        }),
-    )
+Components Section
+[ ] Glyphicons
+[ ] Dropdowns
+[ ] Button Groups
+[ ] Button Dropdowns
+[ ] Input Groups
+[ ] Navs
+[ ] Navbar
+[ ] Breadcrumbs
+[ ] Pagination
+[ ] Labels
+[ ] Badges
+[ ] Jumbotron
+[ ] Page header
+[ ] Thumbnails
+[ ] Alerts
+[ ] Progress Bars
+[ ] Media object
+[ ] List Group
+[ ] Panels
+[ ] Responsive embed
+[ ] Wells
+"""
 
-    def icon_src(self, instance):
-        return static('aldryn_bootstrap3/img/type/icon.png')
-
-
-plugin_pool.register_plugin(Bootstrap3IconCMSPlugin)
-
-
-class Bootstrap3LabelCMSPlugin(CMSPluginBase):
-    model = models.Boostrap3LabelPlugin
-    form = forms.Boostrap3LabelPluginForm
-    name = _("Label")
-    module = _('Bootstrap3')
-    change_form_template = 'admin/aldryn_bootstrap3/plugins/label/change_form.html'
-    render_template = 'aldryn_bootstrap3/plugins/label.html'
-    text_enabled = True
-
-    fieldsets = (
-        (None, {'fields': (
-            'label',
-            'context',
-        )}),
-        ('Advanced', {
-            'classes': ('collapse',),
-            'fields': (
-                'classes',
-            ),
-        }),
-    )
-
-    def icon_src(self, instance):
-        return static('aldryn_bootstrap3/img/type/label.png')
+"""
+JavaScript Section
+[ ] Transitions
+[ ] Modal
+[ ] Dropdowns
+[ ] Scrollspy
+[ ] Tab
+[ ] Tooltip
+[ ] Popover
+[ ] Alert
+[ ] Button
+[ ] Collapse
+[ ] Carousel
+[ ] Affix
+"""
 
 
-plugin_pool.register_plugin(Bootstrap3LabelCMSPlugin)
-
-
-class Bootstrap3WellCMSPlugin(CMSPluginBase):
-    model = models.Boostrap3WellPlugin
-    name = _("Well")
-    module = _('Bootstrap3')
-    change_form_template = 'admin/aldryn_bootstrap3/base.html'
-    render_template = 'aldryn_bootstrap3/plugins/well.html'
-    allow_children = True
-
-    fieldsets = (
-        (None, {'fields': (
-            'size',
-        )}),
-
-        ('Advanced', {
-            'classes': ('collapse',),
-            'fields': (
-                'classes',
-            ),
-        }),
-    )
-
-
-plugin_pool.register_plugin(Bootstrap3WellCMSPlugin)
-
-
-class Bootstrap3AlertCMSPlugin(CMSPluginBase):
-    model = models.Boostrap3AlertPlugin
-    name = _("Alert")
-    module = _('Bootstrap3')
-    change_form_template = 'admin/aldryn_bootstrap3/base.html'
-    render_template = 'aldryn_bootstrap3/plugins/alert.html'
-    allow_children = True
-
-    fieldsets = (
-        (None, {'fields': (
-            'context',
-            'icon',
-        )}),
-        ('Advanced', {
-            'classes': ('collapse',),
-            'fields': (
-                'classes',
-            ),
-        }),
-    )
-
-
-plugin_pool.register_plugin(Bootstrap3AlertCMSPlugin)
-
-
+"""
+CSS - Buttons: Link Plugin
+http://getbootstrap.com/css/#buttons
+"""
 class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
     model = models.Boostrap3ButtonPlugin
-    name = _("Link/Button")
-    module = _('Bootstrap3')
+    name = _('Link/Button')
+    module = _('Bootstrap 3')
     form = forms.LinkForm
     change_form_template = 'admin/aldryn_bootstrap3/plugins/button/change_form.html'
     render_template = 'aldryn_bootstrap3/plugins/button.html'
@@ -187,7 +280,7 @@ class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
             ),
         }),
     ) + link_fieldset + (
-        ('Advanced', {
+        ('Advanced settings', {
             'classes': ('collapse',),
             'fields': (
                 'classes',
@@ -205,10 +298,14 @@ class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
 plugin_pool.register_plugin(Bootstrap3ButtonCMSPlugin)
 
 
+"""
+CSS - Images: Image Plugin
+http://getbootstrap.com/css/#images
+"""
 class Bootstrap3ImageCMSPlugin(CMSPluginBase):
     model = models.Boostrap3ImagePlugin
-    name = _("Image")
-    module = _('Bootstrap3')
+    name = _('Image')
+    module = _('Bootstrap 3')
     change_form_template = 'admin/aldryn_bootstrap3/base.html'
     render_template = 'aldryn_bootstrap3/plugins/image.html'
     text_enabled = True
@@ -266,7 +363,6 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
 
     @csrf_exempt
     def ajax_upload(self, request, pk):
-
         """
         Handle drag-n-drop uploads.
 
@@ -299,10 +395,132 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
 plugin_pool.register_plugin(Bootstrap3ImageCMSPlugin)
 
 
+"""
+CSS - Typography: Button Plugin
+http://getbootstrap.com/css/#buttons
+"""
+
+
+
+
+
+
+
+
+class Bootstrap3IconCMSPlugin(CMSPluginBase):
+    model = models.Boostrap3IconPlugin
+    name = _("Icon")
+    module = _('Bootstrap 3')
+    change_form_template = 'admin/aldryn_bootstrap3/base.html'
+    render_template = 'aldryn_bootstrap3/plugins/icon.html'
+    text_enabled = True
+
+    fieldsets = (
+        (None, {'fields': (
+            'icon',
+        )}),
+        ('Advanced', {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+            ),
+        }),
+    )
+
+    def icon_src(self, instance):
+        return static('aldryn_bootstrap3/img/type/icon.png')
+
+
+plugin_pool.register_plugin(Bootstrap3IconCMSPlugin)
+
+
+class Bootstrap3LabelCMSPlugin(CMSPluginBase):
+    model = models.Boostrap3LabelPlugin
+    form = forms.Boostrap3LabelPluginForm
+    name = _("Label")
+    module = _('Bootstrap 3')
+    change_form_template = 'admin/aldryn_bootstrap3/plugins/label/change_form.html'
+    render_template = 'aldryn_bootstrap3/plugins/label.html'
+    text_enabled = True
+
+    fieldsets = (
+        (None, {'fields': (
+            'label',
+            'context',
+        )}),
+        ('Advanced', {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+            ),
+        }),
+    )
+
+    def icon_src(self, instance):
+        return static('aldryn_bootstrap3/img/type/label.png')
+
+
+plugin_pool.register_plugin(Bootstrap3LabelCMSPlugin)
+
+
+class Bootstrap3WellCMSPlugin(CMSPluginBase):
+    model = models.Boostrap3WellPlugin
+    name = _("Well")
+    module = _('Bootstrap 3')
+    change_form_template = 'admin/aldryn_bootstrap3/base.html'
+    render_template = 'aldryn_bootstrap3/plugins/well.html'
+    allow_children = True
+
+    fieldsets = (
+        (None, {'fields': (
+            'size',
+        )}),
+
+        ('Advanced', {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+            ),
+        }),
+    )
+
+
+plugin_pool.register_plugin(Bootstrap3WellCMSPlugin)
+
+
+class Bootstrap3AlertCMSPlugin(CMSPluginBase):
+    model = models.Boostrap3AlertPlugin
+    name = _("Alert")
+    module = _('Bootstrap 3')
+    change_form_template = 'admin/aldryn_bootstrap3/base.html'
+    render_template = 'aldryn_bootstrap3/plugins/alert.html'
+    allow_children = True
+
+    fieldsets = (
+        (None, {'fields': (
+            'context',
+            'icon',
+        )}),
+        ('Advanced', {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+            ),
+        }),
+    )
+
+
+plugin_pool.register_plugin(Bootstrap3AlertCMSPlugin)
+
+
+
+
+
+
 class Bootstrap3SpacerCMSPlugin(CMSPluginBase):
     model = models.Boostrap3SpacerPlugin
     name = _("Spacer")
-    module = _('Bootstrap3')
+    module = _('Bootstrap 3')
     change_form_template = 'admin/aldryn_bootstrap3/base.html'
     render_template = 'aldryn_bootstrap3/plugins/spacer.html'
     text_enabled = True
@@ -330,7 +548,7 @@ plugin_pool.register_plugin(Bootstrap3SpacerCMSPlugin)
 class Bootstrap3FileCMSPlugin(CMSPluginBase):
     model = models.Bootstrap3FilePlugin
     name = _("File")
-    module = _('Bootstrap3')
+    module = _('Bootstrap 3')
     change_form_template = 'admin/aldryn_bootstrap3/base.html'
     render_template = 'aldryn_bootstrap3/plugins/file.html'
     text_enabled = True
@@ -367,7 +585,7 @@ plugin_pool.register_plugin(Bootstrap3FileCMSPlugin)
 class Bootstrap3PanelCMSPlugin(CMSPluginBase):
     model = models.Boostrap3PanelPlugin
     name = _("Panel")
-    module = _('Bootstrap3')
+    module = _('Bootstrap 3')
     change_form_template = 'admin/aldryn_bootstrap3/base.html'
     render_template = 'aldryn_bootstrap3/plugins/panel.html'
     form = forms.PanelPluginBaseForm
@@ -424,7 +642,7 @@ plugin_pool.register_plugin(Bootstrap3PanelCMSPlugin)
 class Bootstrap3PanelHeadingCMSPlugin(CMSPluginBase):
     model = models.Boostrap3PanelHeadingPlugin
     name = _("Panel Heading")
-    module = _('Bootstrap3')
+    module = _('Bootstrap 3')
     change_form_template = 'admin/aldryn_bootstrap3/base.html'
     render_template = 'aldryn_bootstrap3/plugins/panel_heading.html'
     allow_children = True
@@ -449,7 +667,7 @@ plugin_pool.register_plugin(Bootstrap3PanelHeadingCMSPlugin)
 class Bootstrap3PanelBodyCMSPlugin(CMSPluginBase):
     model = models.Boostrap3PanelBodyPlugin
     name = _("Panel Body")
-    module = _('Bootstrap3')
+    module = _('Bootstrap 3')
     change_form_template = 'admin/aldryn_bootstrap3/base.html'
     render_template = 'aldryn_bootstrap3/plugins/panel_body.html'
     allow_children = True
@@ -474,7 +692,7 @@ plugin_pool.register_plugin(Bootstrap3PanelBodyCMSPlugin)
 class Bootstrap3PanelFooterCMSPlugin(CMSPluginBase):
     model = models.Boostrap3PanelFooterPlugin
     name = _("Panel Footer")
-    module = _('Bootstrap3')
+    module = _('Bootstrap 3')
     change_form_template = 'admin/aldryn_bootstrap3/base.html'
     render_template = 'aldryn_bootstrap3/plugins/panel_footer.html'
     allow_children = True
@@ -501,92 +719,6 @@ plugin_pool.register_plugin(Bootstrap3PanelFooterCMSPlugin)
 ########
 
 
-class Bootstrap3RowCMSPlugin(CMSPluginBase):
-    model = models.Bootstrap3RowPlugin
-    name = _('Row')
-    module = _('Bootstrap3')
-    change_form_template = 'admin/aldryn_bootstrap3/plugins/row/change_form.html'
-    render_template = 'aldryn_bootstrap3/plugins/row.html'
-    allow_children = True
-    child_classes = ['Bootstrap3ColumnCMSPlugin']
-    form = forms.RowPluginForm
-
-    fieldsets = [
-        ("Create Columns", {
-            # 'classes': ('collapse',),
-            'fields': (
-                    'create',
-                ) + tuple([
-                (
-                    'create_{}_col'.format(size),
-                    'create_{}_offset'.format(size),
-                    'create_{}_push'.format(size),
-                    'create_{}_pull'.format(size),
-                ) for size in constants.DEVICE_SIZES
-            ])
-        }),
-        ("Advanced", {
-            'classes': ('collapse',),
-            'fields': (
-                'classes',
-            )
-        }),
-    ]
-
-    def save_model(self, request, obj, form, change):
-        response = super(Bootstrap3RowCMSPlugin, self).save_model(request, obj, form, change)
-        data = form.cleaned_data
-        for x in range(int(data['create']) if data['create'] is not None else 0):
-            extra = {}
-            for size in constants.DEVICE_SIZES:
-                for element in ['col', 'offset', 'push', 'pull']:
-                    extra['{}_{}'.format(size, element)] = data.get(
-                        'create_{}_{}'.format(size, element)) or None
-            col = models.Bootstrap3ColumnPlugin(
-                parent=obj,
-                placeholder=obj.placeholder,
-                language=obj.language,
-                position=CMSPlugin.objects.filter(parent=obj).count(),
-                plugin_type=Bootstrap3ColumnCMSPlugin.__name__,
-                **extra
-            )
-            col.save()
-        return response
-
-
-class Bootstrap3ColumnCMSPlugin(CMSPluginBase):
-    model = models.Bootstrap3ColumnPlugin
-    name = _('Column')
-    module = _('Bootstrap3')
-    change_form_template = 'admin/aldryn_bootstrap3/plugins/column/change_form.html'
-    render_template = 'aldryn_bootstrap3/plugins/column.html'
-    allow_children = True
-    parent_classes = ['Bootstrap3RowCMSPlugin']
-    form = forms.ColumnPluginForm
-
-    fieldsets = [
-        ("Adapt Columns", {
-            'fields': tuple([
-                (
-                    '{}_col'.format(size),
-                    '{}_offset'.format(size),
-                    '{}_push'.format(size),
-                    '{}_pull'.format(size),
-                ) for size in constants.DEVICE_SIZES
-            ])
-        }),
-        ("Advanced", {
-            'classes': ('collapse',),
-            'fields': (
-                'classes',
-                'tag',
-            )
-        }),
-    ]
-
-
-plugin_pool.register_plugin(Bootstrap3RowCMSPlugin)
-plugin_pool.register_plugin(Bootstrap3ColumnCMSPlugin)
 
 
 #############
@@ -597,7 +729,7 @@ plugin_pool.register_plugin(Bootstrap3ColumnCMSPlugin)
 class Bootstrap3AccordionCMSPlugin(CMSPluginBase):
     model = models.Bootstrap3AccordionPlugin
     name = _('Accordion')
-    module = _('Bootstrap3')
+    module = _('Bootstrap 3')
     change_form_template = 'admin/aldryn_bootstrap3/base.html'
     render_template = 'aldryn_bootstrap3/plugins/accordion.html'
     allow_children = True
@@ -666,7 +798,7 @@ plugin_pool.register_plugin(Bootstrap3AccordionItemCMSPlugin)
 class Bootstrap3ListGroupCMSPlugin(CMSPluginBase):
     model = models.Bootstrap3ListGroupPlugin
     name = _('List Group')
-    module = _('Bootstrap3')
+    module = _('Bootstrap 3')
     change_form_template = 'admin/aldryn_bootstrap3/base.html'
     render_template = 'aldryn_bootstrap3/plugins/list_group.html'
     allow_children = True
@@ -691,7 +823,7 @@ class Bootstrap3ListGroupCMSPlugin(CMSPluginBase):
 class Bootstrap3ListGroupItemCMSPlugin(CMSPluginBase):
     model = models.Bootstrap3ListGroupItemPlugin
     name = _('List Group Item')
-    module = _('Bootstrap3')
+    module = _('Bootstrap 3')
     change_form_template = 'admin/aldryn_bootstrap3/base.html'
     render_template = 'aldryn_bootstrap3/plugins/list_group_item.html'
     allow_children = True
@@ -733,7 +865,7 @@ plugin_pool.register_plugin(Bootstrap3ListGroupItemCMSPlugin)
 
 # Base Classes
 class CarouselBase(CMSPluginBase):
-    module = _('Bootstrap3')
+    module = _('Bootstrap 3')
 
 
 class CarouselSlideBase(CarouselBase):
