@@ -15,6 +15,7 @@ GRID_SIZE = settings.ALDRYN_BOOTSTRAP3_GRID_SIZE
 
 """
 Fixed constants, not influenced by settings
+Changes here will most likely require database migrtions
 """
 DEVICE_CHOICES = (
     ('xs', _('Tiny')),
@@ -85,8 +86,6 @@ SIZE_CHOICES = (
     ('xs', 'Extra Small',),
 )
 
-# WARNING: changing DEVICE_CHOICES identifier will cause model creation
-#          to change and requires database migrations!
 DEVICES = (
     {
         'identifier': 'xs',
@@ -125,20 +124,6 @@ for device in DEVICES:
 
 
 
-
-
-
-
-
-
-
-
-LABEL_CONTEXT_CHOICES = (
-    ('default', 'Default',),
-) + CONTEXT_CHOICES + (
-    # ('', 'Custom',),
-)
-LABEL_CONTEXT_DEFAULT = 'default'
 
 PANEL_CONTEXT_CHOICES = (
     ('default', 'Default',),

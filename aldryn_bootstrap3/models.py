@@ -36,7 +36,7 @@ The following components marked with "✓" are implemented:
 [✓] Grid
 [✓] Typography (Blockquote and Cite)
 [ ] Code
-[✓] Forms (use aldryn-forms)
+[✓] Forms (via aldryn-forms)
 [✓] Buttons
 [✓] Images
 [✓] Helper classes (js/ckeditor.js)
@@ -45,7 +45,7 @@ The following components marked with "✓" are implemented:
 
 
 """
-CSS - Grid system: "Row" model
+CSS - Grid system: "Row" Model
 http://getbootstrap.com/css/#grid
 """
 @python_2_unicode_compatible
@@ -83,7 +83,7 @@ class Bootstrap3RowPlugin(CMSPlugin):
 
 
 """
-CSS - Grid system: "Column" model
+CSS - Grid system: "Column" Model
 http://getbootstrap.com/css/#grid
 """
 @python_2_unicode_compatible
@@ -179,7 +179,7 @@ for size, name in constants.DEVICE_CHOICES:
 
 
 """
-CSS - Typography: Blockquote model
+CSS - Typography: "Blockquote" Model
 http://getbootstrap.com/css/#type-blockquotes
 """
 @python_2_unicode_compatible
@@ -206,7 +206,7 @@ class Boostrap3BlockquotePlugin(CMSPlugin):
 
 
 """
-CSS - Typography: Cite model
+CSS - Typography: "Cite" Model
 http://getbootstrap.com/css/#type-blockquotes
 """
 @python_2_unicode_compatible
@@ -224,7 +224,7 @@ class Boostrap3CitePlugin(CMSPlugin):
 
 
 """
-CSS - Buttons: Button/Link model
+CSS - Buttons: "Button/Link" Model
 http://getbootstrap.com/css/#buttons
 """
 @python_2_unicode_compatible
@@ -274,7 +274,7 @@ class Boostrap3ButtonPlugin(CMSPlugin, model_fields.LinkMixin):
 
 
 """
-CSS - Images: Image model
+CSS - Images: Model
 http://getbootstrap.com/css/#images
 """
 @python_2_unicode_compatible
@@ -401,69 +401,135 @@ class Boostrap3ImagePlugin(CMSPlugin):
         return items
 
 
+"""
+Components - http://getbootstrap.com/components/
+Over a dozen reusable components built to provide iconography, dropdowns,
+input groups, navigation, alerts, and much more.
+
+The following components marked with "✓" are implemented:
+
+[✓] Glyphicons
+[ ] Dropdowns
+[ ] Button Groups
+[ ] Button Dropdowns
+[✓] Input Groups (via aldryn-forms)
+[✗] Navs (integrate into base.html)
+[✗] Navbar (integrate into base.html)
+[✗] Breadcrumbs (integrate into base.html)
+[✗] Pagination (integrate on addon level)
+[✓] Labels
+[✗] Badges (integrate on addon level)
+[ ] Jumbotron
+[✗] Page header (integrate into base.html)
+[ ] Thumbnails
+[✓] Alerts
+[ ] Progress Bars
+[ ] Media object
+[ ] List Group
+[ ] Panels
+[ ] Responsive embed
+[ ] Wells
+"""
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+"""
+Component - Glyphicons: "Icon" Model
+http://getbootstrap.com/components/#glyphicons
+Component - Font Awesome: "Icon" Model
+http://fontawesome.io/
+"""
 @python_2_unicode_compatible
 class Boostrap3IconPlugin(CMSPlugin):
-    cmsplugin_ptr = model_fields.CMSPluginField()
-
-    icon = model_fields.Icon(blank=False)
-
+    icon = model_fields.Icon(
+        verbose_name=_('Icon'),
+        blank=False,
+    )
     classes = model_fields.Classes()
+    attributes = AttributesField(
+        verbose_name=_('Attributes'),
+        blank=True,
+        excluded_keys=['class'],
+    )
+
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         return self.icon
 
 
+"""
+Component - Label: Model
+http://getbootstrap.com/components/#labels
+"""
 @python_2_unicode_compatible
 class Boostrap3LabelPlugin(CMSPlugin):
-    cmsplugin_ptr = model_fields.CMSPluginField()
-
     label = models.CharField(
-        _("label"),
-        max_length=256,
+        verbose_name=_('Label'),
         blank=True,
         default='',
+        max_length=256,
     )
     context = model_fields.Context(
-        choices=constants.LABEL_CONTEXT_CHOICES,
-        default=constants.LABEL_CONTEXT_DEFAULT,
+        verbose_name=_('Context'),
+        choices=(('default', 'Default',),) + constants.CONTEXT_CHOICES,
+        default='default',
         blank=False,
     )
-
     classes = model_fields.Classes()
+    attributes = AttributesField(
+        verbose_name=_('Attributes'),
+        blank=True,
+        excluded_keys=['class'],
+    )
+
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         return self.label
+
+
+"""
+Component - Alert: Model
+http://getbootstrap.com/components/#alerts
+"""
+@python_2_unicode_compatible
+class Boostrap3AlertPlugin(CMSPlugin):
+    context = model_fields.Context(
+        verbose_name=_('Context'),
+    )
+    icon = model_fields.Icon(
+        verbose_name=_('Title icon'),
+    )
+    classes = model_fields.Classes()
+    attributes = AttributesField(
+        verbose_name=_('Attributes'),
+        blank=True,
+        excluded_keys=['class'],
+    )
+
+    cmsplugin_ptr = model_fields.CMSPluginField()
+
+    def __str__(self):
+        return self.classes
+
+
+
+
+"""
+JavaScript Section
+[ ] Transitions
+[ ] Modal
+[ ] Dropdowns
+[ ] Scrollspy
+[ ] Tab
+[ ] Tooltip
+[ ] Popover
+[ ] Alert
+[ ] Button
+[ ] Collapse
+[ ] Carousel
+[ ] Affix
+"""
 
 
 @python_2_unicode_compatible
@@ -477,18 +543,6 @@ class Boostrap3WellPlugin(CMSPlugin):
     def __str__(self):
         return self.classes
 
-
-@python_2_unicode_compatible
-class Boostrap3AlertPlugin(CMSPlugin):
-    cmsplugin_ptr = model_fields.CMSPluginField()
-
-    context = model_fields.Context()
-    icon = model_fields.Icon()
-
-    classes = model_fields.Classes()
-
-    def __str__(self):
-        return self.classes
 
 
 

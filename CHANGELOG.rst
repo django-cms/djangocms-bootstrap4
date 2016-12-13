@@ -3,7 +3,7 @@ Changelog
 =========
 
 
-1.1.3 (unreleased)
+1.2.0 (unreleased)
 ==================
 
 * Fixed an issue with collapse styles from image plugin overriding bootstrap
@@ -13,6 +13,10 @@ Changelog
 * Added test framework
 * Adapted root files such as ``README``, ``CHANGELOG``, ``setup.py`` and others
   to conform with other core addons such as django CMS Picture
+
+* Adapted labels and help texts of several plugins
+* Added <cite> plugin to <blockquote>
+* Added attributes fields to TODO
 
 
 1.1.2 (2016-09-05)

@@ -19,7 +19,7 @@ from . import models, constants
 
 
 """
-CSS - Grid system: "Row" form
+CSS - Grid system: "Row" Form
 http://getbootstrap.com/css/#grid
 """
 class RowPluginBaseForm(django.forms.models.ModelForm):
@@ -78,8 +78,8 @@ RowPluginForm = type(
 
 
 """
-CSS - Typography: Blockquote form
-http://getbootstrap.com/css/#type-blockquotes
+CSS - Grid system: "Column" Form
+http://getbootstrap.com/css/#grid
 """
 class ColumnPluginBaseForm(django.forms.models.ModelForm):
     create = django.forms.IntegerField(
@@ -137,7 +137,7 @@ ColumnPluginForm = type(
 
 
 """
-CSS - Buttons: Button/Link form
+CSS - Buttons: "Button/Link" Form
 http://getbootstrap.com/css/#buttons
 """
 class LinkForm(django.forms.models.ModelForm):
@@ -196,21 +196,10 @@ class LinkForm(django.forms.models.ModelForm):
         return cleaned_data
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+"""
+Component - Label: Form
+http://getbootstrap.com/components/#labels
+"""
 class Boostrap3LabelPluginForm(django.forms.models.ModelForm):
 
     class Meta:
@@ -221,8 +210,6 @@ class Boostrap3LabelPluginForm(django.forms.models.ModelForm):
         widgets = {
             'label': TextInput(attrs={'class': 'js-ckeditor-use-selected-text'}),
         }
-
-
 
 
 

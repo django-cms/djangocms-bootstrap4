@@ -28,7 +28,7 @@ from . import models, forms, constants
 
 
 """
-CSS - Grid system: "Row" plugin
+CSS - Grid system: "Row" Plugin
 http://getbootstrap.com/css/#grid
 """
 class Bootstrap3RowCMSPlugin(CMSPluginBase):
@@ -85,7 +85,7 @@ class Bootstrap3RowCMSPlugin(CMSPluginBase):
 
 
 """
-CSS - Grid system: "Column" plugin
+CSS - Grid system: "Column" Plugin
 http://getbootstrap.com/css/#grid
 """
 class Bootstrap3ColumnCMSPlugin(CMSPluginBase):
@@ -125,13 +125,14 @@ plugin_pool.register_plugin(Bootstrap3ColumnCMSPlugin)
 
 
 """
-CSS - Typography: Blockquote plugin
+CSS - Typography: "Blockquote" Plugin
 http://getbootstrap.com/css/#type-blockquotes
 """
 class Bootstrap3BlockquoteCMSPlugin(CMSPluginBase):
     model = models.Boostrap3BlockquotePlugin
     name = _('Blockquote')
     module = _('Bootstrap 3')
+    change_form_template = 'admin/aldryn_bootstrap3/base.html'
     render_template = 'aldryn_bootstrap3/plugins/blockquote.html'
     allow_children = True
 
@@ -152,13 +153,14 @@ class Bootstrap3BlockquoteCMSPlugin(CMSPluginBase):
 
 
 """
-CSS - Typography: Cite plugin
+CSS - Typography: "Cite" Plugin
 http://getbootstrap.com/css/#type-blockquotes
 """
 class Bootstrap3CiteCMSPlugin(CMSPluginBase):
     model = models.Boostrap3CitePlugin
     name = _('Cite')
     module = _('Bootstrap 3')
+    change_form_template = 'admin/aldryn_bootstrap3/base.html'
     render_template = 'aldryn_bootstrap3/plugins/cite.html'
     allow_children = True
     # even though we can make this accessible by all means, we only want
@@ -185,7 +187,7 @@ plugin_pool.register_plugin(Bootstrap3CiteCMSPlugin)
 
 
 """
-CSS - Buttons: Button/Link plugin
+CSS - Buttons: "Button/Link" Plugin
 http://getbootstrap.com/css/#buttons
 """
 class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
@@ -235,7 +237,7 @@ plugin_pool.register_plugin(Bootstrap3ButtonCMSPlugin)
 
 
 """
-CSS - Images: Image plugin
+CSS - Images: Plugin
 http://getbootstrap.com/css/#images
 """
 class Bootstrap3ImageCMSPlugin(CMSPluginBase):
@@ -247,13 +249,14 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
     text_enabled = True
 
     fieldsets = (
-        (None, {'fields': (
+        (None, {
+            'fields': (
                 'file',
                 'alt',
                 ('use_original_image', 'thumbnail',),
                 ('aspect_ratio', 'shape',),
-        )}),
-
+            )
+        }),
         (_('Advanced settings'), {
             'classes': ('collapse',),
             'fields': (
@@ -328,97 +331,35 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
         instance.save()
         return filer_response
 
+
 plugin_pool.register_plugin(Bootstrap3ImageCMSPlugin)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 """
-CSS Section
-
-Components Section
-[ ] Glyphicons
-[ ] Dropdowns
-[ ] Button Groups
-[ ] Button Dropdowns
-[ ] Input Groups
-[ ] Navs
-[ ] Navbar
-[ ] Breadcrumbs
-[ ] Pagination
-[ ] Labels
-[ ] Badges
-[ ] Jumbotron
-[ ] Page header
-[ ] Thumbnails
-[ ] Alerts
-[ ] Progress Bars
-[ ] Media object
-[ ] List Group
-[ ] Panels
-[ ] Responsive embed
-[ ] Wells
+Component - Glyphicons: "Icon" Plugin
+http://getbootstrap.com/components/#glyphicons
+Component - Font Awesome: "Icon" Plugin
+http://fontawesome.io/
 """
-
-"""
-JavaScript Section
-[ ] Transitions
-[ ] Modal
-[ ] Dropdowns
-[ ] Scrollspy
-[ ] Tab
-[ ] Tooltip
-[ ] Popover
-[ ] Alert
-[ ] Button
-[ ] Collapse
-[ ] Carousel
-[ ] Affix
-"""
-
-
-
-
-
-
-"""
-CSS - Typography: Button Plugin
-http://getbootstrap.com/css/#buttons
-"""
-
-
-
-
-
-
-
-
 class Bootstrap3IconCMSPlugin(CMSPluginBase):
     model = models.Boostrap3IconPlugin
-    name = _("Icon")
+    name = _('Icon')
     module = _('Bootstrap 3')
     change_form_template = 'admin/aldryn_bootstrap3/base.html'
     render_template = 'aldryn_bootstrap3/plugins/icon.html'
     text_enabled = True
 
     fieldsets = (
-        (None, {'fields': (
-            'icon',
-        )}),
-        ('Advanced', {
+        (None, {
+            'fields': (
+                'icon',
+            )
+        }),
+        (_('Advanced settings'), {
             'classes': ('collapse',),
             'fields': (
                 'classes',
+                'attributes',
             ),
         }),
     )
@@ -430,24 +371,31 @@ class Bootstrap3IconCMSPlugin(CMSPluginBase):
 plugin_pool.register_plugin(Bootstrap3IconCMSPlugin)
 
 
+"""
+Component - Label: Plugin
+http://getbootstrap.com/components/#labels
+"""
 class Bootstrap3LabelCMSPlugin(CMSPluginBase):
     model = models.Boostrap3LabelPlugin
-    form = forms.Boostrap3LabelPluginForm
-    name = _("Label")
+    name = _('Label')
     module = _('Bootstrap 3')
+    form = forms.Boostrap3LabelPluginForm
     change_form_template = 'admin/aldryn_bootstrap3/plugins/label/change_form.html'
     render_template = 'aldryn_bootstrap3/plugins/label.html'
     text_enabled = True
 
     fieldsets = (
-        (None, {'fields': (
-            'label',
-            'context',
-        )}),
-        ('Advanced', {
+        (None, {
+            'fields': (
+                'label',
+                'context',
+            )
+        }),
+        (_('Advanced settings'), {
             'classes': ('collapse',),
             'fields': (
                 'classes',
+                'attributes',
             ),
         }),
     )
@@ -457,6 +405,38 @@ class Bootstrap3LabelCMSPlugin(CMSPluginBase):
 
 
 plugin_pool.register_plugin(Bootstrap3LabelCMSPlugin)
+
+
+"""
+Component - Alert: Plugin
+http://getbootstrap.com/components/#alerts
+"""
+class Bootstrap3AlertCMSPlugin(CMSPluginBase):
+    model = models.Boostrap3AlertPlugin
+    name = _('Alert')
+    module = _('Bootstrap 3')
+    change_form_template = 'admin/aldryn_bootstrap3/base.html'
+    render_template = 'aldryn_bootstrap3/plugins/alert.html'
+    allow_children = True
+
+    fieldsets = (
+        (None, {
+            'fields': (
+                'context',
+                'icon',
+            )
+        }),
+        (_('Advanced settings'), {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+                'attributes',
+            ),
+        }),
+    )
+
+
+plugin_pool.register_plugin(Bootstrap3AlertCMSPlugin)
 
 
 class Bootstrap3WellCMSPlugin(CMSPluginBase):
@@ -482,35 +462,6 @@ class Bootstrap3WellCMSPlugin(CMSPluginBase):
 
 
 plugin_pool.register_plugin(Bootstrap3WellCMSPlugin)
-
-
-class Bootstrap3AlertCMSPlugin(CMSPluginBase):
-    model = models.Boostrap3AlertPlugin
-    name = _("Alert")
-    module = _('Bootstrap 3')
-    change_form_template = 'admin/aldryn_bootstrap3/base.html'
-    render_template = 'aldryn_bootstrap3/plugins/alert.html'
-    allow_children = True
-
-    fieldsets = (
-        (None, {'fields': (
-            'context',
-            'icon',
-        )}),
-        ('Advanced', {
-            'classes': ('collapse',),
-            'fields': (
-                'classes',
-            ),
-        }),
-    )
-
-
-plugin_pool.register_plugin(Bootstrap3AlertCMSPlugin)
-
-
-
-
 
 
 class Bootstrap3SpacerCMSPlugin(CMSPluginBase):
