@@ -28,31 +28,7 @@ from . import models, forms, constants
 
 
 """
-CSS - http://getbootstrap.com/css/
-Global CSS settings, fundamental HTML elements styled and enhanced with
-extensible classes, and an advanced grid system.
-
-The following components are implemented:
-
-[✓] Grid
-[✓] Typography
-    [✓] Blockquote and Cite
-    [✓] CKEditor styles (js/ckeditor.js)
-    [✓] Forms (use aldryn-forms)
-    [x] Buttons
-    [x] Image
-    [ ] Responsive utilities
-[ ] Code (plugin) Code Inline/User input/Basic block/Variables/Sample output
-[ ] Forms
-[ ] Buttons
-[ ] Images
-[ ] Helper classes
-[ ] Responsive utilities
-"""
-
-
-"""
-CSS - Grid system: "Row" Plugin
+CSS - Grid system: "Row" plugin
 http://getbootstrap.com/css/#grid
 """
 class Bootstrap3RowCMSPlugin(CMSPluginBase):
@@ -109,7 +85,7 @@ class Bootstrap3RowCMSPlugin(CMSPluginBase):
 
 
 """
-CSS - Grid system: "Column" Plugin
+CSS - Grid system: "Column" plugin
 http://getbootstrap.com/css/#grid
 """
 class Bootstrap3ColumnCMSPlugin(CMSPluginBase):
@@ -149,7 +125,7 @@ plugin_pool.register_plugin(Bootstrap3ColumnCMSPlugin)
 
 
 """
-CSS - Typography: Blockquote Plugin
+CSS - Typography: Blockquote plugin
 http://getbootstrap.com/css/#type-blockquotes
 """
 class Bootstrap3BlockquoteCMSPlugin(CMSPluginBase):
@@ -176,7 +152,7 @@ class Bootstrap3BlockquoteCMSPlugin(CMSPluginBase):
 
 
 """
-CSS - Typography: Cite Plugin
+CSS - Typography: Cite plugin
 http://getbootstrap.com/css/#type-blockquotes
 """
 class Bootstrap3CiteCMSPlugin(CMSPluginBase):
@@ -206,6 +182,165 @@ class Bootstrap3CiteCMSPlugin(CMSPluginBase):
 
 plugin_pool.register_plugin(Bootstrap3BlockquoteCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3CiteCMSPlugin)
+
+
+"""
+CSS - Buttons: Button/Link plugin
+http://getbootstrap.com/css/#buttons
+"""
+class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
+    model = models.Boostrap3ButtonPlugin
+    name = _('Link/Button')
+    module = _('Bootstrap 3')
+    form = forms.LinkForm
+    change_form_template = 'admin/aldryn_bootstrap3/plugins/button/change_form.html'
+    render_template = 'aldryn_bootstrap3/plugins/button.html'
+    text_enabled = True
+    allow_children = True
+
+    fieldsets = (
+        (None, {
+            'fields': (
+                'type',
+                'label',
+                ('link_url', 'link_page',),
+                'btn_context',
+                'txt_context',
+                'btn_size',
+                ('icon_left', 'icon_right', 'btn_block',),
+            ),
+        }),
+        (_('Link settings'), {
+            'classes': ('collapse',),
+            'fields': (
+                ('link_mailto', 'link_phone'),
+                ('link_anchor', 'link_target'),
+                'link_file',
+            )
+        }),
+        (_('Advanced settings'), {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+                'link_attributes',
+            )
+        }),
+    )
+
+    def icon_src(self, instance):
+        return static('aldryn_bootstrap3/img/type/button.png')
+
+
+plugin_pool.register_plugin(Bootstrap3ButtonCMSPlugin)
+
+
+"""
+CSS - Images: Image plugin
+http://getbootstrap.com/css/#images
+"""
+class Bootstrap3ImageCMSPlugin(CMSPluginBase):
+    model = models.Boostrap3ImagePlugin
+    name = _('Image')
+    module = _('Bootstrap 3')
+    change_form_template = 'admin/aldryn_bootstrap3/base.html'
+    render_template = 'aldryn_bootstrap3/plugins/image.html'
+    text_enabled = True
+
+    fieldsets = (
+        (None, {'fields': (
+                'file',
+                'alt',
+                ('use_original_image', 'thumbnail',),
+                ('aspect_ratio', 'shape',),
+        )}),
+
+        (_('Advanced settings'), {
+            'classes': ('collapse',),
+            'fields': (
+                'title',
+                ('override_width', 'override_height',),
+                'img_responsive',
+                'classes',
+                'attributes',
+            ),
+        }),
+    )
+
+    def render(self, context, instance, placeholder):
+        context.update({'instance': instance})
+        if callable(filer_ajax_upload):
+            # Use this in template to conditionally enable drag-n-drop.
+            context.update({'has_dnd_support': True})
+        return context
+
+    def get_thumbnail(self, instance):
+        return instance.file.file.get_thumbnail({
+            'size': (40, 40),
+            'crop': True,
+            'upscale': True,
+            'subject_location': instance.file.subject_location,
+        })
+
+    def icon_src(self, instance):
+        if instance.file_id:
+            thumbnail = self.get_thumbnail(instance)
+            return thumbnail.url
+        return ''
+
+    def get_plugin_urls(self):
+        urlpatterns = patterns(
+            '',
+            url(r'^ajax_upload/(?P<pk>[0-9]+)/$', self.ajax_upload,
+                name='bootstrap3_image_ajax_upload'),
+        )
+        return urlpatterns
+
+    @csrf_exempt
+    def ajax_upload(self, request, pk):
+        """
+        Handle drag-n-drop uploads.
+
+        Call original 'ajax_upload' Filer view, parse response and update
+        plugin instance file_id from it. Send original response back.
+        """
+        if not callable(filer_ajax_upload):
+            # Do not try to handle request if we were unable to
+            # import Filer view.
+            raise ImproperlyConfigured(
+                'Please use django-filer>=1.1.1 to get drag & drop support.'
+            )
+        filer_response = filer_ajax_upload(request, folder_id=None)
+
+        if filer_response.status_code != 200:
+            return filer_response
+
+        try:
+            file_id = json.loads(filer_response.content)['file_id']
+        except ValueError:
+            return HttpResponse(
+                json.dumps(
+                    {'error': 'Received non-JSON response from django Filer.'}
+                ),
+                status=500,
+                content_type='application/json')
+        instance = self.model.objects.get(pk=pk)
+        instance.file_id = file_id
+        instance.save()
+        return filer_response
+
+plugin_pool.register_plugin(Bootstrap3ImageCMSPlugin)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 """
@@ -252,147 +387,8 @@ JavaScript Section
 """
 
 
-"""
-CSS - Buttons: Link Plugin
-http://getbootstrap.com/css/#buttons
-"""
-class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
-    model = models.Boostrap3ButtonPlugin
-    name = _('Link/Button')
-    module = _('Bootstrap 3')
-    form = forms.LinkForm
-    change_form_template = 'admin/aldryn_bootstrap3/plugins/button/change_form.html'
-    render_template = 'aldryn_bootstrap3/plugins/button.html'
-    text_enabled = True
-    allow_children = True
-
-    fieldsets = (
-        (None, {
-            'fields': (
-                'label',
-                'type',
-                'btn_context',
-                'txt_context',
-                'btn_size',
-                'btn_block',
-                'icon_left',
-                'icon_right',
-            ),
-        }),
-    ) + link_fieldset + (
-        ('Advanced settings', {
-            'classes': ('collapse',),
-            'fields': (
-                'classes',
-                'link_attributes',
-                # 'responsive',
-                # 'responsive_print',
-            )
-        }),
-    )
-
-    def icon_src(self, instance):
-        return static('aldryn_bootstrap3/img/type/button.png')
 
 
-plugin_pool.register_plugin(Bootstrap3ButtonCMSPlugin)
-
-
-"""
-CSS - Images: Image Plugin
-http://getbootstrap.com/css/#images
-"""
-class Bootstrap3ImageCMSPlugin(CMSPluginBase):
-    model = models.Boostrap3ImagePlugin
-    name = _('Image')
-    module = _('Bootstrap 3')
-    change_form_template = 'admin/aldryn_bootstrap3/base.html'
-    render_template = 'aldryn_bootstrap3/plugins/image.html'
-    text_enabled = True
-
-    fieldsets = (
-        (None, {'fields': (
-                'file',
-                'use_original_image',
-                'aspect_ratio',
-                'shape',
-                'thumbnail',
-                'alt',
-        )}),
-
-        ('Advanced', {
-            'classes': ('collapse',),
-            'fields': (
-                'title',
-                'override_width',
-                'override_height',
-                'classes',
-                'img_responsive',
-            ),
-        }),
-    )
-
-    def render(self, context, instance, placeholder):
-        context.update({'instance': instance})
-        if callable(filer_ajax_upload):
-            # Use this in template to conditionally enable drag-n-drop.
-            context.update({'has_dnd_support': True})
-        return context
-
-    def get_thumbnail(self, instance):
-        return instance.file.file.get_thumbnail({
-            'size': (40, 40),
-            'crop': True,
-            'upscale': True,
-            'subject_location': instance.file.subject_location,
-        })
-
-    def icon_src(self, instance):
-        if instance.file_id:
-            thumbnail = self.get_thumbnail(instance)
-            return thumbnail.url
-        return ''
-
-    def get_plugin_urls(self):
-        urlpatterns = patterns(
-            '',
-            url(r'^ajax_upload/(?P<pk>[0-9]+)/$', self.ajax_upload,
-                name='bootstrap3_image_ajax_upload'),
-        )
-        return urlpatterns
-
-    @csrf_exempt
-    def ajax_upload(self, request, pk):
-        """
-        Handle drag-n-drop uploads.
-
-        Call original 'ajax_upload' Filer view, parse response and update
-        plugin instance file_id from it. Send original response back.
-        """
-        if not callable(filer_ajax_upload):
-            # Do not try to handle request if we were unable to
-            # import Filer view.
-            raise ImproperlyConfigured(
-                "Please, use django-filer>=1.1.1 to get drag-n-drop support")
-        filer_response = filer_ajax_upload(request, folder_id=None)
-
-        if filer_response.status_code != 200:
-            return filer_response
-
-        try:
-            file_id = json.loads(filer_response.content)['file_id']
-        except ValueError:
-            return HttpResponse(
-                json.dumps(
-                    {'error': 'received non-JSON response from Filer'}),
-                status=500,
-                content_type='application/json')
-        instance = self.model.objects.get(pk=pk)
-        instance.file_id = file_id
-        instance.save()
-        return filer_response
-
-plugin_pool.register_plugin(Bootstrap3ImageCMSPlugin)
 
 
 """

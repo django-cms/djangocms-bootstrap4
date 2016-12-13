@@ -25,16 +25,21 @@ DEVICE_CHOICES = (
 
 DEVICE_SIZES = tuple([size for size, name in DEVICE_CHOICES])
 
+TARGET_CHOICES = (
+    ('_blank', _('Open in new window')),
+    ('_self', _('Open in same window')),
+    ('_parent', _('Delegate to parent')),
+    ('_top', _('Delegate to top')),
+)
 
-
-
-CHOICES = (
+CONTEXT_CHOICES = (
     ('primary', 'Primary',),
     ('success', 'Success',),
     ('info', 'Info',),
     ('warning', 'Warning',),
     ('danger', 'Danger',),
 )
+
 CONTEXT_DEFAULT = 'default'
 
 BUTTON_CONTEXT_CHOICES = (
@@ -42,36 +47,36 @@ BUTTON_CONTEXT_CHOICES = (
 ) + CONTEXT_CHOICES + (
     ('link', 'Link',),
 )
+
 BUTTON_CONTEXT_DEFAULT = 'default'
 
-TXT_LINK_CONTEXT_CHOICES = (
+TEXT_LINK_CONTEXT_CHOICES = (
     ('', 'Default',),
 ) + CONTEXT_CHOICES + (
     ('muted ', 'Muted',),
 )
-TXT_LINK_CONTEXT_DEFAULT = ''
 
-LABEL_CONTEXT_CHOICES = (
-    ('default', 'Default',),
-) + CONTEXT_CHOICES + (
-    # ('', 'Custom',),
+TEXT_LINK_CONTEXT_DEFAULT = ''
+
+ASPECT_RATIOS = (
+    (4, 3),
+    (16, 9),
+    (16, 10),
+    (21, 9),
 )
-LABEL_CONTEXT_DEFAULT = 'default'
 
-PANEL_CONTEXT_CHOICES = (
-    ('default', 'Default',),
-) + CONTEXT_CHOICES + (
-    # ('', 'Custom',),
-)
-PANEL_CONTEXT_DEFAULT = 'default'
+ASPECT_RATIOS_REVERSED = tuple([(y, x) for x, y in ASPECT_RATIOS])
 
-ACCORDION_ITEM_CONTEXT_CHOICES = PANEL_CONTEXT_CHOICES
-ACCORDION_ITEM_CONTEXT_DEFAULT = PANEL_CONTEXT_DEFAULT
-
-LIST_GROUP_ITEM_CONTEXT_CHOICES = (
-    ('', 'Default',),
-) + CONTEXT_CHOICES
-LIST_GROUP_ITEM_CONTEXT_DEFAULT = ''
+ASPECT_RATIO_CHOICES = (
+    tuple([
+        ('{0}x{1}'.format(1, 1), '{0}x{1}'.format(1, 1))
+    ]) + tuple([
+        ('{0}x{1}'.format(x, y), '{0}x{1}'.format(x, y))
+        for x, y in ASPECT_RATIOS
+    ]) + tuple([
+        ('{0}x{1}'.format(x, y), '{0}x{1}'.format(x, y))
+        for x, y in ASPECT_RATIOS_REVERSED
+    ]))
 
 SIZE_CHOICES = (
     ('lg', 'Large',),
@@ -80,18 +85,8 @@ SIZE_CHOICES = (
     ('xs', 'Extra Small',),
 )
 
-SIZE_WIDGET_CHOICES = (
-    # ('', 'Default'),
-) + SIZE_CHOICES
-SIZE_WIDGET_DEFAULT = 'md'
-
-SIZES = tuple([size for size, name in SIZE_CHOICES])
-
-SIZE_DEFAULT = 'md'
-
-
-# WARNING: changing DEVICE_CHOICES identifier will cause model creation to change and
-#          requires database migrations!
+# WARNING: changing DEVICE_CHOICES identifier will cause model creation
+#          to change and requires database migrations!
 DEVICES = (
     {
         'identifier': 'xs',
@@ -122,29 +117,52 @@ DEVICES = (
         'icon': 'desktop',
     },
 )
+
 for device in DEVICES:
     identifier = device['identifier']
     device['long_description'] = "{name} (<{width}px)".format(**device)
     device['size_name'] = dict(SIZE_CHOICES).get(identifier)
 
-DEVICE_DICT = {device['identifier']: device for device in DEVICES}
 
 
-ASPECT_RATIOS = (
-    (4, 3),
-    (16, 9),
-    (16, 10),
-    (21, 9),
+
+
+
+
+
+
+
+
+LABEL_CONTEXT_CHOICES = (
+    ('default', 'Default',),
+) + CONTEXT_CHOICES + (
+    # ('', 'Custom',),
 )
-ASPECT_RATIOS_REVERSED = tuple([(y, x) for x, y in ASPECT_RATIOS])
+LABEL_CONTEXT_DEFAULT = 'default'
 
-ASPECT_RATIO_CHOICES = (
-    tuple([
-        ('{0}x{1}'.format(1, 1), '{0}x{1}'.format(1, 1))
-    ]) + tuple([
-        ('{0}x{1}'.format(x, y), '{0}x{1}'.format(x, y))
-        for x, y in ASPECT_RATIOS
-    ]) + tuple([
-        ('{0}x{1}'.format(x, y), '{0}x{1}'.format(x, y))
-        for x, y in ASPECT_RATIOS_REVERSED
-    ]))
+PANEL_CONTEXT_CHOICES = (
+    ('default', 'Default',),
+) + CONTEXT_CHOICES + (
+    # ('', 'Custom',),
+)
+PANEL_CONTEXT_DEFAULT = 'default'
+
+ACCORDION_ITEM_CONTEXT_CHOICES = PANEL_CONTEXT_CHOICES
+ACCORDION_ITEM_CONTEXT_DEFAULT = PANEL_CONTEXT_DEFAULT
+
+LIST_GROUP_ITEM_CONTEXT_CHOICES = (
+    ('', 'Default',),
+) + CONTEXT_CHOICES
+LIST_GROUP_ITEM_CONTEXT_DEFAULT = ''
+
+
+SIZE_WIDGET_CHOICES = (
+    # ('', 'Default'),
+) + SIZE_CHOICES
+SIZE_WIDGET_DEFAULT = 'md'
+
+SIZES = tuple([size for size, name in SIZE_CHOICES])
+
+SIZE_DEFAULT = 'md'
+
+DEVICE_DICT = {device['identifier']: device for device in DEVICES}

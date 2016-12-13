@@ -6,28 +6,46 @@ import collections
 
 from functools import partial
 
+import django.forms.models
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.html import strip_tags
 from django.utils.translation import ugettext, ugettext_lazy as _, ungettext
 
-import django.forms.models
-
-from cms.models.pluginmodel import CMSPlugin
 import cms.models
 import cms.models.fields
+from cms.models.pluginmodel import CMSPlugin
 
-from djangocms_attributes_field.fields import AttributesField
-import djangocms_text_ckeditor.fields
 import filer.fields.file
 import filer.fields.image
 import filer.fields.folder
+
+import djangocms_text_ckeditor.fields
+from djangocms_attributes_field.fields import AttributesField
 
 from . import model_fields, constants, utils
 
 
 """
-CSS - Grid system: "Row" Plugin
+CSS - http://getbootstrap.com/css/
+Global CSS settings, fundamental HTML elements styled and enhanced with
+extensible classes, and an advanced grid system.
+
+The following components marked with "✓" are implemented:
+
+[✓] Grid
+[✓] Typography (Blockquote and Cite)
+[ ] Code
+[✓] Forms (use aldryn-forms)
+[✓] Buttons
+[✓] Images
+[✓] Helper classes (js/ckeditor.js)
+[ ] Responsive utilities
+"""
+
+
+"""
+CSS - Grid system: "Row" model
 http://getbootstrap.com/css/#grid
 """
 @python_2_unicode_compatible
@@ -65,7 +83,7 @@ class Bootstrap3RowPlugin(CMSPlugin):
 
 
 """
-CSS - Grid system: "Column" Plugin
+CSS - Grid system: "Column" model
 http://getbootstrap.com/css/#grid
 """
 @python_2_unicode_compatible
@@ -111,7 +129,7 @@ ColSizeField = partial(
     blank=True,
     default=None,
     min_value=1,
-    max_value=constants.GRID_SIZE
+    max_value=constants.GRID_SIZE,
 )
 
 OffsetSizeField = partial(
@@ -120,7 +138,7 @@ OffsetSizeField = partial(
     blank=True,
     default=None,
     min_value=0,
-    max_value=constants.GRID_SIZE
+    max_value=constants.GRID_SIZE,
 )
 
 PushSizeField = partial(
@@ -129,7 +147,7 @@ PushSizeField = partial(
     blank=True,
     default=None,
     min_value=0,
-    max_value=constants.GRID_SIZE
+    max_value=constants.GRID_SIZE,
 )
 
 PullSizeField = partial(
@@ -138,7 +156,7 @@ PullSizeField = partial(
     blank=True,
     default=None,
     min_value=0,
-    max_value=constants.GRID_SIZE
+    max_value=constants.GRID_SIZE,
 )
 
 for size, name in constants.DEVICE_CHOICES:
@@ -161,7 +179,7 @@ for size, name in constants.DEVICE_CHOICES:
 
 
 """
-CSS - Typography: Blockquote Plugin
+CSS - Typography: Blockquote model
 http://getbootstrap.com/css/#type-blockquotes
 """
 @python_2_unicode_compatible
@@ -188,7 +206,7 @@ class Boostrap3BlockquotePlugin(CMSPlugin):
 
 
 """
-CSS - Typography: Cite Plugin
+CSS - Typography: Cite model
 http://getbootstrap.com/css/#type-blockquotes
 """
 @python_2_unicode_compatible
@@ -205,115 +223,211 @@ class Boostrap3CitePlugin(CMSPlugin):
         return ''
 
 
-
-
-class LinkMixin(models.Model):
-    link_url = models.URLField(_("link"), blank=True, default='')
-    link_page = cms.models.fields.PageField(
-        verbose_name=_("page"),
-        blank=True,
-        null=True,
-        on_delete=models.SET_NULL
-    )
-    link_file = filer.fields.file.FilerFileField(
-        verbose_name=_("file"),
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-    )
-    link_anchor = models.CharField(
-        _("anchor"), max_length=128, blank=True,
-        help_text=_("Adds this value as an anchor (#my-anchor) to the link."),
-    )
-    link_mailto = models.EmailField(
-        _("mailto"), blank=True, null=True, max_length=254
-    )
-    link_phone = models.CharField(
-        _('Phone'), blank=True, null=True, max_length=40,
-    )
-    link_target = models.CharField(
-        _("target"), blank=True, max_length=100,
-        choices=((
-            ("", _("same window")),
-            ("_blank", _("new window")),
-            ("_parent", _("parent window")),
-            ("_top", _("topmost frame")),
-        ))
-    )
-    # Override this property in concrete classes as required.
-    excluded_attr_keys = ['href', 'target', ]
-    link_attributes = AttributesField(
-        _('Link Attributes'), excluded_keys=excluded_attr_keys, blank=True)
-
-    class Meta:
-        abstract = True
-
-    def get_link_url(self):
-        if self.link_phone:
-            link = u"tel://{0}".format(self.link_phone).replace(' ', '')
-        elif self.link_mailto:
-            link = u"mailto:{0}".format(self.link_mailto)
-        elif self.link_url:
-            link = self.link_url
-        elif self.link_page_id:
-            link = self.link_page.get_absolute_url()
-        elif self.link_file:
-            link = self.link_file.url
-        else:
-            link = ""
-        if self.link_anchor:
-            link += '#{0}'.format(self.link_anchor)
-        return link
-
-
-#################
-# Basic Plugins #
-#################
-
+"""
+CSS - Buttons: Button/Link model
+http://getbootstrap.com/css/#buttons
+"""
 @python_2_unicode_compatible
-class Boostrap3ButtonPlugin(CMSPlugin, LinkMixin):
-    cmsplugin_ptr = model_fields.CMSPluginField()
-    excluded_attr_keys = ['class', 'href', 'target', ]
-
+class Boostrap3ButtonPlugin(CMSPlugin, model_fields.LinkMixin):
     label = models.CharField(
-        _("label"),
-        max_length=256,
+        verbose_name=_('Display name'),
         blank=True,
         default='',
+        max_length=255,
     )
-    type = model_fields.LinkOrButton()
-
+    type = model_fields.LinkOrButton(
+        verbose_name='Type',
+    )
     # button specific fields
     btn_context = model_fields.Context(
-        verbose_name='context',
+        verbose_name='Context',
         choices=constants.BUTTON_CONTEXT_CHOICES,
         default=constants.BUTTON_CONTEXT_DEFAULT,
     )
-    btn_size = model_fields.Size(verbose_name='size')
-    btn_block = models.BooleanField(default=False, verbose_name='block')
+    btn_size = model_fields.Size(
+        verbose_name='Size',
+    )
+    btn_block = models.BooleanField(
+        verbose_name='Block',
+        default=False,
+    )
     # text link specific fields
     txt_context = model_fields.Context(
-        verbose_name='context',
-        choices=constants.TXT_LINK_CONTEXT_CHOICES,
-        default=constants.TXT_LINK_CONTEXT_DEFAULT,
+        verbose_name='Context',
+        choices=constants.TEXT_LINK_CONTEXT_CHOICES,
+        default=constants.TEXT_LINK_CONTEXT_DEFAULT,
         blank=True,
     )
     # common fields
-    icon_left = model_fields.Icon()
-    icon_right = model_fields.Icon()
-
+    icon_left = model_fields.Icon(
+        verbose_name='Icon left',
+    )
+    icon_right = model_fields.Icon(
+        verbose_name='Icon right',
+    )
     classes = model_fields.Classes()
-    responsive = model_fields.Responsive(
-        blank=True,
-        default='',
-    )
-    responsive_print = model_fields.ResponsivePrint(
-        blank=True,
-        default='',
-    )
+
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         return self.label
+
+
+"""
+CSS - Images: Image model
+http://getbootstrap.com/css/#images
+"""
+@python_2_unicode_compatible
+class Boostrap3ImagePlugin(CMSPlugin):
+    file = filer.fields.image.FilerImageField(
+        verbose_name=_('Image'),
+        blank=False,
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+    )
+    alt = model_fields.MiniText(
+        verbose_name=_('Alternative text'),
+        blank=True,
+        default='',
+    )
+    title = model_fields.MiniText(
+        verbose_name=_('Title'),
+        blank=True,
+        default='',
+    )
+    use_original_image = models.BooleanField(
+        verbose_name=_('Use original image'),
+        blank=True,
+        default=False,
+        help_text=_('Outputs the raw image without cropping.')
+    )
+    override_width = models.IntegerField(
+        verbose_name=_('Override width'),
+        blank=True,
+        null=True,
+        help_text=_('The image width as number in pixels. '
+                    'Example: "720" and not "720px".'),
+    )
+    override_height = models.IntegerField(
+        verbose_name=_('Override height'),
+        blank=True,
+        null=True,
+        help_text=_('The image height as number in pixels. '
+                    'Example: "720" and not "720px".'),
+    )
+    aspect_ratio = models.CharField(
+        verbose_name=_('Aspect ratio'),
+        choices=constants.ASPECT_RATIO_CHOICES,
+        blank=True,
+        default='',
+        max_length=10,
+        help_text=_('Influences width height of the image '
+                    'according to the selected ratio.'),
+    )
+    shape = models.CharField(
+        verbose_name=_('Shape'),
+        choices=(
+            ('rounded', '.img-rounded'),
+            ('circle', '.img-circle'),
+        ),
+        default='',
+        blank=True,
+        max_length=64,
+    )
+    thumbnail = models.BooleanField(
+        verbose_name=_('.img-thumbnail'),
+        default=False,
+        blank=True,
+        help_text='Adds the Bootstrap 3 ".img-thumbnail" class.',
+    )
+    img_responsive = models.BooleanField(
+        verbose_name='.img-responsive',
+        default=True,
+        blank=True,
+        help_text='whether to treat the image as using 100% width of the '
+                  'parent container (sets the img-responsive class).'
+    )
+    attributes = AttributesField(
+        verbose_name=_('Attributes'),
+        blank=True,
+        excluded_keys=['alt', 'class'],
+    )
+    classes = model_fields.Classes()
+
+    cmsplugin_ptr = model_fields.CMSPluginField()
+
+    def __str__(self):
+        txt = ''
+        if self.file_id and self.file.label:
+            txt = self.file.label
+        return txt
+
+    def srcset(self):
+        if not self.file:
+            return []
+        items = collections.OrderedDict()
+        if self.aspect_ratio:
+            aspect_width, aspect_height = tuple([int(i) for i in self.aspect_ratio.split('x')])
+        else:
+            aspect_width, aspect_height = None, None
+        for device in constants.DEVICES:
+            if self.override_width:
+                width = self.override_width
+            else:
+                # TODO: should this should be based on the containing col size?
+                width = device['width_gutter']
+            width_tag = str(width)
+            if aspect_width is not None and aspect_height is not None:
+                height = int(float(width)*float(aspect_height)/float(aspect_width))
+                crop = True
+            else:
+                if self.override_height:
+                    height = self.override_height
+                else:
+                    height = 0
+                crop = False
+            items[device['identifier']] = {
+                'size': (width, height),
+                'size_str': '{}x{}'.format(width, height),
+                'width_str': '{}w'.format(width),
+                'subject_location': self.file.subject_location,
+                'upscale': True,
+                'crop': crop,
+                'aspect_ratio': (aspect_width, aspect_height),
+                'width_tag': width_tag,
+            }
+
+        return items
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -377,137 +491,6 @@ class Boostrap3AlertPlugin(CMSPlugin):
         return self.classes
 
 
-def compute_aspect_ratio(image):
-    if image.exif.get('Orientation', 1) > 4:
-        # image is rotated by 90 degrees, while keeping width and height
-        return float(image.width) / float(image.height)
-    else:
-        return float(image.height) / float(image.width)
-
-
-@python_2_unicode_compatible
-class Boostrap3ImagePlugin(CMSPlugin):
-    cmsplugin_ptr = model_fields.CMSPluginField()
-
-    file = filer.fields.image.FilerImageField(
-        verbose_name=_("file"),
-        blank=False,
-        null=True,
-        on_delete=models.SET_NULL,
-        related_name='+',
-    )
-    alt = model_fields.MiniText(
-        _("alt"),
-        blank=True,
-        default='',
-    )
-    title = model_fields.MiniText(
-        _("title"),
-        blank=True,
-        default='',
-    )
-    use_original_image = models.BooleanField(
-        _("use original image"),
-        blank=True,
-        default=False,
-        help_text=_(
-            "use the original full-resolution image (no resizing)."
-        )
-    )
-    override_width = models.IntegerField(
-        _("override width"),
-        blank=True,
-        null=True,
-        help_text=_(
-            'if this field is provided it will be used to scale image.'
-        )
-    )
-    override_height = models.IntegerField(
-        _("override height"),
-        blank=True,
-        null=True,
-        help_text=_(
-            'if this field is provided it will be used to scale image. '
-            'If aspect ration is selected - height will be calculated '
-            'based on that.'
-        )
-    )
-    aspect_ratio = models.CharField(
-        _("aspect ratio"),
-        max_length=10,
-        blank=True,
-        default='',
-        choices=constants.ASPECT_RATIO_CHOICES
-    )
-    thumbnail = models.BooleanField(
-        _("thumbnail"),
-        default=False,
-        blank=True,
-        help_text="add the 'thumbnail' border",
-    )
-    shape = models.CharField(
-        _('shape'),
-        max_length=64,
-        blank=True,
-        default='',
-        choices=(
-            ('rounded', 'rounded'),
-            ('circle', 'circle'),
-        )
-    )
-
-    classes = model_fields.Classes()
-    img_responsive = models.BooleanField(
-        verbose_name='class: img-responsive',
-        default=True,
-        blank=True,
-        help_text='whether to treat the image as using 100% width of the '
-                  'parent container (sets the img-responsive class).'
-    )
-
-    def __str__(self):
-        txt = 'Image'
-
-        if self.file_id and self.file.label:
-            txt = self.file.label
-        return txt
-
-    def srcset(self):
-        if not self.file:
-            return []
-        items = collections.OrderedDict()
-        if self.aspect_ratio:
-            aspect_width, aspect_height = tuple([int(i) for i in self.aspect_ratio.split('x')])
-        else:
-            aspect_width, aspect_height = None, None
-        for device in constants.DEVICES:
-            if self.override_width:
-                width = self.override_width
-            else:
-                # TODO: should this should be based on the containing col size?
-                width = device['width_gutter']
-            width_tag = str(width)
-            if aspect_width is not None and aspect_height is not None:
-                height = int(float(width)*float(aspect_height)/float(aspect_width))
-                crop = True
-            else:
-                if self.override_height:
-                    height = self.override_height
-                else:
-                    height = 0
-                crop = False
-            items[device['identifier']] = {
-                'size': (width, height),
-                'size_str': "{}x{}".format(width, height),
-                'width_str': "{}w".format(width),
-                'subject_location': self.file.subject_location,
-                'upscale': True,
-                'crop': crop,
-                'aspect_ratio': (aspect_width, aspect_height),
-                'width_tag': width_tag,
-            }
-
-        return items
 
 
 @python_2_unicode_compatible
@@ -846,7 +829,7 @@ class Bootstrap3CarouselPlugin(CMSPlugin):
         return items
 
 @python_2_unicode_compatible
-class Bootstrap3CarouselSlidePlugin(CMSPlugin, LinkMixin):
+class Bootstrap3CarouselSlidePlugin(CMSPlugin, model_fields.LinkMixin):
     excluded_attr_keys = ['class', 'href', 'target', ]
     cmsplugin_ptr = model_fields.CMSPluginField()
     image = filer.fields.image.FilerImageField(
