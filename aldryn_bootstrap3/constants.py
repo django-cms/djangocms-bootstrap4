@@ -80,37 +80,37 @@ ASPECT_RATIO_CHOICES = (
     ]))
 
 SIZE_CHOICES = (
-    ('lg', 'Large',),
-    ('md', 'Medium',),
-    ('sm', 'Small',),
-    ('xs', 'Extra Small',),
+    ('lg', _('Large'),),
+    ('md', _('Medium'),),
+    ('sm', _('Small'),),
+    ('xs', _('Extra Small'),),
 )
 
 DEVICES = (
     {
         'identifier': 'xs',
-        'name': _("mobile phones"),
+        'name': _('Mobile phones'),
         'width': 768,
         'width_gutter': 750,
         'icon': 'mobile-phone',
     },
     {
         'identifier': 'sm',
-        'name': _("tablets"),
+        'name': _('Tablets'),
         'width': 768,
         'width_gutter': 750,
         'icon': 'tablet',
     },
     {
         'identifier': 'md',
-        'name': _("laptops"),
+        'name': _('Laptops'),
         'width': 992,
         'width_gutter': 970,
         'icon': 'laptop',
     },
     {
         'identifier': 'lg',
-        'name': _("large desktops"),
+        'name': _('Large desktops'),
         'width': 1200,
         'width_gutter': 1170,
         'icon': 'desktop',
@@ -119,26 +119,17 @@ DEVICES = (
 
 for device in DEVICES:
     identifier = device['identifier']
-    device['long_description'] = "{name} (<{width}px)".format(**device)
+    device['long_description'] = '{name} (<{width}px)'.format(**device)
     device['size_name'] = dict(SIZE_CHOICES).get(identifier)
 
 
 
 
-PANEL_CONTEXT_CHOICES = (
-    ('default', 'Default',),
-) + CONTEXT_CHOICES + (
-    # ('', 'Custom',),
-)
-PANEL_CONTEXT_DEFAULT = 'default'
 
-ACCORDION_ITEM_CONTEXT_CHOICES = PANEL_CONTEXT_CHOICES
-ACCORDION_ITEM_CONTEXT_DEFAULT = PANEL_CONTEXT_DEFAULT
 
-LIST_GROUP_ITEM_CONTEXT_CHOICES = (
-    ('', 'Default',),
-) + CONTEXT_CHOICES
-LIST_GROUP_ITEM_CONTEXT_DEFAULT = ''
+
+
+
 
 
 SIZE_WIDGET_CHOICES = (

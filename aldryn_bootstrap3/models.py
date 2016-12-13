@@ -425,10 +425,10 @@ The following components marked with "✓" are implemented:
 [✓] Alerts
 [ ] Progress Bars
 [ ] Media object
-[ ] List Group
-[ ] Panels
+[✓] List Group
+[✓] Panels
 [ ] Responsive embed
-[ ] Wells
+[✓] Wells
 """
 
 
@@ -467,7 +467,7 @@ class Boostrap3LabelPlugin(CMSPlugin):
         verbose_name=_('Label'),
         blank=True,
         default='',
-        max_length=256,
+        max_length=255,
     )
     context = model_fields.Context(
         verbose_name=_('Context'),
@@ -513,12 +513,202 @@ class Boostrap3AlertPlugin(CMSPlugin):
         return self.classes
 
 
+"""
+Component - List group: "Wrapper" Model
+http://getbootstrap.com/components/#alerts
+"""
+class Bootstrap3ListGroupPlugin(CMSPlugin):
+    add_list_group_class = models.BooleanField(
+        verbose_name='.list-group',
+        default=True,
+        blank=True,
+        help_text=_('Whether to add the list-group and subsequent '
+                    'list-group-item classes.'),
+    )
+    classes = model_fields.Classes()
+    attributes = AttributesField(
+        verbose_name=_('Attributes'),
+        blank=True,
+        excluded_keys=['class'],
+    )
+
+    cmsplugin_ptr = model_fields.CMSPluginField()
+
+    def get_short_description(self):
+        instance = self.get_plugin_instance()[0]
+
+        if not instance:
+            return ugettext('<empty>')
+
+        column_count = len(self.child_plugin_instances or [])
+        column_count_str = ungettext(
+            '1 item',
+            '%(count)i items',
+            column_count
+        ) % {'count': column_count}
+        return column_count_str
 
 
 """
-JavaScript Section
-[ ] Transitions
-[ ] Modal
+Component - List group: "Item" Model
+http://getbootstrap.com/components/#alerts
+"""
+@python_2_unicode_compatible
+class Bootstrap3ListGroupItemPlugin(CMSPlugin):
+    title = model_fields.MiniText(
+        verbose_name=_('Title'),
+        blank=True,
+        default='',
+    )
+    context = model_fields.Context(
+        verbose_name=_('Context'),
+        choices=(('default', 'Default',),) + constants.CONTEXT_CHOICES,
+        default='default',
+        blank=False,
+    )
+    state = models.CharField(
+        verbose_name=_('State'),
+        choices=(
+            ('active', 'Active'),
+            ('disabled', 'Disabled'),
+        ),
+        blank=True,
+        max_length=255,
+    )
+    classes = model_fields.Classes()
+    attributes = AttributesField(
+        verbose_name=_('Attributes'),
+        blank=True,
+        excluded_keys=['class'],
+    )
+
+    cmsplugin_ptr = model_fields.CMSPluginField()
+
+    def __str__(self):
+        return self.title
+
+
+"""
+Component - Panel: "Wrapper" Model
+http://getbootstrap.com/components/#panels
+"""
+@python_2_unicode_compatible
+class Boostrap3PanelPlugin(CMSPlugin):
+    context = model_fields.Context(
+        verbose_name=_('Context'),
+        choices=(('default', 'Default',),) + constants.CONTEXT_CHOICES,
+        default='default',
+        blank=False,
+    )
+    classes = model_fields.Classes()
+    attributes = AttributesField(
+        verbose_name=_('Attributes'),
+        blank=True,
+        excluded_keys=['class'],
+    )
+
+    cmsplugin_ptr = model_fields.CMSPluginField()
+
+    def __str__(self):
+        return self.context
+
+
+"""
+Component - Panel: "Heading" Model
+http://getbootstrap.com/components/#panels-heading
+"""
+@python_2_unicode_compatible
+class Boostrap3PanelHeadingPlugin(CMSPlugin):
+    title = model_fields.MiniText(
+        verbose_name=_('Title'),
+        blank=True,
+        default='',
+        help_text='Panels can have additional plugins.'
+    )
+    classes = model_fields.Classes()
+    attributes = AttributesField(
+        verbose_name=_('Attributes'),
+        blank=True,
+        excluded_keys=['class'],
+    )
+
+    cmsplugin_ptr = model_fields.CMSPluginField()
+
+    def __str__(self):
+        return self.title
+
+
+"""
+Component - Panel: "Body" Model
+http://getbootstrap.com/components/#panels
+"""
+@python_2_unicode_compatible
+class Boostrap3PanelBodyPlugin(CMSPlugin):
+    classes = model_fields.Classes()
+    attributes = AttributesField(
+        verbose_name=_('Attributes'),
+        blank=True,
+        excluded_keys=['class'],
+    )
+
+    cmsplugin_ptr = model_fields.CMSPluginField()
+
+    def __str__(self):
+        return self.classes
+
+
+"""
+Component - Panel: "Footer" Model
+http://getbootstrap.com/components/#panels-footer
+"""
+@python_2_unicode_compatible
+class Boostrap3PanelFooterPlugin(CMSPlugin):
+    classes = model_fields.Classes()
+    attributes = AttributesField(
+        verbose_name=_('Attributes'),
+        blank=True,
+        excluded_keys=['class'],
+    )
+
+    cmsplugin_ptr = model_fields.CMSPluginField()
+
+    def __str__(self):
+        return self.classes
+
+
+"""
+Component - Wells: Model
+http://getbootstrap.com/components/#wells
+"""
+@python_2_unicode_compatible
+class Boostrap3WellPlugin(CMSPlugin):
+    size = model_fields.Size()
+    classes = model_fields.Classes()
+    attributes = AttributesField(
+        verbose_name=_('Attributes'),
+        blank=True,
+        excluded_keys=['class'],
+    )
+
+    cmsplugin_ptr = model_fields.CMSPluginField()
+
+    def __str__(self):
+        return self.classes
+
+
+
+
+
+
+"""
+JavaScript - http://getbootstrap.com/javascript/
+Bring Bootstrap's components to life with over a dozen custom jQuery plugins.
+Easily include them all, or one by one.
+
+The following components marked with "✓" are implemented:
+
+[x] Transitions (integrate into your site)
+[✓] Modal
 [ ] Dropdowns
 [ ] Scrollspy
 [ ] Tab
@@ -532,16 +722,9 @@ JavaScript Section
 """
 
 
-@python_2_unicode_compatible
-class Boostrap3WellPlugin(CMSPlugin):
-    cmsplugin_ptr = model_fields.CMSPluginField()
 
-    size = model_fields.Size()
 
-    classes = model_fields.Classes()
 
-    def __str__(self):
-        return self.classes
 
 
 
@@ -594,67 +777,10 @@ class Bootstrap3FilePlugin(CMSPlugin):
         return label
 
 
-#########
-# Panel #
-#########
 
 
-@python_2_unicode_compatible
-class Boostrap3PanelPlugin(CMSPlugin):
-    cmsplugin_ptr = model_fields.CMSPluginField()
-
-    context = model_fields.Context(
-        choices=constants.PANEL_CONTEXT_CHOICES,
-        default=constants.PANEL_CONTEXT_DEFAULT,
-        blank=False,
-    )
-
-    classes = model_fields.Classes()
-
-    def __str__(self):
-        return self.context
 
 
-@python_2_unicode_compatible
-class Boostrap3PanelHeadingPlugin(CMSPlugin):
-    cmsplugin_ptr = model_fields.CMSPluginField()
-
-    title = model_fields.MiniText(
-        _("title"),
-        blank=True,
-        default='',
-        help_text='Alternatively you can add plugins'
-    )
-
-    classes = model_fields.Classes()
-
-    def __str__(self):
-        return self.title
-
-
-@python_2_unicode_compatible
-class Boostrap3PanelBodyPlugin(CMSPlugin):
-    cmsplugin_ptr = model_fields.CMSPluginField()
-
-    classes = model_fields.Classes()
-
-    def __str__(self):
-        return self.classes
-
-
-@python_2_unicode_compatible
-class Boostrap3PanelFooterPlugin(CMSPlugin):
-    cmsplugin_ptr = model_fields.CMSPluginField()
-
-    classes = model_fields.Classes()
-
-    def __str__(self):
-        return self.classes
-
-
-########
-# Grid #
-########
 
 
 
@@ -695,8 +821,8 @@ class Bootstrap3AccordionItemPlugin(CMSPlugin):
         default='',
     )
     context = model_fields.Context(
-        choices=constants.ACCORDION_ITEM_CONTEXT_CHOICES,
-        default=constants.ACCORDION_ITEM_CONTEXT_DEFAULT,
+        choices=(('default', 'Default',),) + constants.CONTEXT_CHOICES,
+        default='default',
         blank=False,
     )
 
@@ -710,58 +836,6 @@ class Bootstrap3AccordionItemPlugin(CMSPlugin):
 # ListGroup #
 #############
 
-class Bootstrap3ListGroupPlugin(CMSPlugin):
-    cmsplugin_ptr = model_fields.CMSPluginField()
-    classes = model_fields.Classes()
-    add_list_group_class = models.BooleanField(
-        verbose_name='class: list-group',
-        default=True,
-        blank=True,
-        help_text='whether to add the list-group and list-group-item classes'
-    )
-
-    def get_short_description(self):
-        instance = self.get_plugin_instance()[0]
-
-        if not instance:
-            return ugettext("<Empty>")
-
-        column_count = len(self.child_plugin_instances or [])
-        column_count_str = ungettext(
-            "1 item",
-            "%(count)i items",
-            column_count
-        ) % {'count': column_count}
-        return column_count_str
-
-
-@python_2_unicode_compatible
-class Bootstrap3ListGroupItemPlugin(CMSPlugin):
-    cmsplugin_ptr = model_fields.CMSPluginField()
-    title = model_fields.MiniText(
-        _("title"),
-        blank=True,
-        default='',
-    )
-    context = model_fields.Context(
-        choices=constants.LIST_GROUP_ITEM_CONTEXT_CHOICES,
-        default=constants.LIST_GROUP_ITEM_CONTEXT_DEFAULT,
-        blank=True,
-    )
-    state = models.CharField(
-        verbose_name='state',
-        choices=(
-            ('active', 'active'),
-            ('disabled', 'disabled'),
-        ),
-        max_length=255,
-        blank=True,
-    )
-
-    classes = model_fields.Classes()
-
-    def __str__(self):
-        return self.title
 
 
 ############

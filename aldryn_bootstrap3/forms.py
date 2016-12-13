@@ -212,17 +212,40 @@ class Boostrap3LabelPluginForm(django.forms.models.ModelForm):
         }
 
 
-
-
+"""
+Component - Panel: "Wrapper" Form
+http://getbootstrap.com/components/#panels
+"""
 class PanelPluginBaseForm(django.forms.models.ModelForm):
-    create_heading = django.forms.BooleanField(required=False, initial=False)
-    create_body = django.forms.BooleanField(required=False, initial=False)
-    create_footer = django.forms.BooleanField(required=False, initial=False)
+    create_heading = django.forms.BooleanField(
+        label=_('Initial heading'),
+        required=False,
+        initial=False,
+    )
+    create_body = django.forms.BooleanField(
+        label=_('Initial body'),
+        required=False,
+        initial=False,
+    )
+    create_footer = django.forms.BooleanField(
+        label=_('Initial footer'),
+        required=False,
+        initial=False,
+    )
 
     class Meta:
         model = models.Boostrap3PanelPlugin
-        # fields = ('classes',)
         exclude = ('page', 'position', 'placeholder', 'language', 'plugin_type')
+
+
+
+
+
+
+
+
+
+
 
 
 class CarouselPluginForm(django.forms.ModelForm):
