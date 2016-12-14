@@ -21,27 +21,27 @@ import filer.fields.image
 
 from djangocms_attributes_field.fields import AttributesField
 
+from .conf import settings
 from . import fields, constants
 
 
-# Fieldset setup used specifically for the link
-link_fieldset = (
-    ('Link', {
-        'fields': (
-            'link_page',
-            'link_file',
-            'link_url',
-            'link_mailto',
-            'link_phone',
-        ),
-        'description': 'Choose one of the link types below.',
-    }),
-    ('Link options', {
-        'fields': (
-            ('link_target', 'link_anchor',),
-        ),
-    }),
-)
+def get_additional_styles():
+    """
+    Get additional styles choices from settings
+    """
+    choices = []
+    raw = getattr(
+        settings,
+        'ALDRYN_BOOTSTRAP3_CAROUSEL_STYLES',
+        getattr(settings, 'GALLERY_STYLES', False)
+    )
+    if raw:
+        if isinstance(raw, str):
+            raw = raw.split(',')
+        for choice in raw:
+            clean = choice.strip()
+            choices.append((clean.lower(), clean.title()))
+    return choices
 
 
 # Add an app namespace to related_name to avoid field name clashes

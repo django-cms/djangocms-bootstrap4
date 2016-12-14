@@ -25,8 +25,8 @@ class Context(django.forms.fields.ChoiceField):
 
 class Size(django.forms.fields.ChoiceField):
     widget = widgets.Size
-    CHOICES = constants.SIZE_WIDGET_CHOICES
-    DEFAULT = constants.SIZE_WIDGET_DEFAULT
+    CHOICES = constants.SIZE_CHOICES
+    DEFAULT = 'md'
 
     def __init__(self, *args, **kwargs):
         if 'choices' not in kwargs:

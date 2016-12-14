@@ -238,16 +238,10 @@ class PanelPluginBaseForm(django.forms.models.ModelForm):
         exclude = ('page', 'position', 'placeholder', 'language', 'plugin_type')
 
 
-
-
-
-
-
-
-
-
-
-
+"""
+JavaScript - Carousel: "Wrapper" Form
+http://getbootstrap.com/javascript/#carousel
+"""
 class CarouselPluginForm(django.forms.ModelForm):
 
     class Meta:
@@ -262,17 +256,22 @@ class CarouselPluginForm(django.forms.ModelForm):
     def clean_style(self):
         style = self.cleaned_data.get('style')
         template = 'aldryn_bootstrap3/plugins/carousel/{}/carousel.html'.format(
-            style)
+            style
+        )
         # Check if template for style exists:
         try:
             django.template.loader.select_template([template])
         except django.template.TemplateDoesNotExist:
             raise django.forms.ValidationError(
-                _("Not a valid style (Template %s does not exist)") % template
+                _('Not a valid style (Template {path} does not exist)').format(path=template)
             )
         return style
 
 
+"""
+JavaScript - Carousel: "Plugin" Form
+http://getbootstrap.com/javascript/#carousel
+"""
 class CarouselSlidePluginForm(django.forms.ModelForm):
 
     class Meta:

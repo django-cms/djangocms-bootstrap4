@@ -121,24 +121,3 @@ for device in DEVICES:
     identifier = device['identifier']
     device['long_description'] = '{name} (<{width}px)'.format(**device)
     device['size_name'] = dict(SIZE_CHOICES).get(identifier)
-
-
-
-
-
-
-
-
-
-
-
-SIZE_WIDGET_CHOICES = (
-    # ('', 'Default'),
-) + SIZE_CHOICES
-SIZE_WIDGET_DEFAULT = 'md'
-
-SIZES = tuple([size for size, name in SIZE_CHOICES])
-
-SIZE_DEFAULT = 'md'
-
-DEVICE_DICT = {device['identifier']: device for device in DEVICES}

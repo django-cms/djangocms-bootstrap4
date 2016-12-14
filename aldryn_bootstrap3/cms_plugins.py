@@ -23,7 +23,6 @@ except ImportError:
                   'Please update to django-filer>=1.1.1',
                   Warning)
 
-from .model_fields import link_fieldset
 from . import models, forms, constants
 
 
@@ -708,79 +707,10 @@ class Bootstrap3WellCMSPlugin(CMSPluginBase):
 plugin_pool.register_plugin(Bootstrap3WellCMSPlugin)
 
 
-
-
-
-
-
-
-
-
-
-
-
-class Bootstrap3SpacerCMSPlugin(CMSPluginBase):
-    model = models.Boostrap3SpacerPlugin
-    name = _("Spacer")
-    module = _('Bootstrap 3')
-    change_form_template = 'admin/aldryn_bootstrap3/base.html'
-    render_template = 'aldryn_bootstrap3/plugins/spacer.html'
-    text_enabled = True
-    text_editor_preview = False
-
-    fieldsets = (
-        (None, {'fields': (
-            'size',
-        )}),
-        ('Advanced', {
-            'classes': ('collapse',),
-            'fields': (
-                'classes',
-            ),
-        }),
-    )
-
-    def icon_src(self, instance):
-        return static('aldryn_bootstrap3/img/type/spacer.png')
-
-
-plugin_pool.register_plugin(Bootstrap3SpacerCMSPlugin)
-
-
-class Bootstrap3FileCMSPlugin(CMSPluginBase):
-    model = models.Bootstrap3FilePlugin
-    name = _("File")
-    module = _('Bootstrap 3')
-    change_form_template = 'admin/aldryn_bootstrap3/base.html'
-    render_template = 'aldryn_bootstrap3/plugins/file.html'
-    text_enabled = True
-
-    fieldsets = (
-        (None, {'fields': (
-            'file',
-            'name',
-            'icon_left',
-            'icon_right',
-        )}),
-        ('Advanced', {
-            'classes': ('collapse',),
-            'fields': (
-                'open_new_window',
-                'show_file_size',
-                'classes',
-            ),
-        }),
-    )
-
-    def icon_src(self, instance):
-        return static('aldryn_bootstrap3/img/type/file.png')
-
-
-plugin_pool.register_plugin(Bootstrap3FileCMSPlugin)
-
-
-
-
+"""
+JavaScript - Collapse: "Accordion" Plugin
+http://getbootstrap.com/javascript/#collapse
+"""
 class Bootstrap3AccordionCMSPlugin(CMSPluginBase):
     model = models.Bootstrap3AccordionPlugin
     name = _('Accordion')
@@ -796,10 +726,11 @@ class Bootstrap3AccordionCMSPlugin(CMSPluginBase):
                 'index',
             )
         }),
-        ('Advanced', {
+        (_('Advanced settings'), {
             'classes': ('collapse',),
             'fields': (
                 'classes',
+                'attributes',
             ),
         }),
     )
@@ -807,10 +738,15 @@ class Bootstrap3AccordionCMSPlugin(CMSPluginBase):
     def render(self, context, instance, placeholder):
         context = super(Bootstrap3AccordionCMSPlugin, self).render(context, instance, placeholder)
         context['accordion'] = instance
-        context['accordion_id'] = "plugin-bootstrap3-accordion-%s" % instance.pk
+        context['accordion_id'] = 'plugin-bootstrap3-accordion-{}'.format(instance.pk)
         return context
 
 
+
+"""
+JavaScript - Collapse: "Accordion item" Plugin
+http://getbootstrap.com/javascript/#collapse
+"""
 class Bootstrap3AccordionItemCMSPlugin(CMSPluginBase):
     model = models.Bootstrap3AccordionItemPlugin
     name = _('Accordion item')
@@ -827,10 +763,11 @@ class Bootstrap3AccordionItemCMSPlugin(CMSPluginBase):
                 'context',
             )
         }),
-        ('Advanced', {
+        (_('Advanced settings'), {
             'classes': ('collapse',),
             'fields': (
                 'classes',
+                'attributes',
             ),
         }),
     )
@@ -846,15 +783,10 @@ plugin_pool.register_plugin(Bootstrap3AccordionItemCMSPlugin)
 
 
 
-
-
-
-############
-# Carousel #
-############
-
-
-# Base Classes
+"""
+JavaScript - Carousel: Base Plugin
+http://getbootstrap.com/javascript/#carousel
+"""
 class CarouselBase(CMSPluginBase):
     module = _('Bootstrap 3')
 
@@ -879,19 +811,23 @@ class CarouselSlideBase(CarouselBase):
                 models.Bootstrap3CarouselPlugin.STYLE_DEFAULT,
             )
         return 'aldryn_bootstrap3/plugins/carousel/{}/{}.html'.format(
-            style, name)
+            style, name
+        )
 
     def get_render_template(self, context, instance, placeholder):
         return self.get_slide_template(instance=instance)
 
 
-# Plugins
+"""
+JavaScript - Carousel: "Wrapper" Plugin
+http://getbootstrap.com/javascript/#carousel
+"""
 class Bootstrap3CarouselCMSPlugin(CarouselBase):
-    name = _('Carousel')
     model = models.Bootstrap3CarouselPlugin
+    name = _('Carousel')
+    form = forms.CarouselPluginForm
     change_form_template = 'admin/aldryn_bootstrap3/base.html'
     render_template = False
-    form = forms.CarouselPluginForm
     allow_children = True
     child_classes = [
         'Bootstrap3CarouselSlideCMSPlugin',
@@ -901,18 +837,16 @@ class Bootstrap3CarouselCMSPlugin(CarouselBase):
         (None, {
             'fields': (
                 'style',
-                'transition_effect',
-                ('ride', 'interval'),
-                'aspect_ratio',
-
+                'interval',
+                ('aspect_ratio', 'transition_effect',),
+                ('ride', 'pause', 'wrap',),
             )
         }),
-        ('Advanced', {
+        (_('Advanced settings'), {
             'classes': ('collapse',),
             'fields': (
                 'classes',
-                'pause',
-                'wrap',
+                'attributes',
             ),
         }),
     )
@@ -932,18 +866,21 @@ class Bootstrap3CarouselCMSPlugin(CarouselBase):
 
     def get_render_template(self, context, instance, placeholder):
         return 'aldryn_bootstrap3/plugins/carousel/{}/carousel.html'.format(
-            instance.style)
+            instance.style
+        )
 
 
-carousel_link_fieldset = link_fieldset
-
-
+"""
+JavaScript - Carousel: "Slide" Plugin
+http://getbootstrap.com/javascript/#carousel
+"""
 class Bootstrap3CarouselSlideCMSPlugin(CarouselSlideBase):
-    form = forms.CarouselSlidePluginForm
     model = models.Bootstrap3CarouselSlidePlugin
-    name = _('Carousel Slide')
+    name = _('Carousel slide')
+    form = forms.CarouselSlidePluginForm
     change_form_template = 'admin/aldryn_bootstrap3/base.html'
     allow_children = True
+
     fieldsets = (
         (None, {
             'fields': (
@@ -951,13 +888,17 @@ class Bootstrap3CarouselSlideCMSPlugin(CarouselSlideBase):
                 'content',
             )
         }),
-    ) + link_fieldset + (
-        (_('Link Text'), {
+        (_('Link settings'), {
+            'classes': ('collapse',),
             'fields': (
+                ('link_url', 'link_page',),
+                ('link_mailto', 'link_phone'),
+                ('link_anchor', 'link_target'),
+                'link_file',
                 'link_text',
             )
         }),
-        ('Advanced', {
+        (_('Advanced settings'), {
             'classes': ('collapse',),
             'fields': (
                 'classes',
@@ -967,12 +908,13 @@ class Bootstrap3CarouselSlideCMSPlugin(CarouselSlideBase):
     )
 
 
+"""
+JavaScript - Carousel: "Slide folder" Plugin
+http://getbootstrap.com/javascript/#carousel
+"""
 class Bootstrap3CarouselSlideFolderCMSPlugin(CarouselSlideBase):
-    """
-    Slide Plugin that renders a slide for each image in the linked folder.
-    """
-    name = _('Carousel Slides Folder')
     model = models.Bootstrap3CarouselSlideFolderPlugin
+    name = _('Carousel slides folder')
 
     def render(self, context, instance, placeholder):
         context['instance'] = instance
@@ -989,3 +931,73 @@ class Bootstrap3CarouselSlideFolderCMSPlugin(CarouselSlideBase):
 plugin_pool.register_plugin(Bootstrap3CarouselCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3CarouselSlideCMSPlugin)
 # plugin_pool.register_plugin(Bootstrap3CarouselSlideFolderCMSPlugin)
+
+
+"""
+Other - Spacer: Plugin
+"""
+class Bootstrap3SpacerCMSPlugin(CMSPluginBase):
+    model = models.Boostrap3SpacerPlugin
+    name = _('Spacer')
+    module = _('Bootstrap 3')
+    change_form_template = 'admin/aldryn_bootstrap3/base.html'
+    render_template = 'aldryn_bootstrap3/plugins/spacer.html'
+    text_enabled = True
+    text_editor_preview = False
+
+    fieldsets = (
+        (None, {
+            'fields': (
+                'size',
+            )
+        }),
+        (_('Advanced settings'), {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+                'attributes',
+            ),
+        }),
+    )
+
+    def icon_src(self, instance):
+        return static('aldryn_bootstrap3/img/type/spacer.png')
+
+
+plugin_pool.register_plugin(Bootstrap3SpacerCMSPlugin)
+
+
+"""
+Other - File: Plugin
+"""
+class Bootstrap3FileCMSPlugin(CMSPluginBase):
+    model = models.Bootstrap3FilePlugin
+    name = _("File")
+    module = _('Bootstrap 3')
+    change_form_template = 'admin/aldryn_bootstrap3/base.html'
+    render_template = 'aldryn_bootstrap3/plugins/file.html'
+    text_enabled = True
+
+    fieldsets = (
+        (None, {
+            'fields': (
+                'file',
+                'name',
+                ('open_new_window', 'show_file_size',),
+                ('icon_left', 'icon_right',),
+            )
+        }),
+        (_('Advanced settings'), {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+                'classes',
+            ),
+        }),
+    )
+
+    def icon_src(self, instance):
+        return static('aldryn_bootstrap3/img/type/file.png')
+
+
+plugin_pool.register_plugin(Bootstrap3FileCMSPlugin)

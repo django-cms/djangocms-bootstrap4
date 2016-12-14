@@ -23,7 +23,7 @@ import filer.fields.folder
 import djangocms_text_ckeditor.fields
 from djangocms_attributes_field.fields import AttributesField
 
-from . import model_fields, constants, utils
+from . import model_fields, constants
 
 
 """
@@ -54,6 +54,7 @@ class Bootstrap3RowPlugin(CMSPlugin):
     attributes = AttributesField(
         verbose_name=_('Attributes'),
         blank=True,
+        excluded_keys=['class'],
     )
 
     cmsplugin_ptr = model_fields.CMSPluginField()
@@ -88,14 +89,15 @@ http://getbootstrap.com/css/#grid
 """
 @python_2_unicode_compatible
 class Bootstrap3ColumnPlugin(CMSPlugin):
+    tag = models.SlugField(
+        verbose_name=_('Tag'),
+        default='div',
+    )
     classes = model_fields.Classes()
     attributes = AttributesField(
         verbose_name=_('Attributes'),
         blank=True,
-    )
-    tag = models.SlugField(
-        verbose_name=_('Tag'),
-        default='div',
+        excluded_keys=['class'],
     )
 
     cmsplugin_ptr = model_fields.CMSPluginField()
@@ -195,6 +197,7 @@ class Boostrap3BlockquotePlugin(CMSPlugin):
     attributes = AttributesField(
         verbose_name=_('Attributes'),
         blank=True,
+        excluded_keys=['class'],
     )
 
     cmsplugin_ptr = model_fields.CMSPluginField()
@@ -215,6 +218,7 @@ class Boostrap3CitePlugin(CMSPlugin):
     attributes = AttributesField(
         verbose_name=_('Attributes'),
         blank=True,
+        excluded_keys=['class'],
     )
 
     cmsplugin_ptr = model_fields.CMSPluginField()
@@ -682,7 +686,9 @@ http://getbootstrap.com/components/#wells
 """
 @python_2_unicode_compatible
 class Boostrap3WellPlugin(CMSPlugin):
-    size = model_fields.Size()
+    size = model_fields.Size(
+        verbose_name=_('Size'),
+    )
     classes = model_fields.Classes()
     attributes = AttributesField(
         verbose_name=_('Attributes'),
@@ -696,10 +702,6 @@ class Boostrap3WellPlugin(CMSPlugin):
         return self.classes
 
 
-
-
-
-
 """
 JavaScript - http://getbootstrap.com/javascript/
 Bring Bootstrap's components to life with over a dozen custom jQuery plugins.
@@ -708,7 +710,7 @@ Easily include them all, or one by one.
 The following components marked with "✓" are implemented:
 
 [x] Transitions (integrate into your site)
-[✓] Modal
+[ ] Modal
 [ ] Dropdowns
 [ ] Scrollspy
 [ ] Tab
@@ -716,199 +718,158 @@ The following components marked with "✓" are implemented:
 [ ] Popover
 [ ] Alert
 [ ] Button
-[ ] Collapse
-[ ] Carousel
+[✓] Collapse
+[✓] Carousel
 [ ] Affix
 """
 
 
-
-
-
-
-
-
-
-
+"""
+JavaScript - Collapse: "Accordion" Model
+http://getbootstrap.com/javascript/#collapse
+"""
 @python_2_unicode_compatible
-class Boostrap3SpacerPlugin(CMSPlugin):
-    cmsplugin_ptr = model_fields.CMSPluginField()
-
-    size = model_fields.Size()
-
-    classes = model_fields.Classes()
-
-    def __str__(self):
-        return 'size-' + self.size + ' ' + self.classes
-
-
-@python_2_unicode_compatible
-class Bootstrap3FilePlugin(CMSPlugin):
-    cmsplugin_ptr = model_fields.CMSPluginField()
-
-    file = filer.fields.file.FilerFileField(
-        verbose_name=_("file"),
-        null=True,
-        blank=False,
-        on_delete=models.SET_NULL,
-        related_name='+',
-    )
-    name = model_fields.MiniText(
-        _("name"),
-        blank=True,
-        default='',
-    )
-    open_new_window = models.BooleanField(default=False)
-    show_file_size = models.BooleanField(default=False)
-
-    # common fields
-    icon_left = model_fields.Icon()
-    icon_right = model_fields.Icon()
-
-    classes = model_fields.Classes()
-
-    def __str__(self):
-        label = self.name
-        if not label:
-            if self.file_id:
-                label = self.file.label
-            else:
-                label = 'File'
-        return label
-
-
-
-
-
-
-
-
-
-
-#############
-# Accordion #
-#############
-
 class Bootstrap3AccordionPlugin(CMSPlugin):
-    cmsplugin_ptr = model_fields.CMSPluginField()
     index = models.PositiveIntegerField(
-        _('index'), null=True, blank=True,
-        help_text=_('index of element that should be opened on page load '
-                    '(leave it empty if none of the items should be opened)'))
+        verbose_name=_('Index'),
+        null=True,
+        blank=True,
+        help_text=_('Index of element that should be opened on page load '
+                    '(leave it empty if none of the items should be opened)'),
+    )
     classes = model_fields.Classes()
+    attributes = AttributesField(
+        verbose_name=_('Attributes'),
+        blank=True,
+        excluded_keys=['class'],
+    )
+
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def get_short_description(self):
         instance = self.get_plugin_instance()[0]
 
         if not instance:
-            return ugettext("<Empty>")
+            return ugettext('<empty>')
 
         column_count = len(self.child_plugin_instances or [])
         column_count_str = ungettext(
-            "1 item",
-            "%(count)i items",
+            '1 item',
+            '%(count)i items',
             column_count
         ) % {'count': column_count}
         return column_count_str
 
+    def __str__(self):
+        return str(self.index)
 
+
+"""
+JavaScript - Collapse: "Accordion item" Model
+http://getbootstrap.com/javascript/#collapse
+"""
 @python_2_unicode_compatible
 class Bootstrap3AccordionItemPlugin(CMSPlugin):
-    cmsplugin_ptr = model_fields.CMSPluginField()
     title = model_fields.MiniText(
-        _("title"),
-        blank=True,
+        verbose_name=_('Title'),
         default='',
+        blank=True,
     )
     context = model_fields.Context(
         choices=(('default', 'Default',),) + constants.CONTEXT_CHOICES,
         default='default',
         blank=False,
     )
-
     classes = model_fields.Classes()
+    attributes = AttributesField(
+        verbose_name=_('Attributes'),
+        blank=True,
+        excluded_keys=['class'],
+    )
+
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         return self.title
 
 
-#############
-# ListGroup #
-#############
-
-
-
-############
-# Carousel #  derived from https://github.com/aldryn/aldryn-gallery/tree/0.2.6
-############
-
+"""
+JavaScript - Carousel: "Wrapper" Model
+http://getbootstrap.com/javascript/#carousel
+"""
 @python_2_unicode_compatible
 class Bootstrap3CarouselPlugin(CMSPlugin):
     STYLE_DEFAULT = 'standard'
-
     STYLE_CHOICES = [
         (STYLE_DEFAULT, _('Standard')),
     ]
-
     TRANSITION_EFFECT_CHOICES = (
         ('slide', _('Slide')),
     )
 
-    cmsplugin_ptr = model_fields.CMSPluginField()
     style = models.CharField(
-        _('Style'),
-        choices=STYLE_CHOICES + utils.get_additional_styles(),
+        verbose_name=_('Style'),
+        choices=STYLE_CHOICES + model_fields.get_additional_styles(),
         default=STYLE_DEFAULT,
-        max_length=50,
+        max_length=255,
     )
     aspect_ratio = models.CharField(
-        _("aspect ratio"),
-        max_length=10,
-        blank=True,
+        verbose_name=_('Aspect ratio'),
+        choices=constants.ASPECT_RATIO_CHOICES,
         default='',
-        choices=constants.ASPECT_RATIO_CHOICES
+        blank=True,
+        max_length=255,
     )
     transition_effect = models.CharField(
-        _('Transition Effect'),
+        verbose_name=_('Transition effect'),
         choices=TRANSITION_EFFECT_CHOICES,
         default='',
-        max_length=50,
         blank=True,
+        max_length=255,
     )
     ride = models.BooleanField(
-        _('Ride'),
+        verbose_name=_('Ride'),
         default=True,
         help_text=_('Whether to mark the carousel as animating '
                     'starting at page load.'),
     )
     interval = models.IntegerField(
-        _('Interval'),
+        verbose_name=_('Interval'),
         default=5000,
-        help_text=_("The amount of time to delay between automatically "
-                    "cycling an item."),
+        help_text=_('The amount of time to delay between automatically '
+                    'cycling an item.'),
     )
     wrap = models.BooleanField(
+        verbose_name=_('Wrap'),
         default=True,
         blank=True,
         help_text=_('Whether the carousel should cycle continuously or '
-                    'have hard stops.')
+                    'have hard stops.'),
     )
     pause = models.BooleanField(
+        verbose_name=_('Pause'),
         default=True,
         blank=True,
         help_text=_('Pauses the cycling of the carousel on mouseenter and '
-                    'resumes the cycling of the carousel on mouseleave.')
+                    'resumes the cycling of the carousel on mouseleave.'),
     )
     classes = model_fields.Classes()
+    attributes = AttributesField(
+        verbose_name=_('Attributes'),
+        blank=True,
+        excluded_keys=['class'],
+    )
+
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         data = django.forms.models.model_to_dict(self)
         data.update(dict(
             style_label=_('Style'),
-            transition_effect_label=_('Transition Effect'),
+            transition_effect_label=_('Transition effect'),
             ride_label=_('Ride'),
             interval_label=_('Interval'),
-            aspect_ratio_label=_('Aspect Ratio'),
+            aspect_ratio_label=_('Aspect ratio'),
         ))
         fields = [
             'style',
@@ -945,8 +906,8 @@ class Bootstrap3CarouselPlugin(CMSPlugin):
                 crop = False
             items[device['identifier']] = {
                 'size': (width, height),
-                'size_str': "{}x{}".format(width, height),
-                'width_str': "{}w".format(width),
+                'size_str': '{}x{}'.format(width, height),
+                'width_str': '{}w'.format(width),
                 # 'subject_location': self.file.subject_location,
                 'upscale': True,
                 'crop': crop,
@@ -956,29 +917,34 @@ class Bootstrap3CarouselPlugin(CMSPlugin):
 
         return items
 
+
+"""
+JavaScript - Carousel: "Slide" Model
+http://getbootstrap.com/javascript/#carousel
+"""
 @python_2_unicode_compatible
 class Bootstrap3CarouselSlidePlugin(CMSPlugin, model_fields.LinkMixin):
-    excluded_attr_keys = ['class', 'href', 'target', ]
-    cmsplugin_ptr = model_fields.CMSPluginField()
     image = filer.fields.image.FilerImageField(
-        verbose_name=_('image'),
+        verbose_name=_('Image'),
         blank=False,
         null=True,
-        related_name='+',
         on_delete=models.SET_NULL,
+        related_name='+',
     )
     link_text = models.CharField(
-        verbose_name=_('link text'),
+        verbose_name=_('Link text'),
         max_length=200,
-        blank=True
+        blank=True,
     )
     content = djangocms_text_ckeditor.fields.HTMLField(
-        _("Content"),
+        verbose_name=_('Content'),
         blank=True,
         default='',
         help_text=_('alternatively add sub plugins as content'),
     )
     classes = model_fields.Classes()
+
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         image_text = content_text = ''
@@ -1004,16 +970,98 @@ class Bootstrap3CarouselSlidePlugin(CMSPlugin, model_fields.LinkMixin):
             return image_text or content_text
 
 
+"""
+JavaScript - Carousel: "Slide folder" Model
+http://getbootstrap.com/javascript/#carousel
+"""
 @python_2_unicode_compatible
 class Bootstrap3CarouselSlideFolderPlugin(CMSPlugin):
-    cmsplugin_ptr = model_fields.CMSPluginField()
     folder = filer.fields.folder.FilerFolderField(
-        verbose_name=_('folder'),
+        verbose_name=_('Folder'),
     )
     classes = model_fields.Classes()
+
+    cmsplugin_ptr = model_fields.CMSPluginField()
 
     def __str__(self):
         if self.folder_id:
             return self.folder.pretty_logical_path
         else:
-            return _('not selected yet')
+            return _('<folder is missing>')
+
+
+"""
+Custom plugins added to support further stylings
+
+[✓] Spacer
+[✓] File
+"""
+
+
+"""
+Other - Spacer: Model
+"""
+@python_2_unicode_compatible
+class Boostrap3SpacerPlugin(CMSPlugin):
+    size = model_fields.Size(
+        verbose_name=_('Size'),
+    )
+    classes = model_fields.Classes()
+    attributes = AttributesField(
+        verbose_name=_('Attributes'),
+        blank=True,
+        excluded_keys=['class'],
+    )
+
+    cmsplugin_ptr = model_fields.CMSPluginField()
+
+    def __str__(self):
+        return 'size-' + self.size + ' ' + self.classes
+
+
+"""
+Other - File: Model
+"""
+@python_2_unicode_compatible
+class Bootstrap3FilePlugin(CMSPlugin):
+    file = filer.fields.file.FilerFileField(
+        verbose_name=_('File'),
+        null=True,
+        blank=False,
+        on_delete=models.SET_NULL,
+        related_name='+',
+    )
+    name = model_fields.MiniText(
+        verbose_name=_('Name'),
+        default='',
+        blank=True,
+    )
+    open_new_window = models.BooleanField(
+        verbose_name=_('Open in new window'),
+        default=False,
+    )
+    show_file_size = models.BooleanField(
+        verbose_name=_('Show file size'),
+        default=False,
+    )
+    # common fields
+    icon_left = model_fields.Icon()
+    icon_right = model_fields.Icon()
+    # additional fields
+    classes = model_fields.Classes()
+    attributes = AttributesField(
+        verbose_name=_('Attributes'),
+        blank=True,
+        excluded_keys=['class'],
+    )
+
+    cmsplugin_ptr = model_fields.CMSPluginField()
+
+    def __str__(self):
+        label = self.name
+        if not label:
+            if self.file_id:
+                label = self.file.label
+            else:
+                label = 'File'
+        return label
