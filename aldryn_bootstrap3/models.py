@@ -857,7 +857,11 @@ class Bootstrap3CarouselPlugin(CMSPlugin):
     attributes = AttributesField(
         verbose_name=_('Attributes'),
         blank=True,
-        excluded_keys=['class'],
+        excluded_keys=[
+            'class',
+            # data attributes et via settings
+            'data-ride', 'data-interval', 'data-pause', 'data-wrap'
+        ],
     )
 
     cmsplugin_ptr = model_fields.CMSPluginField()
@@ -1052,7 +1056,7 @@ class Bootstrap3FilePlugin(CMSPlugin):
     attributes = AttributesField(
         verbose_name=_('Attributes'),
         blank=True,
-        excluded_keys=['class'],
+        excluded_keys=['class', 'target'],
     )
 
     cmsplugin_ptr = model_fields.CMSPluginField()

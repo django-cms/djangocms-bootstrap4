@@ -2,7 +2,8 @@
 
 <div class="panel
     {% if instance.context %} panel-{{ instance.context }}{% endif %}
-    {% if instance.classes %} {{ instance.classes }}{% endif %}">
+    {% if instance.classes %} {{ instance.classes }}{% endif %}"
+    {{ instance.attributes_str }}>
 
     <div class="panel-heading" role="tab" id="heading-{{ item.title|slugify }}-{{ item.pk }}">
         <h4 class="panel-title">

@@ -1,6 +1,7 @@
 <a href="{{ instance.file.url }}"
     {% if instance.open_new_window %} target="_blank"{% endif %}
-    {% if instance.classes %} class="{{ instance.classes }}"{% endif %}>
+    {% if instance.classes %} class="{{ instance.classes }}"{% endif %}
+    {{ instance.attributes_str }}>
     {% if instance.icon_left %}
         {% with icon_class=instance.icon_left extra_css_classes=instance.icon_left.classes %}
             {% include 'aldryn_bootstrap3/plugins/includes/icon.html' %}

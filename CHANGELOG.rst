@@ -17,7 +17,16 @@ Changelog
 * Added <cite> plugin to <blockquote>
 * Added attributes fields to models missing it
 * Added missing translation declarations to untranslated strings
+* Added default CKEditor "styleSet" to load via djangocms-text-ckeditor in
+  ``/static/aldryn_bootstrap3/js/ckeditor.js``
+* Set all max_values to 255
 * Restructured code to reflect Bootstrap 3's documentation
+* Simplified and removed constants such as ``LABEL_CONTEXT_CHOICES``,
+  ``LABEL_CONTEXT_DEFAULT``, ,``TEXT_LINK_CONTEXT_CHOICES``,
+  ``TXT_LINK_CONTEXT_DEFAULT``, ``PANEL_CONTEXT_CHOICES``,
+  ``PANEL_CONTEXT_DEFAULT``, ``ACCORDION_ITEM_CONTEXT_CHOICES``,
+  ``ACCORDION_ITEM_CONTEXT_DEFAULT``, ``LIST_GROUP_ITEM_CONTEXT_CHOICES``,
+  ``LIST_GROUP_ITEM_CONTEXT_DEFAULT``
 
 
 1.1.2 (2016-09-05)
