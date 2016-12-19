@@ -325,7 +325,7 @@ class Boostrap3ImagePlugin(CMSPlugin):
         choices=constants.ASPECT_RATIO_CHOICES,
         blank=True,
         default='',
-        max_length=10,
+        max_length=255,
         help_text=_('Influences width height of the image '
                     'according to the selected ratio.'),
     )
@@ -337,7 +337,7 @@ class Boostrap3ImagePlugin(CMSPlugin):
         ),
         default='',
         blank=True,
-        max_length=64,
+        max_length=255,
     )
     thumbnail = models.BooleanField(
         verbose_name=_('.img-thumbnail'),
@@ -933,7 +933,7 @@ class Bootstrap3CarouselSlidePlugin(CMSPlugin, model_fields.LinkMixin):
     )
     link_text = models.CharField(
         verbose_name=_('Link text'),
-        max_length=200,
+        max_length=255,
         blank=True,
     )
     content = djangocms_text_ckeditor.fields.HTMLField(

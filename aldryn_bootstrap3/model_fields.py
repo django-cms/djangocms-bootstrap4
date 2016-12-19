@@ -56,11 +56,30 @@ CMSPluginField = partial(
 )
 
 
+# Helper for:
+# Classes, LinkOrButton, Size, IntegerField
+class SouthMixinBase(object):
+    south_field_class = ''
+
+    def south_field_triple(self):
+        """Returns a suitable description of this field for South."""
+        if not self.south_field_class:
+            raise NotImplementedError(_('Please set south_field_class when '
+                                        'using the south field mixin.'))
+        # We'll just introspect ourselves, since we inherit.
+        from south.modelsinspector import introspector
+        field_class = self.south_field_class
+        args, kwargs = introspector(self)
+        # That's our definition!
+        return field_class, args, kwargs
+
+
 """
 Used in:
-- Bootstrap3RowPlugin, Bootstrap3ColumnPlugin
+- migrations/
+- models.py
 """
-class Classes(django.db.models.TextField):
+class Classes(django.db.models.TextField, SouthMixinBase):
     default_field_class = fields.Classes
     south_field_class = 'django.db.models.fields.TextField'
 
@@ -87,7 +106,7 @@ class Classes(django.db.models.TextField):
 
 """
 Used in:
-- Boostrap3ButtonPlugin
+- models.py
 """
 class LinkMixin(models.Model):
     link_url = models.URLField(
@@ -107,17 +126,17 @@ class LinkMixin(models.Model):
         verbose_name=_('Email address'),
         blank=True,
         null=True,
-        max_length=254,
+        max_length=255,
     )
     link_phone = models.CharField(
         verbose_name=_('Phone'),
         blank=True,
         null=True,
-        max_length=40,
+        max_length=255,
     )
     link_anchor = models.CharField(
         verbose_name=_('Anchor'),
-        max_length=128,
+        max_length=255,
         blank=True,
         help_text=_('Appends the value only after the internal or external link. '
                     'Do <em>not</em> include a preceding "#" symbol.'),
@@ -163,9 +182,10 @@ class LinkMixin(models.Model):
 
 """
 Used in:
-- Boostrap3ButtonPlugin
+- migrations/
+- models.py
 """
-class LinkOrButton(django.db.models.fields.CharField):
+class LinkOrButton(django.db.models.fields.CharField, SouthMixinBase):
     default_field_class = fields.LinkOrButton
     south_field_class = 'django.db.models.fields.CharField'
 
@@ -173,7 +193,7 @@ class LinkOrButton(django.db.models.fields.CharField):
         if 'verbose_name' not in kwargs:
             kwargs['verbose_name'] = _('Type')
         if 'max_length' not in kwargs:
-            kwargs['max_length'] = 10
+            kwargs['max_length'] = 255
         if 'blank' not in kwargs:
             kwargs['blank'] = False
         if 'default' not in kwargs:
@@ -198,7 +218,8 @@ class LinkOrButton(django.db.models.fields.CharField):
 
 """
 Used in:
-- Boostrap3ButtonPlugin
+- migrations/
+- models.py
 """
 class Context(django.db.models.fields.CharField):
     default_field_class = fields.Context
@@ -233,7 +254,8 @@ class Context(django.db.models.fields.CharField):
 
 """
 Used in:
-- Boostrap3ButtonPlugin
+- migrations/
+- models.py
 """
 class Icon(django.db.models.CharField):
     default_field_class = fields.Icon
@@ -260,8 +282,8 @@ class Icon(django.db.models.CharField):
 
 """
 Used in:
-- Responsive
-- Boostrap3ImagePlugin
+- migrations/
+- models.py
 """
 class MiniText(django.db.models.TextField):
     default_field_class = fields.MiniText
@@ -284,7 +306,7 @@ class MiniText(django.db.models.TextField):
 
 """
 Used in:
-- Boostrap3ButtonPlugin
+- migrations/
 """
 class Responsive(MiniText):
     default_field_class = fields.Responsive
@@ -306,40 +328,14 @@ class Responsive(MiniText):
         return super(Responsive, self).formfield(**defaults)
 
 
-
-
-
-
-
-
-
-class SouthMixinBase(object):
-    south_field_class = ''
-
-    def south_field_triple(self):
-        """Returns a suitable description of this field for South."""
-        if not self.south_field_class:
-            raise NotImplementedError('please set south_field_class when using the south field mixin')
-        # We'll just introspect ourselves, since we inherit.
-        from south.modelsinspector import introspector
-        field_class = self.south_field_class
-        args, kwargs = introspector(self)
-        # That's our definition!
-        return field_class, args, kwargs
-
-
-class SouthCharFieldMixin(SouthMixinBase):
-    south_field_class = "django.db.models.fields.CharField"
-
-
-class SouthIntegerFieldMixin(SouthMixinBase):
-    south_field_class = "django.db.models.fields.IntegerField"
-
-
-
-
-class Size(django.db.models.CharField, SouthCharFieldMixin):
+"""
+Used in:
+- migrations/
+- models.py
+"""
+class Size(django.db.models.CharField, SouthMixinBase):
     default_field_class = fields.Size
+    south_field_class = 'django.db.models.fields.CharField'
 
     def __init__(self, *args, **kwargs):
         if 'max_length' not in kwargs:
@@ -366,10 +362,14 @@ class Size(django.db.models.CharField, SouthCharFieldMixin):
         return super(Size, self).get_choices(**kwargs)
 
 
-
-
-class IntegerField(django.db.models.IntegerField, SouthIntegerFieldMixin):
+"""
+Used in:
+- migrations/
+- models.py
+"""
+class IntegerField(django.db.models.IntegerField, SouthMixinBase):
     default_field_class = fields.Integer
+    south_field_class = 'django.db.models.fields.IntegerField'
 
     def __init__(self, verbose_name=None, name=None, min_value=None, max_value=None, **kwargs):
         self.min_value, self.max_value = min_value, max_value
@@ -385,12 +385,10 @@ class IntegerField(django.db.models.IntegerField, SouthIntegerFieldMixin):
         return super(IntegerField, self).formfield(**defaults)
 
 
-
-
-
-
-
-
+"""
+Used in:
+- migrations/
+"""
 class ResponsivePrint(MiniText):
     default_field_class = fields.ResponsivePrint
 

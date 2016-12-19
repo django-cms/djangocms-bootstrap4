@@ -9,7 +9,8 @@ from appconf import AppConf
 
 class AldrynSitesConf(AppConf):
     GRID_SIZE = 24
-    ICONSETS = ( # NOTE: these values are overridden by the settings from aldryn_config.py on aldryn
+    ICONSETS = (
+        # NOTE: these values are overridden by the settings from aldryn_config.py on aldryn
         # first value is the iconset identifier for http://victor-valencia.github.io/bootstrap-iconpicker/
         # second is the prefix for the css class
         # third is the pretty name shown in the select box

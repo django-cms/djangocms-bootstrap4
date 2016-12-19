@@ -9,7 +9,6 @@ from .conf import settings
 """
 Changable constants, overriden through settings
 """
-# TODO make sure they are covered by README / Divio Cloud
 GRID_SIZE = settings.ALDRYN_BOOTSTRAP3_GRID_SIZE
 
 

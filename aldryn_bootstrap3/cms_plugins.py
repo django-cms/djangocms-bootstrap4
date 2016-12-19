@@ -972,7 +972,7 @@ Other - File: Plugin
 """
 class Bootstrap3FileCMSPlugin(CMSPluginBase):
     model = models.Bootstrap3FilePlugin
-    name = _("File")
+    name = _('File')
     module = _('Bootstrap 3')
     change_form_template = 'admin/aldryn_bootstrap3/base.html'
     render_template = 'aldryn_bootstrap3/plugins/file.html'

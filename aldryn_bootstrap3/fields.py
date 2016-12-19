@@ -1,11 +1,17 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals, absolute_import
+
 import django.forms.fields
 from django.utils.translation import ugettext_lazy as _
-from . import widgets, constants
+
 from .conf import settings
+from . import widgets, constants
 
 
+"""
+Used in:
+- model_fields.py
+"""
 class Context(django.forms.fields.ChoiceField):
     widget = widgets.Context
     CHOICES = constants.CONTEXT_CHOICES
@@ -23,6 +29,10 @@ class Context(django.forms.fields.ChoiceField):
         super(Context, self).__init__(*args, **kwargs)
 
 
+"""
+Used in:
+- model_fields.py
+"""
 class Size(django.forms.fields.ChoiceField):
     widget = widgets.Size
     CHOICES = constants.SIZE_CHOICES
@@ -40,10 +50,10 @@ class Size(django.forms.fields.ChoiceField):
         super(Size, self).__init__(*args, **kwargs)
 
 
-class Classes(django.forms.fields.CharField):
-    pass
-
-
+"""
+Used in:
+- model_fields.py
+"""
 class Icon(django.forms.fields.CharField):
     widget = widgets.Icon
     DEFAULT = ''
@@ -58,6 +68,10 @@ class Icon(django.forms.fields.CharField):
         super(Icon, self).__init__(*args, **kwargs)
 
 
+"""
+Used in:
+- model_fields.py
+"""
 class Integer(django.forms.fields.IntegerField):
     widget = django.forms.NumberInput
 
@@ -69,10 +83,18 @@ class Integer(django.forms.fields.IntegerField):
         super(Integer, self).__init__(*args, **kwargs)
 
 
+"""
+Used in:
+- model_fields.py
+"""
 class Classes(django.forms.fields.CharField):
     widget = django.forms.widgets.Textarea
 
 
+"""
+Used in:
+- model_fields.py
+"""
 class MiniText(django.forms.fields.CharField):
     widget = widgets.MiniTextarea
 
@@ -84,6 +106,10 @@ class MiniText(django.forms.fields.CharField):
         super(MiniText, self).__init__(*args, **kwargs)
 
 
+"""
+Used in:
+- model_fields.py
+"""
 class LinkOrButton(django.forms.fields.ChoiceField):
     widget = widgets.LinkOrButton
     CHOICES = (
@@ -104,9 +130,17 @@ class LinkOrButton(django.forms.fields.ChoiceField):
         super(LinkOrButton, self).__init__(*args, **kwargs)
 
 
+"""
+Used in:
+- model_fields.py
+"""
 class Responsive(MiniText):
     widget = widgets.Responsive
 
 
+"""
+Used in:
+- model_fields.py
+"""
 class ResponsivePrint(MiniText):
     widget = widgets.ResponsivePrint

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals, absolute_import
+
 from django import template
 from django.template.defaultfilters import stringfilter
 

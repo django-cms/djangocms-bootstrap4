@@ -13,10 +13,11 @@ Changelog
 * Added test framework
 * Adapted root files such as ``README``, ``CHANGELOG``, ``setup.py`` and others
   to conform with other core addons such as django CMS Picture
-
 * Adapted labels and help texts of several plugins
 * Added <cite> plugin to <blockquote>
-* Added attributes fields to TODO
+* Added attributes fields to models missing it
+* Added missing translation declarations to untranslated strings
+* Restructured code to reflect Bootstrap 3's documentation
 
 
 1.1.2 (2016-09-05)
