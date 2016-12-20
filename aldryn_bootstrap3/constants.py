@@ -6,16 +6,12 @@ from django.utils.translation import ugettext_lazy as _
 from .conf import settings
 
 
-"""
-Changable constants, overriden through settings
-"""
+# Changable constants, overriden through settings
 GRID_SIZE = settings.ALDRYN_BOOTSTRAP3_GRID_SIZE
 
 
-"""
-Fixed constants, not influenced by settings
-Changes here will most likely require database migrtions
-"""
+# Fixed constants, not influenced by settings
+# Changes here will most likely require database migrtions
 DEVICE_CHOICES = (
     ('xs', _('Tiny')),
     ('sm', _('Small')),
@@ -65,18 +61,18 @@ ASPECT_RATIOS = (
     (21, 9),
 )
 
+def get_aspect_ratio_choices():
+    yield ('{0}x{1}'.format(1, 1), '{0}x{1}'.format(1, 1))
+
+    for x, y in ASPECT_RATIOS
+        yield ('{0}x{1}'.format(x, y), '{0}x{1}'.format(x, y))
+
+    for x, y in ASPECT_RATIOS_REVERSED
+        yield ('{0}x{1}'.format(x, y), '{0}x{1}'.format(x, y))
+
 ASPECT_RATIOS_REVERSED = tuple([(y, x) for x, y in ASPECT_RATIOS])
 
-ASPECT_RATIO_CHOICES = (
-    tuple([
-        ('{0}x{1}'.format(1, 1), '{0}x{1}'.format(1, 1))
-    ]) + tuple([
-        ('{0}x{1}'.format(x, y), '{0}x{1}'.format(x, y))
-        for x, y in ASPECT_RATIOS
-    ]) + tuple([
-        ('{0}x{1}'.format(x, y), '{0}x{1}'.format(x, y))
-        for x, y in ASPECT_RATIOS_REVERSED
-    ]))
+ASPECT_RATIO_CHOICES = get_aspect_ratio_choices()
 
 SIZE_CHOICES = (
     ('lg', _('Large'),),

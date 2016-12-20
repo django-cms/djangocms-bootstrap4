@@ -74,11 +74,9 @@ class SouthMixinBase(object):
         return field_class, args, kwargs
 
 
-"""
-Used in:
-- migrations/
-- models.py
-"""
+# Code here is mostly used in `models.py` and `migrations/`
+
+
 class Classes(django.db.models.TextField, SouthMixinBase):
     default_field_class = fields.Classes
     south_field_class = 'django.db.models.fields.TextField'
@@ -104,10 +102,6 @@ class Classes(django.db.models.TextField, SouthMixinBase):
         return super(Classes, self).formfield(**defaults)
 
 
-"""
-Used in:
-- models.py
-"""
 class LinkMixin(models.Model):
     link_url = models.URLField(
         verbose_name=('External link'),
@@ -180,11 +174,6 @@ class LinkMixin(models.Model):
         return link
 
 
-"""
-Used in:
-- migrations/
-- models.py
-"""
 class LinkOrButton(django.db.models.fields.CharField, SouthMixinBase):
     default_field_class = fields.LinkOrButton
     south_field_class = 'django.db.models.fields.CharField'
@@ -216,11 +205,6 @@ class LinkOrButton(django.db.models.fields.CharField, SouthMixinBase):
         return super(LinkOrButton, self).get_choices(**kwargs)
 
 
-"""
-Used in:
-- migrations/
-- models.py
-"""
 class Context(django.db.models.fields.CharField):
     default_field_class = fields.Context
     south_field_class = 'django.db.models.fields.CharField'
@@ -252,11 +236,6 @@ class Context(django.db.models.fields.CharField):
         return super(Context, self).get_choices(**kwargs)
 
 
-"""
-Used in:
-- migrations/
-- models.py
-"""
 class Icon(django.db.models.CharField):
     default_field_class = fields.Icon
     south_field_class = 'django.db.models.fields.CharField'
@@ -280,11 +259,6 @@ class Icon(django.db.models.CharField):
         return super(Icon, self).formfield(**defaults)
 
 
-"""
-Used in:
-- migrations/
-- models.py
-"""
 class MiniText(django.db.models.TextField):
     default_field_class = fields.MiniText
     south_field_class = 'django.db.models.fields.TextField'
@@ -304,10 +278,6 @@ class MiniText(django.db.models.TextField):
         return super(MiniText, self).formfield(**defaults)
 
 
-"""
-Used in:
-- migrations/
-"""
 class Responsive(MiniText):
     default_field_class = fields.Responsive
 
@@ -328,11 +298,6 @@ class Responsive(MiniText):
         return super(Responsive, self).formfield(**defaults)
 
 
-"""
-Used in:
-- migrations/
-- models.py
-"""
 class Size(django.db.models.CharField, SouthMixinBase):
     default_field_class = fields.Size
     south_field_class = 'django.db.models.fields.CharField'
@@ -362,11 +327,6 @@ class Size(django.db.models.CharField, SouthMixinBase):
         return super(Size, self).get_choices(**kwargs)
 
 
-"""
-Used in:
-- migrations/
-- models.py
-"""
 class IntegerField(django.db.models.IntegerField, SouthMixinBase):
     default_field_class = fields.Integer
     south_field_class = 'django.db.models.fields.IntegerField'
@@ -385,10 +345,6 @@ class IntegerField(django.db.models.IntegerField, SouthMixinBase):
         return super(IntegerField, self).formfield(**defaults)
 
 
-"""
-Used in:
-- migrations/
-"""
 class ResponsivePrint(MiniText):
     default_field_class = fields.ResponsivePrint
 

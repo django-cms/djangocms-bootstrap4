@@ -18,10 +18,6 @@ from djangocms_attributes_field.widgets import AttributesWidget
 from . import models, constants
 
 
-"""
-CSS - Grid system: "Row" Form
-http://getbootstrap.com/css/#grid
-"""
 class RowPluginBaseForm(django.forms.models.ModelForm):
     create = django.forms.IntegerField(
         label=_('Create columns'),
@@ -77,10 +73,6 @@ RowPluginForm = type(
 )
 
 
-"""
-CSS - Grid system: "Column" Form
-http://getbootstrap.com/css/#grid
-"""
 class ColumnPluginBaseForm(django.forms.models.ModelForm):
     create = django.forms.IntegerField(
         label=_('Adapt columns'),
@@ -136,10 +128,6 @@ ColumnPluginForm = type(
 )
 
 
-"""
-CSS - Buttons: "Button/Link" Form
-http://getbootstrap.com/css/#buttons
-"""
 class LinkForm(django.forms.models.ModelForm):
     link_page = cms.forms.fields.PageSelectFormField(
         queryset=cms.models.Page.objects.drafts(),
@@ -196,10 +184,6 @@ class LinkForm(django.forms.models.ModelForm):
         return cleaned_data
 
 
-"""
-Component - Label: Form
-http://getbootstrap.com/components/#labels
-"""
 class Boostrap3LabelPluginForm(django.forms.models.ModelForm):
 
     class Meta:
@@ -212,10 +196,6 @@ class Boostrap3LabelPluginForm(django.forms.models.ModelForm):
         }
 
 
-"""
-Component - Panel: "Wrapper" Form
-http://getbootstrap.com/components/#panels
-"""
 class PanelPluginBaseForm(django.forms.models.ModelForm):
     create_heading = django.forms.BooleanField(
         label=_('Initial heading'),
@@ -238,10 +218,6 @@ class PanelPluginBaseForm(django.forms.models.ModelForm):
         exclude = ('page', 'position', 'placeholder', 'language', 'plugin_type')
 
 
-"""
-JavaScript - Carousel: "Wrapper" Form
-http://getbootstrap.com/javascript/#carousel
-"""
 class CarouselPluginForm(django.forms.ModelForm):
 
     class Meta:
@@ -268,10 +244,6 @@ class CarouselPluginForm(django.forms.ModelForm):
         return style
 
 
-"""
-JavaScript - Carousel: "Plugin" Form
-http://getbootstrap.com/javascript/#carousel
-"""
 class CarouselSlidePluginForm(django.forms.ModelForm):
 
     class Meta:

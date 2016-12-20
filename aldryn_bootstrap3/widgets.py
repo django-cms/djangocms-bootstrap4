@@ -7,10 +7,9 @@ from . import constants
 from .conf import settings
 
 
-"""
-Used in:
-- fields.py
-"""
+# Please check `fields.py` for import reference
+
+
 class ContextRenderer(django.forms.widgets.RadioFieldRenderer):
     def render(self):
         from django.template.loader import render_to_string
@@ -25,10 +24,6 @@ class Context(django.forms.widgets.RadioSelect):
     renderer = ContextRenderer
 
 
-"""
-Used in:
-- fields.py
-"""
 class SizeRenderer(django.forms.widgets.RadioFieldRenderer):
     def render(self):
         from django.template.loader import render_to_string
@@ -39,18 +34,10 @@ class SizeRenderer(django.forms.widgets.RadioFieldRenderer):
         return rendered
 
 
-"""
-Used in:
-- fields.py
-"""
 class Size(django.forms.widgets.RadioSelect):
     renderer = SizeRenderer
 
 
-"""
-Used in:
-- fields.py
-"""
 class Icon(django.forms.widgets.TextInput):
     def render(self, name, value, attrs=None, **kwargs):
         input_html = super(Icon, self).render(name, value, attrs=attrs, **kwargs)
@@ -77,10 +64,6 @@ class Icon(django.forms.widgets.TextInput):
         return rendered
 
 
-"""
-Used in:
-- fields.py
-"""
 class MiniTextarea(django.forms.widgets.Textarea):
     def __init__(self, attrs=None):
         if attrs is None:
@@ -90,10 +73,6 @@ class MiniTextarea(django.forms.widgets.Textarea):
         super(MiniTextarea, self).__init__(attrs)
 
 
-"""
-Used in:
-- fields.py
-"""
 class LinkOrButtonRenderer(django.forms.widgets.RadioFieldRenderer):
     def render(self):
         from django.template.loader import render_to_string
@@ -104,18 +83,10 @@ class LinkOrButtonRenderer(django.forms.widgets.RadioFieldRenderer):
         return rendered
 
 
-"""
-Used in:
-- fields.py
-"""
 class LinkOrButton(django.forms.widgets.RadioSelect):
     renderer = LinkOrButtonRenderer
 
 
-"""
-Used in:
-- fields.py
-"""
 class Responsive(django.forms.widgets.Textarea):
     def render(self, name, value, attrs=None):
         from django.template.loader import render_to_string
@@ -155,10 +126,6 @@ class Responsive(django.forms.widgets.Textarea):
         return rendered
 
 
-"""
-Used in:
-- fields.py
-"""
 class ResponsivePrint(django.forms.widgets.Textarea):
     def render(self, name, value, attrs=None):
         from django.template.loader import render_to_string

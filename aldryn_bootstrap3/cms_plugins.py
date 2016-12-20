@@ -26,11 +26,11 @@ except ImportError:
 from . import models, forms, constants
 
 
-"""
-CSS - Grid system: "Row" Plugin
-http://getbootstrap.com/css/#grid
-"""
 class Bootstrap3RowCMSPlugin(CMSPluginBase):
+    """
+    CSS - Grid system: "Row" Plugin
+    http://getbootstrap.com/css/#grid
+    """
     model = models.Bootstrap3RowPlugin
     name = _('Row')
     module = _('Bootstrap 3')
@@ -83,11 +83,11 @@ class Bootstrap3RowCMSPlugin(CMSPluginBase):
         return response
 
 
-"""
-CSS - Grid system: "Column" Plugin
-http://getbootstrap.com/css/#grid
-"""
 class Bootstrap3ColumnCMSPlugin(CMSPluginBase):
+    """
+    CSS - Grid system: "Column" Plugin
+    http://getbootstrap.com/css/#grid
+    """
     model = models.Bootstrap3ColumnPlugin
     name = _('Column')
     module = _('Bootstrap 3')
@@ -119,15 +119,11 @@ class Bootstrap3ColumnCMSPlugin(CMSPluginBase):
     ]
 
 
-plugin_pool.register_plugin(Bootstrap3RowCMSPlugin)
-plugin_pool.register_plugin(Bootstrap3ColumnCMSPlugin)
-
-
-"""
-CSS - Typography: "Blockquote" Plugin
-http://getbootstrap.com/css/#type-blockquotes
-"""
 class Bootstrap3BlockquoteCMSPlugin(CMSPluginBase):
+    """
+    CSS - Typography: "Blockquote" Plugin
+    http://getbootstrap.com/css/#type-blockquotes
+    """
     model = models.Boostrap3BlockquotePlugin
     name = _('Blockquote')
     module = _('Bootstrap 3')
@@ -151,11 +147,11 @@ class Bootstrap3BlockquoteCMSPlugin(CMSPluginBase):
     ]
 
 
-"""
-CSS - Typography: "Cite" Plugin
-http://getbootstrap.com/css/#type-blockquotes
-"""
 class Bootstrap3CiteCMSPlugin(CMSPluginBase):
+    """
+    CSS - Typography: "Cite" Plugin
+    http://getbootstrap.com/css/#type-blockquotes
+    """
     model = models.Boostrap3CitePlugin
     name = _('Cite')
     module = _('Bootstrap 3')
@@ -181,15 +177,11 @@ class Bootstrap3CiteCMSPlugin(CMSPluginBase):
     ]
 
 
-plugin_pool.register_plugin(Bootstrap3BlockquoteCMSPlugin)
-plugin_pool.register_plugin(Bootstrap3CiteCMSPlugin)
-
-
-"""
-CSS - Buttons: "Button/Link" Plugin
-http://getbootstrap.com/css/#buttons
-"""
 class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
+    """
+    CSS - Buttons: "Button/Link" Plugin
+    http://getbootstrap.com/css/#buttons
+    """
     model = models.Boostrap3ButtonPlugin
     name = _('Link/Button')
     module = _('Bootstrap 3')
@@ -232,14 +224,11 @@ class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
         return static('aldryn_bootstrap3/img/type/button.png')
 
 
-plugin_pool.register_plugin(Bootstrap3ButtonCMSPlugin)
-
-
-"""
-CSS - Images: Plugin
-http://getbootstrap.com/css/#images
-"""
 class Bootstrap3ImageCMSPlugin(CMSPluginBase):
+    """
+    CSS - Images: Plugin
+    http://getbootstrap.com/css/#images
+    """
     model = models.Boostrap3ImagePlugin
     name = _('Image')
     module = _('Bootstrap 3')
@@ -331,16 +320,13 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
         return filer_response
 
 
-plugin_pool.register_plugin(Bootstrap3ImageCMSPlugin)
-
-
-"""
-Component - Glyphicons: "Icon" Plugin
-http://getbootstrap.com/components/#glyphicons
-Component - Font Awesome: "Icon" Plugin
-http://fontawesome.io/
-"""
 class Bootstrap3IconCMSPlugin(CMSPluginBase):
+    """
+    Component - Glyphicons: "Icon" Plugin
+    http://getbootstrap.com/components/#glyphicons
+    Component - Font Awesome: "Icon" Plugin
+    http://fontawesome.io/
+    """
     model = models.Boostrap3IconPlugin
     name = _('Icon')
     module = _('Bootstrap 3')
@@ -367,14 +353,11 @@ class Bootstrap3IconCMSPlugin(CMSPluginBase):
         return static('aldryn_bootstrap3/img/type/icon.png')
 
 
-plugin_pool.register_plugin(Bootstrap3IconCMSPlugin)
-
-
-"""
-Component - Label: Plugin
-http://getbootstrap.com/components/#labels
-"""
 class Bootstrap3LabelCMSPlugin(CMSPluginBase):
+    """
+    Component - Label: Plugin
+    http://getbootstrap.com/components/#labels
+    """
     model = models.Boostrap3LabelPlugin
     name = _('Label')
     module = _('Bootstrap 3')
@@ -403,14 +386,11 @@ class Bootstrap3LabelCMSPlugin(CMSPluginBase):
         return static('aldryn_bootstrap3/img/type/label.png')
 
 
-plugin_pool.register_plugin(Bootstrap3LabelCMSPlugin)
-
-
-"""
-Component - Alert: Plugin
-http://getbootstrap.com/components/#alerts
-"""
 class Bootstrap3AlertCMSPlugin(CMSPluginBase):
+    """
+    Component - Alert: Plugin
+    http://getbootstrap.com/components/#alerts
+    """
     model = models.Boostrap3AlertPlugin
     name = _('Alert')
     module = _('Bootstrap 3')
@@ -435,14 +415,11 @@ class Bootstrap3AlertCMSPlugin(CMSPluginBase):
     )
 
 
-plugin_pool.register_plugin(Bootstrap3AlertCMSPlugin)
-
-
-"""
-Component - List group: "Wrapper" Plugin
-http://getbootstrap.com/components/#alerts
-"""
 class Bootstrap3ListGroupCMSPlugin(CMSPluginBase):
+    """
+    Component - List group: "Wrapper" Plugin
+    http://getbootstrap.com/components/#alerts
+    """
     model = models.Bootstrap3ListGroupPlugin
     name = _('List Group')
     module = _('Bootstrap 3')
@@ -467,11 +444,11 @@ class Bootstrap3ListGroupCMSPlugin(CMSPluginBase):
     )
 
 
-"""
-Component - List group: "Item" Plugin
-http://getbootstrap.com/components/#alerts
-"""
 class Bootstrap3ListGroupItemCMSPlugin(CMSPluginBase):
+    """
+    Component - List group: "Item" Plugin
+    http://getbootstrap.com/components/#alerts
+    """
     model = models.Bootstrap3ListGroupItemPlugin
     name = _('List Group Item')
     module = _('Bootstrap 3')
@@ -506,15 +483,11 @@ class Bootstrap3ListGroupItemCMSPlugin(CMSPluginBase):
         return context
 
 
-plugin_pool.register_plugin(Bootstrap3ListGroupCMSPlugin)
-plugin_pool.register_plugin(Bootstrap3ListGroupItemCMSPlugin)
-
-
-"""
-Component - Panel: "Wrapper" Plugin
-http://getbootstrap.com/components/#panels
-"""
 class Bootstrap3PanelCMSPlugin(CMSPluginBase):
+    """
+    Component - Panel: "Wrapper" Plugin
+    http://getbootstrap.com/components/#panels
+    """
     model = models.Boostrap3PanelPlugin
     name = _('Panel')
     module = _('Bootstrap 3')
@@ -578,14 +551,11 @@ class Bootstrap3PanelCMSPlugin(CMSPluginBase):
         return response
 
 
-plugin_pool.register_plugin(Bootstrap3PanelCMSPlugin)
-
-
-"""
-Component - Panel: "Heading" Plugin
-http://getbootstrap.com/components/#panels-heading
-"""
 class Bootstrap3PanelHeadingCMSPlugin(CMSPluginBase):
+    """
+    Component - Panel: "Heading" Plugin
+    http://getbootstrap.com/components/#panels-heading
+    """
     model = models.Boostrap3PanelHeadingPlugin
     name = _('Panel header')
     module = _('Bootstrap 3')
@@ -611,14 +581,11 @@ class Bootstrap3PanelHeadingCMSPlugin(CMSPluginBase):
     )
 
 
-plugin_pool.register_plugin(Bootstrap3PanelHeadingCMSPlugin)
-
-
-"""
-Component - Panel: "Body" Plugin
-http://getbootstrap.com/components/#panels
-"""
 class Bootstrap3PanelBodyCMSPlugin(CMSPluginBase):
+    """
+    Component - Panel: "Body" Plugin
+    http://getbootstrap.com/components/#panels
+    """
     model = models.Boostrap3PanelBodyPlugin
     name = _('Panel body')
     module = _('Bootstrap 3')
@@ -642,14 +609,11 @@ class Bootstrap3PanelBodyCMSPlugin(CMSPluginBase):
     )
 
 
-plugin_pool.register_plugin(Bootstrap3PanelBodyCMSPlugin)
-
-
-"""
-Component - Panel: "Footer" Plugin
-http://getbootstrap.com/components/#panels-footer
-"""
 class Bootstrap3PanelFooterCMSPlugin(CMSPluginBase):
+    """
+    Component - Panel: "Footer" Plugin
+    http://getbootstrap.com/components/#panels-footer
+    """
     model = models.Boostrap3PanelFooterPlugin
     name = _('Panel footer')
     module = _('Bootstrap 3')
@@ -673,14 +637,11 @@ class Bootstrap3PanelFooterCMSPlugin(CMSPluginBase):
     )
 
 
-plugin_pool.register_plugin(Bootstrap3PanelFooterCMSPlugin)
-
-
-"""
-Component - Wells: Plugin
-http://getbootstrap.com/components/#wells
-"""
 class Bootstrap3WellCMSPlugin(CMSPluginBase):
+    """
+    Component - Wells: Plugin
+    http://getbootstrap.com/components/#wells
+    """
     model = models.Boostrap3WellPlugin
     name = _('Well')
     module = _('Bootstrap 3')
@@ -704,14 +665,11 @@ class Bootstrap3WellCMSPlugin(CMSPluginBase):
     )
 
 
-plugin_pool.register_plugin(Bootstrap3WellCMSPlugin)
-
-
-"""
-JavaScript - Collapse: "Accordion" Plugin
-http://getbootstrap.com/javascript/#collapse
-"""
 class Bootstrap3AccordionCMSPlugin(CMSPluginBase):
+    """
+    JavaScript - Collapse: "Accordion" Plugin
+    http://getbootstrap.com/javascript/#collapse
+    """
     model = models.Bootstrap3AccordionPlugin
     name = _('Accordion')
     module = _('Bootstrap 3')
@@ -742,12 +700,11 @@ class Bootstrap3AccordionCMSPlugin(CMSPluginBase):
         return context
 
 
-
-"""
-JavaScript - Collapse: "Accordion item" Plugin
-http://getbootstrap.com/javascript/#collapse
-"""
 class Bootstrap3AccordionItemCMSPlugin(CMSPluginBase):
+    """
+    JavaScript - Collapse: "Accordion item" Plugin
+    http://getbootstrap.com/javascript/#collapse
+    """
     model = models.Bootstrap3AccordionItemPlugin
     name = _('Accordion item')
     module = _('Accordion')
@@ -778,20 +735,15 @@ class Bootstrap3AccordionItemCMSPlugin(CMSPluginBase):
         return context
 
 
-plugin_pool.register_plugin(Bootstrap3AccordionCMSPlugin)
-plugin_pool.register_plugin(Bootstrap3AccordionItemCMSPlugin)
-
-
-
-"""
-JavaScript - Carousel: Base Plugin
-http://getbootstrap.com/javascript/#carousel
-"""
 class CarouselBase(CMSPluginBase):
     module = _('Bootstrap 3')
 
 
 class CarouselSlideBase(CarouselBase):
+    """
+    JavaScript - Carousel: Base Plugin
+    http://getbootstrap.com/javascript/#carousel
+    """
     require_parent = True
     parent_classes = ['Bootstrap3CarouselCMSPlugin']
 
@@ -810,19 +762,17 @@ class CarouselSlideBase(CarouselBase):
                 'style',
                 models.Bootstrap3CarouselPlugin.STYLE_DEFAULT,
             )
-        return 'aldryn_bootstrap3/plugins/carousel/{}/{}.html'.format(
-            style, name
-        )
+        return 'aldryn_bootstrap3/plugins/carousel/{}/{}.html'.format(style, name)
 
     def get_render_template(self, context, instance, placeholder):
         return self.get_slide_template(instance=instance)
 
 
-"""
-JavaScript - Carousel: "Wrapper" Plugin
-http://getbootstrap.com/javascript/#carousel
-"""
 class Bootstrap3CarouselCMSPlugin(CarouselBase):
+    """
+    JavaScript - Carousel: "Wrapper" Plugin
+    http://getbootstrap.com/javascript/#carousel
+    """
     model = models.Bootstrap3CarouselPlugin
     name = _('Carousel')
     form = forms.CarouselPluginForm
@@ -865,16 +815,14 @@ class Bootstrap3CarouselCMSPlugin(CarouselBase):
         return context
 
     def get_render_template(self, context, instance, placeholder):
-        return 'aldryn_bootstrap3/plugins/carousel/{}/carousel.html'.format(
-            instance.style
-        )
+        return 'aldryn_bootstrap3/plugins/carousel/{}/carousel.html'.format(instance.style)
 
 
-"""
-JavaScript - Carousel: "Slide" Plugin
-http://getbootstrap.com/javascript/#carousel
-"""
 class Bootstrap3CarouselSlideCMSPlugin(CarouselSlideBase):
+    """
+    JavaScript - Carousel: "Slide" Plugin
+    http://getbootstrap.com/javascript/#carousel
+    """
     model = models.Bootstrap3CarouselSlidePlugin
     name = _('Carousel slide')
     form = forms.CarouselSlidePluginForm
@@ -908,11 +856,11 @@ class Bootstrap3CarouselSlideCMSPlugin(CarouselSlideBase):
     )
 
 
-"""
-JavaScript - Carousel: "Slide folder" Plugin
-http://getbootstrap.com/javascript/#carousel
-"""
 class Bootstrap3CarouselSlideFolderCMSPlugin(CarouselSlideBase):
+    """
+    JavaScript - Carousel: "Slide folder" Plugin
+    http://getbootstrap.com/javascript/#carousel
+    """
     model = models.Bootstrap3CarouselSlideFolderPlugin
     name = _('Carousel slides folder')
 
@@ -928,15 +876,10 @@ class Bootstrap3CarouselSlideFolderCMSPlugin(CarouselSlideBase):
         return self.get_slide_template(instance=instance, name='slide_folder')
 
 
-plugin_pool.register_plugin(Bootstrap3CarouselCMSPlugin)
-plugin_pool.register_plugin(Bootstrap3CarouselSlideCMSPlugin)
-# plugin_pool.register_plugin(Bootstrap3CarouselSlideFolderCMSPlugin)
-
-
-"""
-Other - Spacer: Plugin
-"""
 class Bootstrap3SpacerCMSPlugin(CMSPluginBase):
+    """
+    Custom - Spacer: Plugin
+    """
     model = models.Boostrap3SpacerPlugin
     name = _('Spacer')
     module = _('Bootstrap 3')
@@ -964,13 +907,10 @@ class Bootstrap3SpacerCMSPlugin(CMSPluginBase):
         return static('aldryn_bootstrap3/img/type/spacer.png')
 
 
-plugin_pool.register_plugin(Bootstrap3SpacerCMSPlugin)
-
-
-"""
-Other - File: Plugin
-"""
 class Bootstrap3FileCMSPlugin(CMSPluginBase):
+    """
+    Custom - File: Plugin
+    """
     model = models.Bootstrap3FilePlugin
     name = _('File')
     module = _('Bootstrap 3')
@@ -991,7 +931,7 @@ class Bootstrap3FileCMSPlugin(CMSPluginBase):
             'classes': ('collapse',),
             'fields': (
                 'classes',
-                'classes',
+                'attributes',
             ),
         }),
     )
@@ -1000,4 +940,26 @@ class Bootstrap3FileCMSPlugin(CMSPluginBase):
         return static('aldryn_bootstrap3/img/type/file.png')
 
 
+plugin_pool.register_plugin(Bootstrap3RowCMSPlugin)
+plugin_pool.register_plugin(Bootstrap3ColumnCMSPlugin)
+plugin_pool.register_plugin(Bootstrap3BlockquoteCMSPlugin)
+plugin_pool.register_plugin(Bootstrap3CiteCMSPlugin)
+plugin_pool.register_plugin(Bootstrap3ButtonCMSPlugin)
+plugin_pool.register_plugin(Bootstrap3ImageCMSPlugin)
+plugin_pool.register_plugin(Bootstrap3IconCMSPlugin)
+plugin_pool.register_plugin(Bootstrap3LabelCMSPlugin)
+plugin_pool.register_plugin(Bootstrap3AlertCMSPlugin)
+plugin_pool.register_plugin(Bootstrap3ListGroupCMSPlugin)
+plugin_pool.register_plugin(Bootstrap3ListGroupItemCMSPlugin)
+plugin_pool.register_plugin(Bootstrap3PanelCMSPlugin)
+plugin_pool.register_plugin(Bootstrap3PanelHeadingCMSPlugin)
+plugin_pool.register_plugin(Bootstrap3PanelBodyCMSPlugin)
+plugin_pool.register_plugin(Bootstrap3PanelFooterCMSPlugin)
+plugin_pool.register_plugin(Bootstrap3WellCMSPlugin)
+plugin_pool.register_plugin(Bootstrap3AccordionCMSPlugin)
+plugin_pool.register_plugin(Bootstrap3AccordionItemCMSPlugin)
+plugin_pool.register_plugin(Bootstrap3CarouselCMSPlugin)
+plugin_pool.register_plugin(Bootstrap3CarouselSlideCMSPlugin)
+# plugin_pool.register_plugin(Bootstrap3CarouselSlideFolderCMSPlugin)
+plugin_pool.register_plugin(Bootstrap3SpacerCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3FileCMSPlugin)
