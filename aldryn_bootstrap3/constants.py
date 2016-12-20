@@ -61,16 +61,16 @@ ASPECT_RATIOS = (
     (21, 9),
 )
 
+ASPECT_RATIOS_REVERSED = ([(y, x) for x, y in ASPECT_RATIOS])
+
 def get_aspect_ratio_choices():
     yield ('{0}x{1}'.format(1, 1), '{0}x{1}'.format(1, 1))
 
-    for x, y in ASPECT_RATIOS
+    for x, y in ASPECT_RATIOS:
         yield ('{0}x{1}'.format(x, y), '{0}x{1}'.format(x, y))
 
-    for x, y in ASPECT_RATIOS_REVERSED
+    for x, y in ASPECT_RATIOS_REVERSED:
         yield ('{0}x{1}'.format(x, y), '{0}x{1}'.format(x, y))
-
-ASPECT_RATIOS_REVERSED = tuple([(y, x) for x, y in ASPECT_RATIOS])
 
 ASPECT_RATIO_CHOICES = get_aspect_ratio_choices()
 
