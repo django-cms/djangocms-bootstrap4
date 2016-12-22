@@ -226,6 +226,43 @@ class Boostrap3CitePlugin(CMSPlugin):
 
 
 @python_2_unicode_compatible
+class Bootstrap3CodePlugin(CMSPlugin):
+    """
+    CSS - Code: Model
+    http://getbootstrap.com/css/#code
+    """
+    CODE_TYPE_CHOICES = (
+        ('code', _('Inline')),
+        ('kbd', _('User input')),
+        ('pre', _('Basic block')),
+        ('var', _('Variables')),
+        ('samp', _('Sample output')),
+    )
+
+    code_type = models.CharField(
+        verbose_name=_('Code type'),
+        choices=CODE_TYPE_CHOICES,
+        default=CODE_TYPE_CHOICES[0][0],
+        max_length=255,
+    )
+    code = models.TextField(
+        verbose_name=_('Code'),
+        blank=True,
+    )
+    classes = model_fields.Classes()
+    attributes = AttributesField(
+        verbose_name=_('Attributes'),
+        blank=True,
+        excluded_keys=['class'],
+    )
+
+    cmsplugin_ptr = model_fields.CMSPluginField()
+
+    def __str__(self):
+        return '<{}>'.format(self.code_type)
+
+
+@python_2_unicode_compatible
 class Boostrap3ButtonPlugin(CMSPlugin, model_fields.LinkMixin):
     """
     CSS - Buttons: "Button/Link" Model
@@ -471,7 +508,9 @@ class Boostrap3LabelPlugin(CMSPlugin):
     )
     context = model_fields.Context(
         verbose_name=_('Context'),
-        choices=(('default', 'Default',),) + constants.CONTEXT_CHOICES,
+        choices=(
+            ('default', 'Default'),
+        ) + constants.CONTEXT_CHOICES,
         default='default',
         blank=False,
     )
@@ -562,7 +601,9 @@ class Bootstrap3ListGroupItemPlugin(CMSPlugin):
     )
     context = model_fields.Context(
         verbose_name=_('Context'),
-        choices=(('default', 'Default',),) + constants.CONTEXT_CHOICES,
+        choices=(
+            ('default', 'Default'),
+        ) + constants.CONTEXT_CHOICES,
         default='default',
         blank=False,
     )
@@ -596,7 +637,9 @@ class Boostrap3PanelPlugin(CMSPlugin):
     """
     context = model_fields.Context(
         verbose_name=_('Context'),
-        choices=(('default', 'Default',),) + constants.CONTEXT_CHOICES,
+        choices=(
+            ('default', 'Default'),
+        ) + constants.CONTEXT_CHOICES,
         default='default',
         blank=False,
     )
@@ -770,7 +813,9 @@ class Bootstrap3AccordionItemPlugin(CMSPlugin):
         blank=True,
     )
     context = model_fields.Context(
-        choices=(('default', 'Default',),) + constants.CONTEXT_CHOICES,
+        choices=(
+            ('default', 'Default'),
+        ) + constants.CONTEXT_CHOICES,
         default='default',
         blank=False,
     )

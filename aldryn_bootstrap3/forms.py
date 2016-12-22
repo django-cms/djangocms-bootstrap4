@@ -7,7 +7,7 @@ import django.forms.models
 import django.template
 import django.template.loader
 
-from django.forms.widgets import Media, TextInput
+from django.forms.widgets import Media, TextInput, Textarea
 from django.utils.translation import ugettext_lazy as _
 
 import cms.forms.fields
@@ -126,6 +126,15 @@ ColumnPluginForm = type(
     (ColumnPluginBaseForm,),
     extra_fields_column
 )
+
+
+class Bootstrap3CodePluginForm(django.forms.models.ModelForm):
+    class Meta:
+        # When used inside djangocms-text-ckeditor
+        # this causes the label field to be prefilled with the selected text.
+        widgets = {
+            'code': Textarea(attrs={'class': 'js-ckeditor-use-selected-text'}),
+        }
 
 
 class LinkForm(django.forms.models.ModelForm):

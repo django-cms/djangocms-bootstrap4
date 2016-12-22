@@ -177,6 +177,36 @@ class Bootstrap3CiteCMSPlugin(CMSPluginBase):
     ]
 
 
+class Bootstrap3CodeCMSPlugin(CMSPluginBase):
+    """
+    CSS - Code: Model
+    http://getbootstrap.com/css/#code
+    """
+    model = models.Bootstrap3CodePlugin
+    name = _('Code')
+    module = _('Bootstrap 3')
+    form = forms.Bootstrap3CodePluginForm
+    change_form_template = 'admin/aldryn_bootstrap3/plugins/code/change_form.html'
+    render_template = 'aldryn_bootstrap3/plugins/code.html'
+    text_enabled = True
+
+    fieldsets = (
+        (None, {
+            'fields': (
+                'code_type',
+                'code',
+            )
+        }),
+        (_('Advanced settings'), {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+                'attributes',
+            )
+        }),
+    )
+
+
 class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
     """
     CSS - Buttons: "Button/Link" Plugin
@@ -945,6 +975,7 @@ plugin_pool.register_plugin(Bootstrap3ColumnCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3BlockquoteCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3CiteCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3ButtonCMSPlugin)
+plugin_pool.register_plugin(Bootstrap3CodeCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3ImageCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3IconCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3LabelCMSPlugin)

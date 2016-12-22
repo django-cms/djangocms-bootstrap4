@@ -14,6 +14,7 @@ Changelog
 * Adapted root files such as ``README``, ``CHANGELOG``, ``setup.py`` and others
   to conform with other core addons such as django CMS Picture
 * Adapted labels and help texts of several plugins
+* Added <code> plugin
 * Added <cite> plugin to <blockquote>
 * Added attributes fields to models missing it
 * Added missing translation declarations to untranslated strings

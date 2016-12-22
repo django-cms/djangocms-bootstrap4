@@ -61,6 +61,7 @@ It provides the following **standard** Bootstrap 3 components:
 * `Accordion <http://getbootstrap.com/javascript/#collapse-example-accordion>`_
 * `Alert <http://getbootstrap.com/components/#alerts>`_
 * `Blockquote <http://getbootstrap.com/css/#type-blockquotes>`_
+* `Code <http://getbootstrap.com/css/#code>`_
 * `Carousel <http://getbootstrap.com/javascript/#carousel>`_
 * `Grid (Row and Column) <http://getbootstrap.com/css/#grid/>`_
 * `Glyphicons <http://getbootstrap.com/components/#glyphicons>`_
