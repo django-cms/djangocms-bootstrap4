@@ -4,7 +4,9 @@
     {% if instance.context %} panel-{{ instance.context }}{% endif %}
     {% if instance.classes %} {{ instance.classes }}{% endif %}"
     id="{{ accordion_id }}"
-    role="tablist" aria-multiselectable="true">
+    role="tablist"
+    aria-multiselectable="true"
+    {{ instance.attributes_str }}>
 
     {% for plugin in instance.child_plugin_instances %}
         {% with parentloop=forloop index=instance.index %}

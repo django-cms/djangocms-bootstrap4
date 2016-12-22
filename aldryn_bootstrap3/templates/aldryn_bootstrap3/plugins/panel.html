@@ -2,7 +2,8 @@
 
 <div class="panel
     {% if instance.context %} panel-{{ instance.context }}{% endif %}
-    {% if instance.classes %} {{ instance.classes }}{% endif %}">
+    {% if instance.classes %} {{ instance.classes }}{% endif %}"
+    {{ instance.attributes_str }}>
 
     {% for plugin in instance.child_plugin_instances %}
         {% render_plugin plugin %}

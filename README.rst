@@ -53,7 +53,7 @@ Configuration
 Aldryn Bootstrap 3 **replaces** the following django CMS plugins:
 
 * **django CMS Link**: `Link and Button <http://getbootstrap.com/css/#buttons>`_
-* **django CMS Picture **: `Image <http://getbootstrap.com/css/#images>`_
+* **django CMS Picture**: `Image <http://getbootstrap.com/css/#images>`_
 * **django CMS File**: `File <https://github.com/aldryn/aldryn-bootstrap3/wiki/14-file>`_
 
 It provides the following **standard** Bootstrap 3 components:

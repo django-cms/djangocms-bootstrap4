@@ -3,7 +3,7 @@ Changelog
 =========
 
 
-1.1.3 (unreleased)
+1.2.0 (unreleased)
 ==================
 
 * Fixed an issue with collapse styles from image plugin overriding bootstrap
@@ -13,6 +13,23 @@ Changelog
 * Added test framework
 * Adapted root files such as ``README``, ``CHANGELOG``, ``setup.py`` and others
   to conform with other core addons such as django CMS Picture
+* Adapted labels and help texts of several plugins
+* Added <cite> plugin to <blockquote>
+* Added attributes fields to models missing it
+* Added missing translation declarations to untranslated strings
+* Added default CKEditor "styleSet" to load via djangocms-text-ckeditor in
+  ``/static/aldryn_bootstrap3/js/ckeditor.js``
+* Set all max_values to 255
+* Restructured code to reflect Bootstrap 3's documentation
+* Simplified and removed constants such as ``LABEL_CONTEXT_CHOICES``,
+  ``LABEL_CONTEXT_DEFAULT``, ,``TEXT_LINK_CONTEXT_CHOICES``,
+  ``TXT_LINK_CONTEXT_DEFAULT``, ``PANEL_CONTEXT_CHOICES``,
+  ``PANEL_CONTEXT_DEFAULT``, ``ACCORDION_ITEM_CONTEXT_CHOICES``,
+  ``ACCORDION_ITEM_CONTEXT_DEFAULT``, ``LIST_GROUP_ITEM_CONTEXT_CHOICES``,
+  ``LIST_GROUP_ITEM_CONTEXT_DEFAULT``
+* **Backwards incompatible** change using the Bootstrap 3 Panel plugin:
+  the Panel only allows header, body and footer now to be its direct decendands
+  and the descendends require the "Panel" parent.
 
 
 1.1.2 (2016-09-05)

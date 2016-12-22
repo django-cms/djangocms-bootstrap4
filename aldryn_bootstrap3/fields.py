@@ -1,9 +1,14 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals, absolute_import
+
 import django.forms.fields
 from django.utils.translation import ugettext_lazy as _
-from . import widgets, constants
+
 from .conf import settings
+from . import widgets, constants
+
+
+# Please check `model_fields.py` for import reference
 
 
 class Context(django.forms.fields.ChoiceField):
@@ -25,8 +30,8 @@ class Context(django.forms.fields.ChoiceField):
 
 class Size(django.forms.fields.ChoiceField):
     widget = widgets.Size
-    CHOICES = constants.SIZE_WIDGET_CHOICES
-    DEFAULT = constants.SIZE_WIDGET_DEFAULT
+    CHOICES = constants.SIZE_CHOICES
+    DEFAULT = 'md'
 
     def __init__(self, *args, **kwargs):
         if 'choices' not in kwargs:
@@ -38,10 +43,6 @@ class Size(django.forms.fields.ChoiceField):
         kwargs.pop('widget', None)
         kwargs['widget'] = self.widget
         super(Size, self).__init__(*args, **kwargs)
-
-
-class Classes(django.forms.fields.CharField):
-    pass
 
 
 class Icon(django.forms.fields.CharField):

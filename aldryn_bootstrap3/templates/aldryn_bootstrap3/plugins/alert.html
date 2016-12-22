@@ -2,7 +2,8 @@
 
 <div class="alert
     {% if instance.context %} alert-{{ instance.context }}{% endif %}
-    {% if instance.classes %} {{ instance.classes }}{% endif %}">
+    {% if instance.classes %} {{ instance.classes }}{% endif %}"
+    {{ instance.attributes_str }}>
 
     {% if instance.icon %}
         {% with icon_class=instance.icon extra_css_classes="pull-left" %}{% include 'aldryn_bootstrap3/plugins/includes/icon.html' %}{% endwith %}
