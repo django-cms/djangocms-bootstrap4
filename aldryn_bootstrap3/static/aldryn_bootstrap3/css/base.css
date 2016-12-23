@@ -76,7 +76,7 @@
 }
 
 /*##############################################################################
-// BUTTON WIDGET */
+// SIZES WIDGET */
 /* used in aldryn_bootstrap3/widgets/size.html */
 .btn-group-sizes label {
     line-height: 20px;
@@ -98,6 +98,30 @@
 }
 .btn-group-sizes .text-xs .glyphicon {
     top: 3px;
+}
+
+/*##############################################################################
+// RESPONSIVE WIDGET */
+/* used in aldryn_bootstrap3/widgets/responsive.html */
+/* used in aldryn_bootstrap3/widgets/responsive_print.html */
+.aldryn-bootstrap3-responsive .fa {
+    margin: 4px 0;
+}
+.aldryn-bootstrap3-responsive .btn-group label {
+    min-width: 90px;
+}
+.aldryn-bootstrap3-responsive .btn-group .dropdown-menu {
+    right: 0;
+    left: auto;
+    padding: 0;
+    margin: 5px 0;
+    border: none;
+}
+.aldryn-bootstrap3-responsive .btn-group .dropdown-menu li {
+    padding: 5px 0;
+}
+.aldryn-bootstrap3-responsive .btn-group .dropdown-menu li:first-child {
+    border-top: none;
 }
 
 /*##############################################################################

@@ -356,6 +356,193 @@
             },
 
             /**
+             * Widget used in aldryn_bootstrap3/widgets/responsive.html and
+             * aldryn_bootstrap3/widgets/responsive_print.html.
+             * Allows to show or hide certain elements depending on the
+             * viewport size.
+             *
+             * @method responsiveWidget
+             * @param {jQuery} element context element to render
+             */
+            responsiveWidget: function responsiveWidget(element) {
+                var currentChoice = [];
+                var inputElement = element.find('textarea');
+                var choiceElements = element.find('.js-responsive-choice');
+                var configElement = element.find('.js-responsive-config');
+                var configElementDropdown = element.find('.js-responsive-config-dropdown');
+                var value = inputElement.val();
+
+                // remove block and inline additions
+                function getCleanCSS(string) {
+                    var tmp = string.split(' ');
+
+                    tmp.forEach(function (item, index) {
+                        tmp[index] = tmp[index].replace('-block', '');
+                        tmp[index] = tmp[index].replace('-inline', '');
+                    });
+
+                    return tmp;
+                }
+
+                // get the different states, up to four
+                function getChoice() {
+                    // tmpChoices represent the active states of:
+                    // ------------------------
+                    // XS | SM | MD | LG | Type
+                    // x    x    x    x    choice (0 = off, 1 = on)
+                    // visible-xs | visible-sm | visible-md | visible-lg
+                    var tmpChoices = [0, 0, 0, 0];
+                    var tmp = inputElement.val();
+
+                    tmp = getCleanCSS(tmp);
+
+                    // loop through items
+                    tmp.forEach(function (item) {
+                        switch (item) {
+                            case 'visible-xs':
+                                tmpChoices[0] = 1;
+                                break;
+                            case 'visible-sm':
+                                tmpChoices[1] = 1;
+                                break;
+                            case 'visible-md':
+                                tmpChoices[2] = 1;
+                                break;
+                            case 'visible-lg':
+                                tmpChoices[3] = 1;
+                                break;
+                            case 'visible-print':
+                                tmpChoices[0] = 1;
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+
+                    return tmpChoices;
+                }
+
+                // get the dropdown config
+                function getConfig() {
+                    var tmpConfig = 0;
+                    var tmpCls = inputElement.val().split(' ');
+                    var tmpVal = tmpCls[0].split('-');
+
+                    if (tmpVal.length === 3) {
+                        switch (tmpVal[2]) {
+                            case 'block':
+                                tmpConfig = 1;
+                                break;
+                            case 'inline':
+                                tmpConfig = 2;
+                                break;
+                            default:
+                                break;
+                        }
+                    // if its longer then 4 it's inline-block
+                    } else if (tmpVal.length === 4) {
+                        tmpConfig = 3;
+                    }
+
+                    return tmpConfig;
+                }
+
+                // general update function for the UI
+                function update(choices, config) {
+                    var cls = [];
+                    currentChoice = choices;
+
+                    choices.forEach(function (choice, index) {
+                        if (choice) {
+                            var tmp = choiceElements.eq(index).data('cls');
+
+                            // in case of print don't store undefined values
+                            if (tmp === undefined) {
+                                return;
+                            }
+
+                            switch(config) {
+                                case 1:
+                                    tmp = tmp + '-block';
+                                    break;
+                                case 2:
+                                    tmp = tmp + '-inline';
+                                    break;
+                                case 3:
+                                    tmp = tmp + '-inline-block';
+                                    break;
+                                default:
+                                    break;
+                            }
+                            cls.push(tmp);
+                        }
+                    });
+
+                    inputElement.val(cls.join(' '));
+
+                    updateConfig(choices, config);
+                }
+
+                // config update function for the UI
+                function updateConfig(choices, config) {
+                    // update settings
+                    var els = configElementDropdown.find('li');
+
+                    // update choices
+                    choices.forEach(function (choice, index) {
+                        // reset the element
+                        choiceElements.eq(index)
+                            .removeClass('btn-default')
+                            .removeClass('btn-danger')
+                            .removeClass('btn-success')
+                            .find('.js-on, .js-off').addClass('hidden')
+                        if (choice) {
+                            choiceElements.eq(index)
+                                .addClass('btn-success')
+                                .find('.js-on').removeClass('hidden');
+                        } else {
+                            choiceElements.eq(index)
+                                .addClass('btn-danger')
+                                .find('.js-off').removeClass('hidden');
+                        }
+                    });
+
+                    // update dropdown
+                    els.removeClass('active').eq(config).addClass('active');
+                    configElement.find('.text').text(els.eq(config).text());
+                }
+
+                // attach event handler to size buttons
+                choiceElements.on('click', function (e) {
+                    e.preventDefault();
+
+                    var choiceIndex = choiceElements.index(this);
+                    var configIndex = configElementDropdown.find('li')
+                        .index(configElementDropdown.find('li.active'));
+
+                    if (currentChoice[choiceIndex] >= 1) {
+                        currentChoice[choiceIndex] = 0;
+                    } else {
+                        currentChoice[choiceIndex] = 1;
+                    }
+
+                    update(currentChoice, configIndex)
+                });
+
+                // attach event handler to config button
+                configElementDropdown.find('a').on('click', function(e) {
+                    e.preventDefault();
+
+                    var configIndex = configElementDropdown.find('a').index(this);
+
+                    update(currentChoice, configIndex);
+                });
+
+                // set initial state from current values
+                update(getChoice(), getConfig());
+            },
+
+            /**
              * Plugin used in aldryn_bootstrap3/plugins/column and
              * aldryn_bootstrap3/plugins/row.
              *
@@ -523,6 +710,11 @@
                 bootstrap3.sizeWidget($(this));
             });
         }
+        if ($('.js-aldryn-bootstrap3-responsive').length) {
+            $('.js-aldryn-bootstrap3-responsive').each(function () {
+                bootstrap3.responsiveWidget($(this));
+            });
+        }
         // auto initialize plugins
         if ($('.aldryn-bootstrap3-grid').length) {
             bootstrap3.rowColumnPlugin();
@@ -530,7 +722,6 @@
         if ($('.aldryn-bootstrap3-label').length) {
             bootstrap3.labelPlugin();
         }
-
         if ($('.model-boostrap3imageplugin').length) {
             bootstrap3.imagePlugin();
         }

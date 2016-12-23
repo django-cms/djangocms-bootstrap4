@@ -350,6 +350,35 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
         return filer_response
 
 
+class Bootstrap3ResponsiveCMSPlugin(CMSPluginBase):
+    """
+    CSS - Responsive: "Utilities" Plugin
+    http://getbootstrap.com/css/#responsive-utilities
+    """
+    model = models.Bootstrap3ResponsivePlugin
+    name = _('Responsive utilities')
+    module = _('Bootstrap 3')
+    change_form_template = 'admin/aldryn_bootstrap3/base.html'
+    render_template = 'aldryn_bootstrap3/plugins/responsive.html'
+    allow_children = True
+
+    fieldsets = (
+        (None, {
+            'fields': (
+                'device_breakpoints',
+                'print_breakpoints',
+            )
+        }),
+        (_('Advanced settings'), {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+                'attributes',
+            ),
+        }),
+    )
+
+
 class Bootstrap3IconCMSPlugin(CMSPluginBase):
     """
     Component - Glyphicons: "Icon" Plugin
@@ -977,6 +1006,7 @@ plugin_pool.register_plugin(Bootstrap3CiteCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3ButtonCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3CodeCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3ImageCMSPlugin)
+plugin_pool.register_plugin(Bootstrap3ResponsiveCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3IconCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3LabelCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3AlertCMSPlugin)

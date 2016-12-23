@@ -34,12 +34,12 @@ from . import model_fields, constants
 #
 # [✓] Grid
 # [✓] Typography (Blockquote and Cite)
-# [ ] Code
+# [✓] Code
 # [✓] Forms (via aldryn-forms)
 # [✓] Buttons
 # [✓] Images
 # [✓] Helper classes (js/ckeditor.js)
-# [ ] Responsive utilities
+# [✓] Responsive utilities
 
 
 @python_2_unicode_compatible
@@ -438,6 +438,36 @@ class Boostrap3ImagePlugin(CMSPlugin):
             }
 
         return items
+
+
+@python_2_unicode_compatible
+class Bootstrap3ResponsivePlugin(CMSPlugin):
+    """
+    CSS - Responsive: "Utilities" Model
+    http://getbootstrap.com/css/#responsive-utilities
+    """
+    device_breakpoints = model_fields.Responsive(
+        verbose_name=_('Devices'),
+        default='visible-xs visible-sm visible-md visible-lg',
+    )
+    print_breakpoints = model_fields.ResponsivePrint(
+        verbose_name=_('Print'),
+        default='visible-print',
+    )
+    classes = model_fields.Classes()
+    attributes = AttributesField(
+        verbose_name=_('Attributes'),
+        blank=True,
+        excluded_keys=['class'],
+    )
+
+    cmsplugin_ptr = model_fields.CMSPluginField()
+
+    def __str__(self):
+        text = self.device_breakpoints
+        if self.print_breakpoints:
+            text += ' {}'.format(self.print_breakpoints)
+        return text
 
 
 # Components - http://getbootstrap.com/components/

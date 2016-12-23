@@ -92,25 +92,6 @@ class Responsive(django.forms.widgets.Textarea):
         from django.template.loader import render_to_string
         widget_html = super(Responsive, self).render(name=name, value=value, attrs=attrs)
 
-        choices = []
-        options = (
-            ('', 'Pretty None'),
-            ('visible-{device}-block', 'Pretty visible-{device}-block'),
-            ('visible-{device}-inline', 'Pretty visible-{device}-inline'),
-            ('visible-{device}-inline-block', 'Pretty visible-{device}-inline-block'),
-            ('hidden-{device}', 'Pretty hidden-{device}'),
-        )
-        for device in constants.DEVICE_SIZES:
-            choices.append((
-                device,
-                tuple([
-                    (option.format(device=device), option_verbose.format(device=device))
-                    for option, option_verbose in options
-                ])
-            ))
-        choices = tuple(choices)
-
-
         rendered = render_to_string(
             'admin/aldryn_bootstrap3/widgets/responsive.html',
             {
@@ -120,7 +101,6 @@ class Responsive(django.forms.widgets.Textarea):
                 'name': name,
                 'id': attrs.get('id', None),
                 'attrs': attrs,
-                'choices': choices,
             },
         )
         return rendered
@@ -132,12 +112,6 @@ class ResponsivePrint(django.forms.widgets.Textarea):
         widget_html = super(ResponsivePrint, self).render(
             name=name, value=value, attrs=attrs)
 
-        choices = [
-            ('visible-print-block', 'Pretty visible-print-block'),
-            ('visible-print-inline', 'Pretty visible-print-inline'),
-            ('visible-print-inline-block', 'Pretty visible-print-inline-block'),
-            ('hidden-print', 'Pretty visible-print-inline-block'),
-        ]
         rendered = render_to_string(
             'admin/aldryn_bootstrap3/widgets/responsive_print.html',
             {
@@ -147,7 +121,6 @@ class ResponsivePrint(django.forms.widgets.Textarea):
                 'name': name,
                 'id': attrs.get('id', None),
                 'attrs': attrs,
-                'choices': choices,
             },
         )
         return rendered
