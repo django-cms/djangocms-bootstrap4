@@ -34,7 +34,7 @@ django.jQuery(function () {
     // that once its added to the textareas value
     setTimeout(function () {
         editor.getSession().setValue(textarea.val());
-    }, 200);
+    }, 300);
     // we need to track whats going on at any time for ckeditor
     editor.getSession().on('change', function () {
         if (editor.curOp && editor.curOp.command.name) {

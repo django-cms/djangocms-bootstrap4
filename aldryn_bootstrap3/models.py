@@ -781,7 +781,7 @@ class Boostrap3WellPlugin(CMSPlugin):
 # [ ] Modal
 # [ ] Dropdowns
 # [ ] Scrollspy
-# [ ] Tab
+# [✓] Tab
 # [ ] Tooltip
 # [ ] Popover
 # [ ] Alert
@@ -789,6 +789,80 @@ class Boostrap3WellPlugin(CMSPlugin):
 # [✓] Collapse
 # [✓] Carousel
 # [ ] Affix
+
+
+@python_2_unicode_compatible
+class Bootstrap3TabPlugin(CMSPlugin):
+    """
+    JavaScript - Tab: "Wrapper" Model
+    http://getbootstrap.com/javascript/#tabs
+    """
+    TAB_TYPE_CHOICES = (
+        ('nav-tabs', _('Tabs')),
+        ('nav-tabs nav-justified', _('Tabs justified')),
+        ('nav-pills', _('Pills')),
+        ('nav-pills nav-justified', _('Pills justified')),
+    )
+    TAB_EFFECT_CHOICES = (
+        ('fade', _('Fade')),
+    )
+
+    index = models.PositiveIntegerField(
+        verbose_name=_('Index'),
+        null=True,
+        blank=True,
+        help_text=_('Index of element that should be opened on page load '
+                    '(leave it empty if none of the items should be opened)'),
+    )
+    style = models.CharField(
+        verbose_name=_('Display type'),
+        choices=TAB_TYPE_CHOICES,
+        default=TAB_TYPE_CHOICES[0][0],
+        max_length=255,
+    )
+    effect = models.CharField(
+        verbose_name=_('Animation effect'),
+        choices=TAB_EFFECT_CHOICES,
+        blank=True,
+        max_length=255,
+    )
+    classes = model_fields.Classes()
+    attributes = AttributesField(
+        verbose_name=_('Attributes'),
+        blank=True,
+        excluded_keys=['class'],
+    )
+
+    cmsplugin_ptr = model_fields.CMSPluginField()
+
+    def __str__(self):
+        return '{} {}'.format(self.style, self.effect)
+
+
+@python_2_unicode_compatible
+class Bootstrap3TabItemPlugin(CMSPlugin):
+    """
+    JavaScript - Tab: "Item" Model
+    http://getbootstrap.com/javascript/#tabs
+    """
+    title = models.CharField(
+        verbose_name=_('Tab title'),
+        max_length=255,
+    )
+    icon = model_fields.Icon(
+        verbose_name=_('Title icon'),
+    )
+    classes = model_fields.Classes()
+    attributes = AttributesField(
+        verbose_name=_('Attributes'),
+        blank=True,
+        excluded_keys=['class'],
+    )
+
+    cmsplugin_ptr = model_fields.CMSPluginField()
+
+    def __str__(self):
+        return self.title
 
 
 @python_2_unicode_compatible

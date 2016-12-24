@@ -724,6 +724,72 @@ class Bootstrap3WellCMSPlugin(CMSPluginBase):
     )
 
 
+class Bootstrap3TabCMSPlugin(CMSPluginBase):
+    """
+    JavaScript - Tab: "Wrapper" Plugin
+    http://getbootstrap.com/javascript/#tabs
+    """
+    model = models.Bootstrap3TabPlugin
+    name = _('Tab')
+    module = _('Bootstrap 3')
+    change_form_template = 'admin/aldryn_bootstrap3/base.html'
+    render_template = 'aldryn_bootstrap3/plugins/tab.html'
+    allow_children = True
+    # TODO add dropdown support once available as plugin
+    child_classes = ['Bootstrap3TabItemCMSPlugin']
+
+    fieldsets = (
+        (None, {
+            'fields': (
+                'index',
+                ('style', 'effect',),
+            )
+        }),
+        (_('Advanced settings'), {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+                'attributes',
+            ),
+        }),
+    )
+
+    def render(self, context, instance, placeholder):
+        context = super(Bootstrap3TabCMSPlugin, self).render(context, instance, placeholder)
+        context['tab_plugin'] = instance
+        return context
+
+
+class Bootstrap3TabItemCMSPlugin(CMSPluginBase):
+    """
+    JavaScript - Tab: "Item" Plugin
+    http://getbootstrap.com/javascript/#tabs
+    """
+    model = models.Bootstrap3TabItemPlugin
+    name = _('Tab item')
+    module = _('Bootstrap 3')
+    change_form_template = 'admin/aldryn_bootstrap3/base.html'
+    render_template = 'aldryn_bootstrap3/plugins/tab_item.html'
+    allow_children = True
+    parent_classes = ['Bootstrap3TabCMSPlugin']
+
+    fieldsets = (
+        (None, {
+            'fields': (
+                'title',
+                'icon',
+            )
+        }),
+        (_('Advanced settings'), {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+                'attributes',
+            ),
+        }),
+    )
+
+
 class Bootstrap3AccordionCMSPlugin(CMSPluginBase):
     """
     JavaScript - Collapse: "Accordion" Plugin
@@ -1017,6 +1083,8 @@ plugin_pool.register_plugin(Bootstrap3PanelHeadingCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3PanelBodyCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3PanelFooterCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3WellCMSPlugin)
+plugin_pool.register_plugin(Bootstrap3TabCMSPlugin)
+plugin_pool.register_plugin(Bootstrap3TabItemCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3AccordionCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3AccordionItemCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3CarouselCMSPlugin)

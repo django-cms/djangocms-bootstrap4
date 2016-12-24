@@ -17,6 +17,7 @@ Changelog
 * Added <code> plugin
 * Added <cite> plugin to <blockquote>
 * Added responsive plugin to set device and print breakpoints
+* Added tab and tab item plugins
 * Added attributes fields to models missing it
 * Added missing translation declarations to untranslated strings
 * Added default CKEditor "styleSet" to load via djangocms-text-ckeditor in

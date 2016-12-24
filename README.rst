@@ -69,6 +69,7 @@ It provides the following **standard** Bootstrap 3 components:
 * `List Group <http://getbootstrap.com/components/#list-group>`_
 * `Panel (Heading, Body and Footer) <http://getbootstrap.com/components/#panels>`_
 * `Responsive <http://getbootstrap.com/css/#responsive-utilities>`_
+* `Tabs <http://getbootstrap.com/javascript/#tabs>`_
 * `Well <http://getbootstrap.com/components/#wells>`_
 
 It also provides the following **3rd party** components:
