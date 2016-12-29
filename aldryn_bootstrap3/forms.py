@@ -175,23 +175,6 @@ class LinkForm(django.forms.models.ModelForm):
         return media
     media = property(_get_media)
 
-    def clean(self):
-        cleaned_data = super(LinkForm, self).clean()
-        link_fields = {
-            'link_url': cleaned_data.get('link_url'),
-            'link_page': cleaned_data.get('link_page'),
-            'link_file': cleaned_data.get('link_file'),
-            'link_mailto': cleaned_data.get('link_mailto'),
-            'link_phone': cleaned_data.get('link_phone'),
-        }
-        error_msg = _('Only one of Page, File, Link, Email address or Phone is allowed.')
-        if len([i for i in link_fields.values() if i]) > 1:
-            for field, value in link_fields.items():
-                if value:
-                    self._errors[field] = self.error_class([error_msg])
-            raise django.core.exceptions.ValidationError(error_msg)
-        return cleaned_data
-
 
 class Boostrap3LabelPluginForm(django.forms.models.ModelForm):
 
@@ -256,7 +239,7 @@ class CarouselPluginForm(django.forms.ModelForm):
 class CarouselSlidePluginForm(django.forms.ModelForm):
 
     class Meta:
-        fields = ['image', 'content', 'link_text', 'classes', 'link_attributes', ]
+        fields = ['image', 'content', 'link_text', 'classes', 'link_attributes']
         model = models.Bootstrap3CarouselSlidePlugin
 
     def __init__(self, *args, **kwargs):
