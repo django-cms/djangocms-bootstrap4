@@ -35,3 +35,6 @@ insert_final_newline = false
 
 [*plugins/responsive.html]
 insert_final_newline = false
+
+[*plugins/image.html]
+insert_final_newline = false

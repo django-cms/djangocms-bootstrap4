@@ -390,7 +390,7 @@ class Boostrap3ImagePlugin(CMSPlugin):
     attributes = AttributesField(
         verbose_name=_('Attributes'),
         blank=True,
-        excluded_keys=['alt', 'class'],
+        excluded_keys=['src', 'alt', 'class', 'title'],
     )
     classes = model_fields.Classes()
 

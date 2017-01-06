@@ -30,9 +30,11 @@ Changelog
   ``PANEL_CONTEXT_DEFAULT``, ``ACCORDION_ITEM_CONTEXT_CHOICES``,
   ``ACCORDION_ITEM_CONTEXT_DEFAULT``, ``LIST_GROUP_ITEM_CONTEXT_CHOICES``,
   ``LIST_GROUP_ITEM_CONTEXT_DEFAULT``
-* **Backwards incompatible** change using the Bootstrap 3 Panel plugin:
-  the Panel only allows header, body and footer now to be its direct decendands
-  and the descendends require the "Panel" parent.
+* **Backwards incompatible** changes:
+    * The Panel only allows header, body and footer now to be its direct
+      decendands and the descendends require the "Panel" parent.
+    * Drag & drop support has been removed from the rendered plugin markup
+      until a cleaner version is ready
 
 
 1.1.2 (2016-09-05)
