@@ -65,6 +65,7 @@ It provides the following **standard** Bootstrap 3 components:
 * `Code <http://getbootstrap.com/css/#code>`_
 * `Grid (Row and Column) <http://getbootstrap.com/css/#grid/>`_
 * `Glyphicons <http://getbootstrap.com/components/#glyphicons>`_
+* `Jumbotron <http://getbootstrap.com/components/#jumbotron>`_
 * `Label <http://getbootstrap.com/components/#labels>`_
 * `List Group <http://getbootstrap.com/components/#list-group>`_
 * `Panel (Heading, Body and Footer) <http://getbootstrap.com/components/#panels>`_

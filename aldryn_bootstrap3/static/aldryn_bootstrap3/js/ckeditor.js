@@ -23,7 +23,7 @@ CKEDITOR.stylesSet.add('default', [
     { name: 'Text kustify', element: CKEDITOR.allElements, attributes: { class: 'text-justify' }},
     { name: 'Text no wrap', element: CKEDITOR.allElements, attributes: { class: 'text-nowrap' }},
 
-    { name: 'Abbr initialism', element: 'abbr', attributes: { class: 'initialism' }}
+    { name: 'Abbr initialism', element: 'abbr', attributes: { class: 'initialism' }},
 
     { name: 'List unstyled', element: ['ul', 'ol'], attributes: { class: 'list-unstyled' }},
     { name: 'List inline', element: ['ul', 'ol'], attributes: { class: 'list-inline' }},
@@ -54,7 +54,7 @@ CKEDITOR.stylesSet.add('default', [
     { name: 'Image circle', element: 'img', attributes: { class: 'img-circle' }},
     { name: 'Image thumbnail', element: 'img', attributes: { class: 'img-thumbnail' }},
 
-    { name: 'Blockquote reverse', element: 'blockquote', attributes: { class: 'blockquote-reverse' }}
+    { name: 'Blockquote reverse', element: 'blockquote', attributes: { class: 'blockquote-reverse' }},
 
     { name: 'Background primary', element: CKEDITOR.allElements, attributes: { class: 'bg-primary' }},
     { name: 'Background success', element: CKEDITOR.allElements, attributes: { class: 'bg-success' }},
@@ -81,7 +81,7 @@ CKEDITOR.stylesSet.add('default', [
     { name: 'Spacer', element: 'div', attributes: { class: 'spacer' }},
     { name: 'Spacer Small', element: 'div', attributes: { class: 'spacer-xs' }},
     { name: 'Spacer Large', element: 'div', attributes: { class: 'spacer-lg' }},
-    { name: 'Spacer Zero', element: 'div', attributes: { class: 'spacer-zero' }},
+    { name: 'Spacer Zero', element: 'div', attributes: { class: 'spacer-zero' }}
 ]);
 
 /*
