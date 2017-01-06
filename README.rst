@@ -77,6 +77,14 @@ It also provides the following **3rd party** components:
 * `Font Awesome <http://fontawesome.io>`_
 * `Spacer <https://github.com/aldryn/aldryn-bootstrap3/wiki/13-spacer>`_
 
+These components need to be manually configured in order to work properly
+inside your project. See `this gist <https://gist.github.com/FinalAngel/40ea3fd48c0b9094ec7ded5d0e5d7395>`_
+for additional information on a recommended spacer configuration.
+
+
+Settings
+~~~~~~~~
+
 This addon provides a ``standard`` template for Carousels. You can provide
 additional style choices by adding a ``ALDRYN_BOOTSTRAP3_CAROUSEL_STYLES``
 setting::
