@@ -445,6 +445,35 @@ class Bootstrap3LabelCMSPlugin(CMSPluginBase):
         return static('aldryn_bootstrap3/img/type/label.png')
 
 
+class Bootstrap3JumbotronCMSPlugin(CMSPluginBase):
+    """
+    Component - Jumbotron: Plugin
+    http://getbootstrap.com/components/#jumbotron
+    """
+    model = models.Boostrap3JumbotronPlugin
+    name = _('Jumbotron')
+    module = _('Bootstrap 3')
+    change_form_template = 'admin/aldryn_bootstrap3/base.html'
+    render_template = 'aldryn_bootstrap3/plugins/jumbotron.html'
+    allow_children = True
+
+    fieldsets = (
+        (None, {
+            'fields': (
+                'label',
+                'grid',
+            )
+        }),
+        (_('Advanced settings'), {
+            'classes': ('collapse',),
+            'fields': (
+                'classes',
+                'attributes',
+            ),
+        }),
+    )
+
+
 class Bootstrap3AlertCMSPlugin(CMSPluginBase):
     """
     Component - Alert: Plugin
@@ -1075,6 +1104,7 @@ plugin_pool.register_plugin(Bootstrap3ImageCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3ResponsiveCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3IconCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3LabelCMSPlugin)
+plugin_pool.register_plugin(Bootstrap3JumbotronCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3AlertCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3ListGroupCMSPlugin)
 plugin_pool.register_plugin(Bootstrap3ListGroupItemCMSPlugin)

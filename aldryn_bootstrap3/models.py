@@ -481,14 +481,14 @@ class Bootstrap3ResponsivePlugin(CMSPlugin):
 # [ ] Button Groups
 # [ ] Button Dropdowns
 # [✓] Input Groups (via aldryn-forms)
-# [✗] Navs (integrate into base.html)
-# [✗] Navbar (integrate into base.html)
-# [✗] Breadcrumbs (integrate into base.html)
-# [✗] Pagination (integrate on addon level)
+# [✗] Navs (not applicable)
+# [✗] Navbar (not applicable)
+# [✗] Breadcrumbs (not applicable)
+# [✗] Pagination (not applicable)
 # [✓] Labels
-# [✗] Badges (integrate on addon level)
-# [ ] Jumbotron
-# [✗] Page header (integrate into base.html)
+# [✗] Badges (not applicable)
+# [✓] Jumbotron
+# [ ] Page header
 # [ ] Thumbnails
 # [✓] Alerts
 # [ ] Progress Bars
@@ -555,6 +555,37 @@ class Boostrap3LabelPlugin(CMSPlugin):
 
     def __str__(self):
         return self.label
+
+
+@python_2_unicode_compatible
+class Boostrap3JumbotronPlugin(CMSPlugin):
+    """
+    Component - Jumbotron: Model
+    http://getbootstrap.com/components/#jumbotron
+    """
+    label = models.CharField(
+        verbose_name=_('Label'),
+        blank=True,
+        max_length=255,
+    )
+    grid = models.BooleanField(
+        verbose_name=('Add container'),
+        default=False,
+        blank=True,
+        help_text=_('Adds a "container" element inside of the "Jumbotron"'
+                    'for use outside of a grid.'),
+    )
+    classes = model_fields.Classes()
+    attributes = AttributesField(
+        verbose_name=_('Attributes'),
+        blank=True,
+        excluded_keys=['class'],
+    )
+
+    cmsplugin_ptr = model_fields.CMSPluginField()
+
+    def __str__(self):
+        return self.label or str(self.pk)
 
 
 @python_2_unicode_compatible
@@ -777,7 +808,7 @@ class Boostrap3WellPlugin(CMSPlugin):
 #
 # The following components marked with "✓" are implemented:
 #
-# [x] Transitions (integrate into your site)
+# [x] Transitions (not applicable)
 # [ ] Modal
 # [ ] Dropdowns
 # [ ] Scrollspy
