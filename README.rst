@@ -102,9 +102,9 @@ copying the ``standard`` folder inside that directory and renaming it to
 In addition you can set or extend your own icon fonts using ``ALDRYN_BOOTSTRAP3_ICONSETS``::
 
     ALDRYN_BOOTSTRAP3_ICONSETS = [
-        ('glyphicons', 'glyphicons', 'Glyphicons')
-        ('fontawesome', 'fa', 'Font Awesome')
-        ('icons', 'icon', 'Custom Icons')
+        ('glyphicons', 'glyphicons', 'Glyphicons'),
+        ('fontawesome', 'fa', 'Font Awesome'),
+        ('icons', 'icon', 'Custom Icons'),
     ]
 
 
