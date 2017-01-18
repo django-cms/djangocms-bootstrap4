@@ -205,15 +205,21 @@ class LinkMixin(models.Model):
             for key, value in link_fields.items()
             if value
         }
+
         if len(provided_link_fields) > 1:
             # Too many fields have a value.
             verbose_names = sorted(link_field_verbose_names.values())
-            error_msg = _('Only one of %s or %s may be given.') % (
+            error_msg = _('Only one of {0} or {1} may be given.').format(
                 ', '.join(verbose_names[:-1]),
                 verbose_names[-1],
             )
             errors = {}.fromkeys(provided_link_fields.keys(), error_msg)
             raise ValidationError(errors)
+
+        if len(provided_link_fields) == 0 and not self.anchor:
+            raise ValidationError(
+                _('Please provide a link.')
+            )
 
         if anchor_field_value:
             for field_name in provided_link_fields.keys():

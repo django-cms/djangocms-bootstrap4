@@ -1,0 +1,676 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-01-17 14:57+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: cms_plugins.py:35
+msgid "Row"
+msgstr ""
+
+#: cms_plugins.py:36 cms_plugins.py:93 cms_plugins.py:129 cms_plugins.py:157
+#: cms_plugins.py:187 cms_plugins.py:217 cms_plugins.py:264 cms_plugins.py:360
+#: cms_plugins.py:391 cms_plugins.py:422 cms_plugins.py:455 cms_plugins.py:484
+#: cms_plugins.py:513 cms_plugins.py:542 cms_plugins.py:581 cms_plugins.py:649
+#: cms_plugins.py:679 cms_plugins.py:707 cms_plugins.py:735 cms_plugins.py:763
+#: cms_plugins.py:799 cms_plugins.py:829 cms_plugins.py:893 cms_plugins.py:1039
+#: cms_plugins.py:1070
+msgid "Bootstrap 3"
+msgstr ""
+
+#: cms_plugins.py:44 forms.py:23
+msgid "Create columns"
+msgstr ""
+
+#: cms_plugins.py:56 cms_plugins.py:111 cms_plugins.py:140 cms_plugins.py:170
+#: cms_plugins.py:200 cms_plugins.py:244 cms_plugins.py:278 cms_plugins.py:372
+#: cms_plugins.py:402 cms_plugins.py:435 cms_plugins.py:467 cms_plugins.py:496
+#: cms_plugins.py:525 cms_plugins.py:559 cms_plugins.py:605 cms_plugins.py:662
+#: cms_plugins.py:690 cms_plugins.py:718 cms_plugins.py:746 cms_plugins.py:777
+#: cms_plugins.py:812 cms_plugins.py:841 cms_plugins.py:877 cms_plugins.py:949
+#: cms_plugins.py:1003 cms_plugins.py:1051 cms_plugins.py:1084
+msgid "Advanced settings"
+msgstr ""
+
+#: cms_plugins.py:92
+msgid "Column"
+msgstr ""
+
+#: cms_plugins.py:101 forms.py:78
+msgid "Adjust columns"
+msgstr ""
+
+#: cms_plugins.py:128
+msgid "Blockquote"
+msgstr ""
+
+#: cms_plugins.py:156
+msgid "Cite"
+msgstr ""
+
+#: cms_plugins.py:186 models.py:249
+msgid "Code"
+msgstr ""
+
+#: cms_plugins.py:216
+msgid "Link/Button"
+msgstr ""
+
+#: cms_plugins.py:236 cms_plugins.py:993
+msgid "Link settings"
+msgstr ""
+
+#: cms_plugins.py:263 models.py:322 models.py:1099
+msgid "Image"
+msgstr ""
+
+#: cms_plugins.py:359
+msgid "Responsive utilities"
+msgstr ""
+
+#: cms_plugins.py:390 model_fields.py:305 models.py:511
+msgid "Icon"
+msgstr ""
+
+#: cms_plugins.py:421 models.py:534 models.py:567
+msgid "Label"
+msgstr ""
+
+#: cms_plugins.py:454
+msgid "Jumbotron"
+msgstr ""
+
+#: cms_plugins.py:483
+msgid "Alert"
+msgstr ""
+
+#: cms_plugins.py:512
+msgid "List Group"
+msgstr ""
+
+#: cms_plugins.py:541
+msgid "List Group Item"
+msgstr ""
+
+#: cms_plugins.py:580
+msgid "Panel"
+msgstr ""
+
+#: cms_plugins.py:593
+msgid "Create"
+msgstr ""
+
+#: cms_plugins.py:600
+msgid "Settings"
+msgstr ""
+
+#: cms_plugins.py:648
+msgid "Panel header"
+msgstr ""
+
+#: cms_plugins.py:678
+msgid "Panel body"
+msgstr ""
+
+#: cms_plugins.py:706
+msgid "Panel footer"
+msgstr ""
+
+#: cms_plugins.py:734
+msgid "Well"
+msgstr ""
+
+#: cms_plugins.py:762
+msgid "Tab"
+msgstr ""
+
+#: cms_plugins.py:798
+msgid "Tab item"
+msgstr ""
+
+#: cms_plugins.py:828 cms_plugins.py:864
+msgid "Accordion"
+msgstr ""
+
+#: cms_plugins.py:863
+msgid "Accordion item"
+msgstr ""
+
+#: cms_plugins.py:931
+msgid "Carousel"
+msgstr ""
+
+#: cms_plugins.py:981
+msgid "Carousel slide"
+msgstr ""
+
+#: cms_plugins.py:1019
+msgid "Carousel slides folder"
+msgstr ""
+
+#: cms_plugins.py:1038
+msgid "Spacer"
+msgstr ""
+
+#: cms_plugins.py:1069 models.py:1197
+msgid "File"
+msgstr ""
+
+#: constants.py:16
+msgid "Tiny"
+msgstr ""
+
+#: constants.py:17 constants.py:80
+msgid "Small"
+msgstr ""
+
+#: constants.py:18 constants.py:79
+msgid "Medium"
+msgstr ""
+
+#: constants.py:19 constants.py:78
+msgid "Large"
+msgstr ""
+
+#: constants.py:25 models.py:1209
+msgid "Open in new window"
+msgstr ""
+
+#: constants.py:26
+msgid "Open in same window"
+msgstr ""
+
+#: constants.py:27
+msgid "Delegate to parent"
+msgstr ""
+
+#: constants.py:28
+msgid "Delegate to top"
+msgstr ""
+
+#: constants.py:81
+msgid "Extra Small"
+msgstr ""
+
+#: constants.py:87
+msgid "Mobile phones"
+msgstr ""
+
+#: constants.py:94
+msgid "Tablets"
+msgstr ""
+
+#: constants.py:101
+msgid "Laptops"
+msgstr ""
+
+#: constants.py:108
+msgid "Large desktops"
+msgstr ""
+
+#: forms.py:24
+msgid "Number of columns to create in this row."
+msgstr ""
+
+#: forms.py:38 forms.py:93
+msgid "Width of created columns (can be edited later if required.)"
+msgstr ""
+
+#: forms.py:46 forms.py:101
+msgid "Offset of created columns (can be edited later if required.)"
+msgstr ""
+
+#: forms.py:54 forms.py:109
+msgid "Push of created columns (can be edited later if required.)"
+msgstr ""
+
+#: forms.py:62 forms.py:117
+msgid "Pull of created columns (can be edited later if required.)"
+msgstr ""
+
+#: forms.py:79
+msgid "Adjust this column."
+msgstr ""
+
+#: forms.py:143 model_fields.py:112
+msgid "Internal link"
+msgstr ""
+
+#: forms.py:193
+msgid "Initial heading"
+msgstr ""
+
+#: forms.py:198
+msgid "Initial body"
+msgstr ""
+
+#: forms.py:203
+msgid "Initial footer"
+msgstr ""
+
+#: forms.py:234
+#, python-brace-format
+msgid "Not a valid style (template {path} does not exist)"
+msgstr ""
+
+#: model_fields.py:66
+msgid "Please set south_field_class when using the south field mixin."
+msgstr ""
+
+#: model_fields.py:85
+msgid "Classes"
+msgstr ""
+
+#: model_fields.py:91
+msgid ""
+"Space separated classes that are added to the class. See <a href=\"http://"
+"getbootstrap.com/css/\" target=\"_blank\">Bootstrap 3 documentation</a>."
+msgstr ""
+
+#: model_fields.py:109
+msgid "Provide a valid URL to an external website."
+msgstr ""
+
+#: model_fields.py:116
+msgid "If provided, overrides the external link."
+msgstr ""
+
+#: model_fields.py:119
+msgid "Email address"
+msgstr ""
+
+#: model_fields.py:125
+msgid "Phone"
+msgstr ""
+
+#: model_fields.py:131
+msgid "Anchor"
+msgstr ""
+
+#: model_fields.py:134
+msgid ""
+"Appends the value only after the internal or external link. Do <em>not</em> "
+"include a preceding \"#\" symbol."
+msgstr ""
+
+#: model_fields.py:138
+msgid "Target"
+msgstr ""
+
+#: model_fields.py:144
+msgid "file"
+msgstr ""
+
+#: model_fields.py:150 models.py:53 models.py:96 models.py:196 models.py:217
+#: models.py:254 models.py:391 models.py:459 models.py:516 models.py:549
+#: models.py:580 models.py:605 models.py:629 models.py:681 models.py:708
+#: models.py:733 models.py:752 models.py:771 models.py:793 models.py:860
+#: models.py:886 models.py:911 models.py:956 models.py:1025 models.py:1180
+#: models.py:1222
+msgid "Attributes"
+msgstr ""
+
+#: model_fields.py:212
+#, python-brace-format
+msgid "Only one of {0} or {1} may be given."
+msgstr ""
+
+#: model_fields.py:221
+msgid "Please provide a link."
+msgstr ""
+
+#: model_fields.py:227
+#, python-format
+msgid ""
+"%(anchor_field_verbose_name)s is not allowed together with %(field_name)s"
+msgstr ""
+
+#: model_fields.py:243
+msgid "Type"
+msgstr ""
+
+#: model_fields.py:274 models.py:540 models.py:598 models.py:663 models.py:699
+msgid "Context"
+msgstr ""
+
+#: model_fields.py:346
+msgid "Responsive"
+msgstr ""
+
+#: models.py:67 models.py:640 models.py:922
+msgid "<empty>"
+msgstr ""
+
+#: models.py:71
+#, python-format
+msgid "1 column"
+msgid_plural "%(count)i columns"
+msgstr[0] ""
+msgstr[1] ""
+
+#: models.py:91
+msgid "Tag"
+msgstr ""
+
+#: models.py:165
+msgid "col-{}-"
+msgstr ""
+
+#: models.py:169
+msgid "offset-"
+msgstr ""
+
+#: models.py:173
+msgid "push-"
+msgstr ""
+
+#: models.py:177
+msgid "pull-"
+msgstr ""
+
+#: models.py:188
+msgid "Reverse quote"
+msgstr ""
+
+#: models.py:191
+msgid ""
+"Reverses the position by adding the Bootstrap 3 \"blockquote-reverse\" class."
+msgstr ""
+
+#: models.py:235 templates/admin/aldryn_bootstrap3/widgets/responsive.html:37
+#: templates/admin/aldryn_bootstrap3/widgets/responsive_print.html:19
+msgid "Inline"
+msgstr ""
+
+#: models.py:236
+msgid "User input"
+msgstr ""
+
+#: models.py:237
+msgid "Basic block"
+msgstr ""
+
+#: models.py:238
+msgid "Variables"
+msgstr ""
+
+#: models.py:239
+msgid "Sample output"
+msgstr ""
+
+#: models.py:243
+msgid "Code type"
+msgstr ""
+
+#: models.py:272
+msgid "Display name"
+msgstr ""
+
+#: models.py:329
+msgid "Alternative text"
+msgstr ""
+
+#: models.py:334 models.py:658 models.py:726 models.py:943
+msgid "Title"
+msgstr ""
+
+#: models.py:339
+msgid "Use original image"
+msgstr ""
+
+#: models.py:342
+msgid "Outputs the raw image without cropping."
+msgstr ""
+
+#: models.py:345
+msgid "Override width"
+msgstr ""
+
+#: models.py:348
+msgid ""
+"The image width as number in pixels. Example: \"720\" and not \"720px\"."
+msgstr ""
+
+#: models.py:352
+msgid "Override height"
+msgstr ""
+
+#: models.py:355
+msgid ""
+"The image height as number in pixels. Example: \"720\" and not \"720px\"."
+msgstr ""
+
+#: models.py:359 models.py:988 models.py:1043
+msgid "Aspect ratio"
+msgstr ""
+
+#: models.py:364
+msgid "Determines width height of the image according to the selected ratio."
+msgstr ""
+
+#: models.py:368
+msgid "Shape"
+msgstr ""
+
+#: models.py:378
+msgid ".img-thumbnail"
+msgstr ""
+
+#: models.py:450
+msgid "Devices"
+msgstr ""
+
+#: models.py:454
+msgid "Print"
+msgstr ""
+
+#: models.py:575
+msgid ""
+"Adds a \"container\" element inside of the \"Jumbotron\"for use outside of a "
+"grid."
+msgstr ""
+
+#: models.py:601 models.py:882
+msgid "Title icon"
+msgstr ""
+
+#: models.py:625
+msgid "Adds the list-group and subsequent list-group-item classes."
+msgstr ""
+
+#: models.py:644 models.py:926
+#, python-format
+msgid "1 item"
+msgid_plural "%(count)i items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: models.py:671
+msgid "State"
+msgstr ""
+
+#: models.py:789 models.py:1176
+msgid "Size"
+msgstr ""
+
+#: models.py:831
+msgid "Tabs"
+msgstr ""
+
+#: models.py:832
+msgid "Tabs justified"
+msgstr ""
+
+#: models.py:833
+msgid "Pills"
+msgstr ""
+
+#: models.py:834
+msgid "Pills justified"
+msgstr ""
+
+#: models.py:837
+msgid "Fade"
+msgstr ""
+
+#: models.py:841 models.py:904
+msgid "Index"
+msgstr ""
+
+#: models.py:844 models.py:907
+msgid "Index of element to open on page load (optional)."
+msgstr ""
+
+#: models.py:847
+msgid "Display type"
+msgstr ""
+
+#: models.py:853
+msgid "Animation effect"
+msgstr ""
+
+#: models.py:878
+msgid "Tab title"
+msgstr ""
+
+#: models.py:975
+msgid "Standard"
+msgstr ""
+
+#: models.py:978
+msgid "Slide"
+msgstr ""
+
+#: models.py:982 models.py:1039
+msgid "Style"
+msgstr ""
+
+#: models.py:995 models.py:1040
+msgid "Transition effect"
+msgstr ""
+
+#: models.py:1002 models.py:1041
+msgid "Ride"
+msgstr ""
+
+#: models.py:1004
+msgid "Auto-starts animation of the carousel."
+msgstr ""
+
+#: models.py:1007 models.py:1042
+msgid "Interval"
+msgstr ""
+
+#: models.py:1009
+msgid "Time (in milliseconds) between items."
+msgstr ""
+
+#: models.py:1012
+msgid "Wrap"
+msgstr ""
+
+#: models.py:1015
+msgid "Loops carousel animation."
+msgstr ""
+
+#: models.py:1018
+msgid "Pause"
+msgstr ""
+
+#: models.py:1021
+msgid "Pauses the carousel on hover."
+msgstr ""
+
+#: models.py:1106
+msgid "Link text"
+msgstr ""
+
+#: models.py:1111
+msgid "Content"
+msgstr ""
+
+#: models.py:1114
+msgid "Content may also be added using child plugins."
+msgstr ""
+
+#: models.py:1151
+msgid "Folder"
+msgstr ""
+
+#: models.py:1161
+msgid "<folder is missing>"
+msgstr ""
+
+#: models.py:1204
+msgid "Name"
+msgstr ""
+
+#: models.py:1213
+msgid "Show file size"
+msgstr ""
+
+#: templates/admin/aldryn_bootstrap3/plugins/button/change_form.html:9
+#: templates/admin/aldryn_bootstrap3/plugins/label/change_form.html:9
+msgid "Preview"
+msgstr ""
+
+#: templates/admin/aldryn_bootstrap3/widgets/icon.html:8
+msgid ""
+"No Iconsets configured. Please configure at least one Iconset before using "
+"this widget."
+msgstr ""
+
+#: templates/admin/aldryn_bootstrap3/widgets/responsive.html:8
+#: templates/admin/aldryn_bootstrap3/widgets/responsive.html:14
+#: templates/admin/aldryn_bootstrap3/widgets/responsive.html:20
+#: templates/admin/aldryn_bootstrap3/widgets/responsive.html:26
+#: templates/admin/aldryn_bootstrap3/widgets/responsive_print.html:8
+msgid "Visible"
+msgstr ""
+
+#: templates/admin/aldryn_bootstrap3/widgets/responsive.html:9
+#: templates/admin/aldryn_bootstrap3/widgets/responsive.html:15
+#: templates/admin/aldryn_bootstrap3/widgets/responsive.html:21
+#: templates/admin/aldryn_bootstrap3/widgets/responsive.html:27
+#: templates/admin/aldryn_bootstrap3/widgets/responsive_print.html:9
+msgid "Hidden"
+msgstr ""
+
+#: templates/admin/aldryn_bootstrap3/widgets/responsive.html:32
+#: templates/admin/aldryn_bootstrap3/widgets/responsive.html:35
+#: templates/admin/aldryn_bootstrap3/widgets/responsive_print.html:14
+#: templates/admin/aldryn_bootstrap3/widgets/responsive_print.html:17
+msgid "Default"
+msgstr ""
+
+#: templates/admin/aldryn_bootstrap3/widgets/responsive.html:36
+#: templates/admin/aldryn_bootstrap3/widgets/responsive_print.html:18
+msgid "Block"
+msgstr ""
+
+#: templates/admin/aldryn_bootstrap3/widgets/responsive.html:38
+#: templates/admin/aldryn_bootstrap3/widgets/responsive_print.html:20
+msgid "Inline block"
+msgstr ""
+
+#: templates/aldryn_bootstrap3/plugins/carousel/standard/carousel.html:23
+msgid "Previous"
+msgstr ""
+
+#: templates/aldryn_bootstrap3/plugins/carousel/standard/carousel.html:27
+msgid "Next"
+msgstr ""

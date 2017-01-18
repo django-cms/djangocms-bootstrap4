@@ -22,6 +22,7 @@ Changelog
 * Added missing translation declarations to untranslated strings
 * Added default CKEditor "styleSet" to load via djangocms-text-ckeditor in
   ``/static/aldryn_bootstrap3/js/ckeditor.js``
+* Added transifex integration for translations
 * Set all max_values to 255
 * Restructured code to reflect Bootstrap 3's documentation
 * Simplified and removed constants such as ``LABEL_CONTEXT_CHOICES``,

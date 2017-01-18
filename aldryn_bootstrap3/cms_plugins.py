@@ -98,7 +98,7 @@ class Bootstrap3ColumnCMSPlugin(CMSPluginBase):
     parent_classes = ['Bootstrap3RowCMSPlugin']
 
     fieldsets = [
-        (_('Adapt columns'), {
+        (_('Adjust columns'), {
             'fields': tuple([
                 (
                     '{}_col'.format(size),
