@@ -41,7 +41,7 @@ for size, name in constants.DEVICE_CHOICES:
         min_value=1,
         max_value=constants.GRID_SIZE,
     )
-    extra_fields_row["create_{}_offset".format(size)] = django.forms.IntegerField(
+    extra_fields_row['create_{}_offset'.format(size)] = django.forms.IntegerField(
         label='offset-'.format(size),
         help_text=_('Offset of created columns '
                     '(can be edited later if required.)'),

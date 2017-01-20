@@ -70,7 +70,8 @@ class Bootstrap3RowCMSPlugin(CMSPluginBase):
             for size in constants.DEVICE_SIZES:
                 for element in ['col', 'offset', 'push', 'pull']:
                     extra['{}_{}'.format(size, element)] = data.get(
-                        'create_{}_{}'.format(size, element)) or None
+                        'create_{}_{}'.format(size, element)
+                    )
             col = models.Bootstrap3ColumnPlugin(
                 parent=obj,
                 placeholder=obj.placeholder,
