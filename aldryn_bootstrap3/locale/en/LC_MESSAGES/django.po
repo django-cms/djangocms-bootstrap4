@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-17 14:57+0100\n"
+"POT-Creation-Date: 2017-01-20 12:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -166,7 +166,7 @@ msgstr ""
 msgid "Spacer"
 msgstr ""
 
-#: cms_plugins.py:1069 models.py:1197
+#: cms_plugins.py:1069 model_fields.py:144 models.py:1197
 msgid "File"
 msgstr ""
 
@@ -267,10 +267,6 @@ msgstr ""
 msgid "Not a valid style (template {path} does not exist)"
 msgstr ""
 
-#: model_fields.py:66
-msgid "Please set south_field_class when using the south field mixin."
-msgstr ""
-
 #: model_fields.py:85
 msgid "Classes"
 msgstr ""
@@ -311,10 +307,6 @@ msgstr ""
 msgid "Target"
 msgstr ""
 
-#: model_fields.py:144
-msgid "file"
-msgstr ""
-
 #: model_fields.py:150 models.py:53 models.py:96 models.py:196 models.py:217
 #: models.py:254 models.py:391 models.py:459 models.py:516 models.py:549
 #: models.py:580 models.py:605 models.py:629 models.py:681 models.py:708
@@ -336,7 +328,7 @@ msgstr ""
 #: model_fields.py:227
 #, python-format
 msgid ""
-"%(anchor_field_verbose_name)s is not allowed together with %(field_name)s"
+"%(anchor_field_verbose_name)s is not allowed together with %(field_name)s."
 msgstr ""
 
 #: model_fields.py:243
@@ -364,22 +356,6 @@ msgstr[1] ""
 
 #: models.py:91
 msgid "Tag"
-msgstr ""
-
-#: models.py:165
-msgid "col-{}-"
-msgstr ""
-
-#: models.py:169
-msgid "offset-"
-msgstr ""
-
-#: models.py:173
-msgid "push-"
-msgstr ""
-
-#: models.py:177
-msgid "pull-"
 msgstr ""
 
 #: models.py:188
@@ -459,15 +435,12 @@ msgid "Aspect ratio"
 msgstr ""
 
 #: models.py:364
-msgid "Determines width height of the image according to the selected ratio."
+msgid ""
+"Determines width and height of the image according to the selected ratio."
 msgstr ""
 
 #: models.py:368
 msgid "Shape"
-msgstr ""
-
-#: models.py:378
-msgid ".img-thumbnail"
 msgstr ""
 
 #: models.py:450
@@ -480,7 +453,7 @@ msgstr ""
 
 #: models.py:575
 msgid ""
-"Adds a \"container\" element inside of the \"Jumbotron\"for use outside of a "
+"Adds a \"container\" element inside the \"Jumbotron\" for use outside of a "
 "grid."
 msgstr ""
 

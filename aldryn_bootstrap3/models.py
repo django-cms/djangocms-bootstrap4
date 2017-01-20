@@ -162,19 +162,19 @@ PullSizeField = partial(
 for size, name in constants.DEVICE_CHOICES:
     Bootstrap3ColumnPlugin.add_to_class(
         '{}_col'.format(size),
-        ColSizeField(verbose_name=_('col-{}-'.format(size))),
+        ColSizeField(verbose_name='col-{}-'.format(size)),
     )
     Bootstrap3ColumnPlugin.add_to_class(
         '{}_offset'.format(size),
-        OffsetSizeField(verbose_name=_('offset-'.format(size))),
+        OffsetSizeField(verbose_name='offset-'.format(size)),
     )
     Bootstrap3ColumnPlugin.add_to_class(
         '{}_push'.format(size),
-        PushSizeField(verbose_name=_('push-'.format(size))),
+        PushSizeField(verbose_name='push-'.format(size)),
     )
     Bootstrap3ColumnPlugin.add_to_class(
         '{}_pull'.format(size),
-        PullSizeField(verbose_name=_('pull-'.format(size))),
+        PullSizeField(verbose_name='pull-'.format(size)),
     )
 
 
@@ -361,7 +361,7 @@ class Boostrap3ImagePlugin(CMSPlugin):
         blank=True,
         default='',
         max_length=255,
-        help_text=_('Determines width height of the image '
+        help_text=_('Determines width and height of the image '
                     'according to the selected ratio.'),
     )
     shape = models.CharField(
@@ -375,7 +375,7 @@ class Boostrap3ImagePlugin(CMSPlugin):
         max_length=255,
     )
     thumbnail = models.BooleanField(
-        verbose_name=_('.img-thumbnail'),
+        verbose_name='.img-thumbnail',
         default=False,
         blank=True,
         help_text='Adds the Bootstrap 3 ".img-thumbnail" class.',
@@ -572,7 +572,7 @@ class Boostrap3JumbotronPlugin(CMSPlugin):
         verbose_name=('Add container'),
         default=False,
         blank=True,
-        help_text=_('Adds a "container" element inside of the "Jumbotron"'
+        help_text=_('Adds a "container" element inside the "Jumbotron" '
                     'for use outside of a grid.'),
     )
     classes = model_fields.Classes()

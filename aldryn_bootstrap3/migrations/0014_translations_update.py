@@ -3,7 +3,8 @@ from __future__ import unicode_literals
 
 from django.db import migrations, models
 import djangocms_text_ckeditor.fields
-
+import filer.fields.file
+import django.db.models.deletion
 
 class Migration(migrations.Migration):
 
@@ -20,7 +21,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='boostrap3imageplugin',
             name='aspect_ratio',
-            field=models.CharField(default='', choices=[('1x1', '1x1'), ('4x3', '4x3'), ('16x9', '16x9'), ('16x10', '16x10'), ('21x9', '21x9'), ('3x4', '3x4'), ('9x16', '9x16'), ('10x16', '10x16'), ('9x21', '9x21')], max_length=255, blank=True, help_text='Determines width height of the image according to the selected ratio.', verbose_name='Aspect ratio'),
+            field=models.CharField(default='', choices=[('1x1', '1x1'), ('4x3', '4x3'), ('16x9', '16x9'), ('16x10', '16x10'), ('21x9', '21x9'), ('3x4', '3x4'), ('9x16', '9x16'), ('10x16', '10x16'), ('9x21', '9x21')], max_length=255, blank=True, help_text='Determines width and height of the image according to the selected ratio.', verbose_name='Aspect ratio'),
         ),
         migrations.AlterField(
             model_name='bootstrap3accordionplugin',
@@ -49,8 +50,8 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name='bootstrap3carouselslideplugin',
-            name='content',
-            field=djangocms_text_ckeditor.fields.HTMLField(default='', help_text='Content may also be added using child plugins.', verbose_name='Content', blank=True),
+            name='link_file',
+            field=filer.fields.file.FilerFileField(on_delete=django.db.models.deletion.SET_NULL, verbose_name='File', blank=True, to='filer.File', null=True),
         ),
         migrations.AlterField(
             model_name='bootstrap3listgroupplugin',
@@ -61,5 +62,20 @@ class Migration(migrations.Migration):
             model_name='bootstrap3tabplugin',
             name='index',
             field=models.PositiveIntegerField(help_text='Index of element to open on page load (optional).', null=True, verbose_name='Index', blank=True),
+        ),
+        migrations.AlterField(
+            model_name='boostrap3buttonplugin',
+            name='link_file',
+            field=filer.fields.file.FilerFileField(on_delete=django.db.models.deletion.SET_NULL, verbose_name='File', blank=True, to='filer.File', null=True),
+        ),
+        migrations.AlterField(
+            model_name='boostrap3jumbotronplugin',
+            name='grid',
+            field=models.BooleanField(default=False, help_text='Adds a "container" element inside the "Jumbotron" for use outside of a grid.', verbose_name='Add container'),
+        ),
+        migrations.AlterField(
+            model_name='bootstrap3carouselslideplugin',
+            name='content',
+            field=djangocms_text_ckeditor.fields.HTMLField(default='', help_text='Content may also be added using child plugins.', verbose_name='Content', blank=True),
         ),
     ]

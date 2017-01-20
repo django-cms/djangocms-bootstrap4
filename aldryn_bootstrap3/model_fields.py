@@ -63,8 +63,8 @@ class SouthMixinBase(object):
     def south_field_triple(self):
         """Returns a suitable description of this field for South."""
         if not self.south_field_class:
-            raise NotImplementedError(_('Please set south_field_class when '
-                                        'using the south field mixin.'))
+            raise NotImplementedError('Please set south_field_class when '
+                                        'using the south field mixin.')
         # We'll just introspect ourselves, since we inherit.
         from south.modelsinspector import introspector
         field_class = self.south_field_class
@@ -141,7 +141,7 @@ class LinkMixin(models.Model):
         max_length=255,
     )
     link_file = filer.fields.file.FilerFileField(
-        verbose_name=_('file'),
+        verbose_name=_('File'),
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -216,7 +216,7 @@ class LinkMixin(models.Model):
             errors = {}.fromkeys(provided_link_fields.keys(), error_msg)
             raise ValidationError(errors)
 
-        if len(provided_link_fields) == 0 and not self.anchor:
+        if len(provided_link_fields) == 0 and not self.link_anchor:
             raise ValidationError(
                 _('Please provide a link.')
             )
@@ -224,7 +224,7 @@ class LinkMixin(models.Model):
         if anchor_field_value:
             for field_name in provided_link_fields.keys():
                 if field_name not in field_names_allowed_with_anchor:
-                    error_msg = _('%(anchor_field_verbose_name)s is not allowed together with %(field_name)s') % {
+                    error_msg = _('%(anchor_field_verbose_name)s is not allowed together with %(field_name)s.') % {
                         'anchor_field_verbose_name': anchor_field_verbose_name,
                         'field_name': link_field_verbose_names.get(field_name)
                     }
