@@ -7,9 +7,6 @@ from . import constants
 from .conf import settings
 
 
-# Please check `fields.py` for import reference
-
-
 class ContextRenderer(django.forms.widgets.RadioFieldRenderer):
     def render(self):
         from django.template.loader import render_to_string

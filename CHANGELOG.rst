@@ -23,6 +23,7 @@ Changelog
 * Added default CKEditor "styleSet" to load via djangocms-text-ckeditor in
   ``/static/aldryn_bootstrap3/js/ckeditor.js``
 * Added transifex integration for translations
+* Added ``ALDRYN_BOOTSTRAP3_GRID_SIZE`` to Divio Cloud settings
 * Set all max_values to 255
 * Fixed an issue where column offset, push and pull did not accept "0" as a value
 * Restructured code to reflect Bootstrap 3's documentation

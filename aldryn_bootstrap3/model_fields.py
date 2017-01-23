@@ -37,9 +37,12 @@ def get_additional_styles():
     if raw:
         if isinstance(raw, str):
             raw = raw.split(',')
-        for choice in raw:
-            clean = choice.strip()
-            choices.append((clean.lower(), clean.title()))
+            for choice in raw:
+                clean = choice.strip()
+                choices.append((clean.lower(), clean.title()))
+        else:
+            for choice in raw:
+                choices.append(choice)
     return choices
 
 

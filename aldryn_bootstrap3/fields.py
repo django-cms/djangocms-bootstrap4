@@ -8,9 +8,6 @@ from .conf import settings
 from . import widgets, constants
 
 
-# Please check `model_fields.py` for import reference
-
-
 class Context(django.forms.fields.ChoiceField):
     widget = widgets.Context
     CHOICES = constants.CONTEXT_CHOICES

@@ -107,6 +107,11 @@ In addition you can set or extend your own icon fonts using ``ALDRYN_BOOTSTRAP3_
         ('icons', 'icon', 'Custom Icons'),
     ]
 
+The default grid size is set to **24** when validating the column input,
+you can override this by setting::
+
+    ALDRYN_BOOTSTRAP3_GRID_SIZE = 12
+
 
 Running Tests
 -------------

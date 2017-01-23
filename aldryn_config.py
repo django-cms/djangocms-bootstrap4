@@ -7,6 +7,10 @@ def split_and_strip(string):
 
 
 class Form(forms.BaseForm):
+    grid_size = forms.NumberField(
+        'Maximum columns to support',
+        required=False
+    )
     enable_glyphicons = forms.CheckboxField(
         'Enable Glyphicons',
         required=False,
@@ -38,6 +42,8 @@ class Form(forms.BaseForm):
 
     def to_settings(self, data, settings):
         choices = []
+        if data['grid_size']:
+            settings['ALDRYN_BOOTSTRAP3_GRID_SIZE'] = int(data['grid_size'])
         if data['enable_glyphicons']:
             choices.append(
                 ('glyphicons', 'glyphicons', 'Glyphicons')

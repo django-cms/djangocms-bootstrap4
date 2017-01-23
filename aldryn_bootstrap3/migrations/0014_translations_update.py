@@ -5,6 +5,9 @@ from django.db import migrations, models
 import djangocms_text_ckeditor.fields
 import filer.fields.file
 import django.db.models.deletion
+from aldryn_bootstrap3.models import Bootstrap3CarouselPlugin
+from aldryn_bootstrap3.model_fields import get_additional_styles
+
 
 class Migration(migrations.Migration):
 
@@ -77,5 +80,10 @@ class Migration(migrations.Migration):
             model_name='bootstrap3carouselslideplugin',
             name='content',
             field=djangocms_text_ckeditor.fields.HTMLField(default='', help_text='Content may also be added using child plugins.', verbose_name='Content', blank=True),
+        ),
+        migrations.AlterField(
+            model_name='bootstrap3carouselplugin',
+            name='style',
+            field=models.CharField(choices=Bootstrap3CarouselPlugin.STYLE_CHOICES + get_additional_styles(), default='standard', max_length=255, verbose_name='Style'),
         ),
     ]

@@ -7,8 +7,7 @@ from .conf import settings
 
 
 # Changable constants, overriden through settings
-GRID_SIZE = settings.ALDRYN_BOOTSTRAP3_GRID_SIZE
-
+GRID_SIZE = getattr(settings, 'ALDRYN_BOOTSTRAP3_GRID_SIZE', 24)
 
 # Fixed constants, not influenced by settings
 # Changes here will most likely require database migrtions
