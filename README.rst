@@ -30,11 +30,17 @@ One of the easiest contributions you can make is helping to translate this addon
 Documentation
 =============
 
-See ``REQUIREMENTS`` in the `setup.py <https://github.com/divio/aldryn-bootstrap3/blob/master/setup.py>`_
+See ``REQUIREMENTS`` in the `setup.py <https://github.com/aldryn/aldryn-bootstrap3/blob/master/setup.py>`_
 file for additional dependencies:
 
 * Python 2.7, 3.3 or higher
 * Django 1.6 or higher
+* Django Filer 1.2.4 or higher
+* Django Text CKEditor 3.1.0 or higher
+
+Make sure `django Filer <http://django-filer.readthedocs.io/en/latest/installation.html>`_
+and `django CMS Text CKEditor <https://github.com/divio/djangocms-text-ckeditor>`_
+are installed and configured appropriately.
 
 
 Installation

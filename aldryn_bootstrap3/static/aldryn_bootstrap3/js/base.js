@@ -669,25 +669,6 @@
                         .replace(' ', '');
                     return cls;
                 }
-            },
-
-            imagePlugin: function imagePlugin() {
-                var useOriginalImageCheckbox = $('#id_use_original_image');
-                var fieldsToToggle = $([
-                    '.field-aspect_ratio',
-                    '.field-shape',
-                    '.field-thumbnail',
-                    '.field-override_width',
-                    '.field-override_height'
-                ].join(', '));
-
-                useOriginalImageCheckbox.on('change', function () {
-                    if (this.checked) {
-                        fieldsToToggle.hide();
-                    } else {
-                        fieldsToToggle.show();
-                    }
-                }).trigger('change');
             }
         };
 
@@ -721,9 +702,6 @@
         }
         if ($('.aldryn-bootstrap3-label').length) {
             bootstrap3.labelPlugin();
-        }
-        if ($('.model-boostrap3imageplugin').length) {
-            bootstrap3.imagePlugin();
         }
     });
 })(window.jQuery || django.jQuery);

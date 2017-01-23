@@ -6,14 +6,7 @@ Changelog
 1.2.0 (unreleased)
 ==================
 
-* Fixed an issue with collapse styles from image plugin overriding bootstrap
-  styles already on the page
-* Fixed an issue with dropzone strings visible inside djangocms-text-ckeditor
-  image preview under certain circumstances
-* Added test framework
-* Adapted root files such as ``README``, ``CHANGELOG``, ``setup.py`` and others
-  to conform with other core addons such as django CMS Picture
-* Adapted labels and help texts of several plugins
+* Added Django 1.10 support
 * Added <code> plugin
 * Added <cite> plugin to <blockquote>
 * Added responsive plugin to set device and print breakpoints
@@ -23,21 +16,28 @@ Changelog
 * Added default CKEditor "styleSet" to load via djangocms-text-ckeditor in
   ``/static/aldryn_bootstrap3/js/ckeditor.js``
 * Added transifex integration for translations
-* Added ``ALDRYN_BOOTSTRAP3_GRID_SIZE`` to Divio Cloud settings
-* Set all max_values to 255
+* Added test framework
+* Changed root files such as ``README``, ``CHANGELOG``, ``setup.py`` and others
+  to conform with other core addons such as django CMS Picture
+* Changed labels and help texts of several plugins
+* Changed all max_values to 255
+* Changed code to reflect Bootstrap 3's documentation
+* Fixed an issue with collapse styles from image plugin overriding bootstrap
+  styles already on the page
+* Fixed an issue with dropzone strings visible inside djangocms-text-ckeditor
+  image preview under certain circumstances
 * Fixed an issue where column offset, push and pull did not accept "0" as a value
-* Restructured code to reflect Bootstrap 3's documentation
-* Simplified and removed constants such as ``LABEL_CONTEXT_CHOICES``,
-  ``LABEL_CONTEXT_DEFAULT``, ,``TEXT_LINK_CONTEXT_CHOICES``,
-  ``TXT_LINK_CONTEXT_DEFAULT``, ``PANEL_CONTEXT_CHOICES``,
-  ``PANEL_CONTEXT_DEFAULT``, ``ACCORDION_ITEM_CONTEXT_CHOICES``,
-  ``ACCORDION_ITEM_CONTEXT_DEFAULT``, ``LIST_GROUP_ITEM_CONTEXT_CHOICES``,
-  ``LIST_GROUP_ITEM_CONTEXT_DEFAULT``
 * **Backwards incompatible** changes:
     * The Panel only allows header, body and footer now to be its direct
       decendands and the descendends require the "Panel" parent.
     * Drag & drop support has been removed from the rendered plugin markup
       until a cleaner version is ready
+    * Simplified and removed constants such as ``LABEL_CONTEXT_CHOICES``,
+      ``LABEL_CONTEXT_DEFAULT``, ,``TEXT_LINK_CONTEXT_CHOICES``,
+      ``TXT_LINK_CONTEXT_DEFAULT``, ``PANEL_CONTEXT_CHOICES``,
+      ``PANEL_CONTEXT_DEFAULT``, ``ACCORDION_ITEM_CONTEXT_CHOICES``,
+      ``ACCORDION_ITEM_CONTEXT_DEFAULT``, ``LIST_GROUP_ITEM_CONTEXT_CHOICES``,
+      ``LIST_GROUP_ITEM_CONTEXT_DEFAULT``
 
 
 1.1.2 (2016-09-05)

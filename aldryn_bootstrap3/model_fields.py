@@ -192,7 +192,7 @@ class LinkMixin(models.Model):
         )
 
         anchor_field_verbose_name = force_text(
-           self._meta.get_field_by_name(anchor_field_name)[0].verbose_name)
+           self._meta.get_field(anchor_field_name).verbose_name)
         anchor_field_value = getattr(self, anchor_field_name)
 
         link_fields = {
@@ -200,7 +200,7 @@ class LinkMixin(models.Model):
             for key in field_names
         }
         link_field_verbose_names = {
-            key: force_text(self._meta.get_field_by_name(key)[0].verbose_name)
+            key: force_text(self._meta.get_field(key).verbose_name)
             for key in link_fields.keys()
         }
         provided_link_fields = {

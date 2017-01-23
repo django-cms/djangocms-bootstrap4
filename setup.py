@@ -10,6 +10,7 @@ REQUIREMENTS = [
     'django-cms>=3.3.0',
     'django-durationfield>=0.5.1',
     'django-filer>=0.9.11',
+    'djangocms-text-ckeditor>=3.1.0',
     'djangocms-attributes-field>=0.1.1',
 ]
 
