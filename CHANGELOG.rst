@@ -3,7 +3,7 @@ Changelog
 =========
 
 
-1.2.0 (unreleased)
+1.2.0 (2017-01-26)
 ==================
 
 * Added Django 1.10 support
