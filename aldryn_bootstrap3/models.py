@@ -275,34 +275,34 @@ class Boostrap3ButtonPlugin(CMSPlugin, model_fields.LinkMixin):
         max_length=255,
     )
     type = model_fields.LinkOrButton(
-        verbose_name='Type',
+        verbose_name=_('Type'),
     )
     # button specific fields
     btn_context = model_fields.Context(
-        verbose_name='Context',
+        verbose_name=_('Context'),
         choices=constants.BUTTON_CONTEXT_CHOICES,
         default=constants.BUTTON_CONTEXT_DEFAULT,
     )
     btn_size = model_fields.Size(
-        verbose_name='Size',
+        verbose_name=_('Size'),
     )
     btn_block = models.BooleanField(
-        verbose_name='Block',
+        verbose_name=_('Block'),
         default=False,
     )
     # text link specific fields
     txt_context = model_fields.Context(
-        verbose_name='Context',
+        verbose_name=_('Context'),
         choices=constants.TEXT_LINK_CONTEXT_CHOICES,
         default=constants.TEXT_LINK_CONTEXT_DEFAULT,
         blank=True,
     )
     # common fields
     icon_left = model_fields.Icon(
-        verbose_name='Icon left',
+        verbose_name=_('Icon left'),
     )
     icon_right = model_fields.Icon(
-        verbose_name='Icon right',
+        verbose_name=_('Icon right'),
     )
     classes = model_fields.Classes()
 
@@ -378,14 +378,13 @@ class Boostrap3ImagePlugin(CMSPlugin):
         verbose_name='.img-thumbnail',
         default=False,
         blank=True,
-        help_text='Adds the Bootstrap 3 ".img-thumbnail" class.',
+        help_text=_('Adds the Bootstrap 3 ".img-thumbnail" class.'),
     )
     img_responsive = models.BooleanField(
         verbose_name='.img-responsive',
         default=True,
         blank=True,
-        help_text='whether to treat the image as using 100% width of the '
-                  'parent container (sets the img-responsive class).'
+        help_text=_('Adds the Bootstrap 3 ".img-responsive" class.')
     )
     attributes = AttributesField(
         verbose_name=_('Attributes'),
@@ -539,7 +538,7 @@ class Boostrap3LabelPlugin(CMSPlugin):
     context = model_fields.Context(
         verbose_name=_('Context'),
         choices=(
-            ('default', 'Default'),
+            ('default', _('Default')),
         ) + constants.CONTEXT_CHOICES,
         default='default',
         blank=False,
@@ -569,10 +568,10 @@ class Boostrap3JumbotronPlugin(CMSPlugin):
         max_length=255,
     )
     grid = models.BooleanField(
-        verbose_name=('Add container'),
+        verbose_name=_('Add container'),
         default=False,
         blank=True,
-        help_text=_('Adds a "container" element inside the "Jumbotron" '
+        help_text=_('Adds a ".container" element inside the "Jumbotron" '
                     'for use outside of a grid.'),
     )
     classes = model_fields.Classes()
@@ -662,7 +661,7 @@ class Bootstrap3ListGroupItemPlugin(CMSPlugin):
     context = model_fields.Context(
         verbose_name=_('Context'),
         choices=(
-            ('default', 'Default'),
+            ('default', _('Default')),
         ) + constants.CONTEXT_CHOICES,
         default='default',
         blank=False,
@@ -670,8 +669,8 @@ class Bootstrap3ListGroupItemPlugin(CMSPlugin):
     state = models.CharField(
         verbose_name=_('State'),
         choices=(
-            ('active', 'Active'),
-            ('disabled', 'Disabled'),
+            ('active', _('Active')),
+            ('disabled', _('Disabled')),
         ),
         blank=True,
         max_length=255,
@@ -698,7 +697,7 @@ class Boostrap3PanelPlugin(CMSPlugin):
     context = model_fields.Context(
         verbose_name=_('Context'),
         choices=(
-            ('default', 'Default'),
+            ('default', _('Default')),
         ) + constants.CONTEXT_CHOICES,
         default='default',
         blank=False,
@@ -726,7 +725,7 @@ class Boostrap3PanelHeadingPlugin(CMSPlugin):
         verbose_name=_('Title'),
         blank=True,
         default='',
-        help_text='Panels can have additional plugins.'
+        help_text=_('Panels can have additional plugins.')
     )
     classes = model_fields.Classes()
     attributes = AttributesField(
@@ -945,8 +944,9 @@ class Bootstrap3AccordionItemPlugin(CMSPlugin):
         blank=True,
     )
     context = model_fields.Context(
+        verbose_name=_('Context'),
         choices=(
-            ('default', 'Default'),
+            ('default', _('Default')),
         ) + constants.CONTEXT_CHOICES,
         default='default',
         blank=False,
@@ -987,9 +987,11 @@ class Bootstrap3CarouselPlugin(CMSPlugin):
     aspect_ratio = models.CharField(
         verbose_name=_('Aspect ratio'),
         choices=constants.ASPECT_RATIO_CHOICES,
-        default='',
         blank=True,
+        default='',
         max_length=255,
+        help_text=_('Determines width and height of the image '
+                    'according to the selected ratio.'),
     )
     transition_effect = models.CharField(
         verbose_name=_('Transition effect'),

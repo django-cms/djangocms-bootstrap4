@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -10,12 +10,12 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-01-26 10:09+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language-Team: Spanish (https://www.transifex.com/divio/teams/58664/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 # "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 #: cms_plugins.py:35
@@ -27,8 +27,8 @@ msgstr ""
 #: cms_plugins.py:394 cms_plugins.py:425 cms_plugins.py:458 cms_plugins.py:487
 #: cms_plugins.py:516 cms_plugins.py:545 cms_plugins.py:584 cms_plugins.py:652
 #: cms_plugins.py:682 cms_plugins.py:710 cms_plugins.py:738 cms_plugins.py:766
-#: cms_plugins.py:802 cms_plugins.py:832 cms_plugins.py:896 cms_plugins.py:1042
-#: cms_plugins.py:1073
+#: cms_plugins.py:802 cms_plugins.py:832 cms_plugins.py:896
+#: cms_plugins.py:1042 cms_plugins.py:1073
 msgid "Bootstrap 3"
 msgstr ""
 
@@ -309,8 +309,9 @@ msgstr ""
 
 #: model_fields.py:95
 msgid ""
-"Space separated classes that are added to the class. See <a href=\"http://"
-"getbootstrap.com/css/\" target=\"_blank\">Bootstrap 3 documentation</a>."
+"Space separated classes that are added to the class. See <a "
+"href=\"http://getbootstrap.com/css/\" target=\"_blank\">Bootstrap 3 "
+"documentation</a>."
 msgstr ""
 
 #: model_fields.py:110
@@ -405,7 +406,8 @@ msgstr ""
 
 #: models.py:191
 msgid ""
-"Reverses the position by adding the Bootstrap 3 \"blockquote-reverse\" class."
+"Reverses the position by adding the Bootstrap 3 \"blockquote-reverse\" "
+"class."
 msgstr ""
 
 #: models.py:235 templates/admin/aldryn_bootstrap3/widgets/responsive.html:37
@@ -475,8 +477,7 @@ msgid "Override width"
 msgstr ""
 
 #: models.py:348
-msgid ""
-"The image width as number in pixels. Example: \"720\" and not \"720px\"."
+msgid "The image width as number in pixels. Example: \"720\" and not \"720px\"."
 msgstr ""
 
 #: models.py:352
@@ -484,8 +485,7 @@ msgid "Override height"
 msgstr ""
 
 #: models.py:355
-msgid ""
-"The image height as number in pixels. Example: \"720\" and not \"720px\"."
+msgid "The image height as number in pixels. Example: \"720\" and not \"720px\"."
 msgstr ""
 
 #: models.py:359 models.py:988 models.py:1043

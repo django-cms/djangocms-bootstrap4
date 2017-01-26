@@ -28,27 +28,27 @@ TARGET_CHOICES = (
 )
 
 CONTEXT_CHOICES = (
-    ('primary', 'Primary',),
-    ('success', 'Success',),
-    ('info', 'Info',),
-    ('warning', 'Warning',),
-    ('danger', 'Danger',),
+    ('primary', _('Primary'),),
+    ('success', _('Success'),),
+    ('info', _('Info'),),
+    ('warning', _('Warning'),),
+    ('danger', _('Danger'),),
 )
 
 CONTEXT_DEFAULT = 'default'
 
 BUTTON_CONTEXT_CHOICES = (
-    ('default', 'Default',),
+    ('default', _('Default'),),
 ) + CONTEXT_CHOICES + (
-    ('link', 'Link',),
+    ('link', _('Link'),),
 )
 
 BUTTON_CONTEXT_DEFAULT = 'default'
 
 TEXT_LINK_CONTEXT_CHOICES = (
-    ('', 'Default',),
+    ('', _('Default'),),
 ) + CONTEXT_CHOICES + (
-    ('muted ', 'Muted',),
+    ('muted ', _('Muted'),),
 )
 
 TEXT_LINK_CONTEXT_DEFAULT = ''
@@ -62,16 +62,16 @@ ASPECT_RATIOS = (
 
 ASPECT_RATIOS_REVERSED = ([(y, x) for x, y in ASPECT_RATIOS])
 
-def get_aspect_ratio_choices():
-    yield ('{0}x{1}'.format(1, 1), '{0}x{1}'.format(1, 1))
-
-    for x, y in ASPECT_RATIOS:
-        yield ('{0}x{1}'.format(x, y), '{0}x{1}'.format(x, y))
-
-    for x, y in ASPECT_RATIOS_REVERSED:
-        yield ('{0}x{1}'.format(x, y), '{0}x{1}'.format(x, y))
-
-ASPECT_RATIO_CHOICES = get_aspect_ratio_choices()
+ASPECT_RATIO_CHOICES = (
+    tuple([
+        ('{0}x{1}'.format(1, 1), '{0}x{1}'.format(1, 1))
+    ]) + tuple([
+        ('{0}x{1}'.format(x, y), '{0}x{1}'.format(x, y))
+        for x, y in ASPECT_RATIOS
+    ]) + tuple([
+        ('{0}x{1}'.format(x, y), '{0}x{1}'.format(x, y))
+        for x, y in ASPECT_RATIOS_REVERSED
+    ]))
 
 SIZE_CHOICES = (
     ('lg', _('Large'),),

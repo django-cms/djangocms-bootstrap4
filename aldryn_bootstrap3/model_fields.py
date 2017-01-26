@@ -8,7 +8,8 @@ import django.forms
 
 from django.core.exceptions import ValidationError
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext, ugettext_lazy as _, ungettext
+
 from django.utils.encoding import force_text
 
 import cms.models
@@ -106,7 +107,7 @@ class Classes(django.db.models.TextField, SouthMixinBase):
 
 class LinkMixin(models.Model):
     link_url = models.URLField(
-        verbose_name=('External link'),
+        verbose_name=_('External link'),
         blank=True,
         default='',
         help_text=_('Provide a valid URL to an external website.'),
@@ -243,7 +244,7 @@ class LinkOrButton(django.db.models.fields.CharField, SouthMixinBase):
 
     def __init__(self, *args, **kwargs):
         if 'verbose_name' not in kwargs:
-            kwargs['verbose_name'] = _('Type')
+            kwargs['verbose_name'] = ugettext('Type')
         if 'max_length' not in kwargs:
             kwargs['max_length'] = 255
         if 'blank' not in kwargs:
@@ -274,7 +275,7 @@ class Context(django.db.models.fields.CharField):
 
     def __init__(self, *args, **kwargs):
         if 'verbose_name' not in kwargs:
-            kwargs['verbose_name'] = _('Context')
+            kwargs['verbose_name'] = ugettext('Context')
         if 'max_length' not in kwargs:
             kwargs['max_length'] = 255
         if 'blank' not in kwargs:
@@ -305,7 +306,7 @@ class Icon(django.db.models.CharField):
 
     def __init__(self, *args, **kwargs):
         if 'verbose_name' not in kwargs:
-            kwargs['verbose_name'] = _('Icon')
+            kwargs['verbose_name'] = ugettext('Icon')
         if 'max_length' not in kwargs:
             kwargs['max_length'] = 255
         if 'blank' not in kwargs:
@@ -346,7 +347,7 @@ class Responsive(MiniText):
 
     def __init__(self, *args, **kwargs):
         if 'verbose_name' not in kwargs:
-            kwargs['verbose_name'] = _('Responsive')
+            kwargs['verbose_name'] = ugettext('Responsive')
         if 'blank' not in kwargs:
             kwargs['blank'] = True
         if 'default' not in kwargs:
@@ -366,6 +367,8 @@ class Size(django.db.models.CharField, SouthMixinBase):
     south_field_class = 'django.db.models.fields.CharField'
 
     def __init__(self, *args, **kwargs):
+        if 'verbose_name' not in kwargs:
+            kwargs['verbose_name'] = ugettext('Context')
         if 'max_length' not in kwargs:
             kwargs['max_length'] = 255
         if 'blank' not in kwargs:

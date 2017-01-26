@@ -74,7 +74,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='boostrap3jumbotronplugin',
             name='grid',
-            field=models.BooleanField(default=False, help_text='Adds a "container" element inside the "Jumbotron" for use outside of a grid.', verbose_name='Add container'),
+            field=models.BooleanField(default=False, help_text='Adds a ".container" element inside the "Jumbotron" for use outside of a grid.', verbose_name='Add container'),
         ),
         migrations.AlterField(
             model_name='bootstrap3carouselslideplugin',
@@ -85,5 +85,15 @@ class Migration(migrations.Migration):
             model_name='bootstrap3carouselplugin',
             name='style',
             field=models.CharField(choices=Bootstrap3CarouselPlugin.STYLE_CHOICES + get_additional_styles(), default='standard', max_length=255, verbose_name='Style'),
+        ),
+        migrations.AlterField(
+            model_name='boostrap3imageplugin',
+            name='img_responsive',
+            field=models.BooleanField(default=True, help_text='Adds the Bootstrap 3 ".img-responsive" class.', verbose_name='.img-responsive'),
+        ),
+        migrations.AlterField(
+            model_name='bootstrap3carouselplugin',
+            name='aspect_ratio',
+            field=models.CharField(default='', choices=[('1x1', '1x1'), ('4x3', '4x3'), ('16x9', '16x9'), ('16x10', '16x10'), ('21x9', '21x9'), ('3x4', '3x4'), ('9x16', '9x16'), ('10x16', '10x16'), ('9x21', '9x21')], max_length=255, blank=True, help_text='Determines width and height of the image according to the selected ratio.', verbose_name='Aspect ratio'),
         ),
     ]
