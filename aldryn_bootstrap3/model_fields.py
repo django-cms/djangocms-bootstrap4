@@ -210,7 +210,7 @@ class LinkMixin(models.Model):
             if value
         }
 
-        requered_link_classes = (
+        required_link_classes = (
             'Boostrap3ButtonPlugin',
         )
 
@@ -224,7 +224,7 @@ class LinkMixin(models.Model):
             errors = {}.fromkeys(provided_link_fields.keys(), error_msg)
             raise ValidationError(errors)
 
-        if self.__class__.__name__ in requered_link_classes:
+        if self.__class__.__name__ in required_link_classes:
             if len(provided_link_fields) == 0 and not self.link_anchor:
                raise ValidationError(
                    _('Please provide a link.')
