@@ -3,6 +3,14 @@ Changelog
 =========
 
 
+1.2.1 (2017-03-07)
+==================
+
+* Removed link restriction when no link is provided to the carousel
+* Fixed an issue where selecting the "Use original image" option is not
+  rendering the image
+
+
 1.2.0 (2017-01-26)
 ==================
 
