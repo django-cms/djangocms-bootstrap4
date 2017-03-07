@@ -210,6 +210,10 @@ class LinkMixin(models.Model):
             if value
         }
 
+        requered_link_classes = (
+            'Boostrap3ButtonPlugin',
+        )
+
         if len(provided_link_fields) > 1:
             # Too many fields have a value.
             verbose_names = sorted(link_field_verbose_names.values())
@@ -220,10 +224,11 @@ class LinkMixin(models.Model):
             errors = {}.fromkeys(provided_link_fields.keys(), error_msg)
             raise ValidationError(errors)
 
-        if len(provided_link_fields) == 0 and not self.link_anchor:
-            raise ValidationError(
-                _('Please provide a link.')
-            )
+        if self.__class__.__name__ in requered_link_classes:
+            if len(provided_link_fields) == 0 and not self.link_anchor:
+               raise ValidationError(
+                   _('Please provide a link.')
+               )
 
         if anchor_field_value:
             for field_name in provided_link_fields.keys():
