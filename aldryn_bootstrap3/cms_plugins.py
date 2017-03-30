@@ -251,6 +251,11 @@ class Bootstrap3ButtonCMSPlugin(CMSPluginBase):
         }),
     )
 
+    @classmethod
+    def get_render_queryset(cls):
+        queryset = super(Bootstrap3ButtonCMSPlugin, cls).get_render_queryset()
+        return queryset.select_related('link_page')
+
     def icon_src(self, instance):
         return static('aldryn_bootstrap3/img/type/button.png')
 
@@ -1011,6 +1016,11 @@ class Bootstrap3CarouselSlideCMSPlugin(CarouselSlideBase):
             ),
         }),
     )
+
+    @classmethod
+    def get_render_queryset(cls):
+        queryset = super(Bootstrap3CarouselSlideCMSPlugin, cls).get_render_queryset()
+        return queryset.select_related('link_page')
 
 
 class Bootstrap3CarouselSlideFolderCMSPlugin(CarouselSlideBase):

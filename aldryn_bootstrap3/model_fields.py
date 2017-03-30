@@ -6,6 +6,7 @@ from functools import partial
 import django.db.models
 import django.forms
 
+from django.contrib.sites.models import Site
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.translation import ugettext, ugettext_lazy as _, ungettext
@@ -160,8 +161,13 @@ class LinkMixin(models.Model):
         abstract = True
 
     def get_link_url(self):
-        if self.link_page_id:
-            link = self.link_page.get_absolute_url()
+        if self.link_page:
+            ref_page = self.link_page
+            link = ref_page.get_absolute_url()
+
+            if ref_page.site_id != getattr(self.page, 'site_id', None):
+                ref_site = Site.objects._get_site_by_id(ref_page.site_id)
+                link = '//{}{}'.format(ref_site, link)
         elif self.link_url:
             link = self.link_url
         elif self.link_phone:
