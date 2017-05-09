@@ -1,0 +1,733 @@
+# aldryn-bootstrap3 - Russian translation
+# Copyright (C) 2017
+# This file is distributed under the same license as the aldryn-bootstrap3 package.
+# Alexander Paramonov <alex@paramono.com>, 2017.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-04 00:04+0300\n"
+"PO-Revision-Date: 2017-05-04 00:02+0300\n"
+"Last-Translator: Alexander Paramonov <alex@paramono.com>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: cms_plugins.py:35
+msgid "Row"
+msgstr "Строка"
+
+#: cms_plugins.py:36 cms_plugins.py:94 cms_plugins.py:130 cms_plugins.py:158
+#: cms_plugins.py:188 cms_plugins.py:218 cms_plugins.py:270 cms_plugins.py:368
+#: cms_plugins.py:399 cms_plugins.py:430 cms_plugins.py:463 cms_plugins.py:492
+#: cms_plugins.py:521 cms_plugins.py:550 cms_plugins.py:589 cms_plugins.py:657
+#: cms_plugins.py:687 cms_plugins.py:715 cms_plugins.py:743 cms_plugins.py:771
+#: cms_plugins.py:807 cms_plugins.py:837 cms_plugins.py:901 cms_plugins.py:1052
+#: cms_plugins.py:1083
+msgid "Bootstrap 3"
+msgstr "Bootstrap 3"
+
+#: cms_plugins.py:44 forms.py:23
+msgid "Create columns"
+msgstr "Создать колонки"
+
+#: cms_plugins.py:56 cms_plugins.py:112 cms_plugins.py:141 cms_plugins.py:171
+#: cms_plugins.py:201 cms_plugins.py:245 cms_plugins.py:284 cms_plugins.py:380
+#: cms_plugins.py:410 cms_plugins.py:443 cms_plugins.py:475 cms_plugins.py:504
+#: cms_plugins.py:533 cms_plugins.py:567 cms_plugins.py:613 cms_plugins.py:670
+#: cms_plugins.py:698 cms_plugins.py:726 cms_plugins.py:754 cms_plugins.py:785
+#: cms_plugins.py:820 cms_plugins.py:849 cms_plugins.py:885 cms_plugins.py:957
+#: cms_plugins.py:1011 cms_plugins.py:1064 cms_plugins.py:1097
+msgid "Advanced settings"
+msgstr "Расширенные настройки"
+
+#: cms_plugins.py:93
+msgid "Column"
+msgstr "Колонка"
+
+#: cms_plugins.py:102 forms.py:78
+msgid "Adjust columns"
+msgstr "Настроить колонки"
+
+#: cms_plugins.py:129
+msgid "Blockquote"
+msgstr "Блок цитирования"
+
+#: cms_plugins.py:157
+msgid "Cite"
+msgstr "Цитата"
+
+#: cms_plugins.py:187 models.py:249
+msgid "Code"
+msgstr "Код"
+
+#: cms_plugins.py:217
+msgid "Link/Button"
+msgstr "Ссылка/Кнопка"
+
+#: cms_plugins.py:237 cms_plugins.py:1001
+msgid "Link settings"
+msgstr "Настройки ссылки"
+
+#: cms_plugins.py:269 models.py:322 models.py:1101
+msgid "Image"
+msgstr "Изображение"
+
+#: cms_plugins.py:367
+msgid "Responsive utilities"
+msgstr "Настройки адаптивности"
+
+#: cms_plugins.py:398 model_fields.py:320 models.py:510
+msgid "Icon"
+msgstr "Иконка"
+
+#: cms_plugins.py:429 models.py:533 models.py:566
+msgid "Label"
+msgstr "Метка"
+
+#: cms_plugins.py:462
+msgid "Jumbotron"
+msgstr "Джумботрон"
+
+#: cms_plugins.py:491
+msgid "Alert"
+msgstr "Оповещение"
+
+#: cms_plugins.py:520
+msgid "List Group"
+msgstr "Список-группа"
+
+#: cms_plugins.py:549
+msgid "List Group Item"
+msgstr "Элемент списка-группы"
+
+#: cms_plugins.py:588
+msgid "Panel"
+msgstr "Панель"
+
+#: cms_plugins.py:601
+msgid "Create"
+msgstr "Создать"
+
+#: cms_plugins.py:608
+msgid "Settings"
+msgstr "Настройки"
+
+#: cms_plugins.py:656
+msgid "Panel header"
+msgstr "Заголовок панели"
+
+#: cms_plugins.py:686
+msgid "Panel body"
+msgstr "Тело панели"
+
+#: cms_plugins.py:714
+msgid "Panel footer"
+msgstr "Подвал панели"
+
+#: cms_plugins.py:742
+msgid "Well"
+msgstr "Колодец"
+
+#: cms_plugins.py:770
+msgid "Tab"
+msgstr "Вкладка"
+
+#: cms_plugins.py:806
+msgid "Tab item"
+msgstr "Элемент вкладки"
+
+#: cms_plugins.py:836 cms_plugins.py:872
+msgid "Accordion"
+msgstr "Аккордион"
+
+#: cms_plugins.py:871
+msgid "Accordion item"
+msgstr "Элемент аккордиона"
+
+#: cms_plugins.py:939
+msgid "Carousel"
+msgstr "Карусель"
+
+#: cms_plugins.py:989
+msgid "Carousel slide"
+msgstr "Слайд карусели"
+
+#: cms_plugins.py:1032
+msgid "Carousel slides folder"
+msgstr "Папка слайдов для карусели"
+
+#: cms_plugins.py:1051
+msgid "Spacer"
+msgstr "Спейсер"
+
+#: cms_plugins.py:1082 model_fields.py:149 models.py:1199
+msgid "File"
+msgstr "Файл"
+
+#: constants.py:15
+msgid "Tiny"
+msgstr "Крошечный"
+
+#: constants.py:16 constants.py:79
+msgid "Small"
+msgstr "Маленький"
+
+#: constants.py:17 constants.py:78
+msgid "Medium"
+msgstr "Средний"
+
+#: constants.py:18 constants.py:77
+msgid "Large"
+msgstr "Большой"
+
+#: constants.py:24 models.py:1211
+msgid "Open in new window"
+msgstr "Открывать в новом окне"
+
+#: constants.py:25
+msgid "Open in same window"
+msgstr "Открывать в том же окне"
+
+#: constants.py:26
+msgid "Delegate to parent"
+msgstr "Делегировать родителю"
+
+#: constants.py:27
+msgid "Delegate to top"
+msgstr "Делегировать наверх"
+
+#: constants.py:31
+msgid "Primary"
+msgstr "Основной"
+
+#: constants.py:32
+msgid "Success"
+msgstr "Успех"
+
+#: constants.py:33
+msgid "Info"
+msgstr "Информация"
+
+#: constants.py:34
+msgid "Warning"
+msgstr "Предупреждение"
+
+#: constants.py:35
+msgid "Danger"
+msgstr "Опасность"
+
+#: constants.py:41 constants.py:49 models.py:541 models.py:664 models.py:700
+#: models.py:949 templates/admin/aldryn_bootstrap3/widgets/responsive.html:32
+#: templates/admin/aldryn_bootstrap3/widgets/responsive.html:35
+#: templates/admin/aldryn_bootstrap3/widgets/responsive_print.html:14
+#: templates/admin/aldryn_bootstrap3/widgets/responsive_print.html:17
+msgid "Default"
+msgstr "По умолчанию"
+
+#: constants.py:43
+msgid "Link"
+msgstr "Ссылка"
+
+#: constants.py:51
+msgid "Muted"
+msgstr "Приглушённый"
+
+#: constants.py:80
+msgid "Extra Small"
+msgstr "Очень маленький"
+
+#: constants.py:86
+msgid "Mobile phones"
+msgstr "Мобильники"
+
+#: constants.py:93
+msgid "Tablets"
+msgstr "Планшеты"
+
+#: constants.py:100
+msgid "Laptops"
+msgstr "Ноутбуки"
+
+#: constants.py:107
+msgid "Large desktops"
+msgstr "Настольные компьютеры"
+
+#: forms.py:24
+msgid "Number of columns to create in this row."
+msgstr "Сколько создать колонок в этом ряду"
+
+#: forms.py:38 forms.py:93
+msgid "Width of created columns (can be edited later if required.)"
+msgstr "Ширина колонок (может быть отредактирована позже при необходимости)"
+
+#: forms.py:46 forms.py:101
+msgid "Offset of created columns (can be edited later if required.)"
+msgstr "Сдвиг колонок (может быть отредактирован позже при необходимости)"
+
+#: forms.py:54 forms.py:109
+msgid "Push of created columns (can be edited later if required.)"
+msgstr "Push колонок (может быть отредактирован позже при необходимости)"
+
+#: forms.py:62 forms.py:117
+msgid "Pull of created columns (can be edited later if required.)"
+msgstr "Pull колонок (может быть отредактирован позже при необходимости)"
+
+#: forms.py:79
+msgid "Adjust this column."
+msgstr "Настроить эту колонку"
+
+#: forms.py:143 model_fields.py:117
+msgid "Internal link"
+msgstr "Внутренняя ссылка"
+
+#: forms.py:193
+msgid "Initial heading"
+msgstr "Исходный заголовок"
+
+#: forms.py:198
+msgid "Initial body"
+msgstr "Исходное тело"
+
+#: forms.py:203
+msgid "Initial footer"
+msgstr "Исходный подвал"
+
+#: forms.py:234
+#, python-brace-format
+msgid "Not a valid style (template {path} does not exist)"
+msgstr "Неправильный стиль (шаблон {path} не существует)"
+
+#: model_fields.py:90
+msgid "Classes"
+msgstr "Классы"
+
+#: model_fields.py:96
+msgid ""
+"Space separated classes that are added to the class. See <a href=\"http://"
+"getbootstrap.com/css/\" target=\"_blank\">Bootstrap 3 documentation</a>."
+msgstr ""
+"Разделённые пробелом классы, добавляемые к объекту. см. <a href=\"http://"
+"getbootstrap.com/css/\" target=\"_blank\">документацию Bootstrap 3</a>."
+
+#: model_fields.py:111
+msgid "External link"
+msgstr "Внешняя ссылка"
+
+#: model_fields.py:114
+msgid "Provide a valid URL to an external website."
+msgstr "Вставьте корректный URL на внешний вебсайт"
+
+#: model_fields.py:121
+msgid "If provided, overrides the external link."
+msgstr "Имеет приоритет над внешней ссылкой (если указана)"
+
+#: model_fields.py:124
+msgid "Email address"
+msgstr "Email-адрес"
+
+#: model_fields.py:130
+msgid "Phone"
+msgstr "Телефон"
+
+#: model_fields.py:136
+msgid "Anchor"
+msgstr "Анкор ссылки"
+
+#: model_fields.py:139
+msgid ""
+"Appends the value only after the internal or external link. Do <em>not</em> "
+"include a preceding \"#\" symbol."
+msgstr ""
+"Добавляется только после внутренней или внешней ссылки. <em>Не включайте</"
+"em> предшествующий символ \"#\""
+
+#: model_fields.py:143
+msgid "Target"
+msgstr "Target ссылки"
+
+#: model_fields.py:155 models.py:53 models.py:96 models.py:196 models.py:217
+#: models.py:254 models.py:390 models.py:458 models.py:515 models.py:548
+#: models.py:579 models.py:604 models.py:628 models.py:680 models.py:707
+#: models.py:732 models.py:751 models.py:770 models.py:792 models.py:859
+#: models.py:885 models.py:910 models.py:956 models.py:1027 models.py:1182
+#: models.py:1224
+msgid "Attributes"
+msgstr "Атрибуты"
+
+#: model_fields.py:226
+#, python-brace-format
+msgid "Only one of {0} or {1} may be given."
+msgstr "Только {0} или {1} может быть указано"
+
+#: model_fields.py:236
+msgid "Please provide a link."
+msgstr "Укажите ссылку"
+
+#: model_fields.py:242
+#, python-format
+msgid ""
+"%(anchor_field_verbose_name)s is not allowed together with %(field_name)s."
+msgstr ""
+"%(anchor_field_verbose_name)s нельзя указать одновременно с %(field_name)s."
+
+#: model_fields.py:258 models.py:278
+msgid "Type"
+msgstr "Тип"
+
+#: model_fields.py:289 model_fields.py:382 models.py:282 models.py:295
+#: models.py:539 models.py:597 models.py:662 models.py:698 models.py:947
+msgid "Context"
+msgstr "Контекст"
+
+#: model_fields.py:361
+msgid "Responsive"
+msgstr "Адаптивность"
+
+#: models.py:67 models.py:639 models.py:921
+msgid "<empty>"
+msgstr "<пустой>"
+
+#: models.py:71
+#, python-format
+msgid "1 column"
+msgid_plural "%(count)i columns"
+msgstr[0] "%(count)i колонка"
+msgstr[1] "%(count)i колонки"
+msgstr[2] "%(count)i колонок"
+msgstr[3] "%(count)i колонка"
+
+#: models.py:91
+msgid "Tag"
+msgstr "Тег"
+
+#: models.py:188
+msgid "Reverse quote"
+msgstr "Цитата (автор справа)"
+
+#: models.py:191
+msgid ""
+"Reverses the position by adding the Bootstrap 3 \"blockquote-reverse\" class."
+msgstr ""
+"Изменяет расположение имени автора цитаты используя класс \"blockquote-"
+"reverse\" class."
+
+#: models.py:235 templates/admin/aldryn_bootstrap3/widgets/responsive.html:37
+#: templates/admin/aldryn_bootstrap3/widgets/responsive_print.html:19
+msgid "Inline"
+msgstr "Строковый (Inline)"
+
+#: models.py:236
+msgid "User input"
+msgstr "Ввод пользователя"
+
+#: models.py:237
+msgid "Basic block"
+msgstr "Базовый блок"
+
+#: models.py:238
+msgid "Variables"
+msgstr "Переменные"
+
+#: models.py:239
+msgid "Sample output"
+msgstr "Вывод результатов"
+
+#: models.py:243
+msgid "Code type"
+msgstr "Тип кода"
+
+#: models.py:272
+msgid "Display name"
+msgstr "Отображаемое имя"
+
+#: models.py:287 models.py:788 models.py:1178
+msgid "Size"
+msgstr "Размер"
+
+#: models.py:290 templates/admin/aldryn_bootstrap3/widgets/responsive.html:36
+#: templates/admin/aldryn_bootstrap3/widgets/responsive_print.html:18
+msgid "Block"
+msgstr "Блок"
+
+#: models.py:302
+msgid "Icon left"
+msgstr "Иконка слева"
+
+#: models.py:305
+msgid "Icon right"
+msgstr "Иконка справа"
+
+#: models.py:329
+msgid "Alternative text"
+msgstr "Альтернативный текст"
+
+#: models.py:334 models.py:657 models.py:725 models.py:942
+msgid "Title"
+msgstr "Заголовок"
+
+#: models.py:339
+msgid "Use original image"
+msgstr "Использовать оригинальное изображение"
+
+#: models.py:342
+msgid "Outputs the raw image without cropping."
+msgstr "Выводит исходное изображение, не обрезая его"
+
+#: models.py:345
+msgid "Override width"
+msgstr "Переопределить ширину"
+
+#: models.py:348
+msgid ""
+"The image width as number in pixels. Example: \"720\" and not \"720px\"."
+msgstr "Ширина изображения в пикселях. Например, \"720\", но не \"720px\"."
+
+#: models.py:352
+msgid "Override height"
+msgstr "Переопределить высоту"
+
+#: models.py:355
+msgid ""
+"The image height as number in pixels. Example: \"720\" and not \"720px\"."
+msgstr "Высота изображения в пикселях. Например, \"720\", но не \"720px\"."
+
+#: models.py:359 models.py:988 models.py:1045
+msgid "Aspect ratio"
+msgstr "Соотношение сторон"
+
+#: models.py:364 models.py:993
+msgid ""
+"Determines width and height of the image according to the selected ratio."
+msgstr ""
+"Определяет высоту и ширину изображения в зависимости от выбранного "
+"соотношения"
+
+#: models.py:368
+msgid "Shape"
+msgstr "Форма"
+
+#: models.py:381
+msgid "Adds the Bootstrap 3 \".img-thumbnail\" class."
+msgstr "Добавляет класс \".img-thumbnail\" из Bootstrap 3"
+
+#: models.py:387
+msgid "Adds the Bootstrap 3 \".img-responsive\" class."
+msgstr "Добавляет класс \".img-responsive\" из Bootstrap 3"
+
+#: models.py:449
+msgid "Devices"
+msgstr "Устройства"
+
+#: models.py:453
+msgid "Print"
+msgstr "Печать"
+
+#: models.py:571
+msgid "Add container"
+msgstr "Добавить контейнер"
+
+#: models.py:574
+msgid ""
+"Adds a \".container\" element inside the \"Jumbotron\" for use outside of a "
+"grid."
+msgstr ""
+"Добавляет \".container\"-элемент внутри \"Джумботрона\" для использования "
+"вне сетки"
+
+#: models.py:600 models.py:881
+msgid "Title icon"
+msgstr "Иконка в заголовке"
+
+#: models.py:624
+msgid "Adds the list-group and subsequent list-group-item classes."
+msgstr "Добавляет класс list-group и последующие классы list-group-item"
+
+#: models.py:643 models.py:925
+#, python-format
+msgid "1 item"
+msgid_plural "%(count)i items"
+msgstr[0] "%(count)i колонка"
+msgstr[1] "%(count)i колонки"
+msgstr[2] "%(count)i колонок"
+msgstr[3] "%(count)i колонка"
+
+#: models.py:670
+msgid "State"
+msgstr "Состояние"
+
+#: models.py:672
+msgid "Active"
+msgstr "Активный"
+
+#: models.py:673
+msgid "Disabled"
+msgstr "Отключен"
+
+#: models.py:728
+msgid "Panels can have additional plugins."
+msgstr "Панели могут иметь дополнительные плагины"
+
+#: models.py:830
+msgid "Tabs"
+msgstr "Вкладки"
+
+#: models.py:831
+msgid "Tabs justified"
+msgstr "Вкладки (выровненные по ширине)"
+
+#: models.py:832
+msgid "Pills"
+msgstr "Пилюли"
+
+#: models.py:833
+msgid "Pills justified"
+msgstr "Пилюли (выровненные по ширине)"
+
+#: models.py:836
+msgid "Fade"
+msgstr "Затухание"
+
+#: models.py:840 models.py:903
+msgid "Index"
+msgstr "Индекс"
+
+#: models.py:843 models.py:906
+msgid "Index of element to open on page load (optional)."
+msgstr "Индекс элемента, который откроется при загрузке страницы"
+
+#: models.py:846
+msgid "Display type"
+msgstr "Способ отображения"
+
+#: models.py:852
+msgid "Animation effect"
+msgstr "Анимационный эффект"
+
+#: models.py:877
+msgid "Tab title"
+msgstr "Заголовок вкладки"
+
+#: models.py:975
+msgid "Standard"
+msgstr "Стандартный"
+
+#: models.py:978
+msgid "Slide"
+msgstr "Скольжение"
+
+#: models.py:982 models.py:1041
+msgid "Style"
+msgstr "Стиль"
+
+#: models.py:997 models.py:1042
+msgid "Transition effect"
+msgstr "Эффект перехода"
+
+#: models.py:1004 models.py:1043
+msgid "Ride"
+msgstr "Автозапуск анимации"
+
+#: models.py:1006
+msgid "Auto-starts animation of the carousel."
+msgstr "Автоматически запускает анимацию карусели"
+
+#: models.py:1009 models.py:1044
+msgid "Interval"
+msgstr "Интервал"
+
+#: models.py:1011
+msgid "Time (in milliseconds) between items."
+msgstr "Время (в миллисекундах) между элементами"
+
+#: models.py:1014
+msgid "Wrap"
+msgstr "Зациклить"
+
+#: models.py:1017
+msgid "Loops carousel animation."
+msgstr "Зацикливает анимацию карусели"
+
+#: models.py:1020
+msgid "Pause"
+msgstr "Пауза"
+
+#: models.py:1023
+msgid "Pauses the carousel on hover."
+msgstr "Останавливает карусель при наведении"
+
+#: models.py:1108
+msgid "Link text"
+msgstr "Текст ссылки"
+
+#: models.py:1113
+msgid "Content"
+msgstr "Содержимое"
+
+#: models.py:1116
+msgid "Content may also be added using child plugins."
+msgstr "Содержимое также может быть добавлено через дочерние плагины"
+
+#: models.py:1153
+msgid "Folder"
+msgstr "Папка"
+
+#: models.py:1163
+msgid "<folder is missing>"
+msgstr "<папка отсутствует>"
+
+#: models.py:1206
+msgid "Name"
+msgstr "Имя"
+
+#: models.py:1215
+msgid "Show file size"
+msgstr "Показывать размер файла"
+
+#: templates/admin/aldryn_bootstrap3/plugins/button/change_form.html:9
+#: templates/admin/aldryn_bootstrap3/plugins/label/change_form.html:9
+msgid "Preview"
+msgstr "Предпросмотр"
+
+#: templates/admin/aldryn_bootstrap3/widgets/icon.html:8
+msgid ""
+"No Iconsets configured. Please configure at least one Iconset before using "
+"this widget."
+msgstr ""
+"Не настроены наборы иконок. Пожалуйста, настройте хотя бы один набор перед "
+"использованием этого виджета"
+
+#: templates/admin/aldryn_bootstrap3/widgets/responsive.html:8
+#: templates/admin/aldryn_bootstrap3/widgets/responsive.html:14
+#: templates/admin/aldryn_bootstrap3/widgets/responsive.html:20
+#: templates/admin/aldryn_bootstrap3/widgets/responsive.html:26
+#: templates/admin/aldryn_bootstrap3/widgets/responsive_print.html:8
+msgid "Visible"
+msgstr "Видимый"
+
+#: templates/admin/aldryn_bootstrap3/widgets/responsive.html:9
+#: templates/admin/aldryn_bootstrap3/widgets/responsive.html:15
+#: templates/admin/aldryn_bootstrap3/widgets/responsive.html:21
+#: templates/admin/aldryn_bootstrap3/widgets/responsive.html:27
+#: templates/admin/aldryn_bootstrap3/widgets/responsive_print.html:9
+msgid "Hidden"
+msgstr "Скрытый"
+
+#: templates/admin/aldryn_bootstrap3/widgets/responsive.html:38
+#: templates/admin/aldryn_bootstrap3/widgets/responsive_print.html:20
+msgid "Inline block"
+msgstr "Inline block"
+
+#: templates/aldryn_bootstrap3/plugins/carousel/standard/carousel.html:23
+msgid "Previous"
+msgstr "Предыдущий"
+
+#: templates/aldryn_bootstrap3/plugins/carousel/standard/carousel.html:27
+msgid "Next"
+msgstr "Следующий"
