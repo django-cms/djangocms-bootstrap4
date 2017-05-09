@@ -9,6 +9,7 @@ Changelog
 * Fixed a bug which prevented links from working when the page
   referenced is on a different site from the one that contains the plugin.
 * Removed unused and deprecated django-durationfield from requirements
+* Updated translations
 
 
 1.2.1 (2017-03-07)
