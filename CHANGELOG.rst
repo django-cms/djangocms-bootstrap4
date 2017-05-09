@@ -8,6 +8,7 @@ Changelog
 
 * Fixed a bug which prevented links from working when the page
   referenced is on a different site from the one that contains the plugin.
+* Updated translations
 
 
 1.2.1 (2017-03-07)
