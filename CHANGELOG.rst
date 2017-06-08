@@ -3,6 +3,12 @@ Changelog
 =========
 
 
+1.2.3 (unreleased)
+=================
+
+* Fixed a bug where overriding ``Site.__str__`` resulted in invalid urls.
+
+
 1.2.2 (2017-05-09)
 ==================
 
