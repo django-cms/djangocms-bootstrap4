@@ -167,7 +167,7 @@ class LinkMixin(models.Model):
 
             if ref_page.site_id != getattr(self.page, 'site_id', None):
                 ref_site = Site.objects._get_site_by_id(ref_page.site_id)
-                link = '//{}{}'.format(ref_site, link)
+                link = '//{}{}'.format(ref_site.domain, link)
         elif self.link_url:
             link = self.link_url
         elif self.link_phone:
