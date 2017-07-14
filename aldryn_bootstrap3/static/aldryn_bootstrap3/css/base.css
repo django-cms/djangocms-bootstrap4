@@ -249,3 +249,10 @@
     margin-top: 5px;
     background-color: #0bf;
 }
+.table-icons .disabled {
+    /*
+     work around the bug in the icon picker when disabled buttons could
+     be clicked which would result in icon page overflow errors
+     */
+    pointer-events: none !important;
+}
