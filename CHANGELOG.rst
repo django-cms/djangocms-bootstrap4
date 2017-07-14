@@ -7,6 +7,9 @@ Changelog
 =================
 
 * Fixed a bug where overriding ``Site.__str__`` resulted in invalid urls.
+* Fixed a bug in iconpicker that would prevent form submissions via keyboard
+* Fixed a bug in iconpicker when disabled prev/next buttons would be ignored
+* Added possibility of using custom iconsets with svg inlining
 
 
 1.2.2 (2017-05-09)

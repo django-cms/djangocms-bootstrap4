@@ -24,7 +24,7 @@
                 </label>
 
                 <label class="iconpicker iconpicker-wrapper js-icon-picker">
-                    <button{% if is_required %} id="id_{{ name }}"{% endif %}
+                    <button type="button" {% if is_required %} id="id_{{ name }}"{% endif %}
                         name="{{ name }}"
                         data-iconset="{{ iconset }}"
                         data-icon="{{ value }}">
