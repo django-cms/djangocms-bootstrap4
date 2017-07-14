@@ -110,7 +110,9 @@ In addition you can set or extend your own icon fonts using ``ALDRYN_BOOTSTRAP3_
     ALDRYN_BOOTSTRAP3_ICONSETS = [
         ('glyphicons', 'glyphicons', 'Glyphicons'),
         ('fontawesome', 'fa', 'Font Awesome'),
-        ('icons', 'icon', 'Custom Icons'),
+        # custom iconsets have to be JSON
+        ('{"iconClass": "icon", "iconClassFix": "icon-", "icons": [...]}', 'icon', 'Custom Font Icons'),
+        ('{"svg": true, "spritePath": "sprites/icons.svg", "iconClass": "icon", "iconClassFix": "icon-", "icons": [...]}', 'icon', 'Custom SVG Icons'),
     ]
 
 The default grid size is set to **24** when validating the column input,
