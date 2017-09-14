@@ -1,12 +1,14 @@
-=================
-Aldryn Bootstrap3
-=================
+======================
+django CMS Bootstrap 4
+======================
+
+**This addon is still in development, please do not use in production!**
 
 
 |pypi| |build| |coverage|
 
-**Aldryn Bootstrap 3** is a plugin bundle for django CMS providing several
-components from the popular `Bootstrap 3 <http://getbootstrap.com/>`_ framework.
+**Aldryn Bootstrap 4** is a plugin bundle for django CMS providing several
+components from the popular `Bootstrap 4 <http://getbootstrap.com/>`_ framework.
 
 This addon is compatible with `Divio Cloud <http://divio.com>`_ and is also available on the
 `django CMS Marketplace <https://marketplace.django-cms.org/en/addons/browse/aldryn-bootstrap3/>`_
@@ -24,17 +26,17 @@ pull request, please review our `contribution guidelines
 <http://docs.django-cms.org/en/latest/contributing/index.html>`_.
 
 One of the easiest contributions you can make is helping to translate this addon on
-`Transifex <https://www.transifex.com/projects/p/aldryn-bootstrap3/>`_.
+`Transifex <https://www.transifex.com/projects/p/djangocms-bootstrap4/>`_.
 
 
 Documentation
 =============
 
-See ``REQUIREMENTS`` in the `setup.py <https://github.com/aldryn/aldryn-bootstrap3/blob/master/setup.py>`_
+See ``REQUIREMENTS`` in the `setup.py <https://github.com/divio/djangocms-bootstrap4/blob/master/setup.py>`_
 file for additional dependencies:
 
 * Python 2.7, 3.3 or higher
-* Django 1.6 or higher
+* Django 1.8 or higher
 * Django Filer 1.2.4 or higher
 * Django Text CKEditor 3.1.0 or higher
 
@@ -48,21 +50,21 @@ Installation
 
 For a manual install:
 
-* run ``pip install aldryn-bootstrap3``
-* add ``aldryn_bootstrap3`` to your ``INSTALLED_APPS``
-* run ``python manage.py migrate aldryn_bootstrap3``
+* run ``pip install djangocms-bootstrap4``
+* add ``djangocms_bootstrap4`` to your ``INSTALLED_APPS``
+* run ``python manage.py migrate djangocms_bootstrap4``
 
 
 Configuration
 -------------
 
-Aldryn Bootstrap 3 **replaces** the following django CMS plugins:
+django CMS Bootstrap 4 **utilises** the following django CMS plugins:
 
 * **django CMS Link**: `Link and Button <http://getbootstrap.com/css/#buttons>`_
 * **django CMS Picture**: `Image <http://getbootstrap.com/css/#images>`_
 * **django CMS File**: `File <https://github.com/aldryn/aldryn-bootstrap3/wiki/14-file>`_
 
-It provides the following **standard** Bootstrap 3 components:
+It provides the following **standard** Bootstrap 4 components:
 
 * `Accordion <http://getbootstrap.com/javascript/#collapse-example-accordion>`_
 * `Alert <http://getbootstrap.com/components/#alerts>`_
@@ -82,7 +84,7 @@ It provides the following **standard** Bootstrap 3 components:
 It also provides the following **3rd party** components:
 
 * `Font Awesome <http://fontawesome.io>`_
-* `Spacer <https://github.com/aldryn/aldryn-bootstrap3/wiki/13-spacer>`_
+* `Spacer <https://github.com/aldryn/aldryn-bootstrap4/wiki/13-spacer>`_
 
 These components need to be manually configured in order to work properly
 inside your project. See `this gist <https://gist.github.com/FinalAngel/40ea3fd48c0b9094ec7ded5d0e5d7395>`_
