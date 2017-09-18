@@ -1,6 +1,6 @@
 [run]
 branch = True
-source = aldryn_bootstrap3
+source = djangocms_bootstrap4
 omit =
     migrations/*
     tests/*

@@ -20,7 +20,7 @@ HELPER_SETTINGS = {
 
 def run():
     from djangocms_helper import runner
-    runner.cms('aldryn_bootstrap3')
+    runner.cms('djangocms_bootstrap4')
 
 if __name__ == '__main__':
     run()

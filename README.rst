@@ -7,7 +7,7 @@ django CMS Bootstrap 4
 
 |pypi| |build| |coverage|
 
-**Aldryn Bootstrap 4** is a plugin bundle for django CMS providing several
+**django CMS Bootstrap 4** is a plugin bundle for django CMS providing several
 components from the popular `Bootstrap 4 <http://getbootstrap.com/>`_ framework.
 
 This addon is compatible with `Divio Cloud <http://divio.com>`_ and is also available on the

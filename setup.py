@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 from setuptools import find_packages, setup
 
-from aldryn_bootstrap3 import __version__
+from djangocms_bootstrap4 import __version__
 
 
 REQUIREMENTS = [
     'django-appconf>=1.0.0',
-    'django-cms>=3.3.0',
-    'django-filer>=0.9.11',
+    'django-cms>=3.4.0',
+    'django-filer>=1.2.4',
     'djangocms-text-ckeditor>=3.1.0',
     'djangocms-attributes-field>=0.1.1',
 ]
@@ -35,13 +35,13 @@ CLASSIFIERS = [
 
 
 setup(
-    name='aldryn-bootstrap3',
+    name='djangocms-bootstrap4',
     version=__version__,
     author='Divio AG',
     author_email='info@divio.ch',
-    url='https://github.com/aldryn/aldryn-bootstrap3',
+    url='https://github.com/divio/djangocms-bootstrap4',
     license='BSD',
-    description=('Adds Bootstrap 3 components as plugins.'),
+    description=('Adds Bootstrap 4 components as plugins.'),
     long_description=open('README.rst').read(),
     packages=find_packages(),
     include_package_data=True,

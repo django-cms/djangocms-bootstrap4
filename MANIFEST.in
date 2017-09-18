@@ -1,6 +1,6 @@
 include LICENSE.txt
 include README.rst
-recursive-include aldryn_bootstrap3/locale *
-recursive-include aldryn_bootstrap3/static *
-recursive-include aldryn_bootstrap3/templates *
+recursive-include djangocms_bootstrap4/locale *
+recursive-include djangocms_bootstrap4/static *
+recursive-include djangocms_bootstrap4/templates *
 recursive-exclude * *.py[co]

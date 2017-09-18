@@ -1,7 +1,7 @@
 {
-    "package-name": "aldryn-bootstrap3",
+    "package-name": "djangocms-bootstrap4",
     "installed-apps": [
-        "aldryn_bootstrap3"
+        "djangocms_bootstrap4"
     ],
     "protected": [
         "templates/*",
