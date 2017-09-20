@@ -37,9 +37,17 @@ class Bootstrap4GridContainerPlugin(CMSPluginBase):
         }),
     ]
 
-    def clean(self):
-        # TODO clean class from attributes and attach to container
-        pass
+    def render(self, context, instance, placeholder):
+        classes = instance.container_type
+        # check if "class" is define as attribute and merge
+        if instance.attributes.get('class'):
+            classes += ' {}'.format(instance.attributes.get('class', ''))
+
+        instance.attributes['class'] = classes
+
+        return super(Bootstrap4GridContainerPlugin, self).render(
+            context, instance, placeholder
+        )
 
 
 class Bootstrap4GridRowPlugin(CMSPluginBase):
@@ -86,18 +94,18 @@ class Bootstrap4GridColumnPlugin(CMSPluginBase):
     # https://getbootstrap.com/docs/4.0/layout/grid/#column-resets
     # parent_classes = ['Bootstrap4GridRowPlugin']
 
-    fieldsets = [
-        (None, {
-            'fields': (
-                'column_type',
-                ('column_size', 'column_alignment'),
-            )
-        }),
-        (_('Advanced settings'), {
-            'classes': ('collapse',),
-            'fields': (
-                'tag_type',
-                'attributes',
-            )
-        }),
-    ]
+    # fieldsets = [
+    #     (None, {
+    #         'fields': (
+    #             'column_type',
+    #             ('column_size', 'column_alignment'),
+    #         )
+    #     }),
+    #     (_('Advanced settings'), {
+    #         'classes': ('collapse',),
+    #         'fields': (
+    #             'tag_type',
+    #             'attributes',
+    #         )
+    #     }),
+    # ]

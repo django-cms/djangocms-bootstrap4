@@ -14,7 +14,7 @@ DEVICE_CHOICES = getattr(
         ('xl', _('Extra large')),   # default ≥1200px
     )
 )
-DEVICE_CHOICES = tuple([size for size, name in DEVICE_CHOICES])
+DEVICE_SIZES = tuple([size for size, name in DEVICE_CHOICES])
 
 TAG_CHOICES = getattr(
     settings,

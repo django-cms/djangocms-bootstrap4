@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from functools import partial
+
 from django.db import models
 from django.conf import settings
 from django.utils.encoding import python_2_unicode_compatible
@@ -7,7 +9,8 @@ from django.utils.safestring import mark_safe
 
 from cms.models import CMSPlugin
 
-from ...utils import TagTypeField, AttributesField
+from ...utils import TagTypeField, AttributesField, IntegerRangeField
+from ...constants import DEVICE_CHOICES
 
 
 # The default grid size for Bootstrap 4 is 12. You can change this setting
@@ -86,7 +89,7 @@ class Bootstrap4GridContainer(CMSPlugin):
         default=GRID_CONTAINERS[0][0],
         max_length=255,
         help_text=_(mark_safe(
-            'Defines if the grid should use fixed with (<code>.container</code>) '
+            'Defines if the grid should use fixed width (<code>.container</code>) '
             'or fluid width (<code>.container-fluid</code>).'
         )),
     )
@@ -94,7 +97,11 @@ class Bootstrap4GridContainer(CMSPlugin):
     attributes = AttributesField()
 
     def __str__(self):
-        return str(self.container_type)
+        text = ''
+        for item in GRID_CONTAINERS:
+            if item[0] == self.container_type:
+                text = item[1]
+        return str('({})'.format(text))
 
 
 # TODO add create field for columns
@@ -192,9 +199,12 @@ class Bootstrap4GridColumn(CMSPlugin):
         default=GRID_COLUMN_CHOICES[0][0],
         max_length=255,
     )
-    column_size = models.PositiveIntegerField(
+    column_size = IntegerRangeField(
         verbose_name=_('Columne size'),
         blank=True,
+        null=True,
+        min_value=0,
+        max_value=GRID_SIZE,
         help_text=_(
             'Nummeric value from 1 - {bound}. '
             'Spreads the columns evenly when empty.').format(bound=GRID_SIZE)
@@ -209,4 +219,76 @@ class Bootstrap4GridColumn(CMSPlugin):
     attributes = AttributesField()
 
     def __str__(self):
-        return str(self.pk)
+        text = ' '.join([self.get_column_classes()])
+        if self.tag != 'div':
+            text = '{} ({})'.format(text, self.tag)
+        return text
+
+    def get_class(self, device, element):
+        size = getattr(self, '{}_{}'.format(device, element), None)
+        if size is not None:
+            if element == 'col':
+                return 'col-{}-{}'.format(device, size)
+            else:
+                return 'col-{}-{}-{}'.format(device, element, size)
+        return ''
+
+    def get_column_classes(self):
+        classes = []
+        for device in DEVICE_SIZES:
+            for element in ('col', 'offset', 'push', 'pull'):
+                classes.append(self.get_class(device, element))
+        return ' '.join(cls for cls in classes if cls)
+
+
+IntegerRangeFieldPartial = partial(
+    IntegerRangeField,
+    blank=True,
+    null=True,
+    min_value=0,
+    max_value=GRID_SIZE,
+)
+
+BooleanFieldPartial = partial(
+    models.BooleanField,
+    default=False,
+)
+
+# Loop through Bootstrap 4 device choices and generate
+# model fields to cover col-*, order-*
+for size, name in DEVICE_CHOICES:
+    # Grid size
+    Bootstrap4GridColumn.add_to_class(
+        '{}_col'.format(size),
+        IntegerRangeFieldPartial(
+            verbose_name='col-{}'.format(size),
+        ),
+    )
+    # Grid auto alignment
+    Bootstrap4GridColumn.add_to_class(
+        '{}_auto'.format(size),
+        BooleanFieldPartial(
+            verbose_name='col-auto-{}'.format(size),
+        ),
+    )
+    # Grid ordering
+    Bootstrap4GridColumn.add_to_class(
+        '{}_order'.format(size),
+        IntegerRangeFieldPartial(
+            verbose_name='order-{}'.format(size),
+        ),
+    )
+    # Grid margin left (ml)
+    Bootstrap4GridColumn.add_to_class(
+        '{}_ml'.format(size),
+        BooleanFieldPartial(
+            verbose_name='ml-{}'.format(size),
+        ),
+    )
+    # Grid margin right (ml)
+    Bootstrap4GridColumn.add_to_class(
+        '{}_mr'.format(size),
+        BooleanFieldPartial(
+            verbose_name='mr-{}'.format(size),
+        ),
+    )
