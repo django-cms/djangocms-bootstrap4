@@ -6,3 +6,9 @@
 .eggs/
 dist/
 build/
+
+/~
+/node_modules
+.sass-cache
+npm-debug.log
+*.css.map
