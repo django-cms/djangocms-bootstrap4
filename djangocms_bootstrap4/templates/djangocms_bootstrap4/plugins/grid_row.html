@@ -1,10 +1,7 @@
 {% load cms_tags %}
 
-<div class="row
-    {% if instance.classes %} {{ instance.classes }}{% endif %}"
-    {{ instance.attributes_str }}>
-
+<{{ instance.tag_type }} {{ instance.attributes_str }}>
     {% for plugin in instance.child_plugin_instances %}
         {% with forloop as parentloop %}{% render_plugin plugin %}{% endwith %}
     {% endfor %}
-</div>
+</{{ instance.tag_type }}>

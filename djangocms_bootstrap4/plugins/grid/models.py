@@ -4,13 +4,13 @@ from functools import partial
 from django.db import models
 from django.conf import settings
 from django.utils.encoding import python_2_unicode_compatible
-from django.utils.translation import ugettext, ugettext_lazy as _
+from django.utils.translation import ugettext, ungettext, ugettext_lazy as _
 from django.utils.safestring import mark_safe
 
 from cms.models import CMSPlugin
 
+from ...constants import DEVICE_SIZES
 from ...utils import TagTypeField, AttributesField, IntegerRangeField
-from ...constants import DEVICE_CHOICES
 
 
 # The default grid size for Bootstrap 4 is 12. You can change this setting
@@ -28,33 +28,31 @@ GRID_CONTAINERS = getattr(
     settings,
     'DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS',
     (
-        ('container', _('Fixed width')),
-        ('container-fluid', _('Full width')),
+        ('container', _('Container')),
+        ('container-fluid', _('Fluid container')),
     ),
 )
 
 # Options for flexbox on the alignment of the grid
 # https://flexbox.webflow.com/
-GRID_ROW_VERTICAL_ALIGNMENT = getattr(
-    settings,
-    'DJANGOCMS_BOOTSTRAP4_GRID_ROW_VERTICAL_ALIGNMENT',
-    (
-        ('align-items-start', _('Top')),
-        ('align-items-center', _('Middle')),
-        ('align-items-end', _('Bottom')),
-    ),
+GRID_ROW_VERTICAL_ALIGNMENT = (
+    ('align-items-start', _('Start')),
+    ('align-items-center', _('Center')),
+    ('align-items-end', _('End')),
 )
 
-GRID_ROW_HORIZONTAL_ALIGNMENT = getattr(
-    settings,
-    'DJANGOCMS_BOOTSTRAP4_GRID_ROW_HORIZONTAL_ALIGNMENT',
-    (
-        ('justify-content-start', _('Justify left')),
-        ('justify-content-end', _('Justify right')),
-        ('justify-content-center', _('Justify center')),
-        ('justify-content-around', _('Justify center with space around')),
-        ('justify-content-between', _('Justify center with space in-between')),
-    ),
+GRID_ROW_HORIZONTAL_ALIGNMENT = (
+    ('justify-content-start', _('Content start')),
+    ('justify-content-end', _('Content end')),
+    ('justify-content-center', _('Content center')),
+    ('justify-content-around', _('Content around')),
+    ('justify-content-between', _('Content between')),
+)
+
+GRID_COLUMN_ALIGNMENT = (
+    ('align-self-start', _('Self start')),
+    ('align-self-center', _('Self center')),
+    ('align-self-end', _('Self end')),
 )
 
 GRID_COLUMN_CHOICES = getattr(
@@ -63,16 +61,6 @@ GRID_COLUMN_CHOICES = getattr(
     (
         ('col', _('Column')),
         ('w-100', _('Break')),
-    ),
-)
-
-GRID_COLUMN_ALIGNMENT = getattr(
-    settings,
-    'DJANGOCMS_BOOTSTRAP4_GRID_COLUMN_ALIGNMENT',
-    (
-        ('align-self-start', _('Left')),
-        ('align-self-center', _('Center')),
-        ('align-self-end', _('Right')),
     ),
 )
 
@@ -97,11 +85,14 @@ class Bootstrap4GridContainer(CMSPlugin):
     attributes = AttributesField()
 
     def __str__(self):
+        return str(self.pk)
+
+    def get_short_description(self):
         text = ''
         for item in GRID_CONTAINERS:
             if item[0] == self.container_type:
                 text = item[1]
-        return str('({})'.format(text))
+        return '({})'.format(text)
 
 
 # TODO add create field for columns
@@ -150,16 +141,14 @@ class Bootstrap4GridRow(CMSPlugin):
 
         column_count = len(self.child_plugin_instances or [])
         column_count_str = ungettext(
-            '1 column',
-            '%(count)i columns',
+            '(1 column)',
+            '(%(count)i columns)',
             column_count
         ) % {'count': column_count}
+        column_count_str += ' .{}'.format(
+            ' .'.join(instance.attributes['class'].split())
+        )
 
-        if self.classes:
-            return '{} ({})'.format(
-                self.classes,
-                column_count_str
-            )
         return column_count_str
 
 
@@ -210,7 +199,7 @@ class Bootstrap4GridColumn(CMSPlugin):
             'Spreads the columns evenly when empty.').format(bound=GRID_SIZE)
     )
     column_alignment = models.CharField(
-        verbose_name=_('Column alignment'),
+        verbose_name=_('Alignment'),
         choices=GRID_COLUMN_ALIGNMENT,
         blank=True,
         max_length=255,
@@ -219,10 +208,11 @@ class Bootstrap4GridColumn(CMSPlugin):
     attributes = AttributesField()
 
     def __str__(self):
-        text = ' '.join([self.get_column_classes()])
-        if self.tag != 'div':
-            text = '{} ({})'.format(text, self.tag)
-        return text
+        # text = ' '.join([self.get_column_classes()])
+        # if self.tag != 'div':
+        #     text = '{} ({})'.format(text, self.tag)
+        # return text
+        return str(self.pk)
 
     def get_class(self, device, element):
         size = getattr(self, '{}_{}'.format(device, element), None)
@@ -236,7 +226,7 @@ class Bootstrap4GridColumn(CMSPlugin):
     def get_column_classes(self):
         classes = []
         for device in DEVICE_SIZES:
-            for element in ('col', 'offset', 'push', 'pull'):
+            for element in ('col', 'auto', 'order', 'ml', 'mr'):
                 classes.append(self.get_class(device, element))
         return ' '.join(cls for cls in classes if cls)
 
@@ -256,7 +246,7 @@ BooleanFieldPartial = partial(
 
 # Loop through Bootstrap 4 device choices and generate
 # model fields to cover col-*, order-*
-for size, name in DEVICE_CHOICES:
+for size in DEVICE_SIZES:
     # Grid size
     Bootstrap4GridColumn.add_to_class(
         '{}_col'.format(size),
