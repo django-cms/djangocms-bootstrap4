@@ -14,7 +14,7 @@ plugins.push(new WebpackPolyfillPlugin());
 plugins.push(
     new webpack.optimize.CommonsChunkPlugin({
         name: 'base',
-        chunks: ['base', 'cms'],
+        chunks: ['base'],
     })
 );
 
@@ -64,11 +64,10 @@ module.exports = {
     devtool: argv.debug ? 'cheap-module-eval-source-map' : false,
     entry: {
         base: path.join(__dirname, 'base.js'),
-        cms: path.join(__dirname, 'cms.js'),
         // detail: path.join(__dirname, 'detail.js'),
     },
     output: {
-        path: path.join(__dirname, '..', '..', 'static', 'js', 'dist'),
+        path: path.join(__dirname, '..', '..', 'djangocms_bootstrap4', 'static', 'djangocms_bootstrap4', 'js'),
         filename: '[name].bundle.js',
         publicPath: '/static/',
     },
@@ -78,7 +77,6 @@ module.exports = {
         alias: {
             // make sure that we always use our jquery when loading 3rd party plugins
             jquery: require.resolve('jquery'),
-            outdatedbrowser: path.join(__dirname, 'libs', 'outdatedBrowser.min.js'),
         },
     },
     module: {
@@ -95,17 +93,6 @@ module.exports = {
                 ],
                 exclude: /(node_modules|vendor|libs|addons\/jquery.*)/,
                 include: __dirname,
-            },
-            {
-                test: /outdatedBrowser/,
-                use: [
-                    {
-                        loader: 'exports-loader',
-                        options: {
-                            outdatedBrowser: true,
-                        },
-                    },
-                ],
             },
             {
                 test: /bootstrap/,

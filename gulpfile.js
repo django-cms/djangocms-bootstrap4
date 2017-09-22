@@ -19,7 +19,7 @@ const PROJECT_STATIC = '/djangocms_bootstrap4/static/djangocms_bootstrap4/'
 const PROJECT_PATH = {
     css: PROJECT_ROOT + PROJECT_STATIC + '/css',
     js: PROJECT_ROOT + PROJECT_STATIC + '/js',
-    sprites: PROJECT_ROOT + PROJECT_STATIC + '/sprites',
+    sprites: PROJECT_ROOT + PROJECT_STATIC + '/svg',
     sass: PROJECT_ROOT + '/private/sass',
     webpack: PROJECT_ROOT + '/private/js',
     svg: PROJECT_ROOT + '/private/svg',
@@ -41,7 +41,7 @@ const PROJECT_PATTERNS = {
         '!' + PROJECT_PATH.sass + '/libs/_svgsprite.scss',
     ],
     svg: {
-        icons: [PROJECT_PATH.svg + '/icons/**/*.svg'],
+        icons: [PROJECT_PATH.svg + '/**/*.svg'],
         // Uncomment in order to have multiple icon sets
         // other: [PROJECT_PATH.svg + '/other/**/*.svg'],
     },
@@ -73,17 +73,12 @@ function task(id, extra) {
 // #############################################################################
 // TASKS
 
-/**
- * Usage:
- * - "gulp task"
- * - "gulp task --debug"
- */
-gulp.task('sass');
-gulp.task('lint');
-gulp.task('webpack');
-gulp.task('svg');
+gulp.task('sass', task('sass'));
+gulp.task('lint', task('lint'));
+gulp.task('js', task('webpack'));
+gulp.task('svg', task('svg'));
 
-gulp.task('default', ['sass', 'webpack', 'lint', 'watch']);
+gulp.task('default', ['sass', 'js', 'lint', 'watch']);
 
 gulp.task('watch', function () {
     gulp.start('webpack:watch');
