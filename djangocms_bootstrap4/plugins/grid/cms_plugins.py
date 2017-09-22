@@ -133,18 +133,28 @@ class Bootstrap4GridColumnPlugin(CMSPluginBase):
     # https://getbootstrap.com/docs/4.0/layout/grid/#column-resets
     parent_classes = ['Bootstrap4GridRowPlugin']
 
-    # fieldsets = [
-    #     (None, {
-    #         'fields': (
-    #             'column_type',
-    #             ('column_size', 'column_alignment'),
-    #         )
-    #     }),
-    #     (_('Advanced settings'), {
-    #         'classes': ('collapse',),
-    #         'fields': (
-    #             'tag_type',
-    #             'attributes',
-    #         )
-    #     }),
-    # ]
+    fieldsets = [
+        (None, {
+            'fields': (
+                'column_type',
+                ('column_size', 'column_alignment'),
+            )
+        }),
+        (_('Responsive settings'), {
+            'classes': ('collapse',),
+            'fields': (
+                tuple(['{}_col'.format(size) for size in DEVICE_SIZES]),
+                tuple(['{}_auto'.format(size) for size in DEVICE_SIZES]),
+                tuple(['{}_order'.format(size) for size in DEVICE_SIZES]),
+                tuple(['{}_ml'.format(size) for size in DEVICE_SIZES]),
+                tuple(['{}_mr'.format(size) for size in DEVICE_SIZES]),
+            )
+        }),
+        (_('Advanced settings'), {
+            'classes': ('collapse',),
+            'fields': (
+                'tag_type',
+                'attributes',
+            )
+        }),
+    ]

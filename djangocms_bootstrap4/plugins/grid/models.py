@@ -95,7 +95,6 @@ class Bootstrap4GridContainer(CMSPlugin):
         return '({})'.format(text)
 
 
-# TODO add create field for columns
 @python_2_unicode_compatible
 class Bootstrap4GridRow(CMSPlugin):
     """
@@ -152,30 +151,6 @@ class Bootstrap4GridRow(CMSPlugin):
         return column_count_str
 
 
-"""
-Simple mode
-    Type:
-        - col
-        - w-100 (for break)
-    Size (optional):
-        - number (1-12) grid setting
-    Breakpoint start (optional):
-        - default, xs, sm, md, lg, xl
-        > converts to col-md-*
-    Alignment (optional)
-        - align-self-start, align-self-center, align-self-end
-
-Responsive
-    Offset:
-        (margin right, margin-left)
-        ml-auto, ml-md-auto...
-        mr-auto, mr-md-auto...
-    Ordering:
-        order-1, (numbers 1-12) order-md-1...
-    Responsive:
-        xs, sm, md, lg, xl with numbers 1-12
-
-"""
 @python_2_unicode_compatible
 class Bootstrap4GridColumn(CMSPlugin):
     """
