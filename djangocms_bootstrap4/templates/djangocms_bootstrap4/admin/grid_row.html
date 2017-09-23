@@ -1,1 +1,7 @@
-{% extends "admin/cms/page/plugin/change_form.html" %}
+{% extends "djangocms_bootstrap4/admin/base.html" %}
+
+{% block field_sets %}
+    <div class="djangocms-bootstrap4 djangocms-bootstrap4-row">
+        {{ block.super }}
+    </div>
+{% endblock %}

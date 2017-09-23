@@ -107,6 +107,7 @@ class Bootstrap4GridRowPlugin(CMSPluginBase):
     def render(self, context, instance, placeholder):
         gutter = 'no-gutters' if instance.gutters else ''
         classes = concat_classes([
+            'row',
             instance.vertical_alignment,
             instance.horizontal_alignment,
             gutter,
@@ -158,3 +159,18 @@ class Bootstrap4GridColumnPlugin(CMSPluginBase):
             )
         }),
     ]
+
+    def render(self, context, instance, placeholder):
+        column = ''
+        if instance.column_size:
+            column = 'col-{}'.format(instance.column_size)
+        classes = concat_classes([
+            instance.column_type,
+            column,
+            instance.column_alignment,
+        ], instance.attributes)
+        instance.attributes['class'] = classes
+
+        return super(Bootstrap4GridColumnPlugin, self).render(
+            context, instance, placeholder
+        )
