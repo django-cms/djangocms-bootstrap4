@@ -70,7 +70,6 @@ function task(id, extra) {
 
 // #############################################################################
 // TASKS
-
 gulp.task('sass', task('sass'));
 gulp.task('webpack', task('webpack', { watch: true }));
 gulp.task('webpack:lint', task('webpack.lint'));

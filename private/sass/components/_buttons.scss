@@ -1,0 +1,50 @@
+// #############################################################################
+// BUTTON GROUPS
+
+.bootstrap4-button-group {
+    // required overrides from djangocms-admin-style
+    .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+        border-radius: 0 !important;
+    }
+
+    .btn:first-child:not(:last-child):not(.dropdown-toggle) {
+        border-top-right-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+    }
+
+    .btn:last-child:not(:first-child),
+    .dropdown-toggle:not(:first-child) {
+        border-top-left-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+    }
+
+    .btn-primary {
+        color: #fff !important;
+        background-color: #0bf !important;
+        border-color: #0bf !important;
+    }
+}
+
+// when using icons remove padding and improve sizing
+.bootstrap4-button-group-icons {
+    .btn {
+        // needs to be overwritten from djangocms-admin-style
+        padding: 6px 15px !important;
+    }
+
+    .icon {
+        font-size: 21px;
+    }
+
+    // custom icon sizes
+    .icon-flex-align-start,
+    .icon-flex-align-center,
+    .icon-flex-align-end {
+        transform: scale(1.4);
+    }
+
+    .icon-flex-content-around,
+    .icon-flex-content-between {
+        transform: scale(1.6);
+    }
+}

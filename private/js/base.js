@@ -9,11 +9,21 @@ import { selectToButtons } from 'components/selectToButtons';
 
 
 $(() => {
-    selectToButtons({
-        select: '#id_vertical_alignment',
-        help: true,
-        // length needs to match with select options
-        icons: ['align-reset', 'flex-align-start', 'flex-align-center', 'flex-align-end'],
-        static: $('.djangocms-bootstrap4-row').data('static'),
-    });
+    if ($('.djangocms-bootstrap4-row').length) {
+        let static_url = $('.djangocms-bootstrap4-row').data('static');
+
+        // Bootstrap 4 Grid Row - Vertical Alignment
+        new selectToButtons({
+            select: '#id_vertical_alignment',
+            icons: ['align-reset', 'flex-align-start', 'flex-align-center', 'flex-align-end'],
+            static: static_url,
+        });
+        // Bootstrap 4 Grid Row - Horizontal Alignment
+        new selectToButtons({
+            select: '#id_horizontal_alignment',
+            icons: ['align-reset', 'flex-content-start', 'flex-content-center', 'flex-content-end',
+                'flex-content-around', 'flex-content-between'],
+            static: static_url,
+        });
+    }
 });
