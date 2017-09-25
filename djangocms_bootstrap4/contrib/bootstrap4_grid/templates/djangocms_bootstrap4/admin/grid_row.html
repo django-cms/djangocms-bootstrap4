@@ -1,7 +1,8 @@
 {% extends "djangocms_bootstrap4/admin/base.html" %}
+{% load staticfiles %}
 
 {% block field_sets %}
-    <div class="djangocms-bootstrap4 djangocms-bootstrap4-row">
+    <div class="djangocms-bootstrap4 djangocms-bootstrap4-row" data-static="{% static "" %}">
         {{ block.super }}
     </div>
 {% endblock %}

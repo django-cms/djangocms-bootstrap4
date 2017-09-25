@@ -4,15 +4,16 @@
  * http://github.com/divio/djangocms-boilerplate-webpack
  */
 
-// import { noscript } from 'addons/utils';
-// import { initFileInputs } from 'addons/file';
-
-// window.$ = window.jQuery = $;
-// import $ from 'jquery';
-
 // import 'bootstrap/js/dist/alert'
+import { selectToButtons } from 'components/selectToButtons';
 
 
 $(() => {
-    console.log('hello world');
+    selectToButtons({
+        select: '#id_vertical_alignment',
+        help: true,
+        // length needs to match with select options
+        icons: ['align-reset', 'flex-align-start', 'flex-align-center', 'flex-align-end'],
+        static: $('.djangocms-bootstrap4-row').data('static'),
+    });
 });

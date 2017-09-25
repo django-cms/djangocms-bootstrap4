@@ -19,7 +19,7 @@ const PROJECT_STATIC = '/djangocms_bootstrap4/static/djangocms_bootstrap4/'
 const PROJECT_PATH = {
     css: PROJECT_ROOT + PROJECT_STATIC + '/css',
     js: PROJECT_ROOT + PROJECT_STATIC + '/js',
-    sprites: PROJECT_ROOT + PROJECT_STATIC + '/svg',
+    sprites: PROJECT_ROOT + PROJECT_STATIC + '/sprites',
     sass: PROJECT_ROOT + '/private/sass',
     webpack: PROJECT_ROOT + '/private/js',
     svg: PROJECT_ROOT + '/private/svg',
@@ -42,8 +42,6 @@ const PROJECT_PATTERNS = {
     ],
     svg: {
         icons: [PROJECT_PATH.svg + '/**/*.svg'],
-        // Uncomment in order to have multiple icon sets
-        // other: [PROJECT_PATH.svg + '/other/**/*.svg'],
     },
 };
 
@@ -76,7 +74,7 @@ function task(id, extra) {
 gulp.task('sass', task('sass'));
 gulp.task('webpack', task('webpack', { watch: true }));
 gulp.task('webpack:lint', task('webpack.lint'));
-gulp.task('svg', task('svg'));
+gulp.task('icons', task('svg', { svg: 'icons' }));
 
 gulp.task('default', ['sass', 'webpack', 'watch']);
 
