@@ -66,61 +66,13 @@ django CMS Bootstrap 4 **utilises** the following django CMS plugins:
 
 It provides the following **standard** Bootstrap 4 components:
 
-* `Accordion <http://getbootstrap.com/javascript/#collapse-example-accordion>`_
-* `Alert <http://getbootstrap.com/components/#alerts>`_
-* `Blockquote <http://getbootstrap.com/css/#type-blockquotes>`_
-* `Carousel <http://getbootstrap.com/javascript/#carousel>`_
-* `Code <http://getbootstrap.com/css/#code>`_
-* `Grid (Row and Column) <http://getbootstrap.com/css/#grid/>`_
-* `Glyphicons <http://getbootstrap.com/components/#glyphicons>`_
-* `Jumbotron <http://getbootstrap.com/components/#jumbotron>`_
-* `Label <http://getbootstrap.com/components/#labels>`_
-* `List Group <http://getbootstrap.com/components/#list-group>`_
-* `Panel (Heading, Body and Footer) <http://getbootstrap.com/components/#panels>`_
-* `Responsive <http://getbootstrap.com/css/#responsive-utilities>`_
-* `Tabs <http://getbootstrap.com/javascript/#tabs>`_
-* `Well <http://getbootstrap.com/components/#wells>`_
-
-It also provides the following **3rd party** components:
-
-* `Font Awesome <http://fontawesome.io>`_
-* `Spacer <https://github.com/aldryn/aldryn-bootstrap4/wiki/13-spacer>`_
-
-These components need to be manually configured in order to work properly
-inside your project. See `this gist <https://gist.github.com/FinalAngel/40ea3fd48c0b9094ec7ded5d0e5d7395>`_
-for additional information on a recommended spacer configuration.
+* `Grid (Container, Row and Column) <https://getbootstrap.com/docs/4.0/layout/grid/>`_
 
 
 Settings
 ~~~~~~~~
 
-This addon provides a ``standard`` template for Carousels. You can provide
-additional style choices by adding a ``ALDRYN_BOOTSTRAP3_CAROUSEL_STYLES``
-setting::
-
-    ALDRYN_BOOTSTRAP3_CAROUSEL_STYLES = [
-        ('feature', _('Featured Version')),
-    ]
-
-You'll need to create the `feature` folder inside ``templates/aldryn_bootstrap/plugins/carousel/``
-otherwise you will get a *template does not exist* error. You can do this by
-copying the ``standard`` folder inside that directory and renaming it to
-``feature``.
-
-In addition you can set or extend your own icon fonts using ``ALDRYN_BOOTSTRAP3_ICONSETS``::
-
-    ALDRYN_BOOTSTRAP3_ICONSETS = [
-        ('glyphicons', 'glyphicons', 'Glyphicons'),
-        ('fontawesome', 'fa', 'Font Awesome'),
-        # custom iconsets have to be JSON
-        ('{"iconClass": "icon", "iconClassFix": "icon-", "icons": [...]}', 'icon', 'Custom Font Icons'),
-        ('{"svg": true, "spritePath": "sprites/icons.svg", "iconClass": "icon", "iconClassFix": "icon-", "icons": [...]}', 'icon', 'Custom SVG Icons'),
-    ]
-
-The default grid size is set to **24** when validating the column input,
-you can override this by setting::
-
-    ALDRYN_BOOTSTRAP3_GRID_SIZE = 12
+TBA
 
 
 Running Tests
@@ -134,9 +86,9 @@ You can run tests by executing::
     python setup.py test
 
 
-.. |pypi| image:: https://badge.fury.io/py/aldryn-bootstrap3.svg
-    :target: http://badge.fury.io/py/aldryn-bootstrap3
-.. |build| image:: https://travis-ci.org/aldryn/aldryn-bootstrap3.svg?branch=master
-    :target: https://travis-ci.org/aldryn/aldryn-bootstrap3
-.. |coverage| image:: https://codecov.io/gh/aldryn/aldryn-bootstrap3/branch/master/graph/badge.svg
-    :target: https://codecov.io/gh/aldryn/aldryn-bootstrap3
+.. |pypi| image:: https://badge.fury.io/py/djangocms-bootstrap4.svg
+    :target: http://badge.fury.io/py/djangocms-bootstrap4
+.. |build| image:: https://travis-ci.org/divio/djangocms-bootstrap4.svg?branch=master
+    :target: https://travis-ci.org/divio/djangocms-bootstrap4
+.. |coverage| image:: https://codecov.io/gh/divio/djangocms-bootstrap4/branch/master/graph/badge.svg
+    :target: https://codecov.io/gh/divio/djangocms-bootstrap4
