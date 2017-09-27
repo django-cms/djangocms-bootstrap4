@@ -61,6 +61,7 @@ GRID_COLUMN_CHOICES = getattr(
     (
         ('col', _('Column')),
         ('w-100', _('Break')),
+        ('', _('Empty'))
     ),
 )
 
@@ -161,6 +162,7 @@ class Bootstrap4GridColumn(CMSPlugin):
         verbose_name=_('Column type'),
         choices=GRID_COLUMN_CHOICES,
         default=GRID_COLUMN_CHOICES[0][0],
+        blank=True,
         max_length=255,
     )
     column_size = IntegerRangeField(
@@ -183,27 +185,31 @@ class Bootstrap4GridColumn(CMSPlugin):
     attributes = AttributesField()
 
     def __str__(self):
-        # text = ' '.join([self.get_column_classes()])
-        # if self.tag != 'div':
-        #     text = '{} ({})'.format(text, self.tag)
-        # return text
         return str(self.pk)
 
-    def get_class(self, device, element):
-        size = getattr(self, '{}_{}'.format(device, element), None)
-        if size is not None:
-            if element == 'col':
-                return 'col-{}-{}'.format(device, size)
-            else:
-                return 'col-{}-{}-{}'.format(device, element, size)
-        return ''
+    def get_short_description(self):
+        text = ''
+        classes = self.get_grid_values();
+        if self.column_size:
+            text += '(col-{}) '.format(self.column_size)
+        else:
+            text += '(auto) '
+        if self.column_type != 'col':
+            text += '.{} '.format(self.column_type)
+        if classes:
+            text += '.{}'.format(' .'.join(self.get_grid_values()))
+        return text
 
-    def get_column_classes(self):
+    def get_grid_values(self):
         classes = []
         for device in DEVICE_SIZES:
-            for element in ('col', 'auto', 'order', 'ml', 'mr'):
-                classes.append(self.get_class(device, element))
-        return ' '.join(cls for cls in classes if cls)
+            for element in ('col', 'order', 'ml', 'mr'):
+                size = getattr(self, '{}_{}'.format(device, element))
+                if size and (element == 'col' or element == 'order'):
+                    classes.append('{}-{}-{}'.format(element, device, int(size)))
+                elif size:
+                    classes.append('{}-{}-{}'.format(element, device, 'auto'))
+        return classes
 
 
 IntegerRangeFieldPartial = partial(
@@ -228,13 +234,6 @@ for size in DEVICE_SIZES:
             verbose_name='col-{}'.format(size),
         ),
     )
-    # Grid auto alignment
-    Bootstrap4GridColumn.add_to_class(
-        '{}_auto'.format(size),
-        BooleanFieldPartial(
-            verbose_name='col-auto-{}'.format(size),
-        ),
-    )
     # Grid ordering
     Bootstrap4GridColumn.add_to_class(
         '{}_order'.format(size),
@@ -246,13 +245,13 @@ for size in DEVICE_SIZES:
     Bootstrap4GridColumn.add_to_class(
         '{}_ml'.format(size),
         BooleanFieldPartial(
-            verbose_name='ml-{}'.format(size),
+            verbose_name='ml-{}-auto'.format(size),
         ),
     )
     # Grid margin right (ml)
     Bootstrap4GridColumn.add_to_class(
         '{}_mr'.format(size),
         BooleanFieldPartial(
-            verbose_name='mr-{}'.format(size),
+            verbose_name='mr-{}-auto'.format(size),
         ),
     )

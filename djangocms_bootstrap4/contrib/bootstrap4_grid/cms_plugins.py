@@ -23,7 +23,7 @@ class Bootstrap4GridContainerPlugin(CMSPluginBase):
     https://getbootstrap.com/docs/4.0/layout/grid/
     """
     model = Bootstrap4GridContainer
-    name = _('Grid - Container')
+    name = _('Container')
     module = _('Bootstrap 4')
     render_template = 'djangocms_bootstrap4/grid_container.html'
     allow_children = True
@@ -60,7 +60,7 @@ class Bootstrap4GridRowPlugin(CMSPluginBase):
     https://getbootstrap.com/docs/4.0/layout/grid/
     """
     model = Bootstrap4GridRow
-    name = _('Grid - Row')
+    name = _('Row')
     module = _('Bootstrap 4')
     form = Bootstrap4GridRowForm
     change_form_template = 'djangocms_bootstrap4/admin/grid_row.html'
@@ -125,7 +125,7 @@ class Bootstrap4GridColumnPlugin(CMSPluginBase):
     https://getbootstrap.com/docs/4.0/layout/grid/
     """
     model = Bootstrap4GridColumn
-    name = _('Grid - Column')
+    name = _('Column')
     module = _('Bootstrap 4')
     change_form_template = 'djangocms_bootstrap4/admin/grid_column.html'
     render_template = 'djangocms_bootstrap4/grid_column.html'
@@ -143,9 +143,8 @@ class Bootstrap4GridColumnPlugin(CMSPluginBase):
             )
         }),
         (_('Responsive settings'), {
-            'classes': ('collapse',),
+            # 'classes': ('collapse',),
             'fields': (
-                tuple(['{}_auto'.format(size) for size in DEVICE_SIZES]),
                 tuple(['{}_col'.format(size) for size in DEVICE_SIZES]),
                 tuple(['{}_order'.format(size) for size in DEVICE_SIZES]),
                 tuple(['{}_ml'.format(size) for size in DEVICE_SIZES]),
@@ -163,14 +162,19 @@ class Bootstrap4GridColumnPlugin(CMSPluginBase):
 
     def render(self, context, instance, placeholder):
         column = ''
+        classes = instance.get_grid_values()
+
         if instance.column_size:
             column = 'col-{}'.format(instance.column_size)
-        classes = concat_classes([
+        if classes:
+            column += ' {}'.format(' '.join(cls for cls in classes if cls))
+
+        attr_classes = concat_classes([
             instance.column_type,
             column,
             instance.column_alignment,
         ], instance.attributes)
-        instance.attributes['class'] = classes
+        instance.attributes['class'] = attr_classes
 
         return super(Bootstrap4GridColumnPlugin, self).render(
             context, instance, placeholder

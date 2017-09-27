@@ -50,8 +50,8 @@ export default class ButtonGroup {
         let options = this.select.find('option');
         let index = options.index(options.filter(':selected'));
 
-        buttons.on('click', function (e) {
-            e.preventDefault();
+        buttons.on('click', (event) => {
+            event.preventDefault();
             // set the value on the select
             select.find('option')
                 .prop('selected', false)

@@ -41,6 +41,7 @@ $(() => {
         new GridLayout({
             sizes: column.data().sizes,
             rows: column.data().rows,
+            reset: column.data().reset,
             static: static_url,
         });
     }

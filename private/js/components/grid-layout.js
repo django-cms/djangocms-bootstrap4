@@ -8,6 +8,7 @@ export default class GridLayout {
      * @param {Object} options
      * @param {Array} options.sizes
      * @param {Array} options.row
+     * @param {String} options.reset
      * @param {String} options.static
      */
     constructor(options) {
@@ -16,14 +17,14 @@ export default class GridLayout {
         this.setHeader();
         this.setColumn();
         this.setInputType();
-        this.setAutoInput();
+        this.setReset();
     }
 
     /**
      * @method setHeader
      */
     setHeader() {
-        let container = $('.form-row.field-xs_auto .field-box');
+        let container = $('.form-row.field-xs_col .field-box');
         let sizes = ['size-xs', 'size-sm', 'size-md', 'size-lg', 'size-xl'];
         let wrapper = (wrapper) => `<div class="icon-thead">${wrapper}</div>`;
         let icons = (icon, title = '', staticPath = this.options.static) => `
@@ -48,14 +49,13 @@ export default class GridLayout {
      * @method setColumn
      */
     setColumn() {
-        const container = $(`
+        let container = $(`
             .form-row.field-xs_col,
-            .form-row.field-xs_auto,
             .form-row.field-xs_order,
             .form-row.field-xs_ml,
             .form-row.field-xs_mr
         `);
-        const template = (text = '', link = '#', staticPath = this.options.static) => `
+        let template = (text = '', link = '#', staticPath = this.options.static) => `
             <div class="field-box field-box-label">
                 <a href="${link}" target="_blank" class="d-inline-block text-right">
                     ${text}
@@ -67,8 +67,7 @@ export default class GridLayout {
                 </a>
             </div>
         `;
-        const links = [
-            'https://getbootstrap.com/docs/4.0/layout/grid/#variable-width-content',
+        let links = [
             'https://getbootstrap.com/docs/4.0/layout/grid/#grid-options',
             'https://getbootstrap.com/docs/4.0/layout/grid/#reordering',
             'https://getbootstrap.com/docs/4.0/layout/grid/#offsetting-columns',
@@ -84,7 +83,7 @@ export default class GridLayout {
      * @method setInputType
      */
     setInputType() {
-        const container = $('.form-row.field-xs_col, .form-row.field-xs_order');
+        let container = $('.form-row.field-xs_col, .form-row.field-xs_order');
 
         container.find('input').prop({
             'type': 'number',
@@ -95,24 +94,23 @@ export default class GridLayout {
     }
 
     /**
-     * @method setAutoInput
+     * @method setReset
      */
-    setAutoInput() {
-        const checks = $(
-            '#id_xs_auto, #id_sm_auto, #id_md_auto, #id_lg_auto, #id_xl_auto'
-        );
+    setReset() {
+        let container = $('.form-row.field-xs_col');
+        let wrapper = container.closest('fieldset');
+        let template = (text = this.options.reset) => `
+            <a href="#" class="btn grid-reset">${text}</a>
+        `;
+        let button = $(template());
 
-        checks.on('change', function () {
-            let check = $(this);
-            let cls = '#' + check.attr('id').replace('auto', '') + 'col';
-            let input = check.closest('.module').find(cls);
-
-            if (check.is(':checked')) {
-                input.attr('disabled', true).addClass('disabled');
-            } else {
-                input.attr('disabled', false).removeClass('disabled');
-            }
+        button.on('click', (event) => {
+            event.preventDefault();
+            wrapper.find('input').val('');
+            wrapper.find('input[type="checkbox"]').prop('checked', false);
         });
+
+        container.append(button);
     }
 
 }

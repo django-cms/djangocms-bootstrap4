@@ -2,11 +2,11 @@
 // GRID
 
 .djangocms-bootstrap4-column {
-    .form-row.field-xs_auto,
     .form-row.field-xs_col,
     .form-row.field-xs_order,
     .form-row.field-xs_ml,
     .form-row.field-xs_mr {
+        position: relative;
         padding: 0;
 
         .field-box {
@@ -77,12 +77,6 @@
             top: -8px;
         }
 
-        // auto checkbox
-        .field-xs_auto,
-        .field-sm_auto,
-        .field-md_auto,
-        .field-lg_auto,
-        .field-xl_auto,
         // ml checkbox
         .field-xs_ml,
         .field-sm_ml,
@@ -107,6 +101,12 @@
                 top: -3px;
             }
         }
+    }
+
+    .grid-reset {
+        position: absolute;
+        left: 5px;
+        top: 10px;
     }
 
     .icon-thead {
