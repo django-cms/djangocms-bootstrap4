@@ -2,27 +2,33 @@
  * @class selectToButtons
  * @public
  */
-export class selectToButtons {
+export default class SelectToButtons {
     /**
      * @method constructor
      * @param {Object} options
+     * @param {String} options.select
+     * @param {String} options.static
+     * @param {String[]} [options.icons]
      */
     constructor(options) {
         this.options = options;
         this.templates = {
-            wrapper: '<div class="bootstrap4-button-group{class}">' +
-                     '  <div class="btn-group" role="group" aria-label="">' +
-                     '    {buttons}' +
-                     '  </div>' +
-                     '</div>',
-            button: '<button type="button" class="btn">' +
-                    '  {icon}<span class="sr-only">{text}</span>' +
-                    '</button>',
-            icon: '<span class="icon icon-{icon}">' +
-                  '  <svg role="presentation">' +
-                  '    <use xlink:href="' + this.options.static + 'djangocms_bootstrap4/sprites/icons.svg#{icon}"></use>' +
-                  '  </svg>' +
-                  '</span>',
+            wrapper: (cls = '', buttons = '') => `
+                <div class="bootstrap4-button-group${cls}">
+                    <div class="btn-group" role="group" aria-label="">
+                        ${buttons}
+                    </div>
+                </div>`,
+            button: (icon = '', text = '') => `
+                <button type="button" class="btn" title="${text}">
+                    ${icon}<span class="sr-only">${text}</span>
+                </button>`,
+            icon: (icon, staticPath = this.options.static) => `
+                <span class="icon icon-${icon}">
+                    <svg role="presentation">
+                        <use xlink:href="${staticPath}djangocms_bootstrap4/sprites/icons.svg#${icon}"></use>
+                    </svg>
+                </span>`,
         };
         this.select = $(this.options.select);
         this.selectOptions = this.select.find('option');
@@ -33,6 +39,11 @@ export class selectToButtons {
         );
     }
 
+    /**
+     * @method setEvents
+     * @param {jQuery} template
+     * @return {jQuery} template
+     */
     setEvents(template) {
         let buttons = template.find('button');
         let select = this.select;
@@ -60,10 +71,12 @@ export class selectToButtons {
         return template;
     }
 
+    /**
+     * @method getTemplate
+     * @return {String} template
+     */
     getTemplate() {
-        let buttons = '';
-        let icon = '';
-        let wrapper = this.templates.wrapper.slice(0);
+        let cls = '';
 
         this.select.addClass('sr-only');
 
@@ -71,27 +84,26 @@ export class selectToButtons {
             this.options.icons.length !== this.selectOptions.length) {
             throw new Error('Provided icons do not match options.');
         } else if (this.options.icons) {
-            wrapper = wrapper.replace('{class}', ' bootstrap4-button-group-icons');
-        } else {
-            wrapper = wrapper.replace('{class}', '');
+            cls = ' bootstrap4-button-group-icons';
         }
 
-        this.selectOptions.toArray().forEach(function (selectOption, index) {
+        const buttons = this.selectOptions.toArray().reduce((btns, selectOption, index) => {
+            let text = $(selectOption).text();
+            let icon;
+
             // prepare icon
             if (this.options.icons) {
-                icon = this.templates.icon.slice(0).replace(
-                    new RegExp('{icon}', 'g'), this.options.icons[index]
-                );
+                icon = this.templates.icon(this.options.icons[index]);
             } else {
-                icon = $(selectOption).text();
+                icon = text;
             }
             // add button
-            buttons += this.templates.button.slice(0).replace(
-                '{text}', $(selectOption).text()
-            ).replace('{icon}', icon);
-        }, this);
+            btns += this.templates.button(icon, text);
 
-        return wrapper.replace('{buttons}', buttons);
+            return btns;
+        }, '');
+
+        return this.templates.wrapper(cls, buttons);
     }
 
 }

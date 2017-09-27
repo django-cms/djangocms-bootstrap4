@@ -19,6 +19,9 @@ module.exports = function (gulp, opts) {
                     console: true,
                 }],
             }))
+            .on('error', function () {
+                this.emit('end');
+            })
             .pipe(gulpif(opts.argv.debug, sourcemaps.init()))
             .pipe(sass({
                 importer: importer,
@@ -28,15 +31,8 @@ module.exports = function (gulp, opts) {
                 gutil.log(gutil.colors.red(
                     'Error (' + error.plugin + '): ' + error.messageFormatted)
                 );
-
-                // used on Divio Cloud to inform divio app about the errors in
-                // SASS compilation
-                if (process.env.EXIT_ON_ERRORS) {
-                    process.exit(1); // eslint-disable-line
-                } else {
-                    // in dev mode - just continue
-                    this.emit('end');
-                }
+                // in dev mode - just continue
+                this.emit('end');
             })
             .pipe(
                 postcss([

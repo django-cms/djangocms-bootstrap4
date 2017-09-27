@@ -36,23 +36,23 @@ GRID_CONTAINERS = getattr(
 # Options for flexbox on the alignment of the grid
 # https://flexbox.webflow.com/
 GRID_ROW_VERTICAL_ALIGNMENT = (
-    ('align-items-start', _('Start')),
-    ('align-items-center', _('Center')),
-    ('align-items-end', _('End')),
+    ('align-items-start', _('Align items start')),
+    ('align-items-center', _('Align items center')),
+    ('align-items-end', _('Align items end')),
 )
 
 GRID_ROW_HORIZONTAL_ALIGNMENT = (
-    ('justify-content-start', _('Content start')),
-    ('justify-content-end', _('Content end')),
-    ('justify-content-center', _('Content center')),
-    ('justify-content-around', _('Content around')),
-    ('justify-content-between', _('Content between')),
+    ('justify-content-start', _('Justify content start')),
+    ('justify-content-center', _('Justify content center')),
+    ('justify-content-end', _('Justify content end')),
+    ('justify-content-around', _('Justify content around')),
+    ('justify-content-between', _('Justify content between')),
 )
 
 GRID_COLUMN_ALIGNMENT = (
-    ('align-self-start', _('Self start')),
-    ('align-self-center', _('Self center')),
-    ('align-self-end', _('Self end')),
+    ('align-self-start', _('Align self start')),
+    ('align-self-center', _('Align self center')),
+    ('align-self-end', _('Align self end')),
 )
 
 GRID_COLUMN_CHOICES = getattr(
@@ -210,7 +210,6 @@ IntegerRangeFieldPartial = partial(
     IntegerRangeField,
     blank=True,
     null=True,
-    min_value=0,
     max_value=GRID_SIZE,
 )
 

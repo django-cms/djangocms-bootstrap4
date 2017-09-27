@@ -6,33 +6,12 @@ const path = require('path');
 
 process.env.NODE_ENV = (argv.debug) ? 'development' : 'production';
 
-// Bundle splitting. Don't forget to {% addtoblock "js" %} afterwards
-
 plugins.push(
     new webpack.optimize.CommonsChunkPlugin({
         name: 'base',
         chunks: ['base'],
     })
 );
-plugins.push(
-    new webpack.ProvidePlugin({
-        $: 'jquery',
-        jQuery: 'jquery',
-        'window.jQuery': 'jquery',
-        Popper: ['popper.js', 'default'],
-        // In case you imported plugins individually, you must also require them here:
-        // Alert: "exports-loader?Alert!bootstrap/js/dist/alert",
-        // Button: "exports-loader?Button!bootstrap/js/dist/button",
-        // Carousel: "exports-loader?Carousel!bootstrap/js/dist/carousel",
-        // Collapse: "exports-loader?Collapse!bootstrap/js/dist/collapse",
-        // Dropdown: 'exports-loader?Dropdown!bootstrap/js/dist/dropdown',
-        // Modal: "exports-loader?Modal!bootstrap/js/dist/modal",
-        // Popover: "exports-loader?Popover!bootstrap/js/dist/popover",
-        // Scrollspy: "exports-loader?Scrollspy!bootstrap/js/dist/scrollspy",
-        // Tab: "exports-loader?Tab!bootstrap/js/dist/tab",
-        // Util: "exports-loader?Util!bootstrap/js/dist/util"
-    })
-)
 
 // add plugins depending on if we are debugging or not
 if (argv.debug) {
@@ -83,7 +62,7 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, '..', '..', 'djangocms_bootstrap4', 'static', 'djangocms_bootstrap4', 'js'),
-        filename: '[name].js',
+        filename: 'bundle.[name].js',
         publicPath: '/static/',
     },
     plugins: plugins,

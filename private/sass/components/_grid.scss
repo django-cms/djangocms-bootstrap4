@@ -1,8 +1,115 @@
 // #############################################################################
 // GRID
 
-.djangocms-bootstrap4-row {
-    .field-box.field-vertical_alignment select {
-        // @include sr-only;
+.djangocms-bootstrap4-column {
+    .form-row.field-xs_auto,
+    .form-row.field-xs_col,
+    .form-row.field-xs_order,
+    .form-row.field-xs_ml,
+    .form-row.field-xs_mr {
+        padding: 0;
+
+        .field-box {
+            position: relative;
+            text-align: center;
+            width: 10% !important;
+            min-width: 120px;
+            padding: 15px 10px;
+            margin-right: 0 !important; // djangocms-admin-style
+            // border-right: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+
+            input {
+                text-align: right;
+                padding-right: 5px !important;
+            }
+
+            label {
+                font-size: 12px !important;
+                font-weight: normal !important;
+                color: #ccc !important;
+                position: absolute;
+                left: 20px;
+                bottom: 18px;
+                text-transform: lowercase;
+            }
+
+            &:last-child {
+                border-right: none;
+            }
+        }
+
+        .errors {
+            margin-bottom: 0;
+        }
+
+        .errorlist {
+            @include sr-only;
+        }
+
+        &.field-xs_mr .field-box {
+            border-bottom: none;
+            margin-bottom: 20px;
+        }
+
+        .field-box-label {
+            display: flex;
+            margin-top: auto;
+            color: #999;
+
+            span {
+                width: 100%;
+            }
+        }
+
+        &.field-xs_col .field-box-label span,
+        &.field-xs_order .field-box-label span {
+            position: relative;
+            top: -8px;
+        }
+
+        // auto checkbox
+        .field-xs_auto,
+        .field-sm_auto,
+        .field-md_auto,
+        .field-lg_auto,
+        .field-xl_auto,
+        // ml checkbox
+        .field-xs_ml,
+        .field-sm_ml,
+        .field-md_ml,
+        .field-lg_ml,
+        .field-xl_ml,
+        // mr checkbox
+        .field-xs_mr,
+        .field-sm_mr,
+        .field-md_mr,
+        .field-lg_mr,
+        .field-xl_mr {
+            text-align: left;
+
+            label {
+                left: 30px;
+                bottom: 14px;
+            }
+
+            input {
+                position: relative;
+                top: -3px;
+            }
+        }
+    }
+
+    .icon-thead {
+        text-align: center;
+        margin-bottom: 15px;
+
+        .icon {
+            font-size: 30px;
+        }
+
+        .icon-size-sm {
+            transform: rotate(90deg);
+        }
     }
 }

@@ -72,7 +72,7 @@ function task(id, extra) {
 // TASKS
 gulp.task('sass', task('sass'));
 gulp.task('webpack', task('webpack', { watch: true }));
-gulp.task('webpack:lint', task('webpack.lint'));
+gulp.task('lint', task('lint'));
 gulp.task('icons', task('svg', { svg: 'icons' }));
 
 gulp.task('default', ['sass', 'webpack', 'watch']);
@@ -80,5 +80,5 @@ gulp.task('default', ['sass', 'webpack', 'watch']);
 gulp.task('watch', function () {
     gulp.start('webpack');
     gulp.watch(PROJECT_PATTERNS.sass, ['sass']);
-    gulp.watch(PROJECT_PATTERNS.js, ['webpack:lint']);
+    gulp.watch(PROJECT_PATTERNS.js, ['lint']);
 });

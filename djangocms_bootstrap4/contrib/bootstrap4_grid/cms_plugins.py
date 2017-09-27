@@ -78,8 +78,7 @@ class Bootstrap4GridRowPlugin(CMSPluginBase):
         (_('Advanced settings'), {
             'classes': ('collapse',),
             'fields': (
-                'gutters',
-                'tag_type',
+                ('tag_type', 'gutters',),
                 'attributes',
             )
         }),
@@ -128,6 +127,7 @@ class Bootstrap4GridColumnPlugin(CMSPluginBase):
     model = Bootstrap4GridColumn
     name = _('Grid - Column')
     module = _('Bootstrap 4')
+    change_form_template = 'djangocms_bootstrap4/admin/grid_column.html'
     render_template = 'djangocms_bootstrap4/grid_column.html'
     allow_children = True
     require_parent = True
@@ -145,8 +145,8 @@ class Bootstrap4GridColumnPlugin(CMSPluginBase):
         (_('Responsive settings'), {
             'classes': ('collapse',),
             'fields': (
-                tuple(['{}_col'.format(size) for size in DEVICE_SIZES]),
                 tuple(['{}_auto'.format(size) for size in DEVICE_SIZES]),
+                tuple(['{}_col'.format(size) for size in DEVICE_SIZES]),
                 tuple(['{}_order'.format(size) for size in DEVICE_SIZES]),
                 tuple(['{}_ml'.format(size) for size in DEVICE_SIZES]),
                 tuple(['{}_mr'.format(size) for size in DEVICE_SIZES]),

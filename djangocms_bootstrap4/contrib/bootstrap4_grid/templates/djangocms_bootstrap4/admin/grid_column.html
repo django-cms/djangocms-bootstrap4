@@ -1,0 +1,24 @@
+{% extends "djangocms_bootstrap4/admin/base.html" %}
+{% load i18n staticfiles %}
+
+{% block field_sets %}
+    <div class="djangocms-bootstrap4 djangocms-bootstrap4-column"
+        data-static="{% static "" %}"
+        data-sizes='[
+            "{% trans 'Extra small' %}",
+            "{% trans 'Small' %}",
+            "{% trans 'Medium' %}",
+            "{% trans 'Large' %}",
+            "{% trans 'Extra large' %}"
+        ]'
+        data-rows='[
+            "{% trans 'Column size' %}",
+            "{% trans 'Auto size' %}",
+            "{% trans 'Order' %}",
+            "{% trans 'Margin left' %}",
+            "{% trans 'Margin right' %}"
+        ]'
+    >
+        {{ block.super }}
+    </div>
+{% endblock %}

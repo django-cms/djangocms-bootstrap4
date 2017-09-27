@@ -5,24 +5,42 @@
  */
 
 // import 'bootstrap/js/dist/alert'
-import { selectToButtons } from 'components/selectToButtons';
+import SelectToButtons from 'components/select-to-buttons';
+import GridLayout from 'components/grid-layout'
 
 
 $(() => {
     if ($('.djangocms-bootstrap4-row').length) {
-        let static_url = $('.djangocms-bootstrap4-row').data('static');
+        let static_url = $('.djangocms-bootstrap4-row').data().static;
 
         // Bootstrap 4 Grid Row - Vertical Alignment
-        new selectToButtons({
+        new SelectToButtons({
+            static: static_url,
             select: '#id_vertical_alignment',
             icons: ['align-reset', 'flex-align-start', 'flex-align-center', 'flex-align-end'],
-            static: static_url,
         });
         // Bootstrap 4 Grid Row - Horizontal Alignment
-        new selectToButtons({
+        new SelectToButtons({
+            static: static_url,
             select: '#id_horizontal_alignment',
             icons: ['align-reset', 'flex-content-start', 'flex-content-center', 'flex-content-end',
                 'flex-content-around', 'flex-content-between'],
+        });
+    }
+    let column = $('.djangocms-bootstrap4-column');
+    if (column.length) {
+        let static_url = $('.djangocms-bootstrap4-column').data().static;
+
+        // Bootstrap 4 Grid Column - Alignment
+        new SelectToButtons({
+            select: '#id_column_alignment',
+            icons: ['align-reset', 'flex-self-start', 'flex-self-center', 'flex-self-end'],
+            static: static_url,
+        });
+        // Bootstrap 4 Grid Column - Reponsive Settings
+        new GridLayout({
+            sizes: column.data().sizes,
+            rows: column.data().rows,
             static: static_url,
         });
     }
