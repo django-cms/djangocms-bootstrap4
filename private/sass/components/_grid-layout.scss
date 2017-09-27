@@ -12,8 +12,7 @@
         .field-box {
             position: relative;
             text-align: center;
-            width: 10% !important;
-            min-width: 120px;
+            width: 120px !important;
             padding: 15px 10px;
             margin-right: 0 !important; // djangocms-admin-style
             // border-right: 1px solid #eee;
@@ -32,6 +31,11 @@
                 left: 20px;
                 bottom: 18px;
                 text-transform: lowercase;
+            }
+
+            .disabled {
+                color: #ccc;
+                background: #eee;
             }
 
             &:last-child {
@@ -57,13 +61,18 @@
             margin-top: auto;
             color: #999;
 
-            span {
+            a {
                 width: 100%;
+            }
+
+            .icon {
+                position: relative;
+                top: 3px;
             }
         }
 
-        &.field-xs_col .field-box-label span,
-        &.field-xs_order .field-box-label span {
+        &.field-xs_col .field-box-label a,
+        &.field-xs_order .field-box-label a {
             position: relative;
             top: -8px;
         }
@@ -111,5 +120,12 @@
         .icon-size-sm {
             transform: rotate(90deg);
         }
+    }
+
+    .icon-title {
+        display: block;
+        font-size: 12px;
+        color: #999;
+        padding: 5px 0 0;
     }
 }

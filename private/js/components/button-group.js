@@ -1,8 +1,8 @@
 /**
- * @class selectToButtons
+ * @class ButtonGroup
  * @public
  */
-export default class SelectToButtons {
+export default class ButtonGroup {
     /**
      * @method constructor
      * @param {Object} options
