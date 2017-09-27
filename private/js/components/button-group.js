@@ -46,7 +46,7 @@ export default class ButtonGroup {
         let options = this.select.find('option');
         let index = options.index(options.filter(':selected'));
 
-        buttons.on('click', (event) => {
+        buttons.on('click', function (event) {
             event.preventDefault();
             // set the value on the select
             select.find('option')
@@ -59,7 +59,7 @@ export default class ButtonGroup {
             // set active state of the button
             buttons.removeClass('btn-primary');
             $(this).addClass('btn-primary');
-        }).bind(this);
+        });
 
         // set initial active item
         buttons.eq(index).trigger('click');

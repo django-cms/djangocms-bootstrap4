@@ -89,7 +89,7 @@ export default class GridLayout {
         `;
         let button = $(template());
 
-        button.on('click', (event) => {
+        button.on('click', function (event) {
             event.preventDefault();
             wrapper.find('input').val('');
             wrapper.find('input[type="checkbox"]').prop('checked', false);
