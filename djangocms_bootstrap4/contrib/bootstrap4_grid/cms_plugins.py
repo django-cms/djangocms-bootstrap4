@@ -144,7 +144,7 @@ class Bootstrap4GridColumnPlugin(CMSPluginBase):
             )
         }),
         (_('Responsive settings'), {
-            # 'classes': ('collapse',),
+            'classes': ('collapse',),
             'fields': (
                 tuple(['{}_col'.format(size) for size in DEVICE_SIZES]),
                 tuple(['{}_order'.format(size) for size in DEVICE_SIZES]),

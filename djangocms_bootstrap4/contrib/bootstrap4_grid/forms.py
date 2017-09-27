@@ -24,9 +24,10 @@ class Bootstrap4GridRowForm(models.ModelForm):
 class Bootstrap4GridColumnBaseForm(models.ModelForm):
     class Meta:
         model = Bootstrap4GridColumn
-        exclude = ('page', 'position', 'placeholder', 'language', 'plugin_type')
+        exclude = ('',)
 
 
+# convert regular text type fields to number
 extra_fields_column = {}
 for size in DEVICE_SIZES:
     extra_fields_column['{}_col'.format(size)] = IntegerField(
