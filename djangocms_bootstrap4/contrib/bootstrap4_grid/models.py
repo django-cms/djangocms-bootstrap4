@@ -230,28 +230,20 @@ for size in DEVICE_SIZES:
     # Grid size
     Bootstrap4GridColumn.add_to_class(
         '{}_col'.format(size),
-        IntegerRangeFieldPartial(
-            verbose_name='col-{}'.format(size),
-        ),
+        IntegerRangeFieldPartial(),
     )
     # Grid ordering
     Bootstrap4GridColumn.add_to_class(
         '{}_order'.format(size),
-        IntegerRangeFieldPartial(
-            verbose_name='order-{}'.format(size),
-        ),
+        IntegerRangeFieldPartial(),
     )
     # Grid margin left (ml)
     Bootstrap4GridColumn.add_to_class(
         '{}_ml'.format(size),
-        BooleanFieldPartial(
-            verbose_name='ml-{}-auto'.format(size),
-        ),
+        BooleanFieldPartial(),
     )
     # Grid margin right (ml)
     Bootstrap4GridColumn.add_to_class(
         '{}_mr'.format(size),
-        BooleanFieldPartial(
-            verbose_name='mr-{}-auto'.format(size),
-        ),
+        BooleanFieldPartial(),
     )

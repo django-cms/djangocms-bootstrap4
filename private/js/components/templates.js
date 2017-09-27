@@ -6,4 +6,4 @@ export const iconTemplate = (icon, staticPath = '/static/', title = '') => `
         <svg role="presentation">
             <use xlink:href="${staticPath}djangocms_bootstrap4/sprites/icons.svg#${icon}"></use>
         </svg>
-    </span>`
+    </span>`;

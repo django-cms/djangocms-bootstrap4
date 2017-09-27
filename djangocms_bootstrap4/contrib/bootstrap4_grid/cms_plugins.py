@@ -14,7 +14,7 @@ from .models import (
     Bootstrap4GridRow,
     Bootstrap4GridColumn,
 )
-from .forms import Bootstrap4GridRowForm
+from .forms import Bootstrap4GridRowForm, Bootstrap4GridColumnForm
 
 
 class Bootstrap4GridContainerPlugin(CMSPluginBase):
@@ -127,6 +127,7 @@ class Bootstrap4GridColumnPlugin(CMSPluginBase):
     model = Bootstrap4GridColumn
     name = _('Column')
     module = _('Bootstrap 4')
+    form = Bootstrap4GridColumnForm
     change_form_template = 'djangocms_bootstrap4/admin/grid_column.html'
     render_template = 'djangocms_bootstrap4/grid_column.html'
     allow_children = True
