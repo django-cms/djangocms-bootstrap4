@@ -7,6 +7,7 @@ HELPER_SETTINGS = {
         'filer',
         'mptt',
         'djangocms_text_ckeditor',
+        'djangocms_bootstrap4.contrib.bootstrap4_grid',
     ],
     'ALLOWED_HOSTS': ['localhost'],
     'CMS_LANGUAGES': {
