@@ -93,7 +93,7 @@ class Bootstrap4GridRowPlugin(CMSPluginBase):
                 extra['{}_col'.format(size)] = data.get(
                     'create_{}_col'.format(size)
                 )
-            col = Bootstrap4GridColumnPlugin(
+            col = Bootstrap4GridColumn(
                 parent=obj,
                 placeholder=obj.placeholder,
                 language=obj.language,
