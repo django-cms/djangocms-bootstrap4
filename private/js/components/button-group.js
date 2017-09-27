@@ -1,3 +1,5 @@
+import { iconTemplate } from 'components/templates'
+
 /**
  * @class ButtonGroup
  * @public
@@ -23,12 +25,6 @@ export default class ButtonGroup {
                 <button type="button" class="btn" title="${text}">
                     ${icon}<span class="sr-only">${text}</span>
                 </button>`,
-            icon: (icon, staticPath = this.options.static) => `
-                <span class="icon icon-${icon}">
-                    <svg role="presentation">
-                        <use xlink:href="${staticPath}djangocms_bootstrap4/sprites/icons.svg#${icon}"></use>
-                    </svg>
-                </span>`,
         };
         this.select = $(this.options.select);
         this.selectOptions = this.select.find('option');
@@ -78,7 +74,7 @@ export default class ButtonGroup {
     getTemplate() {
         let cls = '';
 
-        this.select.addClass('sr-only');
+        this.select.addClass('hidden');
 
         if (this.options.icons &&
             this.options.icons.length !== this.selectOptions.length) {
@@ -93,7 +89,11 @@ export default class ButtonGroup {
 
             // prepare icon
             if (this.options.icons) {
-                icon = this.templates.icon(this.options.icons[index]);
+                icon = iconTemplate(
+                    this.options.icons[index],
+                    this.options.static,
+                    $(selectOption).text(),
+                );
             } else {
                 icon = text;
             }

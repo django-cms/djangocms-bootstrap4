@@ -1,6 +1,21 @@
 // #############################################################################
 // GRID
 
+.djangocms-bootstrap4-row {
+    .form-row.field-create .icon {
+        position: absolute;
+        font-size: 30px;
+        margin-top: 28px;
+        margin-left: 4px;
+    }
+
+    .form-row.field-create input {
+        width: 130px !important;
+        padding-right: 5px !important;
+        text-align: right;
+    }
+}
+
 .djangocms-bootstrap4-column {
     .form-row.field-xs_col,
     .form-row.field-xs_order,
@@ -105,8 +120,8 @@
 
     .grid-reset {
         position: absolute;
-        left: 5px;
-        top: 10px;
+        right: 5px;
+        top: 0;
     }
 
     .icon-thead {

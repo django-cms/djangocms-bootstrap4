@@ -16,7 +16,6 @@ export default class GridLayout {
 
         this.setHeader();
         this.setColumn();
-        this.setInputType();
         this.setReset();
     }
 
@@ -77,20 +76,6 @@ export default class GridLayout {
         container.toArray().forEach(function (item, index) {
             $(item).prepend(template(this.options.rows[index], links[index]));
         }, this);
-    }
-
-    /**
-     * @method setInputType
-     */
-    setInputType() {
-        let container = $('.form-row.field-xs_col, .form-row.field-xs_order');
-
-        container.find('input').prop({
-            'type': 'number',
-            // TODO this should come from the backend
-            'max': 12,
-            'min': 1,
-        });
     }
 
     /**

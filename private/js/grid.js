@@ -7,9 +7,11 @@
 // import 'bootstrap/js/dist/alert'
 import ButtonGroup from 'components/button-group';
 import GridLayout from 'components/grid-layout'
+import { iconTemplate } from 'components/templates'
 
 
 $(() => {
+    // Row plugin
     if ($('.djangocms-bootstrap4-row').length) {
         let static_url = $('.djangocms-bootstrap4-row').data().static;
 
@@ -26,7 +28,13 @@ $(() => {
             icons: ['align-reset', 'flex-content-start', 'flex-content-center', 'flex-content-end',
                 'flex-content-around', 'flex-content-between'],
         });
+
+        $('.form-row.field-create > div').before(
+            iconTemplate('columns', static_url)
+        );
     }
+
+    // Column plugin
     let column = $('.djangocms-bootstrap4-column');
     if (column.length) {
         let static_url = $('.djangocms-bootstrap4-column').data().static;
