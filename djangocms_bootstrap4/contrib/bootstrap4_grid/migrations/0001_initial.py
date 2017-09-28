@@ -4,7 +4,19 @@ from __future__ import unicode_literals
 
 from django.db import migrations, models
 import django.db.models.deletion
+
 import djangocms_bootstrap4.utils
+from djangocms_bootstrap4.constants import (
+    TAG_CHOICES,
+)
+
+from ..constants import (
+    GRID_CONTAINERS,
+    GRID_ROW_VERTICAL_ALIGNMENT,
+    GRID_ROW_HORIZONTAL_ALIGNMENT,
+    GRID_COLUMN_CHOICES,
+    GRID_COLUMN_ALIGNMENT,
+)
 
 
 class Migration(migrations.Migration):
@@ -20,10 +32,10 @@ class Migration(migrations.Migration):
             name='Bootstrap4GridColumn',
             fields=[
                 ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='bootstrap4_grid_bootstrap4gridcolumn', serialize=False, to='cms.CMSPlugin')),
-                ('column_type', models.CharField(blank=True, choices=[(b'col', 'Column'), (b'w-100', 'Break'), (b'', 'Empty')], default=b'col', max_length=255, verbose_name='Column type')),
+                ('column_type', models.CharField(blank=True, choices=GRID_COLUMN_CHOICES, default=GRID_COLUMN_CHOICES[0][0], max_length=255, verbose_name='Column type')),
                 ('column_size', djangocms_bootstrap4.utils.IntegerRangeField(blank=True, help_text='Nummeric value from 1 - 12. Spreads the columns evenly when empty.', null=True, verbose_name='Columne size')),
-                ('column_alignment', models.CharField(blank=True, choices=[(b'align-self-start', 'Align self start'), (b'align-self-center', 'Align self center'), (b'align-self-end', 'Align self end')], max_length=255, verbose_name='Alignment')),
-                ('tag_type', djangocms_bootstrap4.utils.TagTypeField(choices=[(b'div', b'div'), (b'section', b'section'), (b'article', b'article'), (b'header', b'header'), (b'footer', b'footer'), (b'aside', b'aside')], default=b'div', help_text='Select the HTML tag to be used.', max_length=255, verbose_name='Tag type')),
+                ('column_alignment', models.CharField(blank=True, choices=GRID_COLUMN_ALIGNMENT, max_length=255, verbose_name='Alignment')),
+                ('tag_type', djangocms_bootstrap4.utils.TagTypeField(choices=TAG_CHOICES, default=TAG_CHOICES[0][0], help_text='Select the HTML tag to be used.', max_length=255, verbose_name='Tag type')),
                 ('attributes', djangocms_bootstrap4.utils.AttributesField(blank=True, default=dict, verbose_name='Attributes')),
                 ('xs_col', djangocms_bootstrap4.utils.IntegerRangeField(blank=True, null=True)),
                 ('xs_order', djangocms_bootstrap4.utils.IntegerRangeField(blank=True, null=True)),
@@ -55,8 +67,8 @@ class Migration(migrations.Migration):
             name='Bootstrap4GridContainer',
             fields=[
                 ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='bootstrap4_grid_bootstrap4gridcontainer', serialize=False, to='cms.CMSPlugin')),
-                ('container_type', models.CharField(choices=[(b'container', 'Container'), (b'container-fluid', 'Fluid container')], default=b'container', help_text='Defines if the grid should use fixed width (<code>.container</code>) or fluid width (<code>.container-fluid</code>).', max_length=255, verbose_name='Container type')),
-                ('tag_type', djangocms_bootstrap4.utils.TagTypeField(choices=[(b'div', b'div'), (b'section', b'section'), (b'article', b'article'), (b'header', b'header'), (b'footer', b'footer'), (b'aside', b'aside')], default=b'div', help_text='Select the HTML tag to be used.', max_length=255, verbose_name='Tag type')),
+                ('container_type', models.CharField(choices=GRID_CONTAINERS, default=GRID_CONTAINERS[0][0], help_text='Defines if the grid should use fixed width (<code>.container</code>) or fluid width (<code>.container-fluid</code>).', max_length=255, verbose_name='Container type')),
+                ('tag_type', djangocms_bootstrap4.utils.TagTypeField(choices=TAG_CHOICES, default=TAG_CHOICES[0][0], help_text='Select the HTML tag to be used.', max_length=255, verbose_name='Tag type')),
                 ('attributes', djangocms_bootstrap4.utils.AttributesField(blank=True, default=dict, verbose_name='Attributes')),
             ],
             options={
@@ -68,10 +80,10 @@ class Migration(migrations.Migration):
             name='Bootstrap4GridRow',
             fields=[
                 ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='bootstrap4_grid_bootstrap4gridrow', serialize=False, to='cms.CMSPlugin')),
-                ('vertical_alignment', models.CharField(blank=True, choices=[(b'align-items-start', 'Align items start'), (b'align-items-center', 'Align items center'), (b'align-items-end', 'Align items end')], help_text='Read more in the <a href="https://getbootstrap.com/docs/4.0/layout/grid/#vertical-alignment" target="_blank">documentation</a>.', max_length=255, verbose_name='Vertical alignment')),
-                ('horizontal_alignment', models.CharField(blank=True, choices=[(b'justify-content-start', 'Justify content start'), (b'justify-content-center', 'Justify content center'), (b'justify-content-end', 'Justify content end'), (b'justify-content-around', 'Justify content around'), (b'justify-content-between', 'Justify content between')], help_text='Read more in the <a href="https://getbootstrap.com/docs/4.0/layout/grid/#horizontal-alignment" target="_blank">documentation</a>.', max_length=255, verbose_name='Horizontal alignment')),
+                ('vertical_alignment', models.CharField(blank=True, choices=GRID_ROW_VERTICAL_ALIGNMENT, help_text='Read more in the <a href="https://getbootstrap.com/docs/4.0/layout/grid/#vertical-alignment" target="_blank">documentation</a>.', max_length=255, verbose_name='Vertical alignment')),
+                ('horizontal_alignment', models.CharField(blank=True, choices=GRID_ROW_HORIZONTAL_ALIGNMENT, help_text='Read more in the <a href="https://getbootstrap.com/docs/4.0/layout/grid/#horizontal-alignment" target="_blank">documentation</a>.', max_length=255, verbose_name='Horizontal alignment')),
                 ('gutters', models.BooleanField(default=False, help_text='Removes the marginal gutters from the grid.', verbose_name='Remove gutters')),
-                ('tag_type', djangocms_bootstrap4.utils.TagTypeField(choices=[(b'div', b'div'), (b'section', b'section'), (b'article', b'article'), (b'header', b'header'), (b'footer', b'footer'), (b'aside', b'aside')], default=b'div', help_text='Select the HTML tag to be used.', max_length=255, verbose_name='Tag type')),
+                ('tag_type', djangocms_bootstrap4.utils.TagTypeField(choices=TAG_CHOICES, default=TAG_CHOICES[0][0], help_text='Select the HTML tag to be used.', max_length=255, verbose_name='Tag type')),
                 ('attributes', djangocms_bootstrap4.utils.AttributesField(blank=True, default=dict, verbose_name='Attributes')),
             ],
             options={
