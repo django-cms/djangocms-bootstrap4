@@ -1,6 +1,6 @@
 {% load cms_tags %}
 
-<{{ instance.tag_type }} {{ instance.attributes_str }} style="padding: 20px; border: 4px dashed #333;">
+<{{ instance.tag_type }} {{ instance.attributes_str }}>
     {% for plugin in instance.child_plugin_instances %}
         {% with forloop as parentloop %}{% render_plugin plugin %}{% endwith %}
     {% endfor %}

@@ -11,7 +11,7 @@ from django.utils.safestring import mark_safe
 from cms.models import CMSPlugin
 
 from djangocms_bootstrap4.constants import DEVICE_SIZES
-from djangocms_bootstrap4.utils import (
+from djangocms_bootstrap4.fields import (
     TagTypeField,
     AttributesField,
     IntegerRangeField,

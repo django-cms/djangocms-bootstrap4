@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
 from django.forms import models, IntegerField, BooleanField
 from django.utils.translation import ugettext_lazy as _
 
-from djangocms_bootstrap4.utils import IntegerRangeField
 from djangocms_bootstrap4.constants import DEVICE_SIZES
+from djangocms_bootstrap4.fields import IntegerRangeField
 
 from .models import GRID_SIZE, Bootstrap4GridRow, Bootstrap4GridColumn
 
@@ -53,7 +55,7 @@ for size in DEVICE_SIZES:
     )
 
 Bootstrap4GridColumnForm = type(
-    'Bootstrap4GridColumnBaseForm',
+    str('Bootstrap4GridColumnBaseForm'),
     (Bootstrap4GridColumnBaseForm,),
     extra_fields_column,
 )
