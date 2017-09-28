@@ -2,8 +2,8 @@
 from django.forms import models, IntegerField, BooleanField
 from django.utils.translation import ugettext_lazy as _
 
-from ...utils import IntegerRangeField
-from ...constants import DEVICE_SIZES
+from djangocms_bootstrap4.utils import IntegerRangeField
+from djangocms_bootstrap4.constants import DEVICE_SIZES
 
 from .models import GRID_SIZE, Bootstrap4GridRow, Bootstrap4GridColumn
 
@@ -18,13 +18,14 @@ class Bootstrap4GridRowForm(models.ModelForm):
     )
 
     class Meta:
-        pass
+        model = Bootstrap4GridRow
+        fields = '__all__'
 
 
 class Bootstrap4GridColumnBaseForm(models.ModelForm):
     class Meta:
         model = Bootstrap4GridColumn
-        exclude = ('',)
+        fields = '__all__'
 
 
 # convert regular text type fields to number
@@ -52,7 +53,7 @@ for size in DEVICE_SIZES:
     )
 
 Bootstrap4GridColumnForm = type(
-    str('Bootstrap4GridColumnBaseForm'),
+    'Bootstrap4GridColumnBaseForm',
     (Bootstrap4GridColumnBaseForm,),
     extra_fields_column,
 )

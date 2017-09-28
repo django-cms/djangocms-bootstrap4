@@ -1,68 +1,29 @@
 # -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
 from functools import partial
 
 from django.db import models
-from django.conf import settings
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext, ungettext, ugettext_lazy as _
 from django.utils.safestring import mark_safe
 
 from cms.models import CMSPlugin
 
-from ...constants import DEVICE_SIZES
-from ...utils import TagTypeField, AttributesField, IntegerRangeField
-
-
-# The default grid size for Bootstrap 4 is 12. You can change this setting
-# to whatever layout you require. We suggest that the value is at
-# least devisable by 2, 3 and 4.
-GRID_SIZE = getattr(
-    settings,
-    'DJANGOCMS_BOOTSTRAP4_GRID_SIZE',
-    12,
+from djangocms_bootstrap4.constants import DEVICE_SIZES
+from djangocms_bootstrap4.utils import (
+    TagTypeField,
+    AttributesField,
+    IntegerRangeField,
 )
 
-# Bootstrap 4 provides 2 container types, .container and .container-fluid
-# https://getbootstrap.com/docs/4.0/layout/grid/#no-gutters
-GRID_CONTAINERS = getattr(
-    settings,
-    'DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS',
-    (
-        ('container', _('Container')),
-        ('container-fluid', _('Fluid container')),
-    ),
-)
-
-# Options for flexbox on the alignment of the grid
-# https://flexbox.webflow.com/
-GRID_ROW_VERTICAL_ALIGNMENT = (
-    ('align-items-start', _('Align items start')),
-    ('align-items-center', _('Align items center')),
-    ('align-items-end', _('Align items end')),
-)
-
-GRID_ROW_HORIZONTAL_ALIGNMENT = (
-    ('justify-content-start', _('Justify content start')),
-    ('justify-content-center', _('Justify content center')),
-    ('justify-content-end', _('Justify content end')),
-    ('justify-content-around', _('Justify content around')),
-    ('justify-content-between', _('Justify content between')),
-)
-
-GRID_COLUMN_ALIGNMENT = (
-    ('align-self-start', _('Align self start')),
-    ('align-self-center', _('Align self center')),
-    ('align-self-end', _('Align self end')),
-)
-
-GRID_COLUMN_CHOICES = getattr(
-    settings,
-    'DJANGOCMS_BOOTSTRAP4_GRID_COLUMN_CHOICES',
-    (
-        ('col', _('Column')),
-        ('w-100', _('Break')),
-        ('', _('Empty'))
-    ),
+from .constants import (
+    GRID_SIZE,
+    GRID_CONTAINERS,
+    GRID_ROW_VERTICAL_ALIGNMENT,
+    GRID_ROW_HORIZONTAL_ALIGNMENT,
+    GRID_COLUMN_ALIGNMENT,
+    GRID_COLUMN_CHOICES,
 )
 
 

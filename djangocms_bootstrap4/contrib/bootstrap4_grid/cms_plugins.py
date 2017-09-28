@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
-from cms.models import CMSPlugin
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 
-from ...helpers import concat_classes
-from ...constants import DEVICE_SIZES
+from djangocms_bootstrap4.helpers import concat_classes
+from djangocms_bootstrap4.constants import DEVICE_SIZES
 
 from .models import (
     Bootstrap4GridContainer,
@@ -46,7 +47,8 @@ class Bootstrap4GridContainerPlugin(CMSPluginBase):
     def render(self, context, instance, placeholder):
         classes = concat_classes([
             instance.container_type,
-        ], instance.attributes)
+            instance.attributes.get('class'),
+        ])
         instance.attributes['class'] = classes
 
         return super(Bootstrap4GridContainerPlugin, self).render(
@@ -97,11 +99,11 @@ class Bootstrap4GridRowPlugin(CMSPluginBase):
                 parent=obj,
                 placeholder=obj.placeholder,
                 language=obj.language,
-                position=CMSPlugin.objects.filter(parent=obj).count(),
+                position=obj.numchild,
                 plugin_type=Bootstrap4GridColumnPlugin.__name__,
                 **extra
             )
-            col.save()
+            obj.add_child(instance=col)
         return response
 
     def render(self, context, instance, placeholder):
@@ -111,7 +113,8 @@ class Bootstrap4GridRowPlugin(CMSPluginBase):
             instance.vertical_alignment,
             instance.horizontal_alignment,
             gutter,
-        ], instance.attributes)
+            instance.attributes.get('class'),
+        ])
         instance.attributes['class'] = classes
 
         return super(Bootstrap4GridRowPlugin, self).render(
@@ -146,10 +149,10 @@ class Bootstrap4GridColumnPlugin(CMSPluginBase):
         (_('Responsive settings'), {
             'classes': ('collapse',),
             'fields': (
-                tuple(['{}_col'.format(size) for size in DEVICE_SIZES]),
-                tuple(['{}_order'.format(size) for size in DEVICE_SIZES]),
-                tuple(['{}_ml'.format(size) for size in DEVICE_SIZES]),
-                tuple(['{}_mr'.format(size) for size in DEVICE_SIZES]),
+                ['{}_col'.format(size) for size in DEVICE_SIZES],
+                ['{}_order'.format(size) for size in DEVICE_SIZES],
+                ['{}_ml'.format(size) for size in DEVICE_SIZES],
+                ['{}_mr'.format(size) for size in DEVICE_SIZES],
             )
         }),
         (_('Advanced settings'), {
@@ -174,7 +177,8 @@ class Bootstrap4GridColumnPlugin(CMSPluginBase):
             instance.column_type,
             column,
             instance.column_alignment,
-        ], instance.attributes)
+            instance.attributes.get('class'),
+        ])
         instance.attributes['class'] = attr_classes
 
         return super(Bootstrap4GridColumnPlugin, self).render(

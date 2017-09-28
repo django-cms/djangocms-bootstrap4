@@ -1,5 +1,5 @@
 {% extends "djangocms_bootstrap4/admin/base.html" %}
-{% load i18n staticfiles %}
+{% load i18n static %}
 
 {% block extrahead %}
     {{ block.super }}
@@ -8,7 +8,7 @@
 
 {% block field_sets %}
     <div class="djangocms-bootstrap4 djangocms-bootstrap4-column"
-        data-static="{% static "" %}"
+        data-static="{% get_static_prefix %}"
         data-sizes='[
             "{% trans 'Extra small' %}",
             "{% trans 'Small' %}",

@@ -2,12 +2,9 @@
 
 
 # merges a list of classes with the attributes class key
-def concat_classes(classList, attributes):
-    classes = ''
-    for item in classList:
+def concat_classes(classes):
+    store = ''
+    for item in classes:
         if item:
-            classes += '{} '.format(item)
-    # check if "class" is define as attribute and merge
-    if attributes.get('class'):
-        classes += ' {}'.format(attributes.get('class', ''))
-    return classes
+            store += '{} '.format(item)
+    return store
