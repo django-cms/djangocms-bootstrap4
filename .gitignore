@@ -12,3 +12,5 @@ build/
 .sass-cache
 npm-debug.log
 *.css.map
+
+/djangocms_bootstrap4/static/
