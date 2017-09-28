@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 from django.db import migrations, models
 import django.db.models.deletion
 
-import djangocms_bootstrap4.utils
+import djangocms_bootstrap4.fields
 from djangocms_bootstrap4.constants import (
     TAG_CHOICES,
 )
@@ -33,28 +33,28 @@ class Migration(migrations.Migration):
             fields=[
                 ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='bootstrap4_grid_bootstrap4gridcolumn', serialize=False, to='cms.CMSPlugin')),
                 ('column_type', models.CharField(blank=True, choices=GRID_COLUMN_CHOICES, default=GRID_COLUMN_CHOICES[0][0], max_length=255, verbose_name='Column type')),
-                ('column_size', djangocms_bootstrap4.utils.IntegerRangeField(blank=True, help_text='Nummeric value from 1 - 12. Spreads the columns evenly when empty.', null=True, verbose_name='Columne size')),
+                ('column_size', djangocms_bootstrap4.fields.IntegerRangeField(blank=True, help_text='Nummeric value from 1 - 12. Spreads the columns evenly when empty.', null=True, verbose_name='Columne size')),
                 ('column_alignment', models.CharField(blank=True, choices=GRID_COLUMN_ALIGNMENT, max_length=255, verbose_name='Alignment')),
-                ('tag_type', djangocms_bootstrap4.utils.TagTypeField(choices=TAG_CHOICES, default=TAG_CHOICES[0][0], help_text='Select the HTML tag to be used.', max_length=255, verbose_name='Tag type')),
-                ('attributes', djangocms_bootstrap4.utils.AttributesField(blank=True, default=dict, verbose_name='Attributes')),
-                ('xs_col', djangocms_bootstrap4.utils.IntegerRangeField(blank=True, null=True)),
-                ('xs_order', djangocms_bootstrap4.utils.IntegerRangeField(blank=True, null=True)),
+                ('tag_type', djangocms_bootstrap4.fields.TagTypeField(choices=TAG_CHOICES, default=TAG_CHOICES[0][0], help_text='Select the HTML tag to be used.', max_length=255, verbose_name='Tag type')),
+                ('attributes', djangocms_bootstrap4.fields.AttributesField(blank=True, default=dict, verbose_name='Attributes')),
+                ('xs_col', djangocms_bootstrap4.fields.IntegerRangeField(blank=True, null=True)),
+                ('xs_order', djangocms_bootstrap4.fields.IntegerRangeField(blank=True, null=True)),
                 ('xs_ml', models.BooleanField(default=False)),
                 ('xs_mr', models.BooleanField(default=False)),
-                ('sm_col', djangocms_bootstrap4.utils.IntegerRangeField(blank=True, null=True)),
-                ('sm_order', djangocms_bootstrap4.utils.IntegerRangeField(blank=True, null=True)),
+                ('sm_col', djangocms_bootstrap4.fields.IntegerRangeField(blank=True, null=True)),
+                ('sm_order', djangocms_bootstrap4.fields.IntegerRangeField(blank=True, null=True)),
                 ('sm_ml', models.BooleanField(default=False)),
                 ('sm_mr', models.BooleanField(default=False)),
-                ('md_col', djangocms_bootstrap4.utils.IntegerRangeField(blank=True, null=True)),
-                ('md_order', djangocms_bootstrap4.utils.IntegerRangeField(blank=True, null=True)),
+                ('md_col', djangocms_bootstrap4.fields.IntegerRangeField(blank=True, null=True)),
+                ('md_order', djangocms_bootstrap4.fields.IntegerRangeField(blank=True, null=True)),
                 ('md_ml', models.BooleanField(default=False)),
                 ('md_mr', models.BooleanField(default=False)),
-                ('lg_col', djangocms_bootstrap4.utils.IntegerRangeField(blank=True, null=True)),
-                ('lg_order', djangocms_bootstrap4.utils.IntegerRangeField(blank=True, null=True)),
+                ('lg_col', djangocms_bootstrap4.fields.IntegerRangeField(blank=True, null=True)),
+                ('lg_order', djangocms_bootstrap4.fields.IntegerRangeField(blank=True, null=True)),
                 ('lg_ml', models.BooleanField(default=False)),
                 ('lg_mr', models.BooleanField(default=False)),
-                ('xl_col', djangocms_bootstrap4.utils.IntegerRangeField(blank=True, null=True)),
-                ('xl_order', djangocms_bootstrap4.utils.IntegerRangeField(blank=True, null=True)),
+                ('xl_col', djangocms_bootstrap4.fields.IntegerRangeField(blank=True, null=True)),
+                ('xl_order', djangocms_bootstrap4.fields.IntegerRangeField(blank=True, null=True)),
                 ('xl_ml', models.BooleanField(default=False)),
                 ('xl_mr', models.BooleanField(default=False)),
             ],
@@ -68,8 +68,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='bootstrap4_grid_bootstrap4gridcontainer', serialize=False, to='cms.CMSPlugin')),
                 ('container_type', models.CharField(choices=GRID_CONTAINERS, default=GRID_CONTAINERS[0][0], help_text='Defines if the grid should use fixed width (<code>.container</code>) or fluid width (<code>.container-fluid</code>).', max_length=255, verbose_name='Container type')),
-                ('tag_type', djangocms_bootstrap4.utils.TagTypeField(choices=TAG_CHOICES, default=TAG_CHOICES[0][0], help_text='Select the HTML tag to be used.', max_length=255, verbose_name='Tag type')),
-                ('attributes', djangocms_bootstrap4.utils.AttributesField(blank=True, default=dict, verbose_name='Attributes')),
+                ('tag_type', djangocms_bootstrap4.fields.TagTypeField(choices=TAG_CHOICES, default=TAG_CHOICES[0][0], help_text='Select the HTML tag to be used.', max_length=255, verbose_name='Tag type')),
+                ('attributes', djangocms_bootstrap4.fields.AttributesField(blank=True, default=dict, verbose_name='Attributes')),
             ],
             options={
                 'abstract': False,
@@ -83,8 +83,8 @@ class Migration(migrations.Migration):
                 ('vertical_alignment', models.CharField(blank=True, choices=GRID_ROW_VERTICAL_ALIGNMENT, help_text='Read more in the <a href="https://getbootstrap.com/docs/4.0/layout/grid/#vertical-alignment" target="_blank">documentation</a>.', max_length=255, verbose_name='Vertical alignment')),
                 ('horizontal_alignment', models.CharField(blank=True, choices=GRID_ROW_HORIZONTAL_ALIGNMENT, help_text='Read more in the <a href="https://getbootstrap.com/docs/4.0/layout/grid/#horizontal-alignment" target="_blank">documentation</a>.', max_length=255, verbose_name='Horizontal alignment')),
                 ('gutters', models.BooleanField(default=False, help_text='Removes the marginal gutters from the grid.', verbose_name='Remove gutters')),
-                ('tag_type', djangocms_bootstrap4.utils.TagTypeField(choices=TAG_CHOICES, default=TAG_CHOICES[0][0], help_text='Select the HTML tag to be used.', max_length=255, verbose_name='Tag type')),
-                ('attributes', djangocms_bootstrap4.utils.AttributesField(blank=True, default=dict, verbose_name='Attributes')),
+                ('tag_type', djangocms_bootstrap4.fields.TagTypeField(choices=TAG_CHOICES, default=TAG_CHOICES[0][0], help_text='Select the HTML tag to be used.', max_length=255, verbose_name='Tag type')),
+                ('attributes', djangocms_bootstrap4.fields.AttributesField(blank=True, default=dict, verbose_name='Attributes')),
             ],
             options={
                 'abstract': False,
