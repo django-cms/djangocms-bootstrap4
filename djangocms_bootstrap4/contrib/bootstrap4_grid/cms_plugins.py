@@ -90,7 +90,7 @@ class Bootstrap4GridRowPlugin(CMSPluginBase):
     ]
 
     def save_model(self, request, obj, form, change):
-        response = super(Bootstrap4GridRowPlugin, self).save_model(request, obj, form, change)
+        super(Bootstrap4GridRowPlugin, self).save_model(request, obj, form, change)
         data = form.cleaned_data
         for x in range(int(data['create']) if data['create'] is not None else 0):
             extra = {}
@@ -107,7 +107,6 @@ class Bootstrap4GridRowPlugin(CMSPluginBase):
                 **extra
             )
             obj.add_child(instance=col)
-        return response
 
     def render(self, context, instance, placeholder):
         gutter = 'no-gutters' if instance.gutters else ''
