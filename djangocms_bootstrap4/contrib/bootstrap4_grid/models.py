@@ -4,6 +4,8 @@ from __future__ import unicode_literals
 from functools import partial
 
 from django.db import models
+from django.utils import six
+from django.utils.functional import lazy
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext, ungettext, ugettext_lazy as _
 from django.utils.safestring import mark_safe
@@ -26,6 +28,11 @@ from .constants import (
     GRID_COLUMN_CHOICES,
 )
 
+# use mark_safe_lazy to delay the translation when using mark_safe
+# otherwise they will not be added to /locale/
+# https://docs.djangoproject.com/en/1.11/topics/i18n/translation/#other-uses-of-lazy-in-delayed-translations
+mark_safe_lazy = lazy(mark_safe, six.text_type)
+
 
 @python_2_unicode_compatible
 class Bootstrap4GridContainer(CMSPlugin):
@@ -38,7 +45,7 @@ class Bootstrap4GridContainer(CMSPlugin):
         choices=GRID_CONTAINERS,
         default=GRID_CONTAINERS[0][0],
         max_length=255,
-        help_text=_(mark_safe(
+        help_text=mark_safe_lazy(_(
             'Defines if the grid should use fixed width (<code>.container</code>) '
             'or fluid width (<code>.container-fluid</code>).'
         )),
@@ -68,8 +75,8 @@ class Bootstrap4GridRow(CMSPlugin):
         choices=GRID_ROW_VERTICAL_ALIGNMENT,
         blank=True,
         max_length=255,
-        help_text=mark_safe(
-            _('Read more in the <a href="{link}" target="_blank">documentation</a>.')
+        help_text=mark_safe_lazy(_(
+            'Read more in the <a href="{link}" target="_blank">documentation</a>.')
                 .format(link='https://getbootstrap.com/docs/4.0/layout/grid/#vertical-alignment')
         ),
     )
@@ -78,8 +85,8 @@ class Bootstrap4GridRow(CMSPlugin):
         choices=GRID_ROW_HORIZONTAL_ALIGNMENT,
         blank=True,
         max_length=255,
-        help_text=mark_safe(
-            _('Read more in the <a href="{link}" target="_blank">documentation</a>.')
+        help_text=mark_safe_lazy(_(
+            'Read more in the <a href="{link}" target="_blank">documentation</a>.')
                 .format(link='https://getbootstrap.com/docs/4.0/layout/grid/#horizontal-alignment')
         ),
     )
