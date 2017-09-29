@@ -7,7 +7,8 @@ from django.utils.translation import ugettext_lazy as _
 from djangocms_bootstrap4.constants import DEVICE_SIZES
 from djangocms_bootstrap4.fields import IntegerRangeField
 
-from .models import GRID_SIZE, Bootstrap4GridRow, Bootstrap4GridColumn
+from .constants import GRID_SIZE
+from .models import Bootstrap4GridRow, Bootstrap4GridColumn
 
 
 class Bootstrap4GridRowForm(models.ModelForm):

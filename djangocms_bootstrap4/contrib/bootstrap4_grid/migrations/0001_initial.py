@@ -6,9 +6,7 @@ from django.db import migrations, models
 import django.db.models.deletion
 
 import djangocms_bootstrap4.fields
-from djangocms_bootstrap4.constants import (
-    TAG_CHOICES,
-)
+from djangocms_bootstrap4.constants import TAG_CHOICES
 
 from ..constants import (
     GRID_CONTAINERS,
