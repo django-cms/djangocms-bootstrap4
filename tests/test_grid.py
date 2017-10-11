@@ -2,8 +2,7 @@
 from django.test import TestCase
 
 from cms.api import add_plugin, create_page
-
-from djangocms_helper.base_test import BaseTestCase
+from cms.test_utils.testcases import CMSTestCase
 
 from djangocms_bootstrap4.contrib.bootstrap4_grid.models import (
     Bootstrap4GridContainer,
@@ -15,77 +14,69 @@ from djangocms_bootstrap4.contrib.bootstrap4_grid.constants import (
     GRID_ROW_VERTICAL_ALIGNMENT,
     GRID_SIZE,
 )
+from djangocms_bootstrap4.constants import TAG_CHOICES
 
 
-class GridInstanceTestCase(TestCase):
-
-    def setUp(self):
-        Bootstrap4GridContainer.objects.create(
-            container_type=GRID_CONTAINERS[0][0],
-        )
-        Bootstrap4GridRow.objects.create(pk=0)
-        Bootstrap4GridColumn.objects.create(pk=0)
-
-    def test_container_instance(self):
-        container = Bootstrap4GridContainer.objects.get(
-            container_type=GRID_CONTAINERS[0][0]
-        )
-        self.assertEqual(container.container_type, GRID_CONTAINERS[0][0])
-
-    def test_row_instance(self):
-        container = Bootstrap4GridRow.objects.get(
-            pk=0,
-        )
-        self.assertEqual(container.pk, 0)
-
-    def test_column_instance(self):
-        container = Bootstrap4GridColumn.objects.get(
-            pk=0,
-        )
-        self.assertEqual(container.pk, 0)
-
-
-class ContainerPluginTestCase(BaseTestCase):
+class ContainerPluginTestCase(CMSTestCase):
 
     def setUp(self):
+        self.language = 'en'
         self.page = create_page(
             title='content',
             template='page.html',
-            language='en',
+            language=self.language,
         )
+        self.placeholder = self.page.placeholders.get(slot='content')
+        self.superuser = self.get_superuser()
 
     def test_container_plugin(self):
-        plugin = add_plugin(
-            self.page.placeholders.get(slot='content'),
-            'Bootstrap4GridContainerPlugin',
-            'en',
-            container_type=GRID_CONTAINERS[0][0],
+        plugins = self.placeholder.get_plugins(self.language)
+        endpoint = self.get_add_plugin_uri(
+            placeholder=self.placeholder,
+            plugin_type='Bootstrap4GridContainerPlugin',
+            language=self.language,
         )
-        self.assertEqual(
-            plugin.container_type,
-            GRID_CONTAINERS[0][0],
-        )
+
+        with self.login_user_context(self.superuser):
+            data = {
+                'container_type': GRID_CONTAINERS[0][0],
+                'tag_type': TAG_CHOICES[0][0],
+            }
+            response = self.client.post(endpoint, data)
+
+            self.assertEqual(response.status_code, 200)
+            self.assertEqual(plugins.count(), 1)
 
     def test_row_plugin(self):
-        plugin = add_plugin(
-            self.page.placeholders.get(slot='content'),
-            'Bootstrap4GridRowPlugin',
-            'en',
-            vertical_alignment=GRID_ROW_VERTICAL_ALIGNMENT[0][0],
-        )
-        self.assertEqual(
-            plugin.vertical_alignment,
-            GRID_ROW_VERTICAL_ALIGNMENT[0][0],
+        plugins = self.placeholder.get_plugins(self.language)
+        endpoint = self.get_add_plugin_uri(
+            placeholder=self.placeholder,
+            plugin_type='Bootstrap4GridRowPlugin',
+            language=self.language,
         )
 
+        with self.login_user_context(self.superuser):
+            data = {
+                'tag_type': TAG_CHOICES[0][0],
+            }
+            response = self.client.post(endpoint, data)
+
+            self.assertEqual(response.status_code, 200)
+            self.assertEqual(plugins.count(), 1)
+
     def test_column_plugin(self):
-        plugin = add_plugin(
-            self.page.placeholders.get(slot='content'),
-            'Bootstrap4GridColumnPlugin',
-            'en',
-            column_size=GRID_SIZE,
+        plugins = self.placeholder.get_plugins(self.language)
+        endpoint = self.get_add_plugin_uri(
+            placeholder=self.placeholder,
+            plugin_type='Bootstrap4GridColumnPlugin',
+            language=self.language,
         )
-        self.assertEqual(
-            plugin.column_size,
-            GRID_SIZE,
-        )
+
+        with self.login_user_context(self.superuser):
+            data = {
+                'tag_type': TAG_CHOICES[0][0],
+            }
+            response = self.client.post(endpoint, data)
+
+            self.assertEqual(response.status_code, 200)
+            self.assertEqual(plugins.count(), 1)
