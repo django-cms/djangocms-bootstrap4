@@ -29,7 +29,7 @@ class ContainerPluginTestCase(CMSTestCase):
         self.placeholder = self.page.placeholders.get(slot='content')
         self.superuser = self.get_superuser()
 
-    def test_container_plugin(self):
+    def test_add_container_plugin(self):
         plugins = self.placeholder.get_plugins(self.language)
         endpoint = self.get_add_plugin_uri(
             placeholder=self.placeholder,
@@ -47,7 +47,7 @@ class ContainerPluginTestCase(CMSTestCase):
             self.assertEqual(response.status_code, 200)
             self.assertEqual(plugins.count(), 1)
 
-    def test_row_plugin(self):
+    def test_add_row_plugin(self):
         plugins = self.placeholder.get_plugins(self.language)
         endpoint = self.get_add_plugin_uri(
             placeholder=self.placeholder,
@@ -64,7 +64,7 @@ class ContainerPluginTestCase(CMSTestCase):
             self.assertEqual(response.status_code, 200)
             self.assertEqual(plugins.count(), 1)
 
-    def test_column_plugin(self):
+    def test_add_column_plugin(self):
         plugins = self.placeholder.get_plugins(self.language)
         endpoint = self.get_add_plugin_uri(
             placeholder=self.placeholder,
