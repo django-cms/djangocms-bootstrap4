@@ -23,7 +23,7 @@ COLOR_STYLES = (
 class Bootstrap4Link(AbstractLink, CMSPlugin):
     """
     Components > "Button" Plugin
-    https://getbootstrap.com/docs/4.0/components/buttons/i
+    https://getbootstrap.com/docs/4.0/components/buttons/
     """
     link_type = models.CharField(
         verbose_name=_('Type'),

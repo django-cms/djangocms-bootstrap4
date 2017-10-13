@@ -16,8 +16,8 @@ from .forms import Bootstrap4LinkForm
 
 class Bootstrap4LinkPlugin(LinkPlugin, CMSPluginBase):
     """
-    Layout > Grid: "Container" Plugin
-    https://getbootstrap.com/docs/4.0/layout/grid/
+    Components > "Button" Plugin
+    https://getbootstrap.com/docs/4.0/components/buttons/
     """
     model = Bootstrap4Link
     name = _('Link / Button')
