@@ -13,6 +13,7 @@ from djangocms_bootstrap4.constants import COLOR_STYLES
 from .constants import LINK_CHOICES, LINK_SIZES
 
 
+# 'link' type is added manually as it is only required for this plugin
 COLOR_STYLES = (
     ('link', _('Link')),
 ) + COLOR_STYLES
