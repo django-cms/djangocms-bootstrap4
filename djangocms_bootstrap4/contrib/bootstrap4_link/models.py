@@ -35,13 +35,12 @@ class Bootstrap4Link(AbstractLink, CMSPlugin):
     link_context = models.CharField(
         verbose_name=_('Context'),
         choices=COLOR_STYLES,
-        default=COLOR_STYLES[0][0],
+        blank=True,
         max_length=255,
     )
     link_size = models.CharField(
         verbose_name=_('Size'),
         choices=LINK_SIZES,
-        default=LINK_SIZES[0][0],
         blank=True,
         max_length=255,
     )
