@@ -18,6 +18,7 @@ HELPER_SETTINGS = {
         'djangocms_bootstrap4.contrib.bootstrap4_alerts',
         'djangocms_bootstrap4.contrib.bootstrap4_carousel',
         'djangocms_bootstrap4.contrib.bootstrap4_listgroup',
+        'djangocms_bootstrap4.contrib.bootstrap4_collapse',
     ],
     'ALLOWED_HOSTS': ['localhost'],
     'CMS_LANGUAGES': {

@@ -18,7 +18,7 @@ DEVICE_SIZES = tuple([size for size, name in DEVICE_CHOICES])
 TAG_CHOICES = getattr(
     settings,
     'DJANGOCMS_BOOTSTRAP4_TAG_CHOICES',
-    ['div', 'section', 'article', 'header', 'footer', 'aside'],
+    ['div', 'section', 'article', 'header', 'footer', 'aside', 'span'],
 )
 TAG_CHOICES = tuple((entry, entry) for entry in TAG_CHOICES)
 
