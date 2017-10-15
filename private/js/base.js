@@ -20,6 +20,14 @@ $(() => {
             'btn-info', 'btn-light', 'btn-dark',
         ],
     });
+    new ContextGroup({
+        select: '#id_list_context',
+        classes: [
+            '', 'btn-primary', 'btn-secondary',
+            'btn-success', 'btn-danger', 'btn-warning',
+            'btn-info', 'btn-light', 'btn-dark',
+        ],
+    });
     // link color context
     new ContextGroup({
         select: '#id_link_context',

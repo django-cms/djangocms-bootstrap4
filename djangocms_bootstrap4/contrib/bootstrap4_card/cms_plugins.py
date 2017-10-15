@@ -39,8 +39,9 @@ class Bootstrap4CardPlugin(CMSPluginBase):
         'Bootstrap4CardPlugin',
         'Bootstrap4CardInnerPlugin',
         'Bootstrap4CardImagePlugin',
+        'Bootstrap4ListGroupPlugin',
     ]
-    # TODO also allow for ListGroup, Blockquote, Nav Tabs
+    # TODO also allow for Blockquote, Nav Tabs
 
     fieldsets = [
         # (_('Blueprints'), {
