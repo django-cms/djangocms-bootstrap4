@@ -13,7 +13,7 @@ import CardGroup from 'components/card-group'
 $(() => {
     // general color context
     new ContextGroup({
-        select: '#id_alert_context',
+        select: '#id_alert_context, #id_badge_context',
         classes: [
             'btn-primary', 'btn-secondary',
             'btn-success', 'btn-danger', 'btn-warning',
