@@ -39,6 +39,7 @@ class Bootstrap4CollapsePlugin(CMSPluginBase):
         (_('Advanced settings'), {
             'classes': ('collapse',),
             'fields': (
+                'siblings',
                 'tag_type',
                 'attributes',
             )

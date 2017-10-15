@@ -27,7 +27,7 @@ class Bootstrap4Collapse(CMSPlugin):
     """
     siblings = models.CharField(
         verbose_name=_('Siblings'),
-        default='card',
+        default='.card',
         max_length=255,
         help_text=_('Element to be used to create accordions.'),
     )
