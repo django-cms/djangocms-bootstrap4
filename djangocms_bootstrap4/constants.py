@@ -32,3 +32,12 @@ COLOR_STYLES = (
     ('light', _('Light')),
     ('dark', _('Dark')),
 )
+
+TEMPLATES = getattr(
+    settings,
+    'DJANGOCMS_BOOTSTRAP4_TEMPLATES',
+    (
+        ('default', _('Default')),
+        ('test', _('Test')),
+    ),
+)
