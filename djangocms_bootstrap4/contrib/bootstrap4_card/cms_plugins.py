@@ -9,6 +9,11 @@ from cms.plugin_pool import plugin_pool
 
 from djangocms_bootstrap4.helpers import concat_classes
 
+from .blueprints import (
+    create_card_blueprint,
+    create_panel_blueprint,
+    create_teaser_blueprint,
+)
 from .models import (
     Bootstrap4Card,
     Bootstrap4CardInner,
@@ -28,6 +33,7 @@ class Bootstrap4CardPlugin(CMSPluginBase):
     module = _('Bootstrap 4')
     form = Bootstrap4CardForm
     render_template = 'djangocms_bootstrap4/card.html'
+    change_form_template = 'djangocms_bootstrap4/admin/card.html'
     allow_children = True
     child_classes = [
         'Bootstrap4CardPlugin',
@@ -37,9 +43,14 @@ class Bootstrap4CardPlugin(CMSPluginBase):
     # TODO also allow for ListGroup, Blockquote, Nav Tabs
 
     fieldsets = [
-        (None, {
+        (_('Blueprints'), {
+            'classes': ('collapse',),
             'fields': (
                 'blueprint',
+            )
+        }),
+        (None, {
+            'fields': (
                 'card_type',
                 ('card_context', 'card_alignment'),
                 ('card_outline', 'card_text_color'),
@@ -53,6 +64,18 @@ class Bootstrap4CardPlugin(CMSPluginBase):
             )
         }),
     ]
+
+    def save_model(self, request, obj, form, change):
+        super(Bootstrap4CardPlugin, self).save_model(request, obj, form, change)
+        data = form.cleaned_data
+
+        if data['blueprint']:
+            if data['blueprint'] == 'card':
+                create_card_blueprint(obj)
+            if data['blueprint'] == 'panel':
+                create_panel_blueprint(obj)
+            if data['blueprint'] == 'teaser':
+                create_teaser_blueprint(obj)
 
     def render(self, context, instance, placeholder):
         linkClasses = []
@@ -89,6 +112,15 @@ class Bootstrap4CardInnerPlugin(CMSPluginBase):
     allow_children = True
     parent_classes = ['Bootstrap4CardPlugin']
 
+    fieldsets = [
+        (None, {
+            'fields': (
+                ('inner_type', 'tag_type'),
+                'attributes',
+            )
+        }),
+    ]
+
     def render(self, context, instance, placeholder):
         linkClasses = []
         if instance.inner_type:
@@ -117,6 +149,16 @@ class Bootstrap4CardContentPlugin(CMSPluginBase):
     parent_classes = [
         'Bootstrap4CardInnerPlugin',
         'Bootstrap4CardImagePlugin',
+    ]
+
+    fieldsets = [
+        (None, {
+            'fields': (
+                ('content_type', 'tag_type'),
+                'card_content',
+                'attributes',
+            )
+        }),
     ]
 
     def render(self, context, instance, placeholder):
@@ -149,10 +191,21 @@ class Bootstrap4CardImagePlugin(CMSPluginBase):
         'Bootstrap4CardInnerPlugin',
     ]
 
+    fieldsets = [
+        (None, {
+            'fields': (
+                ('content_type', 'tag_type'),
+                'attributes',
+            )
+        }),
+    ]
+
     def render(self, context, instance, placeholder):
         linkClasses = []
         if instance.content_type:
             linkClasses.append(instance.content_type)
+        else:
+            linkClasses.append('card-img')
 
         classes = concat_classes(linkClasses + [
             instance.attributes.get('class'),

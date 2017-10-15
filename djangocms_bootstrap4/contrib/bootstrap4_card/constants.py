@@ -10,7 +10,6 @@ CARD_BLUEPRINTS = (
     ('card', _('Card')), # image, body (title, text, button)
     ('panel', _('Panel')), # header, body (title, text, button)
     ('teaser', _('Teaser')), # body (title, text, button)
-    ('overlay', _('Overlay')), # img, overlay (title, text)
 )
 
 CARD_TYPES = (

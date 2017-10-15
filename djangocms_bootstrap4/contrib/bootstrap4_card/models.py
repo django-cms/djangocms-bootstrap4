@@ -96,6 +96,7 @@ class Bootstrap4CardInner(CMSPlugin):
         choices=CARD_INNER_TYPE,
         default=CARD_INNER_TYPE[0][0],
         max_length=255,
+        help_text=_('Define the structure of the plugin.'),
     )
     tag_type = TagTypeField()
     attributes = AttributesField()
@@ -118,6 +119,7 @@ class Bootstrap4CardContent(CMSPlugin):
         choices=CARD_CONTENT_TYPE,
         default=CARD_CONTENT_TYPE[0][0],
         max_length=255,
+        help_text=_('Define the content type of the plugin.'),
     )
     card_content = models.CharField(
         verbose_name=_('Content'),
@@ -150,6 +152,7 @@ class Bootstrap4CardImage(CMSPlugin):
         default=CARD_IMAGE_TYPE[0][0],
         blank=True,
         max_length=255,
+        help_text=_('Define where the image should be positioned.'),
     )
     tag_type = TagTypeField()
     attributes = AttributesField()
