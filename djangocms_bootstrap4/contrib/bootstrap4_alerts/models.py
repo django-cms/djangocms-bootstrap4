@@ -36,3 +36,6 @@ class Bootstrap4Alerts(CMSPlugin):
 
     def __str__(self):
         return str(self.pk)
+
+    def get_short_description(self):
+        return '({})'.format(self.alert_context)
