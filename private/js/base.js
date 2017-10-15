@@ -11,7 +11,16 @@ import CardGroup from 'components/card-group'
 
 
 $(() => {
-    // color context
+    // general color context
+    new ContextGroup({
+        select: '#id_alert_context',
+        classes: [
+            'btn-primary', 'btn-secondary',
+            'btn-success', 'btn-danger', 'btn-warning',
+            'btn-info', 'btn-light', 'btn-dark',
+        ],
+    });
+    // link color context
     new ContextGroup({
         select: '#id_link_context',
         classes: [
@@ -20,7 +29,7 @@ $(() => {
             'btn-info', 'btn-light', 'btn-dark',
         ],
     });
-    // size context
+    // link size context
     new ContextGroup({
         select: '#id_link_size',
         classes: [
@@ -36,7 +45,7 @@ $(() => {
         });
     }
 
-    // card search
+    // card blueprints
     new CardGroup({
         select: '#id_blueprint',
     });

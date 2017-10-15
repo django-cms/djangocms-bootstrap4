@@ -15,6 +15,7 @@ HELPER_SETTINGS = {
         'djangocms_bootstrap4.contrib.bootstrap4_picture',
         'djangocms_bootstrap4.contrib.bootstrap4_card',
         'djangocms_bootstrap4.contrib.bootstrap4_utilities',
+        'djangocms_bootstrap4.contrib.bootstrap4_alerts',
     ],
     'ALLOWED_HOSTS': ['localhost'],
     'CMS_LANGUAGES': {
