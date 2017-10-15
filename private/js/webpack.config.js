@@ -9,7 +9,7 @@ process.env.NODE_ENV = (argv.debug) ? 'development' : 'production';
 plugins.push(
     new webpack.optimize.CommonsChunkPlugin({
         name: 'base',
-        chunks: ['base', 'grid'],
+        chunks: ['base', 'grid', 'utilities'],
     })
 );
 
@@ -60,6 +60,7 @@ module.exports = {
     entry: {
         base: path.join(__dirname, 'base.js'),
         grid: path.join(__dirname, 'grid.js'),
+        utilities: path.join(__dirname, 'utilities.js'),
     },
     output: {
         path: path.join(__dirname, '..', '..', 'djangocms_bootstrap4', 'static', 'djangocms_bootstrap4', 'js'),
