@@ -7,7 +7,7 @@ import django.db.models.deletion
 import djangocms_attributes_field.fields
 import djangocms_link.validators
 
-from djangocms_link.models import get_templates, TARGET_CHOICES
+from djangocms_link.models import get_templates, TARGET_CHOICES, HOSTNAME
 
 from ..constants import LINK_CHOICES, LINK_SIZES
 from ..models import COLOR_STYLES
@@ -27,7 +27,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('template', models.CharField(choices=get_templates(), default=get_templates()[0][0], max_length=255, verbose_name='Template')),
                 ('name', models.CharField(blank=True, max_length=255, verbose_name='Display name')),
-                ('external_link', models.URLField(blank=True, help_text='Provide a valid URL to an external website.', max_length=2040, validators=[djangocms_link.validators.IntranetURLValidator(intranet_host_re=None)], verbose_name='External link')),
+                ('external_link', models.URLField(blank=True, help_text='Provide a valid URL to an external website.', max_length=2040, validators=[djangocms_link.validators.IntranetURLValidator(intranet_host_re=HOSTNAME)], verbose_name='External link')),
                 ('anchor', models.CharField(blank=True, help_text='Appends the value only after the internal or external link. Do <em>not</em> include a preceding "#" symbol.', max_length=255, verbose_name='Anchor')),
                 ('mailto', models.EmailField(blank=True, max_length=255, verbose_name='Email address')),
                 ('phone', models.CharField(blank=True, max_length=255, verbose_name='Phone')),

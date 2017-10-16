@@ -14,7 +14,7 @@ from .models import Bootstrap4Link
 from .forms import Bootstrap4LinkForm
 
 
-class Bootstrap4LinkPlugin(LinkPlugin, CMSPluginBase):
+class Bootstrap4LinkPlugin(LinkPlugin):
     """
     Components > "Button" Plugin
     https://getbootstrap.com/docs/4.0/components/buttons/
@@ -39,25 +39,25 @@ class Bootstrap4LinkPlugin(LinkPlugin, CMSPluginBase):
     fieldsets = LinkPlugin.fieldsets
 
     def render(self, context, instance, placeholder):
-        linkClasses = []
+        link_classes = []
         if instance.link_type == 'link':
-            linkClasses.append('text-{}'.format(instance.link_context))
+            link_classes.append('text-{}'.format(instance.link_context))
         else:
-            linkClasses.append('btn')
+            link_classes.append('btn')
             if not instance.link_outline:
-                linkClasses.append(
+                link_classes.append(
                     'btn-{}'.format(instance.link_context)
                 );
             else:
-                linkClasses.append(
+                link_classes.append(
                     'btn-outline-{}'.format(instance.link_context)
                 );
         if instance.link_size:
-            linkClasses.append(instance.link_size);
+            link_classes.append(instance.link_size);
         if instance.link_block:
-            linkClasses.append('btn-block');
+            link_classes.append('btn-block');
 
-        classes = concat_classes(linkClasses + [
+        classes = concat_classes(link_classes + [
             instance.attributes.get('class'),
         ])
         instance.attributes['class'] = classes

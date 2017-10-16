@@ -20,7 +20,7 @@ COLOR_STYLES = (
 
 
 @python_2_unicode_compatible
-class Bootstrap4Link(AbstractLink, CMSPlugin):
+class Bootstrap4Link(AbstractLink):
     """
     Components > "Button" Plugin
     https://getbootstrap.com/docs/4.0/components/buttons/
