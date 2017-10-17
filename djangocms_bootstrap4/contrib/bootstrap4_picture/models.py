@@ -11,7 +11,7 @@ from djangocms_picture.models import AbstractPicture
 
 
 @python_2_unicode_compatible
-class Bootstrap4Picture(AbstractPicture, CMSPlugin):
+class Bootstrap4Picture(AbstractPicture):
     """
     Content > "Image" Plugin
     https://getbootstrap.com/docs/4.0/content/images/
