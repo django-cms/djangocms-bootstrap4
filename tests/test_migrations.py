@@ -3,10 +3,7 @@
 from StringIO import StringIO
 from django.core.management import call_command
 from django.test import TestCase, override_settings
-<<<<<<< 7c4d96867a483dfe51f494cd6f9a10837b617378
 from django.utils.six import text_type
-=======
->>>>>>> added tests
 
 
 class MigrationTestCase(TestCase):
@@ -24,11 +21,7 @@ class MigrationTestCase(TestCase):
             )
         except SystemExit as e:
             # The exit code will be 1 when there are no missing migrations
-<<<<<<< 7c4d96867a483dfe51f494cd6f9a10837b617378
             assert(text_type(e) == '1')
-=======
-            assert unicode(e) == '1'
->>>>>>> added tests
         else:
             self.fail(
                 'There are missing migrations:\n {}'.format(output.getvalue())
