@@ -21,3 +21,14 @@ TAG_CHOICES = getattr(
     ['div', 'section', 'article', 'header', 'footer', 'aside'],
 )
 TAG_CHOICES = tuple((entry, entry) for entry in TAG_CHOICES)
+
+COLOR_STYLES = (
+    ('primary', _('Primary')),
+    ('secondary', _('Secondary')),
+    ('success', _('Success')),
+    ('danger', _('Danger')),
+    ('warning', _('Warning')),
+    ('info', _('Info')),
+    ('light', _('Light')),
+    ('dark', _('Dark')),
+)
