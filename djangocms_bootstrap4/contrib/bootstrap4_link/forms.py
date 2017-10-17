@@ -14,7 +14,8 @@ from .models import Bootstrap4Link
 class HorizontalRadioRenderer(forms.RadioSelect.renderer):
 
     def render(self):
-        return mark_safe(''.join(['%s' % w for w in self]))
+        # render only the radio fields without the <li>'s
+        return mark_safe(''.join(str(w) for w in self))
 
 
 class Bootstrap4LinkForm(LinkForm):
