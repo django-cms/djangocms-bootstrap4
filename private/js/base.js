@@ -14,7 +14,7 @@ $(() => {
     new ContextGroup({
         select: '#id_link_context',
         classes: [
-            'btn-link', 'btn-primary', 'btn-secondary',
+            '', 'btn-link', 'btn-primary', 'btn-secondary',
             'btn-success', 'btn-danger', 'btn-warning',
             'btn-info', 'btn-light', 'btn-dark',
         ],

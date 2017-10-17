@@ -20,7 +20,7 @@ COLOR_STYLES = (
 
 
 @python_2_unicode_compatible
-class Bootstrap4Link(AbstractLink, CMSPlugin):
+class Bootstrap4Link(AbstractLink):
     """
     Components > "Button" Plugin
     https://getbootstrap.com/docs/4.0/components/buttons/
@@ -35,13 +35,12 @@ class Bootstrap4Link(AbstractLink, CMSPlugin):
     link_context = models.CharField(
         verbose_name=_('Context'),
         choices=COLOR_STYLES,
-        default=COLOR_STYLES[0][0],
+        blank=True,
         max_length=255,
     )
     link_size = models.CharField(
         verbose_name=_('Size'),
         choices=LINK_SIZES,
-        default=LINK_SIZES[0][0],
         blank=True,
         max_length=255,
     )

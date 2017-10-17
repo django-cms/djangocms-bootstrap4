@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.forms import models, IntegerField, BooleanField, RadioSelect
+from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.utils.safestring import mark_safe
 
@@ -11,18 +11,19 @@ from djangocms_bootstrap4.constants import DEVICE_SIZES
 from .models import Bootstrap4Link
 
 
-class HorizontalRadioRenderer(RadioSelect.renderer):
+class HorizontalRadioRenderer(forms.RadioSelect.renderer):
 
     def render(self):
-        return mark_safe(u'\n'.join([u'%s\n' % w for w in self]))
+        # render only the radio fields without the <li>'s
+        return mark_safe(''.join(str(w) for w in self))
 
 
-class Bootstrap4LinkForm(LinkForm, models.ModelForm):
+class Bootstrap4LinkForm(LinkForm):
 
     class Meta:
         model = Bootstrap4Link
         widgets = {
-            'link_type': RadioSelect(
+            'link_type': forms.RadioSelect(
                 renderer=HorizontalRadioRenderer
             ),
         }
