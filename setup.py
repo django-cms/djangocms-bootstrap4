@@ -11,6 +11,7 @@ REQUIREMENTS = [
     'django-filer>=1.2.4',
     'djangocms-text-ckeditor>=3.1.0',
     'djangocms-attributes-field>=0.1.1',
+    'djangocms-link>=2.1.0',
 ]
 
 

@@ -1,0 +1,48 @@
+// #############################################################################
+// PREVIEW GENERATOR
+
+.djangocms-bootstrap4-preview {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    text-align: center;
+    border-radius: 0 0 0 3px;
+    padding: 10px 20px 27px;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-right: none;
+    background: #fff;
+
+    h2 {
+        font-size: 14px;
+        min-width: 150px;
+        margin: 0 0 12px;
+    }
+
+    .b4-preview {
+        margin: 0 0 -15px;
+    }
+
+    .b4-close {
+        position: absolute;
+        right: 10px;
+        top: 8px;
+        z-index: 100;
+        display: block;
+        color: darken($cms-gray, 50%);
+        font-size: 12px;
+        font-weight: bold;
+        text-transform: uppercase;
+        width: 20px;
+        height: 20px;
+        border-radius: 3px;
+        background: $cms-gray;
+
+        &:hover {
+            color: white !important;
+            text-decoration: none;
+            background: $cms-primary;
+        }
+    }
+}

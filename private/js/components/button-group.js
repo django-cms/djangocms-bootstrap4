@@ -9,7 +9,7 @@ export default class ButtonGroup {
      * @method constructor
      * @param {Object} options
      * @param {String} options.select
-     * @param {String} options.static
+     * @param {String} [options.static]
      * @param {String[]} [options.icons]
      */
     constructor(options) {
@@ -22,17 +22,14 @@ export default class ButtonGroup {
                     </div>
                 </div>`,
             button: (icon = '', text = '') => `
-                <button type="button" class="btn" title="${text}">
+                <span type="button" class="btn btn-default" title="${text}">
                     ${icon}<span class="sr-only">${text}</span>
-                </button>`,
+                </span>`,
         };
         this.select = $(this.options.select);
         this.selectOptions = this.select.find('option');
-
-        // initialize
-        this.select.after(
-            this.setEvents($(this.getTemplate()))
-        );
+        this.element = this.setEvents($(this.getTemplate()));
+        this.select.after(this.element);
     }
 
     /**
@@ -41,7 +38,7 @@ export default class ButtonGroup {
      * @return {jQuery} template
      */
     setEvents(template) {
-        let buttons = template.find('button');
+        let buttons = template.find('.btn');
         let select = this.select;
         let options = this.select.find('option');
         let index = options.index(options.filter(':selected'));
@@ -53,12 +50,13 @@ export default class ButtonGroup {
                 .prop('selected', false)
                 .eq(buttons.index(this))
                 .prop('selected', true);
+            select.trigger('change');
             // set icon color
             buttons.find('.icon').removeClass('icon-white');
             $(this).find('.icon').addClass('icon-white');
             // set active state of the button
-            buttons.removeClass('btn-primary');
-            $(this).addClass('btn-primary');
+            buttons.removeClass('active');
+            $(this).addClass('active');
         });
 
         // set initial active item

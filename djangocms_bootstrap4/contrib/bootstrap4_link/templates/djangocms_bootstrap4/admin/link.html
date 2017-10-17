@@ -1,0 +1,10 @@
+{% extends "djangocms_bootstrap4/admin/base.html" %}
+{% load static i18n %}
+
+{% block field_sets %}
+    <div class="djangocms-bootstrap4 djangocms-bootstrap4-link"
+        data-static="{% get_static_prefix %}"
+        data-preview="{% trans 'Preview' %}">
+        {{ block.super }}
+    </div>
+{% endblock %}
