@@ -13,7 +13,7 @@ from djangocms_bootstrap4.helpers import concat_classes
 from .models import Bootstrap4Picture
 
 
-class Bootstrap4PicturePlugin(PicturePlugin, CMSPluginBase):
+class Bootstrap4PicturePlugin(PicturePlugin):
     """
     Content > "Image" Plugin
     https://getbootstrap.com/docs/4.0/content/images/
@@ -36,15 +36,15 @@ class Bootstrap4PicturePlugin(PicturePlugin, CMSPluginBase):
     fieldsets = PicturePlugin.fieldsets
 
     def render(self, context, instance, placeholder):
-        linkClasses = []
+        link_classes = []
         if instance.picture_fluid:
-            linkClasses.append('img-fluid')
+            link_classes.append('img-fluid')
         if instance.picture_rounded:
-            linkClasses.append('rounded')
+            link_classes.append('rounded')
         if instance.picture_thumbnail:
-            linkClasses.append('img-thumbnail')
+            link_classes.append('img-thumbnail')
 
-        classes = concat_classes(linkClasses + [
+        classes = concat_classes(link_classes + [
             instance.attributes.get('class'),
         ])
         instance.attributes['class'] = classes
