@@ -14,10 +14,10 @@ from .models import Bootstrap4Link
 class HorizontalRadioRenderer(forms.RadioSelect.renderer):
 
     def render(self):
-        return mark_safe('\n'.join(['%s\n' % w for w in self]))
+        return mark_safe(''.join(['%s' % w for w in self]))
 
 
-class Bootstrap4LinkForm(LinkForm, models.ModelForm):
+class Bootstrap4LinkForm(LinkForm):
 
     class Meta:
         model = Bootstrap4Link
