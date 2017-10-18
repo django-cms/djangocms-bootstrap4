@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.forms import models, ChoiceField
+from django import forms
 from django.utils.translation import ugettext_lazy as _
 
 from djangocms_bootstrap4.constants import DEVICE_SIZES
@@ -12,10 +12,10 @@ from .constants import CARD_BLUEPRINTS
 from .models import Bootstrap4Card
 
 
-class Bootstrap4CardForm(models.ModelForm):
+class Bootstrap4CardForm(forms.ModelForm):
     # TODO maybe add number of cards to generate
     # TODO remove once field has been created
-    # blueprint = ChoiceField(
+    # blueprint = forms.ChoiceField(
     #     label=_('Choose blueprint'),
     #     choices=CARD_BLUEPRINTS,
     #     required=False,
