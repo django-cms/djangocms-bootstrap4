@@ -36,8 +36,6 @@ class Bootstrap4PicturePlugin(PicturePlugin):
         }
     )
 
-    fieldsets = fieldsets
-
     def render(self, context, instance, placeholder):
         link_classes = []
         if instance.picture_fluid:
