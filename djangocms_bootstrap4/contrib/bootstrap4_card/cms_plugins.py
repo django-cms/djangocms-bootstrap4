@@ -9,11 +9,11 @@ from cms.plugin_pool import plugin_pool
 
 from djangocms_bootstrap4.helpers import concat_classes
 
-from .blueprints import (
-    create_card_blueprint,
-    create_panel_blueprint,
-    create_teaser_blueprint,
-)
+# from .blueprints import (
+#     create_card_blueprint,
+#     create_panel_blueprint,
+#     create_teaser_blueprint,
+# )
 from .models import (
     Bootstrap4Card,
     Bootstrap4CardInner,
@@ -43,12 +43,12 @@ class Bootstrap4CardPlugin(CMSPluginBase):
     # TODO also allow for ListGroup, Blockquote, Nav Tabs
 
     fieldsets = [
-        (_('Blueprints'), {
-            'classes': ('collapse',),
-            'fields': (
-                'blueprint',
-            )
-        }),
+        # (_('Blueprints'), {
+        #     'classes': ('collapse',),
+        #     'fields': (
+        #         'blueprint',
+        #     )
+        # }),
         (None, {
             'fields': (
                 'card_type',
@@ -65,32 +65,32 @@ class Bootstrap4CardPlugin(CMSPluginBase):
         }),
     ]
 
-    def save_model(self, request, obj, form, change):
-        super(Bootstrap4CardPlugin, self).save_model(request, obj, form, change)
-        data = form.cleaned_data
-
-        if data['blueprint']:
-            if data['blueprint'] == 'card':
-                create_card_blueprint(obj)
-            if data['blueprint'] == 'panel':
-                create_panel_blueprint(obj)
-            if data['blueprint'] == 'teaser':
-                create_teaser_blueprint(obj)
+    # def save_model(self, request, obj, form, change):
+    #     super(Bootstrap4CardPlugin, self).save_model(request, obj, form, change)
+    #     data = form.cleaned_data
+    #
+    #     if data['blueprint']:
+    #         if data['blueprint'] == 'card':
+    #             create_card_blueprint(obj)
+    #         if data['blueprint'] == 'panel':
+    #             create_panel_blueprint(obj)
+    #         if data['blueprint'] == 'teaser':
+    #             create_teaser_blueprint(obj)
 
     def render(self, context, instance, placeholder):
-        linkClasses = []
+        link_classes = []
         if instance.card_type:
-            linkClasses.append(instance.card_type)
+            link_classes.append(instance.card_type)
         if instance.card_context and instance.card_outline:
-            linkClasses.append('border-{}'.format(instance.card_context))
+            link_classes.append('border-{}'.format(instance.card_context))
         elif instance.card_context:
-            linkClasses.append('bg-{}'.format(instance.card_context))
+            link_classes.append('bg-{}'.format(instance.card_context))
         if instance.card_alignment:
-            linkClasses.append(instance.card_alignment)
+            link_classes.append(instance.card_alignment)
         if instance.card_text_color:
-            linkClasses.append('text-{}'.format(instance.card_text_color))
+            link_classes.append('text-{}'.format(instance.card_text_color))
 
-        classes = concat_classes(linkClasses + [
+        classes = concat_classes(link_classes + [
             instance.attributes.get('class'),
         ])
         instance.attributes['class'] = classes
@@ -122,11 +122,11 @@ class Bootstrap4CardInnerPlugin(CMSPluginBase):
     ]
 
     def render(self, context, instance, placeholder):
-        linkClasses = []
+        link_classes = []
         if instance.inner_type:
-            linkClasses.append(instance.inner_type)
+            link_classes.append(instance.inner_type)
 
-        classes = concat_classes(linkClasses + [
+        classes = concat_classes(link_classes + [
             instance.attributes.get('class'),
         ])
         instance.attributes['class'] = classes
@@ -162,11 +162,11 @@ class Bootstrap4CardContentPlugin(CMSPluginBase):
     ]
 
     def render(self, context, instance, placeholder):
-        linkClasses = []
+        link_classes = []
         if instance.content_type:
-            linkClasses.append(instance.content_type)
+            link_classes.append(instance.content_type)
 
-        classes = concat_classes(linkClasses + [
+        classes = concat_classes(link_classes + [
             instance.attributes.get('class'),
         ])
         instance.attributes['class'] = classes
@@ -201,13 +201,13 @@ class Bootstrap4CardImagePlugin(CMSPluginBase):
     ]
 
     def render(self, context, instance, placeholder):
-        linkClasses = []
+        link_classes = []
         if instance.content_type:
-            linkClasses.append(instance.content_type)
+            link_classes.append(instance.content_type)
         else:
-            linkClasses.append('card-img')
+            link_classes.append('card-img')
 
-        classes = concat_classes(linkClasses + [
+        classes = concat_classes(link_classes + [
             instance.attributes.get('class'),
         ])
         instance.attributes['class'] = classes
