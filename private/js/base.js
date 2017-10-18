@@ -7,6 +7,7 @@
 // import 'bootstrap/js/dist/alert'
 import ContextGroup from 'components/context-group';
 import PreviewGenerator from 'components/preview-generator';
+import CardGroup from 'components/card-group'
 
 
 $(() => {
@@ -26,9 +27,17 @@ $(() => {
             'btn-sm', '', 'btn-lg',
         ],
     });
+
     // preview for picture
-    new PreviewGenerator({
-        container: '.djangocms-bootstrap4-link',
-        title: $('.djangocms-bootstrap4-link').data().preview,
+    if ($('.djangocms-bootstrap4-link').length) {
+        new PreviewGenerator({
+            container: '.djangocms-bootstrap4-link',
+            title: $('.djangocms-bootstrap4-link').data().preview,
+        });
+    }
+
+    // card search
+    new CardGroup({
+        select: '#id_blueprint',
     });
 });

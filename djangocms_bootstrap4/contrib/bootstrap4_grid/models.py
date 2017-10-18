@@ -4,11 +4,8 @@ from __future__ import unicode_literals
 from functools import partial
 
 from django.db import models
-from django.utils import six
-from django.utils.functional import lazy
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext, ungettext, ugettext_lazy as _
-from django.utils.safestring import mark_safe
 
 from cms.models import CMSPlugin
 
@@ -18,6 +15,7 @@ from djangocms_bootstrap4.fields import (
     AttributesField,
     IntegerRangeField,
 )
+from djangocms_bootstrap4.helpers import mark_safe_lazy
 
 from .constants import (
     GRID_SIZE,
@@ -27,11 +25,6 @@ from .constants import (
     GRID_COLUMN_ALIGNMENT,
     GRID_COLUMN_CHOICES,
 )
-
-# use mark_safe_lazy to delay the translation when using mark_safe
-# otherwise they will not be added to /locale/
-# https://docs.djangoproject.com/en/1.11/topics/i18n/translation/#other-uses-of-lazy-in-delayed-translations
-mark_safe_lazy = lazy(mark_safe, six.text_type)
 
 
 @python_2_unicode_compatible
