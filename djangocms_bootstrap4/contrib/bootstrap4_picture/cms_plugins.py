@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import copy
+
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
@@ -23,7 +25,8 @@ class Bootstrap4PicturePlugin(PicturePlugin):
     change_form_template = 'djangocms_bootstrap4/admin/picture.html'
     module = _('Bootstrap 4')
 
-    PicturePlugin.fieldsets[0] = (
+    fieldsets = copy.deepcopy(PicturePlugin.fieldsets)
+    fieldsets[0] = (
         None, {
             'fields': (
                 'picture',
@@ -33,7 +36,7 @@ class Bootstrap4PicturePlugin(PicturePlugin):
         }
     )
 
-    fieldsets = PicturePlugin.fieldsets
+    fieldsets = fieldsets
 
     def render(self, context, instance, placeholder):
         link_classes = []
