@@ -7,10 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from cms.models import CMSPlugin
 
-from djangocms_bootstrap4.fields import (
-    TagTypeField,
-    AttributesField,
-)
+from djangocms_bootstrap4.fields import TagTypeField, AttributesField
 from djangocms_bootstrap4.constants import DEVICE_CHOICES
 
 from .constants import (
@@ -58,9 +55,9 @@ class Bootstrap4Spacing(CMSPlugin):
         return str(self.pk)
 
     def get_short_description(self):
-        text = '{}'.format(self.space_property)
+        text = self.space_property
         if self.space_sides:
-            text += '{}'.format(self.space_sides)
+            text += self.space_sides
         if self.space_device:
             text += '-{}'.format(self.space_device)
         text += '-{}'.format(self.space_size)

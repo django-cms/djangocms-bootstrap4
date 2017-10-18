@@ -6,8 +6,8 @@ from django.utils.translation import ugettext_lazy as _
 
 
 SPACER_PROPERTIES = (
-    ('m', _('margin')),
-    ('p', _('padding')),
+    ('m', 'margin'),
+    ('p', 'padding'),
 )
 
 SPACER_SIDES = (
