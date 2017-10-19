@@ -1,0 +1,12 @@
+{% load i18n cms_tags %}
+
+<{{ instance.tag_type }} {{ instance.attributes_str }} role="alert">
+    {% if instance.alert_dismissable %}
+        <button type="button" class="close" data-dismiss="alert" aria-label="{% trans 'Close' %}">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    {% endif %}
+    {% for plugin in instance.child_plugin_instances %}
+        {% with forloop as parentloop %}{% render_plugin plugin %}{% endwith %}
+    {% endfor %}
+</{{ instance.tag_type }}>

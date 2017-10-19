@@ -1,0 +1,26 @@
+{% load cms_tags %}
+
+<{{ instance.tag_type }} class="carousel-item{% if forloop.first %} active{% endif %}" {{ instance.attributes_str }}>
+    {% if link %}
+        <a href="{{ link }}"{% if instance.target %} target="{{ instance.target }}"{% endif %}>
+    {% endif %}
+
+    {% with image=carousel_image.image %}
+        {% include "djangocms_bootstrap4/carousel/default/image.html" %}
+    {% endwith %}
+
+    {% if link %}
+        </a>
+    {% endif %}
+
+    <div class="carousel-caption d-none d-md-block">
+        {{ instance.link_target }}
+        {% if instance.carousel_content %}
+            {{ instance.carousel_content }}
+        {% endif %}
+
+        {% for plugin in instance.child_plugin_instances %}
+            {% with forloop as parentloop %}{% render_plugin plugin %}{% endwith %}
+        {% endfor %}
+    </div>
+</{{ instance.tag_type }}>

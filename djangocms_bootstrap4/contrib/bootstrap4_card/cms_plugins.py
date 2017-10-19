@@ -39,8 +39,9 @@ class Bootstrap4CardPlugin(CMSPluginBase):
         'Bootstrap4CardPlugin',
         'Bootstrap4CardInnerPlugin',
         'Bootstrap4CardImagePlugin',
+        'Bootstrap4ListGroupPlugin',
     ]
-    # TODO also allow for ListGroup, Blockquote, Nav Tabs
+    # TODO also allow for Blockquote, Nav Tabs
 
     fieldsets = [
         # (_('Blueprints'), {
@@ -110,7 +111,11 @@ class Bootstrap4CardInnerPlugin(CMSPluginBase):
     module = _('Bootstrap 4')
     render_template = 'djangocms_bootstrap4/card.html'
     allow_children = True
-    parent_classes = ['Bootstrap4CardPlugin']
+    parent_classes = [
+        'Bootstrap4CardPlugin',
+        'Bootstrap4CollapseTriggerPlugin',
+        'Bootstrap4CollapseContainerPlugin',
+    ]
 
     fieldsets = [
         (None, {
@@ -149,6 +154,8 @@ class Bootstrap4CardContentPlugin(CMSPluginBase):
     parent_classes = [
         'Bootstrap4CardInnerPlugin',
         'Bootstrap4CardImagePlugin',
+        'Bootstrap4CollapseTriggerPlugin',
+        'Bootstrap4CollapseContainerPlugin',
     ]
 
     fieldsets = [

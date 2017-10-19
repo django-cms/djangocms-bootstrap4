@@ -1,9 +1,17 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.conf import settings
 from django.utils import six
 from django.utils.safestring import mark_safe
 from django.utils.functional import lazy
+from django.utils.translation import ugettext_lazy as _
+
+from django.template import TemplateDoesNotExist
+from django.template.loader import select_template
+from django.forms import ValidationError
+
+from .constants import TEMPLATES
 
 
 def concat_classes(classes):
@@ -11,6 +19,24 @@ def concat_classes(classes):
     merges a list of classes and return concatinated string
     """
     return ' '.join(_class for _class in classes if _class)
+
+
+def get_plugin_template(instance, prefix, name):
+    if instance.parent is None:
+        template = TEMPLATES[0][0]
+    else:
+        template = getattr(
+            instance.parent.get_plugin_instance()[0],
+            'carousel_style',
+            TEMPLATES[0][0],
+        )
+        try:
+            select_template([template])
+        except TemplateDoesNotExist:
+            # TODO render a warning inside the template
+            template = 'default'
+
+    return 'djangocms_bootstrap4/{}/{}/{}.html'.format(prefix, template, name)
 
 
 # use mark_safe_lazy to delay the translation when using mark_safe
