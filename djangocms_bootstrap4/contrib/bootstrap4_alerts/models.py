@@ -7,7 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from cms.models import CMSPlugin
 
-from djangocms_bootstrap4.fields import TagTypeField AttributesField
+from djangocms_bootstrap4.fields import TagTypeField, AttributesField
 from djangocms_bootstrap4.constants import COLOR_STYLES
 
 
