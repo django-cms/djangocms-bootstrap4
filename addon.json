@@ -1,10 +1,17 @@
 {
     "package-name": "djangocms-bootstrap4",
     "installed-apps": [
-        "djangocms_bootstrap4"
-    ],
-    "protected": [
-        "templates/*",
-        "static/*"
+        "djangocms_bootstrap4",
+        "djangocms_bootstrap4.contrib.alerts",
+        "djangocms_bootstrap4.contrib.badge",
+        "djangocms_bootstrap4.contrib.card",
+        "djangocms_bootstrap4.contrib.carousel",
+        "djangocms_bootstrap4.contrib.collapse",
+        "djangocms_bootstrap4.contrib.grid",
+        "djangocms_bootstrap4.contrib.jumbotron",
+        "djangocms_bootstrap4.contrib.link",
+        "djangocms_bootstrap4.contrib.listgroup",
+        "djangocms_bootstrap4.contrib.picture",
+        "djangocms_bootstrap4.contrib.utilities"
     ]
 }
