@@ -7,16 +7,13 @@ from django.utils.translation import ugettext_lazy as _
 
 from cms.models import CMSPlugin
 
-from djangocms_bootstrap4.fields import (
-    TagTypeField,
-    AttributesField,
-)
+from djangocms_bootstrap4.fields import TagTypeField, AttributesField
 
+# TODO leaving this comment for now
 # data-toggle="collapse" data-target="#collapseExample"
 # aria-expanded="false" aria-controls="collapseExample">
 # data-target can also be classes
 # data-parent links to the wrapper collapse
-
 # <div class="collapse" id="collapseExample">
 
 @python_2_unicode_compatible

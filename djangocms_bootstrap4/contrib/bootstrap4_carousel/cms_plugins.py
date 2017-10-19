@@ -46,9 +46,9 @@ class Bootstrap4CarouselPlugin(CMSPluginBase):
         return get_plugin_template(instance, 'carousel', 'carousel')
 
     def render(self, context, instance, placeholder):
-        linkClasses = ['carousel', 'slide']
+        link_classes = ['carousel', 'slide']
 
-        classes = concat_classes(linkClasses + [
+        classes = concat_classes(link_classes + [
             instance.attributes.get('class'),
         ])
         instance.attributes['class'] = classes

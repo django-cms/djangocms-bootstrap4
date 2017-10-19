@@ -16,10 +16,7 @@ from djangocms_text_ckeditor.fields import HTMLField
 from filer.fields.image import FilerImageField
 
 from djangocms_bootstrap4.constants import TEMPLATES
-from djangocms_bootstrap4.fields import (
-    TagTypeField,
-    AttributesField,
-)
+from djangocms_bootstrap4.fields import TagTypeField, AttributesField
 
 from .constants import CAROUSEL_PAUSE, CAROUSEL_RIDE
 

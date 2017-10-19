@@ -40,12 +40,12 @@ class Bootstrap4BadgePlugin(CMSPluginBase):
     ]
 
     def render(self, context, instance, placeholder):
-        linkClasses = ['badge']
+        link_classes = ['badge']
         if instance.badge_pills:
-            linkClasses.append('badge-pill')
-        linkClasses.append('badge-{}'.format(instance.badge_context))
+            link_classes.append('badge-pill')
+        link_classes.append('badge-{}'.format(instance.badge_context))
 
-        classes = concat_classes(linkClasses + [
+        classes = concat_classes(link_classes + [
             instance.attributes.get('class'),
         ])
         instance.attributes['class'] = classes

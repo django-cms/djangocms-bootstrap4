@@ -40,11 +40,11 @@ class Bootstrap4JumbotronPlugin(CMSPluginBase):
     ]
 
     def render(self, context, instance, placeholder):
-        linkClasses = ['jumbotron']
+        link_classes = ['jumbotron']
         if instance.fluid:
-            linkClasses.append('jumbotron-fluid')
+            link_classes.append('jumbotron-fluid')
 
-        classes = concat_classes(linkClasses + [
+        classes = concat_classes(link_classes + [
             instance.attributes.get('class'),
         ])
         instance.attributes['class'] = classes

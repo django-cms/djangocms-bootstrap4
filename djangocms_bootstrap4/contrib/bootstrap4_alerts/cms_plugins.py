@@ -41,10 +41,10 @@ class Bootstrap4AlertsPlugin(CMSPluginBase):
     ]
 
     def render(self, context, instance, placeholder):
-        linkClasses = ['alert']
-        linkClasses.append('alert-{}'.format(instance.alert_context))
+        link_classes = ['alert']
+        link_classes.append('alert-{}'.format(instance.alert_context))
 
-        classes = concat_classes(linkClasses + [
+        classes = concat_classes(link_classes + [
             instance.attributes.get('class'),
         ])
         instance.attributes['class'] = classes

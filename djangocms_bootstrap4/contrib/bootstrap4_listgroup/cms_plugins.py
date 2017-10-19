@@ -42,11 +42,11 @@ class Bootstrap4ListGroupPlugin(CMSPluginBase):
     ]
 
     def render(self, context, instance, placeholder):
-        linkClasses = ['list-group']
+        link_classes = ['list-group']
         if instance.list_group_flush:
-            linkClasses.append('list-group-flush')
+            link_classes.append('list-group-flush')
 
-        classes = concat_classes(linkClasses + [
+        classes = concat_classes(link_classes + [
             instance.attributes.get('class'),
         ])
         instance.attributes['class'] = classes
@@ -86,13 +86,13 @@ class Bootstrap4ListGroupItemPlugin(CMSPluginBase):
     ]
 
     def render(self, context, instance, placeholder):
-        linkClasses = ['list-group-item']
+        link_classes = ['list-group-item']
         if instance.list_context:
-            linkClasses.append('list-group-item-{}'.format(instance.list_context))
+            link_classes.append('list-group-item-{}'.format(instance.list_context))
         if instance.list_state:
-            linkClasses.append(instance.list_state)
+            link_classes.append(instance.list_state)
 
-        classes = concat_classes(linkClasses + [
+        classes = concat_classes(link_classes + [
             instance.attributes.get('class'),
         ])
         instance.attributes['class'] = classes
