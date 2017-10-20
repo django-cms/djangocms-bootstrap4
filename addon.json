@@ -2,16 +2,16 @@
     "package-name": "djangocms-bootstrap4",
     "installed-apps": [
         "djangocms_bootstrap4",
-        "djangocms_bootstrap4.contrib.alerts",
-        "djangocms_bootstrap4.contrib.badge",
-        "djangocms_bootstrap4.contrib.card",
-        "djangocms_bootstrap4.contrib.carousel",
-        "djangocms_bootstrap4.contrib.collapse",
-        "djangocms_bootstrap4.contrib.grid",
-        "djangocms_bootstrap4.contrib.jumbotron",
-        "djangocms_bootstrap4.contrib.link",
-        "djangocms_bootstrap4.contrib.listgroup",
-        "djangocms_bootstrap4.contrib.picture",
-        "djangocms_bootstrap4.contrib.utilities"
+        "djangocms_bootstrap4.contrib.bootstrap4_alerts",
+        "djangocms_bootstrap4.contrib.bootstrap4_badge",
+        "djangocms_bootstrap4.contrib.bootstrap4_card",
+        "djangocms_bootstrap4.contrib.bootstrap4_carousel",
+        "djangocms_bootstrap4.contrib.bootstrap4_collapse",
+        "djangocms_bootstrap4.contrib.bootstrap4_grid",
+        "djangocms_bootstrap4.contrib.bootstrap4_jumbotron",
+        "djangocms_bootstrap4.contrib.bootstrap4_link",
+        "djangocms_bootstrap4.contrib.bootstrap4_listgroup",
+        "djangocms_bootstrap4.contrib.bootstrap4_picture",
+        "djangocms_bootstrap4.contrib.bootstrap4_utilities"
     ]
 }
