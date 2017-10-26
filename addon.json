@@ -1,6 +1,8 @@
 {
     "package-name": "djangocms-bootstrap4",
     "installed-apps": [
+        "djangocms_link",
+        "djangocms_picture",
         "djangocms_bootstrap4",
         "djangocms_bootstrap4.contrib.bootstrap4_alerts",
         "djangocms_bootstrap4.contrib.bootstrap4_badge",
@@ -11,6 +13,7 @@
         "djangocms_bootstrap4.contrib.bootstrap4_jumbotron",
         "djangocms_bootstrap4.contrib.bootstrap4_link",
         "djangocms_bootstrap4.contrib.bootstrap4_listgroup",
+        "djangocms_bootstrap4.contrib.bootstrap4_media",
         "djangocms_bootstrap4.contrib.bootstrap4_picture",
         "djangocms_bootstrap4.contrib.bootstrap4_utilities"
     ]
