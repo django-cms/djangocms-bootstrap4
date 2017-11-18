@@ -4,6 +4,8 @@ django CMS Bootstrap 4
 
 **This addon is still in development, please do not use in production!**
 
+**It is available on Divio Cloud (alpha) but not yet on PyPi!**
+
 
 |pypi| |build| |coverage|
 
