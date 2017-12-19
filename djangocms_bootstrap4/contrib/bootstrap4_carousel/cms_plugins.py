@@ -11,6 +11,7 @@ from djangocms_link.cms_plugins import LinkPlugin
 from djangocms_bootstrap4.helpers import concat_classes, get_plugin_template
 
 from .models import Bootstrap4Carousel, Bootstrap4CarouselSlide
+from .constants import CAROUSEL_DEFAULT_SIZE
 
 
 class Bootstrap4CarouselPlugin(CMSPluginBase):
@@ -27,7 +28,7 @@ class Bootstrap4CarouselPlugin(CMSPluginBase):
     fieldsets = [
         (None, {
             'fields': (
-                ('carousel_style', 'carousel_interval'),
+                ('carousel_aspect_ratio', 'carousel_interval'),
                 ('carousel_controls', 'carousel_indicators'),
                 ('carousel_keyboard', 'carousel_wrap'),
                 ('carousel_ride', 'carousel_pause'),
@@ -36,6 +37,7 @@ class Bootstrap4CarouselPlugin(CMSPluginBase):
         (_('Advanced settings'), {
             'classes': ('collapse',),
             'fields': (
+                'carousel_style',
                 'tag_type',
                 'attributes',
             )
@@ -94,8 +96,23 @@ class Bootstrap4CarouselSlidePlugin(CMSPluginBase):
     ]
 
     def render(self, context, instance, placeholder):
+        parent = instance.parent.get_plugin_instance()[0]
+        width = float(context.get('width') or CAROUSEL_DEFAULT_SIZE[0])
+        height = float(context.get('height') or CAROUSEL_DEFAULT_SIZE[1])
+
+        if parent.carousel_aspect_ratio:
+            aspect_width, aspect_height = tuple(
+                [int(i) for i in parent.carousel_aspect_ratio.split('x')]
+            )
+            height = width * aspect_height / aspect_width
+
         context['instance'] = instance
         context['link'] = instance.get_link()
+        context['options'] = {
+            'crop': 10,
+            'size': (width, height),
+            'upscale': True
+        }
         return context
 
     def get_render_template(self, context, instance, placeholder):
