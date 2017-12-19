@@ -106,9 +106,9 @@ class Bootstrap4GridRow(CMSPlugin):
             '(%(count)i columns)',
             column_count
         ) % {'count': column_count}
-        column_count_str += ' .{}'.format(
-            ' .'.join(instance.attributes['class'].split())
-        )
+        # column_count_str += ' .{}'.format(
+        #     ' .'.join(instance.attributes['class'].split())
+        # )
 
         return column_count_str
 
