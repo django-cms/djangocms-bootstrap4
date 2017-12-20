@@ -112,13 +112,13 @@ export default class PreviewGenerator {
 
     close() {
         this.template.find('.js-preview, h2').hide();
-        this.template.find('.js-close').text('O');
+        this.template.find('.js-close').text('...');
         this.closed = true;
     }
 
     open () {
         this.template.find('.js-preview, h2').show();
-        this.template.find('.js-close').text('X');
+        this.template.find('.js-close').html('&times;');
         this.closed = false;
     }
 
