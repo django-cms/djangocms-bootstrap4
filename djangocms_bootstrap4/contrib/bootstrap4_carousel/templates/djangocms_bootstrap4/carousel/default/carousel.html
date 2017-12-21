@@ -22,7 +22,7 @@
     {% with 1024 as width and 768 as height %}
         <div class="carousel-inner">
             {% for plugin in instance.child_plugin_instances %}
-                {% with forloop as parentloop %}{% render_plugin plugin %}{% endwith %}
+                {% render_plugin plugin %}
             {% endfor %}
         </div>
     {% endwith %}
