@@ -35,3 +35,11 @@ CAROUSEL_ASPECT_RATIO_CHOICES = (
         for x, y in CAROUSEL_ASPECT_RATIOS
     ])
 )
+
+CAROUSEL_TEMPLATE_CHOICES = getattr(
+    settings,
+    'DJANGOCMS_BOOTSTRAP4_CAROUSEL_TEMPLATES',
+    (
+        ('default', _('Default')),
+    ),
+)

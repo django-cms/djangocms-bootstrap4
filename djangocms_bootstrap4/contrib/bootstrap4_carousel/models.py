@@ -15,10 +15,10 @@ from djangocms_text_ckeditor.fields import HTMLField
 
 from filer.fields.image import FilerImageField
 
-from djangocms_bootstrap4.constants import TEMPLATES
 from djangocms_bootstrap4.fields import TagTypeField, AttributesField
 
 from .constants import (
+    CAROUSEL_TEMPLATE_CHOICES,
     CAROUSEL_PAUSE,
     CAROUSEL_RIDE,
     CAROUSEL_ASPECT_RATIO_CHOICES,
@@ -33,8 +33,8 @@ class Bootstrap4Carousel(CMSPlugin):
     """
     carousel_style = models.CharField(
         verbose_name=_('Template'),
-        choices=TEMPLATES,
-        default=TEMPLATES[0][0],
+        choices=CAROUSEL_TEMPLATE_CHOICES,
+        default=CAROUSEL_TEMPLATE_CHOICES[0][0],
         max_length=255,
         help_text=_('This is the template that will be used for the component.'),
     )
