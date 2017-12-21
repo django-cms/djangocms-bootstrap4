@@ -18,7 +18,11 @@ from filer.fields.image import FilerImageField
 from djangocms_bootstrap4.constants import TEMPLATES
 from djangocms_bootstrap4.fields import TagTypeField, AttributesField
 
-from .constants import CAROUSEL_PAUSE, CAROUSEL_RIDE
+from .constants import (
+    CAROUSEL_PAUSE,
+    CAROUSEL_RIDE,
+    CAROUSEL_ASPECT_RATIO_CHOICES,
+)
 
 
 @python_2_unicode_compatible
@@ -78,6 +82,15 @@ class Bootstrap4Carousel(CMSPlugin):
         default=True,
         help_text=_('Whether the carousel should cycle continuously or have '
                     'hard stops.'),
+    )
+    carousel_aspect_ratio = models.CharField(
+        verbose_name=_('Aspect ratio'),
+        choices=CAROUSEL_ASPECT_RATIO_CHOICES,
+        blank=True,
+        default='',
+        max_length=255,
+        help_text=_('Determines width and height of the image '
+                    'according to the selected ratio.'),
     )
     tag_type = TagTypeField()
     attributes = AttributesField(

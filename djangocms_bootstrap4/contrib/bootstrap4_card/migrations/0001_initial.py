@@ -12,10 +12,8 @@ from ..models import CARD_COLOR_STYLES, CARD_TEXT_STYLES
 from ..constants import (
     CARD_TYPES,
     CARD_ALIGNMENT,
-    CARD_INNER_TYPE,
-    CARD_CONTENT_TYPE,
+    CARD_INNER_TYPES,
     CARD_TAG_CHOICES,
-    CARD_IMAGE_TYPE,
 )
 
 
@@ -46,37 +44,10 @@ class Migration(migrations.Migration):
             bases=('cms.cmsplugin',),
         ),
         migrations.CreateModel(
-            name='Bootstrap4CardContent',
-            fields=[
-                ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='bootstrap4_card_bootstrap4cardcontent', serialize=False, to='cms.CMSPlugin')),
-                ('content_type', models.CharField(choices=CARD_CONTENT_TYPE, default=CARD_CONTENT_TYPE[0][0], help_text='Define the content type of the plugin.', max_length=255, verbose_name='Content type')),
-                ('card_content', models.CharField(blank=True, help_text='Use this to display a simple text, alternatively you can use nested plugins.', max_length=255, verbose_name='Content')),
-                ('tag_type', djangocms_bootstrap4.fields.TagTypeField(choices=CARD_TAG_CHOICES, default=CARD_TAG_CHOICES[0][0], help_text='Select the HTML tag to be used.', max_length=255, verbose_name='Tag type')),
-                ('attributes', djangocms_bootstrap4.fields.AttributesField(blank=True, default=dict, verbose_name='Attributes')),
-            ],
-            options={
-                'abstract': False,
-            },
-            bases=('cms.cmsplugin',),
-        ),
-        migrations.CreateModel(
-            name='Bootstrap4CardImage',
-            fields=[
-                ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='bootstrap4_card_bootstrap4cardimage', serialize=False, to='cms.CMSPlugin')),
-                ('content_type', models.CharField(blank=True, choices=CARD_IMAGE_TYPE, default=CARD_IMAGE_TYPE[0][0], help_text='Define where the image should be positioned.', max_length=255, verbose_name='Image type')),
-                ('tag_type', djangocms_bootstrap4.fields.TagTypeField(choices=TAG_CHOICES, default=TAG_CHOICES[0][0], help_text='Select the HTML tag to be used.', max_length=255, verbose_name='Tag type')),
-                ('attributes', djangocms_bootstrap4.fields.AttributesField(blank=True, default=dict, verbose_name='Attributes')),
-            ],
-            options={
-                'abstract': False,
-            },
-            bases=('cms.cmsplugin',),
-        ),
-        migrations.CreateModel(
             name='Bootstrap4CardInner',
             fields=[
                 ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='bootstrap4_card_bootstrap4cardinner', serialize=False, to='cms.CMSPlugin')),
-                ('inner_type', models.CharField(choices=CARD_INNER_TYPE, default=CARD_INNER_TYPE[0][0], help_text='Define the structure of the plugin.', max_length=255, verbose_name='Inner type')),
+                ('inner_type', models.CharField(choices=CARD_INNER_TYPES, default=CARD_INNER_TYPES[0][0], help_text='Define the structure of the plugin.', max_length=255, verbose_name='Inner type')),
                 ('tag_type', djangocms_bootstrap4.fields.TagTypeField(choices=TAG_CHOICES, default=TAG_CHOICES[0][0], help_text='Select the HTML tag to be used.', max_length=255, verbose_name='Tag type')),
                 ('attributes', djangocms_bootstrap4.fields.AttributesField(blank=True, default=dict, verbose_name='Attributes')),
             ],

@@ -22,6 +22,7 @@ class Bootstrap4BadgePlugin(CMSPluginBase):
     module = _('Bootstrap 4')
     render_template = 'djangocms_bootstrap4/badge.html'
     change_form_template = 'djangocms_bootstrap4/admin/badge.html'
+    text_enabled = True
 
     fieldsets = [
         (None, {

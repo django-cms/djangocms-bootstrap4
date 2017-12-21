@@ -16,10 +16,8 @@ from djangocms_bootstrap4.constants import COLOR_STYLES
 from .constants import (
     CARD_TYPES,
     CARD_ALIGNMENT,
-    CARD_INNER_TYPE,
-    CARD_CONTENT_TYPE,
+    CARD_INNER_TYPES,
     CARD_TAG_CHOICES,
-    CARD_IMAGE_TYPE,
 )
 
 
@@ -93,8 +91,8 @@ class Bootstrap4CardInner(CMSPlugin):
     """
     inner_type = models.CharField(
         verbose_name=_('Inner type'),
-        choices=CARD_INNER_TYPE,
-        default=CARD_INNER_TYPE[0][0],
+        choices=CARD_INNER_TYPES,
+        default=CARD_INNER_TYPES[0][0],
         max_length=255,
         help_text=_('Define the structure of the plugin.'),
     )
@@ -106,59 +104,3 @@ class Bootstrap4CardInner(CMSPlugin):
 
     def get_short_description(self):
         return '({})'.format(self.inner_type)
-
-
-@python_2_unicode_compatible
-class Bootstrap4CardContent(CMSPlugin):
-    """
-    Components > "Card - Content" Plugin (Title, Subtitle, Text, Link)
-    https://getbootstrap.com/docs/4.0/components/card/
-    """
-    content_type = models.CharField(
-        verbose_name=_('Content type'),
-        choices=CARD_CONTENT_TYPE,
-        default=CARD_CONTENT_TYPE[0][0],
-        max_length=255,
-        help_text=_('Define the content type of the plugin.'),
-    )
-    card_content = models.CharField(
-        verbose_name=_('Content'),
-        blank=True,
-        max_length=255,
-        help_text=_('Use this to display a simple text, alternatively you can use nested plugins.'),
-    )
-    tag_type = TagTypeField(
-        choices=CARD_TAG_CHOICES,
-        default=CARD_TAG_CHOICES[0][0],
-    )
-    attributes = AttributesField()
-
-    def __str__(self):
-        return str(self.pk)
-
-    def get_short_description(self):
-        return '({})'.format(self.content_type)
-
-
-@python_2_unicode_compatible
-class Bootstrap4CardImage(CMSPlugin):
-    """
-    Components > "Card - Image" Plugin (Top, Bottom, Overlay)
-    https://getbootstrap.com/docs/4.0/components/card/
-    """
-    content_type = models.CharField(
-        verbose_name=_('Image type'),
-        choices=CARD_IMAGE_TYPE,
-        default=CARD_IMAGE_TYPE[0][0],
-        blank=True,
-        max_length=255,
-        help_text=_('Define where the image should be positioned.'),
-    )
-    tag_type = TagTypeField()
-    attributes = AttributesField()
-
-    def __str__(self):
-        return str(self.pk)
-
-    def get_short_description(self):
-        return '({})'.format(self.content_type)

@@ -33,6 +33,7 @@ class Bootstrap4CollapsePlugin(CMSPluginBase):
         'Bootstrap4LinkPlugin',
         'Bootstrap4CardPlugin',
         'Bootstrap4SpacingPlugin',
+        'Bootstrap4GridRowPlugin',
     ]
 
     fieldsets = [
@@ -61,7 +62,8 @@ class Bootstrap4CollapseTriggerPlugin(CMSPluginBase):
     parent_classes = [
         'Bootstrap4CardPlugin',
         'Bootstrap4CardInnerPlugin',
-        'Bootstrap4CollapsePlugin'
+        'Bootstrap4CollapsePlugin',
+        'Bootstrap4GridColumnPlugin',
     ]
 
     fieldsets = [
@@ -94,7 +96,8 @@ class Bootstrap4CollapseContainerPlugin(CMSPluginBase):
     parent_classes = [
         'Bootstrap4CardPlugin',
         'Bootstrap4CardInnerPlugin',
-        'Bootstrap4CollapsePlugin'
+        'Bootstrap4CollapsePlugin',
+        'Bootstrap4GridColumnPlugin',
     ]
 
     fieldsets = [
