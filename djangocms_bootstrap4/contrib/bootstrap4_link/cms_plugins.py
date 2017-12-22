@@ -8,8 +8,10 @@ from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 
 from djangocms_link.cms_plugins import LinkPlugin
-from djangocms_bootstrap4.helpers import concat_classes
+from djangocms_link.models import get_templates
+from djangocms_bootstrap4.helpers import concat_classes, get_plugin_template
 
+from .constants import USE_LINK_ICONS
 from .models import Bootstrap4Link
 from .forms import Bootstrap4LinkForm
 
@@ -25,18 +27,30 @@ class Bootstrap4LinkPlugin(LinkPlugin):
     change_form_template = 'djangocms_bootstrap4/admin/link.html'
     module = _('Bootstrap 4')
 
+    fields = (
+        ('name', 'link_type'),
+        ('external_link', 'internal_link'),
+        ('link_context', 'link_size'),
+        ('link_outline', 'link_block'),
+    )
+
+    if USE_LINK_ICONS:
+        fields = fields + (
+            ('icon_left', 'icon_right'),
+        )
+
     LinkPlugin.fieldsets[0] = (
         None, {
-            'fields': (
-                ('name', 'link_type'),
-                ('external_link', 'internal_link'),
-                ('link_context', 'link_size'),
-                ('link_outline', 'link_block'),
-            )
+            'fields': fields
         }
     )
 
     fieldsets = LinkPlugin.fieldsets
+
+    def get_render_template(self, context, instance, placeholder):
+        return get_plugin_template(
+            instance, 'link', 'link', get_templates()
+        )
 
     def render(self, context, instance, placeholder):
         link_classes = []

@@ -8,6 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from cms.models import CMSPlugin
 
 from djangocms_link.models import AbstractLink
+from djangocms_icon.fields import Icon
 from djangocms_bootstrap4.constants import COLOR_STYLES
 
 from .constants import LINK_CHOICES, LINK_SIZES
@@ -54,6 +55,13 @@ class Bootstrap4Link(AbstractLink):
         default=False,
         help_text=_('Extends the button to the width of its container.'),
     )
+    icon_left = Icon(
+        verbose_name=_('Icon left'),
+    )
+    icon_right = Icon(
+        verbose_name=_('Icon right'),
+    )
+
 
     def __str__(self):
         return str(self.pk)

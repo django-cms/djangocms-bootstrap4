@@ -1,0 +1,15 @@
+{% load cms_tags %}{% spaceless %}
+
+{# this needs to be in one line for rendering purpose #}
+{% endspaceless %}<a href="{{ link }}"{% if instance.target %} target="{{ instance.target }}"{% endif %}{% if instance.attributes %} {{ instance.attributes_str }}{% endif %}>
+    {% if instance.icon_left %}
+        {% with icon_class=instance.icon_left instance=instance.icon_left %}{% include "djangocms_icon/includes/icon.html" %}{% endwith %}
+    {% endif %}
+    {% for plugin in instance.child_plugin_instances %}
+        {% render_plugin plugin %}{% empty %}{{ instance.name }}
+    {% endfor %}
+    {% if instance.icon_right %}
+        {% with icon_class=instance.icon_right instance=instance.icon_right %}{% include "djangocms_icon/includes/icon.html" %}{% endwith %}
+    {% endif %}
+</a>{% spaceless %}
+{% endspaceless %}

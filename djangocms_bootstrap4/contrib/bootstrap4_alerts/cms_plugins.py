@@ -18,7 +18,7 @@ class Bootstrap4AlertsPlugin(CMSPluginBase):
     https://getbootstrap.com/docs/4.0/components/alerts/
     """
     model = Bootstrap4Alerts
-    name = _('Alerts')
+    name = _('Alert')
     module = _('Bootstrap 4')
     render_template = 'djangocms_bootstrap4/alerts.html'
     change_form_template = 'djangocms_bootstrap4/admin/alerts.html'
