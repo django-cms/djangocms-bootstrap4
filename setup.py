@@ -13,6 +13,7 @@ REQUIREMENTS = [
     'djangocms-attributes-field>=0.1.1',
     'djangocms-link>=2.1.0',
     'djangocms-picture>=2.0.6',
+    'djangocms-icon>=0.2.0',
 ]
 
 

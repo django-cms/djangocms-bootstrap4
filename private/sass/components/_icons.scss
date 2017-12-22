@@ -33,3 +33,10 @@ $svg-colors: (
 svg path {
     fill: inherit;
 }
+
+// admin
+.djangocms-icon .icon > input {
+    float: left;
+    position: relative;
+    top: 12px;
+}
