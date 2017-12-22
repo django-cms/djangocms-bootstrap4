@@ -16,8 +16,8 @@ LINK_SIZES = (
     ('btn-lg', _('Large')),
 )
 
-LINK_ICONS = getattr(
+USE_LINK_ICONS = getattr(
     settings,
-    'DJANGOCMS_BOOTSTRAP4_ICONS',
+    'DJANGOCMS_BOOTSTRAP4_USE_ICONS',
     True,
 )

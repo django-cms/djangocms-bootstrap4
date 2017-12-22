@@ -11,7 +11,7 @@ from djangocms_link.cms_plugins import LinkPlugin
 from djangocms_link.models import get_templates
 from djangocms_bootstrap4.helpers import concat_classes, get_plugin_template
 
-from .constants import LINK_ICONS
+from .constants import USE_LINK_ICONS
 from .models import Bootstrap4Link
 from .forms import Bootstrap4LinkForm
 
@@ -34,7 +34,7 @@ class Bootstrap4LinkPlugin(LinkPlugin):
         ('link_outline', 'link_block'),
     )
 
-    if LINK_ICONS:
+    if USE_LINK_ICONS:
         fields = fields + (
             ('icon_left', 'icon_right'),
         )
