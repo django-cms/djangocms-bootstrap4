@@ -11,7 +11,7 @@ from djangocms_link.cms_plugins import LinkPlugin
 from djangocms_bootstrap4.helpers import concat_classes, get_plugin_template
 
 from .models import Bootstrap4Carousel, Bootstrap4CarouselSlide
-from .constants import CAROUSEL_DEFAULT_SIZE
+from .constants import CAROUSEL_DEFAULT_SIZE, CAROUSEL_TEMPLATE_CHOICES
 
 
 class Bootstrap4CarouselPlugin(CMSPluginBase):
@@ -45,7 +45,9 @@ class Bootstrap4CarouselPlugin(CMSPluginBase):
     ]
 
     def get_render_template(self, context, instance, placeholder):
-        return get_plugin_template(instance, 'carousel', 'carousel')
+        return get_plugin_template(
+            instance, 'carousel', 'carousel', CAROUSEL_TEMPLATE_CHOICES
+        )
 
     def render(self, context, instance, placeholder):
         link_classes = ['carousel', 'slide']
@@ -116,7 +118,9 @@ class Bootstrap4CarouselSlidePlugin(CMSPluginBase):
         return context
 
     def get_render_template(self, context, instance, placeholder):
-        return get_plugin_template(instance, 'carousel', 'slide')
+        return get_plugin_template(
+            instance, 'carousel', 'slide', CAROUSEL_TEMPLATE_CHOICES
+        )
 
 
 plugin_pool.register_plugin(Bootstrap4CarouselPlugin)

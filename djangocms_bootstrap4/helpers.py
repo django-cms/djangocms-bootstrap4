@@ -11,8 +11,6 @@ from django.template import TemplateDoesNotExist
 from django.template.loader import select_template
 from django.forms import ValidationError
 
-from .constants import TEMPLATES
-
 
 def concat_classes(classes):
     """
@@ -21,14 +19,14 @@ def concat_classes(classes):
     return ' '.join(_class for _class in classes if _class)
 
 
-def get_plugin_template(instance, prefix, name):
+def get_plugin_template(instance, prefix, name, templates):
     if instance.parent is None:
-        template = TEMPLATES[0][0]
+        template = templates[0][0]
     else:
         template = getattr(
             instance.parent.get_plugin_instance()[0],
             'carousel_style',
-            TEMPLATES[0][0],
+            templates[0][0],
         )
         try:
             select_template([template])

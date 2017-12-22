@@ -11,9 +11,9 @@ import djangocms_text_ckeditor.fields
 import filer.fields.image
 
 from djangocms_link.models import get_templates, TARGET_CHOICES
-from djangocms_bootstrap4.constants import TAG_CHOICES, TEMPLATES
+from djangocms_bootstrap4.constants import TAG_CHOICES
 
-from ..constants import CAROUSEL_PAUSE, CAROUSEL_RIDE
+from ..constants import CAROUSEL_PAUSE, CAROUSEL_RIDE, CAROUSEL_TEMPLATE_CHOICES
 
 
 class Migration(migrations.Migration):
@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
             name='Bootstrap4Carousel',
             fields=[
                 ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='bootstrap4_carousel_bootstrap4carousel', serialize=False, to='cms.CMSPlugin')),
-                ('carousel_style', models.CharField(choices=TEMPLATES, default=TEMPLATES[0][0], help_text='This is the template that will be used for the component.', max_length=255, verbose_name='Template')),
+                ('carousel_style', models.CharField(choices=CAROUSEL_TEMPLATE_CHOICES, default=CAROUSEL_TEMPLATE_CHOICES[0][0], help_text='This is the template that will be used for the component.', max_length=255, verbose_name='Template')),
                 ('carousel_interval', models.IntegerField(default=5000, help_text='The amount of time to delay between automatically cycling an item. If false, carousel will not automatically cycle.', verbose_name='Interval')),
                 ('carousel_controls', models.BooleanField(default=True, help_text='Adding in the previous and next controls.', verbose_name='Controls')),
                 ('carousel_indicators', models.BooleanField(default=True, help_text='Adding in the indicators to the carousel.', verbose_name='Indicators')),
