@@ -62,4 +62,4 @@ class Bootstrap4Blockquote(CMSPlugin):
         return str(self.pk)
 
     def get_short_description(self):
-        return ''
+        return self.quote_content
