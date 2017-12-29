@@ -9,7 +9,7 @@ from cms.plugin_pool import plugin_pool
 
 from djangocms_bootstrap4.helpers import concat_classes
 
-from .models import Bootstrap4Code, Bootstrap4Blockquote
+from .models import Bootstrap4Code, Bootstrap4Blockquote, Bootstrap4Figure
 
 
 class Bootstrap4CodePlugin(CMSPluginBase):
@@ -80,5 +80,45 @@ class Bootstrap4BlockquotePlugin(CMSPluginBase):
         )
 
 
+class Bootstrap4FigurePlugin(CMSPluginBase):
+    """
+    Content > "Figure" Plugin
+    https://getbootstrap.com/docs/4.0/content/figures/
+    """
+    model = Bootstrap4Figure
+    name = _('Figure')
+    module = _('Bootstrap 4')
+    render_template = 'djangocms_bootstrap4/figure.html'
+    allow_children = True
+    child_classes = ['Bootstrap4PicturePlugin']
+
+    fieldsets = [
+        (None, {
+            'fields': (
+                'figure_caption',
+                'figure_alignment',
+            )
+        }),
+        (_('Advanced settings'), {
+            'classes': ('collapse',),
+            'fields': (
+                'attributes',
+            )
+        }),
+    ]
+
+    def render(self, context, instance, placeholder):
+        classes = concat_classes([
+            'figure',
+            instance.attributes.get('class'),
+        ])
+        instance.attributes['class'] = classes
+
+        return super(Bootstrap4FigurePlugin, self).render(
+            context, instance, placeholder
+        )
+
+
 plugin_pool.register_plugin(Bootstrap4CodePlugin)
 plugin_pool.register_plugin(Bootstrap4BlockquotePlugin)
+plugin_pool.register_plugin(Bootstrap4FigurePlugin)
