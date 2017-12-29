@@ -44,7 +44,7 @@ class Bootstrap4Card(CMSPlugin):
         max_length=255,
     )
     card_context = models.CharField(
-        verbose_name=_('Context'),
+        verbose_name=_('Background context'),
         choices=CARD_COLOR_STYLES,
         blank=True,
         max_length=255,

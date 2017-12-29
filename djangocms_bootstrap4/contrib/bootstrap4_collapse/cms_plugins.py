@@ -57,7 +57,6 @@ class Bootstrap4CollapseTriggerPlugin(CMSPluginBase):
     name = _('Collapse trigger')
     module = _('Bootstrap 4')
     render_template = 'djangocms_bootstrap4/collapse-trigger.html'
-    change_form_template = 'djangocms_bootstrap4/admin/collapse.html'
     allow_children = True
     parent_classes = [
         'Bootstrap4CardPlugin',
@@ -91,7 +90,6 @@ class Bootstrap4CollapseContainerPlugin(CMSPluginBase):
     name = _('Collapse container')
     module = _('Bootstrap 4')
     render_template = 'djangocms_bootstrap4/collapse-container.html'
-    change_form_template = 'djangocms_bootstrap4/admin/collapse.html'
     allow_children = True
     parent_classes = [
         'Bootstrap4CardPlugin',

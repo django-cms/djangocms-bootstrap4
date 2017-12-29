@@ -51,6 +51,7 @@ class Bootstrap4BlockquotePlugin(CMSPluginBase):
     name = _('Blockquote')
     module = _('Bootstrap 4')
     render_template = 'djangocms_bootstrap4/blockquote.html'
+    change_form_template = 'djangocms_bootstrap4/admin/blockquote.html'
     text_enabled = True
 
     fieldsets = [
@@ -91,6 +92,7 @@ class Bootstrap4FigurePlugin(CMSPluginBase):
     name = _('Figure')
     module = _('Bootstrap 4')
     render_template = 'djangocms_bootstrap4/figure.html'
+    change_form_template = 'djangocms_bootstrap4/admin/figure.html'
     allow_children = True
     child_classes = ['Bootstrap4PicturePlugin']
 

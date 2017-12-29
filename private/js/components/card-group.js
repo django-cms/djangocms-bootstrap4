@@ -1,7 +1,7 @@
 import ButtonGroup from 'components/button-group';
 
 /**
- * @class ContextGroup
+ * @class CardGroup
  * @public
  */
 export default class CardGroup extends ButtonGroup {

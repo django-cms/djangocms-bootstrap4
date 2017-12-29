@@ -62,6 +62,5 @@ class Bootstrap4Link(AbstractLink):
         verbose_name=_('Icon right'),
     )
 
-
     def __str__(self):
         return str(self.pk)

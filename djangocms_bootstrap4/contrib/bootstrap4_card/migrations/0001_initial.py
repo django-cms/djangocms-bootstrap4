@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='bootstrap4_card_bootstrap4card', serialize=False, to='cms.CMSPlugin')),
                 ('card_type', models.CharField(choices=CARD_TYPES, default=CARD_TYPES[0][0], max_length=255, verbose_name='Card type')),
-                ('card_context', models.CharField(blank=True, choices=CARD_COLOR_STYLES, max_length=255, verbose_name='Context')),
+                ('card_context', models.CharField(blank=True, choices=CARD_COLOR_STYLES, max_length=255, verbose_name='Background context')),
                 ('card_alignment', models.CharField(blank=True, choices=CARD_ALIGNMENT, max_length=255, verbose_name='Alignment')),
                 ('card_outline', models.BooleanField(default=False, help_text='Uses the border context instead of the background.', verbose_name='Outline')),
                 ('card_text_color', models.CharField(blank=True, choices=CARD_TEXT_STYLES, max_length=255, verbose_name='Text context')),

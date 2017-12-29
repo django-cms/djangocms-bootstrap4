@@ -1,8 +1,3 @@
 {% extends "djangocms_bootstrap4/admin/base.html" %}
-{% load static i18n %}
 
-{% block field_sets %}
-    <div class="djangocms-bootstrap4 djangocms-bootstrap4-alerts">
-        {{ block.super }}
-    </div>
-{% endblock %}
+{% block custom_class %}djangocms-bootstrap4-alerts{% endblock %}
