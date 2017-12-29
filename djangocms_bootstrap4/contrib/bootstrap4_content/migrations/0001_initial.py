@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
                 ('cmsplugin_ptr', models.OneToOneField(primary_key=True, to='cms.CMSPlugin', serialize=False, auto_created=True, related_name='bootstrap4_content_bootstrap4blockquote', parent_link=True)),
                 ('quote_content', models.TextField(verbose_name='Quote')),
                 ('quote_origin', models.TextField(verbose_name='Cite', blank=True)),
-                ('quote_alignment', models.CharField(max_length=255, default='', choices=ALIGN_CHOICES, blank=True, verbose_name='Alignment')),
+                ('quote_alignment', models.CharField(max_length=255, default=ALIGN_CHOICES[0][0], choices=ALIGN_CHOICES, blank=True, verbose_name='Alignment')),
                 ('attributes', djangocms_bootstrap4.fields.AttributesField(default=dict, verbose_name='Attributes', blank=True)),
             ],
             options={

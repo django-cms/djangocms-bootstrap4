@@ -24,8 +24,8 @@ class Bootstrap4Code(CMSPlugin):
     )
     tag_type = models.CharField(
         verbose_name=_('Code type'),
-        choices=ALIGN_CHOICES,
-        default=ALIGN_CHOICES[0][0],
+        choices=CODE_TYPE_CHOICES,
+        default=CODE_TYPE_CHOICES[0][0],
         max_length=255,
     )
     attributes = AttributesField()
