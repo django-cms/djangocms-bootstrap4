@@ -5,12 +5,12 @@ from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
 
-SPACER_PROPERTIES = (
+SPACER_PROPERTY_CHOICES = (
     ('m', 'margin'),
     ('p', 'padding'),
 )
 
-SPACER_SIDES = (
+SPACER_SIDE_CHOICES = (
     ('', '*'),
     ('t', '*-top'),
     ('r', '*-right'),
@@ -20,7 +20,7 @@ SPACER_SIDES = (
     ('y', '*-top & *-bottom'),
 )
 
-SPACER_SIZES = getattr(
+SPACER_SIZE_CHOICES = getattr(
     settings,
     'DJANGOCMS_BOOTSTRAP4_SPACER_SIZES',
     (

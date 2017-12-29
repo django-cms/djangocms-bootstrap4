@@ -10,7 +10,7 @@ LINK_CHOICES = (
     ('btn', _('Button')),
 )
 
-LINK_SIZES = (
+LINK_SIZE_CHOICES = (
     ('btn-sm', _('Small')),
     ('', _('Medium')),
     ('btn-lg', _('Large')),

@@ -10,8 +10,7 @@ from djangocms_bootstrap4.contrib.bootstrap4_grid.models import (
     Bootstrap4GridColumn,
 )
 from djangocms_bootstrap4.contrib.bootstrap4_grid.constants import (
-    GRID_CONTAINERS,
-    GRID_ROW_VERTICAL_ALIGNMENT,
+    GRID_CONTAINER_CHOICES,
     GRID_SIZE,
 )
 from djangocms_bootstrap4.constants import TAG_CHOICES
@@ -39,7 +38,7 @@ class ContainerPluginTestCase(CMSTestCase):
 
         with self.login_user_context(self.superuser):
             data = {
-                'container_type': GRID_CONTAINERS[0][0],
+                'container_type': GRID_CONTAINER_CHOICES[0][0],
                 'tag_type': TAG_CHOICES[0][0],
             }
             response = self.client.post(endpoint, data)

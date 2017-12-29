@@ -8,7 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from cms.models import CMSPlugin
 
 from djangocms_bootstrap4.fields import AttributesField
-from djangocms_bootstrap4.constants import COLOR_STYLES
+from djangocms_bootstrap4.constants import COLOR_STYLE_CHOICES
 
 
 @python_2_unicode_compatible
@@ -23,8 +23,8 @@ class Bootstrap4Badge(CMSPlugin):
     )
     badge_context = models.CharField(
         verbose_name=_('Context'),
-        choices=COLOR_STYLES,
-        default=COLOR_STYLES[0][0],
+        choices=COLOR_STYLE_CHOICES,
+        default=COLOR_STYLE_CHOICES[0][0],
         max_length=255,
     )
     badge_pills = models.BooleanField(

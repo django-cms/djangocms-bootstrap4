@@ -19,10 +19,10 @@ from djangocms_bootstrap4.helpers import mark_safe_lazy
 
 from .constants import (
     GRID_SIZE,
-    GRID_CONTAINERS,
-    GRID_ROW_VERTICAL_ALIGNMENT,
-    GRID_ROW_HORIZONTAL_ALIGNMENT,
-    GRID_COLUMN_ALIGNMENT,
+    GRID_CONTAINER_CHOICES,
+    GRID_ROW_VERTICAL_ALIGNMENT_CHOICES,
+    GRID_ROW_HORIZONTAL_ALIGNMENT_CHOICES,
+    GRID_COLUMN_ALIGNMENT_CHOICES,
     GRID_COLUMN_CHOICES,
 )
 
@@ -35,8 +35,8 @@ class Bootstrap4GridContainer(CMSPlugin):
     """
     container_type = models.CharField(
         verbose_name=_('Container type'),
-        choices=GRID_CONTAINERS,
-        default=GRID_CONTAINERS[0][0],
+        choices=GRID_CONTAINER_CHOICES,
+        default=GRID_CONTAINER_CHOICES[0][0],
         max_length=255,
         help_text=mark_safe_lazy(_(
             'Defines if the grid should use fixed width (<code>.container</code>) '
@@ -51,7 +51,7 @@ class Bootstrap4GridContainer(CMSPlugin):
 
     def get_short_description(self):
         text = ''
-        for item in GRID_CONTAINERS:
+        for item in GRID_CONTAINER_CHOICES:
             if item[0] == self.container_type:
                 text = item[1]
         return '({})'.format(text)
@@ -65,7 +65,7 @@ class Bootstrap4GridRow(CMSPlugin):
     """
     vertical_alignment = models.CharField(
         verbose_name=_('Vertical alignment'),
-        choices=GRID_ROW_VERTICAL_ALIGNMENT,
+        choices=GRID_ROW_VERTICAL_ALIGNMENT_CHOICES,
         blank=True,
         max_length=255,
         help_text=mark_safe_lazy(_(
@@ -75,7 +75,7 @@ class Bootstrap4GridRow(CMSPlugin):
     )
     horizontal_alignment = models.CharField(
         verbose_name=_('Horizontal alignment'),
-        choices=GRID_ROW_HORIZONTAL_ALIGNMENT,
+        choices=GRID_ROW_HORIZONTAL_ALIGNMENT_CHOICES,
         blank=True,
         max_length=255,
         help_text=mark_safe_lazy(_(
@@ -138,7 +138,7 @@ class Bootstrap4GridColumn(CMSPlugin):
     )
     column_alignment = models.CharField(
         verbose_name=_('Alignment'),
-        choices=GRID_COLUMN_ALIGNMENT,
+        choices=GRID_COLUMN_ALIGNMENT_CHOICES,
         blank=True,
         max_length=255,
     )

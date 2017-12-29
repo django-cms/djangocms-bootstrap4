@@ -19,8 +19,8 @@ from djangocms_bootstrap4.fields import TagTypeField, AttributesField
 
 from .constants import (
     CAROUSEL_TEMPLATE_CHOICES,
-    CAROUSEL_PAUSE,
-    CAROUSEL_RIDE,
+    CAROUSEL_PAUSE_CHOICES,
+    CAROUSEL_RIDE_CHOICES,
     CAROUSEL_ASPECT_RATIO_CHOICES,
 )
 
@@ -61,8 +61,8 @@ class Bootstrap4Carousel(CMSPlugin):
     )
     carousel_pause = models.CharField(
         verbose_name=_('Pause'),
-        choices=CAROUSEL_PAUSE,
-        default=CAROUSEL_PAUSE[0][0],
+        choices=CAROUSEL_PAUSE_CHOICES,
+        default=CAROUSEL_PAUSE_CHOICES[0][0],
         max_length=255,
         help_text=_('If set to "hover", pauses the cycling of the carousel on '
                     '"mouseenter" and resumes the cycling of the carousel on '
@@ -71,8 +71,8 @@ class Bootstrap4Carousel(CMSPlugin):
     )
     carousel_ride = models.CharField(
         verbose_name=_('Ride'),
-        choices=CAROUSEL_RIDE,
-        default=CAROUSEL_RIDE[0][0],
+        choices=CAROUSEL_RIDE_CHOICES,
+        default=CAROUSEL_RIDE_CHOICES[0][0],
         max_length=255,
         help_text=_('Autoplays the carousel after the user manually cycles the '
                     'first item. If "carousel", autoplays the carousel on load.'),

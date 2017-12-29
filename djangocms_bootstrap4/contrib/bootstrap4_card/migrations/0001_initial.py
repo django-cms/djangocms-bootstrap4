@@ -8,11 +8,11 @@ import djangocms_bootstrap4.fields
 
 from djangocms_bootstrap4.constants import TAG_CHOICES
 
-from ..models import CARD_COLOR_STYLES, CARD_TEXT_STYLES
+from ..models import CARD_COLOR_STYLE_CHOICES, CARD_TEXT_STYLES
 from ..constants import (
-    CARD_TYPES,
-    CARD_ALIGNMENT,
-    CARD_INNER_TYPES,
+    CARD_TYPE_CHOICES,
+    CARD_ALIGNMENT_CHOICES,
+    CARD_INNER_TYPE_CHOICES,
     CARD_TAG_CHOICES,
 )
 
@@ -30,9 +30,9 @@ class Migration(migrations.Migration):
             name='Bootstrap4Card',
             fields=[
                 ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='bootstrap4_card_bootstrap4card', serialize=False, to='cms.CMSPlugin')),
-                ('card_type', models.CharField(choices=CARD_TYPES, default=CARD_TYPES[0][0], max_length=255, verbose_name='Card type')),
-                ('card_context', models.CharField(blank=True, choices=CARD_COLOR_STYLES, max_length=255, verbose_name='Background context')),
-                ('card_alignment', models.CharField(blank=True, choices=CARD_ALIGNMENT, max_length=255, verbose_name='Alignment')),
+                ('card_type', models.CharField(choices=CARD_TYPE_CHOICES, default=CARD_TYPE_CHOICES[0][0], max_length=255, verbose_name='Card type')),
+                ('card_context', models.CharField(blank=True, choices=CARD_COLOR_STYLE_CHOICES, max_length=255, verbose_name='Background context')),
+                ('card_alignment', models.CharField(blank=True, choices=CARD_ALIGNMENT_CHOICES, max_length=255, verbose_name='Alignment')),
                 ('card_outline', models.BooleanField(default=False, help_text='Uses the border context instead of the background.', verbose_name='Outline')),
                 ('card_text_color', models.CharField(blank=True, choices=CARD_TEXT_STYLES, max_length=255, verbose_name='Text context')),
                 ('tag_type', djangocms_bootstrap4.fields.TagTypeField(choices=TAG_CHOICES, default=TAG_CHOICES[0][0], help_text='Select the HTML tag to be used.', max_length=255, verbose_name='Tag type')),
@@ -47,7 +47,7 @@ class Migration(migrations.Migration):
             name='Bootstrap4CardInner',
             fields=[
                 ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='bootstrap4_card_bootstrap4cardinner', serialize=False, to='cms.CMSPlugin')),
-                ('inner_type', models.CharField(choices=CARD_INNER_TYPES, default=CARD_INNER_TYPES[0][0], help_text='Define the structure of the plugin.', max_length=255, verbose_name='Inner type')),
+                ('inner_type', models.CharField(choices=CARD_INNER_TYPE_CHOICES, default=CARD_INNER_TYPE_CHOICES[0][0], help_text='Define the structure of the plugin.', max_length=255, verbose_name='Inner type')),
                 ('tag_type', djangocms_bootstrap4.fields.TagTypeField(choices=TAG_CHOICES, default=TAG_CHOICES[0][0], help_text='Select the HTML tag to be used.', max_length=255, verbose_name='Tag type')),
                 ('attributes', djangocms_bootstrap4.fields.AttributesField(blank=True, default=dict, verbose_name='Attributes')),
             ],

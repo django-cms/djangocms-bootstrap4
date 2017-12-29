@@ -9,8 +9,8 @@ import djangocms_link.validators
 
 from djangocms_link.models import get_templates, TARGET_CHOICES, HOSTNAME
 
-from ..constants import LINK_CHOICES, LINK_SIZES
-from ..models import COLOR_STYLES
+from ..constants import LINK_CHOICES, LINK_SIZE_CHOICES
+from ..models import COLOR_STYLE_CHOICES
 
 
 class Migration(migrations.Migration):
@@ -35,8 +35,8 @@ class Migration(migrations.Migration):
                 ('attributes', djangocms_attributes_field.fields.AttributesField(blank=True, default=dict, verbose_name='Attributes')),
                 ('cmsplugin_ptr', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='bootstrap4_link_bootstrap4link', serialize=False, to='cms.CMSPlugin')),
                 ('link_type', models.CharField(choices=LINK_CHOICES, default=LINK_CHOICES[0][0], help_text='Adds either the .btn-* or .text-* classes.', max_length=255, verbose_name='Type')),
-                ('link_context', models.CharField(blank=True, choices=COLOR_STYLES, max_length=255, verbose_name='Context')),
-                ('link_size', models.CharField(blank=True, choices=LINK_SIZES, max_length=255, verbose_name='Size')),
+                ('link_context', models.CharField(blank=True, choices=COLOR_STYLE_CHOICES, max_length=255, verbose_name='Context')),
+                ('link_size', models.CharField(blank=True, choices=LINK_SIZE_CHOICES, max_length=255, verbose_name='Size')),
                 ('link_outline', models.BooleanField(default=False, help_text='Applies the .btn-outline class to the elements.', verbose_name='Outline')),
                 ('link_block', models.BooleanField(default=False, help_text='Extends the button to the width of its container.', verbose_name='Block')),
                 ('internal_link', models.ForeignKey(blank=True, help_text='If provided, overrides the external link.', null=True, on_delete=django.db.models.deletion.SET_NULL, to='cms.Page', verbose_name='Internal link')),

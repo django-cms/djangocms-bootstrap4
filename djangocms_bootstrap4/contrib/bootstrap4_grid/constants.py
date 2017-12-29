@@ -16,7 +16,7 @@ GRID_SIZE = getattr(
 
 # Bootstrap 4 provides 2 container types, .container and .container-fluid
 # https://getbootstrap.com/docs/4.0/layout/grid/#no-gutters
-GRID_CONTAINERS = getattr(
+GRID_CONTAINER_CHOICES = getattr(
     settings,
     'DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS',
     (
@@ -27,13 +27,13 @@ GRID_CONTAINERS = getattr(
 
 # Options for flexbox on the alignment of the grid
 # https://flexbox.webflow.com/
-GRID_ROW_VERTICAL_ALIGNMENT = (
+GRID_ROW_VERTICAL_ALIGNMENT_CHOICES = (
     ('align-items-start', _('Align items start')),
     ('align-items-center', _('Align items center')),
     ('align-items-end', _('Align items end')),
 )
 
-GRID_ROW_HORIZONTAL_ALIGNMENT = (
+GRID_ROW_HORIZONTAL_ALIGNMENT_CHOICES = (
     ('justify-content-start', _('Justify content start')),
     ('justify-content-center', _('Justify content center')),
     ('justify-content-end', _('Justify content end')),
@@ -41,7 +41,7 @@ GRID_ROW_HORIZONTAL_ALIGNMENT = (
     ('justify-content-between', _('Justify content between')),
 )
 
-GRID_COLUMN_ALIGNMENT = (
+GRID_COLUMN_ALIGNMENT_CHOICES = (
     ('align-self-start', _('Align self start')),
     ('align-self-center', _('Align self center')),
     ('align-self-end', _('Align self end')),

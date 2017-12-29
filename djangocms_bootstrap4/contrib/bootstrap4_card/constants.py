@@ -5,20 +5,20 @@ from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
 
-CARD_TYPES = (
+CARD_TYPE_CHOICES = (
     ('card', _('Card')),
     ('card-group', _('Card group')),
     ('card-deck', _('Card deck')),
     ('card-columns', _('Card columns')),
 )
 
-CARD_ALIGNMENT = (
+CARD_ALIGNMENT_CHOICES = (
     ('text-left', _('Left')),
     ('text-center', _('Center')),
     ('text-right', _('Right')),
 )
 
-CARD_INNER_TYPES = (
+CARD_INNER_TYPE_CHOICES = (
     ('card-body', _('Body')),
     ('card-header', _('Header')),
     ('card-footer', _('Footer')),

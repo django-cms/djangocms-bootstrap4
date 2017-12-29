@@ -6,7 +6,7 @@ from django.db import migrations, models
 import django.db.models.deletion
 import djangocms_bootstrap4.fields
 
-from djangocms_bootstrap4.constants import COLOR_STYLES
+from djangocms_bootstrap4.constants import COLOR_STYLE_CHOICES
 
 
 class Migration(migrations.Migration):
@@ -23,7 +23,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='bootstrap4_badge_bootstrap4badge', serialize=False, to='cms.CMSPlugin')),
                 ('badge_text', models.CharField(max_length=255, verbose_name='Badge text')),
-                ('badge_context', models.CharField(choices=COLOR_STYLES, default=COLOR_STYLES[0][0], max_length=255, verbose_name='Context')),
+                ('badge_context', models.CharField(choices=COLOR_STYLE_CHOICES, default=COLOR_STYLE_CHOICES[0][0], max_length=255, verbose_name='Context')),
                 ('badge_pills', models.BooleanField(default=False, help_text='Activates the pills style.', verbose_name='Pills style')),
                 ('attributes', djangocms_bootstrap4.fields.AttributesField(blank=True, default=dict, verbose_name='Attributes')),
             ],
