@@ -13,6 +13,7 @@ from .models import Bootstrap4Link
 class Bootstrap4LinkForm(LinkForm):
     link_type = forms.ChoiceField(
         choices=LINK_CHOICES,
+        initial=LINK_CHOICES[0][0],
         widget=forms.RadioSelect(attrs={'class': 'inline-block'}),
     )
 
