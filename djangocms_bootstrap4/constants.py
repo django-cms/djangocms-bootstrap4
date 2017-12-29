@@ -33,3 +33,9 @@ COLOR_STYLES = (
     ('light', _('Light')),
     ('dark', _('Dark')),
 )
+
+ALIGN_CHOICES = (
+    ('', _('Left')),
+    ('text-center', _('Center')),
+    ('text-right', _('Right')),
+)

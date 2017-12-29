@@ -8,8 +8,9 @@ from django.utils.translation import ugettext_lazy as _
 from cms.models import CMSPlugin
 
 from djangocms_bootstrap4.fields import AttributesField
+from djangocms_bootstrap4.constants import ALIGN_CHOICES
 
-from .constants import CODE_TYPE_CHOICES, QUOTE_ALIGN_CHOICES
+from .constants import CODE_TYPE_CHOICES
 
 
 @python_2_unicode_compatible
@@ -23,8 +24,8 @@ class Bootstrap4Code(CMSPlugin):
     )
     tag_type = models.CharField(
         verbose_name=_('Code type'),
-        choices=CODE_TYPE_CHOICES,
-        default=CODE_TYPE_CHOICES[0][0],
+        choices=ALIGN_CHOICES,
+        default=ALIGN_CHOICES[0][0],
         max_length=255,
     )
     attributes = AttributesField()
@@ -51,8 +52,8 @@ class Bootstrap4Blockquote(CMSPlugin):
     )
     quote_alignment = models.CharField(
         verbose_name=_('Alignment'),
-        choices=QUOTE_ALIGN_CHOICES,
-        default=QUOTE_ALIGN_CHOICES[0][0],
+        choices=ALIGN_CHOICES,
+        default=ALIGN_CHOICES[0][0],
         blank=True,
         max_length=255,
     )
@@ -63,3 +64,29 @@ class Bootstrap4Blockquote(CMSPlugin):
 
     def get_short_description(self):
         return self.quote_content
+
+
+@python_2_unicode_compatible
+class Bootstrap4Figure(CMSPlugin):
+    """
+    Content > "Figure" Plugin
+    https://getbootstrap.com/docs/4.0/content/figures/
+    """
+    figure_caption = models.CharField(
+        verbose_name=_('Caption'),
+        max_length=255,
+    )
+    figure_alignment = models.CharField(
+        verbose_name=_('Alignment'),
+        choices=ALIGN_CHOICES,
+        default=ALIGN_CHOICES[0][0],
+        blank=True,
+        max_length=255,
+    )
+    attributes = AttributesField()
+
+    def __str__(self):
+        return str(self.pk)
+
+    def get_short_description(self):
+        return self.figure_caption

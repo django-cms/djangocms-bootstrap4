@@ -12,9 +12,3 @@ CODE_TYPE_CHOICES = (
     ('kbd', _('User input')),
     ('samp', _('Sample output')),
 )
-
-QUOTE_ALIGN_CHOICES = (
-    ('', _('Left')),
-    ('text-center', _('Center')),
-    ('text-right', _('Right')),
-)

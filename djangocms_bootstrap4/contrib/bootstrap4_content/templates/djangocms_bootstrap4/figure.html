@@ -1,0 +1,11 @@
+{% load i18n cms_tags %}
+
+<figure {{ instance.attributes_str }}>
+    {% for plugin in instance.child_plugin_instances %}
+        {% with forloop as parentloop %}{% render_plugin plugin %}{% endwith %}
+    {% endfor %}
+    <figcaption class="figure-caption
+        {% if instance.figure_alignment %}{{ instance.figure_alignment }}{% endif %}">
+        {{ instance.figure_caption }}
+    </figcaption>
+</figure>
