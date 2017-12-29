@@ -33,6 +33,10 @@ export default class ContextGroup extends ButtonGroup {
 
         // add class to the wrapper
         this.element.addClass('bootstrap4-button-group-context');
+
+        if (this.options.extraClass) {
+            this.element.addClass(this.options.extraClass);
+        }
     }
 
 }

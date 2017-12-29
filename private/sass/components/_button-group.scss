@@ -3,10 +3,12 @@
 
 .bootstrap4-button-group {
     .btn {
+        box-sizing: border-box;
         cursor: pointer;
         -webkit-appearance: none;
-        min-width: 50px;
-        margin: 0 0 4px;
+        margin: 2px;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     // adds basic active effect
@@ -19,6 +21,27 @@
     .btn-default.active {
         border-radius: 0;
         background-color: $cms-primary !important;
+    }
+}
+
+.bootstrap4-button-group-context-size,
+.bootstrap4-button-group-context-colors {
+    > div {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        min-height: 75px;
+    }
+}
+
+.bootstrap4-button-group-context-colors {
+    .btn {
+        flex-basis: calc(25% - 4px);
+
+        // min size of the modal is about 785px
+        @media (min-width: 820px) {
+            flex-basis: calc(20% - 4px);
+        }
     }
 }
 

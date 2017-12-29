@@ -36,13 +36,15 @@ $(() => {
             'btn-success', 'btn-danger', 'btn-warning',
             'btn-info', 'btn-light', 'btn-dark',
         ],
+        extraClass: 'bootstrap4-button-group-context-colors',
     });
     // link size context
     new ContextGroup({
         select: '#id_link_size',
         classes: [
-            'btn-sm', '', 'btn-lg',
+            'btn-sm btn-secondary', 'btn-secondary', 'btn-secondary btn-lg',
         ],
+        extraClass: 'bootstrap4-button-group-context-size',
     });
 
     // preview for picture
