@@ -9,6 +9,7 @@ from cms.plugin_pool import plugin_pool
 
 from djangocms_bootstrap4.helpers import concat_classes
 
+from .forms import Bootstrap4CodeForm
 from .models import Bootstrap4Code, Bootstrap4Blockquote, Bootstrap4Figure
 
 
@@ -20,6 +21,7 @@ class Bootstrap4CodePlugin(CMSPluginBase):
     model = Bootstrap4Code
     name = _('Code')
     module = _('Bootstrap 4')
+    form = Bootstrap4CodeForm
     render_template = 'djangocms_bootstrap4/code.html'
     change_form_template = 'djangocms_bootstrap4/admin/code.html'
     text_enabled = True
