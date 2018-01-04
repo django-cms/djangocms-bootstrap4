@@ -11,7 +11,7 @@ import ButtonGroup from 'components/button-group';
 
 
 $(() => {
-    const static_url = $('.djangocms-bootstrap4').data().static;
+    const { static_url } = $('.djangocms-bootstrap4').data().static;
 
     // general color context without auto alignment
     // ALERT, BADGE,
@@ -23,7 +23,7 @@ $(() => {
             'btn-info', 'btn-light', 'btn-dark',
         ],
     });
-    // general color context with aito alignment
+    // general color context with auto alignment
     // CARD
     new ContextGroup({
         select: '#id_card_context',
@@ -95,7 +95,7 @@ $(() => {
     ) {
         // alignment
         new ButtonGroup({
-            static: static_url,
+            static_url,
             select: '#id_quote_alignment, #id_card_alignment, #id_figure_alignment',
             icons: ['align-reset', 'flex-content-start', 'flex-content-center', 'flex-content-end'],
         });
