@@ -1,6 +1,3 @@
-/**
- * Templates
- */
 export const iconTemplate = (icon, staticPath = '/static/', title = '') => `
     <span class="icon icon-${icon}" title="${title}">
         <svg role="presentation">

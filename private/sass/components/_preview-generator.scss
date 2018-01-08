@@ -45,4 +45,17 @@
             background: $cms-primary;
         }
     }
+
+    .btn > span {
+        vertical-align: middle;
+
+        > .icon {
+            vertical-align: middle;
+        }
+
+        svg,
+        use {
+            fill: currentColor; // works 90% of the cases
+        }
+    }
 }
