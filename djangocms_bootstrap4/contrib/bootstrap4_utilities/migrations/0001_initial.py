@@ -8,7 +8,11 @@ import djangocms_bootstrap4.fields
 
 from djangocms_bootstrap4.constants import TAG_CHOICES, DEVICE_CHOICES
 
-from ..constants import SPACER_PROPERTIES, SPACER_SIDES, SPACER_SIZES
+from ..constants import (
+    SPACER_PROPERTY_CHOICES,
+    SPACER_SIDE_CHOICES,
+    SPACER_SIZE_CHOICES,
+)
 
 
 class Migration(migrations.Migration):
@@ -24,9 +28,9 @@ class Migration(migrations.Migration):
             name='Bootstrap4Spacing',
             fields=[
                 ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='bootstrap4_utilities_bootstrap4spacing', serialize=False, to='cms.CMSPlugin')),
-                ('space_property', models.CharField(choices=SPACER_PROPERTIES, default=SPACER_PROPERTIES[0][0], max_length=255, verbose_name='Property')),
-                ('space_sides', models.CharField(blank=True, choices=SPACER_SIDES, default=SPACER_SIDES[0][0], max_length=255, verbose_name='Sides')),
-                ('space_size', models.CharField(choices=SPACER_SIZES, default=SPACER_SIZES[0][0], max_length=255, verbose_name='Size')),
+                ('space_property', models.CharField(choices=SPACER_PROPERTY_CHOICES, default=SPACER_PROPERTY_CHOICES[0][0], max_length=255, verbose_name='Property')),
+                ('space_sides', models.CharField(blank=True, choices=SPACER_SIDE_CHOICES, default=SPACER_SIDE_CHOICES[0][0], max_length=255, verbose_name='Sides')),
+                ('space_size', models.CharField(choices=SPACER_SIZE_CHOICES, default=SPACER_SIZE_CHOICES[0][0], max_length=255, verbose_name='Size')),
                 ('space_device', models.CharField(blank=True, choices=DEVICE_CHOICES, max_length=255, verbose_name='Device')),
                 ('tag_type', djangocms_bootstrap4.fields.TagTypeField(choices=TAG_CHOICES, default=TAG_CHOICES[0][0], help_text='Select the HTML tag to be used.', max_length=255, verbose_name='Tag type')),
                 ('attributes', djangocms_bootstrap4.fields.AttributesField(blank=True, default=dict, verbose_name='Attributes')),

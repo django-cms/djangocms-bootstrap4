@@ -4,7 +4,6 @@
  * http://github.com/divio/djangocms-boilerplate-webpack
  */
 
-// import 'bootstrap/js/dist/alert'
 import ButtonGroup from 'components/button-group';
 
 

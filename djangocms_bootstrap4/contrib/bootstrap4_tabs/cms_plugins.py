@@ -21,6 +21,7 @@ class Bootstrap4TabPlugin(CMSPluginBase):
     model = Bootstrap4Tab
     name = _('Tabs')
     module = _('Bootstrap 4')
+    change_form_template = 'djangocms_bootstrap4/admin/tabs.html'
     allow_children = True
     child_classes = ['Bootstrap4TabItemPlugin']
 
@@ -55,6 +56,7 @@ class Bootstrap4TabItemPlugin(CMSPluginBase):
     model = Bootstrap4TabItem
     name = _('Tab item')
     module = _('Bootstrap 4')
+    change_form_template = 'djangocms_bootstrap4/admin/tabs.html'
     allow_children = True
     parent_classes = ['Bootstrap4TabPlugin']
 

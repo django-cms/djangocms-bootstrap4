@@ -30,7 +30,12 @@ django.jQuery(function () {
     // send data back to textarea when submitting
     textarea.closest('form').submit(function () {
         textarea.val(editor.getSession().getValue());
-    })
+    });
+
+    // immediate update while typing inside CKEditor
+    editor.getSession().on('change', function () {
+        textarea.val(editor.getSession().getValue());
+    });
 });
 </script>
 {% endblock %}

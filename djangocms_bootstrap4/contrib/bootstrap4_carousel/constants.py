@@ -5,16 +5,24 @@ from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
 
-CAROUSEL_PAUSE = (
+CAROUSEL_PAUSE_CHOICES = (
     ('hover', 'hover'),
     ('mouseenter', 'mouseenter'),
     ('mouseleave', 'mouseleave'),
     ('false', 'off'),
 )
 
-CAROUSEL_RIDE = (
+CAROUSEL_RIDE_CHOICES = (
     ('carousel', 'carousel'),
     ('false', 'off'),
+)
+
+CAROUSEL_TEMPLATE_CHOICES = getattr(
+    settings,
+    'DJANGOCMS_BOOTSTRAP4_CAROUSEL_TEMPLATES',
+    (
+        ('default', _('Default')),
+    ),
 )
 
 # this is used when no valua is passed in the template via
@@ -34,12 +42,4 @@ CAROUSEL_ASPECT_RATIO_CHOICES = (
         ('{0}x{1}'.format(x, y), '{0}x{1}'.format(x, y))
         for x, y in CAROUSEL_ASPECT_RATIOS
     ])
-)
-
-CAROUSEL_TEMPLATE_CHOICES = getattr(
-    settings,
-    'DJANGOCMS_BOOTSTRAP4_CAROUSEL_TEMPLATES',
-    (
-        ('default', _('Default')),
-    ),
 )

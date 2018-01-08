@@ -21,7 +21,7 @@ class Bootstrap4PicturePlugin(PicturePlugin):
     https://getbootstrap.com/docs/4.0/content/images/
     """
     model = Bootstrap4Picture
-    name = _('Image')
+    name = _('Picture / Image')
     change_form_template = 'djangocms_bootstrap4/admin/picture.html'
     module = _('Bootstrap 4')
 

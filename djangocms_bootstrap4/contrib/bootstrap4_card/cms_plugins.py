@@ -35,8 +35,8 @@ class Bootstrap4CardPlugin(CMSPluginBase):
         (None, {
             'fields': (
                 'card_type',
-                ('card_context', 'card_alignment'),
-                ('card_outline', 'card_text_color'),
+                ('card_context', 'card_text_color'),
+                ('card_alignment', 'card_outline'),
             )
         }),
         (_('Advanced settings'), {
@@ -80,6 +80,7 @@ class Bootstrap4CardInnerPlugin(CMSPluginBase):
     name = _('Card inner')
     module = _('Bootstrap 4')
     render_template = 'djangocms_bootstrap4/card.html'
+    change_form_template = 'djangocms_bootstrap4/admin/card.html'
     allow_children = True
     parent_classes = [
         'Bootstrap4CardPlugin',
@@ -90,7 +91,13 @@ class Bootstrap4CardInnerPlugin(CMSPluginBase):
     fieldsets = [
         (None, {
             'fields': (
-                ('inner_type', 'tag_type'),
+                'inner_type',
+            )
+        }),
+        (_('Advanced settings'), {
+            'classes': ('collapse',),
+            'fields': (
+                'tag_type',
                 'attributes',
             )
         }),

@@ -23,7 +23,7 @@ TAG_CHOICES = getattr(
 )
 TAG_CHOICES = tuple((entry, entry) for entry in TAG_CHOICES)
 
-COLOR_STYLES = (
+COLOR_STYLE_CHOICES = (
     ('primary', _('Primary')),
     ('secondary', _('Secondary')),
     ('success', _('Success')),

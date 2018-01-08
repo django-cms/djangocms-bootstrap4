@@ -28,4 +28,7 @@ class Bootstrap4Jumbotron(CMSPlugin):
         return str(self.pk)
 
     def get_short_description(self):
-        return ''
+        text = ''
+        if self.fluid:
+            text = '({})'.format(_('Fluid'))
+        return text

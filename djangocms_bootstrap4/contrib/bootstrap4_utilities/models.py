@@ -11,9 +11,9 @@ from djangocms_bootstrap4.fields import TagTypeField, AttributesField
 from djangocms_bootstrap4.constants import DEVICE_CHOICES
 
 from .constants import (
-    SPACER_PROPERTIES,
-    SPACER_SIDES,
-    SPACER_SIZES,
+    SPACER_PROPERTY_CHOICES,
+    SPACER_SIDE_CHOICES,
+    SPACER_SIZE_CHOICES,
 )
 
 
@@ -25,21 +25,21 @@ class Bootstrap4Spacing(CMSPlugin):
     """
     space_property = models.CharField(
         verbose_name=_('Property'),
-        choices=SPACER_PROPERTIES,
-        default=SPACER_PROPERTIES[0][0],
+        choices=SPACER_PROPERTY_CHOICES,
+        default=SPACER_PROPERTY_CHOICES[0][0],
         max_length=255,
     )
     space_sides = models.CharField(
         verbose_name=_('Sides'),
-        choices=SPACER_SIDES,
-        default=SPACER_SIDES[0][0],
+        choices=SPACER_SIDE_CHOICES,
+        default=SPACER_SIDE_CHOICES[0][0],
         blank=True,
         max_length=255,
     )
     space_size = models.CharField(
         verbose_name=_('Size'),
-        choices=SPACER_SIZES,
-        default=SPACER_SIZES[0][0],
+        choices=SPACER_SIZE_CHOICES,
+        default=SPACER_SIZE_CHOICES[0][0],
         max_length=255,
     )
     space_device = models.CharField(

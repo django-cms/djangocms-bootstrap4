@@ -1,0 +1,24 @@
+// #############################################################################
+// FORMS
+
+.djangocms-bootstrap4-blockquote textarea {
+    height: 110px;
+}
+
+// reset list radio to be inline
+#id_link_type {
+    padding: 0;
+    margin: 0;
+    border: none;
+
+    li {
+        padding: 0;
+        margin: 0 15px 5px 0;
+        border: none;
+    }
+
+    label input {
+        position: relative;
+        top: -4px;
+    }
+}

@@ -6,9 +6,9 @@ from django.db import migrations, models
 import django.db.models.deletion
 import djangocms_bootstrap4.fields
 
-from djangocms_bootstrap4.constants import TAG_CHOICES, COLOR_STYLES
+from djangocms_bootstrap4.constants import TAG_CHOICES, COLOR_STYLE_CHOICES
 
-from ..constants import LISTGROUP_STATES
+from ..constants import LISTGROUP_STATE_CHOICES
 
 
 class Migration(migrations.Migration):
@@ -37,8 +37,8 @@ class Migration(migrations.Migration):
             name='Bootstrap4ListGroupItem',
             fields=[
                 ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='bootstrap4_listgroup_bootstrap4listgroupitem', serialize=False, to='cms.CMSPlugin')),
-                ('list_context', models.CharField(blank=True, choices=COLOR_STYLES, max_length=255, verbose_name='Context')),
-                ('list_state', models.CharField(blank=True, choices=LISTGROUP_STATES, max_length=255, verbose_name='State')),
+                ('list_context', models.CharField(blank=True, choices=COLOR_STYLE_CHOICES, max_length=255, verbose_name='Context')),
+                ('list_state', models.CharField(blank=True, choices=LISTGROUP_STATE_CHOICES, max_length=255, verbose_name='State')),
                 ('tag_type', djangocms_bootstrap4.fields.TagTypeField(choices=TAG_CHOICES, default=TAG_CHOICES[0][0], help_text='Select the HTML tag to be used.', max_length=255, verbose_name='Tag type')),
                 ('attributes', djangocms_bootstrap4.fields.AttributesField(blank=True, default=dict, verbose_name='Attributes')),
             ],

@@ -8,9 +8,9 @@ from django.utils.translation import ugettext_lazy as _
 from cms.models import CMSPlugin
 
 from djangocms_bootstrap4.fields import TagTypeField, AttributesField
-from djangocms_bootstrap4.constants import COLOR_STYLES
+from djangocms_bootstrap4.constants import COLOR_STYLE_CHOICES
 
-from .constants import LISTGROUP_STATES
+from .constants import LISTGROUP_STATE_CHOICES
 
 
 @python_2_unicode_compatible
@@ -45,13 +45,13 @@ class Bootstrap4ListGroupItem(CMSPlugin):
     """
     list_context = models.CharField(
         verbose_name=_('Context'),
-        choices=COLOR_STYLES,
+        choices=COLOR_STYLE_CHOICES,
         blank=True,
         max_length=255,
     )
     list_state = models.CharField(
         verbose_name=_('State'),
-        choices=LISTGROUP_STATES,
+        choices=LISTGROUP_STATE_CHOICES,
         blank=True,
         max_length=255,
     )

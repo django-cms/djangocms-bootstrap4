@@ -13,7 +13,11 @@ import filer.fields.image
 from djangocms_link.models import get_templates, TARGET_CHOICES
 from djangocms_bootstrap4.constants import TAG_CHOICES
 
-from ..constants import CAROUSEL_PAUSE, CAROUSEL_RIDE, CAROUSEL_TEMPLATE_CHOICES
+from ..constants import (
+    CAROUSEL_PAUSE_CHOICES,
+    CAROUSEL_RIDE_CHOICES,
+    CAROUSEL_TEMPLATE_CHOICES
+)
 
 
 class Migration(migrations.Migration):
@@ -35,8 +39,8 @@ class Migration(migrations.Migration):
                 ('carousel_controls', models.BooleanField(default=True, help_text='Adding in the previous and next controls.', verbose_name='Controls')),
                 ('carousel_indicators', models.BooleanField(default=True, help_text='Adding in the indicators to the carousel.', verbose_name='Indicators')),
                 ('carousel_keyboard', models.BooleanField(default=True, help_text='Whether the carousel should react to keyboard events.', verbose_name='Keyboard')),
-                ('carousel_pause', models.CharField(choices=CAROUSEL_PAUSE, default=CAROUSEL_PAUSE[0][0], help_text='If set to "hover", pauses the cycling of the carousel on "mouseenter" and resumes the cycling of the carousel on "mouseleave". If set to "false", hovering over the carousel won\'t pause it.', max_length=255, verbose_name='Pause')),
-                ('carousel_ride', models.CharField(choices=CAROUSEL_RIDE, default=CAROUSEL_RIDE[0][0], help_text='Autoplays the carousel after the user manually cycles the first item. If "carousel", autoplays the carousel on load.', max_length=255, verbose_name='Ride')),
+                ('carousel_pause', models.CharField(choices=CAROUSEL_PAUSE_CHOICES, default=CAROUSEL_PAUSE_CHOICES[0][0], help_text='If set to "hover", pauses the cycling of the carousel on "mouseenter" and resumes the cycling of the carousel on "mouseleave". If set to "false", hovering over the carousel won\'t pause it.', max_length=255, verbose_name='Pause')),
+                ('carousel_ride', models.CharField(choices=CAROUSEL_RIDE_CHOICES, default=CAROUSEL_RIDE_CHOICES[0][0], help_text='Autoplays the carousel after the user manually cycles the first item. If "carousel", autoplays the carousel on load.', max_length=255, verbose_name='Ride')),
                 ('carousel_wrap', models.BooleanField(default=True, help_text='Whether the carousel should cycle continuously or have hard stops.', verbose_name='Wrap')),
                 ('tag_type', djangocms_bootstrap4.fields.TagTypeField(choices=TAG_CHOICES, default=TAG_CHOICES[0][0], help_text='Select the HTML tag to be used.', max_length=255, verbose_name='Tag type')),
                 ('attributes', djangocms_bootstrap4.fields.AttributesField(blank=True, default=dict, verbose_name='Attributes')),
