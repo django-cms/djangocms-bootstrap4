@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import ButtonGroup from 'components/button-group';
 
 /**

@@ -1,4 +1,5 @@
-import { iconTemplate } from 'components/templates'
+import $ from 'jquery';
+import { iconTemplate } from 'components/templates';
 
 /**
  * @class ButtonGroup

@@ -4,6 +4,7 @@
  * http://github.com/divio/djangocms-boilerplate-webpack
  */
 
+import $ from 'jquery';
 import ButtonGroup from 'components/button-group';
 
 

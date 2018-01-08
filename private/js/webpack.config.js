@@ -89,7 +89,7 @@ module.exports = {
                 include: __dirname,
             },
             {
-                test: /bootstrap/,
+                test: /^bootstrap$/,
                 use: [{
                     loader: 'imports-loader',
                     options: {

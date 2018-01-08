@@ -5,10 +5,14 @@
  */
 
 // import 'bootstrap/js/dist/alert'
+import $ from 'jquery';
 import ContextGroup from 'components/context-group';
 import PreviewGenerator from 'components/preview-generator';
 import ButtonGroup from 'components/button-group';
 
+window.djangoCMSBootstrap4 = {
+    $,
+};
 
 $(() => {
     const { static_url } = $('.djangocms-bootstrap4').data().static;

@@ -8,7 +8,6 @@ module.exports = {
     'env': {
         'browser': true,
         'node': true,
-        'jquery': true,
         'es6': true,
     },
     'parser': 'babel-eslint',
