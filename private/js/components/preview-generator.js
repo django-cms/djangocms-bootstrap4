@@ -59,10 +59,15 @@ export default class PreviewGenerator {
         });
 
         // changing the text
-        this.elements.text.on('keyup', (e) => {
+        this.elements.text.on('keyup change', (e) => {
             let text = $(e.currentTarget).val() || this.spacer;
             this.buttonText.text(text);
-        }).trigger('keyup');
+        });
+
+        // have to do a timeout here because
+        // when used in ckeditor it takes a tick to update
+        // the display name value with selected text
+        setTimeout(() => this.elements.text.trigger('change'));
 
         // changing the type
         this.elements.type.on('change', () => {
