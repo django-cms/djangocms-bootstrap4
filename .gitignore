@@ -13,5 +13,3 @@ build/
 npm-debug.log
 package-lock.json
 *.css.map
-
-/djangocms_bootstrap4/static/
