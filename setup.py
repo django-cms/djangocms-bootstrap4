@@ -6,14 +6,14 @@ from djangocms_bootstrap4 import __version__
 
 
 REQUIREMENTS = [
-    'django-appconf>=1.0.0',
+    # 'django-appconf>=1.0.0',
     'django-cms>=3.4.0',
     'django-filer>=1.2.4',
     'djangocms-text-ckeditor>=3.1.0',
     'djangocms-attributes-field>=0.1.1',
+    'djangocms-icon>=1.0.0',
     'djangocms-link>=2.1.0',
     'djangocms-picture>=2.0.6',
-    'djangocms-icon>=0.2.0',
 ]
 
 
