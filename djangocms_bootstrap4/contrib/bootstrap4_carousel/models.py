@@ -104,14 +104,14 @@ class Bootstrap4Carousel(CMSPlugin):
         return str(self.pk)
 
     def get_short_description(self):
-        text = _('({})').format(self.carousel_style)
-        text += ' ' + _('Interval: {}').format(self.carousel_interval)
-        text += ', ' + _('Controls: {}').format(self.carousel_controls)
-        text += ', ' + _('Indicators: {}').format(self.carousel_indicators)
-        text += ', ' + _('Keyboard: {}').format(self.carousel_keyboard)
-        text += ', ' + _('Pause: {}').format(self.carousel_pause)
-        text += ', ' + _('Ride: {}').format(self.carousel_ride)
-        text += _('Wrap: {}').format(self.carousel_wrap)
+        text = '({})'.format(self.carousel_style)
+        text += ' ' + '{}: {}'.format(_('Interval'), self.carousel_interval)
+        text += ', ' + '{}: {}'.format(_('Controls'), self.carousel_controls)
+        text += ', ' + '{}: {}'.format(_('Indicators'), self.carousel_indicators)
+        text += ', ' + '{}: {}'.format(_('Keyboard'), self.carousel_keyboard)
+        text += ', ' + '{}: {}'.format(_('Pause'), self.carousel_pause)
+        text += ', ' + '{}: {}'.format(_('Ride'), self.carousel_ride)
+        text += '{}: {}'.format(_('Wrap'), self.carousel_wrap)
         return text
 
 

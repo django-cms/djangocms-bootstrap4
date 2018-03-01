@@ -127,7 +127,7 @@ class Bootstrap4GridColumn(CMSPlugin):
         max_length=255,
     )
     column_size = IntegerRangeField(
-        verbose_name=_('Columne size'),
+        verbose_name=_('Column size'),
         blank=True,
         null=True,
         min_value=0,
