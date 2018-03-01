@@ -8,6 +8,7 @@ Changelog
 
 * Added further information to the README.rst
 * General cleanup for release
+* Added transifex translations
 
 
 0.2.0 (unreleased)
