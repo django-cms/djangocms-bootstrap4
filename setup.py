@@ -6,7 +6,6 @@ from djangocms_bootstrap4 import __version__
 
 
 REQUIREMENTS = [
-    # 'django-appconf>=1.0.0',
     'django-cms>=3.4.0',
     'django-filer>=1.2.4',
     'djangocms-text-ckeditor>=3.1.0',
