@@ -1,0 +1,848 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-03-01 13:56+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Peter Wischer <peter.wischer@lwl.org>, 2018\n"
+"Language-Team: German (https://www.transifex.com/divio/teams/58664/de/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: constants.py:10
+#: contrib/bootstrap4_grid/templates/djangocms_bootstrap4/admin/grid_column.html:13
+msgid "Extra small"
+msgstr "Sehr klein"
+
+#: constants.py:11
+#: contrib/bootstrap4_grid/templates/djangocms_bootstrap4/admin/grid_column.html:14
+#: contrib/bootstrap4_link/constants.py:14
+msgid "Small"
+msgstr "Klein"
+
+#: constants.py:12
+#: contrib/bootstrap4_grid/templates/djangocms_bootstrap4/admin/grid_column.html:15
+#: contrib/bootstrap4_link/constants.py:15
+msgid "Medium"
+msgstr "Mittel"
+
+#: constants.py:13
+#: contrib/bootstrap4_grid/templates/djangocms_bootstrap4/admin/grid_column.html:16
+#: contrib/bootstrap4_link/constants.py:16
+msgid "Large"
+msgstr "Gross"
+
+#: constants.py:14
+#: contrib/bootstrap4_grid/templates/djangocms_bootstrap4/admin/grid_column.html:17
+msgid "Extra large"
+msgstr "Sehr gross"
+
+#: constants.py:27
+msgid "Primary"
+msgstr "Primär"
+
+#: constants.py:28
+msgid "Secondary"
+msgstr "Sekundär"
+
+#: constants.py:29
+msgid "Success"
+msgstr "Erfolg"
+
+#: constants.py:30
+msgid "Danger"
+msgstr "Gefahr"
+
+#: constants.py:31
+msgid "Warning"
+msgstr "Warning"
+
+#: constants.py:32
+msgid "Info"
+msgstr "Info"
+
+#: constants.py:33
+msgid "Light"
+msgstr "Hell"
+
+#: constants.py:34
+msgid "Dark"
+msgstr "Dunkel"
+
+#: constants.py:38 contrib/bootstrap4_card/constants.py:16
+msgid "Left"
+msgstr "Links"
+
+#: constants.py:39 contrib/bootstrap4_card/constants.py:17
+msgid "Center"
+msgstr "Mitte"
+
+#: constants.py:40 contrib/bootstrap4_card/constants.py:18
+msgid "Right"
+msgstr "Rechts"
+
+#: contrib/bootstrap4_alerts/cms_plugins.py:21
+msgid "Alert"
+msgstr "Alert"
+
+#: contrib/bootstrap4_alerts/cms_plugins.py:22
+#: contrib/bootstrap4_badge/cms_plugins.py:22
+#: contrib/bootstrap4_card/cms_plugins.py:22
+#: contrib/bootstrap4_card/cms_plugins.py:81
+#: contrib/bootstrap4_carousel/cms_plugins.py:24
+#: contrib/bootstrap4_carousel/cms_plugins.py:72
+#: contrib/bootstrap4_collapse/cms_plugins.py:26
+#: contrib/bootstrap4_collapse/cms_plugins.py:58
+#: contrib/bootstrap4_collapse/cms_plugins.py:91
+#: contrib/bootstrap4_content/cms_plugins.py:23
+#: contrib/bootstrap4_content/cms_plugins.py:52
+#: contrib/bootstrap4_content/cms_plugins.py:93
+#: contrib/bootstrap4_grid/cms_plugins.py:31
+#: contrib/bootstrap4_grid/cms_plugins.py:69
+#: contrib/bootstrap4_grid/cms_plugins.py:134
+#: contrib/bootstrap4_jumbotron/cms_plugins.py:22
+#: contrib/bootstrap4_link/cms_plugins.py:28
+#: contrib/bootstrap4_listgroup/cms_plugins.py:22
+#: contrib/bootstrap4_listgroup/cms_plugins.py:66
+#: contrib/bootstrap4_media/cms_plugins.py:22
+#: contrib/bootstrap4_media/cms_plugins.py:56
+#: contrib/bootstrap4_picture/cms_plugins.py:26
+#: contrib/bootstrap4_tabs/cms_plugins.py:23
+#: contrib/bootstrap4_tabs/cms_plugins.py:58
+#: contrib/bootstrap4_utilities/cms_plugins.py:22
+msgid "Bootstrap 4"
+msgstr "Bootstrap 4"
+
+#: contrib/bootstrap4_alerts/cms_plugins.py:34
+#: contrib/bootstrap4_badge/cms_plugins.py:35
+#: contrib/bootstrap4_card/cms_plugins.py:42
+#: contrib/bootstrap4_card/cms_plugins.py:97
+#: contrib/bootstrap4_carousel/cms_plugins.py:37
+#: contrib/bootstrap4_carousel/cms_plugins.py:91
+#: contrib/bootstrap4_collapse/cms_plugins.py:40
+#: contrib/bootstrap4_collapse/cms_plugins.py:74
+#: contrib/bootstrap4_collapse/cms_plugins.py:107
+#: contrib/bootstrap4_content/cms_plugins.py:36
+#: contrib/bootstrap4_content/cms_plugins.py:64
+#: contrib/bootstrap4_content/cms_plugins.py:106
+#: contrib/bootstrap4_grid/cms_plugins.py:41
+#: contrib/bootstrap4_grid/cms_plugins.py:83
+#: contrib/bootstrap4_grid/cms_plugins.py:160
+#: contrib/bootstrap4_jumbotron/cms_plugins.py:33
+#: contrib/bootstrap4_listgroup/cms_plugins.py:35
+#: contrib/bootstrap4_listgroup/cms_plugins.py:79
+#: contrib/bootstrap4_media/cms_plugins.py:28
+#: contrib/bootstrap4_media/cms_plugins.py:63
+#: contrib/bootstrap4_tabs/cms_plugins.py:35
+#: contrib/bootstrap4_tabs/cms_plugins.py:69
+#: contrib/bootstrap4_utilities/cms_plugins.py:36
+msgid "Advanced settings"
+msgstr "Erweiterte Einstellungen"
+
+#: contrib/bootstrap4_alerts/models.py:21
+#: contrib/bootstrap4_badge/models.py:25 contrib/bootstrap4_link/models.py:37
+#: contrib/bootstrap4_listgroup/models.py:47
+msgid "Context"
+msgstr "Kontext"
+
+#: contrib/bootstrap4_alerts/models.py:27
+msgid "Dismissable"
+msgstr "Entfernbar"
+
+#: contrib/bootstrap4_alerts/models.py:29
+msgid "Allows the alert to be closed."
+msgstr "Erlaubt das Alert zu schliessen."
+
+#: contrib/bootstrap4_alerts/templates/djangocms_bootstrap4/alerts.html:5
+msgid "Close"
+msgstr "Schliessen"
+
+#: contrib/bootstrap4_badge/cms_plugins.py:21
+msgid "Badge"
+msgstr "Badge"
+
+#: contrib/bootstrap4_badge/models.py:21
+msgid "Badge text"
+msgstr "Badge Text"
+
+#: contrib/bootstrap4_badge/models.py:31
+msgid "Pills style"
+msgstr "Pills Stil"
+
+#: contrib/bootstrap4_badge/models.py:33
+msgid "Activates the pills style."
+msgstr "Aktiviert den Pills Stil."
+
+#: contrib/bootstrap4_card/cms_plugins.py:21
+#: contrib/bootstrap4_card/constants.py:9
+msgid "Card"
+msgstr "Card"
+
+#: contrib/bootstrap4_card/cms_plugins.py:80
+msgid "Card inner"
+msgstr "Card-Innen"
+
+#: contrib/bootstrap4_card/constants.py:10
+msgid "Card group"
+msgstr "Card-Gruppe"
+
+#: contrib/bootstrap4_card/constants.py:11
+msgid "Card deck"
+msgstr "Card-Deck"
+
+#: contrib/bootstrap4_card/constants.py:12
+msgid "Card columns"
+msgstr "Card-Spalten"
+
+#: contrib/bootstrap4_card/constants.py:22
+msgid "Body"
+msgstr "Body"
+
+#: contrib/bootstrap4_card/constants.py:23
+msgid "Header"
+msgstr "Header"
+
+#: contrib/bootstrap4_card/constants.py:24
+msgid "Footer"
+msgstr "Footer"
+
+#: contrib/bootstrap4_card/models.py:26
+msgid "Transparent"
+msgstr "Transparent"
+
+#: contrib/bootstrap4_card/models.py:30
+msgid "White"
+msgstr "Weiss"
+
+#: contrib/bootstrap4_card/models.py:41
+msgid "Card type"
+msgstr "Card-Typ"
+
+#: contrib/bootstrap4_card/models.py:47
+msgid "Background context"
+msgstr "Hintergrund-Kontext"
+
+#: contrib/bootstrap4_card/models.py:53
+#: contrib/bootstrap4_content/models.py:54
+#: contrib/bootstrap4_content/models.py:80
+#: contrib/bootstrap4_grid/models.py:140 contrib/bootstrap4_tabs/models.py:40
+msgid "Alignment"
+msgstr "Ausrichtung"
+
+#: contrib/bootstrap4_card/models.py:59 contrib/bootstrap4_link/models.py:49
+msgid "Outline"
+msgstr "Kontur"
+
+#: contrib/bootstrap4_card/models.py:61
+msgid "Uses the border context instead of the background."
+msgstr "Nutzt den Rand-Kontext anstelle des Hintergrundes."
+
+#: contrib/bootstrap4_card/models.py:64
+msgid "Text context"
+msgstr "Text-Kontext"
+
+#: contrib/bootstrap4_card/models.py:93
+msgid "Inner type"
+msgstr "Innen-Typ"
+
+#: contrib/bootstrap4_card/models.py:97
+msgid "Define the structure of the plugin."
+msgstr "Definiert die Struktur des Plugins."
+
+#: contrib/bootstrap4_carousel/cms_plugins.py:23
+msgid "Carousel"
+msgstr "Karussell"
+
+#: contrib/bootstrap4_carousel/cms_plugins.py:71
+msgid "Carousel slide"
+msgstr "Karussell-Eintrag"
+
+#: contrib/bootstrap4_carousel/cms_plugins.py:83
+msgid "Link settings"
+msgstr "Link-Einstellungen"
+
+#: contrib/bootstrap4_carousel/constants.py:24
+#: contrib/bootstrap4_tabs/constants.py:30
+msgid "Default"
+msgstr "Standard"
+
+#: contrib/bootstrap4_carousel/models.py:35
+#: contrib/bootstrap4_tabs/models.py:27
+msgid "Template"
+msgstr "Template"
+
+#: contrib/bootstrap4_carousel/models.py:39
+#: contrib/bootstrap4_tabs/models.py:31
+msgid "This is the template that will be used for the component."
+msgstr "Dies ist das Template das für die Komponente genutzt wird."
+
+#: contrib/bootstrap4_carousel/models.py:42
+#: contrib/bootstrap4_carousel/models.py:108
+msgid "Interval"
+msgstr "Intervall"
+
+#: contrib/bootstrap4_carousel/models.py:44
+msgid ""
+"The amount of time to delay between automatically cycling an item. If false,"
+" carousel will not automatically cycle."
+msgstr ""
+"Die Zeitspanne zwischen dem automatischen Wechseln der Einträge. Wenn false,"
+" dann wird nicht automatisch gewechselt."
+
+#: contrib/bootstrap4_carousel/models.py:48
+#: contrib/bootstrap4_carousel/models.py:109
+msgid "Controls"
+msgstr "Steuerelemente"
+
+#: contrib/bootstrap4_carousel/models.py:50
+msgid "Adding in the previous and next controls."
+msgstr "Fügt die Weiter und Zurück Kontroll-Elemente hinzu."
+
+#: contrib/bootstrap4_carousel/models.py:53
+#: contrib/bootstrap4_carousel/models.py:110
+msgid "Indicators"
+msgstr "Indikatoren"
+
+#: contrib/bootstrap4_carousel/models.py:55
+msgid "Adding in the indicators to the carousel."
+msgstr "Fügt dem Karussell Indikatoren hinzu."
+
+#: contrib/bootstrap4_carousel/models.py:58
+#: contrib/bootstrap4_carousel/models.py:111
+msgid "Keyboard"
+msgstr "Tastatur"
+
+#: contrib/bootstrap4_carousel/models.py:60
+msgid "Whether the carousel should react to keyboard events."
+msgstr "Soll das Karussell mit der Tastatur bedienbar sein."
+
+#: contrib/bootstrap4_carousel/models.py:63
+#: contrib/bootstrap4_carousel/models.py:112
+msgid "Pause"
+msgstr "Pause"
+
+#: contrib/bootstrap4_carousel/models.py:67
+msgid ""
+"If set to \"hover\", pauses the cycling of the carousel on \"mouseenter\" "
+"and resumes the cycling of the carousel on \"mouseleave\". If set to "
+"\"false\", hovering over the carousel won't pause it."
+msgstr ""
+"Pausiert bei \"hover\" dass wechseln des Karussells sobald sich die Maus "
+"über dem Karussell befindet, started es wieder nachdem die Maus das "
+"Karussell verlässt. Bei \"false\" wechselt dass Karussell unabhängig der "
+"Maus-Aktionen weiter."
+
+#: contrib/bootstrap4_carousel/models.py:73
+#: contrib/bootstrap4_carousel/models.py:113
+msgid "Ride"
+msgstr "Autostart"
+
+#: contrib/bootstrap4_carousel/models.py:77
+msgid ""
+"Autoplays the carousel after the user manually cycles the first item. If "
+"\"carousel\", autoplays the carousel on load."
+msgstr ""
+"Stoppt das Karussell automatisch nachdem der Benutzer den ersten Slide "
+"überspringt. Wenn \"carousel\" ausgewählt, startet das Karussell beim laden."
+
+#: contrib/bootstrap4_carousel/models.py:81
+#: contrib/bootstrap4_carousel/models.py:114
+msgid "Wrap"
+msgstr "Endlos"
+
+#: contrib/bootstrap4_carousel/models.py:83
+msgid "Whether the carousel should cycle continuously or have hard stops."
+msgstr "Ob das Karussell ununterbrochen wechselt oder am ende stoppt."
+
+#: contrib/bootstrap4_carousel/models.py:87
+msgid "Aspect ratio"
+msgstr "Seitenverhältnis"
+
+#: contrib/bootstrap4_carousel/models.py:92
+msgid ""
+"Determines width and height of the image according to the selected ratio."
+msgstr ""
+"Bestimmt die Höhe und Breite der Bilder anhand dem ausgewählten "
+"Seitenverhältnis."
+
+#: contrib/bootstrap4_carousel/models.py:121
+msgid "Slide image"
+msgstr "Slide Bilder"
+
+#: contrib/bootstrap4_carousel/models.py:128
+msgid "Content"
+msgstr "Inhalt"
+
+#: contrib/bootstrap4_carousel/models.py:131
+msgid "Content may also be added using child plugins."
+msgstr "Inhalt kann auch über weitere Plugins hinzugefügt werden."
+
+#: contrib/bootstrap4_carousel/templates/djangocms_bootstrap4/carousel/default/carousel.html:33
+msgid "Previous"
+msgstr "Zurück"
+
+#: contrib/bootstrap4_carousel/templates/djangocms_bootstrap4/carousel/default/carousel.html:37
+msgid "Next"
+msgstr "Weiter"
+
+#: contrib/bootstrap4_collapse/cms_plugins.py:25
+msgid "Collapse"
+msgstr "Collapse"
+
+#: contrib/bootstrap4_collapse/cms_plugins.py:57
+msgid "Collapse trigger"
+msgstr "Collapse Auslöser"
+
+#: contrib/bootstrap4_collapse/cms_plugins.py:90
+msgid "Collapse container"
+msgstr "Collapse Kontainer"
+
+#: contrib/bootstrap4_collapse/models.py:26
+msgid "Siblings"
+msgstr "Geschwister"
+
+#: contrib/bootstrap4_collapse/models.py:29
+msgid "Element to be used to create accordions."
+msgstr "Element welches genutzt wird um Akkordeons zu erstellen."
+
+#: contrib/bootstrap4_collapse/models.py:50
+#: contrib/bootstrap4_collapse/models.py:77
+msgid "Unique identifier"
+msgstr "Einzigartige Kennung"
+
+#: contrib/bootstrap4_collapse/models.py:53
+#: contrib/bootstrap4_collapse/models.py:80
+msgid "Identifier to connect trigger with container."
+msgstr "Kennung welche den Auslöser mit dem Kontainer verbindet."
+
+#: contrib/bootstrap4_collapse/templates/djangocms_bootstrap4/admin/collapse.html:7
+#: contrib/bootstrap4_media/templates/djangocms_bootstrap4/admin/media.html:7
+msgid "There is no configuration required here."
+msgstr "Hier ist keine Konfiguration nötig."
+
+#: contrib/bootstrap4_content/cms_plugins.py:22
+#: contrib/bootstrap4_content/models.py:23
+msgid "Code"
+msgstr "Code"
+
+#: contrib/bootstrap4_content/cms_plugins.py:51
+msgid "Blockquote"
+msgstr "Blockquote"
+
+#: contrib/bootstrap4_content/cms_plugins.py:92
+msgid "Figure"
+msgstr "Abbildung"
+
+#: contrib/bootstrap4_content/constants.py:9
+msgid "Inline code"
+msgstr "Inline-Code"
+
+#: contrib/bootstrap4_content/constants.py:10
+msgid "Code block"
+msgstr "Code-Block"
+
+#: contrib/bootstrap4_content/constants.py:11
+msgid "Variables"
+msgstr "Variabeln"
+
+#: contrib/bootstrap4_content/constants.py:12
+msgid "User input"
+msgstr "Benutzer-Eingabe"
+
+#: contrib/bootstrap4_content/constants.py:13
+msgid "Sample output"
+msgstr "Muster-Ausgabe"
+
+#: contrib/bootstrap4_content/models.py:26
+msgid "Code type"
+msgstr "Code-Typ"
+
+#: contrib/bootstrap4_content/models.py:47
+msgid "Quote"
+msgstr "Quote"
+
+#: contrib/bootstrap4_content/models.py:50
+msgid "Cite"
+msgstr "Zitat"
+
+#: contrib/bootstrap4_content/models.py:76
+msgid "Caption"
+msgstr "Bildlegende"
+
+#: contrib/bootstrap4_grid/cms_plugins.py:30
+#: contrib/bootstrap4_grid/constants.py:23
+msgid "Container"
+msgstr "Kontainer"
+
+#: contrib/bootstrap4_grid/cms_plugins.py:68
+msgid "Row"
+msgstr "Zeile"
+
+#: contrib/bootstrap4_grid/cms_plugins.py:133
+#: contrib/bootstrap4_grid/constants.py:54
+#: contrib/bootstrap4_tabs/constants.py:19
+msgid "Column"
+msgstr "Spalte"
+
+#: contrib/bootstrap4_grid/cms_plugins.py:151
+msgid "Responsive settings"
+msgstr "Responsive Hilfsmittel"
+
+#: contrib/bootstrap4_grid/constants.py:24
+msgid "Fluid container"
+msgstr "Fluid Kontainer"
+
+#: contrib/bootstrap4_grid/constants.py:31
+msgid "Align items start"
+msgstr "Element-Ausrichtung Anfang"
+
+#: contrib/bootstrap4_grid/constants.py:32
+msgid "Align items center"
+msgstr "Element-Ausrichtung Mittig"
+
+#: contrib/bootstrap4_grid/constants.py:33
+msgid "Align items end"
+msgstr "Element-Ausrichtung Ende"
+
+#: contrib/bootstrap4_grid/constants.py:37
+msgid "Justify content start"
+msgstr "Ausrichtung Inhalt Anfang"
+
+#: contrib/bootstrap4_grid/constants.py:38
+msgid "Justify content center"
+msgstr "Ausrichtung Inhalt Mittig"
+
+#: contrib/bootstrap4_grid/constants.py:39
+msgid "Justify content end"
+msgstr "Ausrichtung Inhalt Ende"
+
+#: contrib/bootstrap4_grid/constants.py:40
+msgid "Justify content around"
+msgstr "Ausrichtung Inhalt herum"
+
+#: contrib/bootstrap4_grid/constants.py:41
+msgid "Justify content between"
+msgstr "Ausrichtung Inhalt zwischen"
+
+#: contrib/bootstrap4_grid/constants.py:45
+msgid "Align self start"
+msgstr "Selbst-Ausrichtung Anfang"
+
+#: contrib/bootstrap4_grid/constants.py:46
+msgid "Align self center"
+msgstr "Selbst-Ausrichtung Mittig"
+
+#: contrib/bootstrap4_grid/constants.py:47
+msgid "Align self end"
+msgstr "Selbst-Ausrichtung Ende"
+
+#: contrib/bootstrap4_grid/constants.py:55
+msgid "Break"
+msgstr "Bruch"
+
+#: contrib/bootstrap4_grid/constants.py:56
+msgid "Empty"
+msgstr "Leer"
+
+#: contrib/bootstrap4_grid/forms.py:16
+msgid "Create columns"
+msgstr "Spalten erstellen"
+
+#: contrib/bootstrap4_grid/forms.py:17
+msgid "Number of columns to create when saving."
+msgstr "Anzahl er Spalten die beim speichern erstellt werden sollen."
+
+#: contrib/bootstrap4_grid/models.py:37
+msgid "Container type"
+msgstr "Kontainer-Typ"
+
+#: contrib/bootstrap4_grid/models.py:42
+msgid ""
+"Defines if the grid should use fixed width (<code>.container</code>) or "
+"fluid width (<code>.container-fluid</code>)."
+msgstr ""
+"Definiert ob das Grid eine fixe Breite (<code>.container</code>) oder "
+"flüssige Breite (<code>.container-fluid</code>) haben soll."
+
+#: contrib/bootstrap4_grid/models.py:67
+msgid "Vertical alignment"
+msgstr "Vertikale Ausrichtung"
+
+#: contrib/bootstrap4_grid/models.py:72 contrib/bootstrap4_grid/models.py:82
+#, python-brace-format
+msgid "Read more in the <a href=\"{link}\" target=\"_blank\">documentation</a>."
+msgstr "Mehr in der <a href=\"{link}\" target=\"_blank\">Dokumentation</a>."
+
+#: contrib/bootstrap4_grid/models.py:77
+msgid "Horizontal alignment"
+msgstr "Horizontale Ausrichtung"
+
+#: contrib/bootstrap4_grid/models.py:87
+msgid "Remove gutters"
+msgstr "Zwischenräume entfernen"
+
+#: contrib/bootstrap4_grid/models.py:89
+msgid "Removes the marginal gutters from the grid."
+msgstr "Entfernt die Margin-Zwischenräume im Grid,"
+
+#: contrib/bootstrap4_grid/models.py:101
+msgid "<empty>"
+msgstr "<empty>"
+
+#: contrib/bootstrap4_grid/models.py:105
+#, python-format
+msgid "(1 column)"
+msgid_plural "(%(count)i columns)"
+msgstr[0] "(1 Spalte)"
+msgstr[1] "(%(count)i Spalten)"
+
+#: contrib/bootstrap4_grid/models.py:123
+msgid "Column type"
+msgstr "Spalten-Typ"
+
+#: contrib/bootstrap4_grid/models.py:130
+#: contrib/bootstrap4_grid/templates/djangocms_bootstrap4/admin/grid_column.html:20
+msgid "Column size"
+msgstr "Spalten-Grösse"
+
+#: contrib/bootstrap4_grid/models.py:136
+#, python-brace-format
+msgid ""
+"Nummeric value from 1 - {bound}. Spreads the columns evenly when empty."
+msgstr ""
+"Numerischer Wert von 1 - {bound}. Verteilt die Spalten gleichmäßig wenn "
+"leer."
+
+#: contrib/bootstrap4_grid/templates/djangocms_bootstrap4/admin/grid_column.html:21
+msgid "Order"
+msgstr "Anordnung"
+
+#: contrib/bootstrap4_grid/templates/djangocms_bootstrap4/admin/grid_column.html:22
+msgid "Margin left"
+msgstr "Margin links"
+
+#: contrib/bootstrap4_grid/templates/djangocms_bootstrap4/admin/grid_column.html:23
+msgid "Margin right"
+msgstr "Margin rechts"
+
+#: contrib/bootstrap4_grid/templates/djangocms_bootstrap4/admin/grid_column.html:25
+msgid "Reset"
+msgstr "Zurücksetzen"
+
+#: contrib/bootstrap4_jumbotron/cms_plugins.py:21
+msgid "Jumbotron"
+msgstr "Jumbotron"
+
+#: contrib/bootstrap4_jumbotron/models.py:20
+#: contrib/bootstrap4_jumbotron/models.py:33
+msgid "Fluid"
+msgstr "Flüssig"
+
+#: contrib/bootstrap4_jumbotron/models.py:22
+msgid "Adds the .jumbotron-fluid class."
+msgstr "Fügt die Klasse .jumbotron-fluid hinzu."
+
+#: contrib/bootstrap4_link/cms_plugins.py:25
+msgid "Link / Button"
+msgstr "Link / Button"
+
+#: contrib/bootstrap4_link/constants.py:9 contrib/bootstrap4_link/models.py:19
+msgid "Link"
+msgstr "Link"
+
+#: contrib/bootstrap4_link/constants.py:10
+msgid "Button"
+msgstr "Button"
+
+#: contrib/bootstrap4_link/models.py:30 contrib/bootstrap4_tabs/models.py:34
+msgid "Type"
+msgstr "Typ"
+
+#: contrib/bootstrap4_link/models.py:34
+msgid "Adds either the .btn-* or .text-* classes."
+msgstr "Fügt entweder die Klassen .btn-* oder .text-* hinzu."
+
+#: contrib/bootstrap4_link/models.py:43
+#: contrib/bootstrap4_utilities/models.py:40
+msgid "Size"
+msgstr "Grösse"
+
+#: contrib/bootstrap4_link/models.py:51
+msgid "Applies the .btn-outline class to the elements."
+msgstr "Fügt die Klasse .btn-outline bei allen Elementen hinzu."
+
+#: contrib/bootstrap4_link/models.py:54
+msgid "Block"
+msgstr "Block"
+
+#: contrib/bootstrap4_link/models.py:56
+msgid "Extends the button to the width of its container."
+msgstr "Erweitert die Breite des Buttons auf den Kontainer."
+
+#: contrib/bootstrap4_link/models.py:59
+msgid "Icon left"
+msgstr "Icon links"
+
+#: contrib/bootstrap4_link/models.py:62
+msgid "Icon right"
+msgstr "Icon rechts"
+
+#: contrib/bootstrap4_link/templates/djangocms_bootstrap4/admin/link.html:7
+msgid "Preview"
+msgstr "Vorschau"
+
+#: contrib/bootstrap4_listgroup/cms_plugins.py:21
+msgid "List group"
+msgstr "List-Gruppe"
+
+#: contrib/bootstrap4_listgroup/cms_plugins.py:65
+msgid "List item"
+msgstr "List-Eintrag"
+
+#: contrib/bootstrap4_listgroup/constants.py:9
+msgid "Active"
+msgstr "Aktiv"
+
+#: contrib/bootstrap4_listgroup/constants.py:10
+msgid "Disabled"
+msgstr "Deaktiviert"
+
+#: contrib/bootstrap4_listgroup/models.py:23
+msgid "List group flush"
+msgstr "List-Gruppe leeren"
+
+#: contrib/bootstrap4_listgroup/models.py:25
+msgid "Create lists of content in a card with a flush list group."
+msgstr "Erstellt eine Liste mit Inhalt in einer Card als leer."
+
+#: contrib/bootstrap4_listgroup/models.py:53
+msgid "State"
+msgstr "Zustand"
+
+#: contrib/bootstrap4_media/cms_plugins.py:21
+msgid "Media"
+msgstr "Medien"
+
+#: contrib/bootstrap4_media/cms_plugins.py:55
+msgid "Media body"
+msgstr "Medienkörper"
+
+#: contrib/bootstrap4_picture/cms_plugins.py:24
+msgid "Picture / Image"
+msgstr "Bild"
+
+#: contrib/bootstrap4_picture/models.py:20
+msgid "Responsive"
+msgstr "Responsive"
+
+#: contrib/bootstrap4_picture/models.py:22
+msgid "Adds the .img-fluid class to make the image responsive."
+msgstr "Fügt die Klasse .img-fluid hinzu um das Bild responsiv zu machen."
+
+#: contrib/bootstrap4_picture/models.py:25
+msgid "Rounded"
+msgstr "Abgerundet"
+
+#: contrib/bootstrap4_picture/models.py:27
+msgid "Adds the .rounded class for round corners."
+msgstr "Fügt die Klasse .rounded für abgerundete Ecken hinzu."
+
+#: contrib/bootstrap4_picture/models.py:30
+msgid "Thumbnail"
+msgstr "Thumbnail"
+
+#: contrib/bootstrap4_picture/models.py:32
+msgid "Adds the .img-thumbnail class."
+msgstr "Fügt die Klasse .img-thumbnail hinzu."
+
+#: contrib/bootstrap4_tabs/cms_plugins.py:22
+#: contrib/bootstrap4_tabs/constants.py:9
+msgid "Tabs"
+msgstr "Tabs"
+
+#: contrib/bootstrap4_tabs/cms_plugins.py:57
+msgid "Tab item"
+msgstr "Tab-Eintrag"
+
+#: contrib/bootstrap4_tabs/constants.py:10
+msgid "Pills"
+msgstr "Pills"
+
+#: contrib/bootstrap4_tabs/constants.py:14
+msgid "Fill"
+msgstr "Füllung"
+
+#: contrib/bootstrap4_tabs/constants.py:15
+msgid "Justified"
+msgstr "Bündig"
+
+#: contrib/bootstrap4_tabs/constants.py:16
+msgid "Justify start"
+msgstr "Ausrichtung Anfang"
+
+#: contrib/bootstrap4_tabs/constants.py:17
+msgid "Justify center"
+msgstr "Ausrichtung Mittig"
+
+#: contrib/bootstrap4_tabs/constants.py:18
+msgid "Justify end"
+msgstr "Ausrichtung Ende"
+
+#: contrib/bootstrap4_tabs/constants.py:23
+msgid "Fade"
+msgstr "Fading"
+
+#: contrib/bootstrap4_tabs/models.py:46
+msgid "Index"
+msgstr "Index"
+
+#: contrib/bootstrap4_tabs/models.py:49
+msgid "Index of element to open on page load starting at 1."
+msgstr ""
+"Index des Elementes, das beim öffnen der Seite geladen werden soll, startet "
+"bei 1."
+
+#: contrib/bootstrap4_tabs/models.py:52
+msgid "Animation effect"
+msgstr "Animationseffekt"
+
+#: contrib/bootstrap4_tabs/models.py:78
+msgid "Tab title"
+msgstr "Tab-Titel"
+
+#: contrib/bootstrap4_utilities/cms_plugins.py:21
+msgid "Spacing"
+msgstr "Abstand"
+
+#: contrib/bootstrap4_utilities/models.py:27
+msgid "Property"
+msgstr "Eigenschaft"
+
+#: contrib/bootstrap4_utilities/models.py:33
+msgid "Sides"
+msgstr "Seiten"
+
+#: contrib/bootstrap4_utilities/models.py:46
+msgid "Device"
+msgstr "Gerät"
+
+#: fields.py:15
+msgid "Attributes"
+msgstr "Attribute"
+
+#: fields.py:24
+msgid "Tag type"
+msgstr "Tag-Typ"
+
+#: fields.py:32
+msgid "Select the HTML tag to be used."
+msgstr "HTML-Tag auswählen der genutzt werden soll."
