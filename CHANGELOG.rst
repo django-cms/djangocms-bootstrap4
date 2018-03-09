@@ -3,7 +3,7 @@ Changelog
 =========
 
 
-1.0.0 (unreleased)
+1.0.0 (2018-03-09)
 ==================
 
 * Added further information to the README.rst
