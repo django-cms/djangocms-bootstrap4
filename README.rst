@@ -53,6 +53,7 @@ For a manual install:
 
 * run ``pip install djangocms-bootstrap4``
 * add the following entries to your ``INSTALLED_APPS``::
+
     'djangocms_link',
     'djangocms_picture',
     'djangocms_bootstrap4',
@@ -70,6 +71,7 @@ For a manual install:
     'djangocms_bootstrap4.contrib.bootstrap4_picture',
     'djangocms_bootstrap4.contrib.bootstrap4_tabs',
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
+
 * run ``python manage.py migrate djangocms_bootstrap4``
 
 
