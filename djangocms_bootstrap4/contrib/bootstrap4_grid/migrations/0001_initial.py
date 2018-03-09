@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='bootstrap4_grid_bootstrap4gridcolumn', serialize=False, to='cms.CMSPlugin')),
                 ('column_type', models.CharField(blank=True, choices=GRID_COLUMN_CHOICES, default=GRID_COLUMN_CHOICES[0][0], max_length=255, verbose_name='Column type')),
-                ('column_size', djangocms_bootstrap4.fields.IntegerRangeField(blank=True, help_text='Nummeric value from 1 - 12. Spreads the columns evenly when empty.', null=True, verbose_name='Columne size')),
+                ('column_size', djangocms_bootstrap4.fields.IntegerRangeField(blank=True, help_text='Nummeric value from 1 - 12. Spreads the columns evenly when empty.', null=True, verbose_name='Column size')),
                 ('column_alignment', models.CharField(blank=True, choices=GRID_COLUMN_ALIGNMENT_CHOICES, max_length=255, verbose_name='Alignment')),
                 ('tag_type', djangocms_bootstrap4.fields.TagTypeField(choices=TAG_CHOICES, default=TAG_CHOICES[0][0], help_text='Select the HTML tag to be used.', max_length=255, verbose_name='Tag type')),
                 ('attributes', djangocms_bootstrap4.fields.AttributesField(blank=True, default=dict, verbose_name='Attributes')),
