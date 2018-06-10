@@ -31,7 +31,7 @@ class Bootstrap4Carousel(CMSPlugin):
     Components > "Carousel" Plugin
     https://getbootstrap.com/docs/4.0/components/carousel/
     """
-    carousel_style = models.CharField(
+    template = models.CharField(
         verbose_name=_('Template'),
         choices=CAROUSEL_TEMPLATE_CHOICES,
         default=CAROUSEL_TEMPLATE_CHOICES[0][0],
@@ -104,7 +104,7 @@ class Bootstrap4Carousel(CMSPlugin):
         return str(self.pk)
 
     def get_short_description(self):
-        text = '({})'.format(self.carousel_style)
+        text = '({})'.format(self.template)
         text += ' {}: {}'.format(_('Interval'), self.carousel_interval)
         text += ', {}: {}'.format(_('Controls'), self.carousel_controls)
         text += ', {}: {}'.format(_('Indicators'), self.carousel_indicators)
