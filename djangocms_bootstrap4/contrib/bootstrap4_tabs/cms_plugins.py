@@ -35,7 +35,7 @@ class Bootstrap4TabPlugin(CMSPluginBase):
         (_('Advanced settings'), {
             'classes': ('collapse',),
             'fields': (
-                'tab_style',
+                'template',
                 'tag_type',
                 'attributes',
             )

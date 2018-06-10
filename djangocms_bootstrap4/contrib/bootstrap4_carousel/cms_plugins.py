@@ -37,7 +37,7 @@ class Bootstrap4CarouselPlugin(CMSPluginBase):
         (_('Advanced settings'), {
             'classes': ('collapse',),
             'fields': (
-                'carousel_style',
+                'template',
                 'tag_type',
                 'attributes',
             )
