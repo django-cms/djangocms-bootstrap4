@@ -4,18 +4,32 @@ sudo: false
 
 env:
   - TOX_ENV=flake8
-  - TOX_ENV=py27-latest
-  - TOX_ENV=py34-latest
-  # Django 1.8
+  # Django 2.0 is not yet supported by django-cms
+  # - TOX_ENV=py36-latest
+  - TOX_ENV=py36-dj18-cms35
+  - TOX_ENV=py36-dj18-cms34
+  - TOX_ENV=py36-dj18-cms33
+  - TOX_ENV=py27-dj18-cms35
   - TOX_ENV=py27-dj18-cms34
   - TOX_ENV=py27-dj18-cms33
-  - TOX_ENV=py34-dj18-cms34
-  - TOX_ENV=py34-dj18-cms33
-  # Django 1.9
+  - TOX_ENV=py36-dj19-cms35
+  - TOX_ENV=py36-dj19-cms34
+  - TOX_ENV=py36-dj19-cms33
+  - TOX_ENV=py27-dj19-cms35
   - TOX_ENV=py27-dj19-cms34
   - TOX_ENV=py27-dj19-cms33
-  - TOX_ENV=py34-dj19-cms34
-  - TOX_ENV=py34-dj19-cms33
+  - TOX_ENV=py36-dj110-cms35
+  - TOX_ENV=py36-dj110-cms34
+  - TOX_ENV=py36-dj110-cms33
+  - TOX_ENV=py27-dj110-cms35
+  - TOX_ENV=py27-dj110-cms34
+  - TOX_ENV=py27-dj110-cms33
+  - TOX_ENV=py36-dj111-cms35
+  - TOX_ENV=py36-dj111-cms34
+  - TOX_ENV=py36-dj111-cms33
+  - TOX_ENV=py27-dj111-cms35
+  - TOX_ENV=py27-dj111-cms34
+  - TOX_ENV=py27-dj111-cms33
 
 install:
   - pip install tox coverage
