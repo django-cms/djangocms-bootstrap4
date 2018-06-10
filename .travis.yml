@@ -1,34 +1,32 @@
 language: python
 python:
-  - "2.7"
   - "3.6"
 
 sudo: false
 
 env:
-  - TOX_ENV=flake8
+  - TOX_ENV=lint
   # Django 2.0 is not yet supported by django-cms
   # - TOX_ENV=py36-latest
-  - TOX_ENV=py36-dj18-cms35
-  - TOX_ENV=py36-dj18-cms34
-  - TOX_ENV=py27-dj18-cms35
-  - TOX_ENV=py27-dj18-cms34
-  - TOX_ENV=py36-dj19-cms35
-  - TOX_ENV=py36-dj19-cms34
-  - TOX_ENV=py27-dj19-cms35
-  - TOX_ENV=py27-dj19-cms34
-  - TOX_ENV=py36-dj110-cms35
-  - TOX_ENV=py36-dj110-cms34
-  - TOX_ENV=py27-dj110-cms35
-  - TOX_ENV=py27-dj110-cms34
-  - TOX_ENV=py36-dj111-cms35
-  - TOX_ENV=py36-dj111-cms34
-  - TOX_ENV=py27-dj111-cms35
-  - TOX_ENV=py27-dj111-cms34
+  - TOX_ENV=test-py36-dj18-cms35
+  - TOX_ENV=test-py36-dj18-cms34
+  - TOX_ENV=test-py27-dj18-cms35
+  - TOX_ENV=test-py27-dj18-cms34
+  - TOX_ENV=test-py36-dj19-cms35
+  - TOX_ENV=test-py36-dj19-cms34
+  - TOX_ENV=test-py27-dj19-cms35
+  - TOX_ENV=test-py27-dj19-cms34
+  - TOX_ENV=test-py36-dj110-cms35
+  - TOX_ENV=test-py36-dj110-cms34
+  - TOX_ENV=test-py27-dj110-cms35
+  - TOX_ENV=test-py27-dj110-cms34
+  - TOX_ENV=test-py36-dj111-cms35
+  - TOX_ENV=test-py36-dj111-cms34
+  - TOX_ENV=test-py27-dj111-cms35
+  - TOX_ENV=test-py27-dj111-cms34
 
 install:
-  - pip install --upgrade pip setuptools
-  - pip install tox coverage
+  - pip install --upgrade pip setuptools tox coverage
 
 script:
   - tox -e $TOX_ENV
