@@ -11,30 +11,23 @@ env:
   # - TOX_ENV=py36-latest
   - TOX_ENV=py36-dj18-cms35
   - TOX_ENV=py36-dj18-cms34
-  - TOX_ENV=py36-dj18-cms33
   - TOX_ENV=py27-dj18-cms35
   - TOX_ENV=py27-dj18-cms34
-  - TOX_ENV=py27-dj18-cms33
   - TOX_ENV=py36-dj19-cms35
   - TOX_ENV=py36-dj19-cms34
-  - TOX_ENV=py36-dj19-cms33
   - TOX_ENV=py27-dj19-cms35
   - TOX_ENV=py27-dj19-cms34
-  - TOX_ENV=py27-dj19-cms33
   - TOX_ENV=py36-dj110-cms35
   - TOX_ENV=py36-dj110-cms34
-  - TOX_ENV=py36-dj110-cms33
   - TOX_ENV=py27-dj110-cms35
   - TOX_ENV=py27-dj110-cms34
-  - TOX_ENV=py27-dj110-cms33
   - TOX_ENV=py36-dj111-cms35
   - TOX_ENV=py36-dj111-cms34
-  - TOX_ENV=py36-dj111-cms33
   - TOX_ENV=py27-dj111-cms35
   - TOX_ENV=py27-dj111-cms34
-  - TOX_ENV=py27-dj111-cms33
 
 install:
+  - pip install --upgrade pip setuptools
   - pip install tox coverage
 
 script:
