@@ -19,22 +19,21 @@ def concat_classes(classes):
     return ' '.join(_class for _class in classes if _class)
 
 
-def get_plugin_template(instance, prefix, name, templates):
-    if instance.parent is None:
-        template = templates[0][0]
-    else:
-        template = getattr(
-            instance.parent.get_plugin_instance()[0],
-            'carousel_style',
-            templates[0][0],
-        )
-        try:
-            select_template([template])
-        except TemplateDoesNotExist:
-            # TODO render a warning inside the template
-            template = 'default'
-
+def get_template_path(prefix, template, name):
     return 'djangocms_bootstrap4/{}/{}/{}.html'.format(prefix, template, name)
+
+
+def get_plugin_template(instance, prefix, name, templates):
+    template = getattr(instance, 'template', templates[0][0])
+    template_path = get_template_path(prefix, template, name)
+
+    try:
+        select_template([template_path])
+    except TemplateDoesNotExist:
+        # TODO render a warning inside the template
+        template_path = get_template_path(prefix, 'default', name)
+
+    return template_path
 
 
 # use mark_safe_lazy to delay the translation when using mark_safe
