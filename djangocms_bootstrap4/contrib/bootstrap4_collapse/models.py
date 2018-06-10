@@ -16,6 +16,7 @@ from djangocms_bootstrap4.fields import TagTypeField, AttributesField
 # data-parent links to the wrapper collapse
 # <div class="collapse" id="collapseExample">
 
+
 @python_2_unicode_compatible
 class Bootstrap4Collapse(CMSPlugin):
     """

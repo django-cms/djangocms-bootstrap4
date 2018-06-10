@@ -1,15 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.conf import settings
 from django.utils import six
 from django.utils.safestring import mark_safe
 from django.utils.functional import lazy
-from django.utils.translation import ugettext_lazy as _
 
 from django.template import TemplateDoesNotExist
 from django.template.loader import select_template
-from django.forms import ValidationError
 
 
 def concat_classes(classes):

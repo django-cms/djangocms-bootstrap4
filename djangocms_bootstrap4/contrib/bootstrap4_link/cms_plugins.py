@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
-from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 
 from djangocms_link.cms_plugins import LinkPlugin
@@ -62,15 +60,15 @@ class Bootstrap4LinkPlugin(LinkPlugin):
                 if not instance.link_outline:
                     link_classes.append(
                         'btn-{}'.format(instance.link_context)
-                    );
+                    )
                 else:
                     link_classes.append(
                         'btn-outline-{}'.format(instance.link_context)
-                    );
+                    )
         if instance.link_size:
-            link_classes.append(instance.link_size);
+            link_classes.append(instance.link_size)
         if instance.link_block:
-            link_classes.append('btn-block');
+            link_classes.append('btn-block')
 
         classes = concat_classes(link_classes + [
             instance.attributes.get('class'),
