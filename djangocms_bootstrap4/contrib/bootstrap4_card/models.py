@@ -17,7 +17,6 @@ from .constants import (
     CARD_TYPE_CHOICES,
     CARD_ALIGNMENT_CHOICES,
     CARD_INNER_TYPE_CHOICES,
-    CARD_TAG_CHOICES,
 )
 
 

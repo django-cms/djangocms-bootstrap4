@@ -33,9 +33,11 @@ HELPER_SETTINGS = {
     'LANGUAGE_CODE': 'en',
 }
 
+
 def run():
     from djangocms_helper import runner
     runner.cms('djangocms_bootstrap4')
+
 
 if __name__ == '__main__':
     run()

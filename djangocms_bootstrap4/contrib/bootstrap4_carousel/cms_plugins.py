@@ -1,13 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 
-from djangocms_link.cms_plugins import LinkPlugin
 from djangocms_bootstrap4.helpers import concat_classes, get_plugin_template
 
 from .models import Bootstrap4Carousel, Bootstrap4CarouselSlide

@@ -5,8 +5,6 @@ from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
-from cms.models import CMSPlugin
-
 from djangocms_link.models import AbstractLink
 from djangocms_icon.fields import Icon
 from djangocms_bootstrap4.constants import COLOR_STYLE_CHOICES

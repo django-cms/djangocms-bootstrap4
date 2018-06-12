@@ -150,7 +150,7 @@ class Bootstrap4GridColumn(CMSPlugin):
 
     def get_short_description(self):
         text = ''
-        classes = self.get_grid_values();
+        classes = self.get_grid_values()
         if self.column_size:
             text += '(col-{}) '.format(self.column_size)
         else:

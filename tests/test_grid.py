@@ -1,17 +1,9 @@
 # -*- coding: utf-8 -*-
-from django.test import TestCase
-
-from cms.api import add_plugin, create_page
+from cms.api import create_page
 from cms.test_utils.testcases import CMSTestCase
 
-from djangocms_bootstrap4.contrib.bootstrap4_grid.models import (
-    Bootstrap4GridContainer,
-    Bootstrap4GridRow,
-    Bootstrap4GridColumn,
-)
 from djangocms_bootstrap4.contrib.bootstrap4_grid.constants import (
     GRID_CONTAINER_CHOICES,
-    GRID_SIZE,
 )
 from djangocms_bootstrap4.constants import TAG_CHOICES
 
