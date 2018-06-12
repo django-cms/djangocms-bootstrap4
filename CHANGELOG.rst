@@ -3,6 +3,15 @@ Changelog
 =========
 
 
+1.1.0 (UNRELEASED)
+==================
+
+* Added djangocms-icon to installation instructions
+* Adapted test matrix
+* Fixed linting
+* Fixed carousel stlide not starting at 0
+
+
 1.0.0 (2018-03-12)
 ==================
 
