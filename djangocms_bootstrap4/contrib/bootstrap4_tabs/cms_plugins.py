@@ -34,7 +34,7 @@ class Bootstrap4TabPlugin(CMSPluginBase):
         (_('Advanced settings'), {
             'classes': ('collapse',),
             'fields': (
-                'tab_style',
+                'template',
                 'tag_type',
                 'attributes',
             )
@@ -76,7 +76,10 @@ class Bootstrap4TabItemPlugin(CMSPluginBase):
 
     def get_render_template(self, context, instance, placeholder):
         return get_plugin_template(
-            instance, 'tabs', 'item', TAB_TEMPLATE_CHOICES
+            instance.parent.get_plugin_instance()[0],
+            'tabs',
+            'item',
+            TAB_TEMPLATE_CHOICES,
         )
 
 

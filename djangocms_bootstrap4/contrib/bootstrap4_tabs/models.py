@@ -23,7 +23,7 @@ class Bootstrap4Tab(CMSPlugin):
     Components > "Navs - Tab" Plugin
     https://getbootstrap.com/docs/4.0/components/navs/
     """
-    tab_style = models.CharField(
+    template = models.CharField(
         verbose_name=_('Template'),
         choices=TAB_TEMPLATE_CHOICES,
         default=TAB_TEMPLATE_CHOICES[0][0],

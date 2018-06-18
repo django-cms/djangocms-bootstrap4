@@ -35,7 +35,7 @@ class Bootstrap4CarouselPlugin(CMSPluginBase):
         (_('Advanced settings'), {
             'classes': ('collapse',),
             'fields': (
-                'carousel_style',
+                'template',
                 'tag_type',
                 'attributes',
             )
@@ -117,7 +117,10 @@ class Bootstrap4CarouselSlidePlugin(CMSPluginBase):
 
     def get_render_template(self, context, instance, placeholder):
         return get_plugin_template(
-            instance, 'carousel', 'slide', CAROUSEL_TEMPLATE_CHOICES
+            instance.parent.get_plugin_instance()[0],
+            'carousel',
+            'slide',
+            CAROUSEL_TEMPLATE_CHOICES,
         )
 
 
