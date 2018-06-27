@@ -10,6 +10,7 @@ Changelog
 * Adapted test matrix
 * Fixed linting
 * Fixed carousel slide not starting at 0
+* Carousel aspect ratios modifiable from settings
 
 
 1.0.0 (2018-03-12)
