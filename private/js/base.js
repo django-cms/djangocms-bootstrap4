@@ -15,8 +15,6 @@ window.djangoCMSBootstrap4 = {
 };
 
 $(() => {
-    const { static_url } = $('.djangocms-bootstrap4').data().static;
-
     // general color context without auto alignment
     // ALERT, BADGE,
     new ContextGroup({
@@ -97,9 +95,11 @@ $(() => {
         $('#id_card_alignment').length ||
         $('#id_figure_alignment').length
     ) {
+        const static_url = $('.djangocms-bootstrap4').data('static');
+
         // alignment
         new ButtonGroup({
-            static_url,
+            static: static_url,
             select: '#id_quote_alignment, #id_card_alignment, #id_figure_alignment',
             icons: ['align-reset', 'flex-content-start', 'flex-content-center', 'flex-content-end'],
         });
