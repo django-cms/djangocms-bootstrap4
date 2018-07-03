@@ -10,6 +10,7 @@ Changelog
 * Adapted test matrix
 * Fixed linting
 * Fixed carousel slide not starting at 0
+* Fixed errors with some of the alignment fields
 
 
 1.0.0 (2018-03-12)
