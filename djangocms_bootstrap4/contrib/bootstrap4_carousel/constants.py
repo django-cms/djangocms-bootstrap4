@@ -35,6 +35,12 @@ CAROUSEL_ASPECT_RATIOS = (
     (4, 3),
     (21, 9),
     (18, 9),
+) + tuple(
+    getattr(
+        settings,
+        'DJANGOCMS_BOOTSTRAP4_CAROUSEL_ASPECT_RATIOS',
+        tuple()
+    )
 )
 
 CAROUSEL_ASPECT_RATIO_CHOICES = (

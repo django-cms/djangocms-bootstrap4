@@ -11,6 +11,7 @@ Changelog
 * Fixed linting
 * Fixed carousel slide not starting at 0
 * Fixed errors with some of the alignment fields
+* Carousel aspect ratios modifiable from settings
 
 
 1.0.0 (2018-03-12)
