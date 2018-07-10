@@ -14,6 +14,15 @@ def migrate_column_size(apps, schema_editor):
             plugin.xs_col = plugin.column_size
             plugin.save()
 
+def migrate_column_size_back(apps, schema_editor):
+    Column = apps.get_model('bootstrap4_grid', 'Bootstrap4GridColumn')
+    plugins = Column.objects.all()
+
+    for plugin in plugins:
+        if plugin.xs_col:
+            plugin.column_size = plugin.xs_col
+            plugin.save()
+
 
 class Migration(migrations.Migration):
 
@@ -22,5 +31,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(migrate_column_size, migrations.RunPython.noop)
+        migrations.RunPython(migrate_column_size, migrate_column_size_back)
     ]
