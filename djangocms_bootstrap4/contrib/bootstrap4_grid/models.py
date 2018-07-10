@@ -126,16 +126,6 @@ class Bootstrap4GridColumn(CMSPlugin):
         blank=True,
         max_length=255,
     )
-    column_size = IntegerRangeField(
-        verbose_name=_('Column size'),
-        blank=True,
-        null=True,
-        min_value=0,
-        max_value=GRID_SIZE,
-        help_text=_(
-            'Nummeric value from 1 - {bound}. '
-            'Spreads the columns evenly when empty.').format(bound=GRID_SIZE)
-    )
     column_alignment = models.CharField(
         verbose_name=_('Alignment'),
         choices=GRID_COLUMN_ALIGNMENT_CHOICES,
@@ -151,8 +141,8 @@ class Bootstrap4GridColumn(CMSPlugin):
     def get_short_description(self):
         text = ''
         classes = self.get_grid_values()
-        if self.column_size:
-            text += '(col-{}) '.format(self.column_size)
+        if self.xs_col:
+            text += '(col-{}) '.format(self.xs_col)
         else:
             text += '(auto) '
         if self.column_type != 'col':
