@@ -166,8 +166,11 @@ class Bootstrap4GridColumn(CMSPlugin):
         for device in DEVICE_SIZES:
             for element in ('col', 'order', 'ml', 'mr'):
                 size = getattr(self, '{}_{}'.format(device, element))
-                if size and (element == 'col' or element == 'order'):
-                    classes.append('{}-{}-{}'.format(element, device, int(size)))
+                if size and (element == 'col' or element == 'order' or element == 'offset'):
+                    if device == 'xs':
+                        classes.append('{}-{}'.format(element, int(size)))
+                    else:
+                        classes.append('{}-{}-{}'.format(element, device, int(size)))
                 elif size:
                     classes.append('{}-{}-{}'.format(element, device, 'auto'))
         return classes
@@ -186,7 +189,7 @@ BooleanFieldPartial = partial(
 )
 
 # Loop through Bootstrap 4 device choices and generate
-# model fields to cover col-*, order-*
+# model fields to cover col-*, order-*, offset-*, etc.
 for size in DEVICE_SIZES:
     # Grid size
     Bootstrap4GridColumn.add_to_class(
@@ -196,6 +199,11 @@ for size in DEVICE_SIZES:
     # Grid ordering
     Bootstrap4GridColumn.add_to_class(
         '{}_order'.format(size),
+        IntegerRangeFieldPartial(),
+    )
+    # Grid offset
+    Bootstrap4GridColumn.add_to_class(
+        '{}_offset'.format(size),
         IntegerRangeFieldPartial(),
     )
     # Grid margin left (ml)
