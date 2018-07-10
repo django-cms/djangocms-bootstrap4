@@ -143,8 +143,7 @@ class Bootstrap4GridColumnPlugin(CMSPluginBase):
     fieldsets = [
         (None, {
             'fields': (
-                'column_type',
-                ('column_size', 'column_alignment'),
+                ('column_type', 'column_alignment'),
             )
         }),
         (_('Responsive settings'), {
@@ -169,10 +168,8 @@ class Bootstrap4GridColumnPlugin(CMSPluginBase):
         column = ''
         classes = instance.get_grid_values()
 
-        if instance.column_size:
-            column = 'col-{}'.format(instance.column_size)
         if classes:
-            column += ' {}'.format(' '.join(cls for cls in classes if cls))
+            column += '{}'.format(' '.join(cls for cls in classes if cls))
 
         attr_classes = concat_classes([
             instance.column_type,
