@@ -12,6 +12,9 @@ Changelog
 * Fixed carousel slide not starting at 0
 * Fixed errors with some of the alignment fields
 * Carousel aspect ratios modifiable from settings
+* Fixed extra small breakpoint classes
+* Removed column_size field, use xs_col instead
+* Fixed column ui not fitting the CMS modal
 
 
 1.0.0 (2018-03-12)
