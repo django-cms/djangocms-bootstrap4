@@ -34,7 +34,7 @@ class Bootstrap4GridColumnBaseForm(models.ModelForm):
 extra_fields_column = {}
 for size in DEVICE_SIZES:
     extra_fields_column['{}_col'.format(size)] = IntegerField(
-        label='col-{}'.format(size),
+        label='col' if size == 'xs' else 'col-{}'.format(size),
         required=False,
         min_value=1,
         max_value=GRID_SIZE,
@@ -52,11 +52,11 @@ for size in DEVICE_SIZES:
         max_value=GRID_SIZE,
     )
     extra_fields_column['{}_ml'.format(size)] = BooleanField(
-        label='ml-{}-auto'.format(size),
+        label='ml-auto' if size == 'xs' else 'ml-{}-auto'.format(size),
         required=False,
     )
     extra_fields_column['{}_mr'.format(size)] = BooleanField(
-        label='mr-{}-auto'.format(size),
+        label='mr-auto' if size == 'xs' else 'mr-{}-auto'.format(size),
         required=False,
     )
 

@@ -172,7 +172,11 @@ class Bootstrap4GridColumn(CMSPlugin):
                     else:
                         classes.append('{}-{}-{}'.format(element, device, int(size)))
                 elif size:
-                    classes.append('{}-{}-{}'.format(element, device, 'auto'))
+                    if device == 'xs':
+                        classes.append('{}-{}'.format(element, 'auto'))
+                    else:
+                        classes.append('{}-{}-{}'.format(element, device, 'auto'))
+
         return classes
 
 
