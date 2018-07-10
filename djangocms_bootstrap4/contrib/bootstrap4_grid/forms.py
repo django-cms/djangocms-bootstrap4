@@ -40,7 +40,13 @@ for size in DEVICE_SIZES:
         max_value=GRID_SIZE,
     )
     extra_fields_column['{}_order'.format(size)] = IntegerField(
-        label='order-{}'.format(size),
+        label='order' if size == 'xs' else 'order-{}'.format(size),
+        required=False,
+        min_value=1,
+        max_value=GRID_SIZE,
+    )
+    extra_fields_column['{}_offset'.format(size)] = IntegerField(
+        label='offset' if size == 'xs' else 'offset-{}'.format(size),
         required=False,
         min_value=1,
         max_value=GRID_SIZE,

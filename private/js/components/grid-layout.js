@@ -27,7 +27,7 @@ export default class GridLayout {
     setHeader() {
         let container = $('.form-row.field-xs_col .field-box');
         let sizes = ['size-xs', 'size-sm', 'size-md', 'size-lg', 'size-xl'];
-        let wrapper = (wrapper) => `<div class="icon-thead">${wrapper}</div>`;
+        let wrapper = wrapper => `<div class="icon-thead">${wrapper}</div>`;
         let icons = (icon, title = '', staticPath = this.options.static) => `
             <span class="icon icon-${icon}" title="${title}">
                 <svg role="presentation">
@@ -37,12 +37,10 @@ export default class GridLayout {
             <span class="icon-title">${title}</span>`;
         let tmp = '';
 
-        sizes.forEach(function (item, index) {
+        sizes.forEach(function(item, index) {
             tmp = icons(item, this.options.sizes[index]);
 
-            container.eq(index).prepend(
-                wrapper(tmp)
-            );
+            container.eq(index).prepend(wrapper(tmp));
         }, this);
     }
 
@@ -53,6 +51,7 @@ export default class GridLayout {
         let container = $(`
             .form-row.field-xs_col,
             .form-row.field-xs_order,
+            .form-row.field-xs_offset,
             .form-row.field-xs_ml,
             .form-row.field-xs_mr
         `);
@@ -73,9 +72,10 @@ export default class GridLayout {
             'https://getbootstrap.com/docs/4.0/layout/grid/#reordering',
             'https://getbootstrap.com/docs/4.0/layout/grid/#offsetting-columns',
             'https://getbootstrap.com/docs/4.0/layout/grid/#offsetting-columns',
+            'https://getbootstrap.com/docs/4.0/layout/grid/#offsetting-columns',
         ];
 
-        container.toArray().forEach(function (item, index) {
+        container.toArray().forEach(function(item, index) {
             $(item).prepend(template(this.options.rows[index], links[index]));
         }, this);
     }
@@ -91,7 +91,7 @@ export default class GridLayout {
         `;
         let button = $(template());
 
-        button.on('click', function (event) {
+        button.on('click', function(event) {
             event.preventDefault();
             wrapper.find('input').val('');
             wrapper.find('input[type="checkbox"]').prop('checked', false);
@@ -99,5 +99,4 @@ export default class GridLayout {
 
         container.append(button);
     }
-
 }

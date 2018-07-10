@@ -152,6 +152,7 @@ class Bootstrap4GridColumnPlugin(CMSPluginBase):
             'fields': (
                 ['{}_col'.format(size) for size in DEVICE_SIZES],
                 ['{}_order'.format(size) for size in DEVICE_SIZES],
+                ['{}_offset'.format(size) for size in DEVICE_SIZES],
                 ['{}_ml'.format(size) for size in DEVICE_SIZES],
                 ['{}_mr'.format(size) for size in DEVICE_SIZES],
             )

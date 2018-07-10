@@ -19,6 +19,7 @@
 .djangocms-bootstrap4-column {
     .form-row.field-xs_col,
     .form-row.field-xs_order,
+    .form-row.field-xs_offset,
     .form-row.field-xs_ml,
     .form-row.field-xs_mr {
         position: relative;
@@ -88,6 +89,7 @@
         }
 
         &.field-xs_col .field-box-label a,
+        &.field-xs_offset .field-box-label a,
         &.field-xs_order .field-box-label a {
             position: relative;
             top: -8px;
@@ -99,7 +101,6 @@
         .field-md_ml,
         .field-lg_ml,
         .field-xl_ml,
-        // mr checkbox
         .field-xs_mr,
         .field-sm_mr,
         .field-md_mr,
