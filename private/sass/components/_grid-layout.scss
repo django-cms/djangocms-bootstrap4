@@ -23,16 +23,17 @@
     .form-row.field-xs_ml,
     .form-row.field-xs_mr {
         position: relative;
+        display: flex;
         padding: 0;
-        min-width: 860px;
+
+        // min-width: 860px;
 
         .field-box {
             position: relative;
             text-align: center;
-            width: 120px !important;
+            width: 110px !important;
             padding: 15px 10px;
-            margin-right: 0 !important; // djangocms-admin-style
-            // border-right: 1px solid #eee;
+            margin-right: 0 !important;
             border-bottom: 1px solid #eee;
 
             input {
