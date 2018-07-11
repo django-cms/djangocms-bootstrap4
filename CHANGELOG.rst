@@ -3,7 +3,7 @@ Changelog
 =========
 
 
-1.1.0 (UNRELEASED)
+1.1.0 (2018-07-11)
 ==================
 
 * Added djangocms-icon to installation instructions
