@@ -19,30 +19,18 @@ $(() => {
     // ALERT, BADGE,
     new ContextGroup({
         select: '#id_alert_context, #id_badge_context',
-        classes: [
-            'btn-primary', 'btn-secondary',
-            'btn-success', 'btn-danger', 'btn-warning',
-            'btn-info', 'btn-light', 'btn-dark',
-        ],
+        takeClassesFromSelectValues: true,
     });
     // general color context with auto alignment
     // CARD
     new ContextGroup({
         select: '#id_card_context',
-        classes: [
-            '', 'btn-primary', 'btn-secondary',
-            'btn-success', 'btn-danger', 'btn-warning',
-            'btn-info', 'btn-light', 'btn-dark',
-        ],
+        takeClassesFromSelectValues: true,
         extraClass: 'bootstrap4-button-group-context-colors',
     });
     new ContextGroup({
         select: '#id_card_text_color',
-        classes: [
-            '', 'btn-primary', 'btn-secondary',
-            'btn-success', 'btn-danger', 'btn-warning',
-            'btn-info', 'btn-light', 'btn-dark',
-        ],
+        takeClassesFromSelectValues: true,
         extraClass: 'bootstrap4-button-group-context-colors',
     });
     // simple buttons
@@ -56,20 +44,12 @@ $(() => {
     // LIST
     new ContextGroup({
         select: '#id_list_context',
-        classes: [
-            '', 'btn-primary', 'btn-secondary',
-            'btn-success', 'btn-danger', 'btn-warning',
-            'btn-info', 'btn-light', 'btn-dark',
-        ],
+        takeClassesFromSelectValues: true,
     });
     // LINK
     new ContextGroup({
         select: '#id_link_context',
-        classes: [
-            '', 'btn-link', 'btn-primary', 'btn-secondary',
-            'btn-success', 'btn-danger', 'btn-warning',
-            'btn-info', 'btn-light', 'btn-dark',
-        ],
+        takeClassesFromSelectValues: true,
         extraClass: 'bootstrap4-button-group-context-colors',
     });
     new ContextGroup({

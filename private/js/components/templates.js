@@ -9,6 +9,6 @@ export const previewTemplate = (classes = '', title = 'Preview') => `
     <div class="djangocms-bootstrap4-preview ${classes}">
         <h2>${title}</h2>
         <div class="b4-preview js-preview"></div>
-        <a href="#close" class="b4-close js-close">x</a>
+        <a href="#close" class="b4-close js-close">&times;</a>
     </div>
 `;

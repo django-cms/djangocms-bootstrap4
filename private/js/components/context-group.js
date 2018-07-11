@@ -14,6 +14,14 @@ export default class ContextGroup extends ButtonGroup {
         super(options);
 
         this.options = options;
+
+        if (options.takeClassesFromSelectValues) {
+            this.options.classes = $(this.options.select)
+                .find('option')
+                .toArray()
+                .map(el => (el.value ? `btn-${el.value}` : el.value));
+        }
+
         this.setClasses();
     }
 
@@ -23,9 +31,9 @@ export default class ContextGroup extends ButtonGroup {
     setClasses() {
         // adds classes to the buttons
         const buttons = this.element.find('.btn');
-        buttons.toArray().forEach(function (item, index) {
+        buttons.toArray().forEach(function(item, index) {
             buttons.eq(index).removeClass('btn-default');
-            buttons.eq(index).addClass(this.options.classes[index])
+            buttons.eq(index).addClass(this.options.classes[index]);
         }, this);
 
         // remove group class
@@ -38,5 +46,4 @@ export default class ContextGroup extends ButtonGroup {
             this.element.addClass(this.options.extraClass);
         }
     }
-
 }
