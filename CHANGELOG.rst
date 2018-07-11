@@ -15,6 +15,7 @@ Changelog
 * Fixed extra small breakpoint classes
 * Removed column_size field, use xs_col instead
 * Fixed column ui not fitting the CMS modal
+* Color styles modifiable from settings
 
 
 1.0.0 (2018-03-12)

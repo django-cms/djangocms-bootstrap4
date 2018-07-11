@@ -23,15 +23,19 @@ TAG_CHOICES = getattr(
 )
 TAG_CHOICES = tuple((entry, entry) for entry in TAG_CHOICES)
 
-COLOR_STYLE_CHOICES = (
-    ('primary', _('Primary')),
-    ('secondary', _('Secondary')),
-    ('success', _('Success')),
-    ('danger', _('Danger')),
-    ('warning', _('Warning')),
-    ('info', _('Info')),
-    ('light', _('Light')),
-    ('dark', _('Dark')),
+COLOR_STYLE_CHOICES = getattr(
+    settings,
+    'DJANGOCMS_BOOTSTRAP4_COLOR_STYLE_CHOICES',
+    (
+        ('primary', _('Primary')),
+        ('secondary', _('Secondary')),
+        ('success', _('Success')),
+        ('danger', _('Danger')),
+        ('warning', _('Warning')),
+        ('info', _('Info')),
+        ('light', _('Light')),
+        ('dark', _('Dark')),
+    )
 )
 
 ALIGN_CHOICES = (
