@@ -141,6 +141,22 @@ for now only the following can be changed::
         ('5', '* 3'),
     )
 
+    DJANGOCMS_BOOTSTRAP4_CAROUSEL_ASPECT_RATIOS = (
+        (16, 9),
+    )
+
+    DJANGOCMS_BOOTSTRAP4_COLOR_STYLE_CHOICES = (
+        ('primary', _('Primary')),
+        ('secondary', _('Secondary')),
+        ('success', _('Success')),
+        ('danger', _('Danger')),
+        ('warning', _('Warning')),
+        ('info', _('Info')),
+        ('light', _('Light')),
+        ('dark', _('Dark')),
+        ('custom', _('Custom')),
+    )
+
 Please see their code references for more details.
 
 
