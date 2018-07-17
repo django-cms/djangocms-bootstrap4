@@ -2,6 +2,11 @@
 Changelog
 =========
 
+1.1.1 (2018-07-17)
+==================
+
+* Fixed a bug where offset values wouldn't be rendered in bootstrap grid
+* Fixed a bug where offset and order fields wouldn't allow for zeroes
 
 1.1.0 (2018-07-11)
 ==================

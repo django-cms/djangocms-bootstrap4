@@ -154,7 +154,7 @@ class Bootstrap4GridColumn(CMSPlugin):
     def get_grid_values(self):
         classes = []
         for device in DEVICE_SIZES:
-            for element in ('col', 'order', 'ml', 'mr'):
+            for element in ('col', 'order', 'offset', 'ml', 'mr'):
                 size = getattr(self, '{}_{}'.format(device, element))
                 if size and (element == 'col' or element == 'order' or element == 'offset'):
                     if device == 'xs':
