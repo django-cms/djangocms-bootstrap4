@@ -1,0 +1,848 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-03-01 13:56+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Hanno Artur Särg <wanaryytel@outlook.com>, 2018\n"
+"Language-Team: Estonian (https://www.transifex.com/divio/teams/58664/et/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: et\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: constants.py:10
+#: contrib/bootstrap4_grid/templates/djangocms_bootstrap4/admin/grid_column.html:13
+msgid "Extra small"
+msgstr "Eriti väike"
+
+#: constants.py:11
+#: contrib/bootstrap4_grid/templates/djangocms_bootstrap4/admin/grid_column.html:14
+#: contrib/bootstrap4_link/constants.py:14
+msgid "Small"
+msgstr "Väike"
+
+#: constants.py:12
+#: contrib/bootstrap4_grid/templates/djangocms_bootstrap4/admin/grid_column.html:15
+#: contrib/bootstrap4_link/constants.py:15
+msgid "Medium"
+msgstr "Keskmine"
+
+#: constants.py:13
+#: contrib/bootstrap4_grid/templates/djangocms_bootstrap4/admin/grid_column.html:16
+#: contrib/bootstrap4_link/constants.py:16
+msgid "Large"
+msgstr "Suur"
+
+#: constants.py:14
+#: contrib/bootstrap4_grid/templates/djangocms_bootstrap4/admin/grid_column.html:17
+msgid "Extra large"
+msgstr "Eriti suur"
+
+#: constants.py:27
+msgid "Primary"
+msgstr "Esmane"
+
+#: constants.py:28
+msgid "Secondary"
+msgstr "Teisene"
+
+#: constants.py:29
+msgid "Success"
+msgstr "Edukas"
+
+#: constants.py:30
+msgid "Danger"
+msgstr "Oht"
+
+#: constants.py:31
+msgid "Warning"
+msgstr "Hoiatus"
+
+#: constants.py:32
+msgid "Info"
+msgstr "Info"
+
+#: constants.py:33
+msgid "Light"
+msgstr "Hele"
+
+#: constants.py:34
+msgid "Dark"
+msgstr "Tume"
+
+#: constants.py:38 contrib/bootstrap4_card/constants.py:16
+msgid "Left"
+msgstr "Vasakpoolne"
+
+#: constants.py:39 contrib/bootstrap4_card/constants.py:17
+msgid "Center"
+msgstr "Keskmine"
+
+#: constants.py:40 contrib/bootstrap4_card/constants.py:18
+msgid "Right"
+msgstr "Parempoolne"
+
+#: contrib/bootstrap4_alerts/cms_plugins.py:21
+msgid "Alert"
+msgstr "Teade"
+
+#: contrib/bootstrap4_alerts/cms_plugins.py:22
+#: contrib/bootstrap4_badge/cms_plugins.py:22
+#: contrib/bootstrap4_card/cms_plugins.py:22
+#: contrib/bootstrap4_card/cms_plugins.py:81
+#: contrib/bootstrap4_carousel/cms_plugins.py:24
+#: contrib/bootstrap4_carousel/cms_plugins.py:72
+#: contrib/bootstrap4_collapse/cms_plugins.py:26
+#: contrib/bootstrap4_collapse/cms_plugins.py:58
+#: contrib/bootstrap4_collapse/cms_plugins.py:91
+#: contrib/bootstrap4_content/cms_plugins.py:23
+#: contrib/bootstrap4_content/cms_plugins.py:52
+#: contrib/bootstrap4_content/cms_plugins.py:93
+#: contrib/bootstrap4_grid/cms_plugins.py:31
+#: contrib/bootstrap4_grid/cms_plugins.py:69
+#: contrib/bootstrap4_grid/cms_plugins.py:134
+#: contrib/bootstrap4_jumbotron/cms_plugins.py:22
+#: contrib/bootstrap4_link/cms_plugins.py:28
+#: contrib/bootstrap4_listgroup/cms_plugins.py:22
+#: contrib/bootstrap4_listgroup/cms_plugins.py:66
+#: contrib/bootstrap4_media/cms_plugins.py:22
+#: contrib/bootstrap4_media/cms_plugins.py:56
+#: contrib/bootstrap4_picture/cms_plugins.py:26
+#: contrib/bootstrap4_tabs/cms_plugins.py:23
+#: contrib/bootstrap4_tabs/cms_plugins.py:58
+#: contrib/bootstrap4_utilities/cms_plugins.py:22
+msgid "Bootstrap 4"
+msgstr "Bootstrap 4"
+
+#: contrib/bootstrap4_alerts/cms_plugins.py:34
+#: contrib/bootstrap4_badge/cms_plugins.py:35
+#: contrib/bootstrap4_card/cms_plugins.py:42
+#: contrib/bootstrap4_card/cms_plugins.py:97
+#: contrib/bootstrap4_carousel/cms_plugins.py:37
+#: contrib/bootstrap4_carousel/cms_plugins.py:91
+#: contrib/bootstrap4_collapse/cms_plugins.py:40
+#: contrib/bootstrap4_collapse/cms_plugins.py:74
+#: contrib/bootstrap4_collapse/cms_plugins.py:107
+#: contrib/bootstrap4_content/cms_plugins.py:36
+#: contrib/bootstrap4_content/cms_plugins.py:64
+#: contrib/bootstrap4_content/cms_plugins.py:106
+#: contrib/bootstrap4_grid/cms_plugins.py:41
+#: contrib/bootstrap4_grid/cms_plugins.py:83
+#: contrib/bootstrap4_grid/cms_plugins.py:160
+#: contrib/bootstrap4_jumbotron/cms_plugins.py:33
+#: contrib/bootstrap4_listgroup/cms_plugins.py:35
+#: contrib/bootstrap4_listgroup/cms_plugins.py:79
+#: contrib/bootstrap4_media/cms_plugins.py:28
+#: contrib/bootstrap4_media/cms_plugins.py:63
+#: contrib/bootstrap4_tabs/cms_plugins.py:35
+#: contrib/bootstrap4_tabs/cms_plugins.py:69
+#: contrib/bootstrap4_utilities/cms_plugins.py:36
+msgid "Advanced settings"
+msgstr "Täpsemad seaded"
+
+#: contrib/bootstrap4_alerts/models.py:21
+#: contrib/bootstrap4_badge/models.py:25 contrib/bootstrap4_link/models.py:37
+#: contrib/bootstrap4_listgroup/models.py:47
+msgid "Context"
+msgstr "Kontekst"
+
+#: contrib/bootstrap4_alerts/models.py:27
+msgid "Dismissable"
+msgstr "Eiratav"
+
+#: contrib/bootstrap4_alerts/models.py:29
+msgid "Allows the alert to be closed."
+msgstr "Laseb kasutajal teate sulgeda."
+
+#: contrib/bootstrap4_alerts/templates/djangocms_bootstrap4/alerts.html:5
+msgid "Close"
+msgstr "Sulge"
+
+#: contrib/bootstrap4_badge/cms_plugins.py:21
+msgid "Badge"
+msgstr "Märk"
+
+#: contrib/bootstrap4_badge/models.py:21
+msgid "Badge text"
+msgstr "Märgi tekst"
+
+#: contrib/bootstrap4_badge/models.py:31
+msgid "Pills style"
+msgstr "Pilli stiil"
+
+#: contrib/bootstrap4_badge/models.py:33
+msgid "Activates the pills style."
+msgstr "Aktiveerib pilli stiili."
+
+#: contrib/bootstrap4_card/cms_plugins.py:21
+#: contrib/bootstrap4_card/constants.py:9
+msgid "Card"
+msgstr "Kaart"
+
+#: contrib/bootstrap4_card/cms_plugins.py:80
+msgid "Card inner"
+msgstr "Kaardi sisu"
+
+#: contrib/bootstrap4_card/constants.py:10
+msgid "Card group"
+msgstr "Kaardi grupp"
+
+#: contrib/bootstrap4_card/constants.py:11
+msgid "Card deck"
+msgstr "Kaardipakk"
+
+#: contrib/bootstrap4_card/constants.py:12
+msgid "Card columns"
+msgstr "Kaartide tulbad"
+
+#: contrib/bootstrap4_card/constants.py:22
+msgid "Body"
+msgstr "Sisu"
+
+#: contrib/bootstrap4_card/constants.py:23
+msgid "Header"
+msgstr "Päis"
+
+#: contrib/bootstrap4_card/constants.py:24
+msgid "Footer"
+msgstr "Jalus"
+
+#: contrib/bootstrap4_card/models.py:26
+msgid "Transparent"
+msgstr "Läbipaistev"
+
+#: contrib/bootstrap4_card/models.py:30
+msgid "White"
+msgstr "Valge"
+
+#: contrib/bootstrap4_card/models.py:41
+msgid "Card type"
+msgstr "Kaardi tüüp"
+
+#: contrib/bootstrap4_card/models.py:47
+msgid "Background context"
+msgstr "Tausta kontekst"
+
+#: contrib/bootstrap4_card/models.py:53
+#: contrib/bootstrap4_content/models.py:54
+#: contrib/bootstrap4_content/models.py:80
+#: contrib/bootstrap4_grid/models.py:140 contrib/bootstrap4_tabs/models.py:40
+msgid "Alignment"
+msgstr "Joondus"
+
+#: contrib/bootstrap4_card/models.py:59 contrib/bootstrap4_link/models.py:49
+msgid "Outline"
+msgstr "Ääris (outline)"
+
+#: contrib/bootstrap4_card/models.py:61
+msgid "Uses the border context instead of the background."
+msgstr "Kasutab tausta konteksti asemel äärise oma."
+
+#: contrib/bootstrap4_card/models.py:64
+msgid "Text context"
+msgstr "Teksti kontekst"
+
+#: contrib/bootstrap4_card/models.py:93
+msgid "Inner type"
+msgstr "Sisemine tüüp"
+
+#: contrib/bootstrap4_card/models.py:97
+msgid "Define the structure of the plugin."
+msgstr "Defineeri vidina struktuur."
+
+#: contrib/bootstrap4_carousel/cms_plugins.py:23
+msgid "Carousel"
+msgstr "Pildikarussell"
+
+#: contrib/bootstrap4_carousel/cms_plugins.py:71
+msgid "Carousel slide"
+msgstr "Pildikarusselli slaid"
+
+#: contrib/bootstrap4_carousel/cms_plugins.py:83
+msgid "Link settings"
+msgstr "Lingi seaded"
+
+#: contrib/bootstrap4_carousel/constants.py:24
+#: contrib/bootstrap4_tabs/constants.py:30
+msgid "Default"
+msgstr "Vaikimisi"
+
+#: contrib/bootstrap4_carousel/models.py:35
+#: contrib/bootstrap4_tabs/models.py:27
+msgid "Template"
+msgstr "Mall"
+
+#: contrib/bootstrap4_carousel/models.py:39
+#: contrib/bootstrap4_tabs/models.py:31
+msgid "This is the template that will be used for the component."
+msgstr "Seda malli kasutatakse komponendi jaoks."
+
+#: contrib/bootstrap4_carousel/models.py:42
+#: contrib/bootstrap4_carousel/models.py:108
+msgid "Interval"
+msgstr "Intervall"
+
+#: contrib/bootstrap4_carousel/models.py:44
+msgid ""
+"The amount of time to delay between automatically cycling an item. If false,"
+" carousel will not automatically cycle."
+msgstr ""
+"Selle väärtuse suurune on intervall automaatsel slaidi vahetumisel. Kui on "
+"sätestamata, siis slaidid automaatselt ei vahetu."
+
+#: contrib/bootstrap4_carousel/models.py:48
+#: contrib/bootstrap4_carousel/models.py:109
+msgid "Controls"
+msgstr "Külgnupud"
+
+#: contrib/bootstrap4_carousel/models.py:50
+msgid "Adding in the previous and next controls."
+msgstr "Eelmise ja järgmise slaidi nuppude lisamine."
+
+#: contrib/bootstrap4_carousel/models.py:53
+#: contrib/bootstrap4_carousel/models.py:110
+msgid "Indicators"
+msgstr "Indikaatorid"
+
+#: contrib/bootstrap4_carousel/models.py:55
+msgid "Adding in the indicators to the carousel."
+msgstr "Pildikarusselli asukoha indikaatorite lisamine."
+
+#: contrib/bootstrap4_carousel/models.py:58
+#: contrib/bootstrap4_carousel/models.py:111
+msgid "Keyboard"
+msgstr "Klaviatuur"
+
+#: contrib/bootstrap4_carousel/models.py:60
+msgid "Whether the carousel should react to keyboard events."
+msgstr "Kas pildikarussell reageerib klaviatuurile."
+
+#: contrib/bootstrap4_carousel/models.py:63
+#: contrib/bootstrap4_carousel/models.py:112
+msgid "Pause"
+msgstr "Paus"
+
+#: contrib/bootstrap4_carousel/models.py:67
+msgid ""
+"If set to \"hover\", pauses the cycling of the carousel on \"mouseenter\" "
+"and resumes the cycling of the carousel on \"mouseleave\". If set to "
+"\"false\", hovering over the carousel won't pause it."
+msgstr ""
+"Kui on seatud \"hoveri\" peale, siis läheb pildikarussell hiire slaidile "
+"sisenemisel (mouseenter) pausile ja jätkub, kui hiir lahkub. Kui on seatud "
+"\"false\", siis hiirega slaidile liikumine pildikarusselli ei peata."
+
+#: contrib/bootstrap4_carousel/models.py:73
+#: contrib/bootstrap4_carousel/models.py:113
+msgid "Ride"
+msgstr "Vahetumine"
+
+#: contrib/bootstrap4_carousel/models.py:77
+msgid ""
+"Autoplays the carousel after the user manually cycles the first item. If "
+"\"carousel\", autoplays the carousel on load."
+msgstr ""
+"Vahetab slaide automaatselt, kui kasutaja on esimese slaidi käsitsi edasi "
+"liigutanud. Kui on seatud \"carouseli\" peale, siis vahetab slaide kohe "
+"automaatselt."
+
+#: contrib/bootstrap4_carousel/models.py:81
+#: contrib/bootstrap4_carousel/models.py:114
+msgid "Wrap"
+msgstr "Mähi"
+
+#: contrib/bootstrap4_carousel/models.py:83
+msgid "Whether the carousel should cycle continuously or have hard stops."
+msgstr "Kas pildikarussell peaks jätkuvalt liikuma või vahepeal peatuma."
+
+#: contrib/bootstrap4_carousel/models.py:87
+msgid "Aspect ratio"
+msgstr "Pildisuhe"
+
+#: contrib/bootstrap4_carousel/models.py:92
+msgid ""
+"Determines width and height of the image according to the selected ratio."
+msgstr "Määrab vastavalt valitud väärtusele pildi laiuse ja kõrguse suhte."
+
+#: contrib/bootstrap4_carousel/models.py:121
+msgid "Slide image"
+msgstr "Slaidi pilt"
+
+#: contrib/bootstrap4_carousel/models.py:128
+msgid "Content"
+msgstr "Sisu"
+
+#: contrib/bootstrap4_carousel/models.py:131
+msgid "Content may also be added using child plugins."
+msgstr "Sisu saab lisada ka alamvidinatega."
+
+#: contrib/bootstrap4_carousel/templates/djangocms_bootstrap4/carousel/default/carousel.html:33
+msgid "Previous"
+msgstr "Eelmine"
+
+#: contrib/bootstrap4_carousel/templates/djangocms_bootstrap4/carousel/default/carousel.html:37
+msgid "Next"
+msgstr "Järgmine"
+
+#: contrib/bootstrap4_collapse/cms_plugins.py:25
+msgid "Collapse"
+msgstr "Kokku volditav"
+
+#: contrib/bootstrap4_collapse/cms_plugins.py:57
+msgid "Collapse trigger"
+msgstr "Kokkuvoltimise nupp"
+
+#: contrib/bootstrap4_collapse/cms_plugins.py:90
+msgid "Collapse container"
+msgstr "Kokkuvoltimise konteiner"
+
+#: contrib/bootstrap4_collapse/models.py:26
+msgid "Siblings"
+msgstr "Sama taseme elemendid"
+
+#: contrib/bootstrap4_collapse/models.py:29
+msgid "Element to be used to create accordions."
+msgstr "Element, millega akordioni luua."
+
+#: contrib/bootstrap4_collapse/models.py:50
+#: contrib/bootstrap4_collapse/models.py:77
+msgid "Unique identifier"
+msgstr "Unikaalne nimetaja"
+
+#: contrib/bootstrap4_collapse/models.py:53
+#: contrib/bootstrap4_collapse/models.py:80
+msgid "Identifier to connect trigger with container."
+msgstr "Nimetaja, millega nupp konteineriga seotakse."
+
+#: contrib/bootstrap4_collapse/templates/djangocms_bootstrap4/admin/collapse.html:7
+#: contrib/bootstrap4_media/templates/djangocms_bootstrap4/admin/media.html:7
+msgid "There is no configuration required here."
+msgstr "Seda pole vaja seadistada."
+
+#: contrib/bootstrap4_content/cms_plugins.py:22
+#: contrib/bootstrap4_content/models.py:23
+msgid "Code"
+msgstr "Koodijupp"
+
+#: contrib/bootstrap4_content/cms_plugins.py:51
+msgid "Blockquote"
+msgstr "Plokktsitaat"
+
+#: contrib/bootstrap4_content/cms_plugins.py:92
+msgid "Figure"
+msgstr "Joonis"
+
+#: contrib/bootstrap4_content/constants.py:9
+msgid "Inline code"
+msgstr "Koodijupp teksti sees"
+
+#: contrib/bootstrap4_content/constants.py:10
+msgid "Code block"
+msgstr "Koodi plokk"
+
+#: contrib/bootstrap4_content/constants.py:11
+msgid "Variables"
+msgstr "Muutujad"
+
+#: contrib/bootstrap4_content/constants.py:12
+msgid "User input"
+msgstr "Kasutaja sisend"
+
+#: contrib/bootstrap4_content/constants.py:13
+msgid "Sample output"
+msgstr "Näidisväljund"
+
+#: contrib/bootstrap4_content/models.py:26
+msgid "Code type"
+msgstr "Koodi tüüp"
+
+#: contrib/bootstrap4_content/models.py:47
+msgid "Quote"
+msgstr "Tsitaat"
+
+#: contrib/bootstrap4_content/models.py:50
+msgid "Cite"
+msgstr "Allikas"
+
+#: contrib/bootstrap4_content/models.py:76
+msgid "Caption"
+msgstr "Pildiallkiri"
+
+#: contrib/bootstrap4_grid/cms_plugins.py:30
+#: contrib/bootstrap4_grid/constants.py:23
+msgid "Container"
+msgstr "Konteiner"
+
+#: contrib/bootstrap4_grid/cms_plugins.py:68
+msgid "Row"
+msgstr "Rida"
+
+#: contrib/bootstrap4_grid/cms_plugins.py:133
+#: contrib/bootstrap4_grid/constants.py:54
+#: contrib/bootstrap4_tabs/constants.py:19
+msgid "Column"
+msgstr "Tulp"
+
+#: contrib/bootstrap4_grid/cms_plugins.py:151
+msgid "Responsive settings"
+msgstr "Ekraanisuuruse kohandumise seaded"
+
+#: contrib/bootstrap4_grid/constants.py:24
+msgid "Fluid container"
+msgstr "Fluiidne konteiner"
+
+#: contrib/bootstrap4_grid/constants.py:31
+msgid "Align items start"
+msgstr "Reasta elemendid algusesse"
+
+#: contrib/bootstrap4_grid/constants.py:32
+msgid "Align items center"
+msgstr "Reasta elemendid keskele"
+
+#: contrib/bootstrap4_grid/constants.py:33
+msgid "Align items end"
+msgstr "Reasta elemendid lõppu"
+
+#: contrib/bootstrap4_grid/constants.py:37
+msgid "Justify content start"
+msgstr "Joonda elemendid algusesse"
+
+#: contrib/bootstrap4_grid/constants.py:38
+msgid "Justify content center"
+msgstr "Joonda elemendid keskele"
+
+#: contrib/bootstrap4_grid/constants.py:39
+msgid "Justify content end"
+msgstr "Joonda elemendid lõppu"
+
+#: contrib/bootstrap4_grid/constants.py:40
+msgid "Justify content around"
+msgstr "Joonda elemendid ühtlaste ümbrustega"
+
+#: contrib/bootstrap4_grid/constants.py:41
+msgid "Justify content between"
+msgstr "Joonda elemendid ühtlaste vahedega"
+
+#: contrib/bootstrap4_grid/constants.py:45
+msgid "Align self start"
+msgstr "Reasta element algusesse"
+
+#: contrib/bootstrap4_grid/constants.py:46
+msgid "Align self center"
+msgstr "Reasta element keskele"
+
+#: contrib/bootstrap4_grid/constants.py:47
+msgid "Align self end"
+msgstr "Reasta element lõppu"
+
+#: contrib/bootstrap4_grid/constants.py:55
+msgid "Break"
+msgstr "Täislaius"
+
+#: contrib/bootstrap4_grid/constants.py:56
+msgid "Empty"
+msgstr "Tühi"
+
+#: contrib/bootstrap4_grid/forms.py:16
+msgid "Create columns"
+msgstr "Loo tulbad"
+
+#: contrib/bootstrap4_grid/forms.py:17
+msgid "Number of columns to create when saving."
+msgstr "Mitu tulpa salvestamisel luua."
+
+#: contrib/bootstrap4_grid/models.py:37
+msgid "Container type"
+msgstr "Konteineri tüüp"
+
+#: contrib/bootstrap4_grid/models.py:42
+msgid ""
+"Defines if the grid should use fixed width (<code>.container</code>) or "
+"fluid width (<code>.container-fluid</code>)."
+msgstr ""
+"Määrab, kas grid peaks kasutama ettemääratud laiust "
+"(<code>.container</code>) või fluiidset laiust (<code>.container-"
+"fluid</code>)."
+
+#: contrib/bootstrap4_grid/models.py:67
+msgid "Vertical alignment"
+msgstr "Vertikaaljoondus"
+
+#: contrib/bootstrap4_grid/models.py:72 contrib/bootstrap4_grid/models.py:82
+#, python-brace-format
+msgid "Read more in the <a href=\"{link}\" target=\"_blank\">documentation</a>."
+msgstr ""
+"Loe lähemalt <a href=\"{link}\" target=\"_blank\">dokumentatsioonist</a> "
+"(inglise keeles)."
+
+#: contrib/bootstrap4_grid/models.py:77
+msgid "Horizontal alignment"
+msgstr "Horisontaaljoondus"
+
+#: contrib/bootstrap4_grid/models.py:87
+msgid "Remove gutters"
+msgstr "Eemalda tulpade tühi ruum külgedelt"
+
+#: contrib/bootstrap4_grid/models.py:89
+msgid "Removes the marginal gutters from the grid."
+msgstr "Eemaldab tulpi ümbritseva tühja ruumi."
+
+#: contrib/bootstrap4_grid/models.py:101
+msgid "<empty>"
+msgstr "<empty>"
+
+#: contrib/bootstrap4_grid/models.py:105
+#, python-format
+msgid "(1 column)"
+msgid_plural "(%(count)i columns)"
+msgstr[0] "(1 tulp)"
+msgstr[1] "(%(count)i tulpa)"
+
+#: contrib/bootstrap4_grid/models.py:123
+msgid "Column type"
+msgstr "Tulba tüüp"
+
+#: contrib/bootstrap4_grid/models.py:130
+#: contrib/bootstrap4_grid/templates/djangocms_bootstrap4/admin/grid_column.html:20
+msgid "Column size"
+msgstr "Tulba laius"
+
+#: contrib/bootstrap4_grid/models.py:136
+#, python-brace-format
+msgid ""
+"Nummeric value from 1 - {bound}. Spreads the columns evenly when empty."
+msgstr ""
+"Numbriline väärtus 1-{bound}. Väärtuse tühjaksjätmisel jaotatakse ruum "
+"tulpade vahel võrdselt."
+
+#: contrib/bootstrap4_grid/templates/djangocms_bootstrap4/admin/grid_column.html:21
+msgid "Order"
+msgstr "Järjekord"
+
+#: contrib/bootstrap4_grid/templates/djangocms_bootstrap4/admin/grid_column.html:22
+msgid "Margin left"
+msgstr "Vasakpoolne serv"
+
+#: contrib/bootstrap4_grid/templates/djangocms_bootstrap4/admin/grid_column.html:23
+msgid "Margin right"
+msgstr "Parempoolne serv"
+
+#: contrib/bootstrap4_grid/templates/djangocms_bootstrap4/admin/grid_column.html:25
+msgid "Reset"
+msgstr "Lähtesta"
+
+#: contrib/bootstrap4_jumbotron/cms_plugins.py:21
+msgid "Jumbotron"
+msgstr "Jumbotron"
+
+#: contrib/bootstrap4_jumbotron/models.py:20
+#: contrib/bootstrap4_jumbotron/models.py:33
+msgid "Fluid"
+msgstr "Fluiidne"
+
+#: contrib/bootstrap4_jumbotron/models.py:22
+msgid "Adds the .jumbotron-fluid class."
+msgstr "Lisab .jumbotron-fluid klassi"
+
+#: contrib/bootstrap4_link/cms_plugins.py:25
+msgid "Link / Button"
+msgstr "Link / nupp"
+
+#: contrib/bootstrap4_link/constants.py:9 contrib/bootstrap4_link/models.py:19
+msgid "Link"
+msgstr "Link"
+
+#: contrib/bootstrap4_link/constants.py:10
+msgid "Button"
+msgstr "Nupp"
+
+#: contrib/bootstrap4_link/models.py:30 contrib/bootstrap4_tabs/models.py:34
+msgid "Type"
+msgstr "Tüüp"
+
+#: contrib/bootstrap4_link/models.py:34
+msgid "Adds either the .btn-* or .text-* classes."
+msgstr "Lisab kas .btn-* või .text-* klassi."
+
+#: contrib/bootstrap4_link/models.py:43
+#: contrib/bootstrap4_utilities/models.py:40
+msgid "Size"
+msgstr "Suurus"
+
+#: contrib/bootstrap4_link/models.py:51
+msgid "Applies the .btn-outline class to the elements."
+msgstr "Lisab elementidele .btn-outline klassi."
+
+#: contrib/bootstrap4_link/models.py:54
+msgid "Block"
+msgstr "Täislaiuses"
+
+#: contrib/bootstrap4_link/models.py:56
+msgid "Extends the button to the width of its container."
+msgstr "Laiendab nupu konteineri laiuseks."
+
+#: contrib/bootstrap4_link/models.py:59
+msgid "Icon left"
+msgstr "Vasakpoolne ikoon"
+
+#: contrib/bootstrap4_link/models.py:62
+msgid "Icon right"
+msgstr "Parempoolne ikoon"
+
+#: contrib/bootstrap4_link/templates/djangocms_bootstrap4/admin/link.html:7
+msgid "Preview"
+msgstr "Eelvaade"
+
+#: contrib/bootstrap4_listgroup/cms_plugins.py:21
+msgid "List group"
+msgstr "Listi kogum"
+
+#: contrib/bootstrap4_listgroup/cms_plugins.py:65
+msgid "List item"
+msgstr "Listi element"
+
+#: contrib/bootstrap4_listgroup/constants.py:9
+msgid "Active"
+msgstr "Aktiivne"
+
+#: contrib/bootstrap4_listgroup/constants.py:10
+msgid "Disabled"
+msgstr "Mitteaktiivne"
+
+#: contrib/bootstrap4_listgroup/models.py:23
+msgid "List group flush"
+msgstr "Listi kogum flush"
+
+#: contrib/bootstrap4_listgroup/models.py:25
+msgid "Create lists of content in a card with a flush list group."
+msgstr "Loob kaardi sisusse flush tüüpi listi kogumi."
+
+#: contrib/bootstrap4_listgroup/models.py:53
+msgid "State"
+msgstr "Olek"
+
+#: contrib/bootstrap4_media/cms_plugins.py:21
+msgid "Media"
+msgstr "Meedia"
+
+#: contrib/bootstrap4_media/cms_plugins.py:55
+msgid "Media body"
+msgstr "Meedia sisu"
+
+#: contrib/bootstrap4_picture/cms_plugins.py:24
+msgid "Picture / Image"
+msgstr "Pilt"
+
+#: contrib/bootstrap4_picture/models.py:20
+msgid "Responsive"
+msgstr "Kohanduv"
+
+#: contrib/bootstrap4_picture/models.py:22
+msgid "Adds the .img-fluid class to make the image responsive."
+msgstr "Lisab pildile .img-fluid klassi, et pild kohanduks ekraanile."
+
+#: contrib/bootstrap4_picture/models.py:25
+msgid "Rounded"
+msgstr "Ümardatud"
+
+#: contrib/bootstrap4_picture/models.py:27
+msgid "Adds the .rounded class for round corners."
+msgstr "Lisab .rounded klassi, et pildi nurgad oleks ümarad."
+
+#: contrib/bootstrap4_picture/models.py:30
+msgid "Thumbnail"
+msgstr "Pisipilt"
+
+#: contrib/bootstrap4_picture/models.py:32
+msgid "Adds the .img-thumbnail class."
+msgstr "Lisab .img-thumbnail klassi."
+
+#: contrib/bootstrap4_tabs/cms_plugins.py:22
+#: contrib/bootstrap4_tabs/constants.py:9
+msgid "Tabs"
+msgstr "Vahelehe nupud"
+
+#: contrib/bootstrap4_tabs/cms_plugins.py:57
+msgid "Tab item"
+msgstr "Vahelehe nupp"
+
+#: contrib/bootstrap4_tabs/constants.py:10
+msgid "Pills"
+msgstr "Pillid"
+
+#: contrib/bootstrap4_tabs/constants.py:14
+msgid "Fill"
+msgstr "Täida"
+
+#: contrib/bootstrap4_tabs/constants.py:15
+msgid "Justified"
+msgstr "Joondatud"
+
+#: contrib/bootstrap4_tabs/constants.py:16
+msgid "Justify start"
+msgstr "Joonda algusesse"
+
+#: contrib/bootstrap4_tabs/constants.py:17
+msgid "Justify center"
+msgstr "Joonda keskele"
+
+#: contrib/bootstrap4_tabs/constants.py:18
+msgid "Justify end"
+msgstr "Joonda lõppu"
+
+#: contrib/bootstrap4_tabs/constants.py:23
+msgid "Fade"
+msgstr "Hajuta"
+
+#: contrib/bootstrap4_tabs/models.py:46
+msgid "Index"
+msgstr "Indeks"
+
+#: contrib/bootstrap4_tabs/models.py:49
+msgid "Index of element to open on page load starting at 1."
+msgstr ""
+"Selle elemendi indeks, mis lehe laadimisel laadida, alustades numbrist 1."
+
+#: contrib/bootstrap4_tabs/models.py:52
+msgid "Animation effect"
+msgstr "Animatsiooni efekt."
+
+#: contrib/bootstrap4_tabs/models.py:78
+msgid "Tab title"
+msgstr "Vahelehe pealkiri"
+
+#: contrib/bootstrap4_utilities/cms_plugins.py:21
+msgid "Spacing"
+msgstr "Ruum"
+
+#: contrib/bootstrap4_utilities/models.py:27
+msgid "Property"
+msgstr "Omadus"
+
+#: contrib/bootstrap4_utilities/models.py:33
+msgid "Sides"
+msgstr "Ääred"
+
+#: contrib/bootstrap4_utilities/models.py:46
+msgid "Device"
+msgstr "Seade"
+
+#: fields.py:15
+msgid "Attributes"
+msgstr "Atribuudid"
+
+#: fields.py:24
+msgid "Tag type"
+msgstr "Elemendi tüüp"
+
+#: fields.py:32
+msgid "Select the HTML tag to be used."
+msgstr "Vali HTML element, mida kasutada."
