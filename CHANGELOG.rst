@@ -6,6 +6,7 @@ Changelog
 ==================
 
 * Carousel default size modifiable from settings
+* Estonian translations included
 
 1.1.1 (2018-07-17)
 ==================
