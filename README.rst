@@ -145,6 +145,8 @@ for now only the following can be changed::
         (16, 9),
     )
 
+    DJANGOCMS_BOOTSTRAP4_CAROUSEL_DEFAULT_SIZE = [1024, 768]
+
     DJANGOCMS_BOOTSTRAP4_COLOR_STYLE_CHOICES = (
         ('primary', _('Primary')),
         ('secondary', _('Secondary')),
