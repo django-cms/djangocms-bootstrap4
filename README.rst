@@ -73,7 +73,7 @@ For a manual install:
     'djangocms_bootstrap4.contrib.bootstrap4_tabs',
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
 
-* run ``python manage.py migrate djangocms_bootstrap4``
+* run ``python manage.py migrate``
 
 
 Configuration
