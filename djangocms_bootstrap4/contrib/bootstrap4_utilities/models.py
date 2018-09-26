@@ -54,11 +54,17 @@ class Bootstrap4Spacing(CMSPlugin):
     def __str__(self):
         return str(self.pk)
 
+    def get_base_css_class(self):
+        # Source: https://getbootstrap.com/docs/4.0/utilities/spacing/#notation
+        # [...] format {property}{sides}-{size} for xs and {property}{sides}-{breakpoint}-{size} for sm, md, lg, and xl.
+        if self.space_device == 'xs':
+            template = '{property}{sides}-{size}'
+        else:
+            template = '{property}{sides}-{breakpoint}-{size}'
+
+        return template.format(
+            property=self.space_property, sides=self.space_sides, breakpoint=self.space_device, size=self.space_size
+        )
+
     def get_short_description(self):
-        text = self.space_property
-        if self.space_sides:
-            text += self.space_sides
-        if self.space_device:
-            text += '-{}'.format(self.space_device)
-        text += '-{}'.format(self.space_size)
-        return '(.{})'.format(text)
+        return '(.{})'.format(self.get_base_css_class())
