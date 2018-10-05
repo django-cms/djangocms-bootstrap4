@@ -42,18 +42,10 @@ class Bootstrap4SpacingPlugin(CMSPluginBase):
     ]
 
     def render(self, context, instance, placeholder):
-        spacing = '{}'.format(instance.space_property)
-        if instance.space_sides:
-            spacing += '{}'.format(instance.space_sides)
-        if instance.space_device:
-            spacing += '-{}'.format(instance.space_device)
-        spacing += '-{}'.format(instance.space_size)
-
-        classes = concat_classes([
-            spacing,
+        instance.attributes['class'] = concat_classes([
+            instance.get_base_css_class(),
             instance.attributes.get('class'),
         ])
-        instance.attributes['class'] = classes
 
         return super(Bootstrap4SpacingPlugin, self).render(
             context, instance, placeholder
