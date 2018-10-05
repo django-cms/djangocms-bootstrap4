@@ -2,6 +2,14 @@
 Changelog
 =========
 
+1.1.2 (2018-10-05)
+==================
+
+* Fix README migration command
+* Fix Plural-Forms of i18n for english language
+* Add <code> element inside <pre> in code block
+* Fix spacing class for XS devices
+
 1.1.1 (2018-07-17)
 ==================
 
