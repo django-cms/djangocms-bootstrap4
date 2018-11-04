@@ -1,11 +1,11 @@
 {% load cms_tags %}
 
-<{{ instance.tag_type }} {{ instance.attributes_str }}
-    id="{{ instance.identifier }}"
+<{{ instance.tag_type }} {{ instance.attributes_str }}
+    id="trigger-{{ instance.identifier }}"
     role="tab"
     data-toggle="collapse"
-    data-target="#{{ instance.identifier }}"
-    aria-controls="{{ instance.identifier }}"
+    data-target="#container-{{ instance.identifier }}"
+    aria-controls="container-{{ instance.identifier }}"
     aria-expanded="false"
 >
     {% for plugin in instance.child_plugin_instances %}

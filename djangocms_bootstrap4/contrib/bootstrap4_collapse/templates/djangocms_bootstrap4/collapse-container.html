@@ -1,10 +1,10 @@
 {% load cms_tags %}
 
-<{{ instance.tag_type }} {{ instance.attributes_str }}
-    id="{{ instance.identifier }}"
+<{{ instance.tag_type }} {{ instance.attributes_str }}
+    id="container-{{ instance.identifier }}"
     role="tabpanel"
     data-parent="#parent-{{ parent.pk }}"
-    aria-labelledby="{{ instance.identifier }}"
+    aria-labelledby="trigger-{{ instance.identifier }}"
 >
     {% for plugin in instance.child_plugin_instances %}
         {% with forloop as parentloop %}{% render_plugin plugin %}{% endwith %}
