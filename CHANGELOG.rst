@@ -2,7 +2,7 @@
 Changelog
 =========
 
-1.1.4 (unreleased)
+1.1.4 (2018-11-05)
 ==================
 
 * Fixed a regression with collapse plugins
