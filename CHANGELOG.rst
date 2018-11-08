@@ -2,12 +2,18 @@
 Changelog
 =========
 
+1.1.5 (unreleased)
+==================
+
+* Fixed a regression with spacing utilities rendering incorrectly
+
 1.1.4 (2018-11-05)
 ==================
 
 * Fixed a regression with collapse plugins
 
 1.1.3 (2018-10-19)
+==================
 
 * Adapt Bootstrap4Picture to reflect djangocms_picture.AbstractPicture changes regarding Responsive Images (#65)
 
