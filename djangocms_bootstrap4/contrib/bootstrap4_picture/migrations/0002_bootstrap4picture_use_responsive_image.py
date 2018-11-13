@@ -10,6 +10,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('bootstrap4_picture', '0001_initial'),
+        ('djangocms_picture', '0008_picture_use_responsive_image'),
     ]
 
     operations = [
