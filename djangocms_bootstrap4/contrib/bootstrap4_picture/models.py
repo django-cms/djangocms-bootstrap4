@@ -30,5 +30,8 @@ class Bootstrap4Picture(AbstractPicture):
         help_text=_('Adds the .img-thumbnail class.'),
     )
 
+    class Meta:
+        abstract = False
+
     def __str__(self):
         return str(self.pk)

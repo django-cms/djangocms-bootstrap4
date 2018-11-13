@@ -6,6 +6,7 @@ Changelog
 ==================
 
 * Fixed a regression with spacing utilities rendering incorrectly
+* Fixed a regression with migrations failing
 
 1.1.4 (2018-11-05)
 ==================

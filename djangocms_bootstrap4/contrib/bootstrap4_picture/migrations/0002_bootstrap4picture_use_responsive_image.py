@@ -3,6 +3,7 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
+from djangocms_picture.models import RESPONSIVE_IMAGE_CHOICES
 
 
 class Migration(migrations.Migration):
@@ -15,6 +16,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='Bootstrap4Picture',
             name='use_responsive_image',
-            field=models.CharField(choices=[('inherit', 'Let settings.DJANGOCMS_PICTURE_RESPONSIVE_IMAGES decide'), ('yes', 'Yes'), ('no', 'No')], default='inherit', help_text='Uses responsive image technique to choose better image to display based upon screen viewport. This configuration only applies to uploaded images (external pictures will not be affected). ', max_length=7, verbose_name='Use responsive image'),
+            field=models.CharField(choices=RESPONSIVE_IMAGE_CHOICES, default='inherit', help_text='Uses responsive image technique to choose better image to display based upon screen viewport. This configuration only applies to uploaded images (external pictures will not be affected). ', max_length=7, verbose_name='Use responsive image'),
         ),
     ]
