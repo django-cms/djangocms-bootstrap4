@@ -8,15 +8,18 @@ Changelog
 * Fixed a regression with spacing utilities rendering incorrectly
 * Fixed a regression with migrations failing
 
+
 1.1.4 (2018-11-05)
 ==================
 
 * Fixed a regression with collapse plugins
 
+
 1.1.3 (2018-10-19)
 ==================
 
 * Adapt Bootstrap4Picture to reflect djangocms_picture.AbstractPicture changes regarding Responsive Images (#65)
+
 
 1.1.2 (2018-10-05)
 ==================
@@ -26,11 +29,13 @@ Changelog
 * Add <code> element inside <pre> in code block
 * Fix spacing class for XS devices
 
+
 1.1.1 (2018-07-17)
 ==================
 
 * Fixed a bug where offset values wouldn't be rendered in bootstrap grid
 * Fixed a bug where offset and order fields wouldn't allow for zeroes
+
 
 1.1.0 (2018-07-11)
 ==================
