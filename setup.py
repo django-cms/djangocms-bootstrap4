@@ -6,13 +6,13 @@ from djangocms_bootstrap4 import __version__
 
 
 REQUIREMENTS = [
-    'django-cms>=3.4.0',
+    'django-cms>=3.4.5',
     'django-filer>=1.2.4',
     'djangocms-text-ckeditor>=3.1.0',
-    'djangocms-attributes-field>=0.1.1',
+    'djangocms-attributes-field>=0.4.0',
     'djangocms-icon>=1.0.0',
     'djangocms-link>=2.1.0',
-    'djangocms-picture>=2.0.7',
+    'djangocms-picture>=2.1.1',
 ]
 
 
@@ -29,6 +29,7 @@ CLASSIFIERS = [
     'Programming Language :: Python :: 3',
     'Programming Language :: Python :: 3.4',
     'Programming Language :: Python :: 3.5',
+    'Programming Language :: Python :: 3.6',
     'Topic :: Internet :: WWW/HTTP',
     'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     'Topic :: Software Development :: Libraries :: Application Frameworks',

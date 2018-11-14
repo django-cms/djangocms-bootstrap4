@@ -5,25 +5,18 @@ python:
 sudo: false
 
 env:
-  - TOX_ENV=lint
-  # Django 2.0 is not yet supported by django-cms
-  # - TOX_ENV=py36-latest
-  - TOX_ENV=test-py36-dj18-cms35
-  - TOX_ENV=test-py36-dj18-cms34
-  - TOX_ENV=test-py27-dj18-cms35
-  - TOX_ENV=test-py27-dj18-cms34
-  - TOX_ENV=test-py36-dj19-cms35
-  - TOX_ENV=test-py36-dj19-cms34
-  - TOX_ENV=test-py27-dj19-cms35
-  - TOX_ENV=test-py27-dj19-cms34
-  - TOX_ENV=test-py36-dj110-cms35
-  - TOX_ENV=test-py36-dj110-cms34
-  - TOX_ENV=test-py27-dj110-cms35
-  - TOX_ENV=test-py27-dj110-cms34
-  - TOX_ENV=test-py36-dj111-cms35
-  - TOX_ENV=test-py36-dj111-cms34
-  - TOX_ENV=test-py27-dj111-cms35
-  - TOX_ENV=test-py27-dj111-cms34
+  - TOX_ENV=flake8
+  # Django 1.11
+  - TOX_ENV=py27-dj111-cms34
+  - TOX_ENV=py27-dj111-cms35
+  - TOX_ENV=py35-dj111-cms34
+  - TOX_ENV=py35-dj111-cms35
+  # Django 2.0
+  - TOX_ENV=py35-dj20-cms35
+  - TOX_ENV=py35-dj20-cms40
+  # Django 2.1
+  - TOX_ENV=py35-dj21-cms35
+  - TOX_ENV=py35-dj21-cms40
 
 install:
   - pip install --upgrade pip setuptools tox coverage

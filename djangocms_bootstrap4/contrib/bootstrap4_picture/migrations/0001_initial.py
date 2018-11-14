@@ -39,7 +39,7 @@ class Migration(migrations.Migration):
                 ('link_url', models.URLField(blank=True, help_text='Wraps the image in a link to an external URL.', max_length=2040, verbose_name='External URL')),
                 ('link_target', models.CharField(blank=True, choices=LINK_TARGET, max_length=255, verbose_name='Link target')),
                 ('link_attributes', djangocms_attributes_field.fields.AttributesField(blank=True, default=dict, verbose_name='Link attributes')),
-                ('use_automatic_scaling', models.BooleanField(default=True, help_text='Uses the placeholder dimenstions to automatically calculate the size.', verbose_name='Automatic scaling')),
+                ('use_automatic_scaling', models.BooleanField(default=True, help_text='Uses the placeholder dimensions to automatically calculate the size.', verbose_name='Automatic scaling')),
                 ('use_no_cropping', models.BooleanField(default=False, help_text='Outputs the raw image without cropping.', verbose_name='Use original image')),
                 ('use_crop', models.BooleanField(default=False, help_text='Crops the image according to the thumbnail settings provided in the template.', verbose_name='Crop image')),
                 ('use_upscale', models.BooleanField(default=False, help_text='Upscales the image to the size of the thumbnail settings in the template.', verbose_name='Upscale image')),

@@ -1,9 +1,9 @@
 # requirements from setup.py
-djangocms-attributes-field>=0.1.1
+djangocms-attributes-field>=0.4.0
 djangocms-text-ckeditor>=3.1.0
 djangocms-link>=2.1.0
-djangocms-picture>=2.0.6
-djangocms-icon>=0.2.0
+djangocms-picture>=2.1.1
+djangocms-icon>=1.0.0
 # other requirements
 djangocms-helper>=0.9.2,<0.10
 tox
