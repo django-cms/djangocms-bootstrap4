@@ -2,9 +2,10 @@
 Changelog
 =========
 
-1.1.5 (unreleased)
+1.2.0 (unreleased)
 ==================
 
+* Removed support for Django 1.8, 1.9, 1.10
 * Fixed a regression with spacing utilities rendering incorrectly
 * Fixed a regression where migrations are failing
 

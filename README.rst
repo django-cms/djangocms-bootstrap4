@@ -33,13 +33,13 @@ Documentation
 See ``REQUIREMENTS`` in the `setup.py <https://github.com/divio/djangocms-bootstrap4/blob/master/setup.py>`_
 file for additional dependencies:
 
-* Python 2.7, 3.3 or higher
-* Django 1.8 or higher
+* Python 2.7, 3.4 or higher
+* Django 1.11 or higher
 * Django Filer 1.2.4 or higher
 * Django Text CKEditor 3.1.0 or higher
 * Django CMS Icon 1.0.0 or higher
 * Django CMS Link 2.1.0 or higher
-* Django CMS Picture 2.0.6 or higher
+* Django CMS Picture 2.1.1 or higher
 
 Make sure `django Filer <http://django-filer.readthedocs.io/en/latest/installation.html>`_
 and `django CMS Text CKEditor <https://github.com/divio/djangocms-text-ckeditor>`_
