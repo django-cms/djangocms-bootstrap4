@@ -2,7 +2,7 @@
 Changelog
 =========
 
-1.2.0 (unreleased)
+1.2.0 (2018-11-15)
 ==================
 
 * Removed support for Django 1.8, 1.9, 1.10
