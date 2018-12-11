@@ -23,7 +23,6 @@ HELPER_SETTINGS = {
         'djangocms_bootstrap4.contrib.bootstrap4_picture',
         'djangocms_bootstrap4.contrib.bootstrap4_utilities',
     ],
-    'ALLOWED_HOSTS': ['localhost'],
     'CMS_LANGUAGES': {
         1: [{
             'code': 'en',
@@ -31,6 +30,7 @@ HELPER_SETTINGS = {
         }]
     },
     'LANGUAGE_CODE': 'en',
+    'ALLOWED_HOSTS': ['localhost'],
     'DJANGOCMS_PICTURE_RESPONSIVE_IMAGES': False,
     'DJANGOCMS_PICTURE_RESPONSIVE_IMAGES_VIEWPORT_BREAKPOINTS': [576, 768, 992],
 }
