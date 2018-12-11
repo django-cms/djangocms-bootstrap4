@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Bootstrap4Tab',
             fields=[
-                ('cmsplugin_ptr', models.OneToOneField(parent_link=True, serialize=False, primary_key=True, to='cms.CMSPlugin', auto_created=True, related_name='bootstrap4_tabs_bootstrap4tab')),
+                ('cmsplugin_ptr', models.OneToOneField(parent_link=True, serialize=False, primary_key=True, to='cms.CMSPlugin', auto_created=True, related_name='bootstrap4_tabs_bootstrap4tab', on_delete=models.CASCADE)),
                 ('tab_style', models.CharField(max_length=255, choices=TAB_TEMPLATE_CHOICES, verbose_name='Template', default=TAB_TEMPLATE_CHOICES[0][0], help_text='This is the template that will be used for the component.')),
                 ('tab_type', models.CharField(max_length=255, choices=TAB_TYPE_CHOICES, verbose_name='Type', default=TAB_TYPE_CHOICES[0][0])),
                 ('tab_alignment', models.CharField(max_length=255, blank=True, choices=TAB_ALIGNMENT_CHOICES, verbose_name='Alignment')),
@@ -41,7 +41,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Bootstrap4TabItem',
             fields=[
-                ('cmsplugin_ptr', models.OneToOneField(parent_link=True, serialize=False, primary_key=True, to='cms.CMSPlugin', auto_created=True, related_name='bootstrap4_tabs_bootstrap4tabitem')),
+                ('cmsplugin_ptr', models.OneToOneField(parent_link=True, serialize=False, primary_key=True, to='cms.CMSPlugin', auto_created=True, related_name='bootstrap4_tabs_bootstrap4tabitem', on_delete=models.CASCADE)),
                 ('tab_title', models.CharField(max_length=255, verbose_name='Tab title')),
                 ('tag_type', djangocms_bootstrap4.fields.TagTypeField(max_length=255, choices=TAG_CHOICES, verbose_name='Tag type', default=TAG_CHOICES[0][0], help_text='Select the HTML tag to be used.')),
                 ('attributes', djangocms_bootstrap4.fields.AttributesField(blank=True, verbose_name='Attributes', default=dict)),
