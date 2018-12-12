@@ -116,7 +116,11 @@ class Bootstrap4Carousel(CMSPlugin):
 
 
 @python_2_unicode_compatible
-class Bootstrap4CarouselSlide(AbstractLink, CMSPlugin):
+class Bootstrap4CarouselSlide(AbstractLink):
+    """
+    Components > "Slide" Plugin
+    https://getbootstrap.com/docs/4.0/components/carousel/
+    """
     carousel_image = FilerImageField(
         verbose_name=_('Slide image'),
         blank=False,
@@ -134,12 +138,6 @@ class Bootstrap4CarouselSlide(AbstractLink, CMSPlugin):
 
     def __str__(self):
         return str(self.pk)
-
-    def clean(self):
-        super(AbstractLink, self).clean()
-
-    def get_link(self):
-        return AbstractLink.get_link(self)
 
     def get_short_description(self):
         image_text = content_text = ''

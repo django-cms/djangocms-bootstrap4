@@ -6,6 +6,8 @@ from django.utils.translation import ugettext_lazy as _
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 
+from djangocms_link.cms_plugins import LinkPlugin
+
 from djangocms_bootstrap4.helpers import concat_classes, get_plugin_template
 
 from .models import Bootstrap4Carousel, Bootstrap4CarouselSlide
@@ -60,7 +62,7 @@ class Bootstrap4CarouselPlugin(CMSPluginBase):
         )
 
 
-class Bootstrap4CarouselSlidePlugin(CMSPluginBase):
+class Bootstrap4CarouselSlidePlugin(LinkPlugin):
     """
     Components > "Carousel Slide" Plugin
     https://getbootstrap.com/docs/4.0/components/carousel/
