@@ -5,6 +5,6 @@ djangocms-link>=2.1.0
 djangocms-picture>=2.1.1
 djangocms-icon>=1.0.0
 # other requirements
-djangocms-helper>=0.9.2,<0.10
+djangocms-helper
 tox
 coverage

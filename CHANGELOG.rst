@@ -2,6 +2,16 @@
 Changelog
 =========
 
+
+1.3.0 (unreleased)
+==================
+
+* Added Django 2.x support
+* Fixed test matrix
+* Fixed an issues with links showing up twice in carousel (#69)
+* Exclude ``tests`` folder from release build
+
+
 1.2.0 (2018-11-15)
 ==================
 

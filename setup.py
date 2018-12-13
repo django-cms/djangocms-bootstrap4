@@ -4,7 +4,6 @@ from setuptools import find_packages, setup
 
 from djangocms_bootstrap4 import __version__
 
-
 REQUIREMENTS = [
     'django-cms>=3.4.5',
     'django-filer>=1.2.4',
@@ -46,7 +45,7 @@ setup(
     license='BSD',
     description=('Adds Bootstrap 4 components as plugins.'),
     long_description=open('README.rst').read(),
-    packages=find_packages(),
+    packages=find_packages(exclude=['tests']),
     include_package_data=True,
     zip_safe=False,
     install_requires=REQUIREMENTS,
