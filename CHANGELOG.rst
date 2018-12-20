@@ -2,7 +2,7 @@
 Changelog
 =========
 
-1.3.1 (unreleased)
+1.3.1 (2012-12-20)
 ==================
 
 * Fixed a regression where link became required in the carousel
