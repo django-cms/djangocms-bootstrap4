@@ -139,6 +139,12 @@ class Bootstrap4CarouselSlide(AbstractLink):
     def __str__(self):
         return str(self.pk)
 
+    def clean(self):
+        super(AbstractLink, self).clean()
+
+    def get_link(self):
+        return AbstractLink.get_link(self)
+
     def get_short_description(self):
         image_text = content_text = ''
 
