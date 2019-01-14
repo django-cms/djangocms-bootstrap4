@@ -9,14 +9,9 @@ from cms.plugin_pool import plugin_pool
 from djangocms_bootstrap4.constants import DEVICE_SIZES
 from djangocms_bootstrap4.helpers import concat_classes
 
+from .forms import Bootstrap4GridColumnForm, Bootstrap4GridRowForm
 from .models import (
-    Bootstrap4GridContainer,
-    Bootstrap4GridRow,
-    Bootstrap4GridColumn,
-)
-from .forms import (
-    Bootstrap4GridRowForm,
-    Bootstrap4GridColumnForm,
+    Bootstrap4GridColumn, Bootstrap4GridContainer, Bootstrap4GridRow,
 )
 
 

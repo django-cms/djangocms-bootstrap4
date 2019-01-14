@@ -5,23 +5,20 @@ import os
 
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
-from django.utils.translation import ugettext_lazy as _
 from django.utils.html import strip_tags
+from django.utils.translation import ugettext_lazy as _
 
 from cms.models import CMSPlugin
 
 from djangocms_link.models import AbstractLink
 from djangocms_text_ckeditor.fields import HTMLField
-
 from filer.fields.image import FilerImageField
 
-from djangocms_bootstrap4.fields import TagTypeField, AttributesField
+from djangocms_bootstrap4.fields import AttributesField, TagTypeField
 
 from .constants import (
-    CAROUSEL_TEMPLATE_CHOICES,
-    CAROUSEL_PAUSE_CHOICES,
-    CAROUSEL_RIDE_CHOICES,
-    CAROUSEL_ASPECT_RATIO_CHOICES,
+    CAROUSEL_ASPECT_RATIO_CHOICES, CAROUSEL_PAUSE_CHOICES,
+    CAROUSEL_RIDE_CHOICES, CAROUSEL_TEMPLATE_CHOICES,
 )
 
 

@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.utils import six
-from django.utils.safestring import mark_safe
-from django.utils.functional import lazy
-
 from django.template import TemplateDoesNotExist
 from django.template.loader import select_template
+from django.utils import six
+from django.utils.functional import lazy
+from django.utils.safestring import mark_safe
 
 
 def concat_classes(classes):

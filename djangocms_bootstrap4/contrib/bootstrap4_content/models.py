@@ -7,8 +7,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from cms.models import CMSPlugin
 
-from djangocms_bootstrap4.fields import AttributesField
 from djangocms_bootstrap4.constants import ALIGN_CHOICES
+from djangocms_bootstrap4.fields import AttributesField
 
 from .constants import CODE_TYPE_CHOICES
 

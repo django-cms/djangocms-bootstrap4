@@ -8,6 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from cms.plugin_pool import plugin_pool
 
 from djangocms_picture.cms_plugins import PicturePlugin
+
 from djangocms_bootstrap4.helpers import concat_classes
 
 from .models import Bootstrap4Picture

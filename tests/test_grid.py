@@ -2,10 +2,10 @@
 from cms.api import create_page
 from cms.test_utils.testcases import CMSTestCase
 
+from djangocms_bootstrap4.constants import TAG_CHOICES
 from djangocms_bootstrap4.contrib.bootstrap4_grid.constants import (
     GRID_CONTAINER_CHOICES,
 )
-from djangocms_bootstrap4.constants import TAG_CHOICES
 
 
 class ContainerPluginTestCase(CMSTestCase):

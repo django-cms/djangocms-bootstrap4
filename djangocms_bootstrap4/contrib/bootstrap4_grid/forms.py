@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.forms import models, IntegerField, BooleanField
+from django.forms import BooleanField, IntegerField, models
 from django.utils.translation import ugettext_lazy as _
 
 from djangocms_bootstrap4.constants import DEVICE_SIZES
 
 from .constants import GRID_SIZE
-from .models import Bootstrap4GridRow, Bootstrap4GridColumn
+from .models import Bootstrap4GridColumn, Bootstrap4GridRow
 
 
 class Bootstrap4GridRowForm(models.ModelForm):

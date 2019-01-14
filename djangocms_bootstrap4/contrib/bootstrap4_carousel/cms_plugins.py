@@ -10,8 +10,8 @@ from djangocms_link.cms_plugins import LinkPlugin
 
 from djangocms_bootstrap4.helpers import concat_classes, get_plugin_template
 
-from .models import Bootstrap4Carousel, Bootstrap4CarouselSlide
 from .constants import CAROUSEL_DEFAULT_SIZE, CAROUSEL_TEMPLATE_CHOICES
+from .models import Bootstrap4Carousel, Bootstrap4CarouselSlide
 
 
 class Bootstrap4CarouselPlugin(CMSPluginBase):
