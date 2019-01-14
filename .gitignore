@@ -1,17 +1,26 @@
-*.pyc
+*.py[cod]
+*$py.class
 *.egg-info
+*.log
+*.pot
 .DS_Store
-.idea/
-.tox/
+.coverage/
 .eggs/
-dist/
+.idea/
+.project/
+.pydevproject/
+.settings/
+.tox/
+__pycache__/
 build/
+dist/
+env/
 
 /~
 /node_modules
 .sass-cache
+*.css.map
 npm-debug.log
 package-lock.json
-*.css.map
 
 local.sqlite

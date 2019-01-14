@@ -2,6 +2,14 @@
 Changelog
 =========
 
+
+1.3.2 (unreleased)
+==================
+
+* Added isort and adapted imports
+* Adapted code base to align with other supported addons
+
+
 1.3.1 (2012-12-20)
 ==================
 
