@@ -5,7 +5,7 @@ from django.utils.encoding import python_2_unicode_compatible
 
 from cms.models import CMSPlugin
 
-from djangocms_bootstrap4.fields import TagTypeField, AttributesField
+from djangocms_bootstrap4.fields import AttributesField, TagTypeField
 
 
 @python_2_unicode_compatible

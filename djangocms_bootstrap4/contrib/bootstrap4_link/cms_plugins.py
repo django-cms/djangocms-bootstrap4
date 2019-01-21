@@ -7,11 +7,12 @@ from cms.plugin_pool import plugin_pool
 
 from djangocms_link.cms_plugins import LinkPlugin
 from djangocms_link.models import get_templates
+
 from djangocms_bootstrap4.helpers import concat_classes, get_plugin_template
 
 from .constants import USE_LINK_ICONS
-from .models import Bootstrap4Link
 from .forms import Bootstrap4LinkForm
+from .models import Bootstrap4Link
 
 
 class Bootstrap4LinkPlugin(LinkPlugin):

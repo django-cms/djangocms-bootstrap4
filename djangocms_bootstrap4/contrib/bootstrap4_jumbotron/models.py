@@ -7,7 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from cms.models import CMSPlugin
 
-from djangocms_bootstrap4.fields import TagTypeField, AttributesField
+from djangocms_bootstrap4.fields import AttributesField, TagTypeField
 
 
 @python_2_unicode_compatible

@@ -5,25 +5,22 @@ from functools import partial
 
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
-from django.utils.translation import ugettext, ungettext, ugettext_lazy as _
+from django.utils.translation import ugettext
+from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ungettext
 
 from cms.models import CMSPlugin
 
 from djangocms_bootstrap4.constants import DEVICE_SIZES
 from djangocms_bootstrap4.fields import (
-    TagTypeField,
-    AttributesField,
-    IntegerRangeField,
+    AttributesField, IntegerRangeField, TagTypeField,
 )
 from djangocms_bootstrap4.helpers import mark_safe_lazy
 
 from .constants import (
+    GRID_COLUMN_ALIGNMENT_CHOICES, GRID_COLUMN_CHOICES, GRID_CONTAINER_CHOICES,
+    GRID_ROW_HORIZONTAL_ALIGNMENT_CHOICES, GRID_ROW_VERTICAL_ALIGNMENT_CHOICES,
     GRID_SIZE,
-    GRID_CONTAINER_CHOICES,
-    GRID_ROW_VERTICAL_ALIGNMENT_CHOICES,
-    GRID_ROW_HORIZONTAL_ALIGNMENT_CHOICES,
-    GRID_COLUMN_ALIGNMENT_CHOICES,
-    GRID_COLUMN_CHOICES,
 )
 
 

@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.test import TestCase
 
-from djangocms_bootstrap4.helpers import (
-    concat_classes,
-)
+from djangocms_bootstrap4.helpers import concat_classes
 
 
 class GridInstanceTestCase(TestCase):

@@ -2,7 +2,6 @@
 django CMS Bootstrap 4
 ======================
 
-
 |pypi| |build| |coverage|
 
 **django CMS Bootstrap 4** is a plugin bundle for django CMS providing several
@@ -23,6 +22,10 @@ feedback in the form of issues and pull requests. Before submitting your
 pull request, please review our `contribution guidelines
 <http://docs.django-cms.org/en/latest/contributing/index.html>`_.
 
+We're grateful to all contributors who have helped create and maintain this package.
+Contributors are listed at the `contributors <https://github.com/divio/djangocms-bootstrap4/graphs/contributors>`_
+section.
+
 One of the easiest contributions you can make is helping to translate this addon on
 `Transifex <https://www.transifex.com/projects/p/djangocms-bootstrap4/>`_.
 
@@ -33,8 +36,8 @@ Documentation
 See ``REQUIREMENTS`` in the `setup.py <https://github.com/divio/djangocms-bootstrap4/blob/master/setup.py>`_
 file for additional dependencies:
 
-* Python 2.7, 3.4 or higher
-* Django 1.11 or higher
+|python| |django| |djangocms|
+
 * Django Filer 1.2.4 or higher
 * Django Text CKEditor 3.1.0 or higher
 * Django CMS Icon 1.0.0 or higher
@@ -177,3 +180,10 @@ You can run tests by executing::
     :target: https://travis-ci.org/divio/djangocms-bootstrap4
 .. |coverage| image:: https://codecov.io/gh/divio/djangocms-bootstrap4/branch/master/graph/badge.svg
     :target: https://codecov.io/gh/divio/djangocms-bootstrap4
+
+.. |python| image:: https://img.shields.io/badge/python-2.7%20%7C%203.4+-blue.svg
+    :target: https://pypi.org/project/djangocms-bootstrap4/
+.. |django| image:: https://img.shields.io/badge/django-1.11%20%7C%202.0%20%7C%202.1-blue.svg
+    :target: https://www.djangoproject.com/
+.. |djangocms| image:: https://img.shields.io/badge/django%20CMS-3.4%2B-blue.svg
+    :target: https://www.django-cms.org/

@@ -7,13 +7,11 @@ from django.utils.translation import ugettext_lazy as _
 
 from cms.models import CMSPlugin
 
-from djangocms_bootstrap4.fields import TagTypeField, AttributesField
 from djangocms_bootstrap4.constants import DEVICE_CHOICES
+from djangocms_bootstrap4.fields import AttributesField, TagTypeField
 
 from .constants import (
-    SPACER_PROPERTY_CHOICES,
-    SPACER_SIDE_CHOICES,
-    SPACER_SIZE_CHOICES,
+    SPACER_PROPERTY_CHOICES, SPACER_SIDE_CHOICES, SPACER_SIZE_CHOICES,
 )
 
 
@@ -56,14 +54,18 @@ class Bootstrap4Spacing(CMSPlugin):
 
     def get_base_css_class(self):
         # Source: https://getbootstrap.com/docs/4.0/utilities/spacing/#notation
-        # [...] format {property}{sides}-{size} for xs and {property}{sides}-{breakpoint}-{size} for sm, md, lg, and xl.
+        # [...] format {property}{sides}-{size} for xs and
+        # {property}{sides}-{breakpoint}-{size} for sm, md, lg, and xl.
         if not self.space_device or self.space_device == 'xs':
             template = '{property}{sides}-{size}'
         else:
             template = '{property}{sides}-{breakpoint}-{size}'
 
         return template.format(
-            property=self.space_property, sides=self.space_sides, breakpoint=self.space_device, size=self.space_size
+            property=self.space_property,
+            sides=self.space_sides,
+            breakpoint=self.space_device,
+            size=self.space_size
         )
 
     def get_short_description(self):

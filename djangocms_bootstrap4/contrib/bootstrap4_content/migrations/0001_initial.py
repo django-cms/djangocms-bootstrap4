@@ -2,8 +2,8 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
-import djangocms_bootstrap4.fields
 
+import djangocms_bootstrap4.fields
 from djangocms_bootstrap4.constants import ALIGN_CHOICES
 
 from ..constants import CODE_TYPE_CHOICES

@@ -9,7 +9,7 @@ from cms.plugin_pool import plugin_pool
 from djangocms_bootstrap4.helpers import concat_classes
 
 from .forms import Bootstrap4CodeForm
-from .models import Bootstrap4Code, Bootstrap4Blockquote, Bootstrap4Figure
+from .models import Bootstrap4Blockquote, Bootstrap4Code, Bootstrap4Figure
 
 
 class Bootstrap4CodePlugin(CMSPluginBase):
