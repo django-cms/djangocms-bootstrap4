@@ -8,6 +8,7 @@ Changelog
 
 * Added isort and adapted imports
 * Adapted code base to align with other supported addons
+* Added option to add custom classes to carousel (#82)
 * Fixes an issue where ``DJANGOCMS_BOOTSTRAP4_CAROUSEL_DEFAULT_SIZE`` is not honoured
 
 
