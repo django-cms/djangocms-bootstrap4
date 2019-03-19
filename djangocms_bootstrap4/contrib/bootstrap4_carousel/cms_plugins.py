@@ -108,6 +108,14 @@ class Bootstrap4CarouselSlidePlugin(LinkPlugin):
             )
             height = width * aspect_height / aspect_width
 
+        link_classes = ['carousel-item']
+        if instance.position == 0:
+            link_classes.append('active')
+        classes = concat_classes(link_classes + [
+            instance.attributes.get('class'),
+        ])
+        instance.attributes['class'] = classes
+
         context['instance'] = instance
         context['link'] = instance.get_link()
         context['options'] = {
