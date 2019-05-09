@@ -15,7 +15,7 @@ Changelog
 * Fixes an issue where ``DJANGOCMS_BOOTSTRAP4_CAROUSEL_DEFAULT_SIZE`` is not honoured
 
 
-1.3.1 (2012-12-20)
+1.3.1 (2018-12-20)
 ==================
 
 * Fixed a regression where link became required in the carousel
