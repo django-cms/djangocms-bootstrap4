@@ -3,16 +3,19 @@ Changelog
 =========
 
 
-1.3.2 (unreleased)
+1.4.0 (unreleased)
 ==================
 
+* Added support for Django 2.2 and django CMS 3.7
+* Removed support for Django 2.0
+* Extended test matrix
 * Added isort and adapted imports
 * Adapted code base to align with other supported addons
 * Added option to add custom classes to carousel (#82)
 * Fixes an issue where ``DJANGOCMS_BOOTSTRAP4_CAROUSEL_DEFAULT_SIZE`` is not honoured
 
 
-1.3.1 (2012-12-20)
+1.3.1 (2018-12-20)
 ==================
 
 * Fixed a regression where link became required in the carousel
