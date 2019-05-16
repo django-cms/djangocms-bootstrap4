@@ -13,6 +13,7 @@ Changelog
 * Adapted code base to align with other supported addons
 * Added option to add custom classes to carousel (#82)
 * Fixes an issue where ``DJANGOCMS_BOOTSTRAP4_CAROUSEL_DEFAULT_SIZE`` is not honoured
+* Fixes an issue on Divio Cloud where the addon is not installing djangocms-icon
 
 
 1.3.1 (2018-12-20)
