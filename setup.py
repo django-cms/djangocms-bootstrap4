@@ -10,7 +10,7 @@ REQUIREMENTS = [
     'django-filer>=1.2.4',
     'djangocms-attributes-field>=0.4.0',
     'djangocms-text-ckeditor>=3.1.0',
-    'djangocms-icon>=1.0.0',
+    'djangocms-icon>=1.4.0',
     'djangocms-link>=2.1.0',
     'djangocms-picture>=2.1.1',
 ]
