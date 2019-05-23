@@ -3,7 +3,7 @@ Changelog
 =========
 
 
-1.4.0 (unreleased)
+1.4.0 (2019-05-23)
 ==================
 
 * This update requires djangocms-icon >= 1.4.0
