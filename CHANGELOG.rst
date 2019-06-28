@@ -9,6 +9,8 @@ Changelog
 * This update requires djangocms-link>=VERSION
 * This update requires djangocms-picture>=VERSION
 * Added new migrations for bootstrap link and picture plugins
+* Fixes offset class not being rendered when set to 0
+* Foxes order class not being rendered when set to 0
 
 
 1.4.0 (2019-05-23)
