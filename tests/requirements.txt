@@ -8,3 +8,5 @@ djangocms-icon>=1.0.0
 djangocms-helper
 tox
 coverage
+flake8
+isort

@@ -3,6 +3,14 @@ Changelog
 =========
 
 
+1.5.0 (unreleased)
+==================
+
+* This update requires djangocms-link>=VERSION
+* This update requires djangocms-picture>=VERSION
+* Added new migrations for bootstrap link and picture plugins
+
+
 1.4.0 (2019-05-23)
 ==================
 
