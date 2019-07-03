@@ -153,7 +153,7 @@ class Bootstrap4GridColumn(CMSPlugin):
         for device in DEVICE_SIZES:
             for element in ('col', 'order', 'offset', 'ml', 'mr'):
                 size = getattr(self, '{}_{}'.format(device, element))
-                if size and (element == 'col' or element == 'order' or element == 'offset'):
+                if isinstance(size, int) and (element == 'col' or element == 'order' or element == 'offset'):
                     if device == 'xs':
                         classes.append('{}-{}'.format(element, int(size)))
                     else:
