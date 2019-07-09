@@ -3,7 +3,7 @@ Changelog
 =========
 
 
-1.5.0 (unreleased)
+1.5.0 (2019-07-09)
 ==================
 
 * This update requires djangocms-link>=2.5.0
