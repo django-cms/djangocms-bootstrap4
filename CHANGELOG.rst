@@ -6,8 +6,8 @@ Changelog
 1.5.0 (unreleased)
 ==================
 
-* This update requires djangocms-link>=VERSION
-* This update requires djangocms-picture>=VERSION
+* This update requires djangocms-link>=2.5.0
+* This update requires djangocms-picture>=2.3.0
 * Added new migrations for bootstrap link and picture plugins
 * Fixes offset class not being rendered when set to 0
 * Fixes order class not being rendered when set to 0
