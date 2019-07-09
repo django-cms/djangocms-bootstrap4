@@ -84,8 +84,8 @@ Configuration
 
 django CMS Bootstrap 4 **utilises** the following django CMS plugins:
 
-* **django CMS Link**: `Link / Button <https://github.com/divio/djangocms-link/>`_
-* **django CMS Picture**: `Picture / Image <https://github.com/divio/djangocms-picture/>`_
+* **django CMS Link**: `Link <https://github.com/divio/djangocms-link/>`_
+* **django CMS Picture**: `Picture <https://github.com/divio/djangocms-picture/>`_
 * **django CMS Icon**: `Icon <https://github.com/divio/djangocms-icon>`_
 
 It provides the following **standard** Bootstrap 4 components:
