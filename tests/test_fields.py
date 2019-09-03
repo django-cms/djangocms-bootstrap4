@@ -2,7 +2,7 @@
 from django.test import TestCase
 
 from djangocms_bootstrap4.fields import (
-    AttributesField, TagTypeField, IntegerRangeField,
+    AttributesField, IntegerRangeField, TagTypeField,
 )
 
 
