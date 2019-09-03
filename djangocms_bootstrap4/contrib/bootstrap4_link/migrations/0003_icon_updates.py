@@ -6,7 +6,7 @@ from django.db.models import F, Func, Value
 from django.db.models.functions import Concat
 
 
-def forwards_func(apps, schema_editor):
+def forwards_func(apps, schema_editor):  # pragma: no cover
     icon = apps.get_model('bootstrap4_link', 'Bootstrap4Link')
 
     icon.objects.filter(icon_left__startswith='el-icon-').update(icon_left=Concat(Value('el '), 'icon_left'))
@@ -27,7 +27,7 @@ def forwards_func(apps, schema_editor):
     icon.objects.filter(icon_right__startswith='zmdi-').update(icon_right=Concat(Value('zmdi '), 'icon_right'))
     icon.objects.filter(icon_right__startswith='wi-').update(icon_right=Concat(Value('wi '), 'icon_right'))
 
-def reverse_func(apps, schema_editor):
+def reverse_func(apps, schema_editor):  # pragma: no cover
     icon = apps.get_model('bootstrap4_link', 'Bootstrap4Link')
 
     icon.objects.filter(icon_left__startswith='el ').update(icon_left=Func(F('icon_left'), Value('el '), Value(''), function='replace',))

@@ -6,7 +6,7 @@ from django.db import migrations, models
 import djangocms_bootstrap4.fields
 
 
-def migrate_column_size(apps, schema_editor):
+def migrate_column_size(apps, schema_editor):  # pragma: no cover
     Column = apps.get_model('bootstrap4_grid', 'Bootstrap4GridColumn')
     plugins = Column.objects.all()
 
@@ -15,7 +15,7 @@ def migrate_column_size(apps, schema_editor):
             plugin.xs_col = plugin.column_size
             plugin.save()
 
-def migrate_column_size_back(apps, schema_editor):
+def migrate_column_size_back(apps, schema_editor):  # pragma: no cover
     Column = apps.get_model('bootstrap4_grid', 'Bootstrap4GridColumn')
     plugins = Column.objects.all()
 

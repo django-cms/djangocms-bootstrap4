@@ -51,4 +51,11 @@ class B4HelpersTestCase(TestCase):
             CAROUSEL_TEMPLATE_CHOICES,
         )
         self.assertEqual(template, "djangocms_bootstrap4/carousel/default/carousel.html")
+        # trigger default template
+        template = get_plugin_template(
+            instance, "does_not", "exist",
+            CAROUSEL_TEMPLATE_CHOICES,
+        )
+        self.assertEqual(template, "djangocms_bootstrap4/does_not/default/exist.html")
+        # cleanup
         page.delete()
