@@ -38,7 +38,7 @@ file for additional dependencies:
 
 |python| |django| |djangocms|
 
-* Django Filer 1.2.4 or higher
+* Django Filer 1.5.0 or higher
 * Django Text CKEditor 3.1.0 or higher
 * Django CMS Icon 1.0.0 or higher
 * Django CMS Link 2.1.0 or higher

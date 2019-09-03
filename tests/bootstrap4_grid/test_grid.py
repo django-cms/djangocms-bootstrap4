@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import warnings
+
 from cms.api import add_plugin, create_page
 from cms.test_utils.testcases import CMSTestCase
 
@@ -31,7 +33,10 @@ class ContainerPluginTestCase(CMSTestCase):
             language=self.language,
         )
 
-        with self.login_user_context(self.superuser):
+        with self.login_user_context(self.superuser), warnings.catch_warnings():
+            # hide the "DontUsePageAttributeWarning" warning when using
+            # `get_add_plugin_uri` to get cleaner test results
+            warnings.simplefilter("ignore")
             data = {
                 'container_type': GRID_CONTAINER_CHOICES[0][0],
                 'tag_type': TAG_CHOICES[0][0],
@@ -49,7 +54,8 @@ class ContainerPluginTestCase(CMSTestCase):
             language=self.language,
         )
 
-        with self.login_user_context(self.superuser):
+        with self.login_user_context(self.superuser), warnings.catch_warnings():
+            warnings.simplefilter("ignore")
             data = {
                 'tag_type': TAG_CHOICES[0][0],
             }
@@ -66,7 +72,8 @@ class ContainerPluginTestCase(CMSTestCase):
             language=self.language,
         )
 
-        with self.login_user_context(self.superuser):
+        with self.login_user_context(self.superuser), warnings.catch_warnings():
+            warnings.simplefilter("ignore")
             data = {
                 'tag_type': TAG_CHOICES[0][0],
             }

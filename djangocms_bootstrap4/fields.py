@@ -10,6 +10,7 @@ from .constants import TAG_CHOICES
 
 
 class AttributesField(fields.AttributesField):
+
     def __init__(self, *args, **kwargs):
         if 'verbose_name' not in kwargs:
             kwargs['verbose_name'] = _('Attributes')
@@ -19,6 +20,7 @@ class AttributesField(fields.AttributesField):
 
 
 class TagTypeField(models.CharField):
+
     def __init__(self, *args, **kwargs):
         if 'verbose_name' not in kwargs:
             kwargs['verbose_name'] = _('Tag type')
@@ -34,6 +36,7 @@ class TagTypeField(models.CharField):
 
 
 class IntegerRangeField(models.IntegerField):
+
     def __init__(self, verbose_name=None, name=None, min_value=None, max_value=None, **kwargs):
         self.min_value, self.max_value = min_value, max_value
         models.IntegerField.__init__(self, verbose_name, name, **kwargs)
