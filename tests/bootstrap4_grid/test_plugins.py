@@ -72,6 +72,7 @@ class B4CarouselPluginTestCase(B4TestFixture, CMSTestCase):
         with self.login_user_context(self.superuser):
             response = self.client.get(self.request_url)
         self.assertEqual(response.status_code, 200)
+        self.assertContains(response, '<div class="row">')
 
         # add row with values
         add_plugin(
@@ -85,6 +86,7 @@ class B4CarouselPluginTestCase(B4TestFixture, CMSTestCase):
         with self.login_user_context(self.superuser):
             response = self.client.get(self.request_url)
         self.assertEqual(response.status_code, 200)
+        self.assertContains(response, '<div class="col col-12">')
 
         # add row without values
         add_plugin(
@@ -97,6 +99,7 @@ class B4CarouselPluginTestCase(B4TestFixture, CMSTestCase):
         with self.login_user_context(self.superuser):
             response = self.client.get(self.request_url)
         self.assertEqual(response.status_code, 200)
+        self.assertContains(response, '<div class="col">')
 
     def test_row_plugin_creation(self):
         request_url = self.get_add_plugin_uri(
