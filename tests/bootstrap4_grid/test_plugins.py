@@ -12,7 +12,7 @@ from djangocms_bootstrap4.contrib.bootstrap4_grid.cms_plugins import (
 from ..fixtures import B4TestFixture
 
 
-class B4CarouselPluginTestCase(B4TestFixture, CMSTestCase):
+class B4GridPluginTestCase(B4TestFixture, CMSTestCase):
 
     def test_container_plugin(self):
         plugin = add_plugin(

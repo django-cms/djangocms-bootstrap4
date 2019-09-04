@@ -6,7 +6,7 @@ from djangocms_bootstrap4.contrib.bootstrap4_grid.models import (
 )
 
 
-class B4CarouselModelTestCase(TestCase):
+class B4GridModelTestCase(TestCase):
 
     def test_grid_instance(self):
         instance = Bootstrap4GridContainer.objects.create()
