@@ -10,7 +10,7 @@ from djangocms_bootstrap4.contrib.bootstrap4_grid.cms_plugins import (
 )
 
 
-class ContainerPluginTestCase(CMSTestCase):
+class B4CarouselPluginTestCase(CMSTestCase):
 
     def setUp(self):
         self.language = "en"
