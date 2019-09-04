@@ -51,8 +51,6 @@ class B4CarouselPluginTestCase(B4TestFixture, CMSTestCase):
         )
 
     def test_plugin_structure(self):
-        request_url = self.page.get_absolute_url(self.language) + "?toolbar_off=true"
-
         container = add_plugin(
             placeholder=self.placeholder,
             plugin_type=Bootstrap4GridContainerPlugin.__name__,
@@ -61,7 +59,7 @@ class B4CarouselPluginTestCase(B4TestFixture, CMSTestCase):
         self.page.publish(self.language)
 
         with self.login_user_context(self.superuser):
-            response = self.client.get(request_url)
+            response = self.client.get(self.request_url)
         self.assertEqual(response.status_code, 200)
 
         row = add_plugin(
@@ -72,7 +70,7 @@ class B4CarouselPluginTestCase(B4TestFixture, CMSTestCase):
         )
         self.page.publish(self.language)
         with self.login_user_context(self.superuser):
-            response = self.client.get(request_url)
+            response = self.client.get(self.request_url)
         self.assertEqual(response.status_code, 200)
 
         # add row with values
@@ -85,7 +83,7 @@ class B4CarouselPluginTestCase(B4TestFixture, CMSTestCase):
         )
         self.page.publish(self.language)
         with self.login_user_context(self.superuser):
-            response = self.client.get(request_url)
+            response = self.client.get(self.request_url)
         self.assertEqual(response.status_code, 200)
 
         # add row without values
@@ -97,7 +95,7 @@ class B4CarouselPluginTestCase(B4TestFixture, CMSTestCase):
         )
         self.page.publish(self.language)
         with self.login_user_context(self.superuser):
-            response = self.client.get(request_url)
+            response = self.client.get(self.request_url)
         self.assertEqual(response.status_code, 200)
 
     def test_row_plugin_creation(self):

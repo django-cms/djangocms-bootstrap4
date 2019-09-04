@@ -20,6 +20,7 @@ class B4TestFixture(object):
         self.page.publish(self.language)
         self.placeholder = self.page.placeholders.get(slot="content")
         self.superuser = self.get_superuser()
+        self.request_url = self.page.get_absolute_url(self.language) + "?toolbar_off=true"
 
     def tearDown(self):
         self.page.delete()
