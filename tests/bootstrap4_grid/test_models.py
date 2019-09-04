@@ -2,7 +2,7 @@
 from django.test import TestCase
 
 from djangocms_bootstrap4.contrib.bootstrap4_grid.models import (
-    Bootstrap4GridContainer, Bootstrap4GridRow, Bootstrap4GridColumn
+    Bootstrap4GridColumn, Bootstrap4GridContainer, Bootstrap4GridRow,
 )
 
 

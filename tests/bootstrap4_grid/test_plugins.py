@@ -5,8 +5,8 @@ from cms.api import add_plugin, create_page
 from cms.test_utils.testcases import CMSTestCase
 
 from djangocms_bootstrap4.contrib.bootstrap4_grid.cms_plugins import (
-    Bootstrap4GridContainerPlugin, Bootstrap4GridRowPlugin,
-    Bootstrap4GridColumnPlugin
+    Bootstrap4GridColumnPlugin, Bootstrap4GridContainerPlugin,
+    Bootstrap4GridRowPlugin,
 )
 
 
