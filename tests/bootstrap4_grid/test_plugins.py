@@ -8,31 +8,10 @@ from djangocms_bootstrap4.contrib.bootstrap4_grid.cms_plugins import (
     Bootstrap4GridColumnPlugin, Bootstrap4GridContainerPlugin,
     Bootstrap4GridRowPlugin,
 )
+from ..fixtures import B4TestFixture
 
 
-class B4CarouselPluginTestCase(CMSTestCase):
-
-    def setUp(self):
-        self.language = "en"
-        self.home = create_page(
-            title="home",
-            template="page.html",
-            language=self.language,
-        )
-        self.home.publish(self.language)
-        self.page = create_page(
-            title="content",
-            template="page.html",
-            language=self.language,
-        )
-        self.page.publish(self.language)
-        self.placeholder = self.page.placeholders.get(slot="content")
-        self.superuser = self.get_superuser()
-
-    def tearDown(self):
-        self.page.delete()
-        self.home.delete()
-        self.superuser.delete()
+class B4CarouselPluginTestCase(B4TestFixture, CMSTestCase):
 
     def test_container_plugin(self):
         plugin = add_plugin(
