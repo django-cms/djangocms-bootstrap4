@@ -65,7 +65,8 @@ def get_file(file_name="test_file.pdf"):
     }
 
 
-def get_filer_image(image_name="test_file.jpg"):
+def get_filer_image(image_name="test_file.jpg", name="",
+                    original_filename=True):
     """
     Creates and stores an image to filer and returns it
 
@@ -73,13 +74,17 @@ def get_filer_image(image_name="test_file.jpg"):
     :returns: filer image instance
     """
     image = get_image(image_name)
+    filename = None
+    if original_filename:
+        filename = image.get("name")
     filer_file = File(
         open(image.get("path"), "rb"),
         name=image.get("name"),
     )
     filer_object = FilerImage.objects.create(
-        original_filename=image.get("name"),
+        original_filename=filename,
         file=filer_file,
+        name=name,
     )
 
     return filer_object

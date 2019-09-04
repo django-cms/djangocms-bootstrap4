@@ -30,6 +30,13 @@ HELPER_SETTINGS = {
             'name': 'English',
         }]
     },
+    # required otherwise subject_location would throw an error in the template
+    'THUMBNAIL_PROCESSORS': (
+        'easy_thumbnails.processors.colorspace',
+        'easy_thumbnails.processors.autocrop',
+        'filer.thumbnail_processors.scale_and_crop_with_subject_location',
+        'easy_thumbnails.processors.filters',
+    ),
     'LANGUAGE_CODE': 'en',
     'ALLOWED_HOSTS': ['localhost'],
     'DJANGOCMS_PICTURE_RESPONSIVE_IMAGES': False,
