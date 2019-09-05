@@ -59,10 +59,10 @@ class Bootstrap4Tab(CMSPlugin):
         return str(self.pk)
 
     def get_short_description(self):
-        text = '({}) '.format(self.tab_type)
+        text = '({})'.format(self.tab_type)
 
         if self.tab_alignment:
-            text += '.{}'.format(self.tab_alignment)
+            text += ' .{}'.format(self.tab_alignment)
         return text
 
 

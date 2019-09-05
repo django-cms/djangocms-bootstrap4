@@ -33,7 +33,7 @@ class Bootstrap4LinkPlugin(LinkPlugin):
         ('link_outline', 'link_block'),
     )
 
-    if USE_LINK_ICONS:
+    if USE_LINK_ICONS:  # pragma: no cover
         fields = fields + (
             ('icon_left', 'icon_right'),
         )
