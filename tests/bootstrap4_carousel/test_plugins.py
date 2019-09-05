@@ -38,7 +38,7 @@ class B4CarouselPluginTestCase(B4TestFixture, CMSTestCase):
         self.assertContains(response, 'data-pause="hover"')
         self.assertContains(response, 'data-ride="carousel"')
         self.assertContains(response, 'data-wrap="true"')
-        self.assertContains(response, 'id="carousel-1"')
+        self.assertContains(response, 'carousel-1')
 
     def test_carousel_slide_plugin(self):
         row = add_plugin(

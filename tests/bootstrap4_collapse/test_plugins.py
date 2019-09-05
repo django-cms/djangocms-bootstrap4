@@ -25,7 +25,7 @@ class B4CollapsePluginTestCase(B4TestFixture, CMSTestCase):
             response = self.client.get(self.request_url)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'data-children=".card"')
-        self.assertContains(response, 'id="parent-1"')
+        self.assertContains(response, 'parent-1')
         self.assertContains(response, 'role="tablist"')
 
     def test_collapse_trigger_plugin(self):
@@ -65,5 +65,5 @@ class B4CollapsePluginTestCase(B4TestFixture, CMSTestCase):
             response = self.client.get(self.request_url)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'aria-labelledby="trigger-10"')
-        self.assertContains(response, 'data-parent="#parent-1"')
-        self.assertContains(response, 'id="container-10"')
+        self.assertContains(response, '#parent-1')
+        self.assertContains(response, 'container-10')
