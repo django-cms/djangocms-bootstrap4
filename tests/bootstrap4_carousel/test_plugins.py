@@ -34,8 +34,7 @@ class B4CarouselPluginTestCase(B4TestFixture, CMSTestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(
             response,
-            """
-            <div class="carousel slide" data-interval="5000" data-keyboard="true"
+            """<div class="carousel slide" data-interval="5000" data-keyboard="true"
                 data-pause="hover" data-ride="carousel" data-wrap="true" id="carousel-1">
                 <ol class="carousel-indicators">
                 </ol>
@@ -55,8 +54,7 @@ class B4CarouselPluginTestCase(B4TestFixture, CMSTestCase):
                         Next
                     </span>
                 </a>
-            </div>
-            """,
+            </div>""",
             html=True,
         )
 
