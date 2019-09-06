@@ -24,8 +24,11 @@ class B4BadgePluginTestCase(B4TestFixture, CMSTestCase):
         with self.login_user_context(self.superuser):
             response = self.client.get(self.request_url)
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, '<span class="badge badge-primary">')
-        self.assertContains(response, 'some text')
+        self.assertContains(
+            response,
+            '<span class="badge badge-primary">some text</span>',
+            html=True,
+        )
 
         # test with pills enabled
         plugin = add_plugin(
@@ -41,4 +44,8 @@ class B4BadgePluginTestCase(B4TestFixture, CMSTestCase):
         with self.login_user_context(self.superuser):
             response = self.client.get(self.request_url)
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, '<span class="badge badge-pill badge-primary">')
+        self.assertContains(
+            response,
+            '<span class="badge badge-pill badge-primary">some text</span>',
+            html=True,
+        )
