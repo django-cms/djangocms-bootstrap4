@@ -14,12 +14,14 @@ HELPER_SETTINGS = {
         'djangocms_bootstrap4.contrib.bootstrap4_card',
         'djangocms_bootstrap4.contrib.bootstrap4_carousel',
         'djangocms_bootstrap4.contrib.bootstrap4_collapse',
+        'djangocms_bootstrap4.contrib.bootstrap4_content',
         'djangocms_bootstrap4.contrib.bootstrap4_grid',
         'djangocms_bootstrap4.contrib.bootstrap4_jumbotron',
         'djangocms_bootstrap4.contrib.bootstrap4_link',
         'djangocms_bootstrap4.contrib.bootstrap4_listgroup',
         'djangocms_bootstrap4.contrib.bootstrap4_media',
         'djangocms_bootstrap4.contrib.bootstrap4_picture',
+        'djangocms_bootstrap4.contrib.bootstrap4_tabs',
         'djangocms_bootstrap4.contrib.bootstrap4_utilities',
     ],
     'CMS_LANGUAGES': {
@@ -28,6 +30,13 @@ HELPER_SETTINGS = {
             'name': 'English',
         }]
     },
+    # required otherwise subject_location would throw an error in the template
+    'THUMBNAIL_PROCESSORS': (
+        'easy_thumbnails.processors.colorspace',
+        'easy_thumbnails.processors.autocrop',
+        'filer.thumbnail_processors.scale_and_crop_with_subject_location',
+        'easy_thumbnails.processors.filters',
+    ),
     'LANGUAGE_CODE': 'en',
     'ALLOWED_HOSTS': ['localhost'],
     'DJANGOCMS_PICTURE_RESPONSIVE_IMAGES': False,

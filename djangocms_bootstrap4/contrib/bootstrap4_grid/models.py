@@ -5,7 +5,6 @@ from functools import partial
 
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
-from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext
 
@@ -92,20 +91,12 @@ class Bootstrap4GridRow(CMSPlugin):
         return str(self.pk)
 
     def get_short_description(self):
-        instance = self.get_plugin_instance()[0]
-
-        if not instance:
-            return ugettext('<empty>')
-
         column_count = len(self.child_plugin_instances or [])
         column_count_str = ungettext(
             '(1 column)',
             '(%(count)i columns)',
             column_count
         ) % {'count': column_count}
-        # column_count_str += ' .{}'.format(
-        #     ' .'.join(instance.attributes['class'].split())
-        # )
 
         return column_count_str
 

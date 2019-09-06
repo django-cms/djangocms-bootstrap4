@@ -3,6 +3,15 @@ Changelog
 =========
 
 
+1.6.0 (unreleased)
+==================
+
+* Pinned ``django-filer`` to 1.5.0
+* Added further tests to raise coverage
+* Fixed smaller issues found during testing
+* Dropped support for django-filer <= 1.4
+
+
 1.5.0 (2019-07-09)
 ==================
 

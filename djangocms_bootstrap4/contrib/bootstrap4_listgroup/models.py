@@ -62,9 +62,9 @@ class Bootstrap4ListGroupItem(CMSPlugin):
         return str(self.pk)
 
     def get_short_description(self):
-        text = ''
+        text = []
         if self.list_context:
-            text = '.list-group-item-{} '.format(self.list_context)
+            text.append('.list-group-item-{}'.format(self.list_context))
         if self.list_state:
-            text += self.list_state
-        return text
+            text.append('.{}'.format(self.list_state))
+        return ' '.join(text)

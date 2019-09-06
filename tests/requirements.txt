@@ -1,12 +1,7 @@
-# requirements from setup.py
-djangocms-attributes-field>=0.4.0
-djangocms-text-ckeditor>=3.1.0
-djangocms-link>=2.1.0
-djangocms-picture>=2.1.1
-djangocms-icon>=1.0.0
-# other requirements
 djangocms-helper
 tox
 coverage
-flake8
 isort
+flake8
+# override "pyflakes<2.1" from djangocms-helper
+pyflakes>=2.1.0
