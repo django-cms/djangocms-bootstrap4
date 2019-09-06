@@ -23,7 +23,7 @@ class B4CarouselModelTestCase(TestCase):
         self.assertEqual(str(instance), "1")
         self.assertEqual(
             instance.get_short_description(),
-            "(default) Interval: 5000, Controls: True, Indicators: True, " +
+            "(default) Interval: 5000, Controls: True, Indicators: True, "
             "Keyboard: True, Pause: hover, Ride: carouselWrap: True",
         )
 
