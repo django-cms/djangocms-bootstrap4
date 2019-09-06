@@ -74,7 +74,7 @@ class B4GridPluginTestCase(B4TestFixture, CMSTestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, '<div class="row">')
 
-        # add row with values
+        # add column with values
         add_plugin(
             target=row,
             placeholder=self.placeholder,
