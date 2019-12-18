@@ -1,5 +1,8 @@
 // #############################################################################
 // GRID
+.module {
+    margin: 0 0 20px;
+}
 
 .djangocms-bootstrap4-row {
     .form-row.field-create .icon {
@@ -25,16 +28,17 @@
         position: relative;
         display: flex;
         padding: 0;
+        min-width: 860px;
 
-        // min-width: 860px;
-
-        .field-box {
+        .field-box,
+        .fieldBox {
             position: relative;
             text-align: center;
             width: 110px !important;
             padding: 15px 10px;
-            margin-right: 0 !important;
+            margin: 0 !important;
             border-bottom: 1px solid #eee;
+            float: left !important;
 
             input {
                 text-align: right;
@@ -71,7 +75,6 @@
 
         &.field-xs_mr .field-box {
             border-bottom: none;
-            margin-bottom: 20px;
         }
 
         .field-box-label {
@@ -93,7 +96,7 @@
         &.field-xs_offset .field-box-label a,
         &.field-xs_order .field-box-label a {
             position: relative;
-            top: -8px;
+            top: 8px;
         }
 
         // ml checkbox
