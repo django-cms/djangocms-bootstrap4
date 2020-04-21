@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from six import python_2_unicode_compatible
-
 from cms.models import CMSPlugin
+
+from six import python_2_unicode_compatible
 
 from djangocms_bootstrap4.fields import AttributesField, TagTypeField
 

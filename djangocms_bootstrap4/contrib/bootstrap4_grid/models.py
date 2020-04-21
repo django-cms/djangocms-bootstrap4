@@ -2,13 +2,14 @@
 from __future__ import unicode_literals
 
 from functools import partial
-from six import python_2_unicode_compatible
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext
 
 from cms.models import CMSPlugin
+
+from six import python_2_unicode_compatible
 
 from djangocms_bootstrap4.constants import DEVICE_SIZES
 from djangocms_bootstrap4.fields import (
