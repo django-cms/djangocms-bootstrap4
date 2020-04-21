@@ -1,9 +1,5 @@
 export const iconTemplate = (icon, staticPath = '/static/', title = '') => `
-    <span class="icon icon-${icon}" title="${title}">
-        <svg role="presentation">
-            <use xlink:href="${staticPath}djangocms_bootstrap4/sprites/icons.svg#${icon}"></use>
-        </svg>
-    </span>`;
+    <span class="icon icon-${icon}" title="${title}"></span>`
 
 export const previewTemplate = (classes = '', title = 'Preview') => `
     <div class="djangocms-bootstrap4-preview ${classes}">
