@@ -7,6 +7,7 @@ Changelog
 ==================
 
 * Added support for Django 3.0
+* Added support for Python 3.8
 * Pinned ``django-filer`` to 1.5.0
 * Added further tests to raise coverage
 * Fixed smaller issues found during testing
