@@ -1,0 +1,13 @@
+{% extends "djangocms_bootstrap4/admin/base.html" %}
+{% load i18n static %}
+
+{% block extrahead %}
+    {{ block.super }}
+    <script src="{% static 'djangocms_bootstrap4/js/bundle.utilities.js' %}"></script>
+{% endblock %}
+
+{% block field_sets %}
+    <div class="djangocms-bootstrap4 djangocms-bootstrap4-spacing" data-static="{% get_static_prefix %}">
+        {{ block.super }}
+    </div>
+{% endblock %}

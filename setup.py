@@ -13,6 +13,7 @@ REQUIREMENTS = [
     'djangocms-icon>=1.4.0',
     'djangocms-link>=2.5.0',
     'djangocms-picture>=2.3.0',
+    'django-enumfields>=2',
 ]
 
 

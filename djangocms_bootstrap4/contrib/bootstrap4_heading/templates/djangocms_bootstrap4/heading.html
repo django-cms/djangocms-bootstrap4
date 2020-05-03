@@ -1,0 +1,19 @@
+{% load cms_tags menu_tags %}
+
+
+<section class="heading-plugin">
+    <{{ instance.tag.value }}
+        class="
+            heading-plugin
+            heading-plugin--{{ instance.type.value }}
+            heading-plugin--color-{{ instance.color.value }}
+            text-{{ instance.alignment.value }}
+        "
+        style="
+        {% if instance.size %}font-size: {{ instance.size }}{{ instance.size_unit.value }}{% endif %}
+        "
+        id="{{ instance.get_anchor }}"
+    >
+        {{ instance.text|linebreaksbr }}
+    </{{ instance.tag.value }}>
+</section>
