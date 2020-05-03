@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
+from enumfields import Enum
 
 
 # The default grid size for Bootstrap 4 is 12. You can change this setting
@@ -24,6 +25,30 @@ GRID_CONTAINER_CHOICES = getattr(
         ('container-fluid', _('Fluid container')),
     ),
 )
+
+
+class GridContainerType(Enum):
+    pass
+
+
+GRID_CONTAINER_TYPE_ENUM = getattr(
+    settings,
+    'DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_TYPE_ENUM',
+    GridContainerType,
+)
+
+
+class GridContainerMaxSize(Enum):
+    DEFAULT = '1140'
+
+
+
+GRID_CONTAINER_TYPE_ENUM = getattr(
+    settings,
+    'DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_TYPE_ENUM',
+    GridContainerType,
+)
+
 
 # Options for flexbox on the alignment of the grid
 # https://flexbox.webflow.com/
