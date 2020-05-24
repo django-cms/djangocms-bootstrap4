@@ -46,7 +46,7 @@ class Bootstrap4PicturePlugin(PicturePlugin):
 
         classes = concat_classes(link_classes + [
             instance.attributes.get('class'),
-            'd-flex',
+            'flex-column',
         ])
         instance.attributes['class'] = classes
 
