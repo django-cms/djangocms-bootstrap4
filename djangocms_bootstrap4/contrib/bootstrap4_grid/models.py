@@ -3,25 +3,24 @@ from __future__ import unicode_literals
 
 from functools import partial
 
+from cms.models import CMSPlugin
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext
-
-from cms.models import CMSPlugin
-
+from enumfields import EnumField
 from six import python_2_unicode_compatible
 
 from djangocms_bootstrap4.constants import DEVICE_SIZES
-from djangocms_bootstrap4.fields import (
-    AttributesField, IntegerRangeField, TagTypeField,
-)
+from djangocms_bootstrap4.fields import AttributesField
+from djangocms_bootstrap4.fields import IntegerRangeField
+from djangocms_bootstrap4.fields import TagTypeField
 from djangocms_bootstrap4.helpers import mark_safe_lazy
-
-from .constants import (
-    GRID_COLUMN_ALIGNMENT_CHOICES, GRID_COLUMN_CHOICES, GRID_CONTAINER_CHOICES,
-    GRID_ROW_HORIZONTAL_ALIGNMENT_CHOICES, GRID_ROW_VERTICAL_ALIGNMENT_CHOICES,
-    GRID_SIZE,
-)
+from .constants import GRID_COLUMN_ALIGNMENT_CHOICES
+from .constants import GRID_COLUMN_CHOICES
+from .constants import GRID_CONTAINER_TYPE
+from .constants import GRID_ROW_HORIZONTAL_ALIGNMENT_CHOICES
+from .constants import GRID_ROW_VERTICAL_ALIGNMENT_CHOICES
+from .constants import GRID_SIZE
 
 
 @python_2_unicode_compatible
@@ -30,28 +29,28 @@ class Bootstrap4GridContainer(CMSPlugin):
     Layout > Grid: "Container" Plugin
     https://getbootstrap.com/docs/4.0/layout/grid/
     """
-    container_type = models.CharField(
+    name = models.CharField(
+        max_length=1024,
+        null=True, blank=True,
+        help_text=_('Shown only to the admins in the structure mode for better orientation'),
+    )
+    container_type = EnumField(
+        GRID_CONTAINER_TYPE,
+        default=GRID_CONTAINER_TYPE.DYNAMIC_WIDTH,
         verbose_name=_('Container type'),
-        choices=GRID_CONTAINER_CHOICES,
-        default=GRID_CONTAINER_CHOICES[0][0],
         max_length=255,
-        help_text=mark_safe_lazy(_(
-            'Defines if the grid should use fixed width (<code>.container</code>) '
-            'or fluid width (<code>.container-fluid</code>).'
-        )),
     )
     tag_type = TagTypeField()
     attributes = AttributesField()
 
-    def __str__(self):
+    def __str__(self) -> str:
         return str(self.pk)
 
-    def get_short_description(self):
-        text = ''
-        for item in GRID_CONTAINER_CHOICES:
-            if item[0] == self.container_type:
-                text = item[1]
-        return '({})'.format(text)
+    def get_short_description(self) -> str:
+        if self.name:
+            return self.name
+        else:
+            return f'({self.type.label})'
 
 
 @python_2_unicode_compatible

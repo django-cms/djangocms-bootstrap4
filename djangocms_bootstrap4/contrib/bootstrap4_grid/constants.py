@@ -15,37 +15,15 @@ GRID_SIZE = getattr(
     12,
 )
 
-# Bootstrap 4 provides 2 container types, .container and .container-fluid
-# https://getbootstrap.com/docs/4.0/layout/grid/#no-gutters
-GRID_CONTAINER_CHOICES = getattr(
-    settings,
-    'DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS',
-    (
-        ('container', _('Container')),
-        ('container-fluid', _('Fluid container')),
-    ),
-)
-
 
 class GridContainerType(Enum):
-    pass
+    DYNAMIC_WIDTH = 'container'
+    FULL_WIDTH = 'container-fluid'
 
 
-GRID_CONTAINER_TYPE_ENUM = getattr(
+GRID_CONTAINER_TYPE: GridContainerType = getattr(
     settings,
-    'DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_TYPE_ENUM',
-    GridContainerType,
-)
-
-
-class GridContainerMaxSize(Enum):
-    DEFAULT = '1140'
-
-
-
-GRID_CONTAINER_TYPE_ENUM = getattr(
-    settings,
-    'DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_TYPE_ENUM',
+    'DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_TYPE',
     GridContainerType,
 )
 
@@ -79,5 +57,16 @@ GRID_COLUMN_CHOICES = getattr(
         ('col', _('Column')),
         ('w-100', _('Break')),
         ('', _('Empty'))
+    ),
+)
+
+
+# deprecated, left only for migrations
+GRID_CONTAINER_CHOICES = getattr(
+    settings,
+    'DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS',
+    (
+        ('container', _('Container')),
+        ('container-fluid', _('Fluid container')),
     ),
 )

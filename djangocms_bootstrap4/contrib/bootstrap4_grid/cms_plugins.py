@@ -29,6 +29,7 @@ class Bootstrap4GridContainerPlugin(CMSPluginBase):
     fieldsets = [
         (None, {
             'fields': (
+                'name',
                 'container_type',
             )
         }),
