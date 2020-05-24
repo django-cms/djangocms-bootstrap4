@@ -40,8 +40,28 @@ class HeadingType(Enum):
     NORMAL = 'normal'
 
 
-HEADING_SIZE_UNIT_ENUM = getattr(settings, 'HEADING_SIZE_UNIT_ENUM', SizeUnit)
-HEADING_TAG_ENUM = getattr(settings, 'HEADING_TAG_ENUM', HeadingTag)
-HEADING_COLOR_ENUM = getattr(settings, 'HEADING_COLOR_ENUM', HeadingColor)
-HEADING_ALIGNMENT_ENUM = getattr(settings, 'HEADING_ALIGNMENT_ENUM', HeadingAlignment)
-HEADING_TYPE_ENUM = getattr(settings, 'HEADING_TYPE_ENUM', HeadingType)
+HEADING_SIZE_UNIT_ENUM = getattr(
+    settings,
+    'DJANGOCMS_BOOTSTRAP4_HEADING_SIZE_UNIT_ENUM',
+    SizeUnit,
+)
+HEADING_TAG_ENUM = getattr(
+    settings,
+    'DJANGOCMS_BOOTSTRAP4_HEADING_TAG_ENUM',
+    HeadingTag,
+)
+HEADING_COLOR_ENUM = getattr(
+    settings,
+    'DJANGOCMS_BOOTSTRAP4_HEADING_COLOR_ENUM',
+    HeadingColor,
+)
+HEADING_ALIGNMENT_ENUM = getattr(
+    settings,
+    'DJANGOCMS_BOOTSTRAP4_HEADING_ALIGNMENT_ENUM',
+    HeadingAlignment,
+)
+HEADING_TYPE_ENUM = getattr(
+    settings,
+    'DJANGOCMS_BOOTSTRAP4_HEADING_TYPE_ENUM',
+    HeadingType,
+)
