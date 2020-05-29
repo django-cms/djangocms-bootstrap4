@@ -13,7 +13,8 @@ from djangocms_bootstrap4.fields import AttributesField
 
 
 class Bootstrap4Heading(CMSPlugin):
-    text = models.TextField(max_length=2048)
+    # this name isn't self-explanatory because djangocms-text-ckeditor#528
+    name = models.TextField(max_length=2048, verbose_name=_("Text"))
 
     tag = EnumField(
         HEADING_TAG_ENUM, default=HEADING_TAG_ENUM.H1, max_length=32,
@@ -40,9 +41,9 @@ class Bootstrap4Heading(CMSPlugin):
     attributes = AttributesField()
 
     def get_anchor(self) -> str:
-        return slugify(self.text)
+        return slugify(self.name)
 
     def __str__(self) -> str:
-        if self.text:
-            return self.text
+        if self.name:
+            return self.name
         return ""
