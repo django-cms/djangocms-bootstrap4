@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from functools import partial
 
 from cms.models import CMSPlugin
@@ -17,6 +14,8 @@ from djangocms_bootstrap4.fields import TagTypeField
 from djangocms_bootstrap4.helpers import mark_safe_lazy
 from .constants import GRID_COLUMN_ALIGNMENT_CHOICES
 from .constants import GRID_COLUMN_CHOICES
+from .constants import GRID_CONTAINER_BACKGROUND
+from .constants import GRID_CONTAINER_SPACING
 from .constants import GRID_CONTAINER_TYPE
 from .constants import GRID_ROW_HORIZONTAL_ALIGNMENT_CHOICES
 from .constants import GRID_ROW_VERTICAL_ALIGNMENT_CHOICES
@@ -38,6 +37,18 @@ class Bootstrap4GridContainer(CMSPlugin):
         GRID_CONTAINER_TYPE,
         default=GRID_CONTAINER_TYPE.DYNAMIC_WIDTH,
         verbose_name=_('Container type'),
+        max_length=255,
+    )
+    background = EnumField(
+        GRID_CONTAINER_BACKGROUND,
+        default=GRID_CONTAINER_BACKGROUND.NONE,
+        verbose_name=_('Background'),
+        max_length=255,
+    )
+    spacing = EnumField(
+        GRID_CONTAINER_SPACING,
+        default=GRID_CONTAINER_SPACING.NONE,
+        verbose_name=_('Spacing'),
         max_length=255,
     )
     tag_type = TagTypeField()

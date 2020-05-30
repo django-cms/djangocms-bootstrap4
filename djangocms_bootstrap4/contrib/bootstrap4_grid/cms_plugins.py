@@ -27,10 +27,13 @@ class Bootstrap4GridContainerPlugin(CMSPluginBase):
     allow_children = True
 
     fieldsets = [
+
         (None, {
             'fields': (
                 'name',
                 'container_type',
+                'background',
+                'spacing',
             )
         }),
         (_('Advanced settings'), {
@@ -45,13 +48,13 @@ class Bootstrap4GridContainerPlugin(CMSPluginBase):
     def render(self, context, instance, placeholder):
         classes = concat_classes([
             instance.container_type,
+            instance.background,
+            instance.spacing,
             instance.attributes.get('class'),
         ])
         instance.attributes['class'] = classes
 
-        return super(Bootstrap4GridContainerPlugin, self).render(
-            context, instance, placeholder
-        )
+        return super().render(context, instance, placeholder)
 
 
 class Bootstrap4GridRowPlugin(CMSPluginBase):

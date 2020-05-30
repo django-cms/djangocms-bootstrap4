@@ -17,6 +17,9 @@ GRID_SIZE = getattr(
 
 
 class GridContainerType(Enum):
+    """
+    contains css classes
+    """
     DYNAMIC_WIDTH = 'container'
     FULL_WIDTH = 'container-fluid'
 
@@ -25,6 +28,34 @@ GRID_CONTAINER_TYPE: GridContainerType = getattr(
     settings,
     'DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_TYPE',
     GridContainerType,
+)
+
+
+class GridContainerBackground(Enum):
+    """
+    contains css classes
+    """
+    NONE = 'background-none'
+
+
+GRID_CONTAINER_BACKGROUND: GridContainerBackground = getattr(
+    settings,
+    'DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_BACKGROUND',
+    GridContainerBackground,
+)
+
+
+class GridContainerSpacing(Enum):
+    """
+    contains css classes
+    """
+    NONE = 'spacing-none'
+
+
+GRID_CONTAINER_SPACING: GridContainerSpacing = getattr(
+    settings,
+    'DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_SPACING',
+    GridContainerSpacing,
 )
 
 
