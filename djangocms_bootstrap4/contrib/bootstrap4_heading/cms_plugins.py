@@ -18,7 +18,7 @@ class Bootstrap4HeadingPlugin(CMSPluginBase):
     fieldsets = [
         (None, {
             'fields': (
-                'text',
+                'name',
                 'tag',
                 'alignment',
                 'color',
