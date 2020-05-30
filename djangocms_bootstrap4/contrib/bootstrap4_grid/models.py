@@ -61,7 +61,7 @@ class Bootstrap4GridContainer(CMSPlugin):
         if self.name:
             return self.name
         else:
-            return f'({self.type.label})'
+            return f'({self.container_type.label})'
 
 
 @python_2_unicode_compatible
