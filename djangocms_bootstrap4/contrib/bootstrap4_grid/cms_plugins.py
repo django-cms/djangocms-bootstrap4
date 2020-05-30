@@ -47,9 +47,9 @@ class Bootstrap4GridContainerPlugin(CMSPluginBase):
 
     def render(self, context, instance, placeholder):
         classes = concat_classes([
-            instance.container_type,
-            instance.background,
-            instance.spacing,
+            instance.container_type.value,
+            instance.background.value,
+            instance.spacing.value,
             instance.attributes.get('class'),
         ])
         instance.attributes['class'] = classes
