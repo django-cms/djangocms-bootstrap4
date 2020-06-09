@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from cms.models import CMSPlugin
+from cms.utils.plugins import get_plugin_model
 from django.utils.translation import ugettext_lazy as _
 
 from cms.plugin_base import CMSPluginBase
@@ -55,6 +57,16 @@ class Bootstrap4GridContainerPlugin(CMSPluginBase):
         instance.attributes['class'] = classes
 
         return super().render(context, instance, placeholder)
+
+    @classmethod
+    def get_child_ckeditor_body_css_class(cls, plugin: CMSPlugin) -> str:
+        plugin_model = get_plugin_model(plugin.plugin_type)
+        instance: Bootstrap4GridContainer = plugin_model.objects.get(pk=plugin.pk)
+
+        css_classes = 'container-plugin'
+        css_classes += f' container-plugin--{instance.background.value}'
+
+        return css_classes
 
 
 class Bootstrap4GridRowPlugin(CMSPluginBase):
