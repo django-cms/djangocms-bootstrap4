@@ -125,13 +125,13 @@ class Bootstrap4GridRow(CMSPlugin):
         GuttersVertical,
         default=GuttersVertical.NONE,
         max_length=32,
-        verbose_name=_("Vertical spacing between the columns inside"),
+        help_text=_("Vertical spacing between the columns inside"),
     )
     gutters_horizontal = EnumField(
         GuttersHorizontal,
         default=GuttersHorizontal.NORMAL,
         max_length=32,
-        verbose_name=_("Horizontal spacing between the columns inside"),
+        help_text=_("Horizontal spacing between the columns inside"),
     )
     gutters = models.BooleanField(
         verbose_name=_('Remove gutters'),
