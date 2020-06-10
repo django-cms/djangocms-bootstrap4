@@ -27,7 +27,7 @@ class Bootstrap4GridContainerPlugin(CMSPluginBase):
     module = _('Bootstrap 4')
     render_template = 'djangocms_bootstrap4/grid_container.html'
     allow_children = True
-    plugin_css_class = 'container-plugin'
+    css_class = 'container-plugin'
 
     fieldsets = [
         (None, {
@@ -49,10 +49,10 @@ class Bootstrap4GridContainerPlugin(CMSPluginBase):
 
     def render(self, context, instance: Bootstrap4GridContainer, placeholder):
         classes = concat_classes([
-            self.plugin_css_class,
+            self.css_class,
             instance.container_type.value,
-            f'{self.plugin_css_class}--{instance.background.value}',
-            f'{self.plugin_css_class}--{instance.spacing_vertical.value}-{instance.spacing_vertical_type.value}',
+            f'{self.css_class}--{instance.background.value}',
+            f'{self.css_class}--{instance.spacing_vertical.value}-{instance.spacing_vertical_type.value}',
             instance.attributes.get('class'),
         ])
         instance.attributes['class'] = classes
@@ -63,7 +63,7 @@ class Bootstrap4GridContainerPlugin(CMSPluginBase):
     def get_child_ckeditor_body_css_class(cls, plugin: CMSPlugin) -> str:
         plugin_model = get_plugin_model(plugin.plugin_type)
         instance: Bootstrap4GridContainer = plugin_model.objects.get(pk=plugin.pk)
-        return f'{cls.plugin_css_class} {cls.plugin_css_class}--{instance.background.value}'
+        return f'{cls.css_class} {cls.css_class}--{instance.background.value}'
 
 
 class Bootstrap4GridRowPlugin(CMSPluginBase):
@@ -79,12 +79,14 @@ class Bootstrap4GridRowPlugin(CMSPluginBase):
     render_template = 'djangocms_bootstrap4/grid_row.html'
     allow_children = True
     child_classes = ['Bootstrap4GridColumnPlugin']
+    css_class = 'row-plugin'
 
     fieldsets = [
         (None, {
             'fields': (
                 'create',
                 ('vertical_alignment', 'horizontal_alignment'),
+                ('gutters_horizontal', 'gutters_vertical'),
             )
         }),
         (_('Advanced settings'), {
@@ -115,10 +117,12 @@ class Bootstrap4GridRowPlugin(CMSPluginBase):
             )
             obj.add_child(instance=col)
 
-    def render(self, context, instance, placeholder):
+    def render(self, context, instance: Bootstrap4GridRow, placeholder):
         gutter = 'no-gutters' if instance.gutters else ''
         classes = concat_classes([
             'row',
+            f'{self.css_class}--gutters-horizontal-{instance.gutters_horizontal.value}',
+            f'{self.css_class}--gutters-vertical-{instance.gutters_vertical.value}',
             instance.vertical_alignment,
             instance.horizontal_alignment,
             gutter,

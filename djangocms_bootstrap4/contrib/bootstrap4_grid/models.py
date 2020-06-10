@@ -80,7 +80,22 @@ class Bootstrap4GridContainer(CMSPlugin):
             return f'({self.container_type.label})'
 
 
-@python_2_unicode_compatible
+class GuttersVertical(Enum):
+    NONE = 'none'
+    SMALL = 'small'
+    NORMAL = 'normal'
+    LARGE = 'large'
+    EXTRA_LARGE = 'extra_large'
+
+
+class GuttersHorizontal(Enum):
+    NONE = 'none'
+    SMALL = 'small'
+    NORMAL = 'normal'
+    LARGE = 'large'
+    EXTRA_LARGE = 'extra_large'
+
+
 class Bootstrap4GridRow(CMSPlugin):
     """
     Layout > Grid: "Row" Plugin
@@ -105,6 +120,18 @@ class Bootstrap4GridRow(CMSPlugin):
             'Read more in the <a href="{link}" target="_blank">documentation</a>.')
                 .format(link='https://getbootstrap.com/docs/4.0/layout/grid/#horizontal-alignment')
         ),
+    )
+    gutters_vertical = EnumField(
+        GuttersVertical,
+        default=GuttersVertical.NONE,
+        max_length=32,
+        verbose_name=_("Vertical spacing between the columns inside"),
+    )
+    gutters_horizontal = EnumField(
+        GuttersHorizontal,
+        default=GuttersHorizontal.NORMAL,
+        max_length=32,
+        verbose_name=_("Horizontal spacing between the columns inside"),
     )
     gutters = models.BooleanField(
         verbose_name=_('Remove gutters'),
