@@ -23,15 +23,6 @@ from .constants import GRID_ROW_VERTICAL_ALIGNMENT_CHOICES
 from .constants import GRID_SIZE
 
 
-class SpacingVerticalType(Enum):
-    MARGIN = 'margin'
-    PADDING = 'padding'
-
-    class Labels:
-        MARGIN = _('External spacing')
-        PADDING = _('Internal spacing')
-
-
 @python_2_unicode_compatible
 class Bootstrap4GridContainer(CMSPlugin):
     """
@@ -59,12 +50,6 @@ class Bootstrap4GridContainer(CMSPlugin):
         GRID_CONTAINER_SPACING,
         default=GRID_CONTAINER_SPACING.NONE,
         verbose_name=_('Vertical spacing'),
-        max_length=255,
-    )
-    spacing_vertical_type = EnumField(
-        SpacingVerticalType,
-        default=SpacingVerticalType.MARGIN,
-        verbose_name=_('Vertical spacing type'),
         max_length=255,
     )
     tag_type = TagTypeField()

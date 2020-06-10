@@ -35,7 +35,7 @@ class Bootstrap4GridContainerPlugin(CMSPluginBase):
                 'name',
                 'container_type',
                 'background',
-                ('spacing_vertical', 'spacing_vertical_type'),
+                'spacing_vertical',
             )
         }),
         (_('Advanced settings'), {
@@ -52,7 +52,7 @@ class Bootstrap4GridContainerPlugin(CMSPluginBase):
             self.css_class,
             instance.container_type.value,
             f'{self.css_class}--{instance.background.value}',
-            f'{self.css_class}--{instance.spacing_vertical.value}-{instance.spacing_vertical_type.value}',
+            f'{self.css_class}--{instance.spacing_vertical.value}',
             instance.attributes.get('class'),
         ])
         instance.attributes['class'] = classes
