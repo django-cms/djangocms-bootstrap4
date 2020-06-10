@@ -4,6 +4,7 @@ from cms.models import CMSPlugin
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext
+from enumfields import Enum
 from enumfields import EnumField
 from six import python_2_unicode_compatible
 
@@ -22,6 +23,15 @@ from .constants import GRID_ROW_VERTICAL_ALIGNMENT_CHOICES
 from .constants import GRID_SIZE
 
 
+class SpacingVerticalType(Enum):
+    MARGIN = 'margin'
+    PADDING = 'padding'
+
+    class Labels:
+        MARGIN = _('External spacing')
+        PADDING = _('Internal spacing')
+
+
 @python_2_unicode_compatible
 class Bootstrap4GridContainer(CMSPlugin):
     """
@@ -36,7 +46,7 @@ class Bootstrap4GridContainer(CMSPlugin):
     container_type = EnumField(
         GRID_CONTAINER_TYPE,
         default=GRID_CONTAINER_TYPE.DYNAMIC_WIDTH,
-        verbose_name=_('Container type'),
+        verbose_name=_('Container width'),
         max_length=255,
     )
     background = EnumField(
@@ -45,10 +55,16 @@ class Bootstrap4GridContainer(CMSPlugin):
         verbose_name=_('Background'),
         max_length=255,
     )
-    spacing = EnumField(
+    spacing_vertical = EnumField(
         GRID_CONTAINER_SPACING,
         default=GRID_CONTAINER_SPACING.NONE,
-        verbose_name=_('Spacing'),
+        verbose_name=_('Vertical spacing'),
+        max_length=255,
+    )
+    spacing_vertical_type = EnumField(
+        SpacingVerticalType,
+        default=SpacingVerticalType.MARGIN,
+        verbose_name=_('Vertical spacing type'),
         max_length=255,
     )
     tag_type = TagTypeField()

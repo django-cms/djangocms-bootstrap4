@@ -27,15 +27,15 @@ class Bootstrap4GridContainerPlugin(CMSPluginBase):
     module = _('Bootstrap 4')
     render_template = 'djangocms_bootstrap4/grid_container.html'
     allow_children = True
+    plugin_css_class = 'container-plugin'
 
     fieldsets = [
-
         (None, {
             'fields': (
                 'name',
                 'container_type',
                 'background',
-                'spacing',
+                ('spacing_vertical', 'spacing_vertical_type'),
             )
         }),
         (_('Advanced settings'), {
@@ -47,11 +47,12 @@ class Bootstrap4GridContainerPlugin(CMSPluginBase):
         }),
     ]
 
-    def render(self, context, instance, placeholder):
+    def render(self, context, instance: Bootstrap4GridContainer, placeholder):
         classes = concat_classes([
+            self.plugin_css_class,
             instance.container_type.value,
-            instance.background.value,
-            instance.spacing.value,
+            f'{self.plugin_css_class}--{instance.background.value}',
+            f'{self.plugin_css_class}--{instance.spacing_vertical.value}-{instance.spacing_vertical_type.value}',
             instance.attributes.get('class'),
         ])
         instance.attributes['class'] = classes
@@ -62,11 +63,7 @@ class Bootstrap4GridContainerPlugin(CMSPluginBase):
     def get_child_ckeditor_body_css_class(cls, plugin: CMSPlugin) -> str:
         plugin_model = get_plugin_model(plugin.plugin_type)
         instance: Bootstrap4GridContainer = plugin_model.objects.get(pk=plugin.pk)
-
-        css_classes = 'container-plugin'
-        css_classes += f' container-plugin--{instance.background.value}'
-
-        return css_classes
+        return f'{cls.plugin_css_class} {cls.plugin_css_class}--{instance.background.value}'
 
 
 class Bootstrap4GridRowPlugin(CMSPluginBase):
