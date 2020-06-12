@@ -86,7 +86,7 @@ class Bootstrap4GridRowPlugin(CMSPluginBase):
             'fields': (
                 'create',
                 ('vertical_alignment', 'horizontal_alignment'),
-                ('gutters_horizontal', 'gutters_vertical'),
+                'gutters_vertical',
             )
         }),
         (_('Advanced settings'), {
@@ -121,7 +121,6 @@ class Bootstrap4GridRowPlugin(CMSPluginBase):
         gutter = 'no-gutters' if instance.gutters else ''
         classes = concat_classes([
             'row',
-            f'{self.css_class}--gutters-horizontal-{instance.gutters_horizontal.value}',
             f'{self.css_class}--gutters-vertical-{instance.gutters_vertical.value}',
             instance.vertical_alignment,
             instance.horizontal_alignment,
