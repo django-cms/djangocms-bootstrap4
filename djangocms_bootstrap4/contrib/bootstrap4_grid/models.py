@@ -78,9 +78,11 @@ class Bootstrap4GridContainer(CMSPlugin):
         is_background_selected = self.background != self._meta.get_field('background').get_default()
         if is_background_selected or is_width_internal_selected:
             desc += '['
-            if is_background_selected:
+            if is_background_selected and is_width_internal_selected:
+                desc += f'{self.background}, {self.width_internal}'
+            elif is_background_selected:
                 desc += str(self.background)
-            if is_width_internal_selected:
+            elif is_width_internal_selected:
                 desc += str(self.width_internal)
             desc += ']'
 
