@@ -44,12 +44,8 @@ class Bootstrap4GridContainer(CMSPlugin):
     width_internal = EnumField(
         GRID_CONTAINER_WIDTH_INTERNAL,
         default=GRID_CONTAINER_WIDTH_INTERNAL.FULL_WIDTH,
-        verbose_name=_('Internal width'),
+        verbose_name=_('Internal content width'),
         max_length=255,
-        help_text=_(
-            'You can change it eg if you want to have a full-width '
-            'gray background, but a limited content width within that background'
-        )
     )
     background = EnumField(
         GRID_CONTAINER_BACKGROUND,

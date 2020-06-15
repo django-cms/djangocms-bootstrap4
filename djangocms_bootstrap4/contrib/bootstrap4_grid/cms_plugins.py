@@ -33,7 +33,6 @@ class Bootstrap4GridContainerPlugin(CMSPluginBase):
         (None, {
             'fields': (
                 'name',
-                'container_type',
                 'width_internal',
                 'background',
                 'spacing_vertical',
