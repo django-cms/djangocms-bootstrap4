@@ -18,6 +18,7 @@ from .constants import GRID_COLUMN_CHOICES
 from .constants import GRID_CONTAINER_BACKGROUND
 from .constants import GRID_CONTAINER_SPACING
 from .constants import GRID_CONTAINER_TYPE
+from .constants import GRID_CONTAINER_WIDTH_INTERNAL
 from .constants import GRID_ROW_HORIZONTAL_ALIGNMENT_CHOICES
 from .constants import GRID_ROW_VERTICAL_ALIGNMENT_CHOICES
 from .constants import GRID_SIZE
@@ -37,8 +38,18 @@ class Bootstrap4GridContainer(CMSPlugin):
     container_type = EnumField(
         GRID_CONTAINER_TYPE,
         default=GRID_CONTAINER_TYPE.DYNAMIC_WIDTH,
-        verbose_name=_('Container width'),
+        verbose_name=_('External width'),
         max_length=255,
+    )
+    width_internal = EnumField(
+        GRID_CONTAINER_WIDTH_INTERNAL,
+        default=GRID_CONTAINER_WIDTH_INTERNAL.FULL_WIDTH,
+        verbose_name=_('Internal width'),
+        max_length=255,
+        help_text=_(
+            'You can change it eg if you want to have a full-width '
+            'gray background, but a limited content width within that background'
+        )
     )
     background = EnumField(
         GRID_CONTAINER_BACKGROUND,
@@ -59,10 +70,21 @@ class Bootstrap4GridContainer(CMSPlugin):
         return str(self.pk)
 
     def get_short_description(self) -> str:
+        desc: str = ''
         if self.name:
-            return self.name
-        else:
-            return f'({self.container_type.label})'
+            desc += f'{self.name} '
+
+        is_width_internal_selected = self.width_internal != self._meta.get_field('width_internal').get_default()
+        is_background_selected = self.background != self._meta.get_field('background').get_default()
+        if is_background_selected or is_width_internal_selected:
+            desc += '['
+            if is_background_selected:
+                desc += str(self.background)
+            if is_width_internal_selected:
+                desc += str(self.width_internal)
+            desc += ']'
+
+        return desc
 
 
 class GuttersVertical(Enum):

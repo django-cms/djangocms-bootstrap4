@@ -34,6 +34,7 @@ class Bootstrap4GridContainerPlugin(CMSPluginBase):
             'fields': (
                 'name',
                 'container_type',
+                'width_internal',
                 'background',
                 'spacing_vertical',
             )
@@ -56,6 +57,10 @@ class Bootstrap4GridContainerPlugin(CMSPluginBase):
             instance.attributes.get('class'),
         ])
         instance.attributes['class'] = classes
+
+        instance.attributes['data-type'] = instance.container_type.value
+        instance.attributes['data-width-internal'] = instance.width_internal.value
+        instance.attributes['data-spacing-vertical'] = instance.spacing_vertical.value
 
         return super().render(context, instance, placeholder)
 

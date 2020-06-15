@@ -31,6 +31,17 @@ GRID_CONTAINER_TYPE: GridContainerType = getattr(
 )
 
 
+class GridContainerWidthInternal(Enum):
+    FULL_WIDTH = 'full-width'
+
+
+GRID_CONTAINER_WIDTH_INTERNAL: GridContainerWidthInternal = getattr(
+    settings,
+    'DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_WIDTH_INTERNAL',
+    GridContainerWidthInternal,
+)
+
+
 class GridContainerBackground(Enum):
     """
     contains css classes
