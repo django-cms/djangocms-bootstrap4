@@ -37,7 +37,7 @@ class Bootstrap4GridContainer(CMSPlugin):
     )
     container_type = EnumField(
         GRID_CONTAINER_TYPE,
-        default=GRID_CONTAINER_TYPE.DYNAMIC_WIDTH,
+        default=GRID_CONTAINER_TYPE.FULL_WIDTH,
         verbose_name=_('External width'),
         max_length=255,
     )
