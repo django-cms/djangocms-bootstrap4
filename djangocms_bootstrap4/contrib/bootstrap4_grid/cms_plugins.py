@@ -9,6 +9,7 @@ from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 
 from djangocms_bootstrap4.constants import DEVICE_SIZES
+from djangocms_bootstrap4.contrib.bootstrap4_grid.constants import GRID_CONTAINER_FIELDSETS
 from djangocms_bootstrap4.helpers import concat_classes
 
 from .forms import Bootstrap4GridColumnForm, Bootstrap4GridRowForm
@@ -28,24 +29,7 @@ class Bootstrap4GridContainerPlugin(CMSPluginBase):
     render_template = 'djangocms_bootstrap4/grid_container.html'
     allow_children = True
     css_class = 'container-plugin'
-
-    fieldsets = [
-        (None, {
-            'fields': (
-                'name',
-                'width_internal',
-                'background',
-                'spacing_vertical',
-            )
-        }),
-        (_('Advanced settings'), {
-            'classes': ('collapse',),
-            'fields': (
-                'tag_type',
-                'attributes',
-            )
-        }),
-    ]
+    fieldsets = GRID_CONTAINER_FIELDSETS
 
     def render(self, context, instance: Bootstrap4GridContainer, placeholder):
         classes = concat_classes([

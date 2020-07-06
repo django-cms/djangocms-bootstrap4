@@ -31,6 +31,31 @@ GRID_CONTAINER_TYPE: GridContainerType = getattr(
 )
 
 
+container_fieldsets_default = [
+    (None, {
+        'fields': (
+            'name',
+            'width_internal',
+            'background',
+            'spacing_vertical',
+        ),
+    }),
+    (_('Advanced settings'), {
+        'classes': ['collapse'],
+        'fields': (
+            'tag_type',
+            'attributes',
+        ),
+    }),
+]
+
+GRID_CONTAINER_FIELDSETS = getattr(
+    settings,
+    'DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_FIELDSETS',
+    container_fieldsets_default,
+)
+
+
 class GridContainerWidthInternal(Enum):
     FULL_WIDTH = 'full-width'
 
