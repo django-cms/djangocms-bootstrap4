@@ -45,6 +45,12 @@ $(() => {
             icons: ['align-reset', 'flex-self-start', 'flex-self-center', 'flex-self-end'],
             static: static_url,
         });
+        // Bootstrap 4 Grid Row - Horizontal Alignment
+        new ButtonGroup({
+            select: '#id_horizontal_alignment',
+            icons: ['flex-content-start', 'flex-content-center', 'flex-content-end', 'flex-content-between'],
+            static: static_url,
+        });
         // Bootstrap 4 Grid Column - Reponsive Settings
         new GridLayout({
             sizes: column.data().sizes,

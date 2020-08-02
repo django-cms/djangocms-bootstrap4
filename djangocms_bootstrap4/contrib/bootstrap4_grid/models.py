@@ -4,6 +4,7 @@ from cms.models import CMSPlugin
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext
+from djangocms_bootstrap4.contrib.bootstrap4_grid.constants import GRID_COLUMN_HORIZONTAL_ALIGNMENT_CHOICES
 from enumfields import Enum
 from enumfields import EnumField
 from six import python_2_unicode_compatible
@@ -168,9 +169,14 @@ class Bootstrap4GridColumn(CMSPlugin):
         max_length=255,
     )
     column_alignment = models.CharField(
-        verbose_name=_('Alignment'),
+        verbose_name=_('Vertical alignment'),
         choices=GRID_COLUMN_ALIGNMENT_CHOICES,
         blank=True,
+        max_length=255,
+    )
+    horizontal_alignment = models.CharField(
+        verbose_name=_('Horizontal alignment'),
+        choices=GRID_COLUMN_HORIZONTAL_ALIGNMENT_CHOICES,
         max_length=255,
     )
     tag_type = TagTypeField()

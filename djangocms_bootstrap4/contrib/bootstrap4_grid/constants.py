@@ -117,6 +117,13 @@ GRID_COLUMN_ALIGNMENT_CHOICES = (
     ('align-self-end', _('Align self end')),
 )
 
+GRID_COLUMN_HORIZONTAL_ALIGNMENT_CHOICES = (
+    ('align-items-start', _('Align items start')),
+    ('align-items-center', _('Align items center')),
+    ('align-items-end', _('Align items end')),
+    ('align-items-stretch', _('Align items stretch')),
+)
+
 GRID_COLUMN_CHOICES = getattr(
     settings,
     'DJANGOCMS_BOOTSTRAP4_GRID_COLUMN_CHOICES',

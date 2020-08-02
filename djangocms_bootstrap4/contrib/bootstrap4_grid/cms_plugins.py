@@ -141,9 +141,11 @@ class Bootstrap4GridColumnPlugin(CMSPluginBase):
 
     fieldsets = [
         (None, {
-            'fields': (
-                ('column_type', 'column_alignment'),
-            )
+            'fields': [
+                'column_type',
+                'column_alignment',
+                'horizontal_alignment',
+            ],
         }),
         (_('Responsive settings'), {
             'fields': (
@@ -174,6 +176,7 @@ class Bootstrap4GridColumnPlugin(CMSPluginBase):
             instance.column_type,
             column,
             instance.column_alignment,
+            instance.horizontal_alignment,
             instance.attributes.get('class'),
         ])
         instance.attributes['class'] = attr_classes
