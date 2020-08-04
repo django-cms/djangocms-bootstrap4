@@ -3,7 +3,7 @@
 from django.db import migrations, models
 import djangocms_bootstrap4.contrib.bootstrap4_grid.models
 import enumfields.fields
-import settings
+import djangocms_bootstrap4.contrib.bootstrap4_grid.constants
 
 
 class Migration(migrations.Migration):
@@ -22,12 +22,12 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='bootstrap4gridcontainer',
             name='spacing_vertical',
-            field=enumfields.fields.EnumField(default='none', enum=settings.GridContainerSpacing, max_length=255, verbose_name='Vertical spacing'),
+            field=enumfields.fields.EnumField(default='none', enum=djangocms_bootstrap4.contrib.bootstrap4_grid.constants.GridContainerSpacing, max_length=255, verbose_name='Vertical spacing'),
         ),
         migrations.AlterField(
             model_name='bootstrap4gridcontainer',
             name='width_internal',
-            field=enumfields.fields.EnumField(default='full-width', enum=settings.GridContainerWidthInternal, max_length=255, verbose_name='Internal content width'),
+            field=enumfields.fields.EnumField(default='full-width', enum=djangocms_bootstrap4.contrib.bootstrap4_grid.constants.GridContainerWidthInternal, max_length=255, verbose_name='Internal content width'),
         ),
         migrations.AlterField(
             model_name='bootstrap4gridrow',
