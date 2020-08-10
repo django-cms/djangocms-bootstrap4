@@ -4,7 +4,6 @@ from django.db import migrations
 import djangocms_bootstrap4.contrib.bootstrap4_grid.constants
 import djangocms_bootstrap4.contrib.bootstrap4_grid.models
 import enumfields.fields
-import settings
 
 
 class Migration(migrations.Migration):
