@@ -35,8 +35,6 @@ class Bootstrap4GridContainerPlugin(CMSPluginBase):
         classes = concat_classes([
             self.css_class,
             instance.container_type.value,
-            f'{self.css_class}--{instance.background.value}',
-            f'{self.css_class}--{instance.spacing_vertical.value}',
             instance.attributes.get('class'),
         ])
         instance.attributes['class'] = classes
@@ -44,6 +42,7 @@ class Bootstrap4GridContainerPlugin(CMSPluginBase):
         instance.attributes['data-type'] = instance.container_type.value
         instance.attributes['data-width-internal'] = instance.width_internal.value
         instance.attributes['data-spacing-vertical'] = instance.spacing_vertical.value
+        instance.attributes['data-background'] = instance.background.value
 
         return super().render(context, instance, placeholder)
 

@@ -85,7 +85,7 @@ class GridContainerSpacing(Enum):
     """
     contains css classes
     """
-    NONE = 'spacing-none'
+    NONE = 'none'
 
 
 GRID_CONTAINER_SPACING: GridContainerSpacing = getattr(
