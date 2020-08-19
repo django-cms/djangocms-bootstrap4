@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import warnings
 
 from cms.api import add_plugin

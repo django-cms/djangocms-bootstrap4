@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from django.test import TestCase
 
 from djangocms_bootstrap4.contrib.bootstrap4_jumbotron.models import (

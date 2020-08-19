@@ -1,12 +1,7 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from cms.models import CMSPlugin
-
-from six import python_2_unicode_compatible
 
 from djangocms_bootstrap4.constants import ALIGN_CHOICES
 from djangocms_bootstrap4.fields import AttributesField
@@ -14,7 +9,6 @@ from djangocms_bootstrap4.fields import AttributesField
 from .constants import CODE_TYPE_CHOICES
 
 
-@python_2_unicode_compatible
 class Bootstrap4Code(CMSPlugin):
     """
     Content > "Code" Plugin
@@ -38,7 +32,6 @@ class Bootstrap4Code(CMSPlugin):
         return '<{}>'.format(self.tag_type)
 
 
-@python_2_unicode_compatible
 class Bootstrap4Blockquote(CMSPlugin):
     """
     Content > "Blockquote" Plugin
@@ -67,7 +60,6 @@ class Bootstrap4Blockquote(CMSPlugin):
         return self.quote_content
 
 
-@python_2_unicode_compatible
 class Bootstrap4Figure(CMSPlugin):
     """
     Content > "Figure" Plugin

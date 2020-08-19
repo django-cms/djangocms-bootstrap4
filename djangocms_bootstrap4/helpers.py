@@ -1,12 +1,7 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.template import TemplateDoesNotExist
 from django.template.loader import select_template
 from django.utils.functional import lazy
 from django.utils.safestring import mark_safe
-
-import six
 
 
 def concat_classes(classes):
@@ -36,4 +31,4 @@ def get_plugin_template(instance, prefix, name, templates):
 # use mark_safe_lazy to delay the translation when using mark_safe
 # otherwise they will not be added to /locale/
 # https://docs.djangoproject.com/en/1.11/topics/i18n/translation/#other-uses-of-lazy-in-delayed-translations
-mark_safe_lazy = lazy(mark_safe, six.text_type)
+mark_safe_lazy = lazy(mark_safe, str)

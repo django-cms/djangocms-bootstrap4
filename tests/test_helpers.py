@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from django.template.loader import select_template
 from django.test import TestCase
 

@@ -1,7 +1,4 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from cms.plugin_pool import plugin_pool
 
@@ -76,7 +73,7 @@ class Bootstrap4LinkPlugin(LinkPlugin):
         ])
         instance.attributes['class'] = classes
 
-        return super(Bootstrap4LinkPlugin, self).render(
+        return super().render(
             context, instance, placeholder
         )
 

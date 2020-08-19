@@ -1,14 +1,8 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from cms.models import CMSPlugin
-
-from six import python_2_unicode_compatible
 
 from djangocms_bootstrap4.fields import AttributesField, TagTypeField
 
 
-@python_2_unicode_compatible
 class Bootstrap4Media(CMSPlugin):
     """
     Layout > "Media" Plugin
@@ -24,7 +18,6 @@ class Bootstrap4Media(CMSPlugin):
         return ''
 
 
-@python_2_unicode_compatible
 class Bootstrap4MediaBody(CMSPlugin):
     """
     Layout > "Media body" Plugin

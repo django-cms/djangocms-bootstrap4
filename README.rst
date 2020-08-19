@@ -38,11 +38,8 @@ file for additional dependencies:
 
 |python| |django| |djangocms|
 
-* Django Filer 1.5.0 or higher
-* Django Text CKEditor 3.1.0 or higher
-* Django CMS Icon 1.0.0 or higher
-* Django CMS Link 2.1.0 or higher
-* Django CMS Picture 2.1.1 or higher
+* Django Filer 1.7 or higher
+* Django Text CKEditor 3.1 or higher
 
 Make sure `django Filer <http://django-filer.readthedocs.io/en/latest/installation.html>`_
 and `django CMS Text CKEditor <https://github.com/divio/djangocms-text-ckeditor>`_
@@ -183,9 +180,9 @@ You can run tests by executing::
 .. |coverage| image:: https://codecov.io/gh/divio/djangocms-bootstrap4/branch/master/graph/badge.svg
     :target: https://codecov.io/gh/divio/djangocms-bootstrap4
 
-.. |python| image:: https://img.shields.io/badge/python-2.7%20%7C%203.4+-blue.svg
+.. |python| image:: https://img.shields.io/badge/python-3.5+-blue.svg
     :target: https://pypi.org/project/djangocms-bootstrap4/
-.. |django| image:: https://img.shields.io/badge/django-1.11%20%7C%202.2%20%7C%203.0-blue.svg
+.. |django| image:: https://img.shields.io/badge/django-2.2,%203.0,%203.1-blue.svg
     :target: https://www.djangoproject.com/
-.. |djangocms| image:: https://img.shields.io/badge/django%20CMS-3.4%2B-blue.svg
+.. |djangocms| image:: https://img.shields.io/badge/django%20CMS-3.7%2B-blue.svg
     :target: https://www.django-cms.org/

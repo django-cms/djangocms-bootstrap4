@@ -1,12 +1,7 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from cms.models import CMSPlugin
-
-from six import python_2_unicode_compatible
 
 from djangocms_bootstrap4.fields import AttributesField, TagTypeField
 
@@ -19,7 +14,6 @@ from djangocms_bootstrap4.fields import AttributesField, TagTypeField
 # <div class="collapse" id="collapseExample">
 
 
-@python_2_unicode_compatible
 class Bootstrap4Collapse(CMSPlugin):
     """
     Component > "Collapse" Plugin
@@ -43,7 +37,6 @@ class Bootstrap4Collapse(CMSPlugin):
         return '(collapse-{})'.format(str(self.pk))
 
 
-@python_2_unicode_compatible
 class Bootstrap4CollapseTrigger(CMSPlugin):
     """
     Component > "Collapse Trigger" Plugin
@@ -70,7 +63,6 @@ class Bootstrap4CollapseTrigger(CMSPlugin):
         return '({})'.format(self.identifier)
 
 
-@python_2_unicode_compatible
 class Bootstrap4CollapseContainer(CMSPlugin):
     """
     Component > "Collapse Container" Plugin
