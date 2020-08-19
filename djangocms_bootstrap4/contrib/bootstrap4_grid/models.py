@@ -95,7 +95,6 @@ class Bootstrap4GridRow(CMSPlugin):
         return column_count_str
 
 
-@
 class Bootstrap4GridColumn(CMSPlugin):
     """
     Layout > Grid: "Column" Plugin
