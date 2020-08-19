@@ -29,15 +29,11 @@ export default class GridLayout {
         let sizes = ['size-xs', 'size-sm', 'size-md', 'size-lg', 'size-xl'];
         let wrapper = wrapper => `<div class="icon-thead">${wrapper}</div>`;
         let icons = (icon, title = '', staticPath = this.options.static) => `
-            <span class="icon icon-${icon}" title="${title}">
-                <svg role="presentation">
-                    <use xlink:href="${staticPath}djangocms_bootstrap4/sprites/icons.svg#${icon}"></use>
-                </svg>
-            </span>
-            <span class="icon-title">${title}</span>`;
+            <span class="icon icon-${icon}" title="${title}"></span>
+            <span class="icon-title">${title}</span>`
         let tmp = '';
 
-        sizes.forEach(function(item, index) {
+        sizes.forEach(function (item, index) {
             tmp = icons(item, this.options.sizes[index]);
 
             container.eq(index).prepend(wrapper(tmp));
@@ -59,11 +55,7 @@ export default class GridLayout {
             <div class="field-box field-box-label">
                 <a href="${link}" target="_blank" class="d-inline-block text-right">
                     ${text}
-                    <span class="icon icon-info icon-primary">
-                        <svg role="presentation">
-                            <use xlink:href="${staticPath}djangocms_bootstrap4/sprites/icons.svg#info"></use>
-                        </svg>
-                    </span>
+                    <span class="icon icon-info icon-primary"></span>
                 </a>
             </div>
         `;
@@ -75,7 +67,7 @@ export default class GridLayout {
             'https://getbootstrap.com/docs/4.0/layout/grid/#offsetting-columns',
         ];
 
-        container.toArray().forEach(function(item, index) {
+        container.toArray().forEach(function (item, index) {
             $(item).prepend(template(this.options.rows[index], links[index]));
         }, this);
     }
@@ -91,7 +83,7 @@ export default class GridLayout {
         `;
         let button = $(template());
 
-        button.on('click', function(event) {
+        button.on('click', function (event) {
             event.preventDefault();
             wrapper.find('input').val('');
             wrapper.find('input[type="checkbox"]').prop('checked', false);
