@@ -159,7 +159,9 @@ for now only the following can be changed::
         ('custom', _('Custom')),
     )
 
-Please see their code references for more details.
+Please be aware that this package does not support djangocms-text-ckeditor's
+`Drag & Drop Images <https://github.com/divio/djangocms-text-ckeditor/#drag--drop-images>`_
+so be sure to set ``TEXT_SAVE_IMAGE_FUNCTION = None``.
 
 
 Running Tests
@@ -171,6 +173,8 @@ You can run tests by executing::
     source env/bin/activate
     pip install -r tests/requirements.txt
     python setup.py test
+
+To run the frontend make sure to use **node 10.x**.
 
 
 .. |pypi| image:: https://badge.fury.io/py/djangocms-bootstrap4.svg

@@ -11,6 +11,8 @@ Changelog
 * Dropped support for Django < 2.2
 * Added support for sorl thumbnail
 * Fixed CORS issues with external SVGs
+* Fixed link preview not showing the correct icon
+* Added documentation information about ``TEXT_SAVE_IMAGE_FUNCTION``
 
 
 1.6.0 (2020-04-21)
