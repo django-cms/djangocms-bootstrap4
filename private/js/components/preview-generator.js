@@ -152,7 +152,7 @@ export default class PreviewGenerator {
                 iconSet = JSON.parse(iconSetValue);
             } catch (e) {} // eslint-disable-line
 
-            const iconSetPrefix = element.find('select option:selected').data('prefix');
+            const iconSetPrefix = element.find('select option:selected').data('iconset-prefix');
 
             if (typeof iconSet === 'string') {
                 $(`.js-icon-${left ? 'left' : 'right'}`).html(`
