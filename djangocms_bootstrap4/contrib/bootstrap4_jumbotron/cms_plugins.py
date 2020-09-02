@@ -1,7 +1,4 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
@@ -48,7 +45,7 @@ class Bootstrap4JumbotronPlugin(CMSPluginBase):
         ])
         instance.attributes['class'] = classes
 
-        return super(Bootstrap4JumbotronPlugin, self).render(
+        return super().render(
             context, instance, placeholder
         )
 

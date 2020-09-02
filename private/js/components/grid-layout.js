@@ -28,7 +28,7 @@ export default class GridLayout {
         let container = $('.form-row.field-xs_col .field-box');
         let sizes = ['size-xs', 'size-sm', 'size-md', 'size-lg', 'size-xl'];
         let wrapper = wrapper => `<div class="icon-thead">${wrapper}</div>`;
-        let icons = (icon, title = '', staticPath = this.options.static) => `
+        let icons = (icon, title = '') => `
             <span class="icon icon-${icon}" title="${title}"></span>
             <span class="icon-title">${title}</span>`
         let tmp = '';
@@ -51,7 +51,7 @@ export default class GridLayout {
             .form-row.field-xs_ml,
             .form-row.field-xs_mr
         `);
-        let template = (text = '', link = '#', staticPath = this.options.static) => `
+        let template = (text = '', link = '#') => `
             <div class="field-box field-box-label">
                 <a href="${link}" target="_blank" class="d-inline-block text-right">
                     ${text}

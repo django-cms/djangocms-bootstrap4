@@ -1,7 +1,7 @@
 from cms.api import create_page
 
 
-class B4TestFixture(object):
+class B4TestFixture:
     """Sets up generic setUp and tearDown methods for tests."""
 
     def setUp(self):
@@ -22,11 +22,11 @@ class B4TestFixture(object):
         self.superuser = self.get_superuser()
         self.request_url = self.page.get_absolute_url(self.language) + "?toolbar_off=true"
 
-        return super(B4TestFixture, self).setUp()
+        return super().setUp()
 
     def tearDown(self):
         self.page.delete()
         self.home.delete()
         self.superuser.delete()
 
-        return super(B4TestFixture, self).tearDown()
+        return super().tearDown()

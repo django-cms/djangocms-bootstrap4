@@ -1,8 +1,5 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from djangocms_attributes_field import fields
 
@@ -16,7 +13,7 @@ class AttributesField(fields.AttributesField):
             kwargs['verbose_name'] = _('Attributes')
         if 'blank' not in kwargs:
             kwargs['blank'] = True
-        super(AttributesField, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
 
 class TagTypeField(models.CharField):
@@ -32,7 +29,7 @@ class TagTypeField(models.CharField):
             kwargs['max_length'] = 255
         if 'help_text' not in kwargs:
             kwargs['help_text'] = _('Select the HTML tag to be used.')
-        super(TagTypeField, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
 
 class IntegerRangeField(models.IntegerField):
@@ -47,4 +44,4 @@ class IntegerRangeField(models.IntegerField):
             'max_value': self.max_value,
         }
         defaults.update(kwargs)
-        return super(IntegerRangeField, self).formfield(**defaults)
+        return super().formfield(**defaults)

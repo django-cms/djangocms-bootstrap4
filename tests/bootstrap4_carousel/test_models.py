@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from django.test import TestCase
 
 from djangocms_bootstrap4.contrib.bootstrap4_carousel.models import (
@@ -11,11 +10,11 @@ from ..helpers import get_filer_image
 class B4CarouselModelTestCase(TestCase):
 
     def setUp(self):
-        super(B4CarouselModelTestCase, self).setUp()
+        super().setUp()
         self.image = get_filer_image()
 
     def tearDown(self):
-        super(B4CarouselModelTestCase, self).tearDown()
+        super().tearDown()
         self.image.delete()
 
     def test_carousel_instance(self):

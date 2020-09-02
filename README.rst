@@ -38,11 +38,8 @@ file for additional dependencies:
 
 |python| |django| |djangocms|
 
-* Django Filer 1.5.0 or higher
-* Django Text CKEditor 3.1.0 or higher
-* Django CMS Icon 1.0.0 or higher
-* Django CMS Link 2.1.0 or higher
-* Django CMS Picture 2.1.1 or higher
+* Django Filer 1.7 or higher
+* Django Text CKEditor 3.1 or higher
 
 Make sure `django Filer <http://django-filer.readthedocs.io/en/latest/installation.html>`_
 and `django CMS Text CKEditor <https://github.com/divio/djangocms-text-ckeditor>`_
@@ -162,7 +159,9 @@ for now only the following can be changed::
         ('custom', _('Custom')),
     )
 
-Please see their code references for more details.
+Please be aware that this package does not support djangocms-text-ckeditor's
+`Drag & Drop Images <https://github.com/divio/djangocms-text-ckeditor/#drag--drop-images>`_
+so be sure to set ``TEXT_SAVE_IMAGE_FUNCTION = None``.
 
 
 Running Tests
@@ -175,6 +174,8 @@ You can run tests by executing::
     pip install -r tests/requirements.txt
     python setup.py test
 
+To run the frontend make sure to use **node 10.x**.
+
 
 .. |pypi| image:: https://badge.fury.io/py/djangocms-bootstrap4.svg
     :target: http://badge.fury.io/py/djangocms-bootstrap4
@@ -183,9 +184,9 @@ You can run tests by executing::
 .. |coverage| image:: https://codecov.io/gh/divio/djangocms-bootstrap4/branch/master/graph/badge.svg
     :target: https://codecov.io/gh/divio/djangocms-bootstrap4
 
-.. |python| image:: https://img.shields.io/badge/python-2.7%20%7C%203.4+-blue.svg
+.. |python| image:: https://img.shields.io/badge/python-3.5+-blue.svg
     :target: https://pypi.org/project/djangocms-bootstrap4/
-.. |django| image:: https://img.shields.io/badge/django-1.11%20%7C%202.2%20%7C%203.0-blue.svg
+.. |django| image:: https://img.shields.io/badge/django-2.2,%203.0,%203.1-blue.svg
     :target: https://www.djangoproject.com/
-.. |djangocms| image:: https://img.shields.io/badge/django%20CMS-3.4%2B-blue.svg
+.. |djangocms| image:: https://img.shields.io/badge/django%20CMS-3.7%2B-blue.svg
     :target: https://www.django-cms.org/

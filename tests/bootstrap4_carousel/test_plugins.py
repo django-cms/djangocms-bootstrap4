@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from cms.api import add_plugin
 from cms.test_utils.testcases import CMSTestCase
 
@@ -13,11 +12,11 @@ from ..helpers import get_filer_image
 class B4CarouselPluginTestCase(B4TestFixture, CMSTestCase):
 
     def setUp(self):
-        super(B4CarouselPluginTestCase, self).setUp()
+        super().setUp()
         self.image = get_filer_image()
 
     def tearDown(self):
-        super(B4CarouselPluginTestCase, self).tearDown()
+        super().tearDown()
         self.image.delete()
 
     def test_carousel_plugin(self):

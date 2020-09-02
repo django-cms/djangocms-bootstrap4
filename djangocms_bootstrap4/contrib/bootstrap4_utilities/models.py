@@ -1,12 +1,7 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from cms.models import CMSPlugin
-
-from six import python_2_unicode_compatible
 
 from djangocms_bootstrap4.constants import DEVICE_CHOICES
 from djangocms_bootstrap4.fields import AttributesField, TagTypeField
@@ -16,7 +11,6 @@ from .constants import (
 )
 
 
-@python_2_unicode_compatible
 class Bootstrap4Spacing(CMSPlugin):
     """
     Utilities > "Spacing" Plugin

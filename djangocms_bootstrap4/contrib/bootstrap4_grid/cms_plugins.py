@@ -1,7 +1,4 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
@@ -48,7 +45,7 @@ class Bootstrap4GridContainerPlugin(CMSPluginBase):
         ])
         instance.attributes['class'] = classes
 
-        return super(Bootstrap4GridContainerPlugin, self).render(
+        return super().render(
             context, instance, placeholder
         )
 
@@ -84,7 +81,7 @@ class Bootstrap4GridRowPlugin(CMSPluginBase):
     ]
 
     def save_model(self, request, obj, form, change):
-        super(Bootstrap4GridRowPlugin, self).save_model(request, obj, form, change)
+        super().save_model(request, obj, form, change)
         data = form.cleaned_data
         for x in range(int(data['create']) if data['create'] is not None else 0):
             extra = {}
@@ -113,7 +110,7 @@ class Bootstrap4GridRowPlugin(CMSPluginBase):
         ])
         instance.attributes['class'] = classes
 
-        return super(Bootstrap4GridRowPlugin, self).render(
+        return super().render(
             context, instance, placeholder
         )
 
@@ -174,7 +171,7 @@ class Bootstrap4GridColumnPlugin(CMSPluginBase):
         ])
         instance.attributes['class'] = attr_classes
 
-        return super(Bootstrap4GridColumnPlugin, self).render(
+        return super().render(
             context, instance, placeholder
         )
 

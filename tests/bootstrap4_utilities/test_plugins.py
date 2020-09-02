@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from cms.api import add_plugin
 from cms.test_utils.testcases import CMSTestCase
 

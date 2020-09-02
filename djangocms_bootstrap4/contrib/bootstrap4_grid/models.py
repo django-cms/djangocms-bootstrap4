@@ -1,15 +1,10 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from functools import partial
 
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.utils.translation import ungettext
 
 from cms.models import CMSPlugin
-
-from six import python_2_unicode_compatible
 
 from djangocms_bootstrap4.constants import DEVICE_SIZES
 from djangocms_bootstrap4.fields import (
@@ -24,7 +19,6 @@ from .constants import (
 )
 
 
-@python_2_unicode_compatible
 class Bootstrap4GridContainer(CMSPlugin):
     """
     Layout > Grid: "Container" Plugin
@@ -54,7 +48,6 @@ class Bootstrap4GridContainer(CMSPlugin):
         return '({})'.format(text)
 
 
-@python_2_unicode_compatible
 class Bootstrap4GridRow(CMSPlugin):
     """
     Layout > Grid: "Row" Plugin
@@ -102,7 +95,6 @@ class Bootstrap4GridRow(CMSPlugin):
         return column_count_str
 
 
-@python_2_unicode_compatible
 class Bootstrap4GridColumn(CMSPlugin):
     """
     Layout > Grid: "Column" Plugin

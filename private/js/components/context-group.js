@@ -16,6 +16,7 @@ export default class ContextGroup extends ButtonGroup {
         this.options = options;
 
         if (options.takeClassesFromSelectValues) {
+            // eslint-disable-next-line
             this.options.classes = $(this.options.select)
                 .find('option')
                 .toArray()

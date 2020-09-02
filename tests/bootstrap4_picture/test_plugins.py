@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from cms.api import add_plugin
 from cms.test_utils.testcases import CMSTestCase
 
@@ -13,11 +12,11 @@ from ..helpers import get_filer_image
 class B4PicturePluginTestCase(B4TestFixture, CMSTestCase):
 
     def setUp(self):
-        super(B4PicturePluginTestCase, self).setUp()
+        super().setUp()
         self.image = get_filer_image()
 
     def tearDown(self):
-        super(B4PicturePluginTestCase, self).tearDown()
+        super().tearDown()
         self.image.delete()
 
     def test_plugin(self):
