@@ -24,6 +24,14 @@ class Bootstrap4Picture(AbstractPicture):
         default=False,
         help_text=_('Adds the .img-thumbnail class.'),
     )
+    picture_customclasses = models.CharField(
+        verbose_name=('Custom'),
+        default="",
+        help_text=_('Adds the extra space separated classes.'),
+        blank=True,
+        max_length=255
+    )
+
 
     class Meta:
         abstract = False
