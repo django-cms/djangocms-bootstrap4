@@ -28,6 +28,7 @@ class Bootstrap4PicturePlugin(PicturePlugin):
                 'picture',
                 'external_picture',
                 ('picture_fluid', 'picture_rounded', 'picture_thumbnail'),
+                'picture_customclasses',
             )
         }
     )
@@ -40,6 +41,9 @@ class Bootstrap4PicturePlugin(PicturePlugin):
             link_classes.append('rounded')
         if instance.picture_thumbnail:
             link_classes.append('img-thumbnail')
+        if instance.picture_customclasses:
+            link_classes.append(instance.picture_customclasses)
+
 
         classes = concat_classes(link_classes + [
             instance.attributes.get('class'),
