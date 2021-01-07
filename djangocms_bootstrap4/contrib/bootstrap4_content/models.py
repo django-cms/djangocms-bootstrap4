@@ -51,6 +51,11 @@ class Bootstrap4Blockquote(CMSPlugin):
         verbose_name=_('Cite'),
         blank=True,
     )
+    quote_origin_subtext = models.CharField(
+        verbose_name=_('Cite subtext'),
+        blank=True,
+        max_length=256,
+    )
     quote_alignment = models.CharField(
         verbose_name=_('Alignment'),
         choices=ALIGN_CHOICES,
