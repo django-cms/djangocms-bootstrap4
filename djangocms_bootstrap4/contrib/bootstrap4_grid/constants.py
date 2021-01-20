@@ -95,7 +95,7 @@ GRID_CONTAINER_VERTICAL_SPACING_EXTERNAL: GridContainerVerticalSpacingInternal =
 
 GRID_CONTAINER_HORIZONTAL_SPACING: GridContainerVerticalSpacingInternal = getattr(
     settings,
-    'DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_SPACING',
+    'DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_HORIZONTAL_SPACING',
     GridContainerVerticalSpacingInternal,
 )
 
