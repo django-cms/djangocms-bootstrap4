@@ -17,9 +17,6 @@ GRID_SIZE = getattr(
 
 
 class GridContainerType(Enum):
-    """
-    contains css classes
-    """
     DYNAMIC_WIDTH = 'container'
     FULL_WIDTH = 'container-fluid'
 
@@ -35,9 +32,10 @@ container_fieldsets_default = [
     (None, {
         'fields': (
             'name',
-            'width_internal',
+            'width',
             'background',
-            'spacing_vertical',
+            ('spacing_vertical_external', 'spacing_vertical_internal'),
+            'spacing_horizontal',
         ),
     }),
     (_('Advanced settings'), {
@@ -68,9 +66,6 @@ GRID_CONTAINER_WIDTH_INTERNAL: GridContainerWidthInternal = getattr(
 
 
 class GridContainerBackground(Enum):
-    """
-    contains css classes
-    """
     NONE = 'background-none'
 
 
@@ -81,17 +76,27 @@ GRID_CONTAINER_BACKGROUND: GridContainerBackground = getattr(
 )
 
 
-class GridContainerSpacing(Enum):
-    """
-    contains css classes
-    """
+class GridContainerVerticalSpacingInternal(Enum):
     NONE = 'none'
 
 
-GRID_CONTAINER_SPACING: GridContainerSpacing = getattr(
+GRID_CONTAINER_VERTICAL_SPACING_INTERNAL: GridContainerVerticalSpacingInternal = getattr(
+    settings,
+    'DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_VERTICAL_SPACING_INTERNAL',
+    GridContainerVerticalSpacingInternal,
+)
+
+
+GRID_CONTAINER_VERTICAL_SPACING_EXTERNAL: GridContainerVerticalSpacingInternal = getattr(
+    settings,
+    'DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_VERTICAL_SPACING_EXTERNAL',
+    GridContainerVerticalSpacingInternal,
+)
+
+GRID_CONTAINER_HORIZONTAL_SPACING: GridContainerVerticalSpacingInternal = getattr(
     settings,
     'DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_SPACING',
-    GridContainerSpacing,
+    GridContainerVerticalSpacingInternal,
 )
 
 

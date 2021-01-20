@@ -4,7 +4,6 @@ from cms.models import CMSPlugin
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext
-from djangocms_bootstrap4.contrib.bootstrap4_grid.constants import GRID_COLUMN_HORIZONTAL_ALIGNMENT_CHOICES
 from enumfields import Enum
 from enumfields import EnumField
 from six import python_2_unicode_compatible
@@ -14,15 +13,18 @@ from djangocms_bootstrap4.fields import AttributesField
 from djangocms_bootstrap4.fields import IntegerRangeField
 from djangocms_bootstrap4.fields import TagTypeField
 from djangocms_bootstrap4.helpers import mark_safe_lazy
-from .constants import GRID_COLUMN_ALIGNMENT_CHOICES
-from .constants import GRID_COLUMN_CHOICES
-from .constants import GRID_CONTAINER_BACKGROUND
-from .constants import GRID_CONTAINER_SPACING
-from .constants import GRID_CONTAINER_TYPE
-from .constants import GRID_CONTAINER_WIDTH_INTERNAL
-from .constants import GRID_ROW_HORIZONTAL_ALIGNMENT_CHOICES
-from .constants import GRID_ROW_VERTICAL_ALIGNMENT_CHOICES
-from .constants import GRID_SIZE
+from djangocms_bootstrap4.contrib.bootstrap4_grid.constants import GRID_COLUMN_HORIZONTAL_ALIGNMENT_CHOICES
+from djangocms_bootstrap4.contrib.bootstrap4_grid.constants import GRID_COLUMN_ALIGNMENT_CHOICES
+from djangocms_bootstrap4.contrib.bootstrap4_grid.constants import GRID_COLUMN_CHOICES
+from djangocms_bootstrap4.contrib.bootstrap4_grid.constants import GRID_CONTAINER_BACKGROUND
+from djangocms_bootstrap4.contrib.bootstrap4_grid.constants import GRID_CONTAINER_HORIZONTAL_SPACING
+from djangocms_bootstrap4.contrib.bootstrap4_grid.constants import GRID_CONTAINER_VERTICAL_SPACING_INTERNAL
+from djangocms_bootstrap4.contrib.bootstrap4_grid.constants import GRID_CONTAINER_VERTICAL_SPACING_EXTERNAL
+from djangocms_bootstrap4.contrib.bootstrap4_grid.constants import GRID_CONTAINER_TYPE
+from djangocms_bootstrap4.contrib.bootstrap4_grid.constants import GRID_CONTAINER_WIDTH_INTERNAL
+from djangocms_bootstrap4.contrib.bootstrap4_grid.constants import GRID_ROW_HORIZONTAL_ALIGNMENT_CHOICES
+from djangocms_bootstrap4.contrib.bootstrap4_grid.constants import GRID_ROW_VERTICAL_ALIGNMENT_CHOICES
+from djangocms_bootstrap4.contrib.bootstrap4_grid.constants import GRID_SIZE
 
 
 @python_2_unicode_compatible
@@ -42,10 +44,10 @@ class Bootstrap4GridContainer(CMSPlugin):
         verbose_name=_('External width'),
         max_length=255,
     )
-    width_internal = EnumField(
+    width = EnumField(
         GRID_CONTAINER_WIDTH_INTERNAL,
         default=GRID_CONTAINER_WIDTH_INTERNAL.FULL_WIDTH,
-        verbose_name=_('Internal content width'),
+        verbose_name=_('Width'),
         max_length=255,
     )
     background = EnumField(
@@ -54,10 +56,22 @@ class Bootstrap4GridContainer(CMSPlugin):
         verbose_name=_('Background'),
         max_length=255,
     )
-    spacing_vertical = EnumField(
-        GRID_CONTAINER_SPACING,
-        default=GRID_CONTAINER_SPACING.NONE,
-        verbose_name=_('Vertical spacing'),
+    spacing_vertical_external = EnumField(
+        GRID_CONTAINER_VERTICAL_SPACING_EXTERNAL,
+        default=GRID_CONTAINER_VERTICAL_SPACING_EXTERNAL.NONE,
+        verbose_name=_('Vertical external spacing'),
+        max_length=255,
+    )
+    spacing_vertical_internal = EnumField(
+        GRID_CONTAINER_VERTICAL_SPACING_INTERNAL,
+        default=GRID_CONTAINER_VERTICAL_SPACING_INTERNAL.NONE,
+        verbose_name=_('Vertical internal spacing'),
+        max_length=255,
+    )
+    spacing_horizontal = EnumField(
+        GRID_CONTAINER_HORIZONTAL_SPACING,
+        default=GRID_CONTAINER_HORIZONTAL_SPACING.NONE,
+        verbose_name=_('Horizontal spacing (padding)'),
         max_length=255,
     )
     tag_type = TagTypeField()
@@ -71,16 +85,16 @@ class Bootstrap4GridContainer(CMSPlugin):
         if self.name:
             desc += f'{self.name} '
 
-        is_width_internal_selected = self.width_internal != self._meta.get_field('width_internal').get_default()
+        is_width_selected = self.width != self._meta.get_field('width').get_default()
         is_background_selected = self.background != self._meta.get_field('background').get_default()
-        if is_background_selected or is_width_internal_selected:
+        if is_background_selected or is_width_selected:
             desc += '['
-            if is_background_selected and is_width_internal_selected:
-                desc += f'{self.background}, {self.width_internal}'
+            if is_background_selected and is_width_selected:
+                desc += f'{self.background}, {self.width}'
             elif is_background_selected:
                 desc += str(self.background)
-            elif is_width_internal_selected:
-                desc += str(self.width_internal)
+            elif is_width_selected:
+                desc += str(self.width)
             desc += ']'
 
         return desc

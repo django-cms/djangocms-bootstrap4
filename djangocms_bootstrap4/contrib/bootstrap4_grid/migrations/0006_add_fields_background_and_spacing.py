@@ -20,6 +20,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='bootstrap4gridcontainer',
             name='spacing',
-            field=enumfields.fields.EnumField(default='none', enum=djangocms_bootstrap4.contrib.bootstrap4_grid.constants.GridContainerSpacing, max_length=255, verbose_name='Spacing'),
+            field=enumfields.fields.EnumField(default='none', enum=djangocms_bootstrap4.contrib.bootstrap4_grid.constants.GridContainerVerticalSpacingInternal, max_length=255, verbose_name='Spacing'),
         ),
     ]
