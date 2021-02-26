@@ -25,6 +25,7 @@ class Bootstrap4CardPlugin(CMSPluginBase):
         'Bootstrap4LinkPlugin',
         'Bootstrap4ListGroupPlugin',
         'Bootstrap4PicturePlugin',
+        'Bootstrap4CollapseContainerPlugin',
     ]
 
     fieldsets = [
