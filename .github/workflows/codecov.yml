@@ -19,7 +19,7 @@ jobs:
         python-version: 3.9
     - name: Generate Report
       run: |
-        pip install coverage
+        pip install coverage wheel
         coverage run setup.py test
     - name: Upload Coverage to Codecov
       uses: codecov/codecov-action@v1
