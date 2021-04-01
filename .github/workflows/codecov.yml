@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: checkout@v2
       with:
-        fetch-depth: ‘2’
+        fetch-depth: '2'
 
     - name: Setup Python
       uses: actions/setup-python@master
