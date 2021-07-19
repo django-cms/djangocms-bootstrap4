@@ -191,6 +191,7 @@ class Bootstrap4GridColumn(CMSPlugin):
     horizontal_alignment = models.CharField(
         verbose_name=_('Horizontal alignment'),
         choices=GRID_COLUMN_HORIZONTAL_ALIGNMENT_CHOICES,
+        default=GRID_COLUMN_HORIZONTAL_ALIGNMENT_CHOICES[0][0],
         max_length=255,
     )
     tag_type = TagTypeField()
