@@ -28,11 +28,11 @@
     {% endwith %}
 
     {% if instance.carousel_controls %}
-        <a class="carousel-control-prev" href="#carousel-{{ instance.pk }}" role="button" data-slide="prev">
+        <a class="carousel-control-prev" href="#carousel-{{ instance.pk }}" role="button" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">{% trans "Previous" %}</span>
         </a>
-        <a class="carousel-control-next" href="#carousel-{{ instance.pk }}" role="button" data-slide="next">
+        <a class="carousel-control-next" href="#carousel-{{ instance.pk }}" role="button" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">{% trans "Next" %}</span>
         </a>
