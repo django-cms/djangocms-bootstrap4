@@ -9,7 +9,7 @@ from djangocms_bootstrap5.fields import AttributesField, TagTypeField
 class Bootstrap5Jumbotron(CMSPlugin):
     """
     Components > "Jumbotron" Plugin
-    https://getbootstrap.com/docs/4.0/components/jumbotron/
+    https://getbootstrap.com/docs/5.0/components/jumbotron/
     """
     fluid = models.BooleanField(
         verbose_name=_('Fluid'),

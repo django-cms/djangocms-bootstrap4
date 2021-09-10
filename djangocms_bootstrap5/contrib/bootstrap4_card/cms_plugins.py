@@ -11,11 +11,11 @@ from .models import Bootstrap5Card, Bootstrap5CardInner
 class Bootstrap5CardPlugin(CMSPluginBase):
     """
     Components > "Card" Plugin
-    https://getbootstrap.com/docs/4.0/components/card/
+    https://getbootstrap.com/docs/5.0/components/card/
     """
     model = Bootstrap5Card
     name = _('Card')
-    module = _('Bootstrap 4')
+    module = _('Bootstrap 5')
     render_template = 'djangocms_bootstrap5/card.html'
     change_form_template = 'djangocms_bootstrap5/admin/card.html'
     allow_children = True
@@ -68,11 +68,11 @@ class Bootstrap5CardPlugin(CMSPluginBase):
 class Bootstrap5CardInnerPlugin(CMSPluginBase):
     """
     Components > "Card - Inner" Plugin (Header, Footer, Body)
-    https://getbootstrap.com/docs/4.0/components/card/
+    https://getbootstrap.com/docs/5.0/components/card/
     """
     model = Bootstrap5CardInner
     name = _('Card inner')
-    module = _('Bootstrap 4')
+    module = _('Bootstrap 5')
     render_template = 'djangocms_bootstrap5/card.html'
     change_form_template = 'djangocms_bootstrap5/admin/card.html'
     allow_children = True

@@ -119,7 +119,7 @@ msgstr ""
 #: contrib/bootstrap5_tabs/cms_plugins.py:23
 #: contrib/bootstrap5_tabs/cms_plugins.py:58
 #: contrib/bootstrap5_utilities/cms_plugins.py:22
-msgid "Bootstrap 4"
+msgid "Bootstrap 5"
 msgstr ""
 
 #: contrib/bootstrap5_alerts/cms_plugins.py:34

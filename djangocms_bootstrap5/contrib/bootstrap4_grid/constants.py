@@ -2,7 +2,7 @@ from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 
 
-# The default grid size for Bootstrap 4 is 12. You can change this setting
+# The default grid size for Bootstrap 5 is 12. You can change this setting
 # to whatever layout you require. We suggest that the value is at
 # least devisable by 2, 3 and 4.
 GRID_SIZE = getattr(
@@ -11,8 +11,8 @@ GRID_SIZE = getattr(
     12,
 )
 
-# Bootstrap 4 provides 2 container types, .container and .container-fluid
-# https://getbootstrap.com/docs/4.0/layout/grid/#no-gutters
+# Bootstrap 5 provides 2 container types, .container and .container-fluid
+# https://getbootstrap.com/docs/5.0/layout/grid/#no-gutters
 GRID_CONTAINER_CHOICES = getattr(
     settings,
     'DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS',

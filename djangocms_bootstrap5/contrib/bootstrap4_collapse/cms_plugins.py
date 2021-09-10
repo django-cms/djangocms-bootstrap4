@@ -13,11 +13,11 @@ from .models import (
 class Bootstrap5CollapsePlugin(CMSPluginBase):
     """
     Component > "Collapse" Plugin
-    https://getbootstrap.com/docs/4.0/components/collapse/
+    https://getbootstrap.com/docs/5.0/components/collapse/
     """
     model = Bootstrap5Collapse
     name = _('Collapse')
-    module = _('Bootstrap 4')
+    module = _('Bootstrap 5')
     render_template = 'djangocms_bootstrap5/collapse.html'
     change_form_template = 'djangocms_bootstrap5/admin/collapse.html'
     allow_children = True
@@ -45,11 +45,11 @@ class Bootstrap5CollapsePlugin(CMSPluginBase):
 class Bootstrap5CollapseTriggerPlugin(CMSPluginBase):
     """
     Component > "Collapse" Plugin
-    https://getbootstrap.com/docs/4.0/components/collapse/
+    https://getbootstrap.com/docs/5.0/components/collapse/
     """
     model = Bootstrap5CollapseTrigger
     name = _('Collapse trigger')
-    module = _('Bootstrap 4')
+    module = _('Bootstrap 5')
     render_template = 'djangocms_bootstrap5/collapse-trigger.html'
     allow_children = True
     parent_classes = [
@@ -78,11 +78,11 @@ class Bootstrap5CollapseTriggerPlugin(CMSPluginBase):
 class Bootstrap5CollapseContainerPlugin(CMSPluginBase):
     """
     Component > "Collapse Container" Plugin
-    https://getbootstrap.com/docs/4.0/components/collapse/
+    https://getbootstrap.com/docs/5.0/components/collapse/
     """
     model = Bootstrap5CollapseContainer
     name = _('Collapse container')
-    module = _('Bootstrap 4')
+    module = _('Bootstrap 5')
     render_template = 'djangocms_bootstrap5/collapse-container.html'
     allow_children = True
     parent_classes = [

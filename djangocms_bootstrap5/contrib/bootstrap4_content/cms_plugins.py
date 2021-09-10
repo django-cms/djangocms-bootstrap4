@@ -12,11 +12,11 @@ from .models import Bootstrap5Blockquote, Bootstrap5Code, Bootstrap5Figure
 class Bootstrap5CodePlugin(CMSPluginBase):
     """
     Content > "Code" Plugin
-    https://getbootstrap.com/docs/4.0/content/code/
+    https://getbootstrap.com/docs/5.0/content/code/
     """
     model = Bootstrap5Code
     name = _('Code')
-    module = _('Bootstrap 4')
+    module = _('Bootstrap 5')
     form = Bootstrap5CodeForm
     render_template = 'djangocms_bootstrap5/code.html'
     change_form_template = 'djangocms_bootstrap5/admin/code.html'
@@ -41,11 +41,11 @@ class Bootstrap5CodePlugin(CMSPluginBase):
 class Bootstrap5BlockquotePlugin(CMSPluginBase):
     """
     Content > "Blockquote" Plugin
-    https://getbootstrap.com/docs/4.0/content/typography/#blockquotes
+    https://getbootstrap.com/docs/5.0/content/typography/#blockquotes
     """
     model = Bootstrap5Blockquote
     name = _('Blockquote')
-    module = _('Bootstrap 4')
+    module = _('Bootstrap 5')
     render_template = 'djangocms_bootstrap5/blockquote.html'
     change_form_template = 'djangocms_bootstrap5/admin/blockquote.html'
     text_enabled = True
@@ -82,11 +82,11 @@ class Bootstrap5BlockquotePlugin(CMSPluginBase):
 class Bootstrap5FigurePlugin(CMSPluginBase):
     """
     Content > "Figure" Plugin
-    https://getbootstrap.com/docs/4.0/content/figures/
+    https://getbootstrap.com/docs/5.0/content/figures/
     """
     model = Bootstrap5Figure
     name = _('Figure')
-    module = _('Bootstrap 4')
+    module = _('Bootstrap 5')
     render_template = 'djangocms_bootstrap5/figure.html'
     change_form_template = 'djangocms_bootstrap5/admin/figure.html'
     allow_children = True

@@ -14,7 +14,7 @@ from .constants import (
 class Bootstrap5Spacing(CMSPlugin):
     """
     Utilities > "Spacing" Plugin
-    https://getbootstrap.com/docs/4.0/utilities/spacing/
+    https://getbootstrap.com/docs/5.0/utilities/spacing/
     """
     space_property = models.CharField(
         verbose_name=_('Property'),
@@ -48,7 +48,7 @@ class Bootstrap5Spacing(CMSPlugin):
         return str(self.pk)
 
     def get_base_css_class(self):
-        # Source: https://getbootstrap.com/docs/4.0/utilities/spacing/#notation
+        # Source: https://getbootstrap.com/docs/5.0/utilities/spacing/#notation
         # [...] format {property}{sides}-{size} for xs and
         # {property}{sides}-{breakpoint}-{size} for sm, md, lg, and xl.
         if not self.space_device or self.space_device == 'xs':

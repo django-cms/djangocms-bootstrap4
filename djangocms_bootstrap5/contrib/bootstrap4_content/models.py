@@ -12,7 +12,7 @@ from .constants import CODE_TYPE_CHOICES
 class Bootstrap5Code(CMSPlugin):
     """
     Content > "Code" Plugin
-    https://getbootstrap.com/docs/4.0/content/code/
+    https://getbootstrap.com/docs/5.0/content/code/
     """
     code_content = models.TextField(
         verbose_name=_('Code'),
@@ -35,7 +35,7 @@ class Bootstrap5Code(CMSPlugin):
 class Bootstrap5Blockquote(CMSPlugin):
     """
     Content > "Blockquote" Plugin
-    https://getbootstrap.com/docs/4.0/content/typography/#blockquotes
+    https://getbootstrap.com/docs/5.0/content/typography/#blockquotes
     """
     quote_content = models.TextField(
         verbose_name=_('Quote'),
@@ -63,7 +63,7 @@ class Bootstrap5Blockquote(CMSPlugin):
 class Bootstrap5Figure(CMSPlugin):
     """
     Content > "Figure" Plugin
-    https://getbootstrap.com/docs/4.0/content/figures/
+    https://getbootstrap.com/docs/5.0/content/figures/
     """
     figure_caption = models.CharField(
         verbose_name=_('Caption'),

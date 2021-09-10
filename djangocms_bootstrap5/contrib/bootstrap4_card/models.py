@@ -24,7 +24,7 @@ CARD_TEXT_STYLES = COLOR_STYLE_CHOICES + (
 class Bootstrap5Card(CMSPlugin):
     """
     Components > "Card" Plugin
-    https://getbootstrap.com/docs/4.0/components/card/
+    https://getbootstrap.com/docs/5.0/components/card/
     """
     card_type = models.CharField(
         verbose_name=_('Card type'),
@@ -75,7 +75,7 @@ class Bootstrap5Card(CMSPlugin):
 class Bootstrap5CardInner(CMSPlugin):
     """
     Components > "Card - Inner" Plugin (Header, Footer, Body)
-    https://getbootstrap.com/docs/4.0/components/card/
+    https://getbootstrap.com/docs/5.0/components/card/
     """
     inner_type = models.CharField(
         verbose_name=_('Inner type'),

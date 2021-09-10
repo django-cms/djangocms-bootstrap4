@@ -15,13 +15,13 @@ from .models import Bootstrap5Link
 class Bootstrap5LinkPlugin(LinkPlugin):
     """
     Components > "Button" Plugin
-    https://getbootstrap.com/docs/4.0/components/buttons/
+    https://getbootstrap.com/docs/5.0/components/buttons/
     """
     model = Bootstrap5Link
     name = _('Link / Button')
     form = Bootstrap5LinkForm
     change_form_template = 'djangocms_bootstrap5/admin/link.html'
-    module = _('Bootstrap 4')
+    module = _('Bootstrap 5')
 
     fields = (
         ('name', 'link_type'),

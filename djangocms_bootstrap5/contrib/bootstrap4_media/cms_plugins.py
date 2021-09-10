@@ -15,7 +15,7 @@ class Bootstrap5MediaPlugin(CMSPluginBase):
     """
     model = Bootstrap5Media
     name = _('Media')
-    module = _('Bootstrap 4')
+    module = _('Bootstrap 5')
     render_template = 'djangocms_bootstrap5/media.html'
     change_form_template = 'djangocms_bootstrap5/admin/media.html'
     allow_children = True
@@ -49,7 +49,7 @@ class Bootstrap5MediaBodyPlugin(CMSPluginBase):
     """
     model = Bootstrap5MediaBody
     name = _('Media body')
-    module = _('Bootstrap 4')
+    module = _('Bootstrap 5')
     render_template = 'djangocms_bootstrap5/media-body.html'
     change_form_template = 'djangocms_bootstrap5/admin/media.html'
     allow_children = True

@@ -14,11 +14,11 @@ from .models import Bootstrap5Carousel, Bootstrap5CarouselSlide
 class Bootstrap5CarouselPlugin(CMSPluginBase):
     """
     Components > "Carousel" Plugin
-    https://getbootstrap.com/docs/4.0/components/carousel/
+    https://getbootstrap.com/docs/5.0/components/carousel/
     """
     model = Bootstrap5Carousel
     name = _('Carousel')
-    module = _('Bootstrap 4')
+    module = _('Bootstrap 5')
     allow_children = True
     child_classes = ['Bootstrap5CarouselSlidePlugin']
 
@@ -62,11 +62,11 @@ class Bootstrap5CarouselPlugin(CMSPluginBase):
 class Bootstrap5CarouselSlidePlugin(LinkPlugin):
     """
     Components > "Carousel Slide" Plugin
-    https://getbootstrap.com/docs/4.0/components/carousel/
+    https://getbootstrap.com/docs/5.0/components/carousel/
     """
     model = Bootstrap5CarouselSlide
     name = _('Carousel slide')
-    module = _('Bootstrap 4')
+    module = _('Bootstrap 5')
     allow_children = True
     parent_classes = ['Bootstrap5CarouselPlugin']
 

@@ -11,11 +11,11 @@ from .models import Bootstrap5ListGroup, Bootstrap5ListGroupItem
 class Bootstrap5ListGroupPlugin(CMSPluginBase):
     """
     Components > "List Group" Plugin
-    https://getbootstrap.com/docs/4.0/components/list-group/
+    https://getbootstrap.com/docs/5.0/components/list-group/
     """
     model = Bootstrap5ListGroup
     name = _('List group')
-    module = _('Bootstrap 4')
+    module = _('Bootstrap 5')
     render_template = 'djangocms_bootstrap5/list-group.html'
     change_form_template = 'djangocms_bootstrap5/admin/list-group.html'
     allow_children = True
@@ -55,11 +55,11 @@ class Bootstrap5ListGroupPlugin(CMSPluginBase):
 class Bootstrap5ListGroupItemPlugin(CMSPluginBase):
     """
     Components > "List Group Item" Plugin
-    https://getbootstrap.com/docs/4.0/components/list-group/
+    https://getbootstrap.com/docs/5.0/components/list-group/
     """
     model = Bootstrap5ListGroupItem
     name = _('List item')
-    module = _('Bootstrap 4')
+    module = _('Bootstrap 5')
     render_template = 'djangocms_bootstrap5/list-group-item.html'
     change_form_template = 'djangocms_bootstrap5/admin/list-group.html'
     allow_children = True

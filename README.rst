@@ -1,11 +1,11 @@
 ======================
-django CMS Bootstrap 4
+django CMS Bootstrap 5
 ======================
 
 |pypi| |build| |coverage|
 
-**django CMS Bootstrap 4** is a plugin bundle for django CMS providing several
-components from the popular `Bootstrap 4 <http://getbootstrap.com/>`_ library.
+**django CMS Bootstrap 5** is a plugin bundle for django CMS providing several
+components from the popular `Bootstrap 5 <http://getbootstrap.com/>`_ library.
 
 This addon is compatible with `Divio Cloud <http://divio.com>`_ and is also available on the
 `django CMS Marketplace <https://marketplace.django-cms.org/en/addons/browse/djangocms-bootstrap5/>`_
@@ -79,36 +79,36 @@ For a manual install:
 Configuration
 -------------
 
-django CMS Bootstrap 4 **utilises** the following django CMS plugins:
+django CMS Bootstrap 5 **utilises** the following django CMS plugins:
 
 * **django CMS Link**: `Link <https://github.com/divio/djangocms-link/>`_
 * **django CMS Picture**: `Picture <https://github.com/divio/djangocms-picture/>`_
 * **django CMS Icon**: `Icon <https://github.com/divio/djangocms-icon>`_
 
-It provides the following **standard** Bootstrap 4 components:
+It provides the following **standard** Bootstrap 5 components:
 
-* `Alerts <https://getbootstrap.com/docs/4.0/components/alerts/>`_
-* `Badge <https://getbootstrap.com/docs/4.0/components/badge/>`_
-* `Card <https://getbootstrap.com/docs/4.0/components/card/>`_
-* `Carousel <https://getbootstrap.com/docs/4.0/components/carousel/>`_
-* `Collapse <https://getbootstrap.com/docs/4.0/components/collapse/>`_
-* `Content (Blockquote, Code, Figure) <https://getbootstrap.com/docs/4.0/content/>`_
-* `Grid (Container, Row, Column) <https://getbootstrap.com/docs/4.0/layout/grid/>`_
-* `Jumbotron <https://getbootstrap.com/docs/4.0/components/jumbotron/>`_
-* `Link / Button <https://getbootstrap.com/docs/4.0/components/buttons/>`_
-* `List group <https://getbootstrap.com/docs/4.0/components/list-group/>`_
-* `Media <https://getbootstrap.com/docs/4.0/layout/media-object/>`_
-* `Picture / Image <https://getbootstrap.com/docs/4.0/content/images/>`_
-* `Tabs <https://getbootstrap.com/docs/4.0/components/navs/#tabs>`_
-* `Utilities (Spacing) <https://getbootstrap.com/docs/4.0/utilities/>`_
+* `Alerts <https://getbootstrap.com/docs/5.0/components/alerts/>`_
+* `Badge <https://getbootstrap.com/docs/5.0/components/badge/>`_
+* `Card <https://getbootstrap.com/docs/5.0/components/card/>`_
+* `Carousel <https://getbootstrap.com/docs/5.0/components/carousel/>`_
+* `Collapse <https://getbootstrap.com/docs/5.0/components/collapse/>`_
+* `Content (Blockquote, Code, Figure) <https://getbootstrap.com/docs/5.0/content/>`_
+* `Grid (Container, Row, Column) <https://getbootstrap.com/docs/5.0/layout/grid/>`_
+* `Jumbotron <https://getbootstrap.com/docs/5.0/components/jumbotron/>`_
+* `Link / Button <https://getbootstrap.com/docs/5.0/components/buttons/>`_
+* `List group <https://getbootstrap.com/docs/5.0/components/list-group/>`_
+* `Media <https://getbootstrap.com/docs/5.0/layout/media-object/>`_
+* `Picture / Image <https://getbootstrap.com/docs/5.0/content/images/>`_
+* `Tabs <https://getbootstrap.com/docs/5.0/components/navs/#tabs>`_
+* `Utilities (Spacing) <https://getbootstrap.com/docs/5.0/utilities/>`_
 
-django CMS Bootstrap 4 **does not** add the styles or javascript files to your frontend, these need to be added at your discretion.
+django CMS Bootstrap 5 **does not** add the styles or javascript files to your frontend, these need to be added at your discretion.
 
 
 Settings
 ~~~~~~~~
 
-There are various settings possible on django CMS Bootstrap 4, to restrict them
+There are various settings possible on django CMS Bootstrap 5, to restrict them
 for now only the following can be changed::
 
     DJANGOCMS_BOOTSTRAP4_TAG_CHOICES = ['div', 'section', 'article', 'header', 'footer', 'aside']

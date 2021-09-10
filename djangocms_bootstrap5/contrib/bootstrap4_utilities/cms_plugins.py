@@ -11,11 +11,11 @@ from .models import Bootstrap5Spacing
 class Bootstrap5SpacingPlugin(CMSPluginBase):
     """
     Components > "Card" Plugin
-    https://getbootstrap.com/docs/4.0/components/card/
+    https://getbootstrap.com/docs/5.0/components/card/
     """
     model = Bootstrap5Spacing
     name = _('Spacing')
-    module = _('Bootstrap 4')
+    module = _('Bootstrap 5')
     render_template = 'djangocms_bootstrap5/spacing.html'
     change_form_template = 'djangocms_bootstrap5/admin/spacing.html'
     allow_children = True

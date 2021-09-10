@@ -15,11 +15,11 @@ from .models import (
 class Bootstrap5GridContainerPlugin(CMSPluginBase):
     """
     Layout > Grid: "Container" Plugin
-    https://getbootstrap.com/docs/4.0/layout/grid/
+    https://getbootstrap.com/docs/5.0/layout/grid/
     """
     model = Bootstrap5GridContainer
     name = _('Container')
-    module = _('Bootstrap 4')
+    module = _('Bootstrap 5')
     render_template = 'djangocms_bootstrap5/grid_container.html'
     allow_children = True
 
@@ -53,11 +53,11 @@ class Bootstrap5GridContainerPlugin(CMSPluginBase):
 class Bootstrap5GridRowPlugin(CMSPluginBase):
     """
     Layout > Grid: "Row" Plugin
-    https://getbootstrap.com/docs/4.0/layout/grid/
+    https://getbootstrap.com/docs/5.0/layout/grid/
     """
     model = Bootstrap5GridRow
     name = _('Row')
-    module = _('Bootstrap 4')
+    module = _('Bootstrap 5')
     form = Bootstrap5GridRowForm
     change_form_template = 'djangocms_bootstrap5/admin/grid_row.html'
     render_template = 'djangocms_bootstrap5/grid_row.html'
@@ -118,18 +118,18 @@ class Bootstrap5GridRowPlugin(CMSPluginBase):
 class Bootstrap5GridColumnPlugin(CMSPluginBase):
     """
     Layout > Grid: "Column" Plugin
-    https://getbootstrap.com/docs/4.0/layout/grid/
+    https://getbootstrap.com/docs/5.0/layout/grid/
     """
     model = Bootstrap5GridColumn
     name = _('Column')
-    module = _('Bootstrap 4')
+    module = _('Bootstrap 5')
     form = Bootstrap5GridColumnForm
     change_form_template = 'djangocms_bootstrap5/admin/grid_column.html'
     render_template = 'djangocms_bootstrap5/grid_column.html'
     allow_children = True
     require_parent = True
     # TODO it should allow for the responsive utilitiy class
-    # https://getbootstrap.com/docs/4.0/layout/grid/#column-resets
+    # https://getbootstrap.com/docs/5.0/layout/grid/#column-resets
     parent_classes = ['Bootstrap5GridRowPlugin']
 
     fieldsets = [

@@ -72,8 +72,8 @@ class Migration(migrations.Migration):
             name='Bootstrap5GridRow',
             fields=[
                 ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='bootstrap5_grid_bootstrap5gridrow', serialize=False, to='cms.CMSPlugin')),
-                ('vertical_alignment', models.CharField(blank=True, choices=GRID_ROW_VERTICAL_ALIGNMENT_CHOICES, help_text='Read more in the <a href="https://getbootstrap.com/docs/4.0/layout/grid/#vertical-alignment" target="_blank">documentation</a>.', max_length=255, verbose_name='Vertical alignment')),
-                ('horizontal_alignment', models.CharField(blank=True, choices=GRID_ROW_HORIZONTAL_ALIGNMENT_CHOICES, help_text='Read more in the <a href="https://getbootstrap.com/docs/4.0/layout/grid/#horizontal-alignment" target="_blank">documentation</a>.', max_length=255, verbose_name='Horizontal alignment')),
+                ('vertical_alignment', models.CharField(blank=True, choices=GRID_ROW_VERTICAL_ALIGNMENT_CHOICES, help_text='Read more in the <a href="https://getbootstrap.com/docs/5.0/layout/grid/#vertical-alignment" target="_blank">documentation</a>.', max_length=255, verbose_name='Vertical alignment')),
+                ('horizontal_alignment', models.CharField(blank=True, choices=GRID_ROW_HORIZONTAL_ALIGNMENT_CHOICES, help_text='Read more in the <a href="https://getbootstrap.com/docs/5.0/layout/grid/#horizontal-alignment" target="_blank">documentation</a>.', max_length=255, verbose_name='Horizontal alignment')),
                 ('gutters', models.BooleanField(default=False, help_text='Removes the marginal gutters from the grid.', verbose_name='Remove gutters')),
                 ('tag_type', djangocms_bootstrap5.fields.TagTypeField(choices=TAG_CHOICES, default=TAG_CHOICES[0][0], help_text='Select the HTML tag to be used.', max_length=255, verbose_name='Tag type')),
                 ('attributes', djangocms_bootstrap5.fields.AttributesField(blank=True, default=dict, verbose_name='Attributes')),

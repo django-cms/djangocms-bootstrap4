@@ -11,11 +11,11 @@ from .models import Bootstrap5Jumbotron
 class Bootstrap5JumbotronPlugin(CMSPluginBase):
     """
     Components > "Jumbotron" Plugin
-    https://getbootstrap.com/docs/4.0/components/jumbotron/
+    https://getbootstrap.com/docs/5.0/components/jumbotron/
     """
     model = Bootstrap5Jumbotron
     name = _('Jumbotron')
-    module = _('Bootstrap 4')
+    module = _('Bootstrap 5')
     render_template = 'djangocms_bootstrap5/jumbotron.html'
     change_form_template = 'djangocms_bootstrap5/admin/jumbotron.html'
     allow_children = True

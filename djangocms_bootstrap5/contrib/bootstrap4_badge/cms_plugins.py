@@ -11,11 +11,11 @@ from .models import Bootstrap5Badge
 class Bootstrap5BadgePlugin(CMSPluginBase):
     """
     Components > "Badge" Plugin
-    https://getbootstrap.com/docs/4.0/components/badge/
+    https://getbootstrap.com/docs/5.0/components/badge/
     """
     model = Bootstrap5Badge
     name = _('Badge')
-    module = _('Bootstrap 4')
+    module = _('Bootstrap 5')
     render_template = 'djangocms_bootstrap5/badge.html'
     change_form_template = 'djangocms_bootstrap5/admin/badge.html'
     text_enabled = True

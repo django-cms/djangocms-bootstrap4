@@ -10,7 +10,7 @@ from djangocms_bootstrap5.fields import AttributesField, TagTypeField
 class Bootstrap5Alerts(CMSPlugin):
     """
     Components > "Alerts" Plugin
-    https://getbootstrap.com/docs/4.0/components/alerts/
+    https://getbootstrap.com/docs/5.0/components/alerts/
     """
     alert_context = models.CharField(
         verbose_name=_('Context'),

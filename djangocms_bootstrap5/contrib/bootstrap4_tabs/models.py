@@ -14,7 +14,7 @@ from .constants import (
 class Bootstrap5Tab(CMSPlugin):
     """
     Components > "Navs - Tab" Plugin
-    https://getbootstrap.com/docs/4.0/components/navs/
+    https://getbootstrap.com/docs/5.0/components/navs/
     """
     template = models.CharField(
         verbose_name=_('Template'),
@@ -64,7 +64,7 @@ class Bootstrap5Tab(CMSPlugin):
 class Bootstrap5TabItem(CMSPlugin):
     """
     Components > "Navs - Tab Item" Plugin
-    https://getbootstrap.com/docs/4.0/components/navs/
+    https://getbootstrap.com/docs/5.0/components/navs/
     """
     tab_title = models.CharField(
         verbose_name=_('Tab title'),

@@ -15,13 +15,13 @@ $(() => {
     if ($('.djangocms-bootstrap5-row').length) {
         const static_url = $('.djangocms-bootstrap5-row').data().static;
 
-        // Bootstrap 4 Grid Row - Vertical Alignment
+        // Bootstrap 5 Grid Row - Vertical Alignment
         new ButtonGroup({
             static: static_url,
             select: '#id_vertical_alignment',
             icons: ['align-reset', 'flex-align-start', 'flex-align-center', 'flex-align-end'],
         });
-        // Bootstrap 4 Grid Row - Horizontal Alignment
+        // Bootstrap 5 Grid Row - Horizontal Alignment
         new ButtonGroup({
             static: static_url,
             select: '#id_horizontal_alignment',
@@ -39,13 +39,13 @@ $(() => {
     if (column.length) {
         const static_url = $('.djangocms-bootstrap5-column').data().static;
 
-        // Bootstrap 4 Grid Column - Alignment
+        // Bootstrap 5 Grid Column - Alignment
         new ButtonGroup({
             select: '#id_column_alignment',
             icons: ['align-reset', 'flex-self-start', 'flex-self-center', 'flex-self-end'],
             static: static_url,
         });
-        // Bootstrap 4 Grid Column - Reponsive Settings
+        // Bootstrap 5 Grid Column - Reponsive Settings
         new GridLayout({
             sizes: column.data().sizes,
             rows: column.data().rows,

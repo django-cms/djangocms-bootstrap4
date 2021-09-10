@@ -10,7 +10,7 @@ from djangocms_bootstrap5.fields import AttributesField
 class Bootstrap5Badge(CMSPlugin):
     """
     Components > "Badge" Plugin
-    https://getbootstrap.com/docs/4.0/components/badge/
+    https://getbootstrap.com/docs/5.0/components/badge/
     """
     badge_text = models.CharField(
         verbose_name=_('Badge text'),

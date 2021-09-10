@@ -48,7 +48,7 @@ setup(
     author_email='info@divio.ch',
     url='https://github.com/divio/djangocms-bootstrap5',
     license='BSD-3-Clause',
-    description='Adds Bootstrap 4 components as plugins.',
+    description='Adds Bootstrap 5 components as plugins.',
     long_description=open('README.rst').read(),
     packages=find_packages(),
     include_package_data=True,

@@ -7,7 +7,7 @@ from djangocms_picture.models import AbstractPicture
 class Bootstrap5Picture(AbstractPicture):
     """
     Content > "Image" Plugin
-    https://getbootstrap.com/docs/4.0/content/images/
+    https://getbootstrap.com/docs/5.0/content/images/
     """
     picture_fluid = models.BooleanField(
         verbose_name=_('Responsive'),

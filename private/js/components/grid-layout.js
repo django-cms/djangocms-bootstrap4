@@ -60,11 +60,11 @@ export default class GridLayout {
             </div>
         `;
         let links = [
-            'https://getbootstrap.com/docs/4.0/layout/grid/#grid-options',
-            'https://getbootstrap.com/docs/4.0/layout/grid/#reordering',
-            'https://getbootstrap.com/docs/4.0/layout/grid/#offsetting-columns',
-            'https://getbootstrap.com/docs/4.0/layout/grid/#offsetting-columns',
-            'https://getbootstrap.com/docs/4.0/layout/grid/#offsetting-columns',
+            'https://getbootstrap.com/docs/5.0/layout/grid/#grid-options',
+            'https://getbootstrap.com/docs/5.0/layout/grid/#reordering',
+            'https://getbootstrap.com/docs/5.0/layout/grid/#offsetting-columns',
+            'https://getbootstrap.com/docs/5.0/layout/grid/#offsetting-columns',
+            'https://getbootstrap.com/docs/5.0/layout/grid/#offsetting-columns',
         ];
 
         container.toArray().forEach(function (item, index) {

@@ -12,7 +12,7 @@ from .constants import LISTGROUP_STATE_CHOICES
 class Bootstrap5ListGroup(CMSPlugin):
     """
     Components > "List Group" Plugin
-    https://getbootstrap.com/docs/4.0/components/list-group/
+    https://getbootstrap.com/docs/5.0/components/list-group/
     """
     list_group_flush = models.BooleanField(
         verbose_name=_('List group flush'),
@@ -35,7 +35,7 @@ class Bootstrap5ListGroup(CMSPlugin):
 class Bootstrap5ListGroupItem(CMSPlugin):
     """
     Components > "List Group Ite" Plugin
-    https://getbootstrap.com/docs/4.0/components/list-group/
+    https://getbootstrap.com/docs/5.0/components/list-group/
     """
     list_context = models.CharField(
         verbose_name=_('Context'),

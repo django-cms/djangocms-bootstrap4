@@ -11,11 +11,11 @@ from .models import Bootstrap5Alerts
 class Bootstrap5AlertsPlugin(CMSPluginBase):
     """
     Components > "Alerts" Plugin
-    https://getbootstrap.com/docs/4.0/components/alerts/
+    https://getbootstrap.com/docs/5.0/components/alerts/
     """
     model = Bootstrap5Alerts
     name = _('Alert')
-    module = _('Bootstrap 4')
+    module = _('Bootstrap 5')
     render_template = 'djangocms_bootstrap5/alerts.html'
     change_form_template = 'djangocms_bootstrap5/admin/alerts.html'
     allow_children = True

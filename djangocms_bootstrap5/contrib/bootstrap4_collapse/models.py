@@ -17,7 +17,7 @@ from djangocms_bootstrap5.fields import AttributesField, TagTypeField
 class Bootstrap5Collapse(CMSPlugin):
     """
     Component > "Collapse" Plugin
-    https://getbootstrap.com/docs/4.0/components/collapse/
+    https://getbootstrap.com/docs/5.0/components/collapse/
     """
     siblings = models.CharField(
         verbose_name=_('Siblings'),
@@ -40,7 +40,7 @@ class Bootstrap5Collapse(CMSPlugin):
 class Bootstrap5CollapseTrigger(CMSPlugin):
     """
     Component > "Collapse Trigger" Plugin
-    https://getbootstrap.com/docs/4.0/components/collapse/
+    https://getbootstrap.com/docs/5.0/components/collapse/
     """
     identifier = models.SlugField(
         verbose_name=_('Unique identifier'),
@@ -66,7 +66,7 @@ class Bootstrap5CollapseTrigger(CMSPlugin):
 class Bootstrap5CollapseContainer(CMSPlugin):
     """
     Component > "Collapse Container" Plugin
-    https://getbootstrap.com/docs/4.0/components/collapse/
+    https://getbootstrap.com/docs/5.0/components/collapse/
     """
     identifier = models.SlugField(
         verbose_name=_('Unique identifier'),

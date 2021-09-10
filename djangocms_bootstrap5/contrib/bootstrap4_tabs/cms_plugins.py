@@ -12,11 +12,11 @@ from .models import Bootstrap5Tab, Bootstrap5TabItem
 class Bootstrap5TabPlugin(CMSPluginBase):
     """
     Components > "Navs - Tab" Plugin
-    https://getbootstrap.com/docs/4.0/components/navs/
+    https://getbootstrap.com/docs/5.0/components/navs/
     """
     model = Bootstrap5Tab
     name = _('Tabs')
-    module = _('Bootstrap 4')
+    module = _('Bootstrap 5')
     change_form_template = 'djangocms_bootstrap5/admin/tabs.html'
     allow_children = True
     child_classes = ['Bootstrap5TabItemPlugin']
@@ -47,11 +47,11 @@ class Bootstrap5TabPlugin(CMSPluginBase):
 class Bootstrap5TabItemPlugin(CMSPluginBase):
     """
     Components > "Navs - Tab Item" Plugin
-    https://getbootstrap.com/docs/4.0/components/navs/
+    https://getbootstrap.com/docs/5.0/components/navs/
     """
     model = Bootstrap5TabItem
     name = _('Tab item')
-    module = _('Bootstrap 4')
+    module = _('Bootstrap 5')
     change_form_template = 'djangocms_bootstrap5/admin/tabs.html'
     allow_children = True
     parent_classes = ['Bootstrap5TabPlugin']

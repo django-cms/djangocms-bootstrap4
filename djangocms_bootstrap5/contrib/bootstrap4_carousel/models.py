@@ -21,7 +21,7 @@ from .constants import (
 class Bootstrap5Carousel(CMSPlugin):
     """
     Components > "Carousel" Plugin
-    https://getbootstrap.com/docs/4.0/components/carousel/
+    https://getbootstrap.com/docs/5.0/components/carousel/
     """
     template = models.CharField(
         verbose_name=_('Template'),
@@ -110,7 +110,7 @@ class Bootstrap5Carousel(CMSPlugin):
 class Bootstrap5CarouselSlide(AbstractLink):
     """
     Components > "Slide" Plugin
-    https://getbootstrap.com/docs/4.0/components/carousel/
+    https://getbootstrap.com/docs/5.0/components/carousel/
     """
     carousel_image = FilerImageField(
         verbose_name=_('Slide image'),

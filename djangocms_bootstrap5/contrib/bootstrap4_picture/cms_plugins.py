@@ -14,12 +14,12 @@ from .models import Bootstrap5Picture
 class Bootstrap5PicturePlugin(PicturePlugin):
     """
     Content > "Image" Plugin
-    https://getbootstrap.com/docs/4.0/content/images/
+    https://getbootstrap.com/docs/5.0/content/images/
     """
     model = Bootstrap5Picture
     name = _('Picture / Image')
     change_form_template = 'djangocms_bootstrap5/admin/picture.html'
-    module = _('Bootstrap 4')
+    module = _('Bootstrap 5')
 
     fieldsets = copy.deepcopy(PicturePlugin.fieldsets)
     fieldsets[0] = (

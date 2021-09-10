@@ -18,7 +18,7 @@ COLOR_STYLE_CHOICES = (
 class Bootstrap5Link(AbstractLink):
     """
     Components > "Button" Plugin
-    https://getbootstrap.com/docs/4.0/components/buttons/
+    https://getbootstrap.com/docs/5.0/components/buttons/
     """
     link_type = models.CharField(
         verbose_name=_('Type'),

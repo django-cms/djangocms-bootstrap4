@@ -119,8 +119,8 @@ msgstr "Alert"
 #: contrib/bootstrap5_tabs/cms_plugins.py:23
 #: contrib/bootstrap5_tabs/cms_plugins.py:58
 #: contrib/bootstrap5_utilities/cms_plugins.py:22
-msgid "Bootstrap 4"
-msgstr "Bootstrap 4"
+msgid "Bootstrap 5"
+msgstr "Bootstrap 5"
 
 #: contrib/bootstrap5_alerts/cms_plugins.py:34
 #: contrib/bootstrap5_badge/cms_plugins.py:35

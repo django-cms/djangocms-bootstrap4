@@ -22,7 +22,7 @@ from .constants import (
 class Bootstrap5GridContainer(CMSPlugin):
     """
     Layout > Grid: "Container" Plugin
-    https://getbootstrap.com/docs/4.0/layout/grid/
+    https://getbootstrap.com/docs/5.0/layout/grid/
     """
     container_type = models.CharField(
         verbose_name=_('Container type'),
@@ -51,7 +51,7 @@ class Bootstrap5GridContainer(CMSPlugin):
 class Bootstrap5GridRow(CMSPlugin):
     """
     Layout > Grid: "Row" Plugin
-    https://getbootstrap.com/docs/4.0/layout/grid/
+    https://getbootstrap.com/docs/5.0/layout/grid/
     """
     vertical_alignment = models.CharField(
         verbose_name=_('Vertical alignment'),
@@ -60,7 +60,7 @@ class Bootstrap5GridRow(CMSPlugin):
         max_length=255,
         help_text=mark_safe_lazy(_(
             'Read more in the <a href="{link}" target="_blank">documentation</a>.')
-                .format(link='https://getbootstrap.com/docs/4.0/layout/grid/#vertical-alignment')
+                .format(link='https://getbootstrap.com/docs/5.0/layout/grid/#vertical-alignment')
         ),
     )
     horizontal_alignment = models.CharField(
@@ -70,7 +70,7 @@ class Bootstrap5GridRow(CMSPlugin):
         max_length=255,
         help_text=mark_safe_lazy(_(
             'Read more in the <a href="{link}" target="_blank">documentation</a>.')
-                .format(link='https://getbootstrap.com/docs/4.0/layout/grid/#horizontal-alignment')
+                .format(link='https://getbootstrap.com/docs/5.0/layout/grid/#horizontal-alignment')
         ),
     )
     gutters = models.BooleanField(
@@ -98,7 +98,7 @@ class Bootstrap5GridRow(CMSPlugin):
 class Bootstrap5GridColumn(CMSPlugin):
     """
     Layout > Grid: "Column" Plugin
-    https://getbootstrap.com/docs/4.0/layout/grid/
+    https://getbootstrap.com/docs/5.0/layout/grid/
     """
     column_type = models.CharField(
         verbose_name=_('Column type'),
@@ -163,7 +163,7 @@ BooleanFieldPartial = partial(
     default=False,
 )
 
-# Loop through Bootstrap 4 device choices and generate
+# Loop through Bootstrap 5 device choices and generate
 # model fields to cover col-*, order-*, offset-*, etc.
 for size in DEVICE_SIZES:
     # Grid size
