@@ -17,7 +17,7 @@ export default class ButtonGroup {
         this.options = options;
         this.templates = {
             wrapper: (cls = '', buttons = '') => `
-                <div class="bootstrap4-button-group${cls}">
+                <div class="bootstrap5-button-group${cls}">
                     <div class="btn-group" role="group" aria-label="">
                         ${buttons}
                     </div>
@@ -79,7 +79,7 @@ export default class ButtonGroup {
             this.options.icons.length !== this.selectOptions.length) {
             throw new Error('Provided icons do not match options.');
         } else if (this.options.icons) {
-            cls = ' bootstrap4-button-group-icons';
+            cls = ' bootstrap5-button-group-icons';
         }
 
         const buttons = this.selectOptions.toArray().reduce((btns, selectOption, index) => {

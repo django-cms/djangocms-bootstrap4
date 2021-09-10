@@ -3,56 +3,56 @@ import warnings
 from cms.api import add_plugin
 from cms.test_utils.testcases import CMSTestCase
 
-from djangocms_bootstrap4.contrib.bootstrap4_grid.cms_plugins import (
-    Bootstrap4GridColumnPlugin, Bootstrap4GridContainerPlugin,
-    Bootstrap4GridRowPlugin,
+from djangocms_bootstrap5.contrib.bootstrap5_grid.cms_plugins import (
+    Bootstrap5GridColumnPlugin, Bootstrap5GridContainerPlugin,
+    Bootstrap5GridRowPlugin,
 )
 
-from ..fixtures import B4TestFixture
+from ..fixtures import B5TestFixture
 
 
-class B4GridPluginTestCase(B4TestFixture, CMSTestCase):
+class B5GridPluginTestCase(B5TestFixture, CMSTestCase):
 
     def test_container_plugin(self):
         plugin = add_plugin(
             placeholder=self.placeholder,
-            plugin_type=Bootstrap4GridContainerPlugin.__name__,
+            plugin_type=Bootstrap5GridContainerPlugin.__name__,
             language=self.language,
         )
         plugin.full_clean()
         self.assertEqual(
             plugin.plugin_type,
-            "Bootstrap4GridContainerPlugin",
+            "Bootstrap5GridContainerPlugin",
         )
 
     def test_grid_row_plugin(self):
         plugin = add_plugin(
             placeholder=self.placeholder,
-            plugin_type=Bootstrap4GridRowPlugin.__name__,
+            plugin_type=Bootstrap5GridRowPlugin.__name__,
             language=self.language,
         )
         plugin.full_clean()
         self.assertEqual(
             plugin.plugin_type,
-            "Bootstrap4GridRowPlugin",
+            "Bootstrap5GridRowPlugin",
         )
 
     def test_grid_column_plugin(self):
         plugin = add_plugin(
             placeholder=self.placeholder,
-            plugin_type=Bootstrap4GridColumnPlugin.__name__,
+            plugin_type=Bootstrap5GridColumnPlugin.__name__,
             language=self.language,
         )
         plugin.full_clean()
         self.assertEqual(
             plugin.plugin_type,
-            "Bootstrap4GridColumnPlugin",
+            "Bootstrap5GridColumnPlugin",
         )
 
     def test_plugin_structure(self):
         container = add_plugin(
             placeholder=self.placeholder,
-            plugin_type=Bootstrap4GridContainerPlugin.__name__,
+            plugin_type=Bootstrap5GridContainerPlugin.__name__,
             language=self.language,
         )
         self.page.publish(self.language)
@@ -64,7 +64,7 @@ class B4GridPluginTestCase(B4TestFixture, CMSTestCase):
         row = add_plugin(
             target=container,
             placeholder=self.placeholder,
-            plugin_type=Bootstrap4GridRowPlugin.__name__,
+            plugin_type=Bootstrap5GridRowPlugin.__name__,
             language=self.language,
         )
         self.page.publish(self.language)
@@ -77,7 +77,7 @@ class B4GridPluginTestCase(B4TestFixture, CMSTestCase):
         add_plugin(
             target=row,
             placeholder=self.placeholder,
-            plugin_type=Bootstrap4GridColumnPlugin.__name__,
+            plugin_type=Bootstrap5GridColumnPlugin.__name__,
             language=self.language,
             xs_col=12,
         )
@@ -91,7 +91,7 @@ class B4GridPluginTestCase(B4TestFixture, CMSTestCase):
         add_plugin(
             target=row,
             placeholder=self.placeholder,
-            plugin_type=Bootstrap4GridColumnPlugin.__name__,
+            plugin_type=Bootstrap5GridColumnPlugin.__name__,
             language=self.language,
         )
         self.page.publish(self.language)
@@ -103,7 +103,7 @@ class B4GridPluginTestCase(B4TestFixture, CMSTestCase):
     def test_row_plugin_creation(self):
         request_url = self.get_add_plugin_uri(
             placeholder=self.placeholder,
-            plugin_type=Bootstrap4GridRowPlugin.__name__,
+            plugin_type=Bootstrap5GridRowPlugin.__name__,
             language=self.language,
         )
         # create 5 column plugins

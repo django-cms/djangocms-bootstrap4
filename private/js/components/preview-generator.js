@@ -27,7 +27,7 @@ export default class PreviewGenerator {
             <span class="js-button"><span class="js-icon-left"></span><span class="js-button-text">${text}</span><span class="js-icon-right"></span></span>
         `;
         this.template = $(this.options.template(
-            'bootstrap4-button-group', this.options.title
+            'bootstrap5-button-group', this.options.title
         ));
         this.preview = this.template.find('.js-preview');
         this.preview.append(this.markup());

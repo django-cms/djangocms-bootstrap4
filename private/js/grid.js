@@ -12,8 +12,8 @@ import { iconTemplate } from 'components/templates'
 
 $(() => {
     // Row plugin
-    if ($('.djangocms-bootstrap4-row').length) {
-        const static_url = $('.djangocms-bootstrap4-row').data().static;
+    if ($('.djangocms-bootstrap5-row').length) {
+        const static_url = $('.djangocms-bootstrap5-row').data().static;
 
         // Bootstrap 4 Grid Row - Vertical Alignment
         new ButtonGroup({
@@ -35,9 +35,9 @@ $(() => {
     }
 
     // Column plugin
-    const column = $('.djangocms-bootstrap4-column');
+    const column = $('.djangocms-bootstrap5-column');
     if (column.length) {
-        const static_url = $('.djangocms-bootstrap4-column').data().static;
+        const static_url = $('.djangocms-bootstrap5-column').data().static;
 
         // Bootstrap 4 Grid Column - Alignment
         new ButtonGroup({

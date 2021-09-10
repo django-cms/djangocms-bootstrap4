@@ -1,19 +1,19 @@
 from cms.api import add_plugin
 from cms.test_utils.testcases import CMSTestCase
 
-from djangocms_bootstrap4.contrib.bootstrap4_media.cms_plugins import (
-    Bootstrap4MediaBodyPlugin, Bootstrap4MediaPlugin,
+from djangocms_bootstrap5.contrib.bootstrap5_media.cms_plugins import (
+    Bootstrap5MediaBodyPlugin, Bootstrap5MediaPlugin,
 )
 
-from ..fixtures import B4TestFixture
+from ..fixtures import B5TestFixture
 
 
-class B4MediaPluginTestCase(B4TestFixture, CMSTestCase):
+class B5MediaPluginTestCase(B5TestFixture, CMSTestCase):
 
     def test_media_plugin(self):
         plugin = add_plugin(
             placeholder=self.placeholder,
-            plugin_type=Bootstrap4MediaPlugin.__name__,
+            plugin_type=Bootstrap5MediaPlugin.__name__,
             language=self.language,
         )
         plugin.full_clean()
@@ -27,7 +27,7 @@ class B4MediaPluginTestCase(B4TestFixture, CMSTestCase):
     def test_media_body_plugin(self):
         plugin = add_plugin(
             placeholder=self.placeholder,
-            plugin_type=Bootstrap4MediaBodyPlugin.__name__,
+            plugin_type=Bootstrap5MediaBodyPlugin.__name__,
             language=self.language,
         )
         plugin.full_clean()

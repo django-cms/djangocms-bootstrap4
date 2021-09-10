@@ -1,13 +1,13 @@
 from django.test import TestCase
 
-from djangocms_bootstrap4.contrib.bootstrap4_carousel.models import (
-    Bootstrap4Carousel, Bootstrap4CarouselSlide,
+from djangocms_bootstrap5.contrib.bootstrap5_carousel.models import (
+    Bootstrap5Carousel, Bootstrap5CarouselSlide,
 )
 
 from ..helpers import get_filer_image
 
 
-class B4CarouselModelTestCase(TestCase):
+class B5CarouselModelTestCase(TestCase):
 
     def setUp(self):
         super().setUp()
@@ -18,7 +18,7 @@ class B4CarouselModelTestCase(TestCase):
         self.image.delete()
 
     def test_carousel_instance(self):
-        instance = Bootstrap4Carousel.objects.create()
+        instance = Bootstrap5Carousel.objects.create()
         self.assertEqual(str(instance), "1")
         self.assertEqual(
             instance.get_short_description(),
@@ -27,7 +27,7 @@ class B4CarouselModelTestCase(TestCase):
         )
 
     def test_carousel_slide_instance(self):
-        instance = Bootstrap4CarouselSlide.objects.create()
+        instance = Bootstrap5CarouselSlide.objects.create()
         instance.clean()
         self.assertEqual(str(instance), "1")
         self.assertEqual(instance.get_short_description(), "")

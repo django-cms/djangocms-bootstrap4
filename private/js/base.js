@@ -10,7 +10,7 @@ import ContextGroup from 'components/context-group';
 import PreviewGenerator from 'components/preview-generator';
 import ButtonGroup from 'components/button-group';
 
-window.djangoCMSBootstrap4 = {
+window.djangoCMSBootstrap5 = {
     $,
 };
 
@@ -26,12 +26,12 @@ $(() => {
     new ContextGroup({
         select: '#id_card_context',
         takeClassesFromSelectValues: true,
-        extraClass: 'bootstrap4-button-group-context-colors',
+        extraClass: 'bootstrap5-button-group-context-colors',
     });
     new ContextGroup({
         select: '#id_card_text_color',
         takeClassesFromSelectValues: true,
-        extraClass: 'bootstrap4-button-group-context-colors',
+        extraClass: 'bootstrap5-button-group-context-colors',
     });
     // simple buttons
     // CARD
@@ -50,21 +50,21 @@ $(() => {
     new ContextGroup({
         select: '#id_link_context',
         takeClassesFromSelectValues: true,
-        extraClass: 'bootstrap4-button-group-context-colors',
+        extraClass: 'bootstrap5-button-group-context-colors',
     });
     new ContextGroup({
         select: '#id_link_size',
         classes: [
             'btn-sm btn-secondary', 'btn-secondary', 'btn-secondary btn-lg',
         ],
-        extraClass: 'bootstrap4-button-group-context-size',
+        extraClass: 'bootstrap5-button-group-context-size',
     });
 
     // IMAGE PREVIEW
-    if ($('.djangocms-bootstrap4-link').length) {
+    if ($('.djangocms-bootstrap5-link').length) {
         new PreviewGenerator({
-            container: '.djangocms-bootstrap4-link',
-            title: $('.djangocms-bootstrap4-link').data().preview,
+            container: '.djangocms-bootstrap5-link',
+            title: $('.djangocms-bootstrap5-link').data().preview,
         });
     }
 
@@ -75,7 +75,7 @@ $(() => {
         $('#id_card_alignment').length ||
         $('#id_figure_alignment').length
     ) {
-        const static_url = $('.djangocms-bootstrap4').data('static');
+        const static_url = $('.djangocms-bootstrap5').data('static');
 
         // alignment
         new ButtonGroup({

@@ -1,15 +1,15 @@
 from cms.api import add_plugin
 from cms.test_utils.testcases import CMSTestCase
 
-from djangocms_bootstrap4.contrib.bootstrap4_carousel.cms_plugins import (
-    Bootstrap4CarouselPlugin, Bootstrap4CarouselSlidePlugin,
+from djangocms_bootstrap5.contrib.bootstrap5_carousel.cms_plugins import (
+    Bootstrap5CarouselPlugin, Bootstrap5CarouselSlidePlugin,
 )
 
-from ..fixtures import B4TestFixture
+from ..fixtures import B5TestFixture
 from ..helpers import get_filer_image
 
 
-class B4CarouselPluginTestCase(B4TestFixture, CMSTestCase):
+class B5CarouselPluginTestCase(B5TestFixture, CMSTestCase):
 
     def setUp(self):
         super().setUp()
@@ -22,7 +22,7 @@ class B4CarouselPluginTestCase(B4TestFixture, CMSTestCase):
     def test_carousel_plugin(self):
         plugin = add_plugin(
             placeholder=self.placeholder,
-            plugin_type=Bootstrap4CarouselPlugin.__name__,
+            plugin_type=Bootstrap5CarouselPlugin.__name__,
             language=self.language,
         )
         plugin.full_clean()
@@ -41,13 +41,13 @@ class B4CarouselPluginTestCase(B4TestFixture, CMSTestCase):
     def test_carousel_slide_plugin(self):
         row = add_plugin(
             placeholder=self.placeholder,
-            plugin_type=Bootstrap4CarouselPlugin.__name__,
+            plugin_type=Bootstrap5CarouselPlugin.__name__,
             language=self.language,
         )
         plugin = add_plugin(
             target=row,
             placeholder=self.placeholder,
-            plugin_type=Bootstrap4CarouselSlidePlugin.__name__,
+            plugin_type=Bootstrap5CarouselSlidePlugin.__name__,
             language=self.language,
             carousel_image=self.image,
         )
@@ -63,21 +63,21 @@ class B4CarouselPluginTestCase(B4TestFixture, CMSTestCase):
         # also testing multiply entries
         row = add_plugin(
             placeholder=self.placeholder,
-            plugin_type=Bootstrap4CarouselPlugin.__name__,
+            plugin_type=Bootstrap5CarouselPlugin.__name__,
             language=self.language,
             carousel_aspect_ratio="16x9",
         )
         add_plugin(
             target=row,
             placeholder=self.placeholder,
-            plugin_type=Bootstrap4CarouselSlidePlugin.__name__,
+            plugin_type=Bootstrap5CarouselSlidePlugin.__name__,
             language=self.language,
             carousel_image=self.image,
         )
         add_plugin(
             target=row,
             placeholder=self.placeholder,
-            plugin_type=Bootstrap4CarouselSlidePlugin.__name__,
+            plugin_type=Bootstrap5CarouselSlidePlugin.__name__,
             language=self.language,
             carousel_image=self.image,
         )

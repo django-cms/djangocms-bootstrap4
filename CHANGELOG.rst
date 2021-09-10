@@ -82,7 +82,7 @@ Changelog
 1.1.3 (2018-10-19)
 ==================
 
-* Adapt Bootstrap4Picture to reflect djangocms_picture.AbstractPicture changes regarding Responsive Images (#65)
+* Adapt Bootstrap5Picture to reflect djangocms_picture.AbstractPicture changes regarding Responsive Images (#65)
 
 
 1.1.2 (2018-10-05)

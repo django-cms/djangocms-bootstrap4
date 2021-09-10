@@ -1,24 +1,24 @@
 from django.test import TestCase
 
-from djangocms_bootstrap4.contrib.bootstrap4_grid.models import (
-    Bootstrap4GridColumn, Bootstrap4GridContainer, Bootstrap4GridRow,
+from djangocms_bootstrap5.contrib.bootstrap5_grid.models import (
+    Bootstrap5GridColumn, Bootstrap5GridContainer, Bootstrap5GridRow,
 )
 
 
-class B4GridModelTestCase(TestCase):
+class B5GridModelTestCase(TestCase):
 
     def test_grid_instance(self):
-        instance = Bootstrap4GridContainer.objects.create()
+        instance = Bootstrap5GridContainer.objects.create()
         self.assertEqual(str(instance), "1")
         self.assertEqual(instance.get_short_description(), "(Container)")
 
     def test_row_instance(self):
-        instance = Bootstrap4GridRow.objects.create()
+        instance = Bootstrap5GridRow.objects.create()
         self.assertEqual(str(instance), "1")
         self.assertEqual(instance.get_short_description(), "(0 columns)")
 
     def test_column_instance(self):
-        instance = Bootstrap4GridColumn.objects.create()
+        instance = Bootstrap5GridColumn.objects.create()
         self.assertEqual(str(instance), "1")
         self.assertEqual(instance.get_short_description(), "(auto) ")
         instance.xs_col = 12

@@ -1,6 +1,6 @@
 [run]
 branch = True
-source = djangocms_bootstrap4
+source = djangocms_bootstrap5
 omit =
     migrations/*
     tests/*

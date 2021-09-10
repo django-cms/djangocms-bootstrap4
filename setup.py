@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from setuptools import find_packages, setup
 
-from djangocms_bootstrap4 import __version__
+from djangocms_bootstrap5 import __version__
 
 
 REQUIREMENTS = [
@@ -42,11 +42,11 @@ CLASSIFIERS = [
 
 
 setup(
-    name='djangocms-bootstrap4',
+    name='djangocms-bootstrap5',
     version=__version__,
     author='Divio AG',
     author_email='info@divio.ch',
-    url='https://github.com/divio/djangocms-bootstrap4',
+    url='https://github.com/divio/djangocms-bootstrap5',
     license='BSD-3-Clause',
     description='Adds Bootstrap 4 components as plugins.',
     long_description=open('README.rst').read(),

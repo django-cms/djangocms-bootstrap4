@@ -7,21 +7,21 @@ HELPER_SETTINGS = {
         'djangocms_text_ckeditor',
         'djangocms_link',
         'djangocms_picture',
-        'djangocms_bootstrap4',
-        'djangocms_bootstrap4.contrib.bootstrap4_alerts',
-        'djangocms_bootstrap4.contrib.bootstrap4_badge',
-        'djangocms_bootstrap4.contrib.bootstrap4_card',
-        'djangocms_bootstrap4.contrib.bootstrap4_carousel',
-        'djangocms_bootstrap4.contrib.bootstrap4_collapse',
-        'djangocms_bootstrap4.contrib.bootstrap4_content',
-        'djangocms_bootstrap4.contrib.bootstrap4_grid',
-        'djangocms_bootstrap4.contrib.bootstrap4_jumbotron',
-        'djangocms_bootstrap4.contrib.bootstrap4_link',
-        'djangocms_bootstrap4.contrib.bootstrap4_listgroup',
-        'djangocms_bootstrap4.contrib.bootstrap4_media',
-        'djangocms_bootstrap4.contrib.bootstrap4_picture',
-        'djangocms_bootstrap4.contrib.bootstrap4_tabs',
-        'djangocms_bootstrap4.contrib.bootstrap4_utilities',
+        'djangocms_bootstrap5',
+        'djangocms_bootstrap5.contrib.bootstrap5_alerts',
+        'djangocms_bootstrap5.contrib.bootstrap5_badge',
+        'djangocms_bootstrap5.contrib.bootstrap5_card',
+        'djangocms_bootstrap5.contrib.bootstrap5_carousel',
+        'djangocms_bootstrap5.contrib.bootstrap5_collapse',
+        'djangocms_bootstrap5.contrib.bootstrap5_content',
+        'djangocms_bootstrap5.contrib.bootstrap5_grid',
+        'djangocms_bootstrap5.contrib.bootstrap5_jumbotron',
+        'djangocms_bootstrap5.contrib.bootstrap5_link',
+        'djangocms_bootstrap5.contrib.bootstrap5_listgroup',
+        'djangocms_bootstrap5.contrib.bootstrap5_media',
+        'djangocms_bootstrap5.contrib.bootstrap5_picture',
+        'djangocms_bootstrap5.contrib.bootstrap5_tabs',
+        'djangocms_bootstrap5.contrib.bootstrap5_utilities',
     ],
     'CMS_LANGUAGES': {
         1: [{
@@ -45,7 +45,7 @@ HELPER_SETTINGS = {
 
 def run():
     from app_helper import runner
-    runner.cms('djangocms_bootstrap4')
+    runner.cms('djangocms_bootstrap5')
 
 
 if __name__ == '__main__':

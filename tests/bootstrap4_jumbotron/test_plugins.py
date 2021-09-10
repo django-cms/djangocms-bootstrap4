@@ -1,19 +1,19 @@
 from cms.api import add_plugin
 from cms.test_utils.testcases import CMSTestCase
 
-from djangocms_bootstrap4.contrib.bootstrap4_jumbotron.cms_plugins import (
-    Bootstrap4JumbotronPlugin,
+from djangocms_bootstrap5.contrib.bootstrap5_jumbotron.cms_plugins import (
+    Bootstrap5JumbotronPlugin,
 )
 
-from ..fixtures import B4TestFixture
+from ..fixtures import B5TestFixture
 
 
-class B4JumbotronPluginTestCase(B4TestFixture, CMSTestCase):
+class B5JumbotronPluginTestCase(B5TestFixture, CMSTestCase):
 
     def test_plugin(self):
         plugin = add_plugin(
             placeholder=self.placeholder,
-            plugin_type=Bootstrap4JumbotronPlugin.__name__,
+            plugin_type=Bootstrap5JumbotronPlugin.__name__,
             language=self.language,
         )
         plugin.full_clean()
@@ -27,7 +27,7 @@ class B4JumbotronPluginTestCase(B4TestFixture, CMSTestCase):
         # fluid option
         plugin = add_plugin(
             placeholder=self.placeholder,
-            plugin_type=Bootstrap4JumbotronPlugin.__name__,
+            plugin_type=Bootstrap5JumbotronPlugin.__name__,
             language=self.language,
             fluid=True,
         )

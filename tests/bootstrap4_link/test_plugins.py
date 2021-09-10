@@ -1,19 +1,19 @@
 from cms.api import add_plugin
 from cms.test_utils.testcases import CMSTestCase
 
-from djangocms_bootstrap4.contrib.bootstrap4_link.cms_plugins import (
-    Bootstrap4LinkPlugin,
+from djangocms_bootstrap5.contrib.bootstrap5_link.cms_plugins import (
+    Bootstrap5LinkPlugin,
 )
 
-from ..fixtures import B4TestFixture
+from ..fixtures import B5TestFixture
 
 
-class B4LinkPluginTestCase(B4TestFixture, CMSTestCase):
+class B5LinkPluginTestCase(B5TestFixture, CMSTestCase):
 
     def test_plugin(self):
         plugin = add_plugin(
             placeholder=self.placeholder,
-            plugin_type=Bootstrap4LinkPlugin.__name__,
+            plugin_type=Bootstrap5LinkPlugin.__name__,
             language=self.language,
             external_link="https://www.divio.com",
         )
@@ -28,7 +28,7 @@ class B4LinkPluginTestCase(B4TestFixture, CMSTestCase):
         # add more options
         plugin = add_plugin(
             placeholder=self.placeholder,
-            plugin_type=Bootstrap4LinkPlugin.__name__,
+            plugin_type=Bootstrap5LinkPlugin.__name__,
             language=self.language,
             external_link="https://www.divio.com",
             link_context="primary",
@@ -46,7 +46,7 @@ class B4LinkPluginTestCase(B4TestFixture, CMSTestCase):
         # alternate version for link_type
         plugin = add_plugin(
             placeholder=self.placeholder,
-            plugin_type=Bootstrap4LinkPlugin.__name__,
+            plugin_type=Bootstrap5LinkPlugin.__name__,
             language=self.language,
             external_link="https://www.divio.com",
             link_context="primary",
@@ -63,7 +63,7 @@ class B4LinkPluginTestCase(B4TestFixture, CMSTestCase):
         # alternate version using link_outline
         plugin = add_plugin(
             placeholder=self.placeholder,
-            plugin_type=Bootstrap4LinkPlugin.__name__,
+            plugin_type=Bootstrap5LinkPlugin.__name__,
             language=self.language,
             external_link="https://www.divio.com",
             link_context="primary",

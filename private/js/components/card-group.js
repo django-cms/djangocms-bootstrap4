@@ -23,9 +23,9 @@ export default class CardGroup extends ButtonGroup {
     getTemplate() {
         this.templates = {
             wrapper: (cls = '', blueprints = '', buttons = '') => `
-                <div class="bootstrap4-blueprint${cls}">
+                <div class="bootstrap5-blueprint${cls}">
                     ${blueprints}
-                    <div class="bootstrap4-button-group bootstrap4-button-group-blueprint">
+                    <div class="bootstrap5-button-group bootstrap5-button-group-blueprint">
                         <div class="btn-group" role="group" aria-label="">
                             ${buttons}
                         </div>

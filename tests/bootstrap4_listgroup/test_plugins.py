@@ -1,19 +1,19 @@
 from cms.api import add_plugin
 from cms.test_utils.testcases import CMSTestCase
 
-from djangocms_bootstrap4.contrib.bootstrap4_listgroup.cms_plugins import (
-    Bootstrap4ListGroupItemPlugin, Bootstrap4ListGroupPlugin,
+from djangocms_bootstrap5.contrib.bootstrap5_listgroup.cms_plugins import (
+    Bootstrap5ListGroupItemPlugin, Bootstrap5ListGroupPlugin,
 )
 
-from ..fixtures import B4TestFixture
+from ..fixtures import B5TestFixture
 
 
-class B4ListGroupPluginTestCase(B4TestFixture, CMSTestCase):
+class B5ListGroupPluginTestCase(B5TestFixture, CMSTestCase):
 
     def test_list_group_plugin(self):
         plugin = add_plugin(
             placeholder=self.placeholder,
-            plugin_type=Bootstrap4ListGroupPlugin.__name__,
+            plugin_type=Bootstrap5ListGroupPlugin.__name__,
             language=self.language,
         )
         plugin.full_clean()
@@ -27,7 +27,7 @@ class B4ListGroupPluginTestCase(B4TestFixture, CMSTestCase):
         # test list_group_flush option
         plugin = add_plugin(
             placeholder=self.placeholder,
-            plugin_type=Bootstrap4ListGroupPlugin.__name__,
+            plugin_type=Bootstrap5ListGroupPlugin.__name__,
             language=self.language,
             list_group_flush=True,
         )
@@ -42,7 +42,7 @@ class B4ListGroupPluginTestCase(B4TestFixture, CMSTestCase):
     def test_list_group_item_plugin(self):
         plugin = add_plugin(
             placeholder=self.placeholder,
-            plugin_type=Bootstrap4ListGroupItemPlugin.__name__,
+            plugin_type=Bootstrap5ListGroupItemPlugin.__name__,
             language=self.language,
         )
         plugin.full_clean()
@@ -56,7 +56,7 @@ class B4ListGroupPluginTestCase(B4TestFixture, CMSTestCase):
         # test list_context and list_state options
         plugin = add_plugin(
             placeholder=self.placeholder,
-            plugin_type=Bootstrap4ListGroupItemPlugin.__name__,
+            plugin_type=Bootstrap5ListGroupItemPlugin.__name__,
             language=self.language,
             list_context="primary",
             list_state="active",

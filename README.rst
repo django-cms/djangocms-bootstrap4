@@ -8,7 +8,7 @@ django CMS Bootstrap 4
 components from the popular `Bootstrap 4 <http://getbootstrap.com/>`_ library.
 
 This addon is compatible with `Divio Cloud <http://divio.com>`_ and is also available on the
-`django CMS Marketplace <https://marketplace.django-cms.org/en/addons/browse/djangocms-bootstrap4/>`_
+`django CMS Marketplace <https://marketplace.django-cms.org/en/addons/browse/djangocms-bootstrap5/>`_
 for easy installation.
 
 .. image:: preview.gif
@@ -23,17 +23,17 @@ pull request, please review our `contribution guidelines
 <http://docs.django-cms.org/en/latest/contributing/index.html>`_.
 
 We're grateful to all contributors who have helped create and maintain this package.
-Contributors are listed at the `contributors <https://github.com/divio/djangocms-bootstrap4/graphs/contributors>`_
+Contributors are listed at the `contributors <https://github.com/divio/djangocms-bootstrap5/graphs/contributors>`_
 section.
 
 One of the easiest contributions you can make is helping to translate this addon on
-`Transifex <https://www.transifex.com/projects/p/djangocms-bootstrap4/>`_.
+`Transifex <https://www.transifex.com/projects/p/djangocms-bootstrap5/>`_.
 
 
 Documentation
 =============
 
-See ``REQUIREMENTS`` in the `setup.py <https://github.com/divio/djangocms-bootstrap4/blob/master/setup.py>`_
+See ``REQUIREMENTS`` in the `setup.py <https://github.com/divio/djangocms-bootstrap5/blob/master/setup.py>`_
 file for additional dependencies:
 
 |python| |django| |djangocms|
@@ -51,27 +51,27 @@ Installation
 
 For a manual install:
 
-* run ``pip install djangocms-bootstrap4``
+* run ``pip install djangocms-bootstrap5``
 * add the following entries to your ``INSTALLED_APPS``::
 
     'djangocms_icon',
     'djangocms_link',
     'djangocms_picture',
-    'djangocms_bootstrap4',
-    'djangocms_bootstrap4.contrib.bootstrap4_alerts',
-    'djangocms_bootstrap4.contrib.bootstrap4_badge',
-    'djangocms_bootstrap4.contrib.bootstrap4_card',
-    'djangocms_bootstrap4.contrib.bootstrap4_carousel',
-    'djangocms_bootstrap4.contrib.bootstrap4_collapse',
-    'djangocms_bootstrap4.contrib.bootstrap4_content',
-    'djangocms_bootstrap4.contrib.bootstrap4_grid',
-    'djangocms_bootstrap4.contrib.bootstrap4_jumbotron',
-    'djangocms_bootstrap4.contrib.bootstrap4_link',
-    'djangocms_bootstrap4.contrib.bootstrap4_listgroup',
-    'djangocms_bootstrap4.contrib.bootstrap4_media',
-    'djangocms_bootstrap4.contrib.bootstrap4_picture',
-    'djangocms_bootstrap4.contrib.bootstrap4_tabs',
-    'djangocms_bootstrap4.contrib.bootstrap4_utilities',
+    'djangocms_bootstrap5',
+    'djangocms_bootstrap5.contrib.bootstrap5_alerts',
+    'djangocms_bootstrap5.contrib.bootstrap5_badge',
+    'djangocms_bootstrap5.contrib.bootstrap5_card',
+    'djangocms_bootstrap5.contrib.bootstrap5_carousel',
+    'djangocms_bootstrap5.contrib.bootstrap5_collapse',
+    'djangocms_bootstrap5.contrib.bootstrap5_content',
+    'djangocms_bootstrap5.contrib.bootstrap5_grid',
+    'djangocms_bootstrap5.contrib.bootstrap5_jumbotron',
+    'djangocms_bootstrap5.contrib.bootstrap5_link',
+    'djangocms_bootstrap5.contrib.bootstrap5_listgroup',
+    'djangocms_bootstrap5.contrib.bootstrap5_media',
+    'djangocms_bootstrap5.contrib.bootstrap5_picture',
+    'djangocms_bootstrap5.contrib.bootstrap5_tabs',
+    'djangocms_bootstrap5.contrib.bootstrap5_utilities',
 
 * run ``python manage.py migrate``
 
@@ -177,15 +177,15 @@ You can run tests by executing::
 To run the frontend make sure to use **node 10.x**.
 
 
-.. |pypi| image:: https://badge.fury.io/py/djangocms-bootstrap4.svg
-    :target: http://badge.fury.io/py/djangocms-bootstrap4
-.. |build| image:: https://travis-ci.org/divio/djangocms-bootstrap4.svg?branch=master
-    :target: https://travis-ci.org/divio/djangocms-bootstrap4
-.. |coverage| image:: https://codecov.io/gh/divio/djangocms-bootstrap4/branch/master/graph/badge.svg
-    :target: https://codecov.io/gh/divio/djangocms-bootstrap4
+.. |pypi| image:: https://badge.fury.io/py/djangocms-bootstrap5.svg
+    :target: http://badge.fury.io/py/djangocms-bootstrap5
+.. |build| image:: https://travis-ci.org/divio/djangocms-bootstrap5.svg?branch=master
+    :target: https://travis-ci.org/divio/djangocms-bootstrap5
+.. |coverage| image:: https://codecov.io/gh/divio/djangocms-bootstrap5/branch/master/graph/badge.svg
+    :target: https://codecov.io/gh/divio/djangocms-bootstrap5
 
 .. |python| image:: https://img.shields.io/badge/python-3.5+-blue.svg
-    :target: https://pypi.org/project/djangocms-bootstrap4/
+    :target: https://pypi.org/project/djangocms-bootstrap5/
 .. |django| image:: https://img.shields.io/badge/django-2.2,%203.0,%203.1-blue.svg
     :target: https://www.djangoproject.com/
 .. |djangocms| image:: https://img.shields.io/badge/django%20CMS-3.7%2B-blue.svg

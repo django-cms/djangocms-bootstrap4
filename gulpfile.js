@@ -15,7 +15,7 @@ const gulp = require('gulp');
 // #############################################################################
 // SETTINGS
 const PROJECT_ROOT = __dirname;
-const PROJECT_STATIC = '/djangocms_bootstrap4/static/djangocms_bootstrap4/'
+const PROJECT_STATIC = '/djangocms_bootstrap5/static/djangocms_bootstrap5/'
 const PROJECT_PATH = {
     css: PROJECT_ROOT + PROJECT_STATIC + '/css',
     js: PROJECT_ROOT + PROJECT_STATIC + '/js',

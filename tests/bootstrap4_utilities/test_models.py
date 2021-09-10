@@ -1,14 +1,14 @@
 from django.test import TestCase
 
-from djangocms_bootstrap4.contrib.bootstrap4_utilities.models import (
-    Bootstrap4Spacing,
+from djangocms_bootstrap5.contrib.bootstrap5_utilities.models import (
+    Bootstrap5Spacing,
 )
 
 
-class B4UtilitiesModelTestCase(TestCase):
+class B5UtilitiesModelTestCase(TestCase):
 
     def test_instance(self):
-        instance = Bootstrap4Spacing.objects.create()
+        instance = Bootstrap5Spacing.objects.create()
         self.assertEqual(str(instance), "1")
         self.assertEqual(instance.get_short_description(), "(.m-0)")
 

@@ -1,19 +1,19 @@
 from cms.api import add_plugin
 from cms.test_utils.testcases import CMSTestCase
 
-from djangocms_bootstrap4.contrib.bootstrap4_badge.cms_plugins import (
-    Bootstrap4BadgePlugin,
+from djangocms_bootstrap5.contrib.bootstrap5_badge.cms_plugins import (
+    Bootstrap5BadgePlugin,
 )
 
-from ..fixtures import B4TestFixture
+from ..fixtures import B5TestFixture
 
 
-class B4BadgePluginTestCase(B4TestFixture, CMSTestCase):
+class B5BadgePluginTestCase(B5TestFixture, CMSTestCase):
 
     def test_plugin(self):
         plugin = add_plugin(
             placeholder=self.placeholder,
-            plugin_type=Bootstrap4BadgePlugin.__name__,
+            plugin_type=Bootstrap5BadgePlugin.__name__,
             language=self.language,
             badge_text="some text",
         )
@@ -32,7 +32,7 @@ class B4BadgePluginTestCase(B4TestFixture, CMSTestCase):
         # test with pills enabled
         plugin = add_plugin(
             placeholder=self.placeholder,
-            plugin_type=Bootstrap4BadgePlugin.__name__,
+            plugin_type=Bootstrap5BadgePlugin.__name__,
             language=self.language,
             badge_text="some text",
             badge_pills=True,

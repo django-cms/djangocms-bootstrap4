@@ -1,14 +1,14 @@
 from django.test import TestCase
 
-from djangocms_bootstrap4.contrib.bootstrap4_card.models import (
-    Bootstrap4Card, Bootstrap4CardInner,
+from djangocms_bootstrap5.contrib.bootstrap5_card.models import (
+    Bootstrap5Card, Bootstrap5CardInner,
 )
 
 
-class B4CardModelTestCase(TestCase):
+class B5CardModelTestCase(TestCase):
 
     def test_card_instance(self):
-        instance = Bootstrap4Card.objects.create()
+        instance = Bootstrap5Card.objects.create()
         self.assertEqual(str(instance), "1")
         self.assertEqual(instance.get_short_description(), "(card)")
         instance.card_context = "primary"
@@ -19,6 +19,6 @@ class B4CardModelTestCase(TestCase):
         self.assertEqual(instance.get_short_description(), "(card) .border-primary .center")
 
     def test_card_inner_instance(self):
-        instance = Bootstrap4CardInner.objects.create()
+        instance = Bootstrap5CardInner.objects.create()
         self.assertEqual(str(instance), "1")
         self.assertEqual(instance.get_short_description(), "(card-body)")

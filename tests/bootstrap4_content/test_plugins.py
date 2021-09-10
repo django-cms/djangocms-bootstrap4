@@ -1,19 +1,19 @@
 from cms.api import add_plugin
 from cms.test_utils.testcases import CMSTestCase
 
-from djangocms_bootstrap4.contrib.bootstrap4_content.cms_plugins import (
-    Bootstrap4BlockquotePlugin, Bootstrap4CodePlugin, Bootstrap4FigurePlugin,
+from djangocms_bootstrap5.contrib.bootstrap5_content.cms_plugins import (
+    Bootstrap5BlockquotePlugin, Bootstrap5CodePlugin, Bootstrap5FigurePlugin,
 )
 
-from ..fixtures import B4TestFixture
+from ..fixtures import B5TestFixture
 
 
-class B4ContentPluginTestCase(B4TestFixture, CMSTestCase):
+class B5ContentPluginTestCase(B5TestFixture, CMSTestCase):
 
     def test_code_plugin(self):
         plugin = add_plugin(
             placeholder=self.placeholder,
-            plugin_type=Bootstrap4CodePlugin.__name__,
+            plugin_type=Bootstrap5CodePlugin.__name__,
             language=self.language,
             code_content="<p>hello world</p>",
         )
@@ -28,7 +28,7 @@ class B4ContentPluginTestCase(B4TestFixture, CMSTestCase):
     def test_blockquote_plugin(self):
         plugin = add_plugin(
             placeholder=self.placeholder,
-            plugin_type=Bootstrap4BlockquotePlugin.__name__,
+            plugin_type=Bootstrap5BlockquotePlugin.__name__,
             language=self.language,
             quote_content="hello world",
         )
@@ -43,7 +43,7 @@ class B4ContentPluginTestCase(B4TestFixture, CMSTestCase):
         # test quote_alignment
         add_plugin(
             placeholder=self.placeholder,
-            plugin_type=Bootstrap4BlockquotePlugin.__name__,
+            plugin_type=Bootstrap5BlockquotePlugin.__name__,
             language=self.language,
             quote_content="hello world",
             quote_alignment="",
@@ -58,7 +58,7 @@ class B4ContentPluginTestCase(B4TestFixture, CMSTestCase):
     def test_figure_plugin(self):
         plugin = add_plugin(
             placeholder=self.placeholder,
-            plugin_type=Bootstrap4FigurePlugin.__name__,
+            plugin_type=Bootstrap5FigurePlugin.__name__,
             language=self.language,
             figure_caption="hello world",
         )
