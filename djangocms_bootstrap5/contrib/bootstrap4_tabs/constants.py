@@ -22,7 +22,7 @@ TAB_EFFECT_CHOICES = (
 
 TAB_TEMPLATE_CHOICES = getattr(
     settings,
-    'DJANGOCMS_BOOTSTRAP4_TAB_TEMPLATES',
+    'DJANGOCMS_BOOTSTRAP5_TAB_TEMPLATES',
     (
         ('default', _('Default')),
     ),

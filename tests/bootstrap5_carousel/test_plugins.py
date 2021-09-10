@@ -32,11 +32,11 @@ class B5CarouselPluginTestCase(B5TestFixture, CMSTestCase):
             response = self.client.get(self.request_url)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, '<div class="carousel slide"')
-        self.assertContains(response, 'data-interval="5000"')
-        self.assertContains(response, 'data-keyboard="true"')
-        self.assertContains(response, 'data-pause="hover"')
-        self.assertContains(response, 'data-ride="carousel"')
-        self.assertContains(response, 'data-wrap="true"')
+        self.assertContains(response, 'data-bs-interval="5000"')
+        self.assertContains(response, 'data-bs-keyboard="true"')
+        self.assertContains(response, 'data-bs-pause="hover"')
+        self.assertContains(response, 'data-bs-ride="carousel"')
+        self.assertContains(response, 'data-bs-wrap="true"')
 
     def test_carousel_slide_plugin(self):
         row = add_plugin(

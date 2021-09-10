@@ -15,6 +15,6 @@ LINK_SIZE_CHOICES = (
 
 USE_LINK_ICONS = getattr(
     settings,
-    'DJANGOCMS_BOOTSTRAP4_USE_ICONS',
+    'DJANGOCMS_BOOTSTRAP5_USE_ICONS',
     True,
 )

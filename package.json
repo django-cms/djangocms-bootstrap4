@@ -28,7 +28,7 @@
     "lodash": "^4.17.4",
     "minimist": "^1.2.0",
     "npm-sass": "^2.2.1",
-    "popper.js": "^1.12.5",
+    "@popperjs/core": "^2.10.1",
     "webpack": "^3.0.0",
     "webpack2-polyfill-plugin": "0.0.2"
   },

@@ -87,8 +87,8 @@ class Bootstrap5Carousel(CMSPlugin):
     tag_type = TagTypeField()
     attributes = AttributesField(
         excluded_keys=[
-            'id', 'data-interval', 'data-keyboard',
-            'data-pause', 'data-ride', 'data-wrap'
+            'id', 'data-bs-interval', 'data-bs-keyboard',
+            'data-bs-pause', 'data-bs-ride', 'data-bs-wrap'
         ],
     )
 

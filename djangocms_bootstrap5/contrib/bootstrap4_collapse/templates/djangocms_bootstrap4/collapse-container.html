@@ -3,7 +3,7 @@
 <{{ instance.tag_type }} {{ instance.attributes_str }}
     id="container-{{ instance.identifier }}"
     role="tabpanel"
-    data-parent="#parent-{{ parent.pk }}"
+    data-bs-parent="#parent-{{ parent.pk }}"
     aria-labelledby="trigger-{{ instance.identifier }}"
 >
     {% for plugin in instance.child_plugin_instances %}

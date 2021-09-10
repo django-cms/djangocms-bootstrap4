@@ -18,7 +18,7 @@ SPACER_SIDE_CHOICES = (
 
 SPACER_SIZE_CHOICES = getattr(
     settings,
-    'DJANGOCMS_BOOTSTRAP4_SPACER_SIZES',
+    'DJANGOCMS_BOOTSTRAP5_SPACER_SIZES',
     (
         ('0', '* 0'),
         ('1', '* .25'),

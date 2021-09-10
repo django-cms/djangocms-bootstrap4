@@ -2,16 +2,16 @@
 
 <{{ instance.tag_type }} {{ instance.attributes_str }}
     id="carousel-{{ instance.pk }}"
-    data-interval="{{ instance.carousel_interval|lower }}"
-    data-keyboard="{{ instance.carousel_keyboard|lower }}"
-    data-pause="{{ instance.carousel_pause|lower }}"
-    data-ride="{{ instance.carousel_ride|lower }}"
-    data-wrap="{{ instance.carousel_wrap|lower }}"
+    data-bs-interval="{{ instance.carousel_interval|lower }}"
+    data-bs-keyboard="{{ instance.carousel_keyboard|lower }}"
+    data-bs-pause="{{ instance.carousel_pause|lower }}"
+    data-bs-ride="{{ instance.carousel_ride|lower }}"
+    data-bs-wrap="{{ instance.carousel_wrap|lower }}"
 >
     {% if instance.carousel_indicators %}
         <ol class="carousel-indicators">
             {% for plugin in instance.child_plugin_instances %}
-                <li data-target="#carousel-{{ instance.pk }}"
+                <li data-bs-target="#carousel-{{ instance.pk }}"
                     data-slide-to="{{ forloop.counter0 }}"
                     {% if forloop.first %} class="active"{% endif %}>
                 </li>

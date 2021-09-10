@@ -2,7 +2,7 @@
 
 <{{ instance.tag_type }} {{ instance.attributes_str }} role="alert">
     {% if instance.alert_dismissable %}
-        <button type="button" class="close" data-dismiss="alert" aria-label="{% trans 'Close' %}">
+        <button type="button" class="close" data-bs-dismiss="alert" aria-label="{% trans 'Close' %}">
             <span aria-hidden="true">&times;</span>
         </button>
     {% endif %}

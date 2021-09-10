@@ -9,7 +9,7 @@
                 <a href="#tab-{{ plugin.pk }}"
                     class="nav-link{% if instance.tab_index == forloop.counter %} active{% endif %}"
                     id="tab-label-{{ plugin.pk }}"
-                    data-toggle="tab"
+                    data-bs-toggle="tab"
                     aria-controls="tab-{{ plugin.pk }}"
                     aria-selected="{% if instance.tab_index == forloop.counter %}true{% else %}false{% endif %}"
                     role="tab">

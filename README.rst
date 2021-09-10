@@ -111,30 +111,30 @@ Settings
 There are various settings possible on django CMS Bootstrap 5, to restrict them
 for now only the following can be changed::
 
-    DJANGOCMS_BOOTSTRAP4_TAG_CHOICES = ['div', 'section', 'article', 'header', 'footer', 'aside']
+    DJANGOCMS_BOOTSTRAP5_TAG_CHOICES = ['div', 'section', 'article', 'header', 'footer', 'aside']
 
-    DJANGOCMS_BOOTSTRAP4_CAROUSEL_TEMPLATES = (
+    DJANGOCMS_BOOTSTRAP5_CAROUSEL_TEMPLATES = (
         ('default', _('Default')),
     )
 
-    DJANGOCMS_BOOTSTRAP4_GRID_SIZE = 12
-    DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = (
+    DJANGOCMS_BOOTSTRAP5_GRID_SIZE = 12
+    DJANGOCMS_BOOTSTRAP5_GRID_CONTAINERS = (
         ('container', _('Container')),
         ('container-fluid', _('Fluid container')),
     )
-    DJANGOCMS_BOOTSTRAP4_GRID_COLUMN_CHOICES = (
+    DJANGOCMS_BOOTSTRAP5_GRID_COLUMN_CHOICES = (
         ('col', _('Column')),
         ('w-100', _('Break')),
         ('', _('Empty'))
     )
 
-    DJANGOCMS_BOOTSTRAP4_USE_ICONS = True
+    DJANGOCMS_BOOTSTRAP5_USE_ICONS = True
 
-    DJANGOCMS_BOOTSTRAP4_TAB_TEMPLATES = (
+    DJANGOCMS_BOOTSTRAP5_TAB_TEMPLATES = (
         ('default', _('Default')),
     )
 
-    DJANGOCMS_BOOTSTRAP4_SPACER_SIZES = (
+    DJANGOCMS_BOOTSTRAP5_SPACER_SIZES = (
         ('0', '* 0'),
         ('1', '* .25'),
         ('2', '* .5'),
@@ -143,11 +143,11 @@ for now only the following can be changed::
         ('5', '* 3'),
     )
 
-    DJANGOCMS_BOOTSTRAP4_CAROUSEL_ASPECT_RATIOS = (
+    DJANGOCMS_BOOTSTRAP5_CAROUSEL_ASPECT_RATIOS = (
         (16, 9),
     )
 
-    DJANGOCMS_BOOTSTRAP4_COLOR_STYLE_CHOICES = (
+    DJANGOCMS_BOOTSTRAP5_COLOR_STYLE_CHOICES = (
         ('primary', _('Primary')),
         ('secondary', _('Secondary')),
         ('success', _('Success')),

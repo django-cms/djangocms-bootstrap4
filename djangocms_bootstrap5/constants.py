@@ -14,14 +14,14 @@ DEVICE_SIZES = tuple([size for size, name in DEVICE_CHOICES])
 # Only adding block elements
 TAG_CHOICES = getattr(
     settings,
-    'DJANGOCMS_BOOTSTRAP4_TAG_CHOICES',
+    'DJANGOCMS_BOOTSTRAP5_TAG_CHOICES',
     ['div', 'section', 'article', 'header', 'footer', 'aside'],
 )
 TAG_CHOICES = tuple((entry, entry) for entry in TAG_CHOICES)
 
 COLOR_STYLE_CHOICES = getattr(
     settings,
-    'DJANGOCMS_BOOTSTRAP4_COLOR_STYLE_CHOICES',
+    'DJANGOCMS_BOOTSTRAP5_COLOR_STYLE_CHOICES',
     (
         ('primary', _('Primary')),
         ('secondary', _('Secondary')),

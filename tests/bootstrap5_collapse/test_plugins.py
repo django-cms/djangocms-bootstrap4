@@ -40,7 +40,7 @@ class B5CollapsePluginTestCase(B5TestFixture, CMSTestCase):
             response = self.client.get(self.request_url)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'aria-controls="container-10"')
-        self.assertContains(response, 'data-target="#container-10"')
+        self.assertContains(response, 'data-bs-target="#container-10"')
         self.assertContains(response, 'id="trigger-10"')
 
     def test_collapse_container_plugin(self):

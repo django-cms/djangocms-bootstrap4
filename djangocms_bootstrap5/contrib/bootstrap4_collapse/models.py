@@ -7,10 +7,10 @@ from djangocms_bootstrap5.fields import AttributesField, TagTypeField
 
 
 # TODO leaving this comment for now
-# data-toggle="collapse" data-target="#collapseExample"
+# data-bs-toggle="collapse" data-bs-target="#collapseExample"
 # aria-expanded="false" aria-controls="collapseExample">
-# data-target can also be classes
-# data-parent links to the wrapper collapse
+# data-bs-target can also be classes
+# data-bs-parent links to the wrapper collapse
 # <div class="collapse" id="collapseExample">
 
 
@@ -51,7 +51,7 @@ class Bootstrap5CollapseTrigger(CMSPlugin):
     tag_type = TagTypeField()
     attributes = AttributesField(
         excluded_keys=[
-            'data-toggle', 'data-target', 'data-parent',
+            'data-bs-toggle', 'data-bs-target', 'data-bs-parent',
             'aria-expanded', 'aria-controls', 'role',
         ]
     )
@@ -77,7 +77,7 @@ class Bootstrap5CollapseContainer(CMSPlugin):
     tag_type = TagTypeField()
     attributes = AttributesField(
         excluded_keys=[
-            'data-toggle', 'data-target', 'data-parent',
+            'data-bs-toggle', 'data-bs-target', 'data-bs-parent',
             'aria-expanded', 'aria-controls', 'role',
         ]
     )
