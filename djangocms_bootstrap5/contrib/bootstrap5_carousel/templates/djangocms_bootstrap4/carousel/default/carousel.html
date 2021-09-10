@@ -12,7 +12,7 @@
         <ol class="carousel-indicators">
             {% for plugin in instance.child_plugin_instances %}
                 <li data-bs-target="#carousel-{{ instance.pk }}"
-                    data-slide-to="{{ forloop.counter0 }}"
+                    data-bs-slide-to="{{ forloop.counter0 }}"
                     {% if forloop.first %} class="active"{% endif %}>
                 </li>
             {% endfor %}
