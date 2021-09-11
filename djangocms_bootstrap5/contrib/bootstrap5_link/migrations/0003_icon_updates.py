@@ -24,6 +24,7 @@ def forwards_func(apps, schema_editor):  # pragma: no cover
     icon.objects.filter(icon_right__startswith='zmdi-').update(icon_right=Concat(Value('zmdi '), 'icon_right'))
     icon.objects.filter(icon_right__startswith='wi-').update(icon_right=Concat(Value('wi '), 'icon_right'))
 
+
 def reverse_func(apps, schema_editor):  # pragma: no cover
     icon = apps.get_model('bootstrap5_link', 'Bootstrap5Link')
 
