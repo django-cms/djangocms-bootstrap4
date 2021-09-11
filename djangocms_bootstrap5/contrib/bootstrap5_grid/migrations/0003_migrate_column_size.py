@@ -12,6 +12,7 @@ def migrate_column_size(apps, schema_editor):  # pragma: no cover
             plugin.xs_col = plugin.column_size
             plugin.save()
 
+
 def migrate_column_size_back(apps, schema_editor):  # pragma: no cover
     Column = apps.get_model('bootstrap5_grid', 'Bootstrap5GridColumn')
     plugins = Column.objects.all()

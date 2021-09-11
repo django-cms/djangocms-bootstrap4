@@ -60,7 +60,7 @@ class Bootstrap5GridRow(CMSPlugin):
         max_length=255,
         help_text=mark_safe_lazy(_(
             'Read more in the <a href="{link}" target="_blank">documentation</a>.')
-                .format(link='https://getbootstrap.com/docs/5.0/layout/grid/#vertical-alignment')
+            .format(link='https://getbootstrap.com/docs/5.0/layout/grid/#vertical-alignment')
         ),
     )
     horizontal_alignment = models.CharField(
@@ -70,7 +70,7 @@ class Bootstrap5GridRow(CMSPlugin):
         max_length=255,
         help_text=mark_safe_lazy(_(
             'Read more in the <a href="{link}" target="_blank">documentation</a>.')
-                .format(link='https://getbootstrap.com/docs/5.0/layout/grid/#horizontal-alignment')
+            .format(link='https://getbootstrap.com/docs/5.0/layout/grid/#horizontal-alignment')
         ),
     )
     gutters = models.BooleanField(
