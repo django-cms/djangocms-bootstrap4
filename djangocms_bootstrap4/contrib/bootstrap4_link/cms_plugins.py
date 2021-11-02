@@ -35,13 +35,12 @@ class Bootstrap4LinkPlugin(LinkPlugin):
             ('icon_left', 'icon_right'),
         )
 
-    LinkPlugin.fieldsets[0] = (
+    fieldsets = copy.deepcopy(LinkPlugin.fieldsets)
+    fieldsets[0] = (
         None, {
             'fields': fields
         }
     )
-
-    fieldsets = LinkPlugin.fieldsets
 
     def get_render_template(self, context, instance, placeholder):
         return get_plugin_template(
