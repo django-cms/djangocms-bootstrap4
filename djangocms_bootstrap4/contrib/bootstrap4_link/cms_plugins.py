@@ -1,3 +1,5 @@
+import copy
+
 from django.utils.translation import gettext_lazy as _
 
 from cms.plugin_pool import plugin_pool
@@ -10,9 +12,6 @@ from djangocms_bootstrap4.helpers import concat_classes, get_plugin_template
 from .constants import USE_LINK_ICONS
 from .forms import Bootstrap4LinkForm
 from .models import Bootstrap4Link
-
-
-import copy
 
 
 class Bootstrap4LinkPlugin(LinkPlugin):
