@@ -12,6 +12,9 @@ from .forms import Bootstrap4LinkForm
 from .models import Bootstrap4Link
 
 
+import copy
+
+
 class Bootstrap4LinkPlugin(LinkPlugin):
     """
     Components > "Button" Plugin
