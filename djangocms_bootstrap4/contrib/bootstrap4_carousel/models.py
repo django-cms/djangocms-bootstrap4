@@ -142,8 +142,7 @@ class Bootstrap4CarouselSlide(AbstractLink):
         if self.carousel_image_id:
             if self.carousel_image.name:
                 image_text = self.carousel_image.name
-            elif self.carousel_image.original_filename \
-                    and os.path.split(self.carousel_image.original_filename)[1]:
+            elif self.carousel_image.original_filename and os.path.split(self.carousel_image.original_filename)[1]:
                 image_text = os.path.split(self.carousel_image.original_filename)[1]
             else:
                 image_text = 'Image'

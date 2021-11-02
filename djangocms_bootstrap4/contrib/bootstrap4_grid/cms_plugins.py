@@ -83,7 +83,7 @@ class Bootstrap4GridRowPlugin(CMSPluginBase):
     def save_model(self, request, obj, form, change):
         super().save_model(request, obj, form, change)
         data = form.cleaned_data
-        for x in range(int(data['create']) if data['create'] is not None else 0):
+        for x in range(int(data['create']) if data['create'] is not None else 0):  # NOQA
             extra = {}
             for size in DEVICE_SIZES:
                 extra[f'{size}_col'] = data.get(

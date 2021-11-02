@@ -40,7 +40,7 @@ CAROUSEL_ASPECT_RATIOS = (
     getattr(
         settings,
         'DJANGOCMS_BOOTSTRAP4_CAROUSEL_ASPECT_RATIOS',
-        tuple()
+        ()
     )
 )
 
