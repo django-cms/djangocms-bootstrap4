@@ -9,7 +9,7 @@ DEVICE_CHOICES = (
     ('lg', _('Large')),         # default ≥992px
     ('xl', _('Extra large')),   # default ≥1200px
 )
-DEVICE_SIZES = tuple([size for size, name in DEVICE_CHOICES])
+DEVICE_SIZES = tuple(size for size, name in DEVICE_CHOICES)
 
 # Only adding block elements
 TAG_CHOICES = getattr(

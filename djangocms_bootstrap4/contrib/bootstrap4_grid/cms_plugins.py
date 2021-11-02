@@ -86,8 +86,8 @@ class Bootstrap4GridRowPlugin(CMSPluginBase):
         for x in range(int(data['create']) if data['create'] is not None else 0):
             extra = {}
             for size in DEVICE_SIZES:
-                extra['{}_col'.format(size)] = data.get(
-                    'create_{}_col'.format(size)
+                extra[f'{size}_col'] = data.get(
+                    f'create_{size}_col'
                 )
             col = Bootstrap4GridColumn(
                 parent=obj,
@@ -140,11 +140,11 @@ class Bootstrap4GridColumnPlugin(CMSPluginBase):
         }),
         (_('Responsive settings'), {
             'fields': (
-                ['{}_col'.format(size) for size in DEVICE_SIZES],
-                ['{}_order'.format(size) for size in DEVICE_SIZES],
-                ['{}_offset'.format(size) for size in DEVICE_SIZES],
-                ['{}_ml'.format(size) for size in DEVICE_SIZES],
-                ['{}_mr'.format(size) for size in DEVICE_SIZES],
+                [f'{size}_col' for size in DEVICE_SIZES],
+                [f'{size}_order' for size in DEVICE_SIZES],
+                [f'{size}_offset' for size in DEVICE_SIZES],
+                [f'{size}_ml' for size in DEVICE_SIZES],
+                [f'{size}_mr' for size in DEVICE_SIZES],
             )
         }),
         (_('Advanced settings'), {

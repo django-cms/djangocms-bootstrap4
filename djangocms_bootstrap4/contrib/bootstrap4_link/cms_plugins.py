@@ -53,16 +53,16 @@ class Bootstrap4LinkPlugin(LinkPlugin):
         link_classes = []
         if instance.link_context:
             if instance.link_type == 'link':
-                link_classes.append('text-{}'.format(instance.link_context))
+                link_classes.append(f'text-{instance.link_context}')
             else:
                 link_classes.append('btn')
                 if not instance.link_outline:
                     link_classes.append(
-                        'btn-{}'.format(instance.link_context)
+                        f'btn-{instance.link_context}'
                     )
                 else:
                     link_classes.append(
-                        'btn-outline-{}'.format(instance.link_context)
+                        f'btn-outline-{instance.link_context}'
                     )
         if instance.link_size:
             link_classes.append(instance.link_size)
