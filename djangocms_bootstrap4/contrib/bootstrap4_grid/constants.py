@@ -15,10 +15,14 @@ GRID_SIZE = getattr(
 # https://getbootstrap.com/docs/4.0/layout/grid/#no-gutters
 GRID_CONTAINER_CHOICES = getattr(
     settings,
-    'DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS',
-    (
-        ('container', _('Container')),
-        ('container-fluid', _('Fluid container')),
+    'DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS', (
+        (_('Default'), (
+            ('container', _('Container')),
+            ('container-fluid', _('Fluid container')),
+        )),
+        (_('Custom'), (
+            ('container-yours', _('Your container')),
+        )),
     ),
 )
 
