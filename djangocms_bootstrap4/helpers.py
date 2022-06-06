@@ -53,9 +53,7 @@ def get_choices_match(choices, value_to_match):
             if value == value_to_match:
                 return verbose
         else:
-            first = get_first_choice(verbose)
-            if first is not None:
-                value, verbose = first
-                if value == value_to_match:
-                    return verbose
+            match = get_choices_match(verbose, value_to_match)
+            if match is not None:
+                return match
     return None
