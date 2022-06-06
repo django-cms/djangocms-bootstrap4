@@ -16,13 +16,8 @@ GRID_SIZE = getattr(
 GRID_CONTAINER_CHOICES = getattr(
     settings,
     'DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS', (
-        (_('Default'), (
-            ('container', _('Container')),
-            ('container-fluid', _('Fluid container')),
-        )),
-        (_('Custom'), (
-            ('container-yours', _('Your container')),
-        )),
+        ('container', _('Container')),
+        ('container-fluid', _('Fluid container')),
     ),
 )
 
