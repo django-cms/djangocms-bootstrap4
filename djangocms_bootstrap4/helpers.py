@@ -34,7 +34,7 @@ def get_plugin_template(instance, prefix, name, templates):
 mark_safe_lazy = lazy(mark_safe, str)
 
 
-# get first element of a sequence or sequence of sequences
+# get first element of "choices" (can be nested)
 def get_first_choice(choices):
     for value, verbose in choices:
         if not isinstance(verbose, (tuple, list)):
@@ -43,4 +43,19 @@ def get_first_choice(choices):
             first = first_choice(verbose)
             if first is not None:
                 return first
+    return None
+
+
+# get verbose text of element matching given value in "choices" (can be nested)
+def get_choices_match(choices, value_to_match):
+    for value, verbose in choices:
+        if not isinstance(verbose, (tuple, list)):
+            if value == value_to_match:
+                return verbose
+        else:
+            first = first_choice(verbose)
+            value, verbose = first
+            if first is not None:
+                if value == value_to_match:
+                    return verbose
     return None

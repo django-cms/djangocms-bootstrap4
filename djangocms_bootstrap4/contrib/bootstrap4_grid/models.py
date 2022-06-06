@@ -41,18 +41,8 @@ class Bootstrap4GridContainer(CMSPlugin):
         return str(self.pk)
 
     def get_short_description(self):
-        text = ''
-        for item in GRID_CONTAINER_CHOICES:
-            # nested tuple (grouped options in plugin form)
-            if type(item[1]) is tuple:
-                for nested_item in item[1]:
-                    if nested_item[0] == self.container_type:
-                        text = nested_item[1]
-            # simple tuple (flat option list in plugin form)
-            else:
-                if item[0] == self.container_type:
-                    text = item[1]
-        return '({})'.format(text)
+        choice = get_choices_match(GRID_CONTAINER_CHOICES, self.container_type)
+        return '({})'.format(choice)
 
 
 class Bootstrap4GridRow(CMSPlugin):
