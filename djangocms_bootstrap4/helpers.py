@@ -40,7 +40,7 @@ def get_first_choice(choices):
         if not isinstance(verbose, (tuple, list)):
             return value
         else:
-            first = first_choice(verbose)
+            first = get_first_choice(verbose)
             if first is not None:
                 return first
     return None
@@ -53,9 +53,9 @@ def get_choices_match(choices, value_to_match):
             if value == value_to_match:
                 return verbose
         else:
-            first = first_choice(verbose)
-            value, verbose = first
+            first = get_first_choice(verbose)
             if first is not None:
+                value, verbose = first
                 if value == value_to_match:
                     return verbose
     return None
