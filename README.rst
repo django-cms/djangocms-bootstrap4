@@ -176,7 +176,7 @@ You can run tests by executing::
 
     virtualenv env
     source env/bin/activate
-    pip install -r tests/requirements.txt
+    pip install -r tests/requirements/djNN_cmsNN.txt # where NN is an available appropriate version
     python setup.py test
 
 To run the frontend make sure to use **node 10.x**.
