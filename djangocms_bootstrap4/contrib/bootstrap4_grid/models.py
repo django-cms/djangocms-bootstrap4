@@ -10,7 +10,7 @@ from djangocms_bootstrap4.constants import DEVICE_SIZES
 from djangocms_bootstrap4.fields import (
     AttributesField, IntegerRangeField, TagTypeField,
 )
-from djangocms_bootstrap4.helpers import mark_safe_lazy
+from djangocms_bootstrap4.helpers import first_choice, mark_safe_lazy
 
 from .constants import (
     GRID_COLUMN_ALIGNMENT_CHOICES, GRID_COLUMN_CHOICES, GRID_CONTAINER_CHOICES,
@@ -27,7 +27,7 @@ class Bootstrap4GridContainer(CMSPlugin):
     container_type = models.CharField(
         verbose_name=_('Container type'),
         choices=GRID_CONTAINER_CHOICES,
-        default=GRID_CONTAINER_CHOICES[0][1][0][0],
+        default=get_first_choice(GRID_CONTAINER_CHOICES),
         max_length=255,
         help_text=mark_safe_lazy(_(
             'Defines if the grid should use fixed width (<code>.container</code>) '
