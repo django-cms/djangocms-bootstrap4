@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 HELPER_SETTINGS = {
+    'SECRET_KEY': 'not_secret',
     'INSTALLED_APPS': [
         'easy_thumbnails',
         'filer',
