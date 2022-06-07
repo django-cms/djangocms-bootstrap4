@@ -84,7 +84,7 @@ class Bootstrap4ListGroupItemPlugin(CMSPluginBase):
     def render(self, context, instance, placeholder):
         link_classes = ['list-group-item']
         if instance.list_context:
-            link_classes.append('list-group-item-{}'.format(instance.list_context))
+            link_classes.append(f'list-group-item-{instance.list_context}')
         if instance.list_state:
             link_classes.append(instance.list_state)
 

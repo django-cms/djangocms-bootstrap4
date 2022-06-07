@@ -34,7 +34,7 @@ class Bootstrap4Collapse(CMSPlugin):
         return str(self.pk)
 
     def get_short_description(self):
-        return '(collapse-{})'.format(str(self.pk))
+        return f'(collapse-{str(self.pk)})'
 
 
 class Bootstrap4CollapseTrigger(CMSPlugin):
@@ -60,7 +60,7 @@ class Bootstrap4CollapseTrigger(CMSPlugin):
         return str(self.pk)
 
     def get_short_description(self):
-        return '({})'.format(self.identifier)
+        return f'({self.identifier})'
 
 
 class Bootstrap4CollapseContainer(CMSPlugin):
@@ -86,4 +86,4 @@ class Bootstrap4CollapseContainer(CMSPlugin):
         return str(self.pk)
 
     def get_short_description(self):
-        return '({})'.format(self.identifier)
+        return f'({self.identifier})'

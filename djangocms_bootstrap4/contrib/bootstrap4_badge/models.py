@@ -34,4 +34,4 @@ class Bootstrap4Badge(CMSPlugin):
         return str(self.pk)
 
     def get_short_description(self):
-        return '({})'.format(self.badge_context)
+        return f'({self.badge_context})'

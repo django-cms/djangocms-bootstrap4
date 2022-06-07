@@ -29,7 +29,7 @@ class Bootstrap4Code(CMSPlugin):
         return str(self.pk)
 
     def get_short_description(self):
-        return '<{}>'.format(self.tag_type)
+        return f'<{self.tag_type}>'
 
 
 class Bootstrap4Blockquote(CMSPlugin):

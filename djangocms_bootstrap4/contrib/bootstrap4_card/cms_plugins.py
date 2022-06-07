@@ -47,13 +47,13 @@ class Bootstrap4CardPlugin(CMSPluginBase):
     def render(self, context, instance, placeholder):
         link_classes = [instance.card_type]
         if instance.card_context and instance.card_outline:
-            link_classes.append('border-{}'.format(instance.card_context))
+            link_classes.append(f'border-{instance.card_context}')
         elif instance.card_context:
-            link_classes.append('bg-{}'.format(instance.card_context))
+            link_classes.append(f'bg-{instance.card_context}')
         if instance.card_alignment:
             link_classes.append(instance.card_alignment)
         if instance.card_text_color:
-            link_classes.append('text-{}'.format(instance.card_text_color))
+            link_classes.append(f'text-{instance.card_text_color}')
 
         classes = concat_classes(link_classes + [
             instance.attributes.get('class'),
