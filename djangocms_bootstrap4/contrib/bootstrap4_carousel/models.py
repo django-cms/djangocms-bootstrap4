@@ -96,7 +96,7 @@ class Bootstrap4Carousel(CMSPlugin):
         return str(self.pk)
 
     def get_short_description(self):
-        text = '({})'.format(self.template)
+        text = f'({self.template})'
         text += ' {}: {}'.format(_('Interval'), self.carousel_interval)
         text += ', {}: {}'.format(_('Controls'), self.carousel_controls)
         text += ', {}: {}'.format(_('Indicators'), self.carousel_indicators)
@@ -142,19 +142,18 @@ class Bootstrap4CarouselSlide(AbstractLink):
         if self.carousel_image_id:
             if self.carousel_image.name:
                 image_text = self.carousel_image.name
-            elif self.carousel_image.original_filename \
-                    and os.path.split(self.carousel_image.original_filename)[1]:
+            elif self.carousel_image.original_filename and os.path.split(self.carousel_image.original_filename)[1]:
                 image_text = os.path.split(self.carousel_image.original_filename)[1]
             else:
                 image_text = 'Image'
         if self.carousel_content:
             text = strip_tags(self.carousel_content).strip()
             if len(text) > 100:
-                content_text = '{}...'.format(text[:100])
+                content_text = f'{text[:100]}...'
             else:
-                content_text = '{}'.format(text)
+                content_text = f'{text}'
 
         if image_text and content_text:
-            return '{} ({})'.format(image_text, content_text)
+            return f'{image_text} ({content_text})'
         else:
             return image_text or content_text

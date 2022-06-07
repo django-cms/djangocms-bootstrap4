@@ -45,7 +45,7 @@ class Bootstrap4GridContainer(CMSPlugin):
         for item in GRID_CONTAINER_CHOICES:
             if item[0] == self.container_type:
                 text = item[1]
-        return '({})'.format(text)
+        return f'({text})'
 
 
 class Bootstrap4GridRow(CMSPlugin):
@@ -123,11 +123,11 @@ class Bootstrap4GridColumn(CMSPlugin):
         text = ''
         classes = self.get_grid_values()
         if self.xs_col:
-            text += '(col-{}) '.format(self.xs_col)
+            text += f'(col-{self.xs_col}) '
         else:
             text += '(auto) '
         if self.column_type != 'col':
-            text += '.{} '.format(self.column_type)
+            text += f'.{self.column_type} '
         if classes:
             text += '.{}'.format(' .'.join(self.get_grid_values()))
         return text
@@ -136,12 +136,12 @@ class Bootstrap4GridColumn(CMSPlugin):
         classes = []
         for device in DEVICE_SIZES:
             for element in ('col', 'order', 'offset', 'ml', 'mr'):
-                size = getattr(self, '{}_{}'.format(device, element))
+                size = getattr(self, f'{device}_{element}')
                 if isinstance(size, int) and (element == 'col' or element == 'order' or element == 'offset'):
                     if device == 'xs':
-                        classes.append('{}-{}'.format(element, int(size)))
+                        classes.append(f'{element}-{int(size)}')
                     else:
-                        classes.append('{}-{}-{}'.format(element, device, int(size)))
+                        classes.append(f'{element}-{device}-{int(size)}')
                 elif size:
                     if device == 'xs':
                         classes.append('{}-{}'.format(element, 'auto'))
@@ -168,26 +168,26 @@ BooleanFieldPartial = partial(
 for size in DEVICE_SIZES:
     # Grid size
     Bootstrap4GridColumn.add_to_class(
-        '{}_col'.format(size),
+        f'{size}_col',
         IntegerRangeFieldPartial(),
     )
     # Grid ordering
     Bootstrap4GridColumn.add_to_class(
-        '{}_order'.format(size),
+        f'{size}_order',
         IntegerRangeFieldPartial(),
     )
     # Grid offset
     Bootstrap4GridColumn.add_to_class(
-        '{}_offset'.format(size),
+        f'{size}_offset',
         IntegerRangeFieldPartial(),
     )
     # Grid margin left (ml)
     Bootstrap4GridColumn.add_to_class(
-        '{}_ml'.format(size),
+        f'{size}_ml',
         BooleanFieldPartial(),
     )
     # Grid margin right (ml)
     Bootstrap4GridColumn.add_to_class(
-        '{}_mr'.format(size),
+        f'{size}_mr',
         BooleanFieldPartial(),
     )

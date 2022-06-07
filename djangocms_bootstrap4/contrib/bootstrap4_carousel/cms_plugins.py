@@ -101,7 +101,7 @@ class Bootstrap4CarouselSlidePlugin(LinkPlugin):
 
         if parent.carousel_aspect_ratio:
             aspect_width, aspect_height = tuple(
-                [int(i) for i in parent.carousel_aspect_ratio.split('x')]
+                int(i) for i in parent.carousel_aspect_ratio.split('x')
             )
             height = width * aspect_height / aspect_width
 

@@ -7,10 +7,10 @@ django CMS Bootstrap 4
 **django CMS Bootstrap 4** is a plugin bundle for django CMS providing several
 components from the popular `Bootstrap 4 <http://getbootstrap.com/>`_ library.
 
-.. note:: 
-        
+.. note::
+
         This project is endorsed by the `django CMS Association <https://www.django-cms.org/en/about-us/>`_.
-        That means that it is officially accepted by the dCA as being in line with our roadmap vision and development/plugin policy. 
+        That means that it is officially accepted by the dCA as being in line with our roadmap vision and development/plugin policy.
         Join us on `Slack <https://www.django-cms.org/slack/>`_.
 
 .. image:: preview.gif
@@ -22,13 +22,16 @@ Contribute to this project and win rewards
 
 Because this is a an open-source project, we welcome everyone to
 `get involved in the project <https://www.django-cms.org/en/contribute/>`_ and
-`receive a reward <https://www.django-cms.org/en/bounty-program/>`_ for their contribution. 
-Become part of a fantastic community and help us make django CMS the best CMS in the world.   
+`receive a reward <https://www.django-cms.org/en/bounty-program/>`_ for their contribution.
+Become part of a fantastic community and help us make django CMS the best CMS in the world.
 
 We'll be delighted to receive your
 feedback in the form of issues and pull requests. Before submitting your
 pull request, please review our `contribution guidelines
 <http://docs.django-cms.org/en/latest/contributing/index.html>`_.
+
+The project makes use of git pre-commit hooks to maintain code quality. Please follow the
+installation steps to get `pre-commit <https://pre-commit.com/#installation>`_ setup in your development environment.
 
 We're grateful to all contributors who have helped create and maintain this package.
 Contributors are listed at the `contributors <https://github.com/django-cms/djangocms-bootstrap4/graphs/contributors>`_

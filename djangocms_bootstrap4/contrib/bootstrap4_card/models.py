@@ -62,13 +62,13 @@ class Bootstrap4Card(CMSPlugin):
         return str(self.pk)
 
     def get_short_description(self):
-        text = '({})'.format(self.card_type)
+        text = f'({self.card_type})'
         if self.card_context and self.card_outline:
-            text += ' .border-{}'.format(self.card_context)
+            text += f' .border-{self.card_context}'
         elif self.card_context:
-            text += ' .bg-{}'.format(self.card_context)
+            text += f' .bg-{self.card_context}'
         if self.card_alignment:
-            text += ' .{}'.format(self.card_alignment)
+            text += f' .{self.card_alignment}'
         return text
 
 
@@ -91,4 +91,4 @@ class Bootstrap4CardInner(CMSPlugin):
         return str(self.pk)
 
     def get_short_description(self):
-        return '({})'.format(self.inner_type)
+        return f'({self.inner_type})'
