@@ -89,15 +89,29 @@ class Bootstrap4GridRowPlugin(CMSPluginBase):
                 extra[f'{size}_col'] = data.get(
                     f'create_{size}_col'
                 )
+
+            try:
+                # django CMS <= 3
+                plugin_position = obj.numchild
+            except AttributeError:
+                # django CMS >= 4
+                plugin_position = obj.placeholder.get_next_plugin_position(obj.language, obj)
+
             col = Bootstrap4GridColumn(
                 parent=obj,
                 placeholder=obj.placeholder,
                 language=obj.language,
-                position=obj.numchild,
+                position=plugin_position,
                 plugin_type=Bootstrap4GridColumnPlugin.__name__,
                 **extra
             )
-            obj.add_child(instance=col)
+
+            try:
+                # django CMS <= 3
+                obj.add_child(instance=col)
+            except AttributeError:
+                # django CMS >= 4
+                obj.placeholder.add_plugin(instance=col)
 
     def render(self, context, instance, placeholder):
         gutter = 'no-gutters' if instance.gutters else ''
