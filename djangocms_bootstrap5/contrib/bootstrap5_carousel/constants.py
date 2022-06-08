@@ -16,7 +16,7 @@ CAROUSEL_RIDE_CHOICES = (
 
 CAROUSEL_TEMPLATE_CHOICES = getattr(
     settings,
-    'DJANGOCMS_BOOTSTRAP5_CAROUSEL_TEMPLATES',
+    'DJANGOCMS_BOOTSTRAP4_CAROUSEL_TEMPLATES',
     (
         ('default', _('Default')),
     ),
@@ -26,7 +26,7 @@ CAROUSEL_TEMPLATE_CHOICES = getattr(
 # {% with 1024 as width and 768 as height %}
 CAROUSEL_DEFAULT_SIZE = getattr(
     settings,
-    'DJANGOCMS_BOOTSTRAP5_CAROUSEL_DEFAULT_SIZE',
+    'DJANGOCMS_BOOTSTRAP4_CAROUSEL_DEFAULT_SIZE',
     [1024, 768],
 )
 
@@ -39,14 +39,14 @@ CAROUSEL_ASPECT_RATIOS = (
 ) + tuple(
     getattr(
         settings,
-        'DJANGOCMS_BOOTSTRAP5_CAROUSEL_ASPECT_RATIOS',
-        tuple()
+        'DJANGOCMS_BOOTSTRAP4_CAROUSEL_ASPECT_RATIOS',
+        ()
     )
 )
 
 CAROUSEL_ASPECT_RATIO_CHOICES = (
-    tuple([
-        ('{0}x{1}'.format(x, y), '{0}x{1}'.format(x, y))
+    tuple(
+        (f'{x}x{y}', f'{x}x{y}')
         for x, y in CAROUSEL_ASPECT_RATIOS
-    ])
+    )
 )

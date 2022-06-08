@@ -6,11 +6,11 @@ from django.utils.translation import ungettext
 
 from cms.models import CMSPlugin
 
-from djangocms_bootstrap5.constants import DEVICE_SIZES
-from djangocms_bootstrap5.fields import (
+from djangocms_bootstrap4.constants import DEVICE_SIZES
+from djangocms_bootstrap4.fields import (
     AttributesField, IntegerRangeField, TagTypeField,
 )
-from djangocms_bootstrap5.helpers import mark_safe_lazy
+from djangocms_bootstrap4.helpers import mark_safe_lazy
 
 from .constants import (
     GRID_COLUMN_ALIGNMENT_CHOICES, GRID_COLUMN_CHOICES, GRID_CONTAINER_CHOICES,
@@ -19,10 +19,10 @@ from .constants import (
 )
 
 
-class Bootstrap5GridContainer(CMSPlugin):
+class Bootstrap4GridContainer(CMSPlugin):
     """
     Layout > Grid: "Container" Plugin
-    https://getbootstrap.com/docs/5.0/layout/grid/
+    https://getbootstrap.com/docs/4.0/layout/grid/
     """
     container_type = models.CharField(
         verbose_name=_('Container type'),
@@ -45,13 +45,13 @@ class Bootstrap5GridContainer(CMSPlugin):
         for item in GRID_CONTAINER_CHOICES:
             if item[0] == self.container_type:
                 text = item[1]
-        return '({})'.format(text)
+        return f'({text})'
 
 
-class Bootstrap5GridRow(CMSPlugin):
+class Bootstrap4GridRow(CMSPlugin):
     """
     Layout > Grid: "Row" Plugin
-    https://getbootstrap.com/docs/5.0/layout/grid/
+    https://getbootstrap.com/docs/4.0/layout/grid/
     """
     vertical_alignment = models.CharField(
         verbose_name=_('Vertical alignment'),
@@ -60,7 +60,7 @@ class Bootstrap5GridRow(CMSPlugin):
         max_length=255,
         help_text=mark_safe_lazy(_(
             'Read more in the <a href="{link}" target="_blank">documentation</a>.')
-            .format(link='https://getbootstrap.com/docs/5.0/layout/grid/#vertical-alignment')
+                .format(link='https://getbootstrap.com/docs/4.0/layout/grid/#vertical-alignment')
         ),
     )
     horizontal_alignment = models.CharField(
@@ -70,7 +70,7 @@ class Bootstrap5GridRow(CMSPlugin):
         max_length=255,
         help_text=mark_safe_lazy(_(
             'Read more in the <a href="{link}" target="_blank">documentation</a>.')
-            .format(link='https://getbootstrap.com/docs/5.0/layout/grid/#horizontal-alignment')
+                .format(link='https://getbootstrap.com/docs/4.0/layout/grid/#horizontal-alignment')
         ),
     )
     gutters = models.BooleanField(
@@ -95,10 +95,10 @@ class Bootstrap5GridRow(CMSPlugin):
         return column_count_str
 
 
-class Bootstrap5GridColumn(CMSPlugin):
+class Bootstrap4GridColumn(CMSPlugin):
     """
     Layout > Grid: "Column" Plugin
-    https://getbootstrap.com/docs/5.0/layout/grid/
+    https://getbootstrap.com/docs/4.0/layout/grid/
     """
     column_type = models.CharField(
         verbose_name=_('Column type'),
@@ -123,11 +123,11 @@ class Bootstrap5GridColumn(CMSPlugin):
         text = ''
         classes = self.get_grid_values()
         if self.xs_col:
-            text += '(col-{}) '.format(self.xs_col)
+            text += f'(col-{self.xs_col}) '
         else:
             text += '(auto) '
         if self.column_type != 'col':
-            text += '.{} '.format(self.column_type)
+            text += f'.{self.column_type} '
         if classes:
             text += '.{}'.format(' .'.join(self.get_grid_values()))
         return text
@@ -136,12 +136,12 @@ class Bootstrap5GridColumn(CMSPlugin):
         classes = []
         for device in DEVICE_SIZES:
             for element in ('col', 'order', 'offset', 'ml', 'mr'):
-                size = getattr(self, '{}_{}'.format(device, element))
+                size = getattr(self, f'{device}_{element}')
                 if isinstance(size, int) and (element == 'col' or element == 'order' or element == 'offset'):
                     if device == 'xs':
-                        classes.append('{}-{}'.format(element, int(size)))
+                        classes.append(f'{element}-{int(size)}')
                     else:
-                        classes.append('{}-{}-{}'.format(element, device, int(size)))
+                        classes.append(f'{element}-{device}-{int(size)}')
                 elif size:
                     if device == 'xs':
                         classes.append('{}-{}'.format(element, 'auto'))
@@ -163,31 +163,31 @@ BooleanFieldPartial = partial(
     default=False,
 )
 
-# Loop through Bootstrap 5 device choices and generate
+# Loop through Bootstrap 4 device choices and generate
 # model fields to cover col-*, order-*, offset-*, etc.
 for size in DEVICE_SIZES:
     # Grid size
-    Bootstrap5GridColumn.add_to_class(
-        '{}_col'.format(size),
+    Bootstrap4GridColumn.add_to_class(
+        f'{size}_col',
         IntegerRangeFieldPartial(),
     )
     # Grid ordering
-    Bootstrap5GridColumn.add_to_class(
-        '{}_order'.format(size),
+    Bootstrap4GridColumn.add_to_class(
+        f'{size}_order',
         IntegerRangeFieldPartial(),
     )
     # Grid offset
-    Bootstrap5GridColumn.add_to_class(
-        '{}_offset'.format(size),
+    Bootstrap4GridColumn.add_to_class(
+        f'{size}_offset',
         IntegerRangeFieldPartial(),
     )
     # Grid margin left (ml)
-    Bootstrap5GridColumn.add_to_class(
-        '{}_ml'.format(size),
+    Bootstrap4GridColumn.add_to_class(
+        f'{size}_ml',
         BooleanFieldPartial(),
     )
     # Grid margin right (ml)
-    Bootstrap5GridColumn.add_to_class(
-        '{}_mr'.format(size),
+    Bootstrap4GridColumn.add_to_class(
+        f'{size}_mr',
         BooleanFieldPartial(),
     )

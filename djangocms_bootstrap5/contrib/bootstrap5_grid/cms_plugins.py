@@ -3,24 +3,24 @@ from django.utils.translation import gettext_lazy as _
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 
-from djangocms_bootstrap5.constants import DEVICE_SIZES
-from djangocms_bootstrap5.helpers import concat_classes
+from djangocms_bootstrap4.constants import DEVICE_SIZES
+from djangocms_bootstrap4.helpers import concat_classes
 
-from .forms import Bootstrap5GridColumnForm, Bootstrap5GridRowForm
+from .forms import Bootstrap4GridColumnForm, Bootstrap4GridRowForm
 from .models import (
-    Bootstrap5GridColumn, Bootstrap5GridContainer, Bootstrap5GridRow,
+    Bootstrap4GridColumn, Bootstrap4GridContainer, Bootstrap4GridRow,
 )
 
 
-class Bootstrap5GridContainerPlugin(CMSPluginBase):
+class Bootstrap4GridContainerPlugin(CMSPluginBase):
     """
     Layout > Grid: "Container" Plugin
-    https://getbootstrap.com/docs/5.0/layout/grid/
+    https://getbootstrap.com/docs/4.0/layout/grid/
     """
-    model = Bootstrap5GridContainer
+    model = Bootstrap4GridContainer
     name = _('Container')
-    module = _('Bootstrap 5')
-    render_template = 'djangocms_bootstrap5/grid_container.html'
+    module = _('Bootstrap 4')
+    render_template = 'djangocms_bootstrap4/grid_container.html'
     allow_children = True
 
     fieldsets = [
@@ -50,19 +50,19 @@ class Bootstrap5GridContainerPlugin(CMSPluginBase):
         )
 
 
-class Bootstrap5GridRowPlugin(CMSPluginBase):
+class Bootstrap4GridRowPlugin(CMSPluginBase):
     """
     Layout > Grid: "Row" Plugin
-    https://getbootstrap.com/docs/5.0/layout/grid/
+    https://getbootstrap.com/docs/4.0/layout/grid/
     """
-    model = Bootstrap5GridRow
+    model = Bootstrap4GridRow
     name = _('Row')
-    module = _('Bootstrap 5')
-    form = Bootstrap5GridRowForm
-    change_form_template = 'djangocms_bootstrap5/admin/grid_row.html'
-    render_template = 'djangocms_bootstrap5/grid_row.html'
+    module = _('Bootstrap 4')
+    form = Bootstrap4GridRowForm
+    change_form_template = 'djangocms_bootstrap4/admin/grid_row.html'
+    render_template = 'djangocms_bootstrap4/grid_row.html'
     allow_children = True
-    child_classes = ['Bootstrap5GridColumnPlugin']
+    child_classes = ['Bootstrap4GridColumnPlugin']
 
     fieldsets = [
         (None, {
@@ -83,21 +83,35 @@ class Bootstrap5GridRowPlugin(CMSPluginBase):
     def save_model(self, request, obj, form, change):
         super().save_model(request, obj, form, change)
         data = form.cleaned_data
-        for x in range(int(data['create']) if data['create'] is not None else 0):
+        for x in range(int(data['create']) if data['create'] is not None else 0):  # NOQA
             extra = {}
             for size in DEVICE_SIZES:
-                extra['{}_col'.format(size)] = data.get(
-                    'create_{}_col'.format(size)
+                extra[f'{size}_col'] = data.get(
+                    f'create_{size}_col'
                 )
-            col = Bootstrap5GridColumn(
+
+            try:
+                # django CMS <= 3
+                plugin_position = obj.numchild
+            except AttributeError:
+                # django CMS >= 4
+                plugin_position = obj.placeholder.get_next_plugin_position(obj.language, obj)
+
+            col = Bootstrap4GridColumn(
                 parent=obj,
                 placeholder=obj.placeholder,
                 language=obj.language,
-                position=obj.numchild,
-                plugin_type=Bootstrap5GridColumnPlugin.__name__,
+                position=plugin_position,
+                plugin_type=Bootstrap4GridColumnPlugin.__name__,
                 **extra
             )
-            obj.add_child(instance=col)
+
+            try:
+                # django CMS <= 3
+                obj.add_child(instance=col)
+            except AttributeError:
+                # django CMS >= 4
+                obj.placeholder.add_plugin(instance=col)
 
     def render(self, context, instance, placeholder):
         gutter = 'no-gutters' if instance.gutters else ''
@@ -115,22 +129,22 @@ class Bootstrap5GridRowPlugin(CMSPluginBase):
         )
 
 
-class Bootstrap5GridColumnPlugin(CMSPluginBase):
+class Bootstrap4GridColumnPlugin(CMSPluginBase):
     """
     Layout > Grid: "Column" Plugin
-    https://getbootstrap.com/docs/5.0/layout/grid/
+    https://getbootstrap.com/docs/4.0/layout/grid/
     """
-    model = Bootstrap5GridColumn
+    model = Bootstrap4GridColumn
     name = _('Column')
-    module = _('Bootstrap 5')
-    form = Bootstrap5GridColumnForm
-    change_form_template = 'djangocms_bootstrap5/admin/grid_column.html'
-    render_template = 'djangocms_bootstrap5/grid_column.html'
+    module = _('Bootstrap 4')
+    form = Bootstrap4GridColumnForm
+    change_form_template = 'djangocms_bootstrap4/admin/grid_column.html'
+    render_template = 'djangocms_bootstrap4/grid_column.html'
     allow_children = True
     require_parent = True
     # TODO it should allow for the responsive utilitiy class
-    # https://getbootstrap.com/docs/5.0/layout/grid/#column-resets
-    parent_classes = ['Bootstrap5GridRowPlugin']
+    # https://getbootstrap.com/docs/4.0/layout/grid/#column-resets
+    parent_classes = ['Bootstrap4GridRowPlugin']
 
     fieldsets = [
         (None, {
@@ -140,11 +154,11 @@ class Bootstrap5GridColumnPlugin(CMSPluginBase):
         }),
         (_('Responsive settings'), {
             'fields': (
-                ['{}_col'.format(size) for size in DEVICE_SIZES],
-                ['{}_order'.format(size) for size in DEVICE_SIZES],
-                ['{}_offset'.format(size) for size in DEVICE_SIZES],
-                ['{}_ml'.format(size) for size in DEVICE_SIZES],
-                ['{}_mr'.format(size) for size in DEVICE_SIZES],
+                [f'{size}_col' for size in DEVICE_SIZES],
+                [f'{size}_order' for size in DEVICE_SIZES],
+                [f'{size}_offset' for size in DEVICE_SIZES],
+                [f'{size}_ml' for size in DEVICE_SIZES],
+                [f'{size}_mr' for size in DEVICE_SIZES],
             )
         }),
         (_('Advanced settings'), {
@@ -176,6 +190,6 @@ class Bootstrap5GridColumnPlugin(CMSPluginBase):
         )
 
 
-plugin_pool.register_plugin(Bootstrap5GridContainerPlugin)
-plugin_pool.register_plugin(Bootstrap5GridRowPlugin)
-plugin_pool.register_plugin(Bootstrap5GridColumnPlugin)
+plugin_pool.register_plugin(Bootstrap4GridContainerPlugin)
+plugin_pool.register_plugin(Bootstrap4GridRowPlugin)
+plugin_pool.register_plugin(Bootstrap4GridColumnPlugin)

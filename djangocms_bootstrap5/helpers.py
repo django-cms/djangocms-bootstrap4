@@ -12,7 +12,7 @@ def concat_classes(classes):
 
 
 def get_template_path(prefix, template, name):
-    return 'djangocms_bootstrap5/{}/{}/{}.html'.format(prefix, template, name)
+    return f'djangocms_bootstrap4/{prefix}/{template}/{name}.html'
 
 
 def get_plugin_template(instance, prefix, name, templates):

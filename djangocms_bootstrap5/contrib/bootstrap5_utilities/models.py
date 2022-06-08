@@ -64,4 +64,4 @@ class Bootstrap5Spacing(CMSPlugin):
         )
 
     def get_short_description(self):
-        return '(.{})'.format(self.get_base_css_class())
+        return f'(.{self.get_base_css_class()})'
