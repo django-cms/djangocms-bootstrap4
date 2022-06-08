@@ -1,11 +1,11 @@
 from django.test import TestCase
 
-from djangocms_bootstrap4.fields import (
+from djangocms_bootstrap5.fields import (
     AttributesField, IntegerRangeField, TagTypeField,
 )
 
 
-class B4FieldsTestCase(TestCase):
+class B5FieldsTestCase(TestCase):
 
     def test_attributes_field(self):
         field = AttributesField()

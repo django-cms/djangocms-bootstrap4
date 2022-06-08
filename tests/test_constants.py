@@ -1,12 +1,12 @@
 from django.test import TestCase
 
-from djangocms_bootstrap4.constants import (
+from djangocms_bootstrap5.constants import (
     ALIGN_CHOICES, COLOR_STYLE_CHOICES, DEVICE_CHOICES, DEVICE_SIZES,
     TAG_CHOICES,
 )
 
 
-class B4ConstantsTestCase(TestCase):
+class B5ConstantsTestCase(TestCase):
     # make sure to update the documentation
     # when changing any values in these
 

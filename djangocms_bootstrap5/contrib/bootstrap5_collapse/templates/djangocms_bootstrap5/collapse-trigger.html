@@ -1,0 +1,14 @@
+{% load cms_tags %}
+
+<{{ instance.tag_type }} {{ instance.attributes_str }}
+    id="trigger-{{ instance.identifier }}"
+    role="tab"
+    data-bs-toggle="collapse"
+    data-bs-target="#container-{{ instance.identifier }}"
+    aria-controls="container-{{ instance.identifier }}"
+    aria-expanded="false"
+>
+    {% for plugin in instance.child_plugin_instances %}
+        {% with forloop as parentloop %}{% render_plugin plugin %}{% endwith %}
+    {% endfor %}
+</{{ instance.tag_type }}>

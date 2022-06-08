@@ -63,7 +63,7 @@ module.exports = {
         utilities: path.join(__dirname, 'utilities.js'),
     },
     output: {
-        path: path.join(__dirname, '..', '..', 'djangocms_bootstrap4', 'static', 'djangocms_bootstrap4', 'js'),
+        path: path.join(__dirname, '..', '..', 'djangocms_bootstrap5', 'static', 'djangocms_bootstrap5', 'js'),
         filename: 'bundle.[name].js',
         publicPath: '/static/',
     },

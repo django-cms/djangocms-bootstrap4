@@ -15,8 +15,8 @@ class Form(forms.BaseForm):
 
     def to_settings(self, data, settings):
         if data['grid_size']:
-            settings['DJANGOCMS_BOOTSTRAP4_GRID_SIZE'] = int(data['grid_size'])
+            settings['DJANGOCMS_BOOTSTRAP5_GRID_SIZE'] = int(data['grid_size'])
         if data['enable_icons']:
-            settings['DJANGOCMS_BOOTSTRAP4_USE_ICONS'] = int(data['enable_icons'])
+            settings['DJANGOCMS_BOOTSTRAP5_USE_ICONS'] = int(data['enable_icons'])
 
         return settings

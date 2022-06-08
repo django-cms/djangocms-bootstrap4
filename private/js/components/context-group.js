@@ -41,7 +41,7 @@ export default class ContextGroup extends ButtonGroup {
         this.element.find('.btn-group').removeClass('btn-group');
 
         // add class to the wrapper
-        this.element.addClass('bootstrap4-button-group-context');
+        this.element.addClass('bootstrap5-button-group-context');
 
         if (this.options.extraClass) {
             this.element.addClass(this.options.extraClass);

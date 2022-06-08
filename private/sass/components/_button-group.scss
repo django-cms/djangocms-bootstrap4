@@ -1,7 +1,7 @@
 // #############################################################################
 // BUTTON GROUPS
 
-.bootstrap4-button-group {
+.bootstrap5-button-group {
     .btn {
         box-sizing: border-box;
         cursor: pointer;
@@ -24,8 +24,8 @@
     }
 }
 
-.bootstrap4-button-group-context-size,
-.bootstrap4-button-group-context-colors {
+.bootstrap5-button-group-context-size,
+.bootstrap5-button-group-context-colors {
     > div {
         display: flex;
         flex-wrap: wrap;
@@ -34,7 +34,7 @@
     }
 }
 
-.bootstrap4-button-group-context-colors {
+.bootstrap5-button-group-context-colors {
     .btn {
         flex-basis: calc(25% - 4px);
 
@@ -47,7 +47,7 @@
 
 // when using icons remove padding and improve sizing
 // add icons in css to prevent CORS bug - see issue #38
-.bootstrap4-button-group-icons {
+.bootstrap5-button-group-icons {
     .icon {
         font-size: 21px;
     }

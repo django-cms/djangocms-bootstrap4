@@ -1,7 +1,7 @@
 include LICENSE
 include README.rst
-recursive-include djangocms_bootstrap4/locale *
-recursive-include djangocms_bootstrap4/static *
-recursive-include djangocms_bootstrap4/templates *
-recursive-include djangocms_bootstrap4/contrib *
+recursive-include djangocms_bootstrap5/locale *
+recursive-include djangocms_bootstrap5/static *
+recursive-include djangocms_bootstrap5/templates *
+recursive-include djangocms_bootstrap5/contrib *
 recursive-exclude * *.py[co]

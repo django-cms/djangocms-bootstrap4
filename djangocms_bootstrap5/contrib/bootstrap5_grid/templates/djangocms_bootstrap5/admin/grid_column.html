@@ -1,0 +1,30 @@
+{% extends "djangocms_bootstrap5/admin/base.html" %}
+{% load i18n static %}
+
+{% block extrahead %}
+    {{ block.super }}
+    <script src="{% static 'djangocms_bootstrap5/js/bundle.grid.js' %}"></script>
+{% endblock %}
+
+{% block field_sets %}
+    <div class="djangocms-bootstrap5 djangocms-bootstrap5-column"
+        data-static="{% get_static_prefix %}"
+        data-sizes='[
+            "{% trans 'Extra small' %}",
+            "{% trans 'Small' %}",
+            "{% trans 'Medium' %}",
+            "{% trans 'Large' %}",
+            "{% trans 'Extra large' %}"
+        ]'
+        data-rows='[
+            "{% trans 'Column size' %}",
+            "{% trans 'Order' %}",
+            "{% trans 'Offset' %}",
+            "{% trans 'Margin left' %}",
+            "{% trans 'Margin right' %}"
+        ]'
+        data-reset="{% trans 'Reset' %}"
+    >
+        {{ block.super }}
+    </div>
+{% endblock %}

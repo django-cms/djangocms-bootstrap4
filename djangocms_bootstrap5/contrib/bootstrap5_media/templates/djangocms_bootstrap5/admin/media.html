@@ -1,0 +1,9 @@
+{% extends "djangocms_bootstrap5/admin/base.html" %}
+{% load i18n %}
+
+{% block custom_class %}djangocms-bootstrap5-media{% endblock %}
+{% block custom_message %}
+    <p class="alert alert-info">
+        {% trans "There is no configuration required here." %}
+    </p>
+{% endblock %}
