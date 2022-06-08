@@ -30,35 +30,35 @@ class Bootstrap4GridColumnBaseForm(models.ModelForm):
 # convert regular text type fields to number
 extra_fields_column = {}
 for size in DEVICE_SIZES:
-    extra_fields_column['{}_col'.format(size)] = IntegerField(
-        label='col' if size == 'xs' else 'col-{}'.format(size),
+    extra_fields_column[f'{size}_col'] = IntegerField(
+        label='col' if size == 'xs' else f'col-{size}',
         required=False,
         min_value=1,
         max_value=GRID_SIZE,
     )
-    extra_fields_column['{}_order'.format(size)] = IntegerField(
-        label='order' if size == 'xs' else 'order-{}'.format(size),
+    extra_fields_column[f'{size}_order'] = IntegerField(
+        label='order' if size == 'xs' else f'order-{size}',
         required=False,
         min_value=0,
         max_value=GRID_SIZE,
     )
-    extra_fields_column['{}_offset'.format(size)] = IntegerField(
-        label='offset' if size == 'xs' else 'offset-{}'.format(size),
+    extra_fields_column[f'{size}_offset'] = IntegerField(
+        label='offset' if size == 'xs' else f'offset-{size}',
         required=False,
         min_value=0,
         max_value=GRID_SIZE,
     )
-    extra_fields_column['{}_ml'.format(size)] = BooleanField(
-        label='ml-auto' if size == 'xs' else 'ml-{}-auto'.format(size),
+    extra_fields_column[f'{size}_ml'] = BooleanField(
+        label='ml-auto' if size == 'xs' else f'ml-{size}-auto',
         required=False,
     )
-    extra_fields_column['{}_mr'.format(size)] = BooleanField(
-        label='mr-auto' if size == 'xs' else 'mr-{}-auto'.format(size),
+    extra_fields_column[f'{size}_mr'] = BooleanField(
+        label='mr-auto' if size == 'xs' else f'mr-{size}-auto',
         required=False,
     )
 
 Bootstrap4GridColumnForm = type(
-    str('Bootstrap4GridColumnBaseForm'),
+    'Bootstrap4GridColumnBaseForm',
     (Bootstrap4GridColumnBaseForm,),
     extra_fields_column,
 )

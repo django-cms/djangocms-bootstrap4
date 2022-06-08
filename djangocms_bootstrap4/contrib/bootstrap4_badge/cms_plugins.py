@@ -40,7 +40,7 @@ class Bootstrap4BadgePlugin(CMSPluginBase):
         link_classes = ['badge']
         if instance.badge_pills:
             link_classes.append('badge-pill')
-        link_classes.append('badge-{}'.format(instance.badge_context))
+        link_classes.append(f'badge-{instance.badge_context}')
 
         classes = concat_classes(link_classes + [
             instance.attributes.get('class'),

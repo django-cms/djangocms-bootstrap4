@@ -1,3 +1,5 @@
+import copy
+
 from django.utils.translation import gettext_lazy as _
 
 from cms.plugin_pool import plugin_pool
@@ -35,13 +37,12 @@ class Bootstrap4LinkPlugin(LinkPlugin):
             ('icon_left', 'icon_right'),
         )
 
-    LinkPlugin.fieldsets[0] = (
+    fieldsets = copy.deepcopy(LinkPlugin.fieldsets)
+    fieldsets[0] = (
         None, {
             'fields': fields
         }
     )
-
-    fieldsets = LinkPlugin.fieldsets
 
     def get_render_template(self, context, instance, placeholder):
         return get_plugin_template(
@@ -52,16 +53,16 @@ class Bootstrap4LinkPlugin(LinkPlugin):
         link_classes = []
         if instance.link_context:
             if instance.link_type == 'link':
-                link_classes.append('text-{}'.format(instance.link_context))
+                link_classes.append(f'text-{instance.link_context}')
             else:
                 link_classes.append('btn')
                 if not instance.link_outline:
                     link_classes.append(
-                        'btn-{}'.format(instance.link_context)
+                        f'btn-{instance.link_context}'
                     )
                 else:
                     link_classes.append(
-                        'btn-outline-{}'.format(instance.link_context)
+                        f'btn-outline-{instance.link_context}'
                     )
         if instance.link_size:
             link_classes.append(instance.link_size)

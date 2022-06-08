@@ -83,21 +83,35 @@ class Bootstrap4GridRowPlugin(CMSPluginBase):
     def save_model(self, request, obj, form, change):
         super().save_model(request, obj, form, change)
         data = form.cleaned_data
-        for x in range(int(data['create']) if data['create'] is not None else 0):
+        for x in range(int(data['create']) if data['create'] is not None else 0):  # NOQA
             extra = {}
             for size in DEVICE_SIZES:
-                extra['{}_col'.format(size)] = data.get(
-                    'create_{}_col'.format(size)
+                extra[f'{size}_col'] = data.get(
+                    f'create_{size}_col'
                 )
+
+            try:
+                # django CMS <= 3
+                plugin_position = obj.numchild
+            except AttributeError:
+                # django CMS >= 4
+                plugin_position = obj.placeholder.get_next_plugin_position(obj.language, obj)
+
             col = Bootstrap4GridColumn(
                 parent=obj,
                 placeholder=obj.placeholder,
                 language=obj.language,
-                position=obj.numchild,
+                position=plugin_position,
                 plugin_type=Bootstrap4GridColumnPlugin.__name__,
                 **extra
             )
-            obj.add_child(instance=col)
+
+            try:
+                # django CMS <= 3
+                obj.add_child(instance=col)
+            except AttributeError:
+                # django CMS >= 4
+                obj.placeholder.add_plugin(instance=col)
 
     def render(self, context, instance, placeholder):
         gutter = 'no-gutters' if instance.gutters else ''
@@ -140,11 +154,11 @@ class Bootstrap4GridColumnPlugin(CMSPluginBase):
         }),
         (_('Responsive settings'), {
             'fields': (
-                ['{}_col'.format(size) for size in DEVICE_SIZES],
-                ['{}_order'.format(size) for size in DEVICE_SIZES],
-                ['{}_offset'.format(size) for size in DEVICE_SIZES],
-                ['{}_ml'.format(size) for size in DEVICE_SIZES],
-                ['{}_mr'.format(size) for size in DEVICE_SIZES],
+                [f'{size}_col' for size in DEVICE_SIZES],
+                [f'{size}_order' for size in DEVICE_SIZES],
+                [f'{size}_offset' for size in DEVICE_SIZES],
+                [f'{size}_ml' for size in DEVICE_SIZES],
+                [f'{size}_mr' for size in DEVICE_SIZES],
             )
         }),
         (_('Advanced settings'), {
