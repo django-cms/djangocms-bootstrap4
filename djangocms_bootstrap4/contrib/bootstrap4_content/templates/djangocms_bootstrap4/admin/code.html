@@ -15,11 +15,10 @@ django.jQuery(function () {
 
     // init editor with settings
     var editor = ace.edit(div[0]);
-    var darkMode, CMS;
-    CMS = window.parent.CMS;
-    console.log(CMS);
-    if (CMS.API.Helpers.getColorScheme) {
-        darkMode = CMS.API.Helpers.getColorScheme() === 'dark';
+    var darkMode;
+
+    if (window.parent.CMS.API.Helpers.getColorScheme) {
+        darkMode = window.parent.CMS.API.Helpers.getColorScheme() === 'dark';
     } else {
         // django CMS pre-3.11.1
         darkMode =  window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;

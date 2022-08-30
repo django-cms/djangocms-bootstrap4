@@ -11,7 +11,6 @@ class Bootstrap4CodeForm(ModelForm):
             else "https://cdnjs.cloudflare.com/ajax/libs/ace/1.9.6/ace.js",
         )
 
-
     class Meta:
         # When used inside djangocms-text-ckeditor
         # this causes the label field to be prefilled with the selected text.
