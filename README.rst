@@ -83,6 +83,11 @@ For a manual install:
 
 * run ``python manage.py migrate``
 
+The Code plugin uses the ace code editor which is loaded from a CDN by default.
+If you want the ace code editor to be served from static files, please use
+`djangocms-bootstrap4[static-ace]` instead of `djangocms-bootstrap4` in your
+requirements or with pip.
+
 
 Configuration
 -------------

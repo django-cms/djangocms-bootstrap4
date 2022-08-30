@@ -2,6 +2,10 @@
 Changelog
 =========
 
+unreleased
+==========
+
+* Added support for djangocms-static-ace to serve the ace code editor locally
 
 2.0.0 (2020-09-02)
 ==================
