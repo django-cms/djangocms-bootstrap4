@@ -1,8 +1,6 @@
 from django.test import TestCase
 
-from djangocms_bootstrap4.contrib.bootstrap4_tabs.models import (
-    Bootstrap4Tab, Bootstrap4TabItem,
-)
+from djangocms_bootstrap4.contrib.bootstrap4_tabs.models import Bootstrap4Tab, Bootstrap4TabItem
 
 
 class B4TabsModelTestCase(TestCase):

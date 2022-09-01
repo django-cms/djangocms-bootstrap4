@@ -5,10 +5,7 @@ from django.db import migrations, models
 import djangocms_bootstrap4.fields
 from djangocms_bootstrap4.constants import TAG_CHOICES
 
-from ..constants import (
-    CARD_ALIGNMENT_CHOICES, CARD_INNER_TYPE_CHOICES, CARD_TAG_CHOICES,
-    CARD_TYPE_CHOICES,
-)
+from ..constants import CARD_ALIGNMENT_CHOICES, CARD_INNER_TYPE_CHOICES, CARD_TAG_CHOICES, CARD_TYPE_CHOICES
 from ..models import CARD_COLOR_STYLE_CHOICES, CARD_TEXT_STYLES
 
 

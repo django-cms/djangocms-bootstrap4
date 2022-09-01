@@ -1,8 +1,6 @@
 from django.test import TestCase
 
-from djangocms_bootstrap4.contrib.bootstrap4_media.models import (
-    Bootstrap4Media, Bootstrap4MediaBody,
-)
+from djangocms_bootstrap4.contrib.bootstrap4_media.models import Bootstrap4Media, Bootstrap4MediaBody
 
 
 class B4MediaModelTestCase(TestCase):

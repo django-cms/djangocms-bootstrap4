@@ -1,8 +1,6 @@
 from django.test import TestCase
 
-from djangocms_bootstrap4.contrib.bootstrap4_listgroup.models import (
-    Bootstrap4ListGroup, Bootstrap4ListGroupItem,
-)
+from djangocms_bootstrap4.contrib.bootstrap4_listgroup.models import Bootstrap4ListGroup, Bootstrap4ListGroupItem
 
 
 class B4ListGroupModelTestCase(TestCase):

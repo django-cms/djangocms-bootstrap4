@@ -1,8 +1,6 @@
 from django.test import TestCase
 
-from djangocms_bootstrap4.contrib.bootstrap4_card.models import (
-    Bootstrap4Card, Bootstrap4CardInner,
-)
+from djangocms_bootstrap4.contrib.bootstrap4_card.models import Bootstrap4Card, Bootstrap4CardInner
 
 
 class B4CardModelTestCase(TestCase):

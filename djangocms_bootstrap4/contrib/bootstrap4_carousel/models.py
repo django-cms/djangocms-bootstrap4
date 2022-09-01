@@ -13,8 +13,7 @@ from filer.fields.image import FilerImageField
 from djangocms_bootstrap4.fields import AttributesField, TagTypeField
 
 from .constants import (
-    CAROUSEL_ASPECT_RATIO_CHOICES, CAROUSEL_PAUSE_CHOICES,
-    CAROUSEL_RIDE_CHOICES, CAROUSEL_TEMPLATE_CHOICES,
+    CAROUSEL_ASPECT_RATIO_CHOICES, CAROUSEL_PAUSE_CHOICES, CAROUSEL_RIDE_CHOICES, CAROUSEL_TEMPLATE_CHOICES,
 )
 
 

@@ -1,9 +1,7 @@
 from cms.api import add_plugin
 from cms.test_utils.testcases import CMSTestCase
 
-from djangocms_bootstrap4.contrib.bootstrap4_alerts.cms_plugins import (
-    Bootstrap4AlertsPlugin,
-)
+from djangocms_bootstrap4.contrib.bootstrap4_alerts.cms_plugins import Bootstrap4AlertsPlugin
 
 from ..fixtures import B4TestFixture
 

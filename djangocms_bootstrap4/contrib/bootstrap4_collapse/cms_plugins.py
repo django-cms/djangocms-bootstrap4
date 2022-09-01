@@ -5,9 +5,7 @@ from cms.plugin_pool import plugin_pool
 
 from djangocms_bootstrap4.helpers import concat_classes
 
-from .models import (
-    Bootstrap4Collapse, Bootstrap4CollapseContainer, Bootstrap4CollapseTrigger,
-)
+from .models import Bootstrap4Collapse, Bootstrap4CollapseContainer, Bootstrap4CollapseTrigger
 
 
 class Bootstrap4CollapsePlugin(CMSPluginBase):

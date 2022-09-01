@@ -3,15 +3,9 @@ from django.test import TestCase
 
 from cms.api import add_plugin, create_page
 
-from djangocms_bootstrap4.contrib.bootstrap4_carousel.cms_plugins import (
-    Bootstrap4CarouselPlugin,
-)
-from djangocms_bootstrap4.contrib.bootstrap4_carousel.constants import (
-    CAROUSEL_TEMPLATE_CHOICES,
-)
-from djangocms_bootstrap4.helpers import (
-    concat_classes, get_plugin_template, get_template_path,
-)
+from djangocms_bootstrap4.contrib.bootstrap4_carousel.cms_plugins import Bootstrap4CarouselPlugin
+from djangocms_bootstrap4.contrib.bootstrap4_carousel.constants import CAROUSEL_TEMPLATE_CHOICES
+from djangocms_bootstrap4.helpers import concat_classes, get_plugin_template, get_template_path
 
 
 class B4HelpersTestCase(TestCase):

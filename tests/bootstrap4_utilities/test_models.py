@@ -1,8 +1,6 @@
 from django.test import TestCase
 
-from djangocms_bootstrap4.contrib.bootstrap4_utilities.models import (
-    Bootstrap4Spacing,
-)
+from djangocms_bootstrap4.contrib.bootstrap4_utilities.models import Bootstrap4Spacing
 
 
 class B4UtilitiesModelTestCase(TestCase):

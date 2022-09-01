@@ -6,9 +6,7 @@ import cms.models.fields
 
 import djangocms_attributes_field.fields
 import filer.fields.image
-from djangocms_picture.models import (
-    LINK_TARGET, PICTURE_ALIGNMENT, get_templates,
-)
+from djangocms_picture.models import LINK_TARGET, PICTURE_ALIGNMENT, get_templates
 
 
 class Migration(migrations.Migration):
