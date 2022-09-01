@@ -83,6 +83,13 @@ For a manual install:
 
 * run ``python manage.py migrate``
 
+The Code plugin uses the ace code editor which is loaded from a CDN by default.
+If you want the ace code editor to be served from static files, please use
+``djangocms-bootstrap4[static-ace]`` instead of ``djangocms-bootstrap4`` in your
+requirements or with pip. Make the static files fore the ace code editor available
+to your project by adding ``djangocms_static_ace`` to your project's
+``INSTALLED_APPS``.
+
 
 Configuration
 -------------
@@ -110,7 +117,8 @@ It provides the following **standard** Bootstrap 4 components:
 * `Tabs <https://getbootstrap.com/docs/4.0/components/navs/#tabs>`_
 * `Utilities (Spacing) <https://getbootstrap.com/docs/4.0/utilities/>`_
 
-django CMS Bootstrap 4 **does not** add the styles or javascript files to your frontend, these need to be added at your discretion.
+django CMS Bootstrap 4 **does not** add the styles or javascript files to your
+frontend, these need to be added at your discretion.
 
 
 Settings

@@ -1,9 +1,7 @@
 from cms.api import add_plugin
 from cms.test_utils.testcases import CMSTestCase
 
-from djangocms_bootstrap4.contrib.bootstrap4_tabs.cms_plugins import (
-    Bootstrap4TabItemPlugin, Bootstrap4TabPlugin,
-)
+from djangocms_bootstrap4.contrib.bootstrap4_tabs.cms_plugins import Bootstrap4TabItemPlugin, Bootstrap4TabPlugin
 
 from ..fixtures import B4TestFixture
 

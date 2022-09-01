@@ -6,9 +6,7 @@ from cms.models import CMSPlugin
 from djangocms_bootstrap4.constants import COLOR_STYLE_CHOICES
 from djangocms_bootstrap4.fields import AttributesField, TagTypeField
 
-from .constants import (
-    CARD_ALIGNMENT_CHOICES, CARD_INNER_TYPE_CHOICES, CARD_TYPE_CHOICES,
-)
+from .constants import CARD_ALIGNMENT_CHOICES, CARD_INNER_TYPE_CHOICES, CARD_TYPE_CHOICES
 
 
 # cards allow for a transparent color

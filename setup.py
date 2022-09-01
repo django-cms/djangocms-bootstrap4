@@ -15,6 +15,13 @@ REQUIREMENTS = [
 ]
 
 
+EXTRA_REQUIREMENTS = {
+    "static-ace": [
+        "djangocms-static-ace",
+    ]
+}
+
+
 CLASSIFIERS = [
     'Development Status :: 5 - Production/Stable',
     'Environment :: Web Environment',
@@ -28,12 +35,12 @@ CLASSIFIERS = [
     'Programming Language :: Python :: 3.9',
     'Framework :: Django',
     'Framework :: Django :: 2.2',
-    'Framework :: Django :: 3.0',
-    'Framework :: Django :: 3.1',
+    'Framework :: Django :: 3.2',
     'Framework :: Django CMS',
     'Framework :: Django CMS :: 3.7',
     'Framework :: Django CMS :: 3.8',
     'Framework :: Django CMS :: 3.9',
+    'Framework :: Django CMS :: 3.10',
     'Topic :: Internet :: WWW/HTTP',
     'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     'Topic :: Software Development',
@@ -52,10 +59,12 @@ setup(
     license='BSD-3-Clause',
     description='Adds Bootstrap 4 components as plugins.',
     long_description=open('README.rst').read(),
-    packages=find_packages(),
+    long_description_content_type='text/x-rst',
+    packages=find_packages(exclude='tests'),
     include_package_data=True,
     zip_safe=False,
     install_requires=REQUIREMENTS,
+    extras_require=EXTRA_REQUIREMENTS,
     classifiers=CLASSIFIERS,
     test_suite='tests.settings.run',
 )

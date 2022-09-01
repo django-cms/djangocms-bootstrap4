@@ -3,10 +3,7 @@ from django.db import migrations, models
 import djangocms_bootstrap4.fields
 from djangocms_bootstrap4.constants import TAG_CHOICES
 
-from ..constants import (
-    TAB_ALIGNMENT_CHOICES, TAB_EFFECT_CHOICES, TAB_TEMPLATE_CHOICES,
-    TAB_TYPE_CHOICES,
-)
+from ..constants import TAB_ALIGNMENT_CHOICES, TAB_EFFECT_CHOICES, TAB_TEMPLATE_CHOICES, TAB_TYPE_CHOICES
 
 
 class Migration(migrations.Migration):

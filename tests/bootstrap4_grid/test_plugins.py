@@ -4,8 +4,7 @@ from cms.api import add_plugin
 from cms.test_utils.testcases import CMSTestCase
 
 from djangocms_bootstrap4.contrib.bootstrap4_grid.cms_plugins import (
-    Bootstrap4GridColumnPlugin, Bootstrap4GridContainerPlugin,
-    Bootstrap4GridRowPlugin,
+    Bootstrap4GridColumnPlugin, Bootstrap4GridContainerPlugin, Bootstrap4GridRowPlugin,
 )
 
 from ..fixtures import B4TestFixture

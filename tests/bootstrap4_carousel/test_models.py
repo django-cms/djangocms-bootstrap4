@@ -1,8 +1,6 @@
 from django.test import TestCase
 
-from djangocms_bootstrap4.contrib.bootstrap4_carousel.models import (
-    Bootstrap4Carousel, Bootstrap4CarouselSlide,
-)
+from djangocms_bootstrap4.contrib.bootstrap4_carousel.models import Bootstrap4Carousel, Bootstrap4CarouselSlide
 
 from ..helpers import get_filer_image
 

@@ -1,8 +1,7 @@
 from django.test import TestCase
 
 from djangocms_bootstrap4.constants import (
-    ALIGN_CHOICES, COLOR_STYLE_CHOICES, DEVICE_CHOICES, DEVICE_SIZES,
-    TAG_CHOICES,
+    ALIGN_CHOICES, COLOR_STYLE_CHOICES, DEVICE_CHOICES, DEVICE_SIZES, TAG_CHOICES,
 )
 
 

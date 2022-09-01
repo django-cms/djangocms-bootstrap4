@@ -5,9 +5,7 @@ from django.db import migrations, models
 import djangocms_bootstrap4.fields
 from djangocms_bootstrap4.constants import DEVICE_CHOICES, TAG_CHOICES
 
-from ..constants import (
-    SPACER_PROPERTY_CHOICES, SPACER_SIDE_CHOICES, SPACER_SIZE_CHOICES,
-)
+from ..constants import SPACER_PROPERTY_CHOICES, SPACER_SIDE_CHOICES, SPACER_SIZE_CHOICES
 
 
 class Migration(migrations.Migration):

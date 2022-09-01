@@ -6,9 +6,7 @@ from cms.models import CMSPlugin
 from djangocms_bootstrap4.constants import DEVICE_CHOICES
 from djangocms_bootstrap4.fields import AttributesField, TagTypeField
 
-from .constants import (
-    SPACER_PROPERTY_CHOICES, SPACER_SIDE_CHOICES, SPACER_SIZE_CHOICES,
-)
+from .constants import SPACER_PROPERTY_CHOICES, SPACER_SIDE_CHOICES, SPACER_SIZE_CHOICES
 
 
 class Bootstrap4Spacing(CMSPlugin):

@@ -1,9 +1,7 @@
 from cms.api import add_plugin
 from cms.test_utils.testcases import CMSTestCase
 
-from djangocms_bootstrap4.contrib.bootstrap4_media.cms_plugins import (
-    Bootstrap4MediaBodyPlugin, Bootstrap4MediaPlugin,
-)
+from djangocms_bootstrap4.contrib.bootstrap4_media.cms_plugins import Bootstrap4MediaBodyPlugin, Bootstrap4MediaPlugin
 
 from ..fixtures import B4TestFixture
 
