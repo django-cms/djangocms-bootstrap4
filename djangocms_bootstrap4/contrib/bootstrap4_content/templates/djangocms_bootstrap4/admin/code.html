@@ -1,10 +1,7 @@
 {% extends "admin/change_form.html" %}
 
 {% block object-tools %}
-{{ block.super }}
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.9/ace.js"></script>
-<script>
+{{ block.super }}<script>
 django.jQuery(function () {
     // ace editor cannot be attached directly to a textarea
     var textarea = django.jQuery('textarea').css('display', 'none');
@@ -18,7 +15,19 @@ django.jQuery(function () {
 
     // init editor with settings
     var editor = ace.edit(div[0]);
-    editor.setTheme('ace/theme/github');
+    var darkMode;
+
+    if (window.parent.CMS.API.Helpers.getColorScheme) {
+        darkMode = window.parent.CMS.API.Helpers.getColorScheme() === 'dark';
+    } else {
+        // django CMS pre-3.11.1
+        darkMode =  window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    if (darkMode) {
+        editor.setTheme('ace/theme/tomorrow_night');
+    }  else {
+        editor.setTheme('ace/theme/github');
+    }
     editor.getSession().setValue(textarea.val());
     editor.getSession().setMode('ace/mode/html');
     editor.setOptions({

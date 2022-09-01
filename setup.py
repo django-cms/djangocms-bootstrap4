@@ -15,6 +15,13 @@ REQUIREMENTS = [
 ]
 
 
+EXTRA_REQUIREMENTS = {
+    "static-ace": [
+        "djangocms-static-ace",
+    ]
+}
+
+
 CLASSIFIERS = [
     'Development Status :: 5 - Production/Stable',
     'Environment :: Web Environment',
@@ -56,6 +63,7 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=REQUIREMENTS,
+    extras_require=EXTRA_REQUIREMENTS,
     classifiers=CLASSIFIERS,
     test_suite='tests.settings.run',
 )
