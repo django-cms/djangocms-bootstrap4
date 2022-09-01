@@ -5,6 +5,9 @@ Changelog
 unreleased
 ==========
 
+3.0.0 2022-09-01
+================
+
 * Added support for djangocms-static-ace to serve the ace code editor locally
 * Added support for Django 3.2
 * Dropped support for Python 3.7
