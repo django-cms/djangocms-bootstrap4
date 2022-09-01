@@ -40,4 +40,4 @@ jobs:
         uses: liskin/gh-problem-matcher-wrap@v1
         with:
           linters: isort
-          run: isort -c -rc -df djangocms_bootstrap4
+          run: isort --check --diff djangocms_bootstrap4
