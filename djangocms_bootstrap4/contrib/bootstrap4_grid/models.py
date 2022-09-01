@@ -24,7 +24,7 @@ class Bootstrap4GridContainer(CMSPlugin):
     container_type = models.CharField(
         verbose_name=_('Container type'),
         choices=GRID_CONTAINER_CHOICES,
-        default=GRID_CONTAINER_CHOICES[0][0],
+        default=get_first_choice(GRID_CONTAINER_CHOICES),
         max_length=255,
         help_text=mark_safe_lazy(_(
             'Defines if the grid should use fixed width (<code>.container</code>) '
@@ -38,11 +38,8 @@ class Bootstrap4GridContainer(CMSPlugin):
         return str(self.pk)
 
     def get_short_description(self):
-        text = ''
-        for item in GRID_CONTAINER_CHOICES:
-            if item[0] == self.container_type:
-                text = item[1]
-        return f'({text})'
+        choice = get_choices_match(GRID_CONTAINER_CHOICES, self.container_type)
+        return f'({choice})'
 
 
 class Bootstrap4GridRow(CMSPlugin):

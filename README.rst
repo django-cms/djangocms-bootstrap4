@@ -135,8 +135,13 @@ for now only the following can be changed::
 
     DJANGOCMS_BOOTSTRAP4_GRID_SIZE = 12
     DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = (
-        ('container', _('Container')),
-        ('container-fluid', _('Fluid container')),
+        (_('Default'), (
+            ('container', _('Container')),
+            ('container-fluid', _('Fluid container')),
+        )),
+        (_('Custom'), (
+            ('container-yours', _('Your container')),
+        )),
     )
     DJANGOCMS_BOOTSTRAP4_GRID_COLUMN_CHOICES = (
         ('col', _('Column')),

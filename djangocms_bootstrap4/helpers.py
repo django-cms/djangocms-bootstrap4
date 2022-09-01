@@ -32,3 +32,28 @@ def get_plugin_template(instance, prefix, name, templates):
 # otherwise they will not be added to /locale/
 # https://docs.djangoproject.com/en/1.11/topics/i18n/translation/#other-uses-of-lazy-in-delayed-translations
 mark_safe_lazy = lazy(mark_safe, str)
+
+
+# get first element of "choices" (can be nested)
+def get_first_choice(choices):
+    for value, verbose in choices:
+        if not isinstance(verbose, (tuple, list)):
+            return value
+        else:
+            first = get_first_choice(verbose)
+            if first is not None:
+                return first
+    return None
+
+
+# get verbose text of element matching given value in "choices" (can be nested)
+def get_choices_match(choices, value_to_match):
+    for value, verbose in choices:
+        if not isinstance(verbose, (tuple, list)):
+            if value == value_to_match:
+                return verbose
+        else:
+            match = get_choices_match(verbose, value_to_match)
+            if match is not None:
+                return match
+    return None
