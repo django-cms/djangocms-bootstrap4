@@ -5,10 +5,7 @@ from cms.models import CMSPlugin
 
 from djangocms_bootstrap4.fields import AttributesField, TagTypeField
 
-from .constants import (
-    TAB_ALIGNMENT_CHOICES, TAB_EFFECT_CHOICES, TAB_TEMPLATE_CHOICES,
-    TAB_TYPE_CHOICES,
-)
+from .constants import TAB_ALIGNMENT_CHOICES, TAB_EFFECT_CHOICES, TAB_TEMPLATE_CHOICES, TAB_TYPE_CHOICES
 
 
 class Bootstrap4Tab(CMSPlugin):

@@ -1,9 +1,7 @@
 from cms.api import add_plugin
 from cms.test_utils.testcases import CMSTestCase
 
-from djangocms_bootstrap4.contrib.bootstrap4_picture.cms_plugins import (
-    Bootstrap4PicturePlugin,
-)
+from djangocms_bootstrap4.contrib.bootstrap4_picture.cms_plugins import Bootstrap4PicturePlugin
 
 from ..fixtures import B4TestFixture
 from ..helpers import get_filer_image

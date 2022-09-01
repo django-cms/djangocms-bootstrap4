@@ -1,8 +1,6 @@
 from django.test import TestCase
 
-from djangocms_bootstrap4.contrib.bootstrap4_alerts.models import (
-    Bootstrap4Alerts,
-)
+from djangocms_bootstrap4.contrib.bootstrap4_alerts.models import Bootstrap4Alerts
 
 
 class B4AlertModelTestCase(TestCase):

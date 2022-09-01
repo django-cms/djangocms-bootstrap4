@@ -11,9 +11,7 @@ from djangocms_link.models import TARGET_CHOICES, get_templates
 import djangocms_bootstrap4.fields
 from djangocms_bootstrap4.constants import TAG_CHOICES
 
-from ..constants import (
-    CAROUSEL_PAUSE_CHOICES, CAROUSEL_RIDE_CHOICES, CAROUSEL_TEMPLATE_CHOICES,
-)
+from ..constants import CAROUSEL_PAUSE_CHOICES, CAROUSEL_RIDE_CHOICES, CAROUSEL_TEMPLATE_CHOICES
 
 
 class Migration(migrations.Migration):

@@ -1,8 +1,6 @@
 from django.test import TestCase
 
-from djangocms_bootstrap4.fields import (
-    AttributesField, IntegerRangeField, TagTypeField,
-)
+from djangocms_bootstrap4.fields import AttributesField, IntegerRangeField, TagTypeField
 
 
 class B4FieldsTestCase(TestCase):

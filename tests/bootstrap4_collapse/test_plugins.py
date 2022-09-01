@@ -2,8 +2,7 @@ from cms.api import add_plugin
 from cms.test_utils.testcases import CMSTestCase
 
 from djangocms_bootstrap4.contrib.bootstrap4_collapse.cms_plugins import (
-    Bootstrap4CollapseContainerPlugin, Bootstrap4CollapsePlugin,
-    Bootstrap4CollapseTriggerPlugin,
+    Bootstrap4CollapseContainerPlugin, Bootstrap4CollapsePlugin, Bootstrap4CollapseTriggerPlugin,
 )
 
 from ..fixtures import B4TestFixture

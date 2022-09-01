@@ -7,9 +7,7 @@ from djangocms_bootstrap4.constants import DEVICE_SIZES
 from djangocms_bootstrap4.helpers import concat_classes
 
 from .forms import Bootstrap4GridColumnForm, Bootstrap4GridRowForm
-from .models import (
-    Bootstrap4GridColumn, Bootstrap4GridContainer, Bootstrap4GridRow,
-)
+from .models import Bootstrap4GridColumn, Bootstrap4GridContainer, Bootstrap4GridRow
 
 
 class Bootstrap4GridContainerPlugin(CMSPluginBase):
