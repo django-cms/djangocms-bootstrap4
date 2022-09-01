@@ -8,7 +8,7 @@ from cms.models import CMSPlugin
 
 from djangocms_bootstrap4.constants import DEVICE_SIZES
 from djangocms_bootstrap4.fields import AttributesField, IntegerRangeField, TagTypeField
-from djangocms_bootstrap4.helpers import mark_safe_lazy
+from djangocms_bootstrap4.helpers import get_choices_match, get_first_choice, mark_safe_lazy
 
 from .constants import (
     GRID_COLUMN_ALIGNMENT_CHOICES, GRID_COLUMN_CHOICES, GRID_CONTAINER_CHOICES, GRID_ROW_HORIZONTAL_ALIGNMENT_CHOICES,
