@@ -4,10 +4,6 @@
 #
 #    pip-compile
 #
---trusted-host pypi.python.org
---trusted-host pypi.org
---trusted-host files.pythonhosted.org
-
 build==0.8.0
     # via pip-tools
 bump2version==1.0.1
@@ -40,13 +36,9 @@ pyyaml==6.0
     # via pre-commit
 toml==0.10.2
     # via pre-commit
-tomli==2.0.1
-    # via
-    #   build
-    #   pep517
 virtualenv==20.16.4
     # via pre-commit
-wheel==0.37.1
+wheel==0.38.1
     # via
     #   -r requirements.in
     #   pip-tools
