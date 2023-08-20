@@ -2,8 +2,8 @@ from functools import partial
 
 from cms.models import CMSPlugin
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import ungettext
+from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext
 from enumfields import Enum
 from enumfields import EnumField
 from six import python_2_unicode_compatible
@@ -160,7 +160,7 @@ class Bootstrap4GridRow(CMSPlugin):
 
     def get_short_description(self):
         column_count = len(self.child_plugin_instances or [])
-        column_count_str = ungettext(
+        column_count_str = gettext(
             '(1 column)',
             '(%(count)i columns)',
             column_count

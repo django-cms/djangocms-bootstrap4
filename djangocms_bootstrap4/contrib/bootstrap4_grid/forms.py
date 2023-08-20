@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.forms import BooleanField, IntegerField, models
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from djangocms_bootstrap4.constants import DEVICE_SIZES
 

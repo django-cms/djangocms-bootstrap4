@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from cms.models import CMSPlugin
 from cms.utils.plugins import get_plugin_model
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
