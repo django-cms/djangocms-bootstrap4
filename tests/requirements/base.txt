@@ -7,3 +7,4 @@ isort
 flake8
 pyflakes>=2.1
 wheel
+django-filer<3
