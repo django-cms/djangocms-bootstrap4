@@ -4,6 +4,7 @@ HELPER_SETTINGS = {
     'INSTALLED_APPS': [
         'easy_thumbnails',
         'filer',
+        'mptt',
         'djangocms_text_ckeditor',
         'djangocms_link',
         'djangocms_picture',
