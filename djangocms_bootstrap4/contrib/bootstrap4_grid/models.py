@@ -1,6 +1,7 @@
 from functools import partial
 
 from django.db import models
+from django.utils.translation import gettext
 from django.utils.translation import gettext_lazy as _
 
 from django.utils.translation import ngettext
@@ -37,7 +38,7 @@ class Bootstrap4GridContainer(CMSPlugin):
         default=get_first_choice(GRID_CONTAINER_CHOICES),
         max_length=255,
         help_text=mark_safe_lazy(
-            _(
+            gettext(
                 "Defines if the grid should use fixed width (<code>.container</code>) "
                 "or fluid width (<code>.container-fluid</code>)."
             )
