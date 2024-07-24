@@ -2,8 +2,16 @@
 Changelog
 =========
 
-unreleased
-==========
+3.0.2 2024-07-24
+================
+
+* fix: container replace gettext_lazy with gettext by @florianRepenn in https://github.com/django-cms/djangocms-bootstrap4/pull/164
+
+**New Contributors**
+
+* @florianRepenn made their first contribution in https://github.com/django-cms/djangocms-bootstrap4/pull/164
+
+
 
 3.0.0 2022-09-01
 ================
