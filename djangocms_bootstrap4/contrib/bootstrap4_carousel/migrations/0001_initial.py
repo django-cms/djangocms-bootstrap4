@@ -27,7 +27,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Bootstrap4Carousel',
             fields=[
-                ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='bootstrap4_carousel_bootstrap4carousel', serialize=False, to='cms.CMSPlugin')),
+                ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='%(app_label)s_%(class)s', serialize=False, to='cms.CMSPlugin')),
                 ('carousel_style', models.CharField(choices=CAROUSEL_TEMPLATE_CHOICES, default=CAROUSEL_TEMPLATE_CHOICES[0][0], help_text='This is the template that will be used for the component.', max_length=255, verbose_name='Template')),
                 ('carousel_interval', models.IntegerField(default=5000, help_text='The amount of time to delay between automatically cycling an item. If false, carousel will not automatically cycle.', verbose_name='Interval')),
                 ('carousel_controls', models.BooleanField(default=True, help_text='Adding in the previous and next controls.', verbose_name='Controls')),
@@ -55,7 +55,7 @@ class Migration(migrations.Migration):
                 ('phone', models.CharField(blank=True, max_length=255, verbose_name='Phone')),
                 ('target', models.CharField(blank=True, choices=TARGET_CHOICES, max_length=255, verbose_name='Target')),
                 ('attributes', djangocms_attributes_field.fields.AttributesField(blank=True, default=dict, verbose_name='Attributes')),
-                ('cmsplugin_ptr', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='bootstrap4_carousel_bootstrap4carouselslide', serialize=False, to='cms.CMSPlugin')),
+                ('cmsplugin_ptr', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='%(app_label)s_%(class)s', serialize=False, to='cms.CMSPlugin')),
                 ('carousel_content', djangocms_text_ckeditor.fields.HTMLField(blank=True, default='', help_text='Content may also be added using child plugins.', verbose_name='Content')),
                 ('tag_type', djangocms_bootstrap4.fields.TagTypeField(choices=TAG_CHOICES, default=TAG_CHOICES[0][0], help_text='Select the HTML tag to be used.', max_length=255, verbose_name='Tag type')),
                 ('carousel_image', filer.fields.image.FilerImageField(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='filer.Image', verbose_name='Slide image')),

@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Bootstrap4Badge',
             fields=[
-                ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='bootstrap4_badge_bootstrap4badge', serialize=False, to='cms.CMSPlugin')),
+                ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='%(app_label)s_%(class)s', serialize=False, to='cms.CMSPlugin')),
                 ('badge_text', models.CharField(max_length=255, verbose_name='Badge text')),
                 ('badge_context', models.CharField(choices=COLOR_STYLE_CHOICES, default=COLOR_STYLE_CHOICES[0][0], max_length=255, verbose_name='Context')),
                 ('badge_pills', models.BooleanField(default=False, help_text='Activates the pills style.', verbose_name='Pills style')),

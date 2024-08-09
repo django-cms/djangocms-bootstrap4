@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
                 ('phone', models.CharField(blank=True, max_length=255, verbose_name='Phone')),
                 ('target', models.CharField(blank=True, choices=TARGET_CHOICES, max_length=255, verbose_name='Target')),
                 ('attributes', djangocms_attributes_field.fields.AttributesField(blank=True, default=dict, verbose_name='Attributes')),
-                ('cmsplugin_ptr', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='bootstrap4_link_bootstrap4link', serialize=False, to='cms.CMSPlugin')),
+                ('cmsplugin_ptr', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='%(app_label)s_%(class)s', serialize=False, to='cms.CMSPlugin')),
                 ('link_type', models.CharField(choices=LINK_CHOICES, default=LINK_CHOICES[0][0], help_text='Adds either the .btn-* or .text-* classes.', max_length=255, verbose_name='Type')),
                 ('link_context', models.CharField(blank=True, choices=COLOR_STYLE_CHOICES, max_length=255, verbose_name='Context')),
                 ('link_size', models.CharField(blank=True, choices=LINK_SIZE_CHOICES, max_length=255, verbose_name='Size')),

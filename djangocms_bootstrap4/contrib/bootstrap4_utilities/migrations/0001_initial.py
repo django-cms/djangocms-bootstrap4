@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Bootstrap4Spacing',
             fields=[
-                ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='bootstrap4_utilities_bootstrap4spacing', serialize=False, to='cms.CMSPlugin')),
+                ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='%(app_label)s_%(class)s', serialize=False, to='cms.CMSPlugin')),
                 ('space_property', models.CharField(choices=SPACER_PROPERTY_CHOICES, default=SPACER_PROPERTY_CHOICES[0][0], max_length=255, verbose_name='Property')),
                 ('space_sides', models.CharField(blank=True, choices=SPACER_SIDE_CHOICES, default=SPACER_SIDE_CHOICES[0][0], max_length=255, verbose_name='Sides')),
                 ('space_size', models.CharField(choices=SPACER_SIZE_CHOICES, default=SPACER_SIZE_CHOICES[0][0], max_length=255, verbose_name='Size')),
