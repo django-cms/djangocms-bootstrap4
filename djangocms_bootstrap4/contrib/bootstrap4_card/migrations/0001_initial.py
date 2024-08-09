@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Bootstrap4Card',
             fields=[
-                ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='bootstrap4_card_bootstrap4card', serialize=False, to='cms.CMSPlugin')),
+                ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='%(app_label)s_%(class)s', serialize=False, to='cms.CMSPlugin')),
                 ('card_type', models.CharField(choices=CARD_TYPE_CHOICES, default=CARD_TYPE_CHOICES[0][0], max_length=255, verbose_name='Card type')),
                 ('card_context', models.CharField(blank=True, choices=CARD_COLOR_STYLE_CHOICES, max_length=255, verbose_name='Background context')),
                 ('card_alignment', models.CharField(blank=True, choices=CARD_ALIGNMENT_CHOICES, max_length=255, verbose_name='Alignment')),
@@ -38,7 +38,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Bootstrap4CardInner',
             fields=[
-                ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='bootstrap4_card_bootstrap4cardinner', serialize=False, to='cms.CMSPlugin')),
+                ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='%(app_label)s_%(class)s', serialize=False, to='cms.CMSPlugin')),
                 ('inner_type', models.CharField(choices=CARD_INNER_TYPE_CHOICES, default=CARD_INNER_TYPE_CHOICES[0][0], help_text='Define the structure of the plugin.', max_length=255, verbose_name='Inner type')),
                 ('tag_type', djangocms_bootstrap4.fields.TagTypeField(choices=TAG_CHOICES, default=TAG_CHOICES[0][0], help_text='Select the HTML tag to be used.', max_length=255, verbose_name='Tag type')),
                 ('attributes', djangocms_bootstrap4.fields.AttributesField(blank=True, default=dict, verbose_name='Attributes')),

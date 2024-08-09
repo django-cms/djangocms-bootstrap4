@@ -36,7 +36,7 @@ class Migration(migrations.Migration):
                 ('use_no_cropping', models.BooleanField(default=False, help_text='Outputs the raw image without cropping.', verbose_name='Use original image')),
                 ('use_crop', models.BooleanField(default=False, help_text='Crops the image according to the thumbnail settings provided in the template.', verbose_name='Crop image')),
                 ('use_upscale', models.BooleanField(default=False, help_text='Upscales the image to the size of the thumbnail settings in the template.', verbose_name='Upscale image')),
-                ('cmsplugin_ptr', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='bootstrap4_picture_bootstrap4picture', serialize=False, to='cms.CMSPlugin')),
+                ('cmsplugin_ptr', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='%(app_label)s_%(class)s', serialize=False, to='cms.CMSPlugin')),
                 ('picture_fluid', models.BooleanField(default=True, help_text='Adds the .img-fluid class to make the image responsive.', verbose_name='Responsive')),
                 ('picture_rounded', models.BooleanField(default=False, help_text='Adds the .rounded class for round corners.', verbose_name='Rounded')),
                 ('picture_thumbnail', models.BooleanField(default=False, help_text='Adds the .img-thumbnail class.', verbose_name='Thumbnail')),

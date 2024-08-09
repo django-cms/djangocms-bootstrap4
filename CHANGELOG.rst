@@ -2,8 +2,26 @@
 Changelog
 =========
 
-unreleased
-==========
+3.0.2 2024-07-24
+================
+
+* fix: container replace gettext_lazy with gettext by @florianRepenn in https://github.com/django-cms/djangocms-bootstrap4/pull/164
+
+**New Contributors**
+
+* @florianRepenn made their first contribution in https://github.com/django-cms/djangocms-bootstrap4/pull/164
+
+3.0.1 2024-03-02
+================
+
+* fix: django import error by @src-r-r in https://github.com/django-cms/djangocms-bootstrap4/pull/162
+* ci: Bump wheel from 0.37.1 to 0.38.1 by @dependabot in https://github.com/django-cms/djangocms-bootstrap4/pull/160
+
+**New Contributors**
+
+* @src-r-r made their first contribution in https://github.com/django-cms/djangocms-bootstrap4/pull/162
+
+
 
 3.0.0 2022-09-01
 ================
