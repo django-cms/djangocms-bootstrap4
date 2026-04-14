@@ -19,7 +19,7 @@ jobs:
             dj42_cms311.txt,
         ]
         os: [
-            ubuntu-20.04,
+            ubuntu-24.04,
         ]
 
     steps:
