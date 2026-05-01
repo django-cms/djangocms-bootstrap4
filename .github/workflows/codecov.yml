@@ -19,11 +19,11 @@ jobs:
             dj42_cms311.txt,
         ]
         os: [
-            ubuntu-20.04,
+            ubuntu-latest,
         ]
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
       with:
         fetch-depth: '2'
 
@@ -38,4 +38,4 @@ jobs:
         coverage run setup.py test
 
     - name: Upload Coverage to Codecov
-      uses: codecov/codecov-action@v5
+      uses: codecov/codecov-action@v6
