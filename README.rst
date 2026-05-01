@@ -2,16 +2,15 @@
 django CMS Bootstrap 4
 ======================
 
+.. note::
+
+   This project is archived. It has been deprecated since 01/2024. Use djangocms-frontend instead (with Bootstrap5 support)
+
+
 |pypi| |build| |coverage|
 
 **django CMS Bootstrap 4** is a plugin bundle for django CMS providing several
 components from the popular `Bootstrap 4 <http://getbootstrap.com/>`_ library.
-
-.. note::
-
-        This project is endorsed by the `django CMS Association <https://www.django-cms.org/en/about-us/>`_.
-        That means that it is officially accepted by the dCA as being in line with our roadmap vision and development/plugin policy.
-        Join us on `Slack <https://www.django-cms.org/slack/>`_.
 
 .. image:: preview.gif
 
