@@ -20,7 +20,7 @@ jobs:
             dj42_cms41.txt,
         ]
         os: [
-            ubuntu-24.04,
+            ubuntu-22.04,
         ]
 
     steps:
