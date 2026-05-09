@@ -4,7 +4,7 @@ from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 
 from djangocms_bootstrap4.constants import DEVICE_SIZES
-from djangocms_bootstrap4.helpers import concat_classes
+from djangocms_bootstrap4.helpers import add_plugin, concat_classes
 
 from .forms import Bootstrap4GridColumnForm, Bootstrap4GridRowForm
 from .models import Bootstrap4GridColumn, Bootstrap4GridContainer, Bootstrap4GridRow
@@ -81,21 +81,23 @@ class Bootstrap4GridRowPlugin(CMSPluginBase):
     def save_model(self, request, obj, form, change):
         super().save_model(request, obj, form, change)
         data = form.cleaned_data
-        for x in range(int(data['create']) if data['create'] is not None else 0):  # NOQA
+        for pos in range(int(data['create']) if data['create'] is not None else 0):  # NOQA
             extra = {}
             for size in DEVICE_SIZES:
                 extra[f'{size}_col'] = data.get(
                     f'create_{size}_col'
                 )
-            col = Bootstrap4GridColumn(
-                parent=obj,
-                placeholder=obj.placeholder,
-                language=obj.language,
-                position=obj.numchild,
-                plugin_type=Bootstrap4GridColumnPlugin.__name__,
-                **extra
-            )
-            obj.add_child(instance=col)
+                add_plugin(
+                    obj.placeholder,
+                    Bootstrap4GridColumn(
+                        parent=obj,
+                        placeholder=obj.placeholder,
+                        position=obj.position + pos + 1,
+                        language=obj.language,
+                        plugin_type=Bootstrap4GridColumnPlugin.__name__,
+                        **extra,
+                    ),
+                )
 
     def render(self, context, instance, placeholder):
         gutter = 'no-gutters' if instance.gutters else ''

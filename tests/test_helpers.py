@@ -35,7 +35,7 @@ class B4HelpersTestCase(TestCase):
             language="en",
         )
         instance = add_plugin(
-            placeholder=page.placeholders.get(slot="content"),
+            placeholder=page.get_placeholders("en").get(slot="content"),
             plugin_type=Bootstrap4CarouselPlugin.__name__,
             language="en",
         )
