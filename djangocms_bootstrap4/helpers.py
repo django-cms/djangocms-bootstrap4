@@ -66,6 +66,6 @@ def add_plugin(placeholder, plugin):
     else:  # CMS < v4
         if plugin.parent:
             plugin.position -= plugin.parent.position + 1  # Restart position counting at 0
-        else:
+        else:  # pragma: no cover
             plugin.position -= 1  # 0-based counting in v3
         plugin.save()
