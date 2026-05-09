@@ -58,6 +58,7 @@ def get_choices_match(choices, value_to_match):
                 return match
     return None
 
+
 def add_plugin(placeholder, plugin):
     """CMS version-save function to add a plugin to a placeholder"""
     if hasattr(placeholder, "add_plugin"):  # available as of CMS v4
