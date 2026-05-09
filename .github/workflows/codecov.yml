@@ -43,4 +43,4 @@ jobs:
         coverage run tests/settings.py
 
     - name: Upload Coverage to Codecov
-      uses: codecov/codecov-action@v5
+      uses: codecov/codecov-action@v6
