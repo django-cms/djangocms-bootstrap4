@@ -17,9 +17,10 @@ jobs:
             dj32_cms310.txt,
             dj32_cms311.txt,
             dj42_cms311.txt,
+            dj42_cms41.txt,
         ]
         os: [
-            ubuntu-20.04,
+            ubuntu-24.04,
         ]
 
     steps:
