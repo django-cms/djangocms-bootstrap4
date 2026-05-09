@@ -11,14 +11,21 @@ class B4TestFixture:
             template="page.html",
             language=self.language,
         )
-        self.home.publish(self.language)
+        if hasattr(self.home, "publish"):
+            self.home.publish(self.language)
         self.page = create_page(
             title="content",
             template="page.html",
             language=self.language,
         )
-        self.page.publish(self.language)
-        self.placeholder = self.page.placeholders.get(slot="content")
+        if hasattr(self.page, "publish"):
+            self.page.publish(self.language)
+        else:
+            self.page.publish = lambda *x, **y: None
+        try:
+            self.placeholder = self.page.get_placeholders("en").get(slot="content")
+        except TypeError:
+            self.placeholder = self.page.placeholders.get(slot="content")
         self.superuser = self.get_superuser()
         self.request_url = self.page.get_absolute_url(self.language) + "?toolbar_off=true"
 

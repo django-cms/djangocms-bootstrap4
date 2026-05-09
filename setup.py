@@ -5,7 +5,7 @@ from djangocms_bootstrap4 import __version__
 
 
 REQUIREMENTS = [
-    'django-cms>=3.7,<4',
+    'django-cms>=3.7',
     'django-filer>=1.7',
     'djangocms-attributes-field>=1',
     'djangocms-text-ckeditor>=3.1.0',
@@ -41,6 +41,9 @@ CLASSIFIERS = [
     'Framework :: Django CMS :: 3.8',
     'Framework :: Django CMS :: 3.9',
     'Framework :: Django CMS :: 3.10',
+    'Framework :: Django CMS :: 3.11',
+    'Framework :: Django CMS :: 4.0',
+    'Framework :: Django CMS :: 4.1',
     'Topic :: Internet :: WWW/HTTP',
     'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     'Topic :: Software Development',

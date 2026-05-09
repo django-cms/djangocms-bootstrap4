@@ -12,14 +12,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [ 3.8, 3.9, "3.10"]
+        python-version: [ 3.9, "3.10", "3.11" ]
         requirements-file: [
             dj32_cms310.txt,
             dj32_cms311.txt,
             dj42_cms311.txt,
+            dj42_cms41.txt,
         ]
         os: [
-            ubuntu-20.04,
+            ubuntu-22.04,
         ]
 
     steps:
@@ -34,8 +35,12 @@ jobs:
 
     - name: Generate Report
       run: |
+        sudo apt-get install -y \
+            libcairo2-dev \
+            pkg-config
+
         pip install -r tests/requirements/${{ matrix.requirements-file }}
-        coverage run setup.py test
+        coverage run tests/settings.py
 
     - name: Upload Coverage to Codecov
       uses: codecov/codecov-action@v5

@@ -2,6 +2,11 @@
 Changelog
 =========
 
+3.1.0 2026-05-09
+================
+
+* feat: Make Row plugin compatible with django CMS 4.1+
+
 3.0.3 2025-12-01
 ================
 
