@@ -22,7 +22,10 @@ class B4TestFixture:
             self.page.publish(self.language)
         else:
             self.page.publish = lambda *x, **y: None
-        self.placeholder = self.page.get_placeholders("en").get(slot="content")
+        try:
+            self.placeholder = self.page.get_placeholders("en").get(slot="content")
+        except TypeError:
+            self.placeholder = self.page.placeholders.get(slot="content")
         self.superuser = self.get_superuser()
         self.request_url = self.page.get_absolute_url(self.language) + "?toolbar_off=true"
 

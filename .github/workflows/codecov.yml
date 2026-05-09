@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [ 3.8, 3.9, "3.10"]
+        python-version: [ 3.9, "3.10", "3.11" ]
         requirements-file: [
             dj32_cms310.txt,
             dj32_cms311.txt,
@@ -41,7 +41,7 @@ jobs:
             python3-dev
 
         pip install -r tests/requirements/${{ matrix.requirements-file }}
-        coverage run setup.py test
+        coverage run tests/settings.py
 
     - name: Upload Coverage to Codecov
       uses: codecov/codecov-action@v5

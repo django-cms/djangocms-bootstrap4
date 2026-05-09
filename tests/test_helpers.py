@@ -34,8 +34,12 @@ class B4HelpersTestCase(TestCase):
             template="page.html",
             language="en",
         )
+        try:
+            placeholder = page.get_placeholders("en").get(slot="content")
+        except TypeError:
+            placeholder = page.placeholders.get(slot="content")
         instance = add_plugin(
-            placeholder=page.get_placeholders("en").get(slot="content"),
+            placeholder=placeholder,
             plugin_type=Bootstrap4CarouselPlugin.__name__,
             language="en",
         )
