@@ -37,8 +37,7 @@ jobs:
       run: |
         sudo apt-get install -y \
             libcairo2-dev \
-            pkg-config \
-            python3-dev
+            pkg-config
 
         pip install -r tests/requirements/${{ matrix.requirements-file }}
         coverage run tests/settings.py
