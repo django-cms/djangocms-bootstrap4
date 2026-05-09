@@ -35,6 +35,11 @@ jobs:
 
     - name: Generate Report
       run: |
+        sudo apt-get install -y \
+            libcairo2-dev \
+            pkg-config \
+            python3-dev
+
         pip install -r tests/requirements/${{ matrix.requirements-file }}
         coverage run setup.py test
 
