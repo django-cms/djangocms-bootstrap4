@@ -2,6 +2,11 @@
 Changelog
 =========
 
+3.1.1 2026-05-22
+================
+
+* fix: Too many columns created in row plugin due to indentation error
+
 3.1.0 2026-05-09
 ================
 
